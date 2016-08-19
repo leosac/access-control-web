@@ -1,0 +1,15 @@
+About event propagation:
+    To send an action up the chain, a property must be set on the component that initiate
+    the action. The property must match the string passed as a parameter to sendAction().
+    The value of property is the target action for the next handler.
+
+    // component
+    'onLoginSuccess': 'actionNameInTheRoute'
+    this.sendAction('onLoginSuccess');
+
+    // route
+    actions { actionNameInTheRoute() { /* ... /* } }
+
+Alternative: Use https://github.com/DockYard/ember-route-action-helper
+{{login-form action=(route-action "actionNameInTheRoute")}}
+Invoking the action:  this.sendAction("action")

@@ -1,0 +1,44 @@
+<div class="col-lg-12">
+    This page provide an overview of some of the configuration value of the Leosac system.
+    <br> <br>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <a href="#" {{action 'refreshOverview'}}>
+                <i style="color: green" class="fa fa-refresh"></i> Refresh
+            </a>
+        </div>
+
+        <div class="panel-body">
+          {{system-overview}}
+        </div>
+    </div>
+
+    <div class="row">
+      {{bs-input type='number' value=logPerPage
+      label='Log per page'
+      }}
+    </div>
+
+    <div class="row text-center">
+        There is a total of {{totalLogs}} log messages.
+    </div>
+
+    <div class="row text-center">
+      {{numbered-paginator first=0
+      last=lastLogPage
+      current=currentLogPage
+      onPageChange=(action "updateLogPageNumber")
+      }}
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Last logs
+        </div>
+
+        <div class="panel-body">
+          {{logs-view logs=lastLogs}}
+        </div>
+    </div>
+</div>

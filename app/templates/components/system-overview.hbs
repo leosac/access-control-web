@@ -1,0 +1,34 @@
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>Parameter</th>
+        <th>Value</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Instance Name</td>
+        <td>{{systemOverview.instance_name}}</td>
+        <td>The (unique) name of the Leosac instance.</td>
+    </tr>
+    <tr>
+        <td>Configuration Version</td>
+        <td>{{systemOverview.config_version}}</td>
+        <td>Is used when performing synchronization to determine whether or not
+            synchronization is needed.</td>
+    </tr>
+    <tr>
+        <td>Uptime</td>
+        <td>{{format-duration systemOverview.uptime}}</td>
+        <td>How long has Leosac been running. (HH:MM:SS)</td>
+    </tr>
+    <tr>
+        <td>Modules</td>
+        <td>
+            {{systemOverview.enabledModules}}
+        </td>
+        <td>Which modules are running.</td>
+    </tr>
+    </tbody>
+</table>

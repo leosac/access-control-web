@@ -1,0 +1,15 @@
+<ul class="pagination">
+  {{#each pages as |page|}}
+    {{#if (eq current page)}}
+        <li class="active">
+            {{! Clicking on the current page cause refresh because
+             the user may want to fetch newest content. }}
+            <a href="#" {{action 'changePage' page}}>{{page}}</a>
+        </li>
+    {{else}}
+        <li>
+            <a href="#" {{action 'changePage' page}}>{{page}}</a>
+        </li>
+    {{/if}}
+  {{/each}}
+</ul>
