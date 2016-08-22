@@ -49,5 +49,24 @@ export default DS.Adapter.extend({
             });
 
         return def.promise;
+    },
+    // mostly for "User" for now.
+    findRecord: function (store, type, id, snapshot)
+    {
+        var def = Ember.RSVP.defer();
+        const ws = this.get('ws');
+
+        var p = ws.sendJson('user_get', {user_id: Number.parseInt(id)});
+        p.then(function (data)
+            {
+                def.resolve(data);
+            },
+            function (failure)
+            {
+                console.log('findRecord failed.');
+                def.reject('PROMISED FAILED IN FINDRECORD.');
+            });
+
+        return def.promise;
     }
 });

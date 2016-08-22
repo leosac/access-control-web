@@ -49,7 +49,10 @@ export default Ember.Service.extend({
       }
       else
       {
-        cb.success(obj.content);
+          if (obj.content == null)
+              cb.error(obj.content);
+          else
+              cb.success(obj.content);
         delete self.get('callback')[obj.uuid];
       }
     };

@@ -9,6 +9,7 @@ Router.map(function() {
   this.route('about');
   this.route('login');
   this.route('system-overview');
+  this.route('my-profile');
 });
 
 export default Router;

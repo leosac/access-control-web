@@ -8,7 +8,7 @@
                 <a href="#">
                     <div>
                         <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
+                        <span class="pull-right text-muted">
                                         <em>Yesterday</em>
                                     </span>
                     </div>
@@ -20,7 +20,7 @@
                 <a href="#">
                     <div>
                         <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
+                        <span class="pull-right text-muted">
                                         <em>Yesterday</em>
                                     </span>
                     </div>
@@ -32,7 +32,7 @@
                 <a href="#">
                     <div>
                         <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
+                        <span class="pull-right text-muted">
                                         <em>Yesterday</em>
                                     </span>
                     </div>
@@ -198,7 +198,10 @@
             <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
         </a>
         <ul class="dropdown-menu dropdown-user">
-            <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+            <li>
+              {{#link-to 'my-profile'}}
+                  <i class="fa fa-user fa-fw"></i>User Profile
+              {{/link-to}}
             </li>
             <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
             </li>
