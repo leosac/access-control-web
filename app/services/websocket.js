@@ -49,8 +49,12 @@ export default Ember.Service.extend({
       }
       else
       {
-          if (obj.content == null)
+          if (obj.status_code !== 0)
+          {
+              console.log('Received message with failed status_code.');
+              console.log(obj);
               cb.error(obj.content);
+          }
           else
               cb.success(obj.content);
         delete self.get('callback')[obj.uuid];
@@ -111,7 +115,7 @@ export default Ember.Service.extend({
     var callback = this.get('callback');
     var request = {
       uuid: this.guid(),
-      cmd: cmd,
+      type: cmd,
       content: request_content
     };
 
