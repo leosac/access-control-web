@@ -18,7 +18,7 @@ export default Ember.Controller.extend({
         const p = this.get('store').query('log-message',
             {
                 p: parseInt(this.get('currentLogPage')),
-                ps: parseInt(this.get('logPerPage')),
+                ps: parseInt(this.get('logPerPage')) || 1,
                 sort: 'desc'
             });
         p.then((msgs) =>

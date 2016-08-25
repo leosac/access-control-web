@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Service.extend({
+    flashMessages: Ember.inject.service(),
     ws: null,
     callback: [],
     beforeOpen: [],
@@ -74,7 +75,11 @@ export default Ember.Service.extend({
 
         ws.onclose = function (event)
         {
-            console.log('WS was closed');
+            self.get('flashMessages').danger('Websocket connection lost.\n' +
+                'Please refresh the page.',
+                {
+                    sticky: true
+                });
         };
         this.set('ws', ws);
 

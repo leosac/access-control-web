@@ -3,7 +3,6 @@ import Ember from 'ember';
 
 export default DS.Adapter.extend({
     ws: Ember.inject.service('websocket'),
-    flashMessages: Ember.inject.service(),
 
     findAll: function (store, type, sinceToken)
     {
@@ -58,19 +57,13 @@ export default DS.Adapter.extend({
         const ws = this.get('ws');
 
         var p = ws.sendJson('user_get', {user_id: Number.parseInt(id)});
-        const flashMessages = Ember.get(this, 'flashMessages');
         p.then(function (data)
             {
-                flashMessages.success('Yay', {
-                    sticky: true,
-                    componentName: 'flashmessage-as-alert',
-                });
                 def.resolve(data);
             },
             function (failure)
             {
-                console.log('findRecord failed.');
-                def.reject('PROMISED FAILED IN FINDRECORD.');
+                def.reject(failure);
             });
 
         return def.promise;
