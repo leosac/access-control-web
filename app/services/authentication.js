@@ -10,6 +10,8 @@ import Ember from 'ember';
  */
 export default Ember.Service.extend({
     websocket: Ember.inject.service('websocket'),
+    flashMessages: Ember.inject.service(),
+
     /**
      * User Id of the currently logged in user.
      */
@@ -55,6 +57,7 @@ export default Ember.Service.extend({
 
         this.set('pending', true);
         this.set('current_auth', Ember.RSVP.defer());
+        const flashMessages = this.get('flashMessages');
 
         return ws.sendJson('create_auth_token',
             {
@@ -62,6 +65,8 @@ export default Ember.Service.extend({
                 password: password
             }).then(function (data)
         {
+            // Authentication was successfully processed (doesn't meant it
+            // succeeded.
             self.set('pending', false);
             if (data.status === 0) // success
             {
@@ -70,17 +75,23 @@ export default Ember.Service.extend({
                 self.set('user_id', data.user_id);
                 self.set('username', username);
                 self.get('current_auth').resolve();
+                flashMessages.success('Welcome ' + username + '.');
                 if (onSuccess)
                     onSuccess();
             }
             else
             {
-                self.set('user_id', false);
-                self.set('username', '');
-                self.setLocalAuthToken(false);
-                self.get('current_auth').reject();
+                self._clearAuthentication(false);
                 if (onFailure)
                     onFailure(data.status, data.message);
+            }
+        }, function (failure)
+        {
+            self._clearAuthentication(false);
+            if (onFailure)
+            {
+                // we pass the global status here -- not too important.
+                onFailure(failure.status_code, failure.status_string);
             }
         });
     },
@@ -97,20 +108,25 @@ export default Ember.Service.extend({
             {
                 token: token
             }).then(function (data)
-        {
-            self.set('pending', false);
-            if (data.status === 0)
             {
-                self.set('user_id', data.user_id);
-                self.set('username', data.username);
-                self.get('current_auth').resolve();
-            }
-            else
+                self.set('pending', false);
+                if (data.status === 0)
+                {
+                    self.set('user_id', data.user_id);
+                    self.set('username', data.username);
+                    self.get('current_auth').resolve();
+                }
+                else
+                {
+                    self.get('current_auth').reject();
+                    console.log('Authentication token invalid');
+                }
+            },
+            function (data)
             {
-                self.get('current_auth').reject();
-                console.log('Authentication token invalid');
-            }
-        });
+                self._clearAuthentication(false);
+                console.log('Authenticate with token failed !!');
+            });
     },
     /**
      * Retrieve the authentication token stored in the local storage.
@@ -167,9 +183,17 @@ export default Ember.Service.extend({
         return this.get('websocket').sendJson('logout', {}).then(
             () =>
             {
-                self.set('user_id', false);
-                self.set('username', '');
+                self._clearAuthentication(true);
             }
         );
+    },
+    _clearAuthentication(deleteAuthToken)
+    {
+        this.set('user_id', false);
+        this.set('username', '');
+        if (deleteAuthToken)
+            this.setLocalAuthToken(false);
+        this.set('pending', false);
+        this.get('current_auth').reject();
     }
 });

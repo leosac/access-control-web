@@ -9,6 +9,7 @@ import Ember from 'ember';
  */
 export default Ember.Service.extend({
     websocket: Ember.inject.service('websocket'),
+    flashMessages: Ember.inject.service(),
     instance_name: "",
     config_version: false,
     uptime: false,
@@ -17,6 +18,7 @@ export default Ember.Service.extend({
     update()
     {
         "use strict";
+        console.log('updating sysoverview srv.');
         var self = this;
         var ws = self.get('websocket');
         ws.sendJson('system_overview', {}).then(
@@ -29,7 +31,8 @@ export default Ember.Service.extend({
             },
             function (failure)
             {
-
+                console.log("FAIL HERE!");
+                self.get('flashMessages').error(failure.status_string);
             }
         );
     }

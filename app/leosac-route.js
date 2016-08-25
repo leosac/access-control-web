@@ -65,9 +65,11 @@ function redirectIfNotAuth(route)
 
     promise_or_ret.then(function ()
     {
+        console.log('~~~SUCCESS~~~');
         // success, do nothing and let user reach page
     }, function ()
     {
+        console.log('~~~ABORTED~~~');
         self.transitionTo('login');
     });
     return promise_or_ret;

@@ -6,6 +6,6 @@
       "ember-qunit-notifications": "0.1.0",
       "jquery": "2.2.0",
       "bootstrap": "~3.3.5",
-      "startbootstrap-sb-admin-2": "1.0.8"
+      "startbootstrap-sb-admin-2-blackrockdigital": "1.0.8"
   }
 }
