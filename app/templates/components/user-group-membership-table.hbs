@@ -1,0 +1,22 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Group #Id</th>
+        <th>Group Name</th>
+        <th>Rank</th>
+        <th>Join date</th>
+        <th>Total Members</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each memberships as |membership|}}
+        <tr>
+            <td>{{membership.group.id}}</td>
+            <td>{{membership.group.name}}</td>
+            <td>{{membership.rank}}</td>
+            <td>{{membership.timestamp}}</td>
+            <td>{{membership.group.memberCount}}</td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>

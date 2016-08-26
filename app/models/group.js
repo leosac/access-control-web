@@ -1,8 +1,6 @@
 import Model from 'ember-data/model';
 import Ember from 'ember';
 import DS from 'ember-data';
-// import attr from 'ember-data/attr';
-// import { belongsTo, hasMany } from 'ember-data/relationships';
 
 export default Model.extend({
     numericId: Ember.computed('id', function () {
@@ -10,8 +8,10 @@ export default Model.extend({
         return Number(this.get('id'));
     }),
     memberCount: Ember.computed('members', function (){
-        return this.get('members.length');
+        return this.get('memberships.length');
     }),
     name: DS.attr('string'),
-    members: DS.hasMany('user')
+    memberships: DS.hasMany('user-group-membership', {
+        inverse: 'group'
+    })
 });

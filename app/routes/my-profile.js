@@ -14,14 +14,14 @@ export default LeosacRoute.extend({
     {
         "use strict";
         const user_id = this.get('authSrv').user_id;
-
         return this.get('store').findRecord('user', user_id);
 
+/*
         // Force eager load.
         var p = this.get('store').findRecord('user', user_id);
         return p.then((user) => {
             return user.get('groups').then(() => {return p;});
-        });
+        });*/
     },
     actions: {
         submit: () =>
