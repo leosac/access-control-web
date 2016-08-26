@@ -1,3 +1,29 @@
-Your profile is great.
+<div class="row">
+    Your profile is great.
 
-You are named {{model.firstname}} - {{model.lastname}}.
+    You are named {{model.firstname}} - {{model.lastname}}.
+</div>
+
+<div>
+  {{#bs-tab}}
+    {{#bs-tab-pane title='Information'}}
+        <div class="row col-md-6">
+          {{#bs-form formLayout="horizontal" model=model action="submit"}}
+              <fieldset>
+                  <legend>Names</legend>
+                {{bs-form-element controlType="text" label="Firstname"
+                                  placeholder="Jean" property="firstname"}}
+                {{bs-form-element controlType="text" label="Lastname"
+                                  placeholder="Jean" property="lastname"}}
+                {{bs-button defaultText="Submit" type="primary" buttonType="submit"}}
+              </fieldset>
+          {{/bs-form}}
+        </div>
+    {{/bs-tab-pane}}
+
+    {{#bs-tab-pane title='Groups'}}
+      A read-only view of your group memberships. <br>
+      {{group-table groups=model.groups}}
+    {{/bs-tab-pane}}
+  {{/bs-tab}}
+</div>

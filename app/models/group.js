@@ -9,6 +9,9 @@ export default Model.extend({
         "use strict";
         return Number(this.get('id'));
     }),
+    memberCount: Ember.computed('members', function (){
+        return this.get('members.length');
+    }),
     name: DS.attr('string'),
     members: DS.hasMany('user')
 });
