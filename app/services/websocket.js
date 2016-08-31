@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Service.extend({
     flashMessages: Ember.inject.service(),
+    authSrv: Ember.inject.service('authentication'),
     ws: null,
     callback: [],
     beforeOpen: [],
@@ -12,6 +13,7 @@ export default Ember.Service.extend({
         "use strict";
         console.log('Service is initializing ...');
 
+        const flashMessages = this.get('flashMessages');
         var ws = this.get('ws');
         ws = new WebSocket('ws://localhost:8888/websocket');
         var self = this;
@@ -62,11 +64,7 @@ export default Ember.Service.extend({
             else
             {
                 if (obj.status_code !== 0)
-                {
-                    console.log('Received message with failed status_code.');
-                    console.log(obj);
                     cb.error(obj);
-                }
                 else
                     cb.success(obj.content);
                 delete self.get('callback')[obj.uuid];

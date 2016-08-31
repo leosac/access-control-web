@@ -178,6 +178,7 @@ export default Ember.Service.extend({
     {
         "use strict";
 
+        console.log("AUTH SERVICE LOGOUT");
         var self = this;
         localStorage.auth_token = false;
         return this.get('websocket').sendJson('logout', {}).then(

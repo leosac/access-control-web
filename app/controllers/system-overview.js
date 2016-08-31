@@ -34,5 +34,9 @@ export default Ember.Controller.extend({
             "use strict";
             this.set('currentLogPage', parseInt(n));
         },
+        TEST_ACTION()
+        {
+            alert('in test action controller');
+        }
     }
 });

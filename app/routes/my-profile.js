@@ -2,7 +2,6 @@ import Ember from 'ember';
 import LeosacRoute from '../leosac-route';
 
 export default LeosacRoute.extend({
-    authSrv: Ember.inject.service('authentication'),
     _title: 'My Profile',
     _requireAuth: true,
     beforeModel()

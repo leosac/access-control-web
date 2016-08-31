@@ -20,17 +20,13 @@ export default Ember.Service.extend({
         "use strict";
         var self = this;
         var ws = self.get('websocket');
-        ws.sendJson('system_overview', {}).then(
+        return ws.sendJson('system_overview', {}).then(
             function (response)
             {
                 self.set('config_version', response.config_version);
                 self.set('instance_name', response.instance_name);
                 self.set('uptime', response.uptime);
                 self.set('enabledModules', response.modules);
-            },
-            function (failure)
-            {
-                self.get('flashMessages').error('Failed to update system overview values: ' + failure.status_string);
             }
         );
     }

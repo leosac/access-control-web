@@ -44,7 +44,7 @@ export default DS.Adapter.extend({
             },
             function (failure)
             {
-                console.log("FAILURE");
+                console.log("FAILURE QUERY");
                 def.reject();
             });
 

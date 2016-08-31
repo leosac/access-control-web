@@ -13,6 +13,7 @@ export default Ember.Component.extend({
         onLogout()
         {
             "use strict";
+            console.log('LEOSAC_MY_BODY LOGOUT');
             this.sendAction('onLogout');
         }
     }

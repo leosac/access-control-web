@@ -14,7 +14,7 @@ export default LeosacRoute.extend({
             "use strict";
             console.log('sysoverview route refresh');
             this.get('systemOverview').update();
-        },
+        }
     },
     beforeModel()
     {

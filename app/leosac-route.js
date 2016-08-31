@@ -25,6 +25,8 @@ import Ember from 'ember';
  */
 export default Ember.Route.extend({
     globalInfo: Ember.inject.service('leosac-info'),
+    authSrv: Ember.inject.service('authentication'),
+    flashMessages: Ember.inject.service(),
     _title: 'default',
     _requireAuth: false,
     actions: {
@@ -32,6 +34,25 @@ export default Ember.Route.extend({
         {
             "use strict";
             this.transitionTo('login');
+        },
+        /**
+         * An error was raised by a custom component.
+         * @param what
+         */
+        myError(err)
+        {
+            this.intermediateTransitionTo('error', err);
+            return false;
+        },
+        /**
+         * An error was raised from a route model() method (or similar).
+         * @param err
+         * @param transition
+         */
+        error(err, transition)
+        {
+            this.intermediateTransitionTo('error', err);
+            return false;
         }
     },
     beforeModel()

@@ -1,8 +1,16 @@
-<h4>An error has occurred.</h4>
+<div class="row-centered">
+    <h1>Oh no, something went wrong.</h1>
 
-<div id="content">
-    <h6>Status Code: {{model.status_code}}</h6>
-    <h6>Message: {{model.status_string}}</h6>
+    <div class="col-centered panel panel-default">
+        <div class="panel-body">
+          {{outlet}}
+
+          <hr>
+            <div id="content">
+                <h4>Status Code: {{model.status_code}}</h4>
+                <h4>Message: {{model.status_string}}</h4>
+                <h4>Request Identifier: {{model.uuid}}</h4>
+            </div>
+        </div>
+    </div>
 </div>
-
-<p>{{#link-to 'index'}}Return to index.{{/link-to}}</p>
