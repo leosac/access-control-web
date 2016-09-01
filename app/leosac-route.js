@@ -37,7 +37,7 @@ export default Ember.Route.extend({
         },
         /**
          * An error was raised by a custom component.
-         * @param what
+         * @param err
          */
         myError(err)
         {
@@ -86,11 +86,9 @@ function redirectIfNotAuth(route)
 
     promise_or_ret.then(function ()
     {
-        console.log('~~~SUCCESS~~~');
         // success, do nothing and let user reach page
     }, function ()
     {
-        console.log('~~~ABORTED~~~');
         self.transitionTo('login');
     });
     return promise_or_ret;

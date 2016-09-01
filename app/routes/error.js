@@ -10,9 +10,6 @@ export default LeosacRoute.extend({
     },
     renderTemplate(controller, model)
     {
-        console.log('in RENDER TPL');
-        console.log(model);
-
         this.render('error', {model: model});
         if (model.status_code === 7) // SessionAborted
         {
@@ -28,6 +25,15 @@ export default LeosacRoute.extend({
         {
             this.render('error.permission-denied', {model: model,
             into: 'error'});
+        }
+        else if (model.status_code === 6) // RequestTimeout
+        {
+            this.render('error.request-timeout', {into: 'error'});
+        }
+        else if (model.status_code === 8) // EntityNotFound
+        {
+            this.render('error.entity-not-found', {model: model,
+                into: 'error'});
         }
     }
 });
