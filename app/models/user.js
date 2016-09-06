@@ -11,6 +11,7 @@ export default Model.extend({
     username: DS.attr('string'),
     firstname: DS.attr('string'),
     lastname: DS.attr('string'),
+    email: DS.attr('string'),
     memberships: DS.hasMany('user-group-membership', {
         inverse: 'user'
     })

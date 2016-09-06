@@ -1,20 +1,22 @@
 <div>
     Your profile is great.
 
-    You are named {{model.firstname}} - {{model.lastname}}.
+    You are named {{model.firstname}} - {{model.lastname}} and your id is {{model.id}}
 </div>
 
 <div>
   {{#bs-tab}}
     {{#bs-tab-pane title='Information'}}
         <div class="row col-md-6">
-          {{#bs-form formLayout="horizontal" model=model action="submit"}}
+          {{#bs-form formLayout="horizontal" model=model action="editProfile"}}
               <fieldset>
                   <legend>Names</legend>
                 {{bs-form-element controlType="text" label="Firstname"
-                                  placeholder="Jean" property="firstname"}}
+                                  placeholder="Harry" property="firstname"}}
                 {{bs-form-element controlType="text" label="Lastname"
-                                  placeholder="Jean" property="lastname"}}
+                                  placeholder="Potter" property="lastname"}}
+                {{bs-form-element controlType="email" label="Email"
+                                  placeholder="hp@hogwarts.uk" property="email"}}
                 {{bs-button defaultText="Submit" type="primary" buttonType="submit"}}
               </fieldset>
           {{/bs-form}}

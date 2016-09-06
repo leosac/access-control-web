@@ -18,7 +18,7 @@ export default ApplicationAdapter.extend({
             },
             function (failure)
             {
-                flashMessages.danger('Failed to retrieve UserGroupMember #' + id);
+                flashMessages.danger('Failed to retrieve UserGroupMembership #' + id);
                 def.reject(failure);
             });
 
