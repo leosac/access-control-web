@@ -1,7 +1,7 @@
 <div>
     Your profile is great.
 
-    You are named {{model.firstname}} - {{model.lastname}} and your id is {{model.id}}
+    You are named {{model.user.firstname}} - {{model.user.lastname}} and your id is {{model.user.id}}
 </div>
 
 <div>
@@ -9,23 +9,49 @@
     {{#bs-tab-pane title='Information'}}
         <div class="row col-md-6">
             <a href="#" {{action 'refreshLama'}}>Refresh</a> <br>
-          {{#bs-form formLayout="horizontal" model=model action="editProfile"}}
+          {{#bs-form formLayout="horizontal" model=model.user action="editProfile"}}
               <fieldset>
-                  <legend>Names</legend>
+                  <legend>Profile</legend>
                 {{bs-form-element controlType="text" label="Firstname"
                                   placeholder="Harry" property="firstname"}}
                 {{bs-form-element controlType="text" label="Lastname"
                                   placeholder="Potter" property="lastname"}}
                 {{bs-form-element controlType="email" label="Email"
                                   placeholder="hp@hogwarts.uk" property="email"}}
+
+                {{bs-form-element controlType="password" label="Password"
+                                  placeholder="lamasticot" property="password"}}
+                {{bs-form-element controlType="password" label="Confirmation"
+                                  placeholder="lamasticot" property="password2"}}
+
+
                 {{bs-button defaultText="Submit" type="primary" buttonType="submit"}}
               </fieldset>
           {{/bs-form}}
+
+            <!-- Password change -->
+          {{#bs-form formLayout="horizontal"
+                     model=model.passwordInfo
+                     action="changePassword"
+          }}
+              <fieldset>
+                  <legend>Password</legend>
+                {{bs-form-element controlType="password" label="Current password"
+                                  placeholder="lamasticot" property="current_password"}}
+                {{bs-form-element controlType="password" label="New password"
+                                  placeholder="New Password" property="new_password"}}
+                {{bs-form-element controlType="password" label="Confirmation"
+                                  placeholder="New Password" property="new_password2"}}
+
+                {{bs-button defaultText="Change password" type="primary" buttonType="submit"}}
+              </fieldset>
+          {{/bs-form}}
+
         </div>
     {{/bs-tab-pane}}
 
     {{#bs-tab-pane title='Groups'}}
-      A read-only view of your group memberships. <br>
+        A read-only view of your group memberships. <br>
       {{user-group-membership-table memberships=model.memberships}}
     {{/bs-tab-pane}}
   {{/bs-tab}}
