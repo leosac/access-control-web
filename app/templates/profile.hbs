@@ -30,22 +30,7 @@
           {{/bs-form}}
 
             <!-- Password change -->
-          {{#bs-form formLayout="horizontal"
-                     model=model.passwordInfo
-                     action="changePassword"
-          }}
-              <fieldset>
-                  <legend>Password</legend>
-                {{bs-form-element controlType="password" label="Current password"
-                                  placeholder="lamasticot" property="current_password"}}
-                {{bs-form-element controlType="password" label="New password"
-                                  placeholder="New Password" property="new_password"}}
-                {{bs-form-element controlType="password" label="Confirmation"
-                                  placeholder="New Password" property="new_password2"}}
-
-                {{bs-button defaultText="Change password" type="primary" buttonType="submit"}}
-              </fieldset>
-          {{/bs-form}}
+            {{password-change user_id=model.user.id}}
 
         </div>
     {{/bs-tab-pane}}
