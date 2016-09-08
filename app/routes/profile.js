@@ -52,6 +52,10 @@ export default LeosacRoute.extend({
             {
                 fm.danger('Failed to update profile: ' + why.status_string);
             });
+        },
+        refreshLama: function()
+        {
+            this.controller.get('model').reload();
         }
     }
 });

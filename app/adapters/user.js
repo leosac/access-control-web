@@ -23,19 +23,33 @@ export default ApplicationAdapter.extend({
         return def.promise;
     },
 
+    findAll: function(store, type, sinceToken, snapshotRecordArray)
+    {
+        var def = Ember.RSVP.defer();
+        const ws = this.get('ws');
+
+        var p = ws.sendJson('user_get', {user_id: 0});
+        p.then(function (data)
+            {
+                def.resolve(data);
+            },
+            function (failure)
+            {
+                def.reject(failure);
+            });
+
+        return def.promise;
+    },
+
     updateRecord: function (store, type, snapshot)
     {
-        console.log('SNAPSHOT');
         const data = this.serialize(snapshot);
-        console.log(data);
 
         var def = Ember.RSVP.defer();
         const ws = this.get('ws');
 
         const params = {user_id: Number.parseInt(snapshot.id),
             attributes: data.data.attributes};
-        console.log(params);
-
         var p = ws.sendJson('user_put', params);
 
         p.then(function (data)

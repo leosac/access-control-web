@@ -23,13 +23,15 @@
                 {{/link-to}}
             </li>
             <li>
-                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Access<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="flot.html">Flot Charts</a>
+                        {{#link-to 'users'}}
+                            Users
+                        {{/link-to}}
                     </li>
                     <li>
-                        <a href="morris.html">Morris.js Charts</a>
+                        <a href="morris.html">Groups</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->
