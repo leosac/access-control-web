@@ -60,6 +60,7 @@ export default ApplicationAdapter.extend({
             },
             function (failure)
             {
+                console.log("UPDATE FAILURE");
                 def.reject(failure);
             });
 

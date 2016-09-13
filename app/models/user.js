@@ -1,8 +1,30 @@
 import Model from 'ember-data/model';
 import Ember from 'ember';
 import DS from 'ember-data';
+import {validator, buildValidations} from 'ember-cp-validations';
 
-export default Model.extend({
+const UserValidations = buildValidations(
+    {
+        firstname:  validator('presence',
+            {
+                isWarning: true,
+                presence: true,
+                message: "Firstname shouldn't be blank."
+            }),
+        lastname:  validator('presence',
+            {
+                isWarning: true,
+                presence: true,
+                message: "Lastname shouldn't be blank."
+            }),
+        email: [
+            validator('presence', true),
+            validator('format', { type: 'email' })
+        ],
+    }
+);
+
+export default Model.extend(UserValidations, {
     numericId: Ember.computed('id', function ()
     {
         "use strict";

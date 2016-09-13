@@ -55,11 +55,20 @@ export default Ember.Service.extend({
             // from server
             if (!cb)
             {
+                if (obj.type === 'session_closed')
+                {
+                    self.get('flashMessages').danger('Your session has been terminated: ' +
+                        obj.content.reason,
+                        {
+                            sticky: true,
+                        });
+                    self.get('authSrv')._clearAuthentication(true);
+                }
                 // Naive attempt to push to store. Would work if data
                 // is JSONAPI compatible.
 
                 // Will need more protocol handling tho.
-                self.get('store').push(obj.content);
+                //self.get('store').push(obj.content);
             }
             else
             {

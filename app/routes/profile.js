@@ -34,7 +34,7 @@ export default LeosacRoute.extend({
         },
         refreshLama: function ()
         {
-            this.controller.get('model').reload();
+            this.controller.get('model').user.reload();
         }
     }
 });

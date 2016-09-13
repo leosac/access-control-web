@@ -19,12 +19,6 @@
                 {{bs-form-element controlType="email" label="Email"
                                   placeholder="hp@hogwarts.uk" property="email"}}
 
-                {{bs-form-element controlType="password" label="Password"
-                                  placeholder="lamasticot" property="password"}}
-                {{bs-form-element controlType="password" label="Confirmation"
-                                  placeholder="lamasticot" property="password2"}}
-
-
                 {{bs-button defaultText="Submit" type="primary" buttonType="submit"}}
               </fieldset>
           {{/bs-form}}
@@ -37,7 +31,7 @@
 
     {{#bs-tab-pane title='Groups'}}
         A read-only view of your group memberships. <br>
-      {{user-group-membership-table memberships=model.memberships}}
+      {{user-group-membership-table memberships=model.user.memberships}}
     {{/bs-tab-pane}}
   {{/bs-tab}}
 </div>
