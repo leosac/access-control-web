@@ -7,7 +7,7 @@ export default Model.extend({
         "use strict";
         return Number(this.get('id'));
     }),
-    memberCount: Ember.computed('members', function (){
+    memberCount: Ember.computed('memberships', function (){
         return this.get('memberships.length');
     }),
     name: DS.attr('string'),

@@ -23,5 +23,22 @@ export default ApplicationAdapter.extend({
             });
 
         return def.promise;
-    }
+    },
+    findAll: function(store, type, sinceToken, snapshotRecordArray)
+    {
+        var def = Ember.RSVP.defer();
+        const ws = this.get('ws');
+
+        var p = ws.sendJson('group_get', {group_id: 0});
+        p.then(function (data)
+            {
+                def.resolve(data);
+            },
+            function (failure)
+            {
+                def.reject(failure);
+            });
+
+        return def.promise;
+    },
 });

@@ -1,0 +1,18 @@
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <th>#Id</th>
+        <th>Name</th>
+        <th>Total members</th>
+        </thead>
+        <tbody>
+        {{#each groups as |group|}}
+            <tr>
+                <td>{{group.id}}</td>
+                <td>{{group.name}}</td>
+                <td>{{group.memberCount}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>

@@ -20,6 +20,7 @@ Router.map(function ()
   });
   this.route('users');
   this.route('create-user');
+  this.route('groups');
 });
 
 export default Router;

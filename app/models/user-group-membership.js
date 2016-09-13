@@ -7,7 +7,7 @@ export default DS.Model.extend({
         "use strict";
         return Number(this.get('id'));
     }),
-    rank: DS.attr(''),
+    rank: DS.attr('group-rank'),
     timestamp: DS.attr('date-from-unix-timestamp'),
     group: DS.belongsTo('group'),
     user: DS.belongsTo('user'),
