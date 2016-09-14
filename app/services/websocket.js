@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import DS from 'ember-data';
 
 export default Ember.Service.extend({
     flashMessages: Ember.inject.service(),
@@ -57,6 +58,7 @@ export default Ember.Service.extend({
             {
                 if (obj.type === 'session_closed')
                 {
+                    // todo UI becomes broken after this.
                     self.get('flashMessages').danger('Your session has been terminated: ' +
                         obj.content.reason,
                         {
@@ -64,16 +66,21 @@ export default Ember.Service.extend({
                         });
                     self.get('authSrv')._clearAuthentication(true);
                 }
-                // Naive attempt to push to store. Would work if data
-                // is JSONAPI compatible.
-
-                // Will need more protocol handling tho.
-                //self.get('store').push(obj.content);
             }
             else
             {
-                if (obj.status_code !== 0)
+                if (obj.status_code === 11)
+                {
+                    // MODEL_EXCEPTION. We should have a "content.errors" array.
+                    // We wraps the errors array in an DS.InvalidError object
+                    // so that validation can automatically apply.
+                    cb.error(new DS.InvalidError(obj.content.errors));
+                }
+                else if (obj.status_code !== 0)
+                {
+                    self.get('flashMessages').danger('Error: ' + obj.status_string);
                     cb.error(obj);
+                }
                 else
                     cb.success(obj.content);
                 delete self.get('callback')[obj.uuid];

@@ -24,7 +24,7 @@ export default ApplicationAdapter.extend({
 
         return def.promise;
     },
-    findAll: function(store, type, sinceToken, snapshotRecordArray)
+    findAll: function (store, type, sinceToken, snapshotRecordArray)
     {
         var def = Ember.RSVP.defer();
         const ws = this.get('ws');
@@ -41,4 +41,20 @@ export default ApplicationAdapter.extend({
 
         return def.promise;
     },
+    createRecord: function (store, type, snapshot)
+    {
+        const data = this.serialize(snapshot);
+
+        var def = Ember.RSVP.defer();
+        const ws = this.get('ws');
+
+        return new Ember.RSVP.Promise(function (resolve, reject)
+        {
+            ws.sendJson('group_put', {
+                group_id: 0,
+                attributes: data.data.attributes
+            }).then((data) => resolve(data),
+                (failure) => reject(failure));
+        });
+    }
 });

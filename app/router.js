@@ -19,8 +19,9 @@ Router.map(function ()
       this.route('request-timeout');
   });
   this.route('users');
-  this.route('create-user');
+  this.route('user-create');
   this.route('groups');
+  this.route('group-create');
 });
 
 export default Router;

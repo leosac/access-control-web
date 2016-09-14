@@ -13,12 +13,13 @@ const Validations = buildValidations({
     new_password: validator('presence', true),
     new_password2: validator('confirmation', {
         on: 'new_password',
-        message: 'Does not match the new password',
+        message: 'Does not match the new password.',
     })
 });
 
 export default Ember.Component.extend(Validations, {
     passwordChange: Ember.inject.service('password-change'),
+    // Shall be injected when invoking the component.
     user_id: null,
     current_password: null,
     new_password: null,

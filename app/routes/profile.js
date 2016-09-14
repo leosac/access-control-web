@@ -19,6 +19,16 @@ export default LeosacRoute.extend({
             user: this.get('store').findRecord('user', params.user_id),
         });
     },
+    resetController(controller, isExiting, transition)
+    {
+        // Rollback change when leaving the page.
+        if (isExiting)
+        {
+            const user = this.controller.get('model').user;
+            if (user)
+                user.rollbackAttributes();
+        }
+    },
     actions: {
         editProfile: function ()
         {
