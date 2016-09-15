@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import LeosacRoute from '../leosac-route';
+import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
     _title: 'Groups',
@@ -12,6 +12,5 @@ export default LeosacRoute.extend({
     model()
     {
         "use strict";
-        return this.get('store').findAll('group');
     },
 });

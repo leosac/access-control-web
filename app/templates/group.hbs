@@ -4,7 +4,7 @@
         <div class="row col-md-6">
           {{#bs-form formLayout="horizontal" model=model action="editGroup"}}
               <fieldset>
-                  <legend>Profile</legend>
+                  <legend>Group information</legend>
                 {{bs-form-element controlType="text" label="Name"
                                   property="name"}}
 
@@ -13,12 +13,21 @@
 
                 {{bs-button defaultText="Edit" type="primary" buttonType="submit"
                             size='sm'}}
-                {{#bs-button type="danger" icon="glyphicon glyphicon-refresh"
+
+                {{#bs-button type="info" icon="glyphicon glyphicon-refresh"
                              size="sm"
-                             action='cancel_and_refresh'}}
+                             action='cancelAndRefresh'}}
                     Cancel & Refresh
                 {{/bs-button}}
 
+                {{button-with-confirmation
+                  type='danger'
+                  icon='glyphicon glyphicon-remove'
+                  size='sm'
+                  text='Delete'
+                  message='Are you sure you wish to delete this group ?'
+                  onConfirm=(route-action 'deleteGroup')
+                }}
               </fieldset>
           {{/bs-form}}
 

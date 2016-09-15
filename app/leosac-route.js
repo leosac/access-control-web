@@ -5,7 +5,7 @@ import Ember from 'ember';
  *
  * To extend this base route, do the following:
  * ```
- *   import LeosacRoute from '../leosac-route';
+ *   import LeosacRoute from 'web/leosac-route';
  *   export default LeosacRoute.extend({...});
  * ```
  *

@@ -10,6 +10,7 @@ import Ember from 'ember';
  */
 export default Ember.Service.extend({
     websocket: Ember.inject.service('websocket'),
+    store: Ember.inject.service(),
     flashMessages: Ember.inject.service(),
 
     /**
@@ -190,6 +191,8 @@ export default Ember.Service.extend({
     },
     _clearAuthentication(deleteAuthToken)
     {
+        // Clear the store from model that were loaded.
+        this.get('store').unloadAll();
         this.set('user_id', false);
         this.set('username', '');
         if (deleteAuthToken)

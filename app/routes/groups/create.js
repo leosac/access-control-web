@@ -1,5 +1,5 @@
-import LeosacRoute from '../leosac-route';
-import Group from '../models/group';
+import LeosacRoute from 'web/leosac-route';
+import Group from 'web/models/group';
 
 /**
  * Create a new group.
@@ -32,7 +32,7 @@ export default LeosacRoute.extend({
     actions: {
         createGroup()
         {
-            this.modelFor('group-create').save().then((g) =>
+            this.modelFor('groups.create').save().then((g) =>
                 {
                     this.get('flashMessages').success('Group created.');
                     this.transitionTo('group', g.get('id'));

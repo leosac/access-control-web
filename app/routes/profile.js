@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import LeosacRoute from '../leosac-route';
+import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
     passwordChange: Ember.inject.service('password-change'),

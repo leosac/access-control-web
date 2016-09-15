@@ -50,5 +50,16 @@ export default ApplicationAdapter.extend({
             ws.sendJson('group_put', params).then((data) => resolve(data),
                 (failure) => reject(failure));
         });
+    },
+    deleteRecord : function (store, type, snapshot)
+    {
+        const group_id = Number.parseInt(snapshot.id);
+        const ws = this.get('ws');
+
+        return new Ember.RSVP.Promise(function (resolve, reject)
+        {
+            ws.sendJson('group_delete', {group_id: group_id}).then((data) => resolve(data),
+                (failure) => reject(failure));
+        });
     }
 });

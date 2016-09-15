@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import LeosacRoute from '../leosac-route';
+import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
     _title: 'Group',
@@ -26,7 +26,11 @@ export default LeosacRoute.extend({
                     this.get('flashMessages').danger('An error occurred while editing group');
                 });
         },
-        cancel_and_refresh: function ()
+        deleteGroup ()
+        {
+            this.controller.get('model').destroyRecord();
+        },
+        cancelAndRefresh: function ()
         {
             this.controller.get('model').rollbackAttributes();
             this.controller.get('model').reload();

@@ -20,8 +20,10 @@ Router.map(function ()
   });
   this.route('users');
   this.route('user-create');
-  this.route('groups');
-  this.route('group-create');
+  this.route('groups', function() {
+    this.route('create');
+    this.route('list');
+  });
   this.route('group', {path: '/group/:group_id'});
 });
 
