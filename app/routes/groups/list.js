@@ -14,4 +14,20 @@ export default LeosacRoute.extend({
         "use strict";
         return this.get('store').findAll('group');
     },
+    actions:
+    {
+        deleteGroup(groupId)
+        {
+            const self = this;
+            const model = this.get('store').peekRecord('group', groupId);
+            if (model)
+            {
+                model.destroyRecord({}).then(() =>
+                {
+                    self.get('flashMessages').success('Group has been deleted.');
+                    self.transitionTo('groups.list');
+                });
+            }
+        }
+    }
 });

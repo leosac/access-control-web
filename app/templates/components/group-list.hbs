@@ -4,6 +4,9 @@
         <th>#Id</th>
         <th>Name</th>
         <th>Total members</th>
+        {{#if deleteLink}}
+            <th>Delete</th>
+        {{/if}}
         </thead>
         <tbody>
         {{#each groups as |group|}}
@@ -15,6 +18,18 @@
                   {{/link-to}}
                 </td>
                 <td>{{group.memberCount}}</td>
+              {{#if deleteLink}}
+                  <td>
+                    {{button-with-confirmation
+                      type='danger'
+                      icon='glyphicon glyphicon-remove'
+                      size='xs'
+                      text='Delete'
+                      message='Are you sure you wish to delete this group ?'
+                      onConfirm=(route-action 'deleteGroup' group.id)
+                    }}
+                  </td>
+              {{/if}}
             </tr>
         {{/each}}
         </tbody>

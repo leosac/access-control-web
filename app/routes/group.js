@@ -28,7 +28,13 @@ export default LeosacRoute.extend({
         },
         deleteGroup ()
         {
-            this.controller.get('model').destroyRecord();
+            const self = this;
+            const model = this.controller.get('model');
+            model.destroyRecord({}).then(() =>
+            {
+                self.get('flashMessages').success('Group has been deleted.');
+                self.transitionTo('groups.list');
+            });
         },
         cancelAndRefresh: function ()
         {
