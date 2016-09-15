@@ -1,0 +1,15 @@
+<div class="row col-md-6">
+  {{#bs-form formLayout='horizontal' model=model action='createGroup'}}
+      <fieldset>
+          <legend>Group Information</legend>
+      </fieldset>
+
+    {{bs-form-element controlType='text' label='Group Name'
+                      property='name'}}
+
+    {{bs-form-element controlType='textarea' label='Description'
+                      property='description'}}
+
+    {{bs-button defaultText="Create Group" type="primary" buttonType="submit"}}
+  {{/bs-form}}
+</div>

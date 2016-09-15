@@ -19,12 +19,26 @@
                 {{bs-form-element controlType="email" label="Email"
                                   placeholder="hp@hogwarts.uk" property="email"}}
 
+                Lama {{model.currentUser.rank}}
+
+                {{#bs-form-element label="Rank"}}
+                  {{#power-select
+                    disabled=true
+                    selected=model.user.rank
+                    options=model.possibleRanks
+                    onchange=(action (mut model.user.rank))
+                  as |rank|
+                  }}
+                    {{rank}}
+                  {{/power-select}}
+                {{/bs-form-element}}
+
                 {{bs-button defaultText="Submit" type="primary" buttonType="submit"}}
               </fieldset>
           {{/bs-form}}
 
             <!-- Password change -->
-            {{password-change user_id=model.user.id}}
+          {{password-change user_id=model.user.id}}
 
         </div>
     {{/bs-tab-pane}}

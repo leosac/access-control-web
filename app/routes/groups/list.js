@@ -12,6 +12,8 @@ export default LeosacRoute.extend({
     model()
     {
         "use strict";
+        // Since we'are about to reload all group, clear all before.
+        this.get('store').unloadAll('group');
         return this.get('store').findAll('group');
     },
     actions:

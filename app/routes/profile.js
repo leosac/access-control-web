@@ -17,6 +17,8 @@ export default LeosacRoute.extend({
         "use strict";
         return Ember.RSVP.hash({
             user: this.get('store').findRecord('user', params.user_id),
+            possibleRanks: ['Administrator', 'Normal'],
+            currentUser: this.get('store').findRecord('user', this.get('authSrv').user_id),
         });
     },
     resetController(controller, isExiting, transition)
