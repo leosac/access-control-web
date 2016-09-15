@@ -32,9 +32,10 @@ export default LeosacRoute.extend({
     actions: {
         createGroup()
         {
-            this.modelFor('group-create').save().then(() =>
+            this.modelFor('group-create').save().then((g) =>
                 {
                     this.get('flashMessages').success('Group created.');
+                    this.transitionTo('group', g.get('id'));
                 },
                 () =>
                 {

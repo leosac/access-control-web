@@ -22,6 +22,7 @@ Router.map(function ()
   this.route('user-create');
   this.route('groups');
   this.route('group-create');
+  this.route('group', {path: '/group/:group_id'});
 });
 
 export default Router;

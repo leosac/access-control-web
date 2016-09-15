@@ -3,49 +3,30 @@ import Ember from 'ember';
 
 export default ApplicationAdapter.extend({
     ws: Ember.inject.service('websocket'),
-    flashMessages: Ember.inject.service(),
 
     findRecord: function (store, type, id, snapshot)
     {
-        var def = Ember.RSVP.defer();
         const ws = this.get('ws');
-        const self = this;
-
-        var p = ws.sendJson('group_get', {group_id: Number.parseInt(id)});
-        p.then(function (data)
-            {
-                def.resolve(data);
-            },
-            function (failure)
-            {
-                self.get('flashMessages').danger(failure.status_string);
-                def.reject(failure);
-            });
-
-        return def.promise;
+        return new Ember.RSVP.Promise(function (resolve, reject){
+            ws.sendJson('group_get', {group_id: Number.parseInt(id)}).then(
+                (data) => resolve(data),
+                (failure) => reject(failure)
+            );
+        });
     },
     findAll: function (store, type, sinceToken, snapshotRecordArray)
     {
-        var def = Ember.RSVP.defer();
         const ws = this.get('ws');
-
-        var p = ws.sendJson('group_get', {group_id: 0});
-        p.then(function (data)
-            {
-                def.resolve(data);
-            },
-            function (failure)
-            {
-                def.reject(failure);
-            });
-
-        return def.promise;
+        return new Ember.RSVP.Promise(function (resolve, reject){
+            ws.sendJson('group_get', {group_id: 0}).then(
+                (data) => resolve(data),
+                (failure) => reject(failure)
+            );
+        });
     },
     createRecord: function (store, type, snapshot)
     {
         const data = this.serialize(snapshot);
-
-        var def = Ember.RSVP.defer();
         const ws = this.get('ws');
 
         return new Ember.RSVP.Promise(function (resolve, reject)
@@ -54,6 +35,19 @@ export default ApplicationAdapter.extend({
                 group_id: 0,
                 attributes: data.data.attributes
             }).then((data) => resolve(data),
+                (failure) => reject(failure));
+        });
+    },
+    updateRecord: function (store, type, snapshot)
+    {
+        const data = this.serialize(snapshot);
+        const ws = this.get('ws');
+
+        const params = {group_id: Number.parseInt(snapshot.id),
+            attributes: data.data.attributes};
+        return new Ember.RSVP.Promise(function (resolve, reject)
+        {
+            ws.sendJson('group_put', params).then((data) => resolve(data),
                 (failure) => reject(failure));
         });
     }

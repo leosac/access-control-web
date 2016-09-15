@@ -9,7 +9,11 @@
         {{#each groups as |group|}}
             <tr>
                 <td>{{group.id}}</td>
-                <td>{{group.name}}</td>
+                <td>
+                  {{#link-to 'group' group.id}}
+                    {{group.name}}
+                  {{/link-to}}
+                </td>
                 <td>{{group.memberCount}}</td>
             </tr>
         {{/each}}

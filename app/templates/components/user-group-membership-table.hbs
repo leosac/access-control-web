@@ -12,7 +12,11 @@
     {{#each memberships as |membership|}}
         <tr>
             <td>{{membership.group.id}}</td>
-            <td>{{membership.group.name}}</td>
+            <td>
+                {{#link-to 'group' membership.group.id}}
+              {{membership.group.name}}
+                {{/link-to}}
+            </td>
             <td>{{membership.rank}}</td>
             <td>{{membership.timestamp}}</td>
             <td>{{membership.group.memberCount}}</td>

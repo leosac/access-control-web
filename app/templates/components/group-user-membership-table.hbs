@@ -1,0 +1,24 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>User #Id</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Username</th>
+        <th>Date joined</th>
+        <th>Rank</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each memberships as |membership|}}
+        <tr>
+            <td>{{membership.user.id}}</td>
+            <td>{{membership.user.firstname}}</td>
+            <td>{{membership.user.lastname}}</td>
+            <td>{{membership.user.username}}</td>
+            <td>{{membership.timestamp}}</td>
+            <td>{{membership.rank}}</td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>

@@ -1,0 +1,32 @@
+<div>
+  {{#bs-tab}}
+    {{#bs-tab-pane title='Information'}}
+        <div class="row col-md-6">
+          {{#bs-form formLayout="horizontal" model=model action="editGroup"}}
+              <fieldset>
+                  <legend>Profile</legend>
+                {{bs-form-element controlType="text" label="Name"
+                                  property="name"}}
+
+                {{bs-form-element controlType='textarea' label='Description'
+                                  property='description'}}
+
+                {{bs-button defaultText="Edit" type="primary" buttonType="submit"
+                            size='sm'}}
+                {{#bs-button type="danger" icon="glyphicon glyphicon-refresh"
+                             size="sm"
+                             action='cancel_and_refresh'}}
+                    Cancel & Refresh
+                {{/bs-button}}
+
+              </fieldset>
+          {{/bs-form}}
+
+        </div>
+    {{/bs-tab-pane}}
+
+    {{#bs-tab-pane title='Members'}}
+      {{group-user-membership-table memberships=model.memberships}}
+    {{/bs-tab-pane}}
+  {{/bs-tab}}
+</div>
