@@ -9,7 +9,7 @@ export default ApplicationAdapter.extend({
         const ws = this.get('ws');
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
-            ws.sendJson('group_get', {group_id: Number.parseInt(id)}).then(
+            ws.sendJson('group.read', {group_id: Number.parseInt(id)}).then(
                 (data) => resolve(data),
                 (failure) => reject(failure)
             );
@@ -20,7 +20,7 @@ export default ApplicationAdapter.extend({
         const ws = this.get('ws');
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
-            ws.sendJson('group_get', {group_id: 0}).then(
+            ws.sendJson('group.read', {group_id: 0}).then(
                 (data) => resolve(data),
                 (failure) => reject(failure)
             );
@@ -33,7 +33,7 @@ export default ApplicationAdapter.extend({
 
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
-            ws.sendJson('group_put', {
+            ws.sendJson('group.create', {
                 group_id: 0,
                 attributes: data.data.attributes
             }).then((data) => resolve(data),
@@ -51,7 +51,7 @@ export default ApplicationAdapter.extend({
         };
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
-            ws.sendJson('group_put', params).then((data) => resolve(data),
+            ws.sendJson('group.update', params).then((data) => resolve(data),
                 (failure) => reject(failure));
         });
     },
@@ -74,7 +74,7 @@ export default ApplicationAdapter.extend({
 
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
-            ws.sendJson('group_delete', {group_id: group_id}).then(
+            ws.sendJson('group.delete', {group_id: group_id}).then(
                 (data) =>
                 {
                     // Actually unload membership object.
