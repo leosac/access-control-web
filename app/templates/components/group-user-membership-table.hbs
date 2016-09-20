@@ -15,7 +15,11 @@
             <td>{{membership.user.id}}</td>
             <td>{{membership.user.firstname}}</td>
             <td>{{membership.user.lastname}}</td>
-            <td>{{membership.user.username}}</td>
+            <td>
+              {{#link-to 'profile' membership.user.id}}
+                {{membership.user.username}}
+              {{/link-to}}
+            </td>
             <td>{{membership.timestamp}}</td>
             <td>{{membership.rank}}</td>
         </tr>

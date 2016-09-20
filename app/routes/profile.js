@@ -46,6 +46,7 @@ export default LeosacRoute.extend({
         },
         refreshLama: function ()
         {
+            this.controller.get('model').user.rollbackAttributes();
             this.controller.get('model').user.reload();
         }
     }
