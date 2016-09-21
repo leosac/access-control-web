@@ -1,0 +1,32 @@
+{{#bs-form formLayout='inline'}}
+    {{#bs-form-element label="Username"}}
+      {{#power-select
+        selected=selectedUsername
+        options=allUsernames
+        onchange=(action (mut selectedUsername))
+        allowClear=true
+        placeholder='Username'
+      as |username|
+      }}
+        {{username}}
+      {{/power-select}}
+    {{/bs-form-element}}
+
+    {{#bs-form-element label="Rank"}}
+      {{#power-select
+        selected=selectedRank
+        options=allRank
+        onchange=(action (mut selectedRank))
+        placeholder='Rank in group'
+      as |rank|
+      }}
+        {{rank}}
+      {{/power-select}}
+    {{/bs-form-element}}
+
+    {{#bs-button type="success" icon="glyphicon glyphicon-refresh"
+                 size="sm"
+                 action='addToGroup'}}
+        Add to group
+    {{/bs-button}}
+{{/bs-form}}
