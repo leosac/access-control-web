@@ -37,5 +37,7 @@ export default Model.extend(UserValidations, {
     rank: DS.attr('user-rank'),
     memberships: DS.hasMany('user-group-membership', {
         inverse: 'user'
-    })
+    }),
+    // The ODB version.
+    version: DS.attr('number')
 });

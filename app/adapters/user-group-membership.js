@@ -7,21 +7,14 @@ export default ApplicationAdapter.extend({
 
     findRecord: function (store, type, id, snapshot)
     {
-        const flashMessages = this.get('flashMessages');
-        var def = Ember.RSVP.defer();
         const ws = this.get('ws');
-
-        var p = ws.sendJson('membership_get', {membership_id: Number.parseInt(id)});
-        p.then(function (data)
-            {
-                def.resolve(data);
-            },
-            function (failure)
-            {
-                flashMessages.danger('Failed to retrieve UserGroupMembership #' + id);
-                def.reject(failure);
-            });
-
-        return def.promise;
+        return new Ember.RSVP.Promise(function (resolve, reject)
+        {
+            ws.sendJson('user-group-membership.read',
+                {membership_id: Number.parseInt(id)}).then(
+                (data) => resolve(data),
+                (failure) => reject(failure)
+            );
+        });
     }
 });

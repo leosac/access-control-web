@@ -21,6 +21,11 @@ export default LeosacRoute.extend({
             currentUser: this.get('store').findRecord('user', this.get('authSrv').user_id),
         });
     },
+    setupController(controller, model)
+    {
+        this._super(controller, model);
+        controller.set('targetUserId', this.paramsFor('profile').user_id);
+    },
     resetController(controller, isExiting, transition)
     {
         // Rollback change when leaving the page.

@@ -1,6 +1,5 @@
 <div>
     Your profile is great.
-
     You are named {{model.user.firstname}} - {{model.user.lastname}} and your id is {{model.user.id}}
 </div>
 
@@ -12,18 +11,19 @@
           {{#bs-form formLayout="horizontal" model=model.user action="editProfile"}}
               <fieldset>
                   <legend>Profile</legend>
-                {{bs-form-element controlType="text" label="Firstname"
+                {{bs-form-element disabled=isProfileLocked
+                                  controlType="text" label="Firstname"
                                   placeholder="Harry" property="firstname"}}
-                {{bs-form-element controlType="text" label="Lastname"
+                {{bs-form-element disabled=isProfileLocked
+                                  controlType="text" label="Lastname"
                                   placeholder="Potter" property="lastname"}}
-                {{bs-form-element controlType="email" label="Email"
+                {{bs-form-element disabled=isProfileLocked
+                                  controlType="email" label="Email"
                                   placeholder="hp@hogwarts.uk" property="email"}}
-
-                Lama {{model.currentUser.rank}}
 
                 {{#bs-form-element label="Rank"}}
                   {{#power-select
-                    disabled=true
+                    disabled=isRankEditLocked
                     selected=model.user.rank
                     options=model.possibleRanks
                     onchange=(action (mut model.user.rank))
@@ -33,12 +33,13 @@
                   {{/power-select}}
                 {{/bs-form-element}}
 
-                {{bs-button defaultText="Submit" type="primary" buttonType="submit"}}
+                {{bs-button disabled=isProfileLocked
+                            defaultText="Submit" type="primary" buttonType="submit"}}
               </fieldset>
           {{/bs-form}}
 
             <!-- Password change -->
-          {{password-change user_id=model.user.id}}
+          {{password-change disabled=isProfileLocked user_id=model.user.id}}
 
         </div>
     {{/bs-tab-pane}}

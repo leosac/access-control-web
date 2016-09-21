@@ -24,6 +24,7 @@ export default Ember.Component.extend(Validations, {
     current_password: null,
     new_password: null,
     new_password2: null,
+    disabled: false,
 
     actions: {
         changePassword: function ()
