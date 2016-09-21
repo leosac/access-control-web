@@ -45,8 +45,7 @@
     {{/bs-tab-pane}}
 
     {{#bs-tab-pane title='Groups'}}
-        A read-only view of your group memberships. <br>
-      {{user-group-membership-table memberships=model.user.memberships}}
+      {{user-group-membership-table user=model.user}}
     {{/bs-tab-pane}}
   {{/bs-tab}}
 </div>

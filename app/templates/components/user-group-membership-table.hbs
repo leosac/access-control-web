@@ -6,10 +6,13 @@
         <th>Rank</th>
         <th>Join date</th>
         <th>Total Members</th>
+      {{#if kickOrLeave}}
+          <th>Action</th>
+      {{/if}}
     </tr>
     </thead>
     <tbody>
-    {{#each memberships as |membership|}}
+    {{#each user.memberships as |membership|}}
         <tr>
             <td>{{membership.group.id}}</td>
             <td>
@@ -20,6 +23,17 @@
             <td>{{membership.rank}}</td>
             <td>{{membership.timestamp}}</td>
             <td>{{membership.group.memberCount}}</td>
+          {{#if kickOrLeave}}
+              <td>
+                {{button-with-confirmation
+                  type='danger'
+                  icon='glyphicon glyphicon-ban-circle'
+                  size='xs'
+                  text=kickOrLeave
+                  message=kickOrLeaveMessage
+                  onConfirm=(action 'deleteMembership' membership.id)
+                }}</td>
+          {{/if}}
         </tr>
     {{/each}}
     </tbody>

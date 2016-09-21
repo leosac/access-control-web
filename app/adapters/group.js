@@ -34,7 +34,6 @@ export default ApplicationAdapter.extend({
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
             ws.sendJson('group.create', {
-                group_id: 0,
                 attributes: data.data.attributes
             }).then((data) => resolve(data),
                 (failure) => reject(failure));

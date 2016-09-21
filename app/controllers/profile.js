@@ -7,7 +7,7 @@ export default Ember.Controller.extend({
 
     canEditProfile: Ember.computed('model.user.version', function ()
     {
-        var p = this.get('store').findRecord('user', this.get('authSrv').get('user_id')).then((u) =>
+        const p = this.get('store').findRecord('user', this.get('authSrv').get('user_id')).then((u) =>
         {
             return u.get('rank') === 'Administrator' ||
                 this.get('targetUserId') === u.get('id');
@@ -23,7 +23,7 @@ export default Ember.Controller.extend({
     }),
     canEditRank: Ember.computed('model.user.version', function ()
     {
-        var p = this.get('store').findRecord('user', this.get('authSrv').get('user_id')).then((u) =>
+        const p = this.get('store').findRecord('user', this.get('authSrv').get('user_id')).then((u) =>
         {
             return u.get('rank') === 'Administrator';
         });

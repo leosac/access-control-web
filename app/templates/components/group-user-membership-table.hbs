@@ -7,10 +7,13 @@
         <th>Username</th>
         <th>Date joined</th>
         <th>Rank</th>
+      {{#if canRemoveUserFromGroup}}
+          <th>Remove</th>
+      {{/if}}
     </tr>
     </thead>
     <tbody>
-    {{#each memberships as |membership|}}
+    {{#each group.memberships as |membership|}}
         <tr>
             <td>{{membership.user.id}}</td>
             <td>{{membership.user.firstname}}</td>
@@ -22,6 +25,17 @@
             </td>
             <td>{{membership.timestamp}}</td>
             <td>{{membership.rank}}</td>
+          {{#if canRemoveUserFromGroup}}
+              <td>
+                {{button-with-confirmation
+                  type='danger'
+                  icon='glyphicon glyphicon-ban-circle'
+                  size='xs'
+                  text='Remove'
+                  message=(concat 'Are you sure you wish to remove <b>' membership.user.username '</b> from the group?')
+                  onConfirm=(action 'deleteMembership' membership.id)
+                }}</td>
+          {{/if}}
         </tr>
     {{/each}}
     </tbody>

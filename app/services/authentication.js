@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import DS from 'ember-data';
 
 /**
  * This service provide support for authentication.
@@ -33,6 +34,8 @@ export default Ember.Service.extend({
      * It is resolved when authentication is performed.
      */
     current_auth: false,
+
+    current_user: false,
 
     init()
     {
@@ -71,14 +74,17 @@ export default Ember.Service.extend({
             self.set('pending', false);
             if (data.status === 0) // success
             {
-                // Store auth token in local storage
-                self.setLocalAuthToken(data.token);
-                self.set('user_id', data.user_id);
-                self.set('username', username);
-                self.get('current_auth').resolve();
-                flashMessages.success('Welcome ' + username + '.');
-                if (onSuccess)
-                    onSuccess();
+                self.get('store').findRecord('user', data.user_id).then((u) => {
+                    self.set('current_user', u);
+                    // Store auth token in local storage
+                    self.setLocalAuthToken(data.token);
+                    self.set('user_id', data.user_id);
+                    self.set('username', username);
+                    self.get('current_auth').resolve();
+                    flashMessages.success('Welcome ' + username + '.');
+                    if (onSuccess)
+                        onSuccess();
+                });
             }
             else
             {
@@ -113,9 +119,12 @@ export default Ember.Service.extend({
                 self.set('pending', false);
                 if (data.status === 0)
                 {
-                    self.set('user_id', data.user_id);
-                    self.set('username', data.username);
-                    self.get('current_auth').resolve();
+                    self.get('store').findRecord('user', data.user_id).then((u) => {
+                        self.set('current_user', u);
+                        self.set('user_id', data.user_id);
+                        self.set('username', data.username);
+                        self.get('current_auth').resolve();
+                    });
                 }
                 else
                 {
@@ -166,6 +175,9 @@ export default Ember.Service.extend({
     {
         return !!this.get('user_id');
     }),
+    isAdministrator: Ember.computed('user_id', function (){
+        return this.get('store').peekRecord('user', this.get('user_id')).get('rank') === 'Administrator';
+    }),
     /**
      * Log an user out.
      *
@@ -198,6 +210,7 @@ export default Ember.Service.extend({
         if (deleteAuthToken)
             this.setLocalAuthToken(false);
         this.set('pending', false);
+        this.set('current_user', false);
         this.get('current_auth').reject();
     }
 });
