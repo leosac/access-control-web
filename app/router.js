@@ -18,8 +18,10 @@ Router.map(function ()
       this.route('entity-not-found');
       this.route('request-timeout');
   });
-  this.route('users');
-  this.route('user-create');
+  this.route('users', function() {
+    this.route('list');
+    this.route('create');
+  });
   this.route('groups', function() {
     this.route('create');
     this.route('list');

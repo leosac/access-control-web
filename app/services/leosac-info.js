@@ -34,5 +34,9 @@ export default Ember.Service.extend({
                 self.set('version', 'UNKNOWN');
             }
         );
+    },
+    allUsernames()
+    {
+        return {'toto': 42, 'titi': 32};
     }
 });

@@ -5,6 +5,11 @@ import {validator, buildValidations} from 'ember-cp-validations';
 
 const UserValidations = buildValidations(
     {
+        username: validator('presence',
+            {
+                presence: true,
+                message: 'You must pick an username'
+            }),
         firstname:  validator('presence',
             {
                 isWarning: true,

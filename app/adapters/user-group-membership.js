@@ -35,6 +35,11 @@ export default ApplicationAdapter.extend({
         const data = this.serialize(snapshot);
         const ws = this.get('ws');
 
+        // Add the user_id and group_id to attributes, as this is
+        // what the Leosac API wants.
+        data.data.attributes.group_id = Number.parseInt(data.data.relationships.group.data.id);
+        data.data.attributes.user_id = Number.parseInt(data.data.relationships.user.data.id);
+
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
             ws.sendJson('user-group-membership.create', {

@@ -1,11 +1,8 @@
+import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
 
-/**
- * Create a new user.
- * Requires to be an administrator.
- */
 export default LeosacRoute.extend({
-    _title: 'Create user',
+    _title: 'Users',
     _requireAuth: true,
     beforeModel()
     {
@@ -15,6 +12,6 @@ export default LeosacRoute.extend({
     model()
     {
         "use strict";
-        return {};
-    }
+        return this.get('store').findAll('user');
+    },
 });
