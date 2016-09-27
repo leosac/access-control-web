@@ -3,5 +3,11 @@
  * but somehow emberjs is not able to find the module when doing this...
  */
 
-const UserRank = ['User', 'Administrator'];
+const UserRank = [
+    'User',
+    'Viewer',
+    'Manager',
+    'Supervisor',
+    'Administrator'
+];
 export {UserRank};
