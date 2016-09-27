@@ -1,35 +1,41 @@
 <div class="row col-md-6">
-{{#bs-form formLayout="horizontal" model=model.user action="createUser"}}
-    <fieldset>
-        <legend>Account Information</legend>
-      {{bs-form-element controlType="text" label="Username"
-                        placeholder="Harry" property="username"}}
+  {{#bs-form formLayout="horizontal" model=model.user}}
+      <fieldset>
+          <legend>Account Information</legend>
+        {{bs-form-element controlType="text" label="Username"
+                          placeholder="Harry" property="username"}}
 
+      </fieldset>
+
+      <fieldset>
+          <legend>Profile</legend>
+        {{bs-form-element controlType="text" label="Firstname"
+                          placeholder="Harry" property="firstname"}}
+
+        {{bs-form-element controlType="text" label="Lastname"
+                          placeholder="Potter" property="lastname"}}
+
+        {{bs-form-element controlType="email" label="Email"
+                          placeholder="hp@hogwarts.uk" property="email"}}
+
+        {{#bs-form-element label="Rank"}}
+          {{#power-select
+            selected=model.user.rank
+            options=model.possibleRanks
+            onchange=(action (mut model.user.rank))
+          as |rank|
+          }}
+            {{rank}}
+          {{/power-select}}
+        {{/bs-form-element}}
+      </fieldset>
+  {{/bs-form}}
+
+    <fieldset>
+        <legend>Security</legend>
+      {{password-input passwordOut=(mut model.user.password)}}
     </fieldset>
 
-    <fieldset>
-        <legend>Profile</legend>
-      {{bs-form-element controlType="text" label="Firstname"
-                        placeholder="Harry" property="firstname"}}
-
-      {{bs-form-element controlType="text" label="Lastname"
-                        placeholder="Potter" property="lastname"}}
-
-      {{bs-form-element controlType="email" label="Email"
-                        placeholder="hp@hogwarts.uk" property="email"}}
-
-      {{#bs-form-element label="Rank"}}
-        {{#power-select
-          selected=model.user.rank
-          options=model.possibleRanks
-          onchange=(action (mut model.user.rank))
-        as |rank|
-        }}
-          {{rank}}
-        {{/power-select}}
-      {{/bs-form-element}}
-
-      {{bs-button defaultText="Create User" type="primary" buttonType="submit"}}
-    </fieldset>
-{{/bs-form}}
+  {{bs-button defaultText="Create User" type="primary"
+              buttonType="submit" action='createUser'}}
 </div>

@@ -5,13 +5,13 @@ export default DS.Transform.extend({
         if (serialized === 1)
             return 'Administrator';
         else if (serialized === 0)
-            return 'Normal';
+            return 'User';
     },
 
     serialize(deserialized) {
         if (deserialized === 'Administrator')
             return 1;
-        else if (deserialized === 'Normal')
+        else if (deserialized === 'User')
             return 0;
     }
 });

@@ -39,6 +39,7 @@ export default Model.extend(UserValidations, {
     firstname: DS.attr('string'),
     lastname: DS.attr('string'),
     email: DS.attr('string'),
+    password: DS.attr('string'),
     rank: DS.attr('user-rank'),
     memberships: DS.hasMany('user-group-membership', {
         inverse: 'user'

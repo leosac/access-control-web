@@ -19,16 +19,6 @@ export default LeosacRoute.extend({
         newGroup.set('description', '');
         return newGroup;
     },
-    resetController(controller, isExiting, transition)
-    {
-        // Rollback change when leaving the page.
-        if (isExiting)
-        {
-            const newGroup = this.controller.get('model');
-            if (newGroup)
-                newGroup.rollbackAttributes();
-        }
-    },
     actions: {
         createGroup()
         {

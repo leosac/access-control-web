@@ -14,7 +14,11 @@
                 <td>{{user.firstname}}</td>
                 <td>{{user.lastname}}</td>
                 <td>{{user.email}}</td>
-                <td>{{user.username}}</td>
+                <td>
+                    {{#link-to 'profile' user.id}}
+                      {{user.username}}
+                    {{/link-to}}
+                </td>
             </tr>
         {{/each}}
         </tbody>

@@ -32,7 +32,7 @@
                   icon='glyphicon glyphicon-ban-circle'
                   size='xs'
                   text='Remove'
-                  message=(concat 'Are you sure you wish to remove <b>' membership.user.username '</b> from the group?')
+                  message=(concat 'Are you sure you wish to remove ' membership.user.username ' from the group?')
                   onConfirm=(action 'deleteMembership' membership.id)
                 }}</td>
           {{/if}}

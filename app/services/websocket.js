@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import DS from 'ember-data';
+import ENV from 'web/config/environment';
 
 export default Ember.Service.extend({
     flashMessages: Ember.inject.service(),
@@ -14,9 +15,8 @@ export default Ember.Service.extend({
         "use strict";
         console.log('Service is initializing ...');
 
-        const flashMessages = this.get('flashMessages');
         var ws = this.get('ws');
-        ws = new WebSocket('ws://10.2.3.100:8888/websocket');
+        ws = new WebSocket('ws://' + ENV.APP.leosacAddr + '/websocket');
         var self = this;
 
         ws.onopen = function ()

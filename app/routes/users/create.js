@@ -15,16 +15,33 @@ export default LeosacRoute.extend({
         "use strict";
         const newUser = this.get('store').createRecord('user');
         newUser.set('rank', 'Normal');
-        return {
+        return Ember.RSVP.hash({
             user: newUser,
-            possibleRanks: UserRank
-        };
+            possibleRanks: UserRank,
+        });
     },
-    actions:
+    setupController(controller, model)
     {
+        this._super(controller, model);
+    },
+    actions: {
         createUser()
         {
-            alert('boap');
+            const u = this.modelFor(this.routeName).user;
+            const fm = this.get('flashMessages');
+            const {m, validations} = u.validateSync();
+            if (validations.get('isValid') && u.get('password') !== false)
+            {
+                u.save().then(() =>
+                    {
+                        fm.success('User successfully created.');
+                        this.transitionTo('users.list');
+                    },
+                    () =>
+                    {
+                        fm.danger('Failed to create user.');
+                    });
+            }
         }
     }
 });
