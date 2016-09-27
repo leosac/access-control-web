@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
+import {UserRank} from 'web/leosac-constant';
 
 export default LeosacRoute.extend({
     _title: 'New User',
@@ -16,7 +17,7 @@ export default LeosacRoute.extend({
         newUser.set('rank', 'Normal');
         return {
             user: newUser,
-            possibleRanks: ['Normal', 'Administrator']
+            possibleRanks: UserRank
         };
     },
     actions:
