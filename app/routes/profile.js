@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
-import UserRank from 'web/leosac-constant';
+import {UserRank} from 'web/leosac-constant';
 
 export default LeosacRoute.extend({
     passwordChange: Ember.inject.service('password-change'),

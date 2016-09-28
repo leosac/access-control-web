@@ -8,7 +8,7 @@ export default DS.Transform.extend({
             return 'Supervisor';
         else if (serialized === 2)
             return 'Manager';
-        else if (serialized === 0)
+        else if (serialized === 1)
             return 'Viewer';
         else if (serialized === 0)
             return 'User';

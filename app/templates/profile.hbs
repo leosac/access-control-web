@@ -20,6 +20,8 @@
                 {{bs-form-element disabled=isProfileLocked
                                   controlType="email" label="Email"
                                   placeholder="hp@hogwarts.uk" property="email"}}
+                {{bs-form-element disabled=isRankEditLocked
+                                  controlType="checkbox" label="Enabled" property='validityEnabled'}}
 
                 {{#bs-form-element label="Rank"}}
                   {{#power-select
