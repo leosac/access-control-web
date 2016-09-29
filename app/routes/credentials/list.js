@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
+import {findAllCredentials} from 'web/leosac-credential-helper';
 
 export default LeosacRoute.extend({
     _title: 'Credentials list',
@@ -11,31 +12,7 @@ export default LeosacRoute.extend({
     },
     model()
     {
-        "use strict";
-        const blah = Ember.RSVP.defer();
-        const tmpArray = [];
-
-        Ember.RSVP.hash({
-            wiegandCard: this.get('store').findAll('wiegand-card', {reload: true}),
-            pinCode: this.get('store').findAll('pin-code', {reload: true}),
-        }).then(function (hash)
-        {
-            hash.wiegandCard.forEach(function (c)
-            {
-                console.log("FOUND CARD: " + c.get('alias'));
-                tmpArray.push(c);
-            });
-
-            hash.pinCode.forEach(function (c)
-            {
-                console.log("FOUND PING: " + c.get('alias'));
-                tmpArray.push(c);
-            });
-
-            blah.resolve(tmpArray);
-        });
-
-        return blah.promise;
+        return findAllCredentials(this.get('store'));
     },
     actions:
     {
