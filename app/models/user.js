@@ -44,6 +44,10 @@ export default Model.extend(UserValidations, {
     memberships: DS.hasMany('user-group-membership', {
         inverse: 'user'
     }),
+    credentials: DS.hasMany('credential', {
+        inverse: 'owner',
+        polymorphic: true
+    }),
     validityEnabled: DS.attr('boolean'),
     // The ODB version.
     version: DS.attr('number')

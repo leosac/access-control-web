@@ -14,6 +14,9 @@ export default LeosacRoute.extend({
         "use strict";
         return this.get('store').findRecord('credential', params.credential_id);
     },
+    testLol(){
+        return 'blab';
+    },
     actions: {
         editGroup ()
         {

@@ -27,7 +27,12 @@ Router.map(function ()
     this.route('list');
   });
   this.route('group', {path: '/group/:group_id'});
-  this.route('credential', {path: '/credential/:credential_id'});
+  this.route('credential', {path: '/credential/:credential_id'}, function() {});
+
+  this.route('credentials', function() {
+    this.route('list');
+    this.route('wiegand-card', {path: '/wiegand-card/:credential_id'});
+  });
 });
 
 export default Router;

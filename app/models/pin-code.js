@@ -5,8 +5,7 @@ import {validator, buildValidations} from 'ember-cp-validations';
 
 export default Credential.extend({
     // Hardcoded to true to distinguish between credential type.
-    isWiegandCard: true,
-    type: 'WiegandCard',
-    cardId: DS.attr('string'),
-    nbBits: DS.attr('number'),
+    isPinCode: true,
+    type: 'PinCode',
+    code: DS.attr('string'),
 });
