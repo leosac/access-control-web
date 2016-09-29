@@ -27,6 +27,7 @@ Router.map(function ()
     this.route('list');
   });
   this.route('group', {path: '/group/:group_id'});
+  this.route('credential', {path: '/credential/:credential_id'});
 });
 
 export default Router;
