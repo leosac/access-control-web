@@ -1,0 +1,13 @@
+{{#bs-form-element label="Username"}}
+  {{#power-select
+    selected=selected
+    searchField="username"
+    options=allUsers
+    onchange=onChange
+    allowClear=true
+    placeholder='Username'
+  as |user|
+  }}
+    {{user.username}}
+  {{/power-select}}
+{{/bs-form-element}}

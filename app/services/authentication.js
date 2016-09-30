@@ -128,8 +128,8 @@ export default Ember.Service.extend({
                 }
                 else
                 {
-                    self.get('current_auth').reject();
                     console.log('Authentication token invalid');
+                    self._clearAuthentication(true);
                 }
             },
             function (data)

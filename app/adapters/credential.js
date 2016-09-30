@@ -38,6 +38,11 @@ export default ApplicationAdapter.extend({
         const data = this.serialize(snapshot);
         const ws = this.get('ws');
 
+        if (data.data.relationships.owner.data)
+            data.data.attributes.owner_id = Number.parseInt(data.data.relationships.owner.data.id);
+        else
+            data.data.attributes.owner_id = 0;
+
         const params = {
             credential_id: Number.parseInt(snapshot.id),
             attributes: data.data.attributes
