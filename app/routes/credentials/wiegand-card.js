@@ -13,5 +13,19 @@ export default LeosacRoute.extend({
     {
         "use strict";
         return this.get('store').find('wiegand-card', params.credential_id);
+    },
+    actions:
+    {
+        updateCard()
+        {
+            this.controller.get('model').save().then(() =>
+                {
+                    this.get('flashMessages').success('Credential successfully edited.');
+                },
+                () =>
+                {
+                    this.get('flashMessages').danger('An error occurred while editing credential');
+                });
+        }
     }
 });

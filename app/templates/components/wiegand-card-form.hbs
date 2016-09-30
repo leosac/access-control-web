@@ -1,0 +1,17 @@
+{{#bs-form formLayout="horizontal" model=card action=action}}
+    <fieldset>
+        <legend>Configuration</legend>
+      {{bs-form-element controlType="text" label="Alias"
+                        placeholder="A friendly name to remember me by"
+                        property="alias"}}
+      {{bs-form-element controlType="text" label="Hexadecimal Card Identifier"
+                        placeholder="11:aa:bb:cc" property="cardId"}}
+      {{bs-form-element controlType="number" label="Number of bits"
+                        placeholder="32" property="nbBits"}}
+
+      {{bs-form-element controlType="textarea" label="Notes"
+                        placeholder="A few optional notes..."
+                        property="description"}}
+      {{bs-button defaultText="Submit" type="primary" buttonType="submit"}}
+    </fieldset>
+{{/bs-form}}

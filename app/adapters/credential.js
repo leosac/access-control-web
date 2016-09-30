@@ -33,7 +33,21 @@ export default ApplicationAdapter.extend({
                 (failure) => reject(failure));
         });
     },
+    updateRecord: function (store, type, snapshot)
+    {
+        const data = this.serialize(snapshot);
+        const ws = this.get('ws');
 
+        const params = {
+            credential_id: Number.parseInt(snapshot.id),
+            attributes: data.data.attributes
+        };
+        return new Ember.RSVP.Promise(function (resolve, reject)
+        {
+            ws.sendJson('credential.update', params).then((data) => resolve(data),
+                (failure) => reject(failure));
+        });
+    },
     findAll: function (store, type, sinceToken)
     {
         const ws = this.get('ws');

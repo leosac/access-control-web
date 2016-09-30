@@ -23,6 +23,7 @@ export default LeosacRoute.extend({
                 {
                     self.get('flashMessages').success('Credential has been deleted.');
                     self.transitionTo('credentials.list');
+                    self.refresh();
                 },
                 () =>
                 {

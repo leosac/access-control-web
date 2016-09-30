@@ -3,12 +3,19 @@ import Ember from 'ember';
 import DS from 'ember-data';
 import {validator, buildValidations} from 'ember-cp-validations';
 
-export default DS.Model.extend({
+const CredentialValidations = buildValidations(
+    {
+        alias: validator('ds-error')
+    }
+);
+
+export default DS.Model.extend(CredentialValidations, {
     numericId: Ember.computed('id', function ()
     {
         "use strict";
         return Number(this.get('id'));
     }),
     alias: DS.attr('string'),
+    description: DS.attr('string'),
     owner: DS.belongsTo('user'),
 });

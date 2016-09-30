@@ -3,7 +3,13 @@ import Ember from 'ember';
 import DS from 'ember-data';
 import {validator, buildValidations} from 'ember-cp-validations';
 
-export default Credential.extend({
+const WiegandCardValidations = buildValidations(
+    {
+        cardId: validator('ds-error'),
+    }
+);
+
+export default Credential.extend(WiegandCardValidations, {
     // Hardcoded to true to distinguish between credential type.
     isWiegandCard: true,
     type: 'WiegandCard',
