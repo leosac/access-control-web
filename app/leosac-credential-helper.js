@@ -26,4 +26,22 @@ function findAllCredentials(store)
     return promise.promise;
 }
 
-export {findAllCredentials};
+/**
+ * Find the credential with id `credentialId` and delete it.
+ *
+ * The concrete type of the credential doesn't matter, this function
+ * will search for all.
+ */
+function deleteCredential(store, credentialId, resolve, reject)
+{
+    let cred = store.peekRecord('wiegand-card', credentialId);
+    if (!cred)
+        cred = store.peekRecord('pin-code', credentialId);
+    if (cred)
+    {
+        cred.destroyRecord({}).then((ok) => resolve(ok),
+            (ko) => reject(ko));
+    }
+}
+
+export {findAllCredentials, deleteCredential};

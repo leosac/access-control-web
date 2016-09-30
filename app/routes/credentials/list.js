@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
-import {findAllCredentials} from 'web/leosac-credential-helper';
+import {findAllCredentials, deleteCredential} from 'web/leosac-credential-helper';
 
 export default LeosacRoute.extend({
     _title: 'Credentials list',
@@ -14,20 +14,21 @@ export default LeosacRoute.extend({
     {
         return findAllCredentials(this.get('store'));
     },
-    actions:
-    {
-/*        deleteGroup(groupId)
+    actions: {
+        deleteCredential(credentialId)
         {
             const self = this;
-            const model = this.get('store').peekRecord('group', groupId);
-            if (model)
-            {
-                model.destroyRecord({}).then(() =>
+
+            deleteCredential(this.get('store'), credentialId, () =>
                 {
-                    self.get('flashMessages').success('Group has been deleted.');
-                    self.transitionTo('groups.list');
-                });
-            }
-        }*/
+                    self.get('flashMessages').success('Credential has been deleted.');
+                    self.transitionTo('credentials.list');
+                },
+                () =>
+                {
+                    self.get('flashMessages').danger('Failed to delete credential');
+                }
+            );
+        }
     }
 });

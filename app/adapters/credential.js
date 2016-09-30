@@ -18,6 +18,22 @@ export default ApplicationAdapter.extend({
         });
     },
 
+    deleteRecord: function (store, type, snapshot)
+    {
+        const credentialId = Number.parseInt(snapshot.id);
+        const ws = this.get('ws');
+
+        // todo: Maybe add code to remove the object in the inverse side
+        // of the relationship (user->credentials).
+
+        return new Ember.RSVP.Promise(function (resolve, reject)
+        {
+            ws.sendJson('credential.delete', {credential_id: credentialId}).then(
+                (data) => resolve(data),
+                (failure) => reject(failure));
+        });
+    },
+
     findAll: function (store, type, sinceToken)
     {
         const ws = this.get('ws');
