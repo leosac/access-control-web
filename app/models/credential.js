@@ -18,4 +18,8 @@ export default DS.Model.extend(CredentialValidations, {
     alias: DS.attr('string'),
     description: DS.attr('string'),
     owner: DS.belongsTo('user'),
+
+    // Quick info about a credential. For a card this would be the card
+    // id.
+    displayIdentifier: 'N/A'
 });

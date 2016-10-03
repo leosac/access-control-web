@@ -15,4 +15,6 @@ export default Credential.extend(WiegandCardValidations, {
     type: 'WiegandCard',
     cardId: DS.attr('string'),
     nbBits: DS.attr('number'),
+
+    displayIdentifier: Ember.computed.alias('cardId'),
 });

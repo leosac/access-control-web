@@ -6,10 +6,12 @@ export default Ember.Component.extend({
     allUsers: [],
     didReceiveAttrs()
     {
+        this._super(...arguments);
         const self = this;
         this.get('store').findAll('user', {reload: true}).then((users) =>
         {
-            self.set('allUsers', users);
+            if (!(self.get('isDestroyed')))
+                self.set('allUsers', users);
         });
     },
 });
