@@ -1,0 +1,16 @@
+<fieldset>
+    <legend>Validity</legend>
+  {{#bs-form-element label='Enable Credential'}}
+    {{input type='checkbox' name='Enabled' checked=enabled}}
+  {{/bs-form-element}}
+
+  {{#bs-form-element label='Start Date'}}
+    {{bs-datetimepicker date=startDate format='YYYY-MM-DD HH:mm'
+                        updateDate=(action (mut startDate))}}
+  {{/bs-form-element}}
+
+  {{#bs-form-element label='End Date'}}
+    {{bs-datetimepicker date=endDate format='YYYY-MM-DD HH:mm'
+                        updateDate=(action (mut endDate))}}
+  {{/bs-form-element}}
+</fieldset>
