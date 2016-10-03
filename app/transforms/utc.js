@@ -11,6 +11,11 @@ export default DS.Transform.extend({
 
     deserialize: function (value)
     {
-        return moment.utc(value).local();
+        let tmp = moment.utc(value);
+        if (tmp < moment.utc('1800-01-01'))
+            tmp = moment.utc('1800-01-01');
+        if (tmp > moment.utc('2100-01-01'))
+            tmp = moment.utc('2100-01-01');
+        return moment.utc(tmp).local();
     }
 });

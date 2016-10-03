@@ -6,11 +6,15 @@
 
   {{#bs-form-element label='Start Date'}}
     {{bs-datetimepicker date=startDate format='YYYY-MM-DD HH:mm'
-                        updateDate=(action (mut startDate))}}
+                        updateDate=(action (mut startDate))
+                        minDate=minDate
+                        maxDate=maxDate}}
   {{/bs-form-element}}
 
   {{#bs-form-element label='End Date'}}
     {{bs-datetimepicker date=endDate format='YYYY-MM-DD HH:mm'
-                        updateDate=(action (mut endDate))}}
+                        updateDate=(action (mut endDate))
+                        minDate=minDate
+                        maxDate=maxDate}}
   {{/bs-form-element}}
 </fieldset>

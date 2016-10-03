@@ -19,6 +19,11 @@ export default DS.Model.extend(CredentialValidations, {
     description: DS.attr('string'),
     owner: DS.belongsTo('user'),
 
+    // Validity information
+    validityEnabled: DS.attr('boolean'),
+    validityStart: DS.attr('utc'),
+    validityEnd: DS.attr('utc'),
+
     // Quick info about a credential. For a card this would be the card
     // id.
     displayIdentifier: 'N/A'
