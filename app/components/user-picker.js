@@ -4,7 +4,7 @@ export default Ember.Component.extend({
     store: Ember.inject.service(),
 
     allUsers: [],
-    didReceiveAttrs()
+    init()
     {
         this._super(...arguments);
         const self = this;

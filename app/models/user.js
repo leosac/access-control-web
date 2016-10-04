@@ -46,7 +46,7 @@ export default Model.extend(UserValidations, {
     }),
     credentials: DS.hasMany('credential', {
         inverse: 'owner',
-        polymorphic: true
+        polymorphic: true,
     }),
     // Validity information
     validityEnabled: DS.attr('boolean'),
