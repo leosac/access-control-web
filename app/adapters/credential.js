@@ -5,6 +5,26 @@ export default ApplicationAdapter.extend({
     ws: Ember.inject.service('websocket'),
     flashMessages: Ember.inject.service(),
 
+    createRecord: function (store, type, snapshot)
+    {
+        const data = this.serialize(snapshot);
+        const ws = this.get('ws');
+
+        // Retrieve owner, if any.
+        if (data.data.relationships && data.data.relationships.owner.data)
+            data.data.attributes.owner_id = Number.parseInt(data.data.relationships.owner.data.id);
+        else
+            data.data.attributes.owner_id = 0;
+
+        return new Ember.RSVP.Promise(function (resolve, reject)
+        {
+            ws.sendJson('credential.create', {
+                'credential-type': type.modelName,
+                attributes: data.data.attributes
+            }).then((data) => resolve(data),
+                (failure) => reject(failure));
+        });
+    },
     findRecord: function (store, type, id, snapshot)
     {
         const ws = this.get('ws');
