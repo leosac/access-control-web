@@ -14,8 +14,7 @@ export default LeosacRoute.extend({
         "use strict";
         return this.get('store').find('wiegand-card', params.credential_id);
     },
-    actions:
-    {
+    actions: {
         updateCard()
         {
             this.controller.get('model').save().then(() =>
@@ -25,6 +24,18 @@ export default LeosacRoute.extend({
                 () =>
                 {
                     this.get('flashMessages').danger('An error occurred while editing credential');
+                });
+        },
+        deleteCredential()
+        {
+            this.controller.get('model').destroyRecord().then(() =>
+                {
+                    this.get('flashMessages').success('Credential has been deleted.');
+                    this.transitionTo('credentials.list');
+                },
+                () =>
+                {
+                    this.get('flashMessages').danger('Failed to delete credential.')
                 });
         }
     }
