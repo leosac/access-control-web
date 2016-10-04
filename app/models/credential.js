@@ -24,7 +24,10 @@ export default DS.Model.extend(CredentialValidations, {
     validityStart: DS.attr('utc'),
     validityEnd: DS.attr('utc'),
 
+    // The ODB version.
+    version: DS.attr('number'),
+
     // Quick info about a credential. For a card this would be the card
-    // id.
+    // id. This doesn't come from the server.
     displayIdentifier: 'N/A'
 });

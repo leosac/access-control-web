@@ -48,7 +48,11 @@ export default Model.extend(UserValidations, {
         inverse: 'owner',
         polymorphic: true
     }),
+    // Validity information
     validityEnabled: DS.attr('boolean'),
+    validityStart: DS.attr('utc'),
+    validityEnd: DS.attr('utc'),
+
     // The ODB version.
     version: DS.attr('number')
 });

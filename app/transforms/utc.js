@@ -5,7 +5,7 @@ export default DS.Transform.extend({
     serialize: function (value)
     {
         if (value)
-            return moment.utc(value).format();
+            return moment(value).utc().format();
         return null;
     },
 
