@@ -1,0 +1,40 @@
+{{#bs-form formLayout="horizontal" model=schedule action=action}}
+    <fieldset>
+        <legend>Details</legend>
+      {{bs-form-element controlType="text" label="Name"
+                        placeholder="My Schedule"
+                        property="name"}}
+
+      {{bs-form-element controlType="textarea" label="Notes"
+                        placeholder="A few optional notes..."
+                        property="description"}}
+    </fieldset>
+
+    <fieldset>
+        <legend>Time frames</legend>
+
+        <div class="col-md-6">
+          {{#bs-form-element label="Timeframes"}}
+            {{#power-select
+              selected=currentTimeframe
+              options=schedule.timeframes
+              onchange=(action (mut currentTimeframe))
+              allowClear=false
+            as |tf|
+            }}
+              Timeframe {{tf.id}}
+            {{/power-select}}
+          {{/bs-form-element}}
+
+          {{bs-button defaultText='Add' type='success' action='addTimeframe'}}
+          {{bs-button defaultText='Remove selected' type='danger' action='removeTimeframe'}}
+        </div>
+
+        <div class="col-md-6">
+          {{schedule-timeframe timeframe=currentTimeframe}}
+        </div>
+
+    </fieldset>
+    {{bs-button defaultText="Submit" type="primary" buttonType="submit"}}
+
+{{/bs-form}}

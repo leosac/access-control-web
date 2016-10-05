@@ -1,0 +1,28 @@
+{{#if timeframe}}
+    <div class="col-md-6">
+      {{bs-form-element controlType='checkbox' label='Monday'
+                        value=timeframe.enabledOnMonday}}
+      {{bs-form-element controlType='checkbox' label='Tuesday'
+                        value=timeframe.enabledOnTuesday}}
+      {{bs-form-element controlType='checkbox' label='Wednesday'
+                        value=timeframe.enabledOnWednesday}}
+      {{bs-form-element controlType='checkbox' label='Thursday'
+                        value=timeframe.enabledOnThursday}}
+      {{bs-form-element controlType='checkbox' label='Friday'
+                        value=timeframe.enabledOnFriday}}
+      {{bs-form-element controlType='checkbox' label='Saturday'
+                        value=timeframe.enabledOnSaturday}}
+      {{bs-form-element controlType='checkbox' label='Sunday'
+                        value=timeframe.enabledOnSunday}}
+    </div>
+
+    <div class="col-md-6">
+      {{#bs-form-element label="Start Time"}}
+        {{input type='text' value=(mut timeframe.startTime) class='time_element form-control'}}
+      {{/bs-form-element}}
+
+      {{#bs-form-element label="End Time"}}
+        {{input type='text' value=(mut timeframe.endTime) class='time_element form-control'}}
+      {{/bs-form-element}}
+    </div>
+{{/if}}

@@ -2,7 +2,7 @@ import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
-    _title: 'Group list',
+    _title: 'Schedule list',
     _requireAuth: true,
     beforeModel()
     {
@@ -12,21 +12,20 @@ export default LeosacRoute.extend({
     model()
     {
         "use strict";
-        // Since we'are about to reload all group, clear all before.
-        return this.get('store').findAll('group', {reload: true});
+        return this.get('store').findAll('schedule', {reload:true});
     },
     actions:
     {
-        deleteGroup(groupId)
+        deleteSchedule(scheduleId)
         {
             const self = this;
-            const model = this.get('store').peekRecord('group', groupId);
+            const model = this.get('store').peekRecord('schedule', scheduleId);
             if (model)
             {
                 model.destroyRecord({}).then(() =>
                 {
-                    self.get('flashMessages').success('Group has been deleted.');
-                    self.transitionTo('groups.list');
+                    self.get('flashMessages').success('Schedule has been deleted.');
+                    self.transitionTo('schedules.list');
                 });
             }
         }

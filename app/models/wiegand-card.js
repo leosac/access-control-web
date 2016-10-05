@@ -6,6 +6,12 @@ import {validator, buildValidations} from 'ember-cp-validations';
 const WiegandCardValidations = buildValidations(
     {
         cardId: validator('ds-error'),
+        nbBits: validator('number', {
+            allowString: true,
+            integer: true,
+            positive: true,
+            gt: 0
+        })
     }
 );
 

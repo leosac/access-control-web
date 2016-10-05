@@ -1,5 +1,5 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-    // The `onChange` attribute must be set.
+    // action and card must be set.
 });

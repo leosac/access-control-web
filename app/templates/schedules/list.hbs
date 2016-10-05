@@ -1,0 +1,36 @@
+{{#link-to 'schedules.create' class='btn btn-primary'}}
+    Create schedule
+{{/link-to}}
+<hr>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <th>#Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Delete</th>
+        </thead>
+        <tbody>
+        {{#each model as |sched|}}
+            <tr>
+                <td>{{#link-to 'schedule' sched.id}}
+                  {{sched.id}}
+                {{/link-to}}</td>
+                <td>{{sched.name}}</td>
+                <td>{{sched.description}}</td>
+                <td>
+                  {{button-with-confirmation
+                    type='danger'
+                    icon='glyphicon glyphicon-remove'
+                    size='xs'
+                    text='Delete'
+                    message='Are you sure you wish to delete this schedule ?'
+                    onConfirm=(route-action 'deleteSchedule' sched.id)
+                  }}
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>

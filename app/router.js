@@ -34,6 +34,12 @@ Router.map(function ()
     this.route('wiegand-card', {path: '/wiegand-card/:credential_id'});
     this.route('wiegand-card-create');
   });
+
+  this.route('schedule', {path: '/schedule/:schedule_id'});
+  this.route('schedules', function() {
+    this.route('create');
+    this.route('list');
+  });
 });
 
 export default Router;

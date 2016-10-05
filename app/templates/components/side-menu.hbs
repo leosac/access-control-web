@@ -4,7 +4,7 @@
             <li class="sidebar-search">
                 <div class="input-group custom-search-form">
                     <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
+                    <span class="input-group-btn">
                                 <button class="btn btn-default" type="button">
                                     <i class="fa fa-search"></i>
                                 </button>
@@ -13,26 +13,44 @@
                 <!-- /input-group -->
             </li>
             <li>
-                {{#link-to 'index'}}
-                    <i class="fa fa-dashboard fa-fw"></i> Dashboard
-                {{/link-to}}
+              {{#link-to 'index'}}
+                  <i class="fa fa-dashboard fa-fw"></i> Dashboard
+              {{/link-to}}
             </li>
             <li>
-                {{#link-to 'system-overview'}}
-                    <i class="fa fa-cog fa-fw"></i> Overview
-                {{/link-to}}
+              {{#link-to 'system-overview'}}
+                  <i class="fa fa-cog fa-fw"></i> Overview
+              {{/link-to}}
             </li>
             <li>
                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Access<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        {{#link-to 'users.list'}}Users{{/link-to}}
+                        <a href="#">Users <span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                            <li>{{#link-to 'users.list'}}List{{/link-to}}</li>
+                            <li>{{#link-to 'users.create'}}Create{{/link-to}}</li>
+                        </ul>
                     </li>
                     <li>
-                        {{#link-to 'groups.list'}}Groups{{/link-to}}
+                        <a href="#">Groups <span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                            <li>{{#link-to 'groups.list'}}List{{/link-to}}</li>
+                            <li>{{#link-to 'groups.create'}}Create{{/link-to}}</li>
+                        </ul>
                     </li>
                     <li>
-                        {{#link-to 'credentials.list'}}Credentials{{/link-to}}
+                        <a href="#">Credentials <span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                            <li>{{#link-to 'credentials.list'}}List{{/link-to}}</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Schedules <span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                            <li>{{#link-to 'schedules.list'}}List{{/link-to}}</li>
+                            <li>{{#link-to 'schedules.create'}}Create{{/link-to}}</li>
+                        </ul>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->
