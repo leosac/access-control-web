@@ -15,6 +15,16 @@ export default LeosacRoute.extend({
         const sched = this.get('store').createRecord('schedule');
         return sched;
     },
+    resetController(controller, isExiting, transition)
+    {
+        // Rollback change when leaving the page.
+        if (isExiting)
+        {
+            const mod = this.controller.get('model');
+            if (mod)
+                mod.rollbackAttributes();
+        }
+    },
     actions: {
         createSchedule(){
             this.controller.model.save().then(()=>{

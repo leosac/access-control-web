@@ -1,7 +1,21 @@
+import Model from 'ember-data/model';
 import Ember from 'ember';
 import DS from 'ember-data';
+import {validator, buildValidations} from 'ember-cp-validations';
 
-export default DS.Model.extend({
+const ScheduleValidations = buildValidations(
+    {
+        name: [validator('presence', true),
+            validator('ds-error'),
+            validator('length', {
+                min: 3,
+                max: 50,
+            })
+        ]
+    }
+);
+
+export default DS.Model.extend(ScheduleValidations, {
     numericId: Ember.computed('id', function ()
     {
         "use strict";

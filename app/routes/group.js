@@ -14,6 +14,16 @@ export default LeosacRoute.extend({
         "use strict";
         return this.get('store').findRecord('group', params.group_id);
     },
+    resetController(controller, isExiting, transition)
+    {
+        // Rollback change when leaving the page.
+        if (isExiting)
+        {
+            const mod = this.controller.get('model');
+            if (mod)
+                mod.rollbackAttributes();
+        }
+    },
     actions: {
         editGroup ()
         {
