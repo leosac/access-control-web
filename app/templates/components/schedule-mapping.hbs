@@ -1,0 +1,65 @@
+<h3>Users</h3>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <th>#Id</th>
+        <th>Username</th>
+        </thead>
+        <tbody>
+        {{#each mapping.users as |user|}}
+            <tr>
+                <td>
+                  {{#link-to 'profile' user.id}}
+                    {{user.id}}
+                  {{/link-to}}
+                </td>
+                <td>{{user.username}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
+
+<h3>Groups</h3>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <th>#Id</th>
+        <th>Name</th>
+        </thead>
+        <tbody>
+        {{#each mapping.groups as |group|}}
+            <tr>
+                <td>
+                  {{#link-to 'group' group.id}}
+                    {{group.id}}
+                  {{/link-to}}
+                </td>
+                <td>{{group.name}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
+
+<h3>Credentials</h3>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <th>#Id</th>
+        <th>Type</th>
+        <th>Alias</th>
+        </thead>
+        <tbody>
+        {{#each mapping.credentials as |cred|}}
+            <tr>
+                <td>
+                    {{link-to-credential credential=cred text=cred.id}}
+                </td>
+                <td>{{cred.type}}</td>
+                <td>{{cred.alias}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
