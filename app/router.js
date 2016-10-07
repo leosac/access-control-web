@@ -33,6 +33,8 @@ Router.map(function ()
     this.route('list');
     this.route('wiegand-card', {path: '/wiegand-card/:credential_id'});
     this.route('wiegand-card-create');
+    this.route('pin-code', {path: '/pin-code/:credential_id'});
+    this.route('pin-code-create');
   });
 
   this.route('schedule', {path: '/schedule/:schedule_id'});

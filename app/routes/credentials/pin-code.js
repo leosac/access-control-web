@@ -2,7 +2,7 @@ import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
-    _title: 'Wiegand Card ',
+    _title: 'PIN Code',
     _requireAuth: true,
     beforeModel()
     {
@@ -12,7 +12,7 @@ export default LeosacRoute.extend({
     model(params)
     {
         "use strict";
-        return this.get('store').find('wiegand-card', params.credential_id);
+        return this.get('store').find('pin-code', params.credential_id);
     },
     resetController(controller, isExiting, transition)
     {
@@ -25,7 +25,7 @@ export default LeosacRoute.extend({
         }
     },
     actions: {
-        updateCard()
+        updatePin()
         {
             this.controller.get('model').save().then(() =>
                 {

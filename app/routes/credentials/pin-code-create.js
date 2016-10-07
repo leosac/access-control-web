@@ -2,7 +2,7 @@ import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
-    _title: 'Create Wiegand Card',
+    _title: 'Create PIN Code',
     _requireAuth: true,
     beforeModel()
     {
@@ -12,7 +12,7 @@ export default LeosacRoute.extend({
     model()
     {
         "use strict";
-        return this.get('store').createRecord('wiegand-card');
+        return this.get('store').createRecord('pin-code');
     },
     resetController(controller, isExiting, transition)
     {
@@ -26,16 +26,16 @@ export default LeosacRoute.extend({
     },
     actions:
     {
-        createCard()
+        createPin()
         {
-            this.controller.get('model').save().then((card) =>
+            this.controller.get('model').save().then((pin) =>
                 {
-                    this.get('flashMessages').success('Card successfully created.');
-                    this.transitionTo('credentials.wiegand-card', card.get('id'));
+                    this.get('flashMessages').success('Pin successfully created.');
+                    this.transitionTo('credentials.pin-code', pin.get('id'));
                 },
                 () =>
                 {
-                    this.get('flashMessages').danger('An error occurred while creating the card');
+                    this.get('flashMessages').danger('An error occurred while creating the PIN');
                 });
         }
     }
