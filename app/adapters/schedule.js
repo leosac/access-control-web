@@ -48,9 +48,23 @@ export default ApplicationAdapter.extend({
         const data = this.serialize(snapshot);
         const ws = this.get('ws');
 
+        const item = store.peekRecord('schedule', snapshot.id);
+        const mapping = [];
+        item.get('mapping').toArray().forEach((one_mapping) => {
+            // Embed mapping in the schedule payload.
+            mapping.push({
+                id: one_mapping.get('numericId'),
+                alias: one_mapping.get('alias'),
+                users: one_mapping.hasMany('users').ids().map(id => Number.parseInt(id)),
+                groups: one_mapping.hasMany('groups').ids().map(id => Number.parseInt(id)),
+                credentials: one_mapping.hasMany('credentials').ids().map(id => Number.parseInt(id)),
+            });
+        });
+
         const params = {
             schedule_id: Number.parseInt(snapshot.id),
-            attributes: data.data.attributes
+            attributes: data.data.attributes,
+            mapping: mapping,
         };
         return new Ember.RSVP.Promise(function (resolve, reject)
         {

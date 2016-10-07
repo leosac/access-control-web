@@ -35,6 +35,16 @@ export default LeosacRoute.extend({
                 {
                     this.get('flashMessages').danger('An error occurred while editing schedule.');
                 });
+        },
+        addMapping ()
+        {
+            const newMapping = this.get('store').createRecord('schedule-mapping');
+            newMapping.set('alias', 'Unnamed mapping');
+            this.controller.get('model').get('mapping').addObject(newMapping);
+        },
+        removeMapping (mapping)
+        {
+            this.controller.get('model').get('mapping').removeObject(mapping);
         }
     }
 });

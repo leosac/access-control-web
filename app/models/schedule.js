@@ -29,4 +29,5 @@ export default DS.Model.extend(ScheduleValidations, {
     // However, in the WebUI a timeframe entry can span multiple day
     // while Leosac's SingleTimeFrame is for 1 day only.
     timeframes: DS.attr('timeframes'),
+    mapping: DS.hasMany('schedule-mapping')
 });

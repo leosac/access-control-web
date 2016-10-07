@@ -1,11 +1,26 @@
 {{#bs-tab}}
   {{#bs-tab-pane title='Time frames'}}
-<div class="col-md-6">
-  {{schedule-form schedule=model action=(route-action 'editSchedule')}}
-</div>
+      <div class="col-md-6">
+        {{schedule-form schedule=model action=(route-action 'editSchedule')}}
+      </div>
   {{/bs-tab-pane}}
 
   {{#bs-tab-pane title='Mapping'}}
-    Lets map our schedule.
+    Below are all the mapping linked to the schedule. <br> <br>
+
+
+    {{bs-button icon='glyphicon glyphicon-add' type='success'
+                defaultText='Add mapping' action=(route-action 'addMapping')}}
+
+      {{#bs-accordion}}
+        {{#each model.mapping as |mapping|}}
+          {{#bs-accordion-item title=(concat 'Mapping: ' mapping.alias)}}
+            {{schedule-mapping mapping=mapping}}
+          {{/bs-accordion-item}}
+
+          <hr>
+
+        {{/each}}
+      {{/bs-accordion}}
   {{/bs-tab-pane}}
 {{/bs-tab}}
