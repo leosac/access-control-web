@@ -6,6 +6,13 @@ module.exports = function (defaults)
 {
     var app = new EmberApp(defaults, {
         // Add options here
+
+        // This fix a JS error that happened when installing
+        // ember-power-select-typeahead.
+        // see https://stackoverflow.com/questions/34549838/ember-2-2-0-getting-regeneratorruntime-is-not-defined
+        babel: {
+            includePolyfill: true
+        }
     });
 
     // Use `app.import` to add additional libraries to the generated
