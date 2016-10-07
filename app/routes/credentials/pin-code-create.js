@@ -20,8 +20,7 @@ export default LeosacRoute.extend({
         if (isExiting)
         {
             const mod = this.controller.get('model');
-            if (mod)
-                mod.rollbackAttributes();
+            this.get('store').unloadRecord(mod);
         }
     },
     actions:

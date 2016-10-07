@@ -7,12 +7,27 @@ export default Ember.Component.extend({
     // Set the following properties:
     //    + mapping
 
+    newCredential: null,
     newUser: null,
     newGroup: null,
     actions: {
         addUser()
         {
             this.get('mapping').get('users').addObject(this.get('newUser'));
+        },
+        addGroup()
+        {
+            this.get('store').findRecord('group', this.get('newGroup.id')).then((grp) =>
+            {
+                this.get('mapping').get('groups').addObject(grp);
+            });
+        },
+        addCredential()
+        {
+            this.get('store').findRecord('credential', this.get('newCredential')).then((cred) =>
+            {
+                this.get('mapping').get('credentials').addObject(cred);
+            });
         },
         removeUser(user)
         {
@@ -22,12 +37,9 @@ export default Ember.Component.extend({
         {
             this.get('mapping').get('groups').removeObject(group);
         },
-        addGroup()
+        removeCredential(cred)
         {
-            this.get('store').findRecord('group', this.get('newGroup.id')).then((grp) =>
-            {
-                this.get('mapping').get('groups').addObject(grp);
-            });
+            this.get('mapping').get('credentials').removeObject(cred);
         },
         searchGroup(partialName)
         {

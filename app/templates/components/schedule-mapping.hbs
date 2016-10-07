@@ -102,6 +102,7 @@
             <th>#Id</th>
             <th>Type</th>
             <th>Alias</th>
+            <th>Remove from mapping</th>
             </thead>
             <tbody>
             {{#each mapping.credentials as |cred|}}
@@ -111,9 +112,23 @@
                     </td>
                     <td>{{cred.type}}</td>
                     <td>{{cred.alias}}</td>
+                    <td>
+                      {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
+                                  defaultText='Remove' action=(action 'removeCredential' credential)}}
+                    </td>
                 </tr>
             {{/each}}
             </tbody>
         </table>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+          {{#bs-form-element label="Credential Id"}}
+            {{input type='number' value=(mut newCredential) class='form_control'}}
+          {{/bs-form-element}}
+        </div>
+        <div class="col-md-6">
+          {{bs-button type="primary" action="addCredential" defaultText='Add credential'}}
+        </div>
     </div>
 </div>
