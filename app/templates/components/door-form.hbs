@@ -1,0 +1,13 @@
+{{#bs-form formLayout="horizontal" model=door action=action}}
+    <fieldset>
+        <legend>Configuration</legend>
+      {{bs-form-element controlType="text" label="Alias"
+                        placeholder="MySuperDoor"
+                        property="alias"}}
+      {{bs-form-element controlType="textarea" label="Notes"
+                        placeholder="A few optional notes..."
+                        property="description"}}
+
+      {{bs-button defaultText="Submit" type="primary" buttonType="submit"}}
+    </fieldset>
+{{/bs-form}}

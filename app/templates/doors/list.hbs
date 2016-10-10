@@ -1,0 +1,36 @@
+{{#link-to 'door.create' class='btn btn-primary'}}
+    Add Door
+{{/link-to}}
+<hr>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <th>#Id</th>
+        <th>Alias</th>
+        <th>Delete</th>
+        </thead>
+        <tbody>
+        {{#each model as |door|}}
+            <tr>
+                <td>
+                    {{#link-to 'door' door.id}}
+                      {{door.id}}
+                    {{/link-to}}
+                </td>
+              <td>{{door.alias}}</td>
+                <td>
+                  {{button-with-confirmation
+                    type='danger'
+                    icon='glyphicon glyphicon-remove'
+                    size='xs'
+                    text='Delete'
+                    message='Are you sure you wish to delete this door ?'
+                    onConfirm=(route-action 'deleteDoor' door)
+                  }}
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
