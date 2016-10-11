@@ -19,6 +19,15 @@ export default LeosacRoute.extend({
         newGroup.set('description', '');
         return newGroup;
     },
+    resetController(controller, isExiting, transition)
+    {
+        if (isExiting)
+        {
+            const mod = this.controller.get('model');
+            if (mod)
+                mod.unloadRecord();
+        }
+    },
     actions: {
         createGroup()
         {

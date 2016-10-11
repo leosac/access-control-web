@@ -16,6 +16,15 @@ export default LeosacRoute.extend({
         "use strict";
         return this.get('store').createRecord('door');
     },
+    resetController(controller, isExiting, transition)
+    {
+        if (isExiting)
+        {
+            const mod = this.controller.get('model');
+            if (mod)
+                mod.unloadRecord();
+        }
+    },
     actions: {
         createDoor()
         {

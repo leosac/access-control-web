@@ -132,3 +132,45 @@
         </div>
     </div>
 </div>
+
+<div class="col-md-12">
+    <h3>Doors</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <th>#Id</th>
+            <th>Alias</th>
+            </thead>
+            <tbody>
+            {{#each mapping.doors as |door|}}
+                <tr>
+                    <td>
+                        {{#link-to 'door' door.id}}
+                          {{door.id}}
+                        {{/link-to}}
+                    </td>
+                    <td>{{door.alias}}</td>
+                    <td>
+                      {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
+                                  defaultText='Remove' action=(action 'removeDoor' door)}}
+                    </td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+          {{#power-select-typeahead search=(action 'searchDoor')
+                                    selected=newDoor.alias
+                                    placeholder="Enter a door's name"
+                                    onchange=(action (mut newDoor)) as |doorInfo|}}
+            {{doorInfo.alias}}
+          {{/power-select-typeahead}}
+        </div>
+        <div class="col-md-6">
+          {{bs-button type="primary" action="addDoor" defaultText='Add door'}}
+        </div>
+    </div>
+</div>

@@ -7,6 +7,7 @@ export default Ember.Component.extend({
     // Set the following properties:
     //    + mapping
 
+    newDoor: null,
     newCredential: null,
     newUser: null,
     newGroup: null,
@@ -29,6 +30,13 @@ export default Ember.Component.extend({
                 this.get('mapping').get('credentials').addObject(cred);
             });
         },
+        addDoor()
+        {
+            this.get('store').findRecord('door', this.get('newDoor.id')).then((door) =>
+            {
+                this.get('mapping').get('doors').addObject(door);
+            });
+        },
         removeUser(user)
         {
             this.get('mapping').get('users').removeObject(user);
@@ -41,9 +49,17 @@ export default Ember.Component.extend({
         {
             this.get('mapping').get('credentials').removeObject(cred);
         },
+        removeDoor(door)
+        {
+            this.get('mapping').get('doors').removeObject(door);
+        },
         searchGroup(partialName)
         {
             return this.get('search').findGroupByName(partialName);
         },
+        searchDoor(partialName)
+        {
+            return this.get('search').findDoorByAlias(partialName);
+        }
     }
 });

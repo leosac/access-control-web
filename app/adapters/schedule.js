@@ -58,6 +58,7 @@ export default ApplicationAdapter.extend({
                 users: one_mapping.hasMany('users').ids().map(id => Number.parseInt(id)),
                 groups: one_mapping.hasMany('groups').ids().map(id => Number.parseInt(id)),
                 credentials: one_mapping.hasMany('credentials').ids().map(id => Number.parseInt(id)),
+                doors: one_mapping.hasMany('doors').ids().map(id => Number.parseInt(id)),
             });
         });
 

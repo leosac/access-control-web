@@ -9,8 +9,9 @@ export default DS.Model.extend({
     }),
 
     alias: DS.attr('string'),
-    users: DS.hasMany('user', {async: true}),
+    users: DS.hasMany('user'),
     groups: DS.hasMany('group'),
+    doors: DS.hasMany('door'),
     credentials: DS.hasMany('credential', {polymorphic: true}),
     version: DS.attr('number')
 });

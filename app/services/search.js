@@ -28,5 +28,23 @@ export default Ember.Service.extend({
                 }).then((data) => resolve(data),
                 (failure) => reject(failure));
         });
+    },
+
+    /**
+     * Returns a promise that resolves to an array of {id,alias}
+     * for each door that matched.
+     */
+    findDoorByAlias(partialName)
+    {
+        const ws = this.get('websocket');
+        return new Ember.RSVP.Promise(function (resolve, reject)
+        {
+            console.log('searching for ' + partialName);
+            ws.sendJson('search.door_alias',
+                {
+                    'partial_name': partialName
+                }).then((data) => resolve(data),
+                (failure) => reject(failure));
+        });
     }
 });
