@@ -1,0 +1,13 @@
+SMTP module page.
+
+{{#each model.servers as |server|}}
+    <div class="col-centered panel panel-default">
+        <div class="panel-body">
+            <div id="content">
+                <h4>URL: {{server.url}}</h4>
+                <h4>From: {{server.from}}</h4>
+                <h4>Username: {{server.username}}</h4>
+            </div>
+        </div>
+    </div>
+{{/each}}
