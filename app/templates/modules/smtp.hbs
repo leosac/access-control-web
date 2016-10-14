@@ -1,13 +1,51 @@
 SMTP module page.
 
-{{#each model.servers as |server|}}
-    <div class="col-centered panel panel-default">
-        <div class="panel-body">
-            <div id="content">
-                <h4>URL: {{server.url}}</h4>
-                <h4>From: {{server.from}}</h4>
-                <h4>Username: {{server.username}}</h4>
+{{#bs-tab}}
+  {{#bs-tab-pane title='Configuration'}}
+    {{bs-button defaultText="Add Server" type="primary"
+                buttonType="submit" action='addServer'}}
+
+    {{#each model.servers as |server|}}
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+              {{bs-button defaultText="Remove Server" type="danger"
+                          buttonType="submit" action=(route-action 'removeServer' server)}}
+
+              {{#bs-form model=server action='editConfig'}}
+                  <div id="content">
+                    {{bs-form-element controlType="text" label="Url"
+                                      placeholder="smtp://my-mail-server.my-domain.com"
+                                      property="url"}}
+                    {{bs-form-element controlType="text" label="From"
+                                      placeholder="leosac@my-domain.com"
+                                      property="from"}}
+                    {{bs-form-element controlType="text" label="Username"
+                                      placeholder="my-mail-user"
+                                      property="username"}}
+                    {{bs-form-element controlType="password" label="Password"
+                                      property="password"}}
+
+                    {{bs-form-element controlType="number" label="Timeout (Milliseconds)"
+                                      property="timeout"}}
+
+                    {{bs-form-element controlType="checkbox" label="Verify host"
+                                      property="verify_host"}}
+
+                    {{bs-form-element controlType="checkbox" label="Verify peer"
+                                      property="verify_peer"}}
+                  </div>
+              {{/bs-form}}
             </div>
         </div>
-    </div>
-{{/each}}
+    {{/each}}
+
+    {{bs-button defaultText="Save config" type="primary"
+                buttonType="submit" action='updateConfig'}}
+    <br> <br> <br><br> <br> <br>
+  {{/bs-tab-pane}}
+
+  {{#bs-tab-pane title='Test'}}
+    {{module-smtp-send-test-mail}}
+  {{/bs-tab-pane}}
+{{/bs-tab}}

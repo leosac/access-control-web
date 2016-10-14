@@ -17,4 +17,31 @@ export default LeosacRoute.extend({
             servers: this.get('smtpService').getServersConfig(),
         });
     },
+    actions: {
+        addServer()
+        {
+            this.controller.model.servers.addObject({});
+        },
+        removeServer(srv)
+        {
+            this.controller.model.servers.removeObject(srv);
+        },
+        updateConfig()
+        {
+            const self = this;
+            // Convert timeout to integer
+            this.controller.model.servers.forEach((srv) =>
+            {
+                Ember.set(srv, 'timeout', Number.parseInt(srv.timeout));
+            });
+            this.get('smtpService').setServersConfig({servers: this.controller.model.servers}).then(() =>
+                {
+                    self.get('flashMessages').success('New configuration saved.');
+                },
+                () =>
+                {
+                    self.get('flashMessages').danger('Error while saving configuration.');
+                });
+        }
+    }
 });

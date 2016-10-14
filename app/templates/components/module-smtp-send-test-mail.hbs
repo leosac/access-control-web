@@ -1,0 +1,14 @@
+{{#bs-form action='sendTestMail' model=this}}
+  {{bs-form-element controlType="text" label="Recipient"
+                    placeholder="me@me.com"
+                    property='recipient'}}
+
+  {{bs-form-element controlType="text" label="Subject"
+                    property='subject'}}
+
+  {{bs-form-element controlType='textarea' label='Body'
+                    property='body'}}
+
+  {{bs-button defaultText="Send test mail" type="primary"
+              buttonType="submit"}}
+{{/bs-form}}

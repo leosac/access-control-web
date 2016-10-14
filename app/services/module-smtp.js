@@ -10,8 +10,22 @@ export default Ember.Service.extend({
     {
         return this.get('websocket').sendJson('module.smtp.getconfig', {}).then((resp) =>
         {
-            console.log(resp);
             return resp;
+        });
+    },
+    setServersConfig(cfg)
+    {
+        return this.get('websocket').sendJson('module.smtp.setconfig', cfg).then((resp) =>
+            {
+                return true;
+            });
+    },
+    sendMail(recipients, subject, body)
+    {
+        return this.get('websocket').sendJson('module.smtp.sendmail', {
+            to: recipients,
+            subject: subject,
+            body: body
         });
     }
 
