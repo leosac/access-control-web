@@ -1,4 +1,6 @@
-SMTP module page.
+SMTP module page. <br>
+
+Note: SMTP password are saved in cleartext ! <br>
 
 {{#bs-tab}}
   {{#bs-tab-pane title='Configuration'}}
@@ -15,7 +17,7 @@ SMTP module page.
               {{#bs-form model=server action='editConfig'}}
                   <div id="content">
                     {{bs-form-element controlType="text" label="Url"
-                                      placeholder="smtp://my-mail-server.my-domain.com"
+                                      placeholder="smtp://mail.mydomain.com"
                                       property="url"}}
                     {{bs-form-element controlType="text" label="From"
                                       placeholder="leosac@my-domain.com"
@@ -34,6 +36,9 @@ SMTP module page.
 
                     {{bs-form-element controlType="checkbox" label="Verify peer"
                                       property="verify_peer"}}
+
+                    {{bs-form-element controlType="checkbox" label="Enabled"
+                                      property="enabled"}}
                   </div>
               {{/bs-form}}
             </div>
