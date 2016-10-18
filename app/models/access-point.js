@@ -12,5 +12,6 @@ export default Model.extend({
 
     alias: DS.attr('string'),
     description: DS.attr('string'),
-    accessPoint: DS.belongsTo('access-point', {inverse: 'door'})
+    controllerModule: DS.attr('string'),
+    door: DS.belongsTo('door')
 });

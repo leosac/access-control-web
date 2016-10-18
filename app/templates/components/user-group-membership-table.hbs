@@ -14,11 +14,13 @@
     <tbody>
     {{#each user.memberships as |membership|}}
         <tr>
-            <td>{{membership.group.id}}</td>
             <td>
               {{#link-to 'group' membership.group.id}}
-                {{membership.group.name}}
+                {{membership.group.id}}
               {{/link-to}}
+            </td>
+            <td>
+              {{membership.group.name}}
             </td>
             <td>{{membership.rank}}</td>
             <td>{{membership.timestamp}}</td>

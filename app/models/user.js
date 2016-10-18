@@ -48,6 +48,10 @@ export default Model.extend(UserValidations, {
         inverse: 'owner',
         polymorphic: true,
     }),
+
+    // This is a fake relationship, because server side it
+    // does'nt exist directly.
+    schedules: DS.hasMany('schedules'),
     // Validity information
     validityEnabled: DS.attr('boolean'),
     validityStart: DS.attr('utc'),

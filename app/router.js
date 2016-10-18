@@ -58,6 +58,7 @@ Router.map(function ()
 
   this.route('modules', function() {
     this.route('smtp');
+    this.route('evoxs');
   });
 });
 

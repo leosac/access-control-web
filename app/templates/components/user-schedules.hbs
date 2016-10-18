@@ -1,0 +1,47 @@
+<div>
+    This shows schedules and their mapping that apply <i>directly</i> to you.
+    It wont show schedule that are mapped through your groups or credentials. <br>
+</div>
+
+{{#each user.schedules as |schedule|}}
+    <br>
+    <div class="panel panel-default">
+        <h3>Schedule: {{schedule.name}}</h3>
+        <div class="panel-body">
+            <div id="content">
+                <!-- Recap of the schedule -->
+                Timeframes:
+                <ul>
+                  {{#each schedule.timeframes as |tf|}}
+                      <li>
+                        {{tf.startTime}} to {{tf.endTime}} on {{timeframe-weekday-list tf}}
+                      </li>
+                  {{/each}}
+                </ul>
+
+                Mappings... <br>
+              {{#each schedule.mapping as |mapping|}}
+                {{#if (is-user-part-of-mapping mapping authSrv.user_id)}}
+                    <div class="panel panel-default">
+                        <h3>Mapping: {{mapping.alias}}</h3>
+                        <div class="panel-body">
+                            <div id="content">
+                                Doors:
+                                <ul>
+                                  {{#each mapping.doors as |door|}}
+                                      <li>
+                                        {{door.alias}}
+                                      </li>
+                                  {{/each}}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                {{/if}}
+              {{/each}}
+            </div>
+        </div>
+    </div>
+
+
+{{/each}}

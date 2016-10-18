@@ -26,32 +26,15 @@
                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Access<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="#">Users <span class="fa arrow"></span></a>
-                        <ul class="nav nav-third-level">
-                            <li>{{#link-to 'users.list'}}List{{/link-to}}</li>
-                            <li>{{#link-to 'users.create'}}Create{{/link-to}}</li>
-                        </ul>
+                      {{#link-to 'users.list'}}Users{{/link-to}}
                     </li>
-                    <li>
-                        <a href="#">Groups <span class="fa arrow"></span></a>
-                        <ul class="nav nav-third-level">
-                            <li>{{#link-to 'groups.list'}}List{{/link-to}}</li>
-                            <li>{{#link-to 'groups.create'}}Create{{/link-to}}</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Credentials <span class="fa arrow"></span></a>
-                        <ul class="nav nav-third-level">
-                            <li>{{#link-to 'credentials.list'}}List{{/link-to}}</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Schedules <span class="fa arrow"></span></a>
-                        <ul class="nav nav-third-level">
-                            <li>{{#link-to 'schedules.list'}}List{{/link-to}}</li>
-                            <li>{{#link-to 'schedules.create'}}Create{{/link-to}}</li>
-                        </ul>
-                    </li>
+
+                    <li>{{#link-to 'groups.list'}}Groups{{/link-to}}</li>
+
+                    <li>{{#link-to 'credentials.list'}}Credentials{{/link-to}}</li>
+
+                    <li>{{#link-to 'schedules.list'}}Schedules{{/link-to}}</li>
+
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
@@ -59,11 +42,7 @@
                 <a href="#"><i class="fa fa-cogs"></i> Hardware<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="#">Doors <span class="fa arrow"></span></a>
-                        <ul class="nav nav-third-level">
-                            <li>{{#link-to 'doors.list'}}List{{/link-to}}</li>
-                            <li>{{#link-to 'doors.create'}}Create{{/link-to}}</li>
-                        </ul>
+                      {{#link-to 'doors.list'}}Doors{{/link-to}}
                     </li>
                 </ul>
             </li>
@@ -72,6 +51,9 @@
                 <ul class="nav nav-second-level">
                     <li>
                       {{#link-to 'modules.smtp'}}SMTP{{/link-to}}
+                    </li>
+                    <li>
+                      {{#link-to 'modules.evoxs'}}EvoXS{{/link-to}}
                     </li>
                 </ul>
             </li>
