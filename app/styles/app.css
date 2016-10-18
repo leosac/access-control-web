@@ -59,3 +59,15 @@ body {
     margin-right:-4px;
 }
 
+.pulled-down-row {
+    font-size: 0;
+}
+.pulled-down-row > * {
+    float: none;
+    display: inline-block;
+    font-size: 14px; /* if using LESS it's quicker to just use @font-size-base */
+}
+.pulled-down-row > *:last-child {
+    vertical-align: middle;
+}
+

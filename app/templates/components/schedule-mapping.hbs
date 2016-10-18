@@ -1,14 +1,18 @@
-<div>
-    <div class="col-md-6">
+<div class="col-md-12 row">
+    <div class="pull-left">
       {{#bs-form-element label="Alias"}}
         {{input type='text' value=(mut mapping.alias) class='form-control'}}
       {{/bs-form-element}}
     </div>
-    <div class="col-md-6">
+    <div class="pull-right">
       {{bs-button icon='glyphicon glyphicon-remove' type='danger'
                   defaultText='Delete mapping'
                   action=(route-action 'removeMapping' mapping)}}
     </div>
+</div>
+
+<div class="col-md-12 row">
+    <hr>
 </div>
 
 <div class="col-md-12">
@@ -38,22 +42,24 @@
             </tbody>
         </table>
     </div>
-    <div class="row">
-        <div class="col-md-6">
+    <div class="pulled-down-row">
+        <div class="col-md-3">
           {{user-picker selected=newUser onChange=(action (mut newUser))}}
         </div>
-        <div class="col-md-6">
-          {{bs-button type="primary" action="addUser" defaultText='Add user'}}
+        <div class="col-md-3">
+          {{bs-button size='sm' type="primary" action="addUser" defaultText='Add user'}}
         </div>
     </div>
 </div>
 
-<hr>
+<div class="col-md-12 row">
+    <hr>
+</div>
 
 <div class="col-md-12">
     <h3>Groups</h3>
     <div class="table-responsive">
-        <table class="table table-striped">
+        <table class="table table-striped table-bordered">
             <thead>
             <th>#Id</th>
             <th>Name</th>
@@ -77,8 +83,8 @@
             </tbody>
         </table>
     </div>
-    <div class="row">
-        <div class="col-md-6">
+    <div class="pulled-down-row">
+        <div class="col-md-3">
           {{#power-select-typeahead search=(action 'searchGroup')
                                     selected=newGroup.name
                                     placeholder="Start typing a group's name"
@@ -86,18 +92,20 @@
             {{groupInfo.name}}
           {{/power-select-typeahead}}
         </div>
-        <div class="col-md-6">
-          {{bs-button type="primary" action="addGroup" defaultText='Add group'}}
+        <div class="col-md-3">
+          {{bs-button size='sm' type="primary" action="addGroup" defaultText='Add group'}}
         </div>
     </div>
 </div>
 
-<hr>
+<div class="col-md-12 row">
+    <hr>
+</div>
 
 <div class="col-md-12">
     <h3>Credentials</h3>
     <div class="table-responsive">
-        <table class="table table-striped">
+        <table class="table table-striped table-bordered">
             <thead>
             <th>#Id</th>
             <th>Type</th>
@@ -121,33 +129,39 @@
             </tbody>
         </table>
     </div>
-    <div class="row">
-        <div class="col-md-6">
+    <div class="pulled-down-row">
+        <div class="col-md-3">
           {{#bs-form-element label="Credential Id"}}
             {{input type='number' value=(mut newCredential) class='form_control'}}
           {{/bs-form-element}}
         </div>
-        <div class="col-md-6">
-          {{bs-button type="primary" action="addCredential" defaultText='Add credential'}}
+        <div class="col-md-3">
+          {{bs-button size='sm' type="primary" action="addCredential"
+                      defaultText='Add credential'}}
         </div>
     </div>
+</div>
+
+<div class="col-md-12 row">
+    <hr>
 </div>
 
 <div class="col-md-12">
     <h3>Doors</h3>
     <div class="table-responsive">
-        <table class="table table-striped">
+        <table class="table table-striped table-bordered">
             <thead>
             <th>#Id</th>
             <th>Alias</th>
+            <th>Remove from mapping</th>
             </thead>
             <tbody>
             {{#each mapping.doors as |door|}}
                 <tr>
                     <td>
-                        {{#link-to 'door' door.id}}
-                          {{door.id}}
-                        {{/link-to}}
+                      {{#link-to 'door' door.id}}
+                        {{door.id}}
+                      {{/link-to}}
                     </td>
                     <td>{{door.alias}}</td>
                     <td>
@@ -160,8 +174,8 @@
         </table>
     </div>
 
-    <div class="row">
-        <div class="col-md-6">
+    <div class="pulled-down-row">
+        <div class="col-md-3">
           {{#power-select-typeahead search=(action 'searchDoor')
                                     selected=newDoor.alias
                                     placeholder="Enter a door's name"
@@ -169,8 +183,8 @@
             {{doorInfo.alias}}
           {{/power-select-typeahead}}
         </div>
-        <div class="col-md-6">
-          {{bs-button type="primary" action="addDoor" defaultText='Add door'}}
+        <div class="col-md-3">
+          {{bs-button size='sm' type="primary" action="addDoor" defaultText='Add door'}}
         </div>
     </div>
 </div>

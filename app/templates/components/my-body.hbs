@@ -13,7 +13,9 @@ to render if there is no active session.
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-              {{#link-to "index" class="navbar-brand"}}Leosac Web Admin{{/link-to}}
+              {{#link-to "index" class="navbar-brand"}}
+                {{getenv 'appname'}}
+              {{/link-to}}
             </div>
             <!-- /.navbar-header -->
           {{top-menu}}
