@@ -1,0 +1,32 @@
+Audits entries below: <br>
+
+{{bs-button action=(route-action 'refresh') type='primary'
+            size='xs' defaultText='Refresh'}}
+
+Enabled type:
+
+WSAPICall {{input type='checkbox' checked=wsapicallEnabled}} <br>
+UserEvent {{input type='checkbox' checked=userEventEnabled}} <br>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <th>#Id</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Author</th>
+        <th>Timestamp</th>
+        </thead>
+        <tbody>
+        {{#each audits as |audit|}}
+            <tr>
+                <td>{{audit.id}}</td>
+                <td>{{audit.type}}</td>
+                <td>{{audit.description}}</td>
+                <td>{{audit.author.username}}</td>
+                <td>{{audit.timestamp}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>

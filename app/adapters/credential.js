@@ -3,7 +3,6 @@ import Ember from 'ember';
 
 export default ApplicationAdapter.extend({
     ws: Ember.inject.service('websocket'),
-    flashMessages: Ember.inject.service(),
 
     createRecord: function (store, type, snapshot)
     {

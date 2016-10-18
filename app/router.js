@@ -60,6 +60,7 @@ Router.map(function ()
     this.route('smtp');
     this.route('evoxs');
   });
+  this.route('auditlog');
 });
 
 export default Router;
