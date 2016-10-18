@@ -71,3 +71,60 @@ body {
     vertical-align: middle;
 }
 
+.navbar-logo {
+  height: 48px;
+  width: auto;
+}
+
+a:hover {
+  color: #EE7C00;
+}
+
+.navbar-default {
+  border-color: #EE7C00;
+}
+
+.navbar-fixed-bottom {
+  background-color: #CCCCCC;
+  padding-top: 5px;
+}
+
+.btn-primary {
+  background-color: #EE7C00;
+  border-color: #DB7200;
+}
+
+.btn-primary.active {
+  background-color: #DB7200;
+  border-color: #DB7200;
+}
+
+.btn-primary:hover {
+  background-color: #C06800;
+  border-color: #DB7200;
+}
+
+.btn-primary.active:hover {
+  background-color: #C06800;
+  border-color: #DB7200;
+}
+
+h1 {
+  color: #EE7C00;
+}
+
+.panel-default .panel-heading {
+  background-color: #EE7C00;
+  color: #fff;
+}
+
+.table-responsive table thead {
+  background-color: #EE7C00;
+  color: #fff;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.table-responsive table thead th {
+  padding: 5px;
+}

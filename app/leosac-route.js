@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import ENV from 'web/config/environment';
 
 /**
  * This is a base route for the application.
@@ -59,7 +60,7 @@ export default Ember.Route.extend({
     {
         "use strict";
         this.get('globalInfo').set('current_view_title', this._title);
-        document.title = 'Leosac - ' + this._title;
+        document.title = ENV.APP.appname + ' - ' + this._title;
 
         if (this._requireAuth)
         {

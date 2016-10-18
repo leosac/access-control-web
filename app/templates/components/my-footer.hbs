@@ -1,10 +1,9 @@
 <footer class="navbar-fixed-bottom">
-    <hr>
     <div class="container">
         <p class="text-muted text-center">
-            Leosac version: {{globalInfo.version}}
+            {{getenv 'appname'}} version: {{globalInfo.version}}
             --
-            {{#link-to "about"}}About Leosac{{/link-to}} - {{getenv 'siteUrl'}}
+            {{#link-to "about"}}About{{/link-to}} - {{getenv 'siteUrl'}}
         </p>
     </div>
 </footer>

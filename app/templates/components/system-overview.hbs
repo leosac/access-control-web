@@ -10,7 +10,7 @@
     <tr>
         <td>Instance Name</td>
         <td>{{systemOverview.instance_name}}</td>
-        <td>The (unique) name of the Leosac instance.</td>
+        <td>The (unique) name of the {{getenv 'appname'}} instance.</td>
     </tr>
     <tr>
         <td>Configuration Version</td>
@@ -21,7 +21,7 @@
     <tr>
         <td>Uptime</td>
         <td>{{format-duration systemOverview.uptime}}</td>
-        <td>How long has Leosac been running. (HH:MM:SS)</td>
+        <td>How long has {{getenv 'appname'}} been running. (HH:MM:SS)</td>
     </tr>
     <tr>
         <td>Modules</td>
