@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import DS from 'ember-data';
-import {findAllAudits} from 'web/leosac-audit-helper';
+import {findAudits, findAllAudits} from 'web/leosac-audit-helper';
 
 export default Ember.Controller.extend({
     wsapicallEnabled: true,
@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
     audits_: Ember.computed('userEventEnabled', 'wsapicallEnabled', function ()
     {
         return DS.PromiseObject.create({
-            promise: findAllAudits(this.get('store'))
+            promise: findAudits(this.get('store'), this.get('wsapicallEnabled'))
         });
     }),
     audits: Ember.computed('audits_.content', function ()

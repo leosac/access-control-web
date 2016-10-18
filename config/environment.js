@@ -17,7 +17,7 @@ module.exports = function (environment)
         APP: {
             // Here you can pass flags/options to your application instance
             // when it is created
-            leosacAddr: '10.100.0.17:8888',
+            leosacAddr: '10.2.1.5:8888',
             appname: 'EvoXS Management Studio',
             logoUrl: 'http://terminator.islog.private:4200/assets/images/logo.png',
             siteUrl: 'izyx-systems.com',
