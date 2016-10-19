@@ -1,9 +1,22 @@
 Audits entries below: <br>
 
-{{bs-button action=(route-action 'refresh') type='primary'
+{{bs-button action=(action 'refresh') type='primary'
             size='xs' defaultText='Refresh'}}
 
-Enable WSAPICall: {{input type='checkbox' checked=wsapicallEnabled}} <br>
+<div class="row">
+    <div class="col-md-3">Enable WSAPICall: {{input type='checkbox' checked=wsapicallEnabled}}</div>
+    <div class="col-md-3">Enable UserEvent: {{input type='checkbox' checked=userEventEnabled}}</div>
+    <div class="col-md-3">Enable DoorEvent: {{input type='checkbox' checked=doorEventEnabled}}</div>
+    <div class="col-md-3">Enable GroupEvent: {{input type='checkbox' checked=groupEventEnabled}}</div>
+</div>
+<div class="row">
+    <div class="col-md-3">Enable CredentialEvent: {{input type='checkbox' checked=credentialEventEnabled}}</div>
+    <div class="col-md-3">Enable ScheduleEvent: {{input type='checkbox' checked=scheduleEventEnabled}}</div>
+</div>
+
+{{#if fetchingData}}
+    Please wait, fetching and preparing data.
+{{/if}}
 
 <div class="table-responsive">
     <table class="table table-striped">
@@ -13,6 +26,7 @@ Enable WSAPICall: {{input type='checkbox' checked=wsapicallEnabled}} <br>
         <th>Description</th>
         <th>Author</th>
         <th>Timestamp</th>
+        <th>Details</th>
         </thead>
         <tbody>
         {{#each audits as |audit|}}
@@ -22,8 +36,25 @@ Enable WSAPICall: {{input type='checkbox' checked=wsapicallEnabled}} <br>
                 <td>{{audit.description}}</td>
                 <td>{{audit.author.username}}</td>
                 <td>{{audit.timestamp}}</td>
+                <td>{{bs-button action=(action 'showDetails' audit) defaultText='Details'}}</td>
             </tr>
         {{/each}}
         </tbody>
     </table>
 </div>
+
+{{#bs-modal open=openDetailsModal title="Details"}}
+    This show a before and after the audit entry snapshot of the object
+    that was modified. Note that this features is not available for all kind
+    of audit entry. <br>
+
+    <hr>
+
+    <i>Before: </i> <br>
+    <code style="white-space: pre;">{{detailedAudit.before}}</code>
+
+    <hr>
+
+    <i>After: </i> <br>
+    <code style="white-space: pre;">{{detailedAudit.after}}</code>
+{{/bs-modal}}
