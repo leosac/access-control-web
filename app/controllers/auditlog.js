@@ -3,23 +3,31 @@ import DS from 'ember-data';
 
 export default Ember.Controller.extend({
     auditLog: Ember.inject.service('audit-log'),
-    wsapicallEnabled: false,
+    wsapicallEnabled: true,
     userEventEnabled: true,
     doorEventEnabled: true,
     groupEventEnabled: true,
     credentialEventEnabled: true,
     scheduleEventEnabled: true,
+    userGroupMembershipEventEnabled: true,
     openDetailsModal: false,
 
-    // True is data are being fetched
+    pageSize: 25,
+    currentPage: 1,
+    totalPage: 0,
+    resultCount: 0,
+
+    // Progress bar while fetching data.
     fetchingData: false,
+    progressValue: 0,
 
     // The audit object that is currently being shown
     // in the details modal.
     detailedAudit: null,
     audits: [],
     watch_: Ember.observer('wsapicallEnabled', 'userEventEnabled', 'doorEventEnabled',
-        'groupEventEnabled', 'credentialEventEnabled', 'scheduleEventEnabled', function ()
+        'groupEventEnabled', 'credentialEventEnabled', 'scheduleEventEnabled', 'userGroupMembershipEventEnabled',
+        'currentPage', 'pageSize', function ()
         {
             this.reload();
         }),
@@ -44,15 +52,28 @@ export default Ember.Controller.extend({
             enabled_types.push('Leosac::Audit::DoorEvent');
         if (this.get('credentialEventEnabled'))
             enabled_types.push('Leosac::Audit::CredentialEvent');
-        if (this.get('scheduleEventEventEnabled'))
+        if (this.get('scheduleEventEnabled'))
             enabled_types.push('Leosac::Audit::ScheduleEvent');
-        if (this.get('groupEventEventEnabled'))
+        if (this.get('groupEventEnabled'))
             enabled_types.push('Leosac::Audit::GroupEvent');
+        if (this.get('userGroupMembershipEventEnabled'))
+            enabled_types.push('Leosac::Audit::UserGroupMembershipEvent');
+
+        const currentPage = Number.parseInt(this.get('currentPage')) || 1;
+        const pageSize = Number.parseInt(this.get('pageSize')) || 20;
+        const progressSetter = function(v)
+        {
+            self.set('progressValue', v);
+        };
 
         self.set('fetchingData', true);
-        this.get('auditLog').findAllByTypes(enabled_types).then((audits) =>
+        this.get('auditLog').findAllByTypes(enabled_types,
+            currentPage, pageSize, progressSetter).then((result) =>
         {
-            self.set('audits', audits);
+            self.set('totalPage', result.meta.total_page);
+            self.set('resultCount', result.meta.count);
+            self.set('audits', result.data);
+            progressSetter(0);
             self.set('fetchingData', false);
         });
     },

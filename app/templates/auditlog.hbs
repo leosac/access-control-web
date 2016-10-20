@@ -3,19 +3,68 @@ Audits entries below: <br>
 {{bs-button action=(action 'refresh') type='primary'
             size='xs' defaultText='Refresh'}}
 
-<div class="row">
-    <div class="col-md-3">Enable WSAPICall: {{input type='checkbox' checked=wsapicallEnabled}}</div>
-    <div class="col-md-3">Enable UserEvent: {{input type='checkbox' checked=userEventEnabled}}</div>
-    <div class="col-md-3">Enable DoorEvent: {{input type='checkbox' checked=doorEventEnabled}}</div>
-    <div class="col-md-3">Enable GroupEvent: {{input type='checkbox' checked=groupEventEnabled}}</div>
-</div>
-<div class="row">
-    <div class="col-md-3">Enable CredentialEvent: {{input type='checkbox' checked=credentialEventEnabled}}</div>
-    <div class="col-md-3">Enable ScheduleEvent: {{input type='checkbox' checked=scheduleEventEnabled}}</div>
-</div>
+{{#bs-form formLayout="horizontal" model=this}}
+  <div class="row">
+      <div class="col-md-3">
+  {{bs-form-element controlType="number" label="Current Page"
+                    property="currentPage"}}
+      </div>
+      <div class="col-md-3">
+        {{bs-form-element controlType="number" label="Page Size"
+                          property="pageSize"}}
+      </div>
+      Total page: {{totalPage}}  |  Count: {{resultCount}}
+  </div>
 
-{{#if fetchingData}}
+  <div class="row">
+      <div class="col-md-3">
+        {{bs-form-element label='Enable WSAPICall'
+                          disabled=fetchingData controlType='checkbox'
+                          value=wsapicallEnabled}}
+      </div>
+      <div class="col-md-3">
+        {{bs-form-element label='Enable UserEvent'
+                          disabled=fetchingData controlType='checkbox'
+                          value=userEventEnabled}}
+      </div>
+      <div class="col-md-3">
+        {{bs-form-element label='Enable DoorEvent'
+                          disabled=fetchingData controlType='checkbox'
+                          value=doorEventEnabled}}
+      </div>
+      <div class="col-md-3">
+        {{bs-form-element label='Enable GroupEvent'
+                          disabled=fetchingData controlType='checkbox'
+                          value=groupEventEnabled}}
+      </div>
+  </div>
+
+  <div class="row">
+      <div class="col-md-3">
+        {{bs-form-element label='Enable CredentialEvent'
+                          disabled=fetchingData controlType='checkbox'
+                          value=credentialEventEnabled}}
+      </div>
+      <div class="col-md-3">
+        {{bs-form-element label='Enable ScheduleEvent'
+                          disabled=fetchingData controlType='checkbox'
+                          value=scheduleEventEnabled}}
+      </div>
+      <div class="col-md-3">
+        {{bs-form-element label='Enable UserGroupMembershipEvent'
+                          disabled=fetchingData controlType='checkbox'
+                          value=userGroupMembershipEventEnabled}}
+      </div>
+  </div>
+
+{{/bs-form}}
+
+{{#if progressValue}}
     Please wait, fetching and preparing data.
+
+    {{#bs-progress}}
+      {{bs-progress-bar value=progressValue minValue=0 maxValue=100 type="primary"}}
+    {{/bs-progress}}
 {{/if}}
 
 <div class="table-responsive">
@@ -26,6 +75,8 @@ Audits entries below: <br>
         <th>Description</th>
         <th>Author</th>
         <th>Timestamp</th>
+        <th>Mask</th>
+        <th>Finalized</th>
         <th>Details</th>
         </thead>
         <tbody>
@@ -36,6 +87,8 @@ Audits entries below: <br>
                 <td>{{audit.description}}</td>
                 <td>{{audit.author.username}}</td>
                 <td>{{audit.timestamp}}</td>
+                <td>{{audit.eventMask}}</td>
+                <td>{{audit.finalized}}</td>
                 <td>{{bs-button action=(action 'showDetails' audit) defaultText='Details'}}</td>
             </tr>
         {{/each}}

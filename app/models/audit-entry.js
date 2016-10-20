@@ -15,4 +15,5 @@ export default DS.Model.extend({
     timestamp: DS.attr('date-from-unix-timestamp'),
     eventMask: DS.attr('number'),
     description: DS.attr('string'),
+    finalized: DS.attr('boolean'),
 });

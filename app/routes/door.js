@@ -2,7 +2,7 @@ import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
-    _title: 'Group',
+    _title: 'Door',
     _requireAuth: true,
     beforeModel()
     {
