@@ -132,3 +132,9 @@ h1 {
 .table-responsive table thead th {
   padding: 5px;
 }
+
+.disabled-greyed
+{
+  opacity: 0.4;
+  pointer-events: none;
+}

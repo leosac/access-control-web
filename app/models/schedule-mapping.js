@@ -13,5 +13,6 @@ export default DS.Model.extend({
     groups: DS.hasMany('group'),
     doors: DS.hasMany('door'),
     credentials: DS.hasMany('credential', {polymorphic: true}),
+    schedule: DS.belongsTo('schedule', {inverse: 'mapping'}),
     version: DS.attr('number')
 });

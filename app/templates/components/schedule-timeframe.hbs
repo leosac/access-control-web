@@ -18,11 +18,11 @@
 
     <div class="col-md-6">
       {{#bs-form-element label="Start Time"}}
-        {{input type='text' value=(mut timeframe.startTime) class='time_element form-control'}}
+        {{input type='text' placeholder='13:37' value=(mut timeframe.startTime) class='form-control'}}
       {{/bs-form-element}}
 
       {{#bs-form-element label="End Time"}}
-        {{input type='text' value=(mut timeframe.endTime) class='time_element form-control'}}
+        {{input type='text' placeholder='18:42' value=(mut timeframe.endTime) class='form-control'}}
       {{/bs-form-element}}
     </div>
 {{/if}}

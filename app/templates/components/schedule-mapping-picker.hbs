@@ -1,0 +1,26 @@
+{{#bs-form formLayout='inline' action='scheduleMappingPicked'}}
+
+  {{#bs-form-element label='Schedule'}}
+    {{#power-select-typeahead search=(action 'searchSchedule')
+                              selected=selectedSchedule.name
+                              placeholder="Enter a schedule's name (or %)"
+                              onchange=(action 'scheduleChanged') as |schedInfo|}}
+      {{schedInfo.name}}
+    {{/power-select-typeahead}}
+  {{/bs-form-element}}
+
+
+  {{#bs-form-element label='Mapping'}}
+    {{#power-select selected=selectedMapping
+                    searchField="alias"
+                    options=selectedSchedule.mapping
+                    onchange=(action (mut selectedMapping))
+                    placeholder='Mapping ... more text so its larger...'
+    as |mapping|
+    }}
+      {{mapping.alias}}
+    {{/power-select}}
+  {{/bs-form-element}}
+
+  {{bs-button defaultText="Join Mapping" type="primary" buttonType="submit"}}
+{{/bs-form}}

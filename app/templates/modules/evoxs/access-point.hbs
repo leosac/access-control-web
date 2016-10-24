@@ -9,7 +9,7 @@
 </div>
 
 {{#if model.door}}
-    This access point belongs to door <strong>{{model.door.alias}}</strong>.
+    This access point belongs to door <strong>{{#link-to 'door' model.door.id}}{{model.door.alias}}{{/link-to}}</strong>.
 {{else}}
     This access point is not yet tied to a door.
 {{/if}}

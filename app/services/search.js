@@ -73,4 +73,18 @@ export default Ember.Service.extend({
                 (failure) => reject(failure));
         });
     },
+
+    findScheduleByName(partialName)
+    {
+        const ws = this.get('websocket');
+        return new Ember.RSVP.Promise(function (resolve, reject)
+        {
+            console.log('searching for ' + partialName);
+            ws.sendJson('search.schedule_name',
+                {
+                    'partial_name': partialName
+                }).then((data) => resolve(data),
+                (failure) => reject(failure));
+        });
+    },
 });

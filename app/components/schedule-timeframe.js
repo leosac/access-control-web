@@ -16,9 +16,4 @@ export default Ember.Component.extend({
     {
         this._super(...arguments);
     },
-    didRender()
-    {
-        $('.time_element').timepicki({show_meridian: false,
-            max_hour_value:24});
-    }
 });
