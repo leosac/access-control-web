@@ -118,6 +118,10 @@ h1 {
   color: #fff;
 }
 
+.table-responsive {
+  padding-top: 5px;
+}
+
 .table-responsive table thead {
   background-color: #EE7C00;
   color: #fff;
