@@ -1,7 +1,5 @@
 import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
-import {findAllAudits} from 'web/leosac-audit-helper';
-
 
 export default LeosacRoute.extend({
     _title: 'Audit Log',
@@ -14,13 +12,5 @@ export default LeosacRoute.extend({
     model()
     {
         "use strict";
-        //return findAllAudits(this.get('store'));
     },
-    actions:
-    {
-        refresh()
-        {
-            this.refresh();
-        }
-    }
 });

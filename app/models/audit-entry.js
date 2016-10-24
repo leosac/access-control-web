@@ -13,6 +13,7 @@ export default DS.Model.extend({
     // todo mb convert to 'utc' and store as a std::timepoint
     // server side
     timestamp: DS.attr('date-from-unix-timestamp'),
-    eventMask: DS.attr('number'),
+    eventMask: DS.attr('audit-event-type'),
     description: DS.attr('string'),
+    finalized: DS.attr('boolean'),
 });

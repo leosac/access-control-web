@@ -2,7 +2,7 @@ import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
-    _title: 'Door',
+    _title: 'Access Point',
     _requireAuth: true,
     beforeModel()
     {
@@ -12,7 +12,7 @@ export default LeosacRoute.extend({
     model(params)
     {
         "use strict";
-        return this.get('store').findRecord('door', params.door_id);
+        return this.get('store').findRecord('access-point', params.access_point_id);
     },
     resetController(controller, isExiting, transition)
     {
@@ -25,27 +25,17 @@ export default LeosacRoute.extend({
         }
     },
     actions: {
-        editDoor ()
+        editAP ()
         {
             this.controller.get('model').save().then(() =>
                 {
-                    this.get('flashMessages').success('Door successfully edited.');
-                    this.transitionTo('door', this.controller.get('model').get('id'));
+                    this.get('flashMessages').success('Access Point successfully edited.');
+                    this.transitionTo('access-point', this.controller.get('model').get('id'));
                 },
                 () =>
                 {
-                    this.get('flashMessages').danger('An error occurred while editing door');
+                    this.get('flashMessages').danger('An error occurred while editing Access Point.');
                 });
-        },
-        deleteDoor ()
-        {
-            const self = this;
-            const model = this.controller.get('model');
-            model.destroyRecord({}).then(() =>
-            {
-                self.get('flashMessages').success('Door has been deleted.');
-                self.transitionTo('doors.list');
-            });
         }
     }
 });

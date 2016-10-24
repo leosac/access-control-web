@@ -46,5 +46,31 @@ export default Ember.Service.extend({
                 }).then((data) => resolve(data),
                 (failure) => reject(failure));
         });
-    }
+    },
+
+    /**
+     * Returns a list of enabled AccessPoint modules.
+     * Currently this list is hardcoded client side.
+     */
+    listAccessPointModuleNames()
+    {
+        return ['EVOXS'];
+    },
+
+    /**
+     * @see findDoorByAlias.
+     */
+    findAccessPointByAlias(partialName)
+    {
+        const ws = this.get('websocket');
+        return new Ember.RSVP.Promise(function (resolve, reject)
+        {
+            console.log('searching for ' + partialName);
+            ws.sendJson('search.access_point_alias',
+                {
+                    'partial_name': partialName
+                }).then((data) => resolve(data),
+                (failure) => reject(failure));
+        });
+    },
 });

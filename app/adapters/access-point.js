@@ -9,7 +9,7 @@ export default ApplicationAdapter.extend({
         const ws = this.get('ws');
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
-            ws.sendJson('door.read', {door_id: Number.parseInt(id)}).then(
+            ws.sendJson('access_point.read', {access_point_id: Number.parseInt(id)}).then(
                 (data) => resolve(data),
                 (failure) => reject(failure)
             );
@@ -20,7 +20,7 @@ export default ApplicationAdapter.extend({
         const ws = this.get('ws');
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
-            ws.sendJson('door.read', {door_id: 0}).then(
+            ws.sendJson('access_point.read', {access_point_id: 0}).then(
                 (data) => resolve(data),
                 (failure) => reject(failure)
             );
@@ -31,14 +31,9 @@ export default ApplicationAdapter.extend({
         const data = this.serialize(snapshot);
         const ws = this.get('ws');
 
-        if (data.data.relationships['access-point'])
-            data.data.attributes.access_point_id = Number.parseInt(data.data.relationships['access-point'].data.id);
-        else
-            data.data.attributes.access_point_id = 0;
-
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
-            ws.sendJson('door.create', {
+            ws.sendJson('access_point.create', {
                 attributes: data.data.attributes
             }).then((data) => resolve(data),
                 (failure) => reject(failure));
@@ -49,29 +44,24 @@ export default ApplicationAdapter.extend({
         const data = this.serialize(snapshot);
         const ws = this.get('ws');
 
-        if (data.data.relationships['access-point'])
-            data.data.attributes.access_point_id = Number.parseInt(data.data.relationships['access-point'].data.id);
-        else
-            data.data.attributes.access_point_id = 0;
-
         const params = {
-            door_id: Number.parseInt(snapshot.id),
+            access_point_id: Number.parseInt(snapshot.id),
             attributes: data.data.attributes
         };
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
-            ws.sendJson('door.update', params).then((data) => resolve(data),
+            ws.sendJson('access_point.update', params).then((data) => resolve(data),
                 (failure) => reject(failure));
         });
     },
     deleteRecord: function (store, type, snapshot)
     {
-        const door_id = Number.parseInt(snapshot.id);
+        const access_point_id = Number.parseInt(snapshot.id);
         const ws = this.get('ws');
 
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
-            ws.sendJson('door.delete', {door_id: door_id}).then(
+            ws.sendJson('access_point.delete', {access_point_id: access_point_id}).then(
                 (data) => resolve(data),
                 (failure) => reject(failure));
         });

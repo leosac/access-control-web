@@ -8,6 +8,16 @@
                         placeholder="A few optional notes..."
                         property="description"}}
 
+      {{#bs-form-element label="Access Point"}}
+        {{#power-select-typeahead search=(action 'searchAP')
+                                  selected=door.accessPoint.alias
+                                  placeholder="Pick an access point (type % to list all)"
+                                  onchange=(action 'changeAP')
+        as |accessPointInfo|}}
+          {{accessPointInfo.alias}}
+        {{/power-select-typeahead}}
+      {{/bs-form-element}}
+
       {{bs-button defaultText="Submit" type="primary" buttonType="submit"}}
     </fieldset>
 {{/bs-form}}

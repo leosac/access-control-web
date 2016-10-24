@@ -1,0 +1,38 @@
+{{#link-to 'access-points.create' class='btn btn-primary'}}
+    Add Access Point
+{{/link-to}}
+<hr>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <th>#Id</th>
+        <th>Alias</th>
+        <th>Module</th>
+        <th>Delete</th>
+        </thead>
+        <tbody>
+        {{#each model as |ap|}}
+            <tr>
+                <td>
+                  {{#link-to-access-point ap=ap}}
+                    {{ap.id}}
+                  {{/link-to-access-point}}
+                </td>
+                <td>{{ap.alias}}</td>
+                <td>{{ap.controllerModule}}</td>
+                <td>
+                  {{button-with-confirmation
+                    type='danger'
+                    icon='glyphicon glyphicon-remove'
+                    size='xs'
+                    text='Delete'
+                    message='Are you sure you wish to delete this access point ?'
+                    onConfirm=(route-action 'deleteAP' ap)
+                  }}
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>

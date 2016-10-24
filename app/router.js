@@ -58,9 +58,17 @@ Router.map(function ()
 
   this.route('modules', function() {
     this.route('smtp');
-    this.route('evoxs');
+    this.route('evoxs', function() {
+      this.route('access-point', {path: '/modules/evoxs/access-point/:access_point_id'});
+    });
   });
   this.route('auditlog');
+
+    this.route('access-point', {path: '/access-point/:access_point_id'});
+    this.route('access-points', function() {
+    this.route('list');
+    this.route('create');
+  });
 });
 
 export default Router;

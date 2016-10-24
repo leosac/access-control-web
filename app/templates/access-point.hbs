@@ -1,0 +1,11 @@
+<div>
+    <div class="col-md-6">
+      {{access-point-form ap=model action=(route-action 'editAP')}}
+    </div>
+</div>
+
+{{#if model.door}}
+    This access point belongs to door <strong>{{model.door.alias}}</strong>.
+{{else}}
+    This access point is not yet tied to a door.
+{{/if}}
