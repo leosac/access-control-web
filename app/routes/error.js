@@ -35,5 +35,9 @@ export default LeosacRoute.extend({
             this.render('error.entity-not-found', {model: model,
                 into: 'error'});
         }
+        else if (model.status_code === 10) // Unknown Error
+        {
+            this.render('error.unknown-error', {model:model, into:'error'});
+        }
     }
 });

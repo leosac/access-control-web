@@ -14,9 +14,11 @@
         <tbody>
         {{#each model as |ap|}}
             <tr>
-                <td>{{#link-to 'access-point' ap.id}}
-                  {{ap.id}}
-                {{/link-to}}</td>
+                <td>
+                  {{#link-to-access-point ap=ap}}
+                    {{ap.id}}
+                  {{/link-to-access-point}}
+                </td>
                 <td>{{ap.alias}}</td>
                 <td>{{ap.controllerModule}}</td>
                 <td>

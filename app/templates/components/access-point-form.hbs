@@ -8,17 +8,23 @@
                         placeholder="A few optional notes..."
                         property="description"}}
 
-    {{#bs-form-element label="Controller Module"}}
-      {{#power-select
-        selected=ap.controllerModule
-        options=availableAccessPointModules
-        onchange=(action (mut ap.controllerModule))
-        allowClear=true
-      as |module|
-      }}
-        {{module}}
-      {{/power-select}}
-    {{/bs-form-element}}
+      {{#if isCreating}}
+        {{#bs-form-element label="Controller Module"}}
+          {{#power-select
+            selected=ap.controllerModule
+            options=availableAccessPointModules
+            onchange=(action (mut ap.controllerModule))
+            allowClear=true
+          as |module|
+          }}
+            {{module}}
+          {{/power-select}}
+        {{/bs-form-element}}
+      {{/if}}
+
+
+      <!-- Include module specific stuff -->
+      {{yield}}
 
       {{bs-button defaultText="Submit" type="primary" buttonType="submit"}}
     </fieldset>

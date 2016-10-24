@@ -1,0 +1,9 @@
+{{#if (eq ap.controllerModule 'EVOXS')}}
+  {{#link-to 'modules.evoxs.access-point' ap.id}}
+    {{yield}}
+  {{/link-to}}
+{{else}}
+  {{#link-to 'access-point' ap.id}}
+    {{yield}}
+  {{/link-to}}
+{{/if}}
