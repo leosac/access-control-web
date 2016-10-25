@@ -3,15 +3,13 @@
 <form class="form-signin">
     <h2 class="form-signin-heading">Please sign in</h2>
 
-    <label for="inputUsername" class="sr-only">Username</label>
-  {{#bs-input type='text' value=inputUsername
-  placeholder='Username' autofocus='autofocus' required='required'}}
-  {{/bs-input}}
+  {{bs-form-element controlType='text' label='Username'
+                    value=inputUsername required=true
+                    placeholder='Username'}}
 
-    <label for="inputPassword" class="sr-only">Password</label>
-  {{#bs-input type='password' value=inputPassword
-  placeholder='Password' required='required'}}
-  {{/bs-input}}
+  {{bs-form-element controlType='text' label='Username'
+                    value=inputPassword required=true
+                    placeholder='Password'}}
 
     <button class="btn btn-lg btn-primary btn-block" type="submit"
       {{action 'login'}}>Sign in

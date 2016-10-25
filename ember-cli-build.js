@@ -51,12 +51,5 @@ module.exports = function (defaults)
     app.import('bower_components/morrisjs/morris.min.js');
     app.import('bower_components/startbootstrap-sb-admin-2-blackrockdigital/dist/js/sb-admin-2.js');
 
-
-    // TimePicki
-    app.import('bower_components/TimePicki/css/timepicki.css');
-    app.import('bower_components/TimePicki/js/timepicki.js');
-    app.import('bower_components/TimePicki/images/arrow.png', {destDir: 'images'});
-    app.import('bower_components/TimePicki/images/top_arr.png', {destDir: 'images'});
-
     return app.toTree();
 };
