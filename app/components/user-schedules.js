@@ -3,9 +3,10 @@ import Ember from 'ember';
 export default Ember.Component.extend({
     authSrv: Ember.inject.service('authentication'),
 
-    syncing: false,
+    syncing: 0,
 
-    greyedDisabledIfSyncing: Ember.computed('syncing', function(){
+    greyedDisabledIfSyncing: Ember.computed('syncing', function ()
+    {
         if (this.get('syncing'))
             return 'disabled-greyed';
         return '';
@@ -27,17 +28,50 @@ export default Ember.Component.extend({
             {
                 self.get('user').reload().then((ok) =>
                 {
-                    self.set('syncing', false);
+                    self.decrSyncing();
                 });
             });
         });
     },
 
+    incrSyncing()
+    {
+        this.set('syncing', this.get('syncing') + 1);
+    },
+    decrSyncing()
+    {
+        this.set('syncing', this.get('syncing') - 1);
+    },
+
+    refreshImpl()
+    {
+        const self = this;
+        this.incrSyncing();
+        self.get('user').reload().then((ok) =>
+        {
+            self.get('user').get('schedules').then((scheds) =>
+            {
+                scheds.forEach((sched) =>
+                {
+                    self.incrSyncing();
+                    sched.reload().then((ok) =>
+                    {
+                        self.decrSyncing();
+                    });
+                });
+            });
+            this.decrSyncing();
+        });
+    },
+
+    didReceiveAttrs(){
+        this.refreshImpl();
+    },
+
     actions: {
         addScheduleMapping(mapping)
         {
-            this.set('syncing', true);
-
+            this.incrSyncing();
             mapping.get('users').addObject(this.get('user'));
             this.saveMappingAndReloadUser(mapping);
         },
@@ -45,9 +79,13 @@ export default Ember.Component.extend({
         {
             const self = this;
 
-            this.set('syncing', true);
+            this.incrSyncing();
             mapping.get('users').removeObject(self.get('user'));
             this.saveMappingAndReloadUser(mapping);
         },
+        refresh()
+        {
+            this.refreshImpl();
+        }
     }
 });
