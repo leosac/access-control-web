@@ -27,7 +27,8 @@ export default LeosacRoute.extend({
     actions: {
         editSchedule ()
         {
-            this.controller.get('model').save().then(() =>
+            const self = this;
+            self.controller.get('model').save().then(() =>
                 {
                     this.get('flashMessages').success('Schedule successfully edited.');
                 },

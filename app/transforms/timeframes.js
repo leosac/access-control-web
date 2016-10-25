@@ -27,7 +27,6 @@ export default DS.Transform.extend({
             let found;
             output.forEach((tf) =>
             {
-                console.log(tf);
                 if (tf.startTime === startTime && tf.endTime === endTime)
                 {
                     found = tf;

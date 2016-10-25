@@ -79,9 +79,9 @@ export default Ember.Component.extend({
         {
             const self = this;
 
-            this.incrSyncing();
+            self.incrSyncing();
             mapping.get('users').removeObject(self.get('user'));
-            this.saveMappingAndReloadUser(mapping);
+            self.saveMappingAndReloadUser(mapping);
         },
         refresh()
         {
