@@ -1,5 +1,4 @@
 import LeosacRoute from 'web/leosac-route';
-import Group from 'web/models/group';
 
 /**
  * Create a new group.
@@ -19,13 +18,12 @@ export default LeosacRoute.extend({
         newGroup.set('description', '');
         return newGroup;
     },
-    resetController(controller, isExiting, transition)
+    resetController(controller, isExiting/*, transition*/)
     {
-        if (isExiting)
+        const mod = this.controller.get('model');
+        if (isExiting && mod.get('isNew'))
         {
-            const mod = this.controller.get('model');
-            if (mod)
-                mod.unloadRecord();
+            mod.unloadRecord();
         }
     },
     actions: {

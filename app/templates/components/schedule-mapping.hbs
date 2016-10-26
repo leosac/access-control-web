@@ -83,17 +83,21 @@
             </tbody>
         </table>
     </div>
-    <div class="pulled-down-row">
-        <div class="col-md-3">
-          {{#power-select-typeahead search=(action 'searchGroup')
-                                    selected=newGroup.name
-                                    placeholder="Start typing a group's name"
-                                    onchange=(action (mut newGroup)) as |groupInfo|}}
-            {{groupInfo.name}}
-          {{/power-select-typeahead}}
-        </div>
-        <div class="col-md-3">
-          {{bs-button size='sm' type="primary" action="addGroup" defaultText='Add group'}}
+    <div>
+        <div class="col-md-6">
+          {{#bs-form-element label='Group name'}}
+              <div class="input-group">
+                {{#power-select-typeahead search=(action 'searchGroup')
+                                          selected=newGroup.name
+                                          placeholder="Start typing a group's name"
+                                          onchange=(action (mut newGroup)) as |groupInfo|}}
+                  {{groupInfo.name}}
+                {{/power-select-typeahead}}
+                  <span class="input-group-btn">
+                    {{bs-button size='sm' type="primary" action="addGroup" defaultText='Add group'}}
+                  </span>
+              </div>
+          {{/bs-form-element}}
         </div>
     </div>
 </div>
@@ -174,17 +178,21 @@
         </table>
     </div>
 
-    <div class="pulled-down-row">
-        <div class="col-md-3">
-          {{#power-select-typeahead search=(action 'searchDoor')
-                                    selected=newDoor.alias
-                                    placeholder="Enter a door's name"
-                                    onchange=(action (mut newDoor)) as |doorInfo|}}
-            {{doorInfo.alias}}
-          {{/power-select-typeahead}}
-        </div>
-        <div class="col-md-3">
-          {{bs-button size='sm' type="primary" action="addDoor" defaultText='Add door'}}
+    <div>
+        <div class="col-md-6">
+          {{#bs-form-element label='Door alias'}}
+              <div class="input-group">
+                {{#power-select-typeahead search=(action 'searchDoor')
+                                          selected=newGroup.name
+                                          placeholder="Start typing a door's alias"
+                                          onchange=(action (mut newDoor)) as |doorInfo|}}
+                  {{doorInfo.alias}}
+                {{/power-select-typeahead}}
+                  <span class="input-group-btn">
+                    {{bs-button size='sm' type="primary" action="addDoor" defaultText='Add door'}}
+                  </span>
+              </div>
+          {{/bs-form-element}}
         </div>
     </div>
 </div>

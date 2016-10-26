@@ -10,19 +10,21 @@
       Below are all the mapping linked to the schedule. <br> <br>
 
 
-      <div class="col-md-12 row">
-          <div class="pull-right">
-            {{bs-button defaultText="Save" type="success" buttonType="submit"
-                        action=(route-action 'editSchedule')}}
+      <div class="row">
+          <div class="col-md-12">
+              <div class="pull-right">
+                {{bs-button defaultText="Save" type="success" buttonType="submit"
+                            action=(route-action 'editSchedule')}}
+              </div>
+              <div class="pull-left">
+                {{bs-button icon='glyphicon glyphicon-add' type='success'
+                            defaultText='Add mapping' action=(route-action 'addMapping')}}
+              </div>
           </div>
-          <div class="pull-left">
-            {{bs-button icon='glyphicon glyphicon-add' type='success'
-                        defaultText='Add mapping' action=(route-action 'addMapping')}}
-          </div>
-      </div>
 
-      <div class="col-md-12 row">
-          <hr>
+          <div class="col-md-12">
+              <hr>
+          </div>
       </div>
 
       {{#bs-accordion}}
