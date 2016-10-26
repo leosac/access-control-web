@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
@@ -27,7 +26,7 @@ export default LeosacRoute.extend({
                 {
                     self.get('flashMessages').success('Group has been deleted.');
                     self.transitionTo('groups.list');
-                });
+                }).catch(() => model.rollbackAttributes());
             }
         }
     }

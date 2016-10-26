@@ -87,7 +87,7 @@ export default Ember.Service.extend({
             }
         };
 
-        ws.onclose = function (event)
+        ws.onclose = function (/*event*/)
         {
             self.get('flashMessages').danger('Websocket connection lost.\n' +
                 'Please refresh the page.',

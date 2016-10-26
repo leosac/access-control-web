@@ -15,7 +15,7 @@ export default Ember.Service.extend({
     },
     setServersConfig(cfg)
     {
-        return this.get('websocket').sendJson('module.smtp.setconfig', cfg).then((resp) =>
+        return this.get('websocket').sendJson('module.smtp.setconfig', cfg).then(() =>
             {
                 return true;
             });

@@ -29,5 +29,8 @@ export default DS.Model.extend(CredentialValidations, {
 
     // Quick info about a credential. For a card this would be the card
     // id. This doesn't come from the server.
-    displayIdentifier: 'N/A'
+    displayIdentifier: 'N/A',
+    // This is a fake relationship, because server side it
+    // does'nt exist directly.
+    schedules: DS.hasMany('schedules'),
 });

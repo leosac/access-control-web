@@ -11,7 +11,9 @@
   {{#each user.schedules as |schedule|}}
       <br>
       <div class="panel panel-default">
-          <h3>Schedule: {{schedule.name}}</h3>
+          <div class="panel-heading">
+              Schedule: {{schedule.name}}
+          </div>
           <div class="panel-body">
               <div id="content">
                   <!-- Recap of the schedule -->
@@ -34,18 +36,19 @@
                 {{#each schedule.mapping as |mapping|}}
                   {{#if (is-user-part-of-mapping mapping user.id)}}
                       <div class="panel panel-default">
-                          <div class="pull-right">
-                            {{button-with-confirmation
-                              type='danger'
-                              icon='glyphicon glyphicon-remove'
-                              size='xs'
-                              text='Remove from mapping'
-                              message='Are you sure you wish to leave this mapping?'
-                              onConfirm=(action 'leaveMapping' mapping)
-                            }}
+                          <div class="panel-heading">
+                              Mapping: {{mapping.alias}}
+                              <div class="pull-right">
+                                {{button-with-confirmation
+                                  type='danger'
+                                  icon='glyphicon glyphicon-remove'
+                                  size='xs'
+                                  text='Remove from mapping'
+                                  message='Are you sure you wish to leave this mapping?'
+                                  onConfirm=(action 'leaveMapping' mapping)
+                                }}
+                              </div>
                           </div>
-
-                          <h3>Mapping: {{mapping.alias}}</h3>
                           <div class="panel-body">
                               <div id="content">
                                 {{#if mapping.doors.length}}
@@ -73,7 +76,11 @@
       </div>
   {{/each}}
 
-  {{schedule-mapping-picker action=(action 'addScheduleMapping')}}
+    <div class="panel panel-default">
+        <div class="panel-body">
+          {{schedule-mapping-picker action=(action 'addScheduleMapping')}}
+        </div>
+    </div>
 
     <br><br><br><br><br><br><br><br><br>
 </div>

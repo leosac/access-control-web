@@ -1,13 +1,14 @@
 import DS from 'ember-data';
-import Ember from 'ember';
 
 function clone(obj)
 {
-    if (null == obj || "object" != typeof obj) return obj;
+    if (null == obj || "object" !== typeof obj)
+        return obj;
     var copy = obj.constructor();
     for (var attr in obj)
     {
-        if (obj.hasOwnProperty(attr)) copy[attr] = clone(obj[attr]);
+        if (obj.hasOwnProperty(attr))
+            copy[attr] = clone(obj[attr]);
     }
     return copy;
 }

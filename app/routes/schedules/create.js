@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
@@ -15,7 +14,7 @@ export default LeosacRoute.extend({
         const sched = this.get('store').createRecord('schedule');
         return sched;
     },
-    resetController(controller, isExiting, transition)
+    resetController(controller, isExiting/*, transition*/)
     {
         // Rollback change when leaving the page.
         if (isExiting)

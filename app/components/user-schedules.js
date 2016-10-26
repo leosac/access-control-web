@@ -1,5 +1,12 @@
 import Ember from 'ember';
 
+/**
+ * For now the following 3 components are almost copy-pasted.
+ *
+ *     + user-schedules
+ *     + group-schedules
+ *     + credential-schedules
+ */
 export default Ember.Component.extend({
     authSrv: Ember.inject.service('authentication'),
 

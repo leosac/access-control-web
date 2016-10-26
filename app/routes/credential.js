@@ -14,20 +14,16 @@ export default LeosacRoute.extend({
         "use strict";
         return this.get('store').findRecord('credential', params.credential_id);
     },
-    testLol(){
-        return 'blab';
-    },
     actions: {
         editGroup ()
         {
             this.controller.get('model').save().then(() =>
-                {
-                    this.get('flashMessages').success('Credential successfully edited.');
-                },
-                () =>
-                {
-                    this.get('flashMessages').danger('An error occurred while editing credential');
-                });
+            {
+                this.get('flashMessages').success('Credential successfully edited.');
+            }).catch(() =>
+            {
+                this.get('flashMessages').danger('An error occurred while editing credential');
+            });
         },
         deleteCredential ()
         {
@@ -37,7 +33,7 @@ export default LeosacRoute.extend({
             {
                 self.get('flashMessages').success('Credential has been deleted.');
                 self.transitionTo('credentials.list');
-            });
+            }).catch(() => model.rollbackAttributes());
         },
     }
 });

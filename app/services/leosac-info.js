@@ -29,7 +29,7 @@ export default Ember.Service.extend({
             {
                 self.set('version', response.version);
             },
-            function (failure)
+            function (/*failure*/)
             {
                 self.set('version', 'UNKNOWN');
             }

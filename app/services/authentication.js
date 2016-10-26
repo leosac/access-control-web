@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import DS from 'ember-data';
 
 /**
  * This service provide support for authentication.
@@ -132,10 +131,10 @@ export default Ember.Service.extend({
                     self._clearAuthentication(true);
                 }
             },
-            function (data)
+            function (/*data*/)
             {
                 self._clearAuthentication(false);
-                console.log('Authenticate with token failed !!');
+                console.log('Authenticate with token failed!');
             });
     },
     /**

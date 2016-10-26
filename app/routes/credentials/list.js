@@ -15,21 +15,20 @@ export default LeosacRoute.extend({
         return findAllCredentials(this.get('store'));
     },
     actions: {
-        deleteCredential(credentialId)
+        deleteCredential(credential)
         {
             const self = this;
 
-            deleteCredential(this.get('store'), credentialId, () =>
+            deleteCredential(this.get('store'), credential.get('id'), () =>
                 {
                     self.get('flashMessages').success('Credential has been deleted.');
                     self.transitionTo('credentials.list');
                     self.refresh();
-                },
-                () =>
+                }).catch(() =>
                 {
                     self.get('flashMessages').danger('Failed to delete credential');
-                }
-            );
+                    credential.rollbackAttributes();
+                });
         }
     }
 });

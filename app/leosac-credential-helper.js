@@ -1,5 +1,28 @@
 import Ember from 'ember';
 
+
+/**
+ * Find a credential no matter its subtype.
+ */
+function findCredential(store, id)
+{
+    const promise = Ember.RSVP.defer();
+
+    Ember.RSVP.hash({
+        wiegandCard: store.find('wiegand-card', id),
+        pinCode: store.find('pin-code', id),
+    }).then(function (hash)
+    {
+        if (hash.wiegandCard)
+            promise.resolve(hash.wiegandCard);
+        else if (hash.pinCode)
+            promise.resolve(hash.pinCode);
+        promise.reject(null);
+    });
+
+    return promise.promise;
+}
+
 /**
  * This a function that returns all credentials.
  *
@@ -39,9 +62,8 @@ function deleteCredential(store, credentialId, resolve, reject)
         cred = store.peekRecord('pin-code', credentialId);
     if (cred)
     {
-        cred.destroyRecord({}).then((ok) => resolve(ok),
-            (ko) => reject(ko));
+        return cred.destroyRecord({}).then((ok) => resolve(ok));
     }
 }
 
-export {findAllCredentials, deleteCredential};
+export {findAllCredentials, findCredential, deleteCredential};

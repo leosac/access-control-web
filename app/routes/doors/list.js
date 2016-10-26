@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
@@ -21,7 +20,7 @@ export default LeosacRoute.extend({
             door.destroyRecord({}).then(() =>
             {
                 self.get('flashMessages').success('Door has been deleted.');
-                self.transitionTo('door.list');
+                self.transitionTo('doors.list');
             });
         }
     }

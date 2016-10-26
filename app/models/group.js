@@ -29,5 +29,8 @@ export default Model.extend(GroupValidations, {
     description: DS.attr('string'),
     memberships: DS.hasMany('user-group-membership', {
         inverse: 'group'
-    })
+    }),
+    // This is a fake relationship, because server side it
+    // does'nt exist directly.
+    schedules: DS.hasMany('schedules'),
 });

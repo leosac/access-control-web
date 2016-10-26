@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import {findCredential} from 'web/leosac-credential-helper';
 
 export default Ember.Component.extend({
     search: Ember.inject.service('search'),
@@ -25,10 +26,14 @@ export default Ember.Component.extend({
         },
         addCredential()
         {
+            findCredential(this.get('store'), this.get('newCredential')).then((cred) => {
+                this.get('mapping').get('credentials').addObject(cred);
+            });
+            /*
             this.get('store').findRecord('credential', this.get('newCredential')).then((cred) =>
             {
                 this.get('mapping').get('credentials').addObject(cred);
-            });
+            });*/
         },
         addDoor()
         {
