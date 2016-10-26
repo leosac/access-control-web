@@ -27,7 +27,7 @@ export default LeosacRoute.extend({
         this._super(controller, model);
         controller.set('targetUserId', this.paramsFor('profile').user_id);
     },
-    resetController(controller, isExiting, transition)
+    resetController(controller, isExiting/*, transition*/)
     {
         // Rollback change when leaving the page.
         if (isExiting)

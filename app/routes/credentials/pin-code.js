@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
@@ -14,7 +13,7 @@ export default LeosacRoute.extend({
         "use strict";
         return this.get('store').find('pin-code', params.credential_id);
     },
-    resetController(controller, isExiting, transition)
+    resetController(controller, isExiting/*, transition*/)
     {
         // Rollback change when leaving the page.
         if (isExiting)
@@ -45,7 +44,7 @@ export default LeosacRoute.extend({
                 },
                 () =>
                 {
-                    this.get('flashMessages').danger('Failed to delete credential.')
+                    this.get('flashMessages').danger('Failed to delete credential.');
                 });
         }
     }
