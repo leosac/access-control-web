@@ -183,7 +183,7 @@
           {{#bs-form-element label='Door alias'}}
               <div class="input-group">
                 {{#power-select-typeahead search=(action 'searchDoor')
-                                          selected=newGroup.name
+                                          selected=newDoor.alias
                                           placeholder="Start typing a door's alias"
                                           onchange=(action (mut newDoor)) as |doorInfo|}}
                   {{doorInfo.alias}}

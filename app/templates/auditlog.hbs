@@ -4,58 +4,58 @@ Audits entries below: <br>
             size='xs' defaultText='Refresh'}}
 
 {{#bs-form formLayout="horizontal" model=this}}
-  <div class="row">
-      <div class="col-md-3">
-  {{bs-form-element controlType="number" label="Current Page"
-                    property="currentPage"}}
-      </div>
-      <div class="col-md-3">
-        {{bs-form-element controlType="number" label="Page Size"
-                          property="pageSize"}}
-      </div>
-      Total page: {{totalPage}}  |  Count: {{resultCount}}
-  </div>
+    <div class="row">
+        <div class="col-md-3">
+          {{bs-form-element controlType="number" label="Current Page"
+                            property="currentPage"}}
+        </div>
+        <div class="col-md-3">
+          {{bs-form-element controlType="number" label="Page Size"
+                            property="pageSize"}}
+        </div>
+        Total page: {{totalPage}}  | Count: {{resultCount}}
+    </div>
 
-  <div class="row">
-      <div class="col-md-3">
-        {{bs-form-element label='Enable WSAPICall'
-                          disabled=fetchingData controlType='checkbox'
-                          value=wsapicallEnabled}}
-      </div>
-      <div class="col-md-3">
-        {{bs-form-element label='Enable UserEvent'
-                          disabled=fetchingData controlType='checkbox'
-                          value=userEventEnabled}}
-      </div>
-      <div class="col-md-3">
-        {{bs-form-element label='Enable DoorEvent'
-                          disabled=fetchingData controlType='checkbox'
-                          value=doorEventEnabled}}
-      </div>
-      <div class="col-md-3">
-        {{bs-form-element label='Enable GroupEvent'
-                          disabled=fetchingData controlType='checkbox'
-                          value=groupEventEnabled}}
-      </div>
-  </div>
+    <div class="row">
+        <div class="col-md-3">
+          {{bs-form-element label='Enable WSAPICall'
+                            disabled=fetchingData controlType='checkbox'
+                            value=wsapicallEnabled}}
+        </div>
+        <div class="col-md-3">
+          {{bs-form-element label='Enable UserEvent'
+                            disabled=fetchingData controlType='checkbox'
+                            value=userEventEnabled}}
+        </div>
+        <div class="col-md-3">
+          {{bs-form-element label='Enable DoorEvent'
+                            disabled=fetchingData controlType='checkbox'
+                            value=doorEventEnabled}}
+        </div>
+        <div class="col-md-3">
+          {{bs-form-element label='Enable GroupEvent'
+                            disabled=fetchingData controlType='checkbox'
+                            value=groupEventEnabled}}
+        </div>
+    </div>
 
-  <div class="row">
-      <div class="col-md-3">
-        {{bs-form-element label='Enable CredentialEvent'
-                          disabled=fetchingData controlType='checkbox'
-                          value=credentialEventEnabled}}
-      </div>
-      <div class="col-md-3">
-        {{bs-form-element label='Enable ScheduleEvent'
-                          disabled=fetchingData controlType='checkbox'
-                          value=scheduleEventEnabled}}
-      </div>
-      <div class="col-md-3">
-        {{bs-form-element label='Enable UserGroupMembershipEvent'
-                          disabled=fetchingData controlType='checkbox'
-                          value=userGroupMembershipEventEnabled}}
-      </div>
-  </div>
+    <div class="row">
+        <div class="col-md-3">
+          {{bs-form-element label='Enable CredentialEvent'
+                            disabled=fetchingData controlType='checkbox'
+                            value=credentialEventEnabled}}
+        </div>
+        <div class="col-md-3">
+          {{bs-form-element label='Enable ScheduleEvent'
+                            disabled=fetchingData controlType='checkbox'
+                            value=scheduleEventEnabled}}
+        </div>
+        <div class="col-md-3">
+          {{bs-form-element label='Enable UserGroupMembershipEvent'
+                            disabled=fetchingData controlType='checkbox'
+                            value=userGroupMembershipEventEnabled}}
+        </div>
+    </div>
 
 {{/bs-form}}
 

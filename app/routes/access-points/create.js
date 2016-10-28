@@ -4,7 +4,7 @@ import LeosacRoute from 'web/leosac-route';
  * Create a new door.
  */
 export default LeosacRoute.extend({
-    _title: 'Create door',
+    _title: 'Create Access Point',
     _requireAuth: true,
     beforeModel()
     {

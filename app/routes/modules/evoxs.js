@@ -13,5 +13,5 @@ export default LeosacRoute.extend({
     {
         "use strict";
         return this.get('store').findAll('evoxs-access-point');
-    }
+    },
 });

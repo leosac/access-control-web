@@ -1,0 +1,30 @@
+{{#bs-button disabled=pendingCheckUpdate action=(action 'checkUpdate')}}
+  {{#if pendingCheckUpdate}}
+      Checking for updates. Please wait.
+      <i class="fa fa-spinner fa-spin" style="color: orange; font-size:16px"></i>
+  {{else}}
+      Check Updates
+  {{/if}}
+{{/bs-button}}
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <th>#Id</th>
+        <th>Alias</th>
+        <th>Need update</th>
+        </thead>
+
+        <tbody>
+        {{#each apsWithStatus as |ap|}}
+            <tr>
+                <td>{{ap.ap.id}}</td>
+                <td>{{ap.ap.alias}}</td>
+                <td>
+                  {{{boolean-to-colored-yes-no ap.needUpdate}}}
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
