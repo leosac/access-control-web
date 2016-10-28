@@ -5,7 +5,16 @@ export default Ember.Component.extend({
     evoxs: Ember.inject.service('module-evoxs'),
 
     aps: [],
+
+    /**
+     * The result of check-update.
+     */
     updateSt: [],
+
+    /**
+     * The list of known updates (no matter their status).
+     */
+    updates: [],
 
     pendingCheckUpdate: false,
 
@@ -41,6 +50,10 @@ export default Ember.Component.extend({
             {
                 self.set('aps', aps);
             });
+
+        this.get('evoxs').getUpdates().then((updates) => {
+            this.set('updates', this.get('store').peekAll('evoxs-access-point-update'));
+        });
     },
     actions:
     {
@@ -52,6 +65,10 @@ export default Ember.Component.extend({
                 this.set('updateSt', st);
                 this.set('pendingCheckUpdate', false);
             });
+        },
+        startUpdate(ap)
+        {
+            this.get('evoxs').startUpdate(ap);
         }
     }
 });

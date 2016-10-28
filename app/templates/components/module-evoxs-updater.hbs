@@ -13,15 +13,48 @@
         <th>#Id</th>
         <th>Alias</th>
         <th>Need update</th>
+        <th>Update</th>
         </thead>
 
         <tbody>
         {{#each apsWithStatus as |ap|}}
             <tr>
-                <td>{{ap.ap.id}}</td>
+                <td>
+                  {{#link-to 'modules.evoxs.access-point' ap.ap.id}}
+                  {{ap.ap.id}}
+                {{/link-to}}
+                </td>
                 <td>{{ap.ap.alias}}</td>
                 <td>
                   {{{boolean-to-colored-yes-no ap.needUpdate}}}
+                </td>
+                <td>
+                    {{#if ap.needUpdate}}
+                      {{bs-button defaultText='Update !' action=(action 'startUpdate' ap.ap)}}
+                    {{/if}}
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
+
+Pending updates...
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <th>#Id</th>
+        <th>Target Access Point Alias</th>
+        <th>Status</th>
+        </thead>
+
+        <tbody>
+        {{#each updates as |update|}}
+            <tr>
+                <td>{{update.id}}</td>
+                <td>{{update.accessPoint.alias}}</td>
+                <td>
+                  {{update.status}}
                 </td>
             </tr>
         {{/each}}
