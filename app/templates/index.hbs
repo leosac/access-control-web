@@ -1,8 +1,5 @@
 <div>
-  Welcome <strong>{{model.username}}</strong>.<br />
-  <br />
-  Manage your EvoXS cylinders and user permissions.<br />
-  Register, setup, deploy. All from a web-based interface.<br />
+    {{t 'index.welcome' username=model.username}}
 </div>
 
 <div style="padding-top: 75px; text-align: center;" class="row">
@@ -14,7 +11,7 @@
         <br /><br />
         <p>
           {{#link-to 'credentials.list' class='btn btn-primary'}}
-                  Manage Access
+            {{t 'index.manage_access'}}
           {{/link-to}}
         </p>
     </div>
@@ -25,7 +22,7 @@
         <br /><br />
         <p>
           {{#link-to 'index' class='btn btn-primary'}}
-              Apply Updates
+              {{t 'index.apply_update'}}
           {{/link-to}}
         </p>
     </div>
@@ -36,7 +33,7 @@
         <br /><br />
         <p>
           {{#link-to 'auditlog' class='btn btn-primary'}}
-              Events
+              {{t 'index.event'}}
           {{/link-to}}
         </p>
     </div>

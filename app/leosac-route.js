@@ -25,6 +25,7 @@ import ENV from 'web/config/environment';
  *       base route will be useless.
  */
 export default Ember.Route.extend({
+    i18n: Ember.inject.service(),
     globalInfo: Ember.inject.service('leosac-info'),
     authSrv: Ember.inject.service('authentication'),
     flashMessages: Ember.inject.service(),
@@ -66,6 +67,11 @@ export default Ember.Route.extend({
         {
             return redirectIfNotAuth(this);
         }
+    },
+    afterModel()
+    {
+        this.get('i18n');
+        this.set('i18n.locale', this.get('globalInfo').getLocale());
     }
 });
 

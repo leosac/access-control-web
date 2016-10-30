@@ -3,12 +3,13 @@ import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
     authSrv: Ember.inject.service('authentication'),
-    _title: 'Dashboard',
+    _title: '',
     _requireAuth: true,
     beforeModel()
     {
         "use strict";
-        return this._super();
+        this.set('_title', this.get('i18n').t('index.title'));
+        this._super();
     },
     model()
     {

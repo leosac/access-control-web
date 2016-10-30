@@ -18,9 +18,12 @@ export default Ember.Service.extend({
      */
     current_view_title: "Default",
 
+    userLocale: 'en',
+
     init()
     {
         "use strict";
+        this.setLocale(localStorage.user_locale || 'en');
 
         var self = this;
         var ws = self.get('websocket');
@@ -35,8 +38,13 @@ export default Ember.Service.extend({
             }
         );
     },
-    allUsernames()
+    setLocale(loc)
     {
-        return {'toto': 42, 'titi': 32};
+        this.set('userLocale', loc);
+        localStorage.user_locale = loc;
+    },
+    getLocale()
+    {
+        return this.get('userLocale');
     }
 });

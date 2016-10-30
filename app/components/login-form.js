@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+    i18n: Ember.inject.service(),
   authSrv: Ember.inject.service('authentication'),
   pending: false,
   inputUsername: '',
@@ -17,7 +18,7 @@ export default Ember.Component.extend({
 
       if (username.length === 0 || password.length === 0)
       {
-        this.set('errorMessage', 'Username and password are required.');
+        this.set('errorMessage', this.get('i18n').t('login-form.username_password_required'));
         return;
       }
 

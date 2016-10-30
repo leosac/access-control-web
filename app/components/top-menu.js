@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+    leosacInfo: Ember.inject.service('leosac-info'),
     authSrv: Ember.inject.service('authentication'),
 
     /**
@@ -17,6 +18,10 @@ export default Ember.Component.extend({
             {
                 self.sendAction('onLogout');
             });
+        },
+        setLocale(loc)
+        {
+            this.get('leosacInfo').setLocale(loc);
         }
     }
 });

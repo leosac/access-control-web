@@ -1,18 +1,20 @@
 <img src="{{getenv 'logoUrl'}}" class="navbar-logo" alt="Logo" />
 
 <form class="form-signin">
-    <h2 class="form-signin-heading">Please sign in</h2>
+    <h2 class="form-signin-heading">{{t 'login-form.welcome'}}</h2>
 
-  {{bs-form-element controlType='text' label='Username'
+  {{bs-form-element controlType='text' label=(t 'form.username.label')
                     value=inputUsername required=true
-                    placeholder='Username'}}
+                    placeholder=(t 'form.username.ph')
+                    }}
 
-  {{bs-form-element controlType='password' label='Password'
+  {{bs-form-element controlType='password' label=(t 'form.password.label')
                     value=inputPassword required=true
-                    placeholder='Password'}}
+                    placeholder=(t 'form.password.ph')
+                    }}
 
     <button class="btn btn-lg btn-primary btn-block" type="submit"
-      {{action 'login'}}>Sign in
+      {{action 'login'}}>{{t 'login-form.submit'}}
     </button>
 
   {{#if pending}}
