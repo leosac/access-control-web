@@ -1,4 +1,8 @@
 export default {
+    'firstname': 'Prenom',
+    'lastname': 'Nom de famille',
+    'email': 'email',
+    'username': "Nom d'utilisateur",
     'form': {
         'username': {
             'label': "Nom d'utilisateur",
@@ -29,5 +33,11 @@ export default {
         'welcome': "Bienvenue <strong>{{username}}</strong> <br>" +
         "Gerez vos cylindres EvoXS et les permissions utilisateurs. <br>" +
         "Installez, configurez et deployez depuis l'interface web."
+    },
+    'users': {
+        'list':{
+            'title': 'Liste des utilisateurs'
+        },
+        'create_new_user': 'Ajouter un utilisateur',
     }
 };

@@ -1,4 +1,8 @@
 export default {
+    'firstname': 'Firstname',
+    'lastname': 'Lastname',
+    'email': 'email',
+    'username': "Username",
     'form': {
         // General form stuff with label and placeholder.
         'username': {
@@ -30,5 +34,11 @@ export default {
         'welcome': "Welcome <strong>{{username}}</strong>.<br />" +
         "Manage your EvoXS cylinders and user permissions.<br />" +
         "Register, setup, deploy. All from a web-based interface.<br />"
+    },
+    'users': {
+        'list':{
+            'title': 'Liste des utilisateurs'
+        },
+        'create_new_user': 'Create new user',
     }
 };

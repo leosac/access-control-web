@@ -29,7 +29,8 @@ export default Ember.Route.extend({
     globalInfo: Ember.inject.service('leosac-info'),
     authSrv: Ember.inject.service('authentication'),
     flashMessages: Ember.inject.service(),
-    _title: 'default',
+    // A translation key for the title of the page.
+    _title: '',
     _requireAuth: false,
     actions: {
         onLogout()
@@ -60,8 +61,13 @@ export default Ember.Route.extend({
     beforeModel()
     {
         "use strict";
-        this.get('globalInfo').set('current_view_title', this._title);
-        document.title = ENV.APP.appname + ' - ' + this._title;
+        this.set('i18n.locale', this.get('globalInfo').getLocale());
+
+        const i18n = this.get('i18n');
+        const title = i18n.t(this.get('_title'));
+
+        this.get('globalInfo').set('current_view_title', title);
+        document.title = ENV.APP.appname + ' - ' + title;
 
         if (this._requireAuth)
         {
@@ -70,7 +76,6 @@ export default Ember.Route.extend({
     },
     afterModel()
     {
-        this.get('i18n');
         this.set('i18n.locale', this.get('globalInfo').getLocale());
     }
 });
