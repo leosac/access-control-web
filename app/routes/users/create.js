@@ -3,7 +3,7 @@ import LeosacRoute from 'web/leosac-route';
 import {UserRank} from 'web/leosac-constant';
 
 export default LeosacRoute.extend({
-    _title: 'New User',
+    _title: 'users.create.title',
     _requireAuth: true,
     beforeModel()
     {

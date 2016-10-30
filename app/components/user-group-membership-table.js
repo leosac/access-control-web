@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+    i18n: Ember.inject.service(),
     authSrv: Ember.inject.service('authentication'),
     store: Ember.inject.service(),
     // The user whose membership we display.
@@ -14,13 +15,13 @@ export default Ember.Component.extend({
         this._super(...arguments);
         if (this.get('user').get('numericId') === this.get('authSrv').get('user_id'))
         {
-            this.set('kickOrLeave', 'Leave');
-            this.set('kickOrLeaveMessage', 'Are you sure you wish to leave this group ?');
+            this.set('kickOrLeave', this.get('i18n').t('leave'));
+            this.set('kickOrLeaveMessage', this.get('i18n').t('leave_group_confirmation'));
         }
         else if (this.get('authSrv').get('isAdministrator'))
         {
-            this.set('kickOrLeave', 'Kick');
-            this.set('kickOrLeaveMessage', 'Are you sure you wish to kick this user from the group ?');
+            this.set('kickOrLeave', this.get('i18n').t('kick'));
+            this.set('kickOrLeaveMessage', this.get('i18n').t('kick_group_confirmation'));
         }
     },
     actions:

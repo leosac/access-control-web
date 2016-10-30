@@ -22,10 +22,10 @@ Note: SMTP password are saved in cleartext ! <br>
                     {{bs-form-element controlType="text" label="From"
                                       placeholder="leosac@my-domain.com"
                                       property="from"}}
-                    {{bs-form-element controlType="text" label="Username"
+                    {{bs-form-element controlType="text" label=(t 'username')
                                       placeholder="my-mail-user"
                                       property="username"}}
-                    {{bs-form-element controlType="password" label="Password"
+                    {{bs-form-element controlType="password" label=(t 'password')
                                       property="password"}}
 
                     {{bs-form-element controlType="number" label="Timeout (Milliseconds)"
@@ -37,7 +37,7 @@ Note: SMTP password are saved in cleartext ! <br>
                     {{bs-form-element controlType="checkbox" label="Verify peer"
                                       property="verify_peer"}}
 
-                    {{bs-form-element controlType="checkbox" label="Enabled"
+                    {{bs-form-element controlType="checkbox" label=(t 'enabled')
                                       property="enabled"}}
                   </div>
               {{/bs-form}}

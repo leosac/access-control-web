@@ -1,10 +1,10 @@
 <fieldset>
-    <legend>Validity</legend>
-  {{#bs-form-element label='Enabled'}}
+    <legend>{{t 'validity'}}</legend>
+  {{#bs-form-element label=(t 'enabled')}}
     {{input disabled=disabled type='checkbox' name='Enabled' checked=enabled}}
   {{/bs-form-element}}
 
-  {{#bs-form-element label='Start Date'}}
+  {{#bs-form-element label=(t 'start_date')}}
     {{bs-datetimepicker disabled=disabled
                         date=startDate format='YYYY-MM-DD HH:mm'
                         updateDate=(action (mut startDate))
@@ -12,7 +12,7 @@
                         maxDate=maxDate}}
   {{/bs-form-element}}
 
-  {{#bs-form-element label='End Date'}}
+  {{#bs-form-element label=(t 'end_date')}}
     {{bs-datetimepicker  disabled=disabled
                          date=endDate format='YYYY-MM-DD HH:mm'
                          updateDate=(action (mut endDate))

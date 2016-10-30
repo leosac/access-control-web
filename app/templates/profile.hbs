@@ -1,9 +1,4 @@
 <div>
-    Your profile is great.
-    You are named {{model.user.firstname}} - {{model.user.lastname}} and your id is {{model.user.id}}
-</div>
-
-<div>
   {{#bs-tab}}
     {{#bs-tab-pane title='Information'}}
         <div class="col-md-6">
@@ -11,16 +6,16 @@
               <fieldset>
                   <legend>Profile</legend>
                 {{bs-form-element disabled=isProfileLocked
-                                  controlType="text" label="Firstname"
+                                  controlType="text" label=(t 'firstname')
                                   placeholder="John" property="firstname"}}
                 {{bs-form-element disabled=isProfileLocked
-                                  controlType="text" label="Lastname"
+                                  controlType="text" label=(t 'lastname')
                                   placeholder="Doe" property="lastname"}}
                 {{bs-form-element disabled=isProfileLocked
-                                  controlType="email" label="Email"
+                                  controlType="email" label=(t 'email')
                                   placeholder="john@doe.com" property="email"}}
 
-                {{#bs-form-element label="Rank"}}
+                {{#bs-form-element label=(t 'rank')}}
                   {{#power-select
                     disabled=isRankEditLocked
                     selected=model.user.rank

@@ -4,7 +4,7 @@ import {UserRank} from 'web/leosac-constant';
 
 export default LeosacRoute.extend({
     passwordChange: Ember.inject.service('password-change'),
-    _title: 'Profile',
+    _title: 'profile.title',
     _requireAuth: true,
     passwordInfo: null,
 
@@ -41,13 +41,15 @@ export default LeosacRoute.extend({
         editProfile: function ()
         {
             var user = this.controller.get('model').user;
-            var fm = this.get('flashMessages');
+            const fm = this.get('flashMessages');
+            const i18n = this.get('i18n');
+
             user.save().then(() =>
             {
-                fm.success('Profile updated !');
+                fm.success(i18n.t('profile.profile_updated') + '.');
             }, (why) =>
             {
-                fm.danger('Failed to update profile: ' + why.status_string);
+                fm.danger(i18n.t('profile_fail_update') + ': ' + why.status_string);
             });
         },
     }

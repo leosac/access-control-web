@@ -1,5 +1,5 @@
 {{#bs-form formLayout='inline'}}
-    {{#bs-form-element label="Username"}}
+    {{#bs-form-element label=(t 'username')}}
       {{#power-select
         selected=selectedUsername
         options=allUsernames
@@ -12,7 +12,7 @@
       {{/power-select}}
     {{/bs-form-element}}
 
-    {{#bs-form-element label="Rank"}}
+    {{#bs-form-element label=(t 'rank')}}
       {{#power-select
         selected=selectedRank
         options=allRank

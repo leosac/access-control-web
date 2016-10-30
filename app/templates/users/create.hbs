@@ -1,24 +1,24 @@
 <div class="row col-md-6">
   {{#bs-form formLayout="horizontal" model=model.user}}
       <fieldset>
-          <legend>Account Information</legend>
-        {{bs-form-element controlType="text" label="Username"
+          <legend>{{t 'users.create.account_info'}}</legend>
+        {{bs-form-element controlType="text" label=(t 'username')
                           placeholder="john_doe" property="username"}}
 
       </fieldset>
 
       <fieldset>
           <legend>Profile</legend>
-        {{bs-form-element controlType="text" label="Firstname"
+        {{bs-form-element controlType="text" label=(t 'firstname')
                           placeholder="John" property="firstname"}}
 
-        {{bs-form-element controlType="text" label="Lastname"
+        {{bs-form-element controlType="text" label=(t 'lastname')
                           placeholder="Doe" property="lastname"}}
 
-        {{bs-form-element controlType="email" label="Email"
+        {{bs-form-element controlType="email" label=(t 'email')
                           placeholder="john@doe.com" property="email"}}
 
-        {{#bs-form-element label="Rank"}}
+        {{#bs-form-element label=(t 'rank')}}
           {{#power-select
             selected=model.user.rank
             options=model.possibleRanks
@@ -32,7 +32,7 @@
   {{/bs-form}}
 
     <fieldset>
-        <legend>Security</legend>
+        <legend>{{t 'security'}}</legend>
       {{password-input passwordOut=(mut model.user.password)}}
     </fieldset>
 

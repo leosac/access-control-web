@@ -4,8 +4,8 @@
         <div class="row col-md-6">
           {{#bs-form formLayout="horizontal" model=model action="editGroup"}}
               <fieldset>
-                  <legend>Group information</legend>
-                {{bs-form-element controlType="text" label="Name"
+                  <legend>{{t 'group_information'}}</legend>
+                {{bs-form-element controlType="text" label=(t 'name')
                                   property="name"}}
 
                 {{bs-form-element controlType='textarea' label='Description'
@@ -17,15 +17,15 @@
                 {{#bs-button type="info" icon="glyphicon glyphicon-refresh"
                              size="sm"
                              action='cancelAndRefresh'}}
-                    Cancel & Refresh
+                    {{t 'cancel_and_refresh'}}
                 {{/bs-button}}
 
                 {{button-with-confirmation
                   type='danger'
                   icon='glyphicon glyphicon-remove'
                   size='sm'
-                  text='Delete'
-                  message='Are you sure you wish to delete this group ?'
+                  text=(t 'delete')
+                  message=(t 'delete_group_confirmation')
                   onConfirm=(route-action 'deleteGroup')
                 }}
               </fieldset>
@@ -34,7 +34,7 @@
         </div>
     {{/bs-tab-pane}}
 
-    {{#bs-tab-pane title='Members'}}
+    {{#bs-tab-pane title=(t 'members')}}
       {{group-user-membership-table group=model}}
       {{group-add-one-user group=model}}
     {{/bs-tab-pane}}
