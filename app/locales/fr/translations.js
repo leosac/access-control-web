@@ -38,6 +38,9 @@ export default {
     'cancel': 'Annuler',
     'acknowledge': 'Acquitter',
     'update': 'Mettre a jour',
+    'yes': 'Oui',
+    'no': 'Non',
+    'not_available': 'Indisponible',
 
     'cancel_and_refresh': 'Annuler et rafraichir',
     'group_information': 'Information de groupe',

@@ -38,6 +38,9 @@ export default {
     'cancel': 'Cancel',
     'acknowledge': 'Acknowledge',
     'update': 'Update',
+    'yes': 'Yes',
+    'no': 'No',
+    'not_available': 'Not Available',
 
     'cancel_and_refresh': 'Cancel & Refresh',
     'group_information': 'Group information',
