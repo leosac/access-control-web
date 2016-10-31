@@ -50,6 +50,8 @@ export default {
     'yes': 'Yes',
     'no': 'No',
     'not_available': 'Not Available',
+    'access_point': 'Access Point',
+    'clear_selection': 'Clear selection',
 
     'cancel_and_refresh': 'Cancel & Refresh',
     'group_information': 'Group information',

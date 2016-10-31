@@ -49,6 +49,8 @@ export default {
     'yes': 'Oui',
     'no': 'Non',
     'not_available': 'Indisponible',
+    'access_point': "Point d'Accès",
+    'clear_selection': 'Effacer la selection',
 
     'cancel_and_refresh': 'Annuler et rafraichir',
     'group_information': 'Information de groupe',

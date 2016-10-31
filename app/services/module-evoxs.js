@@ -41,9 +41,10 @@ export default Ember.Service.extend({
     cancelUpdate(update)
     {
         return this.get('websocket').sendJson('module.evoxs.set_update_status', {
-           update_id: update.get('numericId'),
+            update_id: update.get('numericId'),
             status: AccessPointUpdateStatus.CANCELLED
-        }).then((data) => {
+        }).then((data) =>
+        {
             this.get('store').pushPayload(data);
         });
     },
@@ -52,7 +53,8 @@ export default Ember.Service.extend({
         return this.get('websocket').sendJson('module.evoxs.set_update_status', {
             update_id: update.get('numericId'),
             status: AccessPointUpdateStatus.ACKNOWLEDGED
-        }).then((data) => {
+        }).then((data) =>
+        {
             this.get('store').pushPayload(data);
         });
     }

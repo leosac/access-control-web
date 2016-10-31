@@ -1,7 +1,7 @@
 {{#bs-button disabled=pendingCheckUpdate action=(action 'checkUpdate')}}
   {{#if pendingCheckUpdate}}
-      {{t 'evoxs.update.pending_check_update'}}
-      <i class="fa fa-spinner fa-spin" style="color: orange; font-size:16px"></i>
+    {{t 'evoxs.update.pending_check_update'}}
+    <i class="fa fa-spinner fa-spin" style="color: orange; font-size:16px"></i>
   {{else}}
     {{t 'evoxs.update.check_update'}}
   {{/if}}
@@ -18,7 +18,7 @@
         </thead>
 
         <tbody>
-        {{#each apsWithStatus as |ap|}}
+        {{#each sortedApsWithStatus as |ap|}}
             <tr>
                 <td>
                   {{#link-to 'modules.evoxs.access-point' ap.ap.id}}
@@ -48,36 +48,35 @@
         <th>#Id</th>
         <th>{{t 'evoxs.update.table.target_alias'}}</th>
         <th>{{t 'evoxs.update.table.generated_at'}}</th>
-        <th>Status</th>
+        <th>{{t 'evoxs.update.table.checkpoint'}}</th>
         <th>Action</th>
         </thead>
 
         <tbody>
-        {{#each updates as |update|}}
-            <!-- Pending Only -->
-            {{#if (eq update.status 0)}}
-                <tr>
-                    <td>{{update.id}}</td>
-                    <td>{{update.accessPoint.alias}}</td>
-                    <td>{{update.generatedAt}}</td>
-                    <td>{{update.statusString}}</td>
-                    <td>
-                      {{#bs-button type='success' action=(action 'acknowledgeUpdate' update)}}
-                          {{t 'acknowledge'}}
-                      {{/bs-button}}
+        {{#each pendingUpdates as |update|}}
+            <tr>
+                <td>{{update.id}}</td>
+                <td>{{update.accessPoint.alias}}</td>
+                <td>{{update.generatedAt}}</td>
+                <td>{{update.checkpoint}} {{update.status}}</td>
+                <td>
+                  {{#bs-button type='success' action=(action 'acknowledgeUpdate' update)}}
+                    {{t 'acknowledge'}}
+                  {{/bs-button}}
 
-                      {{#bs-button type='danger' action=(action 'cancelUpdate' update)}}
-                        {{t 'cancel'}}
-                      {{/bs-button}}
-                    </td>
-                </tr>
-            {{/if}}
+                  {{#bs-button type='danger' action=(action 'cancelUpdate' update)}}
+                    {{t 'cancel'}}
+                  {{/bs-button}}
+                </td>
+            </tr>
         {{/each}}
         </tbody>
     </table>
 </div>
 
 <h3>Update History</h3>
+{{autocomplete/access-point label=(t 'evoxs.update.filter_access_point')
+                            onChange=(action (mut filteredAp)) selected=filteredAp.alias}}
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
@@ -90,18 +89,15 @@
         </thead>
 
         <tbody>
-        {{#each updates as |update|}}
-            <!-- Not Pending -->
-            {{#if (not-eq update.status 0)}}
-                <tr class="{{if (eq update.status 1) 'success' 'danger'}}">
-                    <td>{{update.id}}</td>
-                    <td>{{update.accessPoint.alias}}</td>
-                    <td>{{update.generatedAt}}</td>
-                    <td>{{update.statusUpdatedAt}}</td>
-                    <td>{{update.statusString}}</td>
-                    <th>{{update.checkpoint}}</th>
-                </tr>
-            {{/if}}
+        {{#each nonPendingUpdates as |update|}}
+            <tr class="{{if (eq update.status 1) 'success' 'danger'}}">
+                <td>{{update.id}}</td>
+                <td>{{update.accessPoint.alias}}</td>
+                <td>{{update.generatedAt}}</td>
+                <td>{{update.statusUpdatedAt}}</td>
+                <td>{{update.statusString}}</td>
+                <th>{{update.checkpoint}}</th>
+            </tr>
         {{/each}}
         </tbody>
     </table>
