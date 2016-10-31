@@ -46,6 +46,9 @@ export default {
 	'save': 'Enregistrer',
 	'mapping': 'Mapping',
 	'timeframes': 'Zone de temps',
+    'yes': 'Oui',
+    'no': 'Non',
+    'not_available': 'Indisponible',
 
     'cancel_and_refresh': 'Annuler et rafraichir',
     'group_information': 'Information de groupe',
