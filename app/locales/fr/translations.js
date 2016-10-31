@@ -4,6 +4,8 @@ export default {
     'email': 'Email',
     'username': "Nom d'utilisateur",
     'name': 'Nom',
+	'description': 'Description',
+	'edit': 'Editer',
     'delete': 'Supprimer',
     'remove': 'Supprimer',
     'rank': 'Rang',
@@ -16,6 +18,20 @@ export default {
     'members': 'Membres',
     'start_date': 'Date de début',
     'end_date': 'Date de fin',
+	'access': 'Accès',
+	'information': 'Information',
+	'alias': 'Alias',
+	'type': 'Type',
+	'author': 'Auteur',
+	'timestamp': 'Timestamp',
+	'mask': 'Masque',
+	'finalized': 'Finalisé',
+	'details': 'Détails',
+	'refresh': 'Actualiser',
+	'current_page': 'Page actuelle',
+	'page_size': 'Taille de la page',
+	'total_page': 'Total des pages',
+	'count': 'Nombre',
 
     'cancel_and_refresh': 'Annuler et rafraichir',
     'group_information': 'Information de groupe',
@@ -76,5 +92,16 @@ export default {
             'title': 'Liste des utilisateurs'
         },
         'create_new_user': 'Ajouter un utilisateur',
-    }
+    },
+	'door': {
+		'delete_confirm': 'Êtes-vous sûr de vouloir supprimer cette porte ?',
+		'create': 'Ajouter une porte',
+	},
+	'about': {
+		'title': 'A propos',
+	},
+	'accesspoint': {
+		'belongs_to': "Ce point d'accès appartient à la porte <strong>{{dooralias}}</strong>.",
+		'no_belongs': "Ce point d'accès n'est pas lié à une porte.",
+	},
 };

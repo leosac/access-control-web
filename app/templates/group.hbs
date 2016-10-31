@@ -1,6 +1,6 @@
 <div>
   {{#bs-tab}}
-    {{#bs-tab-pane title='Information'}}
+    {{#bs-tab-pane title=(t 'information')}}
         <div class="row col-md-6">
           {{#bs-form formLayout="horizontal" model=model action="editGroup"}}
               <fieldset>
@@ -8,10 +8,10 @@
                 {{bs-form-element controlType="text" label=(t 'name')
                                   property="name"}}
 
-                {{bs-form-element controlType='textarea' label='Description'
+                {{bs-form-element controlType='textarea' label=(t 'description')
                                   property='description'}}
 
-                {{bs-button defaultText="Edit" type="primary" buttonType="submit"
+                {{bs-button defaultText=(t 'edit') type="primary" buttonType="submit"
                             size='sm'}}
 
                 {{#bs-button type="info" icon="glyphicon glyphicon-refresh"
@@ -39,7 +39,7 @@
       {{group-add-one-user group=model}}
     {{/bs-tab-pane}}
 
-    {{#bs-tab-pane title='Access'}}
+    {{#bs-tab-pane title=(t 'access')}}
       {{group-schedules group=model}}
     {{/bs-tab-pane}}
   {{/bs-tab}}

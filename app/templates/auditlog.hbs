@@ -1,19 +1,19 @@
-Audits entries below: <br>
+{{t 'audit.entries_below'}} <br>
 
 {{bs-button action=(action 'refresh') type='primary'
-            size='xs' defaultText='Refresh'}}
+            size='xs' defaultText=(t 'refresh')}}
 
 {{#bs-form formLayout="horizontal" model=this}}
     <div class="row">
         <div class="col-md-3">
-          {{bs-form-element controlType="number" label="Current Page"
+          {{bs-form-element controlType="number" label=(t 'current_page')
                             property="currentPage"}}
         </div>
         <div class="col-md-3">
-          {{bs-form-element controlType="number" label="Page Size"
+          {{bs-form-element controlType="number" label=(t 'page_size')
                             property="pageSize"}}
         </div>
-        Total page: {{totalPage}}  | Count: {{resultCount}}
+        {{t 'total_page'}}: {{totalPage}}  | {{t 'count'}}: {{resultCount}}
     </div>
 
     <div class="row">
@@ -71,13 +71,13 @@ Audits entries below: <br>
     <table class="table table-striped">
         <thead>
         <th>#Id</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Author</th>
-        <th>Timestamp</th>
-        <th>Mask</th>
-        <th>Finalized</th>
-        <th>Details</th>
+        <th>{{t 'type'}}</th>
+        <th>{{t 'description'}}</th>
+        <th>{{t 'author'}}</th>
+        <th>{{t 'timestamp'}}</th>
+        <th>{{t 'mask'}}</th>
+        <th>{{t 'finalized'}}</th>
+        <th>{{t 'details'}}</th>
         </thead>
         <tbody>
         {{#each audits as |audit|}}
@@ -89,25 +89,25 @@ Audits entries below: <br>
                 <td>{{audit.timestamp}}</td>
                 <td>{{audit.eventMask}}</td>
                 <td>{{audit.finalized}}</td>
-                <td>{{bs-button action=(action 'showDetails' audit) defaultText='Details'}}</td>
+                <td>{{bs-button action=(action 'showDetails' audit) defaultText=(t 'details')}}</td>
             </tr>
         {{/each}}
         </tbody>
     </table>
 </div>
 
-{{#bs-modal open=openDetailsModal title="Details"}}
+{{#bs-modal open=openDetailsModal title=(t 'details')}}
     This show a before and after the audit entry snapshot of the object
     that was modified. Note that this features is not available for all kind
     of audit entry. <br>
 
     <hr>
 
-    <i>Before: </i> <br>
+    <i>{{t 'audit.before'}}</i> <br>
     <code style="white-space: pre;">{{detailedAudit.before}}</code>
 
     <hr>
 
-    <i>After: </i> <br>
+    <i>{{t 'audit.after'}}</i> <br>
     <code style="white-space: pre;">{{detailedAudit.after}}</code>
 {{/bs-modal}}

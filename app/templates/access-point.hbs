@@ -5,7 +5,7 @@
 </div>
 
 {{#if model.door}}
-    This access point belongs to door <strong>{{model.door.alias}}</strong>.
+	{{t 'accesspoint.belongs_to' dooralias=model.door.alias}}
 {{else}}
-    This access point is not yet tied to a door.
+    {{t 'accesspoint.no_belongs'}}
 {{/if}}
