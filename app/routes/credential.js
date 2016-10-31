@@ -2,7 +2,7 @@ import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
-    _title: 'Credential',
+    _title: 'credential.title',
     _requireAuth: true,
     beforeModel()
     {
@@ -15,16 +15,6 @@ export default LeosacRoute.extend({
         return this.get('store').findRecord('credential', params.credential_id);
     },
     actions: {
-        editGroup ()
-        {
-            this.controller.get('model').save().then(() =>
-            {
-                this.get('flashMessages').success('Credential successfully edited.');
-            }).catch(() =>
-            {
-                this.get('flashMessages').danger('An error occurred while editing credential');
-            });
-        },
         deleteCredential ()
         {
             const self = this;

@@ -3,7 +3,7 @@ import LeosacRoute from 'web/leosac-route';
 import {findAllCredentials, deleteCredential} from 'web/leosac-credential-helper';
 
 export default LeosacRoute.extend({
-    _title: 'Credentials list',
+    _title: 'credentials.list.title',
     _requireAuth: true,
     beforeModel()
     {

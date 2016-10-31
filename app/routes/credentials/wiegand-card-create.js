@@ -2,7 +2,7 @@ import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
-    _title: 'Create Wiegand Card',
+    _title: 'credentials.wiegand_card_create.title',
     _requireAuth: true,
     beforeModel()
     {

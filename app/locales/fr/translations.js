@@ -39,7 +39,7 @@ export default {
     'acknowledge': 'Acquitter',
     'update': 'Mettre a jour',
 	'wait': 'Merci de patienter, récupération et préparation des données.',
-	'owner_': 'Propriétaire :'
+	'owner_': 'Propriétaire :',
 	'groups': 'Groupes',
 	'schedules': 'Horaires',
 	'submit': 'Envoyer',
@@ -159,6 +159,23 @@ export default {
 		'title': 'Informations de crédential',
 		'noowner': "Le crédential n'a pas de propriétaire.",
 	},
+    'credentials': {
+        'list': {
+            'title': 'Liste des crédentiaux'
+        },
+        'pin_code_create': {
+            'title': 'Créer Code PIN'
+        },
+        'pin_code': {
+            'title': 'Code PIN'
+        },
+        'wiegand_card': {
+            'title': 'Carte Wiegand'
+        },
+        'wiegand_card_create': {
+            'title': 'Créer Carte Wiegand'
+        }
+    },
 	'error': {
 		'title': "Oh non, quelque chose s'est mal passé.",
 		'statuscode': 'Status Code :',

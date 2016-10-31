@@ -2,7 +2,7 @@ import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
-    _title: 'Wiegand Card ',
+    _title: 'credentials.wiegand_card.title',
     _requireAuth: true,
     beforeModel()
     {
@@ -45,7 +45,7 @@ export default LeosacRoute.extend({
                 },
                 () =>
                 {
-                    this.get('flashMessages').danger('Failed to delete credential.')
+                    this.get('flashMessages').danger('Failed to delete credential.');
                 });
         }
     }

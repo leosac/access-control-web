@@ -1,7 +1,7 @@
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
-    _title: 'PIN Code',
+    _title: 'credentials.pin_code.title',
     _requireAuth: true,
     beforeModel()
     {

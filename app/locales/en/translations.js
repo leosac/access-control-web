@@ -40,7 +40,7 @@ export default {
     'acknowledge': 'Acknowledge',
     'update': 'Update',
 	'wait': 'Please wait, fetching and preparing data.',
-	'owner_': 'Owner:'
+	'owner_': 'Owner:',
 	'groups': 'Groups',
 	'schedules': 'Schedules',
 	'submit': 'Submit',
@@ -167,6 +167,23 @@ export default {
 		'title': 'Credential infos',
 		'noowner': 'The credential has no owner.',
 	},
+    'credentials': {
+        'list': {
+            'title': 'Credential list'
+        },
+        'pin_code_create': {
+            'title': 'Create PIN Code'
+        },
+        'pin_code': {
+            'title': 'PIN Code'
+        },
+        'wiegand_card': {
+            'title': 'Wiegand Card'
+        },
+        'wiegand_card_create': {
+            'title': 'Create Wiegand Card'
+        }
+    },
 	'error': {
 		'title': 'Oh no, something went wrong.',
 		'statuscode': 'Status Code:',

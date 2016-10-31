@@ -2,7 +2,7 @@ import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
-    _title: 'Create PIN Code',
+    _title: 'credentials.pin_code_create.title',
     _requireAuth: true,
     beforeModel()
     {
