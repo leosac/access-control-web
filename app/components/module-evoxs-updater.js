@@ -1,8 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+    i18n: Ember.inject.service(),
     store: Ember.inject.service('store'),
     evoxs: Ember.inject.service('module-evoxs'),
+    fm: Ember.inject.service('flash-messages'),
 
     aps: [],
 
@@ -69,6 +71,24 @@ export default Ember.Component.extend({
         startUpdate(ap)
         {
             this.get('evoxs').startUpdate(ap);
+        },
+        cancelUpdate(update)
+        {
+            this.get('evoxs').cancelUpdate(update).then(() =>
+            {
+                this.get('fm').success(this.get('i18n').t('evoxs.update.update_cancelled'));
+            }).catch(() => {
+                this.get('fm').danger(this.get('i18n').t('evoxs.update.update_cancel_failed'));
+            });
+        },
+        acknowledgeUpdate(update)
+        {
+            this.get('evoxs').acknowledgeUpdate(update).then(() =>
+            {
+                this.get('fm').success(this.get('i18n').t('evoxs.update.update_acked'));
+            }).catch(() => {
+                this.get('fm').danger(this.get('i18n').t('evoxs.update.update_acked_failed'));
+            });
         }
     }
 });

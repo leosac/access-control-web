@@ -39,4 +39,10 @@ const AuditEventType = {
     'DOOR_DELETED': 524288,
 };
 
-export {UserRank, AuditEventType};
+const AccessPointUpdateStatus = {
+    'PENDING': 0,
+    'ACKNOWLEDGED': 1,
+    'CANCELLED': 2,
+};
+
+export {UserRank, AuditEventType, AccessPointUpdateStatus};

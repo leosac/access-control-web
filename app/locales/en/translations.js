@@ -4,12 +4,12 @@ export default {
     'email': 'Email',
     'username': "Username",
     'name': 'Name',
-	'description': 'Description',
-	'edit': 'Edit',
+    'description': 'Description',
+    'edit': 'Edit',
     'delete': 'Delete',
     'remove': 'Remove',
     'rank': 'Rank',
-	'password': 'Password',
+    'password': 'Password',
     'leave': 'Leave',
     'kick': 'Kick',
     'enabled': 'Enabled',
@@ -18,20 +18,26 @@ export default {
     'members': 'Members',
     'start_date': 'Start date',
     'end_date': 'End date',
-	'access': 'Access',
-	'information': 'Information',
-	'alias': 'Alias',
-	'type': 'Type',
-	'author': 'Author',
-	'timestamp': 'Timestamp',
-	'mask': 'Mask',
-	'finalized': 'Finalized',
-	'details': 'Details',
-	'refresh': 'Refresh',
-	'current_page': 'Current Page',
-	'page_size': 'Page Size',
-	'total_page': 'Total Page',
-	'count': 'Count',
+    'access': 'Access',
+    'information': 'Information',
+    'alias': 'Alias',
+    'type': 'Type',
+    'author': 'Author',
+    'timestamp': 'Timestamp',
+    'mask': 'Mask',
+    'finalized': 'Finalized',
+    'details': 'Details',
+    'refresh': 'Refresh',
+    'current_page': 'Current Page',
+    'page_size': 'Page Size',
+    'total_page': 'Total Page',
+    'count': 'Count',
+    'pending': 'Pending',
+    'acknowledged': 'Acknowledged',
+    'cancelled': 'Cancelled',
+    'cancel': 'Cancel',
+    'acknowledge': 'Acknowledge',
+    'update': 'Update',
 
     'cancel_and_refresh': 'Cancel & Refresh',
     'group_information': 'Group information',
@@ -100,20 +106,39 @@ export default {
         },
         'create_new_user': 'Create new user',
     },
-	'door': {
-		'delete_confirm': 'Are you sure you wish to delete this door ?',
-		'create': 'Add Door',
-	},
-	'about': {
-		'title': 'About',
-	},
-	'accesspoint': {
-		'belongs_to': 'This access point belongs to door <strong>{{dooralias}}</strong>.',
-		'no_belongs': 'This access point is not yet tied to a door.',
-	},
-	'audit': {
-		'entries_below': 'Audits entries below:',
-		'before': 'Before:',
-		'after': 'After:',
-	},
+    'door': {
+        'delete_confirm': 'Are you sure you wish to delete this door ?',
+        'create': 'Add Door',
+    },
+    'about': {
+        'title': 'About',
+    },
+    'accesspoint': {
+        'belongs_to': 'This access point belongs to door <strong>{{dooralias}}</strong>.',
+        'no_belongs': 'This access point is not yet tied to a door.',
+    },
+    'audit': {
+        'entries_below': 'Audits entries below:',
+        'before': 'Before:',
+        'after': 'After:',
+    },
+    'evoxs': {
+        'update':
+        {
+            'update_acked': 'Update has been acknowledged.',
+            'update_acked_failed': 'Failed to acknowledged update.',
+            'update_cancelled': 'Update bas been cancelled.',
+            'update_cancel_failed': 'Cancelling the update has failed.',
+            'pending_check_update': 'Checking for updates. Please wait.',
+            'check_update': 'Check Updates',
+            'table':
+            {
+                'checkpoint': 'Checkpoint',
+                'update_needed': 'Need update ?',
+                'generated_at': 'Generation date',
+                'updated_at': 'Status change date',
+                'target_alias': 'Target Access Point Alias'
+            }
+        }
+    }
 };

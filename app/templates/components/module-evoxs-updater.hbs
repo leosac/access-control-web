@@ -1,9 +1,9 @@
 {{#bs-button disabled=pendingCheckUpdate action=(action 'checkUpdate')}}
   {{#if pendingCheckUpdate}}
-      Checking for updates. Please wait.
+      {{t 'evoxs.update.pending_check_update'}}
       <i class="fa fa-spinner fa-spin" style="color: orange; font-size:16px"></i>
   {{else}}
-      Check Updates
+    {{t 'evoxs.update.check_update'}}
   {{/if}}
 {{/bs-button}}
 
@@ -12,8 +12,9 @@
         <thead>
         <th>#Id</th>
         <th>Alias</th>
-        <th>Need update</th>
-        <th>Update</th>
+        <th>{{t 'evoxs.update.table.checkpoint'}}</th>
+        <th>{{t 'evoxs.update.table.update_needed'}}</th>
+        <th>{{t 'update'}}</th>
         </thead>
 
         <tbody>
@@ -21,17 +22,18 @@
             <tr>
                 <td>
                   {{#link-to 'modules.evoxs.access-point' ap.ap.id}}
-                  {{ap.ap.id}}
-                {{/link-to}}
+                    {{ap.ap.id}}
+                  {{/link-to}}
                 </td>
                 <td>{{ap.ap.alias}}</td>
+                <td>{{ap.ap.checkpoint}}</td>
                 <td>
                   {{{boolean-to-colored-yes-no ap.needUpdate}}}
                 </td>
                 <td>
-                    {{#if ap.needUpdate}}
-                      {{bs-button defaultText='Update !' action=(action 'startUpdate' ap.ap)}}
-                    {{/if}}
+                  {{#if ap.needUpdate}}
+                    {{bs-button defaultText='Update !' action=(action 'startUpdate' ap.ap)}}
+                  {{/if}}
                 </td>
             </tr>
         {{/each}}
@@ -39,24 +41,67 @@
     </table>
 </div>
 
-Pending updates...
+<h3>Pending updates</h3>
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
         <th>#Id</th>
-        <th>Target Access Point Alias</th>
+        <th>{{t 'evoxs.update.table.target_alias'}}</th>
+        <th>{{t 'evoxs.update.table.generated_at'}}</th>
         <th>Status</th>
+        <th>Action</th>
         </thead>
 
         <tbody>
         {{#each updates as |update|}}
-            <tr>
-                <td>{{update.id}}</td>
-                <td>{{update.accessPoint.alias}}</td>
-                <td>
-                  {{update.status}}
-                </td>
-            </tr>
+            <!-- Pending Only -->
+            {{#if (eq update.status 0)}}
+                <tr>
+                    <td>{{update.id}}</td>
+                    <td>{{update.accessPoint.alias}}</td>
+                    <td>{{update.generatedAt}}</td>
+                    <td>{{update.statusString}}</td>
+                    <td>
+                      {{#bs-button type='success' action=(action 'acknowledgeUpdate' update)}}
+                          {{t 'acknowledge'}}
+                      {{/bs-button}}
+
+                      {{#bs-button type='danger' action=(action 'cancelUpdate' update)}}
+                        {{t 'cancel'}}
+                      {{/bs-button}}
+                    </td>
+                </tr>
+            {{/if}}
+        {{/each}}
+        </tbody>
+    </table>
+</div>
+
+<h3>Update History</h3>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <th>#Id</th>
+        <th>{{t 'evoxs.update.table.target_alias'}}</th>
+        <th>{{t 'evoxs.update.table.generated_at'}}</th>
+        <th>{{t 'evoxs.update.table.updated_at'}}</th>
+        <th>Status</th>
+        <th>{{t 'evoxs.update.table.checkpoint'}}</th>
+        </thead>
+
+        <tbody>
+        {{#each updates as |update|}}
+            <!-- Not Pending -->
+            {{#if (not-eq update.status 0)}}
+                <tr class="{{if (eq update.status 1) 'success' 'danger'}}">
+                    <td>{{update.id}}</td>
+                    <td>{{update.accessPoint.alias}}</td>
+                    <td>{{update.generatedAt}}</td>
+                    <td>{{update.statusUpdatedAt}}</td>
+                    <td>{{update.statusString}}</td>
+                    <th>{{update.checkpoint}}</th>
+                </tr>
+            {{/if}}
         {{/each}}
         </tbody>
     </table>
