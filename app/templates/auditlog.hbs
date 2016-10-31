@@ -18,22 +18,22 @@
 
     <div class="row">
         <div class="col-md-3">
-          {{bs-form-element label='Enable WSAPICall'
+          {{bs-form-element label=(t 'audit.enable_wsapicall')
                             disabled=fetchingData controlType='checkbox'
                             value=wsapicallEnabled}}
         </div>
         <div class="col-md-3">
-          {{bs-form-element label='Enable UserEvent'
+          {{bs-form-element label=(t 'audit.enable_userevent')
                             disabled=fetchingData controlType='checkbox'
                             value=userEventEnabled}}
         </div>
         <div class="col-md-3">
-          {{bs-form-element label='Enable DoorEvent'
+          {{bs-form-element label=(t 'audit.enable_doorevent')
                             disabled=fetchingData controlType='checkbox'
                             value=doorEventEnabled}}
         </div>
         <div class="col-md-3">
-          {{bs-form-element label='Enable GroupEvent'
+          {{bs-form-element label=(t 'audit.enable_groupevent')
                             disabled=fetchingData controlType='checkbox'
                             value=groupEventEnabled}}
         </div>
@@ -41,17 +41,17 @@
 
     <div class="row">
         <div class="col-md-3">
-          {{bs-form-element label='Enable CredentialEvent'
+          {{bs-form-element label=(t 'audit.enable_credentialevent')
                             disabled=fetchingData controlType='checkbox'
                             value=credentialEventEnabled}}
         </div>
         <div class="col-md-3">
-          {{bs-form-element label='Enable ScheduleEvent'
+          {{bs-form-element label=(t 'audit.enable_scheduleevent')
                             disabled=fetchingData controlType='checkbox'
                             value=scheduleEventEnabled}}
         </div>
         <div class="col-md-3">
-          {{bs-form-element label='Enable UserGroupMembershipEvent'
+          {{bs-form-element label='(t 'audit.enable_usergroupevent')
                             disabled=fetchingData controlType='checkbox'
                             value=userGroupMembershipEventEnabled}}
         </div>
@@ -60,7 +60,7 @@
 {{/bs-form}}
 
 {{#if progressValue}}
-    Please wait, fetching and preparing data.
+    {{t 'wait'}}
 
     {{#bs-progress}}
       {{bs-progress-bar value=progressValue minValue=0 maxValue=100 type="primary"}}
@@ -97,9 +97,7 @@
 </div>
 
 {{#bs-modal open=openDetailsModal title=(t 'details')}}
-    This show a before and after the audit entry snapshot of the object
-    that was modified. Note that this features is not available for all kind
-    of audit entry. <br>
+    {{t 'audit.details_intro'}}<br>
 
     <hr>
 

@@ -38,6 +38,14 @@ export default {
     'cancel': 'Annuler',
     'acknowledge': 'Acquitter',
     'update': 'Mettre a jour',
+	'wait': 'Merci de patienter, récupération et préparation des données.',
+	'owner_': 'Propriétaire :'
+	'groups': 'Groupes',
+	'schedules': 'Horaires',
+	'submit': 'Envoyer',
+	'save': 'Enregistrer',
+	'mapping': 'Mapping',
+	'timeframes': 'Zone de temps',
 
     'cancel_and_refresh': 'Annuler et rafraichir',
     'group_information': 'Information de groupe',
@@ -110,6 +118,19 @@ export default {
         'belongs_to': "Ce point d'accès appartient à la porte <strong>{{dooralias}}</strong>.",
         'no_belongs': "Ce point d'accès n'est pas lié à une porte.",
     },
+	'audit': {
+        'entries_below': "Enregistrements d'audit ci-dessous :",
+        'before': 'Avant :',
+        'after': 'Après :',
+		'enable_wsapicall': 'Activer WSAPICall',
+		'enable_userevent': 'Activer UserEvent',
+		'enable_doorevent': 'Activer DoorEvent',
+		'enable_groupevent': 'Activer GroupEvent',
+		'enable_credentialevent': 'Activer CredentialEvent',
+		'enable_scheduleevent': 'Activer ScheduleEvent',
+		'enable_usergroupevent': 'Activer UserGroupMembershipEvent',
+		'details_intro': "Affiche un état avant / après de l'enregistrement d'audit de l'objet modifié. Merci de noter que cette fonctionnalité n'est pas disponibles pour tous les types d'enregistrement d'audit.",
+    },
     'evoxs': {
         'update':
         {
@@ -128,5 +149,26 @@ export default {
                 'target_alias': "Alias du point d'access",
             }
         }
-    }
+    },
+	'credential': {
+		'title': 'Informations de crédential',
+		'noowner': "Le crédential n'a pas de propriétaire.",
+	},
+	'error': {
+		'title': "Oh non, quelque chose s'est mal passé.",
+		'statuscode': 'Status Code :',
+		'message': 'Message :',
+		'requestid': 'Identifiant de requête :',
+	},
+	'schedule': {
+		'mapping': 'Mapping : {{alias}}',
+		'mapping_list': "Ci-dessous la liste des mapping liés à l'horaire.",
+		'add_mapping': 'Ajouter mapping',
+	},
+	'overview': {
+		'intro': "Cette page fournie un vue globale de certaines valeurs de configuration du système {{appname}}.",
+		'logs_per_page': 'Evènements par page',
+		'last_logs': 'Derniers évènements',
+		'total_logs': 'Il y a un total de {{totalLogs}} évènements.',
+	},
 };

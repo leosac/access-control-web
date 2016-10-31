@@ -21,6 +21,7 @@ export default {
     'access': 'Access',
     'information': 'Information',
     'alias': 'Alias',
+	'alias_': 'Alias:',
     'type': 'Type',
     'author': 'Author',
     'timestamp': 'Timestamp',
@@ -38,6 +39,14 @@ export default {
     'cancel': 'Cancel',
     'acknowledge': 'Acknowledge',
     'update': 'Update',
+	'wait': 'Please wait, fetching and preparing data.',
+	'owner_': 'Owner:'
+	'groups': 'Groups',
+	'schedules': 'Schedules',
+	'submit': 'Submit',
+	'save': 'Save',
+	'mapping': 'Mapping',
+	'timeframes': 'Time Frames',
 
     'cancel_and_refresh': 'Cancel & Refresh',
     'group_information': 'Group information',
@@ -121,6 +130,14 @@ export default {
         'entries_below': 'Audits entries below:',
         'before': 'Before:',
         'after': 'After:',
+		'enable_wsapicall': 'Enable WSAPICall',
+		'enable_userevent': 'Enable UserEvent',
+		'enable_doorevent': 'Enable DoorEvent',
+		'enable_groupevent': 'Enable GroupEvent',
+		'enable_credentialevent': 'Enable CredentialEvent',
+		'enable_scheduleevent': 'Enable ScheduleEvent',
+		'enable_usergroupevent': 'Enable UserGroupMembershipEvent',
+		'details_intro': 'This show a before and after the audit entry snapshot of the object that was modified. Note that this features is not available for all kind of audit entry.',
     },
     'evoxs': {
         'update':
@@ -140,5 +157,26 @@ export default {
                 'target_alias': 'Target Access Point Alias'
             }
         }
-    }
+    },
+	'credential': {
+		'title': 'Credential infos',
+		'noowner': 'The credential has no owner.',
+	},
+	'error': {
+		'title': 'Oh no, something went wrong.',
+		'statuscode': 'Status Code:',
+		'message': 'Message:',
+		'requestid': 'Request Identifier:',
+	},
+	'schedule': {
+		'mapping': 'Mapping: {{alias}}',
+		'mapping_list': 'Below are all the mapping linked to the schedule.',
+		'add_mapping': 'Add mapping',
+	},
+	'overview': {
+		'intro': "This page provide an overview of some of the configuration value of the {{appname}} system.",
+		'logs_per_page': 'Log per page',
+		'last_logs': 'Last logs',
+		'total_logs': 'There is a total of {{totalLogs}} log messages.',
+	},
 };

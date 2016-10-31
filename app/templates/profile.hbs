@@ -1,10 +1,10 @@
 <div>
   {{#bs-tab}}
-    {{#bs-tab-pane title='Information'}}
+    {{#bs-tab-pane title=(t 'information')}}
         <div class="col-md-6">
           {{#bs-form formLayout="horizontal" model=model.user action="editProfile"}}
               <fieldset>
-                  <legend>Profile</legend>
+                  <legend>{{t 'profile.title'}}</legend>
                 {{bs-form-element disabled=isProfileLocked
                                   controlType="text" label=(t 'firstname')
                                   placeholder="John" property="firstname"}}
@@ -28,7 +28,7 @@
                 {{/bs-form-element}}
 
                 {{bs-button disabled=isProfileLocked
-                            defaultText="Submit" type="primary" buttonType="submit"}}
+                            defaultText="{{t 'submit'}}" type="primary" buttonType="submit"}}
               </fieldset>
           {{/bs-form}}
 
@@ -44,15 +44,15 @@
         </div>
     {{/bs-tab-pane}}
 
-    {{#bs-tab-pane title='Groups'}}
+    {{#bs-tab-pane title=(t 'groups')}}
       {{user-group-membership-table user=model.user}}
     {{/bs-tab-pane}}
 
-    {{#bs-tab-pane title='Credentials'}}
+    {{#bs-tab-pane title=(t 'credentials')}}
       {{user-credential-table user=model.user}}
     {{/bs-tab-pane}}
 
-    {{#bs-tab-pane title='Schedules'}}
+    {{#bs-tab-pane title=(t 'schedules')}}
       {{user-schedules user=model.user}}
     {{/bs-tab-pane}}
   {{/bs-tab}}

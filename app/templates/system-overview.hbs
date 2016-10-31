@@ -1,11 +1,11 @@
 <div class="col-lg-12">
-    This page provide an overview of some of the configuration value of the {{getenv 'appname'}} system.
+    {{t 'overview.intro' appname=(getenv 'appname')}}
     <br> <br>
 
     <div class="panel panel-default">
         <div class="panel-heading">
             <a href="#" {{action 'refreshOverview'}}>
-                <i style="color: green" class="fa fa-refresh"></i> Refresh
+                <i style="color: green" class="fa fa-refresh"></i> {{t 'refresh'}}
             </a>
         </div>
 
@@ -16,12 +16,12 @@
 
    <div class="row">
       {{bs-input type='number' value=logPerPage
-      label='Log per page'
+      label=(t 'overview.logs_per_page')
       }}
     </div>
 
     <div class="row text-center">
-        There is a total of {{totalLogs}} log messages.
+        {{t 'overview.total_logs' totalLogs=totalLogs}}
     </div>
 
     <div class="row text-center">
@@ -34,7 +34,7 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            Last logs
+            {{t 'overview.lastlogs'}}
         </div>
 
         <div class="panel-body">
