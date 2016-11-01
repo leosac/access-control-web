@@ -3,20 +3,21 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
     ws: Ember.inject.service('websocket'),
 
+    // JSON as returned by the `access_overview` Leosac WS call.
     rawData: null,
     allDoors: Ember.computed('rawData', function ()
     {
-        const ids = [];
+        const doors = [];
         if (!this.get('rawData'))
-            return ids;
+            return doors;
 
         this.get('rawData').forEach((doorInfo) =>
         {
-            ids.push(doorInfo.id);
+            doors.push(this.get('store').find('door', doorInfo.door_id));
         });
-        return ids;
+        return doors;
     }),
-    allUsers: Ember.computed('allDoors', function ()
+    userDoorInfo: Ember.computed('allDoors', function ()
     {
         let userIds = [];
 
@@ -28,7 +29,6 @@ export default Ember.Controller.extend({
             doorInfo.user_ids.forEach((uid) =>
             {
                 userIds.push(uid);
-                userIds.push(1);
             });
         });
         userIds = Array.from(new Set(userIds));
@@ -41,7 +41,7 @@ export default Ember.Controller.extend({
         let userInfos = [];
         userIds.forEach((uid) =>
         {
-            const userData = {user_id: uid, doors: []};
+            const userData = {user: this.get('store').find('user', uid), doors: []};
             this.get('rawData').forEach((doorInfo) =>
             {
                 if (userCanAccessDoor(uid, doorInfo))
@@ -63,7 +63,7 @@ export default Ember.Controller.extend({
         this.get('ws').sendJson('access_overview', {}).then((data) =>
         {
             console.log(data);
-            this.set('rawData', data.data);
+            this.set('rawData', data);
         });
     },
     init()

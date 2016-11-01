@@ -53,6 +53,11 @@ export default {
     'access_point': 'Access Point',
     'clear_selection': 'Clear selection',
 
+    // To avoid duplication, we may need to put single word into a namespace
+    'w': {
+        'door': 'Door'
+    },
+
     'cancel_and_refresh': 'Cancel & Refresh',
     'group_information': 'Group information',
     'leave_group_confirmation': 'Are you sure you wish to leave this group ?',
