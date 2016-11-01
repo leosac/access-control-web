@@ -1,7 +1,7 @@
 {{#bs-form-element label=label}}
-  {{#power-select-typeahead search=(action 'searchAP')
+  {{#power-select-typeahead search=(action 'searchGroup')
                             selected=selected
-                            placeholder=(t 'autocomplete.search_access_point')
+                            placeholder=(t 'autocomplete.search_group')
                             onchange=(action 'changed')
   as |accessPointInfo|}}
     {{accessPointInfo.alias}}

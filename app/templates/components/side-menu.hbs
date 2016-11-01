@@ -25,6 +25,9 @@
             <li>
                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> {{t 'access'}}<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
+                    <li>{{#link-to 'access-overview'}}
+                      {{t 'access-overview.title'}}
+                    {{/link-to}}</li>
                     <li>
                       {{#link-to 'users.list'}}{{t 'users.title'}}{{/link-to}}
                     </li>

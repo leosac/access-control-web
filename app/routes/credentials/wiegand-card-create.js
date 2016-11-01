@@ -14,13 +14,21 @@ export default LeosacRoute.extend({
         "use strict";
         return this.get('store').createRecord('wiegand-card');
     },
-    resetController(controller, isExiting, transition)
+    resetController(controller, isExiting/*, transition*/)
     {
-        // Rollback change when leaving the page.
-        if (isExiting)
+        // fixme Creating a credential and then hitting "back" will
+        // still show an empty one in the list.
+
+        // Somehow this resetController() hook is called AFTER the model()
+        // hook on the page we are going to.
+        // This seems to make little sense...
+        // Our own helper, findAllCredentials may be causing trouble tho,
+        // because it returns with toArray(), probably locking in some to-be-removed
+        // objects.
+        const mod = this.controller.get('model');
+        if (isExiting && mod.get('isNew'))
         {
-            const mod = this.controller.get('model');
-            this.get('store').unloadRecord(mod);
+            mod.unloadRecord();
         }
     },
     actions:

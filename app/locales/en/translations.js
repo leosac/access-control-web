@@ -99,6 +99,11 @@ export default {
     'test': 'test',
     'url': 'Url',
 
+    // To avoid duplication, we may need to put single word into a namespace
+    'w': {
+        'door': 'Door'
+    },
+
     'cancel_and_refresh': 'Cancel & Refresh',
     'group_information': 'Group information',
     'leave_group_confirmation': 'Are you sure you wish to leave this group ?',
@@ -194,7 +199,6 @@ export default {
         'no_belongs': 'This access point is not yet tied to a door.',
         'create': 'Add Access Point',
         'delete_confirm': 'Are you sure you wish to delete this access point?',
-        'select': 'Pick an access point (type % to list all)',
     },
     'audit': {
         'entries_below': 'Audits entries below:',
@@ -328,4 +332,11 @@ export default {
         'verify_peer': 'Verify Peer',
         'save': 'Save Config',
     },
+    'access-overview': {
+        'title': 'Access Overview'
+    },
+    'autocomplete': {
+        'search_group': 'Pick a group (type % to list all)',
+        'search_access_point': 'Pick an access point (type % to list all)'
+    }
 };

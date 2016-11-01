@@ -96,6 +96,11 @@ export default {
     'test': 'test',
     'url': 'Url',
 
+    // To avoid duplication, we may need to put single word into a namespace
+    'w': {
+        'door': 'Porte'
+    },
+
     'cancel_and_refresh': 'Annuler et rafraichir',
     'group_information': 'Information de groupe',
     'leave_group_confirmation': 'Etes vous sur de vouloir quitter ce groupe ?',
@@ -184,7 +189,6 @@ export default {
         'no_belongs': "Ce point d'accès n'est pas lié à une porte.",
         'create': "Ajouter un point d'accès",
         'delete_confirm': "Êtes-vous sur de vouloir supprimer ce point d'accès ?",
-        'select': "Choisissez un point d'accès (saisissez % pour avoir la liste complète)",
     },
 	'audit': {
         'entries_below': "Enregistrements d'audit ci-dessous :",
@@ -319,4 +323,11 @@ export default {
         'verify_peer': 'Vérifier le pair',
         'save': 'Enregistrer la configuration',
     },
+    'access-overview': {
+        'title': 'Récapitulatif des accès'
+    },
+    'autocomplete': {
+        'search_group': 'Veuillez choisir un groupe (tapez % pour tout voir)',
+        'search_access_point': "Veuillez choisir un point d'acces (tapez % pour tout voir)"
+    }
 };

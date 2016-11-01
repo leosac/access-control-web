@@ -11,7 +11,17 @@ export default LeosacRoute.extend({
     model(params)
     {
         "use strict";
-        return this.get('store').findRecord('door', params.door_id);
+        // fixme: THIS IS AN HORRIBLE HACK !
+        // The alias of the linked AP didn't show in the view for
+        // some unknown reason, despite the relationship being fetched.
+        // This is really horrible because it loads all AP to make sure
+        // they are present in memory when the door is loaded.
+        // It works, but THIS NEEDS FIXING.
+        // fixme FIX ME PLS
+        return this.get('store').findAll('access-point').then(() =>
+        {
+            return this.get('store').findRecord('door', params.door_id);
+        });
     },
     resetController(controller, isExiting/*, transition*/)
     {

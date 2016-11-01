@@ -26,7 +26,6 @@ to render if there is no active session.
         </nav>
 
         <div id="page-wrapper">
-            <br>
           {{#each flashMessages.queue as |flash|}}
             {{#flash-message flash=flash as |component flash|}}
                 <p>{{flash.message}}</p>
