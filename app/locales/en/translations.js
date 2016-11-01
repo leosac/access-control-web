@@ -201,4 +201,7 @@ export default {
 		'last_logs': 'Last logs',
 		'total_logs': 'There is a total of {{totalLogs}} log messages.',
 	},
+    'access-overview': {
+        'title': 'Access Overview'
+    }
 };

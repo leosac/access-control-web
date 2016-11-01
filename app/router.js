@@ -65,11 +65,12 @@ Router.map(function ()
   });
   this.route('auditlog');
 
-    this.route('access-point', {path: '/access-point/:access_point_id'});
-    this.route('access-points', function() {
-    this.route('list');
-    this.route('create');
-  });
+  this.route('access-point', {path: '/access-point/:access_point_id'});
+  this.route('access-points', function() {
+  this.route('list');
+  this.route('create');
+});
+  this.route('access-overview');
 });
 
 export default Router;

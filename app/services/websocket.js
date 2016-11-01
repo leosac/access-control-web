@@ -94,9 +94,22 @@ export default Ember.Service.extend({
                 {
                     sticky: true
                 });
+
+            // Flush all pending callback and mark them as error.
+            const pending_callbacks = self.get('callback');
+            for (var key in pending_callbacks)
+            {
+                if (!pending_callbacks.hasOwnProperty(key))
+                    continue;
+                let c = pending_callbacks[key];
+                c.error({
+                    status_code: 6,
+                    status_string: 'Connection lost',
+                    content: {}
+                });
+            }
         };
         this.set('ws', ws);
-
 
         var timeout_request = function ()
         {

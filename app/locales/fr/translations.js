@@ -193,4 +193,7 @@ export default {
 		'last_logs': 'Derniers évènements',
 		'total_logs': 'Il y a un total de {{totalLogs}} évènements.',
 	},
+    'access-overview': {
+        'title': 'Récapitulatif des accès'
+    }
 };

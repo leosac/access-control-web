@@ -1,0 +1,27 @@
+{{json rawData}}
+<div class="table-responsive">
+    <table class="table table-striped table-bordered">
+        <thead>
+        <th>UserId / DoorId</th>
+        {{#each allDoors as |doorId|}}
+          <th>Door {{doorId}}</th>
+        {{/each}}
+        </thead>
+        <tbody>
+        {{#each allUsers as |userInfo|}}
+            <tr>
+                <td>{{userInfo.user_id}}</td>
+                {{#each userInfo.doors as |userDoorInfo|}}
+                    <td class="{{if userDoorInfo 'success' 'danger'}}">
+                        {{#if userDoorInfo}}
+                          {{t 'yes'}}
+                        {{else}}
+                          {{t 'no'}}
+                        {{/if}}
+                    </td>
+                {{/each}}
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
