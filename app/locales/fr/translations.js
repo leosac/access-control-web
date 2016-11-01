@@ -200,5 +200,9 @@ export default {
 	},
     'access-overview': {
         'title': 'Récapitulatif des accès'
+    },
+    'autocomplete': {
+        'search_group': 'Veuillez choisir un groupe (tapez % pour tout voir)',
+        'search_access_point': "Veuillez choisir un point d'acces (tapez % pour tout voir)"
     }
 };

@@ -14,7 +14,7 @@ export default LeosacRoute.extend({
     {
         "use strict";
         const newUser = this.get('store').createRecord('user');
-        newUser.set('rank', 'Normal');
+        newUser.set('rank', 'User');
         return Ember.RSVP.hash({
             user: newUser,
             possibleRanks: UserRank,

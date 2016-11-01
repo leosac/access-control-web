@@ -14,7 +14,11 @@ export default LeosacRoute.extend({
     model()
     {
         "use strict";
-        return this.get('store').createRecord('access-point');
+        const ap = this.get('store').createRecord('access-point');
+
+        // This is kind of a hack to set the EVOXS as default.
+        ap.set('controllerModule', 'EVOXS');
+        return ap;
     },
     resetController(controller, isExiting, transition)
     {

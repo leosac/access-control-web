@@ -208,5 +208,9 @@ export default {
 	},
     'access-overview': {
         'title': 'Access Overview'
+    },
+    'autocomplete': {
+        'search_group': 'Pick a group (type % to list all)',
+        'search_access_point': 'Pick an access point (type % to list all)'
     }
 };

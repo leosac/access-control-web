@@ -8,9 +8,9 @@
                         placeholder="A few optional notes..."
                         property="description"}}
 
-
       {{autocomplete/access-point label=(t 'access_point')
-                                  onChange=(action 'changeAP') selected=door.accessPoint.alias}}
+                                  onChange=(action 'changeAP')
+                                  selected=door.accessPoint.alias}}
 
       {{bs-button defaultText="Submit" type="primary" buttonType="submit"}}
     </fieldset>
