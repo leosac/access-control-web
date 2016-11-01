@@ -4,18 +4,18 @@
   {{text}}
 {{/bs-button}}
 
-{{#bs-modal body=false footer=false open=modalOpen title='Confirmation'}}
+{{#bs-modal body=false footer=false open=modalOpen title=(t 'confirmation')}}
   {{#bs-modal-body}}
     {{message}} <br>
   {{/bs-modal-body}}
 
   {{#bs-modal-footer}}
     {{#bs-button type='primary' action='onCancel'}}
-        Cancel
+        {{t 'cancel'}}
     {{/bs-button}}
 
     {{#bs-button type='danger' action='onConfirm'}}
-        Confirm
+        {{t 'confirm'}}
     {{/bs-button}}
   {{/bs-modal-footer}}
 {{/bs-modal}}

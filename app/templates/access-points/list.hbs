@@ -1,5 +1,5 @@
 {{#link-to 'access-points.create' class='btn btn-primary'}}
-    Add Access Point
+    {{t 'accesspoint.create'}}
 {{/link-to}}
 <hr>
 
@@ -7,8 +7,8 @@
     <table class="table table-striped">
         <thead>
         <th>#Id</th>
-        <th>Alias</th>
-        <th>Module</th>
+        <th>{{t 'alias'}}</th>
+        <th>{{t 'module'}}</th>
         <th>{{t 'delete'}}</th>
         </thead>
         <tbody>
@@ -26,8 +26,8 @@
                     type='danger'
                     icon='glyphicon glyphicon-remove'
                     size='xs'
-                    text='Delete'
-                    message='Are you sure you wish to delete this access point ?'
+                    text=(t 'delete')
+                    message=(t 'accesspoint.delete_confirm')
                     onConfirm=(route-action 'deleteAP' ap)
                   }}
                 </td>

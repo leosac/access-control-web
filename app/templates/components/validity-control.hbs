@@ -1,7 +1,7 @@
 <fieldset>
     <legend>{{t 'validity'}}</legend>
   {{#bs-form-element label=(t 'enabled')}}
-    {{input disabled=disabled type='checkbox' name='Enabled' checked=enabled}}
+    {{input disabled=disabled type='checkbox' name=(t 'enabled') checked=enabled}}
   {{/bs-form-element}}
 
   {{#bs-form-element label=(t 'start_date')}}

@@ -1,17 +1,17 @@
 {{#bs-form formLayout="horizontal" model=pin action=action}}
     <fieldset>
-        <legend>Configuration</legend>
-      {{bs-form-element controlType="text" label="Alias"
-                        placeholder="A friendly name to remember me by"
+        <legend>{{ t 'configuration'}}</legend>
+      {{bs-form-element controlType="text" label=(t 'alias')
+                        placeholder=(t 'alias_placeholder')
                         property="alias"}}
-      {{bs-form-element controlType="text" label="Pin Code"
+      {{bs-form-element controlType="text" label=(t 'pincode')
                         placeholder="1234" property="code"}}
 
-      {{bs-form-element controlType="textarea" label="Notes"
-                        placeholder="A few optional notes..."
+      {{bs-form-element controlType="textarea" label=(t 'notes')
+                        placeholder=(t 'notes_placeholder)
                         property="description"}}
 
       {{user-picker selected=pin.owner onChange=(action (mut pin.owner))}}
-      {{bs-button defaultText="Submit" type="primary" buttonType="submit"}}
+      {{bs-button defaultText=(t 'submit') type="primary" buttonType="submit"}}
     </fieldset>
 {{/bs-form}}

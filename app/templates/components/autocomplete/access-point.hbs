@@ -1,7 +1,7 @@
 {{#bs-form-element label=label}}
   {{#power-select-typeahead search=(action 'searchAP')
                             selected=selected
-                            placeholder="Pick an access point (type % to list all)"
+                            placeholder=(t 'accesspoint.select')
                             onchange=(action 'changed')
   as |accessPointInfo|}}
     {{accessPointInfo.alias}}

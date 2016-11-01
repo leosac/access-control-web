@@ -1,34 +1,33 @@
 <table class="table table-hover">
     <thead>
     <tr>
-        <th>Parameter</th>
-        <th>Value</th>
-        <th>Description</th>
+        <th>{{t 'parameter'}}</th>
+        <th>{{t 'value'}}</th>
+        <th>{{t 'description'}}</th>
     </tr>
     </thead>
     <tbody>
     <tr>
-        <td>Instance Name</td>
+        <td>{{t 'instance_name'}}</td>
         <td>{{systemOverview.instance_name}}</td>
-        <td>The (unique) name of the {{getenv 'appname'}} instance.</td>
+        <td>{{t 'instance_name_descr' appname=(getenv 'appname')}</td>
     </tr>
     <tr>
-        <td>Configuration Version</td>
+        <td>{{t 'config_version'}}</td>
         <td>{{systemOverview.config_version}}</td>
-        <td>Is used when performing synchronization to determine whether or not
-            synchronization is needed.</td>
+        <td>{{t 'config_version_descr'}}</td>
     </tr>
     <tr>
-        <td>Uptime</td>
+        <td>{{t 'uptime'}}</td>
         <td>{{format-duration systemOverview.uptime}}</td>
-        <td>How long has {{getenv 'appname'}} been running. (HH:MM:SS)</td>
+        <td>{{t 'uptime_descr' appname=(getenv 'appname')}}</td>
     </tr>
     <tr>
-        <td>Modules</td>
+        <td>{{t 'modules'}}</td>
         <td>
             {{systemOverview.enabledModules}}
         </td>
-        <td>Which modules are running.</td>
+        <td>{{t 'modules_descr'}}</td>
     </tr>
     </tbody>
 </table>

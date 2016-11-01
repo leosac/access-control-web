@@ -8,7 +8,7 @@
       </fieldset>
 
       <fieldset>
-          <legend>Profile</legend>
+          <legend>{{t 'profile.title'}}</legend>
         {{bs-form-element controlType="text" label=(t 'firstname')
                           placeholder="John" property="firstname"}}
 
@@ -36,6 +36,6 @@
       {{password-input passwordOut=(mut model.user.password)}}
     </fieldset>
 
-  {{bs-button defaultText="Create User" type="primary"
+  {{bs-button defaultText=(t 'users.create.title') type="primary"
               buttonType="submit" action='createUser'}}
 </div>

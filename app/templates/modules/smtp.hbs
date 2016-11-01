@@ -1,25 +1,24 @@
-SMTP module page. <br>
-
-Note: SMTP password are saved in cleartext ! <br>
+{{t 'smtp.title'}}<br>
+{{t 'smtp.notes'}}<br>
 
 {{#bs-tab}}
-  {{#bs-tab-pane title='Configuration'}}
-    {{bs-button defaultText="Add Server" type="primary"
+  {{#bs-tab-pane title=(t 'configuration')}}
+    {{bs-button defaultText=(t 'smtp.add_server') type="primary"
                 buttonType="submit" action='addServer'}}
 
     {{#each model.servers as |server|}}
         <div class="panel panel-default">
             <div class="panel-body">
 
-              {{bs-button defaultText="Remove Server" type="danger"
+              {{bs-button defaultText=(t 'smtp.remove_server') type="danger"
                           buttonType="submit" action=(route-action 'removeServer' server)}}
 
               {{#bs-form model=server action='editConfig'}}
                   <div id="content">
-                    {{bs-form-element controlType="text" label="Url"
+                    {{bs-form-element controlType="text" label=(t 'url')
                                       placeholder="smtp://mail.mydomain.com"
                                       property="url"}}
-                    {{bs-form-element controlType="text" label="From"
+                    {{bs-form-element controlType="text" label=(t 'smtp.from')
                                       placeholder="leosac@my-domain.com"
                                       property="from"}}
                     {{bs-form-element controlType="text" label=(t 'username')
@@ -28,13 +27,13 @@ Note: SMTP password are saved in cleartext ! <br>
                     {{bs-form-element controlType="password" label=(t 'password')
                                       property="password"}}
 
-                    {{bs-form-element controlType="number" label="Timeout (Milliseconds)"
+                    {{bs-form-element controlType="number" label=(t 'smtp.timeout')
                                       property="timeout"}}
 
-                    {{bs-form-element controlType="checkbox" label="Verify host"
+                    {{bs-form-element controlType="checkbox" label=(t 'smtp.verify_host)
                                       property="verify_host"}}
 
-                    {{bs-form-element controlType="checkbox" label="Verify peer"
+                    {{bs-form-element controlType="checkbox" label=(t 'smtp.verify_peer)
                                       property="verify_peer"}}
 
                     {{bs-form-element controlType="checkbox" label=(t 'enabled')
@@ -45,12 +44,12 @@ Note: SMTP password are saved in cleartext ! <br>
         </div>
     {{/each}}
 
-    {{bs-button defaultText="Save config" type="primary"
+    {{bs-button defaultText=(t 'smtp.save') type="primary"
                 buttonType="submit" action='updateConfig'}}
     <br> <br> <br><br> <br> <br>
   {{/bs-tab-pane}}
 
-  {{#bs-tab-pane title='Test'}}
+  {{#bs-tab-pane title=(t 'test')}}
     {{module-smtp-send-test-mail}}
   {{/bs-tab-pane}}
 {{/bs-tab}}

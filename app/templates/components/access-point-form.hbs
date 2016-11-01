@@ -1,15 +1,15 @@
 {{#bs-form formLayout="horizontal" model=ap action=action}}
     <fieldset>
-        <legend>Configuration</legend>
-      {{bs-form-element controlType="text" label="Alias"
-                        placeholder="MyAccessPoint"
+        <legend>{{t 'configuration'}}</legend>
+      {{bs-form-element controlType="text" label=(t 'alias')
+                        placeholder=(t 'access_point_placeholder')
                         property="alias"}}
-      {{bs-form-element controlType="textarea" label="Notes"
-                        placeholder="A few optional notes..."
+      {{bs-form-element controlType="textarea" label=(t 'notes')
+                        placeholder=(t 'notes_placeholder')
                         property="description"}}
 
       {{#if isCreating}}
-        {{#bs-form-element label="Controller Module"}}
+        {{#bs-form-element label=(t 'controller_module')}}
           {{#power-select
             selected=ap.controllerModule
             options=availableAccessPointModules
@@ -26,6 +26,6 @@
       <!-- Include module specific stuff -->
       {{yield}}
 
-      {{bs-button defaultText="Submit" type="primary" buttonType="submit"}}
+      {{bs-button defaultText=(t 'submit') type="primary" buttonType="submit"}}
     </fieldset>
 {{/bs-form}}

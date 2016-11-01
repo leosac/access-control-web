@@ -1,10 +1,9 @@
 {{#link-to 'groups.create' class='btn btn-primary'}}
-    Create new group
+    {{t 'users.create_new_group'}}
 {{/link-to}}
 <hr>
 
-Note that the "Total members" entry may not reflect the real number of members.
-This is a permission-related issue.
+{{t 'users.list_groups_notice'}}
 
 {{group-list groups=model
              deleteLink=true

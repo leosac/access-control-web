@@ -1,27 +1,27 @@
 {{#if timeframe}}
     <div class="col-md-6">
-      {{bs-form-element controlType='checkbox' label='Monday'
+      {{bs-form-element controlType='checkbox' label=(t 'monday')
                         value=timeframe.enabledOnMonday}}
-      {{bs-form-element controlType='checkbox' label='Tuesday'
+      {{bs-form-element controlType='checkbox' label=(t 'tuesday')
                         value=timeframe.enabledOnTuesday}}
-      {{bs-form-element controlType='checkbox' label='Wednesday'
+      {{bs-form-element controlType='checkbox' label=(t 'wednesday')
                         value=timeframe.enabledOnWednesday}}
-      {{bs-form-element controlType='checkbox' label='Thursday'
+      {{bs-form-element controlType='checkbox' label=(t 'thursday')
                         value=timeframe.enabledOnThursday}}
-      {{bs-form-element controlType='checkbox' label='Friday'
+      {{bs-form-element controlType='checkbox' label=(t 'friday')
                         value=timeframe.enabledOnFriday}}
-      {{bs-form-element controlType='checkbox' label='Saturday'
+      {{bs-form-element controlType='checkbox' label=(t 'saturday')
                         value=timeframe.enabledOnSaturday}}
-      {{bs-form-element controlType='checkbox' label='Sunday'
+      {{bs-form-element controlType='checkbox' label=(t 'sunday')
                         value=timeframe.enabledOnSunday}}
     </div>
 
     <div class="col-md-6">
-      {{#bs-form-element label="Start Time"}}
+      {{#bs-form-element label=(t 'start_time')}}
         {{input type='text' placeholder='13:37' value=(mut timeframe.startTime) class='form-control'}}
       {{/bs-form-element}}
 
-      {{#bs-form-element label="End Time"}}
+      {{#bs-form-element label=(t 'end_time')}}
         {{input type='text' placeholder='18:42' value=(mut timeframe.endTime) class='form-control'}}
       {{/bs-form-element}}
     </div>

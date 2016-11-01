@@ -3,7 +3,7 @@
         <ul class="nav" id="side-menu">
             <li class="sidebar-search">
                 <div class="input-group custom-search-form">
-                    <input type="text" class="form-control" placeholder="Search...">
+                    <input type="text" class="form-control" placeholder="{{t 'search'}}...">
                     <span class="input-group-btn">
                                 <button class="btn btn-default" type="button">
                                     <i class="fa fa-search"></i>
@@ -14,46 +14,46 @@
             </li>
             <li>
               {{#link-to 'index'}}
-                  <i class="fa fa-dashboard fa-fw"></i> Dashboard
+                  <i class="fa fa-dashboard fa-fw"></i> {{t 'index.title'}}
               {{/link-to}}
             </li>
             <li>
               {{#link-to 'system-overview'}}
-                  <i class="fa fa-cog fa-fw"></i> Overview
+                  <i class="fa fa-cog fa-fw"></i> {{t 'overview'}}
               {{/link-to}}
             </li>
             <li>
-                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Access<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> {{t 'access'}}<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                      {{#link-to 'users.list'}}Users{{/link-to}}
+                      {{#link-to 'users.list'}}{{t 'users.title'}}{{/link-to}}
                     </li>
 
-                    <li>{{#link-to 'groups.list'}}Groups{{/link-to}}</li>
+                    <li>{{#link-to 'groups.list'}}{{t 'groups'}}{{/link-to}}</li>
 
-                    <li>{{#link-to 'credentials.list'}}Credentials{{/link-to}}</li>
+                    <li>{{#link-to 'credentials.list'}}{{t 'credentials.title'}}{{/link-to}}</li>
 
-                    <li>{{#link-to 'schedules.list'}}Schedules{{/link-to}}</li>
+                    <li>{{#link-to 'schedules.list'}}{{t 'schedules'}}{{/link-to}}</li>
 
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
             <li>
-                <a href="#"><i class="fa fa-cogs"></i> Hardware<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-cogs"></i> {{t 'hardware'}}<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                      {{#link-to 'doors.list'}}Doors{{/link-to}}
+                      {{#link-to 'doors.list'}}{{t 'doors'}}{{/link-to}}
                     </li>
                     <li>
-                      {{#link-to 'access-points.list'}}Access Points{{/link-to}}
+                      {{#link-to 'access-points.list'}}{{t 'access_points'}}{{/link-to}}
                     </li>
                     <li>
-                      {{#link-to 'modules.evoxs.update'}}Hardware Update{{/link-to}}
+                      {{#link-to 'modules.evoxs.update'}}{{t 'hardware_update'}}{{/link-to}}
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="#"><i class="fa fa-table fa-fw"></i> Modules<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-table fa-fw"></i> {{t 'modules'}}<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                       {{#link-to 'modules.smtp'}}SMTP{{/link-to}}
@@ -64,10 +64,10 @@
                 </ul>
             </li>
             <li>
-                <a href="#"><i class="fa fa-table fa-fw"></i> Other<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-table fa-fw"></i> {{t 'other'}}<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                      {{#link-to 'auditlog'}}Audit Log{{/link-to}}
+                      {{#link-to 'auditlog'}}{{t 'audit_log'}}{{/link-to}}
                     </li>
                 </ul>
             </li>

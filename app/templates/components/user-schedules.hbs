@@ -1,7 +1,6 @@
 <br>
 <div class="alert alert-info text-center" role="alert">
-    This shows schedules and their mapping that apply <i>directly</i> to you.
-    It wont show schedule that are mapped through your groups or credentials. <br>
+    {{t 'schedule.user_schedule'}}<br>
 </div>
 
 {{bs-button action='refresh' defaultText='Refresh'}}
@@ -29,7 +28,7 @@
                 {{else}}
                     <div class="alert alert-danger text-center" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                        This schedule has no timeframes. This means it will have no effect.
+                        {{t 'schedule.no_timeframe'}}
                     </div>
                 {{/if}}
 
@@ -43,8 +42,8 @@
                                   type='danger'
                                   icon='glyphicon glyphicon-remove'
                                   size='xs'
-                                  text='Remove from mapping'
-                                  message='Are you sure you wish to leave this mapping?'
+                                  text=(t 'remove_from_mapping')
+                                  message=(t 'schedule.remove_from_mapping_confirm')
                                   onConfirm=(action 'leaveMapping' mapping)
                                 }}
                               </div>
@@ -52,7 +51,7 @@
                           <div class="panel-body">
                               <div id="content">
                                 {{#if mapping.doors.length}}
-                                    Grants access to the following doors:
+                                    {{t 'schedule.grant_to_doors'}}
                                     <ul>
                                       {{#each mapping.doors as |door|}}
                                           <li>
@@ -63,7 +62,7 @@
                                 {{else}}
                                     <div class="alert alert-danger text-center" role="alert">
                                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                                        This mapping maps to no doors. This means it will have no effect.
+                                        {{t 'schedule.no_doors}}
                                     </div>
                                 {{/if}}
                               </div>

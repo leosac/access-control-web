@@ -1,19 +1,19 @@
 {{#bs-form formLayout="horizontal" model=card action=action}}
     <fieldset>
-        <legend>Configuration</legend>
-      {{bs-form-element controlType="text" label="Alias"
-                        placeholder="A friendly name to remember me by"
+        <legend>{{t 'configuration'}}</legend>
+      {{bs-form-element controlType="text" label=(t 'alias')
+                        placeholder=(t 'alias_placeholder')
                         property="alias"}}
-      {{bs-form-element controlType="text" label="Hexadecimal Card Identifier"
+      {{bs-form-element controlType="text" label=(t 'credentials.wiegand_card.hex_id')
                         placeholder="11:aa:bb:cc" property="cardId"}}
-      {{bs-form-element controlType="number" label="Number of bits"
+      {{bs-form-element controlType="number" label=(t 'credentials.wiegand_card.number_bits')
                         placeholder="32" property="nbBits"}}
 
-      {{bs-form-element controlType="textarea" label="Notes"
-                        placeholder="A few optional notes..."
+      {{bs-form-element controlType="textarea" label=(t 'notes')
+                        placeholder=(t 'notes_placeholder')
                         property="description"}}
 
       {{user-picker selected=card.owner onChange=(action (mut card.owner))}}
-      {{bs-button defaultText="Submit" type="primary" buttonType="submit"}}
+      {{bs-button defaultText=(t 'submit') type="primary" buttonType="submit"}}
     </fieldset>
 {{/bs-form}}

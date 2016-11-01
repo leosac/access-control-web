@@ -5,7 +5,7 @@
         options=allUsernames
         onchange=(action (mut selectedUsername))
         allowClear=true
-        placeholder='Username'
+        placeholder=(t 'username')
       as |username|
       }}
         {{username}}
@@ -17,7 +17,7 @@
         selected=selectedRank
         options=allRank
         onchange=(action (mut selectedRank))
-        placeholder='Rank in group'
+        placeholder=(t 'rank_group')
       as |rank|
       }}
         {{rank}}
@@ -27,6 +27,6 @@
     {{#bs-button type="success" icon="glyphicon glyphicon-refresh"
                  size="sm"
                  action='addToGroup'}}
-        Add to group
+        {{t 'users.add_to_group'}}
     {{/bs-button}}
 {{/bs-form}}

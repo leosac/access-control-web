@@ -1,17 +1,17 @@
 {{#bs-form formLayout="horizontal" model=door action=action}}
     <fieldset>
-        <legend>Configuration</legend>
-      {{bs-form-element controlType="text" label="Alias"
-                        placeholder="MySuperDoor"
+        <legend>{{t 'configuration'}}</legend>
+      {{bs-form-element controlType="text" label=(t 'alias')
+                        placeholder=(t 'door.placeholder')
                         property="alias"}}
-      {{bs-form-element controlType="textarea" label="Notes"
-                        placeholder="A few optional notes..."
+      {{bs-form-element controlType="textarea" label=(t 'notes')
+                        placeholder=(t 'notes_placeholder')
                         property="description"}}
 
 
       {{autocomplete/access-point label=(t 'access_point')
                                   onChange=(action 'changeAP') selected=door.accessPoint.alias}}
 
-      {{bs-button defaultText="Submit" type="primary" buttonType="submit"}}
+      {{bs-button defaultText=(t 'submit') type="primary" buttonType="submit"}}
     </fieldset>
 {{/bs-form}}

@@ -3,7 +3,7 @@
         <thead>
         <th>#Id</th>
         <th>{{t 'name'}}</th>
-        <th>Total members</th>
+        <th>{{t 'users.members}}'</th>
         {{#if deleteLink}}
             <th>{{t 'delete'}}</th>
         {{/if}}
@@ -24,8 +24,8 @@
                       type='danger'
                       icon='glyphicon glyphicon-remove'
                       size='xs'
-                      text='Delete'
-                      message='Are you sure you wish to delete this group ?'
+                      text=(t 'delete')
+                      message=(t 'users.delete_group_confirm')
                       onConfirm=(route-action 'deleteGroup' group.id)
                     }}
                   </td>
