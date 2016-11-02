@@ -4,7 +4,7 @@ import LeosacRoute from 'web/leosac-route';
  * Create a new group.
  */
 export default LeosacRoute.extend({
-    _title: 'Create group',
+    _title: 'group.create.title',
     _requireAuth: true,
     beforeModel()
     {

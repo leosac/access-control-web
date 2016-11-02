@@ -22,7 +22,7 @@ export default {
     'access': 'Access',
     'information': 'Information',
     'alias': 'Alias',
-	'alias_': 'Alias:',
+    'alias_': 'Alias:',
     'alias_placeholder': 'A friendly name to remember me by',
     'type': 'Type',
     'author': 'Author',
@@ -41,15 +41,16 @@ export default {
     'cancel': 'Cancel',
     'acknowledge': 'Acknowledge',
     'update': 'Update',
-	'wait': 'Please wait, fetching and preparing data.',
-	'owner_': 'Owner:',
-	'groups': 'Groups',
-	'schedules': 'Schedules',
-	'submit': 'Submit',
-	'save': 'Save',
-	'mapping': 'Mapping',
+    'wait': 'Please wait, fetching and preparing data.',
+    'owner_': 'Owner:',
+    'owner': 'Owner',
+    'groups': 'Groups',
+    'schedules': 'Schedules',
+    'submit': 'Submit',
+    'save': 'Save',
+    'mapping': 'Mapping',
     'timeframe': 'Time Frame',
-	'timeframes': 'Time Frames',
+    'timeframes': 'Time Frames',
     'timeframes_': 'Time Frames:',
     'yes': 'Yes',
     'no': 'No',
@@ -101,7 +102,8 @@ export default {
 
     // To avoid duplication, we may need to put single word into a namespace
     'w': {
-        'door': 'Door'
+        'door': 'Door',
+        'overview': 'Overview'
     },
 
     'cancel_and_refresh': 'Cancel & Refresh',
@@ -185,10 +187,26 @@ export default {
         'create_group': 'Create Group',
         'list_groups_notice': 'Note that the "Total members" entry may not reflect the real number of members. This is a permission-related issue.',
     },
+    'group':{
+        'title': 'Group',
+        'list': {
+            'title': 'Group list'
+        },
+        'create': {
+            'title': 'Create group'
+        }
+    },
     'door': {
         'delete_confirm': 'Are you sure you wish to delete this door ?',
-        'create': 'Add Door',
+        'create_door': 'Add Door',
         'placeholder': 'MySuperDoor',
+        'create': {
+            'title': 'Create door'
+        },
+        'list': {
+            'title': 'Door list',
+        },
+        'title': 'Door'
     },
     'about': {
         'title': 'About',
@@ -204,18 +222,17 @@ export default {
         'entries_below': 'Audits entries below:',
         'before': 'Before:',
         'after': 'After:',
-		'enable_wsapicall': 'Enable WSAPICall',
-		'enable_userevent': 'Enable UserEvent',
-		'enable_doorevent': 'Enable DoorEvent',
-		'enable_groupevent': 'Enable GroupEvent',
-		'enable_credentialevent': 'Enable CredentialEvent',
-		'enable_scheduleevent': 'Enable ScheduleEvent',
-		'enable_usergroupevent': 'Enable UserGroupMembershipEvent',
-		'details_intro': 'This show a before and after the audit entry snapshot of the object that was modified. Note that this features is not available for all kind of audit entry.',
+        'enable_wsapicall': 'Enable WSAPICall',
+        'enable_userevent': 'Enable UserEvent',
+        'enable_doorevent': 'Enable DoorEvent',
+        'enable_groupevent': 'Enable GroupEvent',
+        'enable_credentialevent': 'Enable CredentialEvent',
+        'enable_scheduleevent': 'Enable ScheduleEvent',
+        'enable_usergroupevent': 'Enable UserGroupMembershipEvent',
+        'details_intro': 'This show a before and after the audit entry snapshot of the object that was modified. Note that this features is not available for all kind of audit entry.',
     },
     'evoxs': {
-        'update':
-        {
+        'update': {
             'title': 'Update Management',
             'update_acked': 'Update has been acknowledged.',
             'update_acked_failed': 'Failed to acknowledged update.',
@@ -223,8 +240,8 @@ export default {
             'update_cancel_failed': 'Cancelling the update has failed.',
             'pending_check_update': 'Checking for updates. Please wait.',
             'check_update': 'Check Updates',
-            'table':
-            {
+            'filter_access_point': "Filter by access point",
+            'table': {
                 'checkpoint': 'Checkpoint',
                 'update_needed': 'Need update ?',
                 'generated_at': 'Generation date',
@@ -232,12 +249,15 @@ export default {
                 'target_alias': 'Target Access Point Alias'
             }
         },
+        'access-point': {
+            'title': "EvoXS Access Point",
+        },
         'lockid': 'Lock Id',
     },
-	'credential': {
-		'title': 'Credential infos',
-		'noowner': 'The credential has no owner.',
-	},
+    'credential': {
+        'title': 'Credential infos',
+        'noowner': 'The credential has no owner.',
+    },
     'credentials': {
         'title': 'Credentials',
         'list': {
@@ -261,11 +281,11 @@ export default {
         },
         'delete_confirm': 'Are you sure you wish to delete this credential?',
     },
-	'error': {
-		'title': 'Oh no, something went wrong.',
-		'statuscode': 'Status Code:',
-		'message': 'Message:',
-		'requestid': 'Request Identifier:',
+    'error': {
+        'title': 'Oh no, something went wrong.',
+        'statuscode': 'Status Code:',
+        'message': 'Message:',
+        'requestid': 'Request Identifier:',
         'entity_not_found': 'Entity not found.',
         'entity_not_found_descr': "The requested entity couldn't be found by the server.",
         'entity_id': 'Entity identifier:',
@@ -278,14 +298,14 @@ export default {
         'session_aborted_descr': "You should be redirected to the login page in 5 seconds. If that's not the case, please click",
         'unknown_error': 'Unknown error.',
         'unknown_error_descr': "Sorry, we don't know what happened.",
-	},
-	'schedule': {
+    },
+    'schedule': {
         'title': 'Schedule',
         'asfield': 'Schedule:',
-		'mapping': 'Mapping: {{alias}}',
-		'mapping_list': 'Below are all the mapping linked to the schedule.',
-		'add_mapping': 'Add mapping',
-        'add_door', 'Add door',
+        'mapping': 'Mapping: {{alias}}',
+        'mapping_list': 'Below are all the mapping linked to the schedule.',
+        'add_mapping': 'Add mapping',
+        'add_door': 'Add door',
         'type': "Enter a schedule's name (or %)",
         'type_door': "Start typing a door's alias",
         'credential_schedule': 'This shows schedules and their mapping that apply <i>directly</i> to the credential.',
@@ -310,13 +330,17 @@ export default {
         'create': 'Create Schedule',
         'create_note': 'Please fill the form below in order to create a new schedule.',
         'delete_confirm': 'Are you sure you wish to delete this schedule?',
-	},
-	'overview': {
-		'intro': "This page provide an overview of some of the configuration value of the {{appname}} system.",
-		'logs_per_page': 'Log per page',
-		'last_logs': 'Last logs',
-		'total_logs': 'There is a total of {{totalLogs}} log messages.',
-	},
+
+        'list': {
+            'title': 'Schedule list',
+        }
+    },
+    'overview': {
+        'intro': "This page provide an overview of some of the configuration value of the {{appname}} system.",
+        'logs_per_page': 'Log per page',
+        'last_logs': 'Last logs',
+        'total_logs': 'There is a total of {{totalLogs}} log messages.',
+    },
     'smtp': {
         'title': 'SMTP module page.',
         'notes': 'Note: SMTP password are saved in cleartext !',
@@ -334,6 +358,15 @@ export default {
     },
     'access-overview': {
         'title': 'Access Overview'
+    },
+    'access-point':
+    {
+        'list': {
+            'title': 'Access Point list'
+        },
+        'create': {
+            'title': "Create Access Point",
+        }
     },
     'autocomplete': {
         'search_group': 'Pick a group (type % to list all)',

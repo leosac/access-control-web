@@ -5,7 +5,7 @@ export default LeosacRoute.extend({
     authSrv: Ember.inject.service('authentication'),
     systemOverview: Ember.inject.service('system-overview'),
     store: Ember.inject.service(),
-    _title: 'System Overview',
+    _title: 'system-overview.title',
     _requireAuth: true,
 
     actions: {

@@ -1,7 +1,7 @@
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
-    _title: 'EvoXS Access Point',
+    _title: 'evoxs.access-point.title',
     _requireAuth: true,
     beforeModel()
     {

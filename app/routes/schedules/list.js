@@ -2,7 +2,7 @@ import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
-    _title: 'Schedule list',
+    _title: 'schedule.list.title',
     _requireAuth: true,
     beforeModel()
     {

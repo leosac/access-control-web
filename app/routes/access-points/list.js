@@ -2,7 +2,7 @@ import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
-    _title: 'Access Point list',
+    _title: 'access-point.list.title',
     _requireAuth: true,
     beforeModel()
     {

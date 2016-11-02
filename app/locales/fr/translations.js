@@ -41,19 +41,21 @@ export default {
     'cancel': 'Annuler',
     'acknowledge': 'Acquitter',
     'update': 'Mettre a jour',
-	'wait': 'Merci de patienter, récupération et préparation des données.',
-	'owner_': 'Propriétaire :',
-	'groups': 'Groupes',
-	'schedules': 'Horaires',
-	'submit': 'Envoyer',
-	'save': 'Enregistrer',
-	'mapping': 'Mapping',
-	'timeframes': 'Zone de temps',
+    'wait': 'Merci de patienter, récupération et préparation des données.',
+    'owner_': 'Propriétaire :',
+    'owner': 'Propriétaire',
+    'groups': 'Groupes',
+    'schedules': 'Horaires',
+    'submit': 'Envoyer',
+    'save': 'Enregistrer',
+    'mapping': 'Mapping',
+    'timeframes': 'Zone de temps',
     'yes': 'Oui',
     'no': 'Non',
     'not_available': 'Indisponible',
     'access_point': "Point d'Accès",
     'access_point_placeholder': 'MyAccessPoint',
+    'access_points': "Points d'Accès",
     'clear_selection': 'Effacer la selection',
     'module': 'Module',
     'configuration': 'Configuration',
@@ -98,7 +100,8 @@ export default {
 
     // To avoid duplication, we may need to put single word into a namespace
     'w': {
-        'door': 'Porte'
+        'door': 'Porte',
+        'overview': 'Vue générale'
     },
 
     'cancel_and_refresh': 'Annuler et rafraichir',
@@ -143,7 +146,7 @@ export default {
     },
     'index': {
         'title': 'Index',
-        'manage_access': 'Gerer les access',
+        'manage_access': 'Gérer les access',
         'apply_update': 'Appliquer les mises a jour',
         'event': 'Evenements',
         'welcome': "Bienvenue <strong>{{username}}</strong> <br>" +
@@ -160,6 +163,12 @@ export default {
         'list': {
             'title': 'Liste des utilisateurs'
         },
+        'create': {
+            'title': 'Ajouter un utilisateur',
+            'account_info': 'Information du compte',
+            'user_create': 'User crée avec succès.',
+            'fail_create': 'Echec de la creation du nouvel utilisateur.',
+        },
         'add_user': 'Ajouter un utilisateur',
         'add_group': 'Ajouter un groupe',
         'add_credential': 'Ajouter un crédential',
@@ -175,10 +184,26 @@ export default {
         'create_group': 'Créer le groupe',
         'list_groups_notice': "Merci de noter que le 'nombre total de membres' peut ne pas refléter le nombre de membres réel. Ceci est lié aux permissions.",
     },
+    'group':{
+        'title': 'Groupe',
+        'list': {
+            'title': 'Liste des groupes'
+        },
+        'create': {
+            'title': 'Créer un group'
+        }
+    },
     'door': {
         'delete_confirm': 'Êtes-vous sûr de vouloir supprimer cette porte ?',
-        'create': 'Ajouter une porte',
+        'create_door': 'Ajouter une porte',
         'placeholder': 'MySuperDoor',
+        'create': {
+            'title': 'Ajouter une porte'
+        },
+        'list': {
+            'title': 'Liste des portes',
+        },
+        'title': 'Porte'
     },
     'about': {
         'title': 'A propos',
@@ -190,22 +215,21 @@ export default {
         'create': "Ajouter un point d'accès",
         'delete_confirm': "Êtes-vous sur de vouloir supprimer ce point d'accès ?",
     },
-	'audit': {
+    'audit': {
         'entries_below': "Enregistrements d'audit ci-dessous :",
         'before': 'Avant :',
         'after': 'Après :',
-		'enable_wsapicall': 'Activer WSAPICall',
-		'enable_userevent': 'Activer UserEvent',
-		'enable_doorevent': 'Activer DoorEvent',
-		'enable_groupevent': 'Activer GroupEvent',
-		'enable_credentialevent': 'Activer CredentialEvent',
-		'enable_scheduleevent': 'Activer ScheduleEvent',
-		'enable_usergroupevent': 'Activer UserGroupMembershipEvent',
-		'details_intro': "Affiche un état avant / après de l'enregistrement d'audit de l'objet modifié. Merci de noter que cette fonctionnalité n'est pas disponibles pour tous les types d'enregistrement d'audit.",
+        'enable_wsapicall': 'Activer WSAPICall',
+        'enable_userevent': 'Activer UserEvent',
+        'enable_doorevent': 'Activer DoorEvent',
+        'enable_groupevent': 'Activer GroupEvent',
+        'enable_credentialevent': 'Activer CredentialEvent',
+        'enable_scheduleevent': 'Activer ScheduleEvent',
+        'enable_usergroupevent': 'Activer UserGroupMembershipEvent',
+        'details_intro': "Affiche un état avant / après de l'enregistrement d'audit de l'objet modifié. Merci de noter que cette fonctionnalité n'est pas disponibles pour tous les types d'enregistrement d'audit.",
     },
     'evoxs': {
-        'update':
-        {
+        'update': {
             'title': 'Gestion des mises à jour',
             'update_acked': 'La mise a jour a été acquittée.',
             'update_acked_failed': "L'acquitement de la mise a jour a echoué.",
@@ -213,8 +237,8 @@ export default {
             'update_cancel_failed': "L'annulation de la mise a jour a echoué.",
             'pending_check_update': 'Recherche des mises a jour en cours.',
             'check_update': 'Rechercher les mises a jour',
-            'table':
-            {
+            'filter_access_point': "Filtrer par point d'accés",
+            'table': {
                 'checkpoint': 'Checkpoint',
                 'update_needed': 'Mise a jour requise ?',
                 'generated_at': 'Date de génération',
@@ -222,12 +246,15 @@ export default {
                 'target_alias': "Alias du point d'access",
             }
         },
+        'access-point': {
+            'title': "Point d'accès EvoXS"
+        },
         'lockid': 'Lock Id',
     },
-	'credential': {
-		'title': 'Informations de crédential',
-		'noowner': "Le crédential n'a pas de propriétaire.",
-	},
+    'credential': {
+        'title': 'Informations de crédential',
+        'noowner': "Le crédential n'a pas de propriétaire.",
+    },
     'credentials': {
         'title': 'Crédentiaux',
         'list': {
@@ -251,11 +278,11 @@ export default {
         },
         'delete_confirm': 'Êtes-vous sûr de vouloir supprimer ce crédential ?',
     },
-	'error': {
-		'title': "Oh non, quelque chose s'est mal passé.",
-		'statuscode': 'Status Code :',
-		'message': 'Message :',
-		'requestid': 'Identifiant de requête :',
+    'error': {
+        'title': "Oh non, quelque chose s'est mal passé.",
+        'statuscode': 'Status Code :',
+        'message': 'Message :',
+        'requestid': 'Identifiant de requête :',
         'entity_not_found': 'Entité non trouvée.',
         'entity_not_found_descr': "L'entité demandée n'a pas pu être trouvée par le serveur.",
         'entity_id': "Identifiant d'entité :",
@@ -268,14 +295,14 @@ export default {
         'session_aborted_descr': "Vous devriez être redirigé vers la page d'authentification dans 5 secondes. Si ceci n'est pas le cas, merci de cliquer",
         'unknown_error': 'Erreur inconnue.',
         'unknown_error_descr': "Désolé, nous ne savons pas ce qu'il s'est passé.",
-	},
-	'schedule': {
+    },
+    'schedule': {
         'title': 'Horaire',
         'asfield': 'Horaires :',
-		'mapping': 'Mapping : {{alias}}',
-		'mapping_list': "Ci-dessous la liste des mapping liés à l'horaire.",
-		'add_mapping': 'Ajouter mapping',
-        'add_door', 'Ajouter une porte',
+        'mapping': 'Mapping : {{alias}}',
+        'mapping_list': "Ci-dessous la liste des mapping liés à l'horaire.",
+        'add_mapping': 'Ajouter mapping',
+        'add_door': 'Ajouter une porte',
         'type': "Saisissez le nom d'une horraire (ou %)",
         'type_door': "Commencez à saisir l'alias de la porte",
         'credential_schedule': 'Affiche les horaires et leur mapping qui sont liés <i>directement</i> au crédential.',
@@ -301,13 +328,17 @@ export default {
         'create': 'Créer une horaire',
         'create_note': 'Merci de compléter le formulaire suivant afin de créer une nouvelle horaire.',
         'delete_confirm': 'Êtes-vous sûr de vouloir supprimer cette horaire ?',
-	},
-	'overview': {
-		'intro': "Cette page fournie un vue globale de certaines valeurs de configuration du système {{appname}}.",
-		'logs_per_page': 'Evènements par page',
-		'last_logs': 'Derniers évènements',
-		'total_logs': 'Il y a un total de {{totalLogs}} évènements.',
-	},
+
+        'list': {
+            'title': 'Liste des horaires',
+        }
+    },
+    'overview': {
+        'intro': "Cette page fournie un vue globale de certaines valeurs de configuration du système {{appname}}.",
+        'logs_per_page': 'Evènements par page',
+        'last_logs': 'Derniers évènements',
+        'total_logs': 'Il y a un total de {{totalLogs}} évènements.',
+    },
     'smtp': {
         'title': 'Page du module SMTP.',
         'notes': 'Note : le mot de passe SMTP est stocké en clair !',
@@ -317,7 +348,7 @@ export default {
         'send': 'Envoyer un mail de test',
         'from': 'Expéditeur',
         'timeout': 'Timeout (Milliseconds)',
-        'add_server:': 'Ajouter un serveur',
+        'add_server': 'Ajouter un serveur',
         'remove_server': 'Supprimer le serveur',
         'verify_host': "Vérifier l'hote",
         'verify_peer': 'Vérifier le pair',
@@ -325,6 +356,19 @@ export default {
     },
     'access-overview': {
         'title': 'Récapitulatif des accès'
+    },
+    'system-overview':
+    {
+        'title': 'Vue générale'
+    },
+    'access-point':
+    {
+        'list': {
+            'title': "Liste des point d'accès"
+        },
+        'create': {
+            'title': "Creér un point d'accès",
+        }
     },
     'autocomplete': {
         'search_group': 'Veuillez choisir un groupe (tapez % pour tout voir)',

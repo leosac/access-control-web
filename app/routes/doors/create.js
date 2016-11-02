@@ -4,7 +4,7 @@ import LeosacRoute from 'web/leosac-route';
  * Create a new door.
  */
 export default LeosacRoute.extend({
-    _title: 'Create door',
+    _title: 'door.create.title',
     _requireAuth: true,
     beforeModel()
     {

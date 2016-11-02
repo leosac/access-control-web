@@ -1,7 +1,7 @@
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
-    _title: 'Door',
+    _title: 'door.title',
     _requireAuth: true,
     beforeModel()
     {

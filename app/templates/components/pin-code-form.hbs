@@ -8,7 +8,7 @@
                         placeholder="1234" property="code"}}
 
       {{bs-form-element controlType="textarea" label=(t 'notes')
-                        placeholder=(t 'notes_placeholder)
+                        placeholder=(t 'notes_placeholder')
                         property="description"}}
 
       {{user-picker selected=pin.owner onChange=(action (mut pin.owner))}}
