@@ -3,7 +3,7 @@ import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
     smtpService: Ember.inject.service('module-smtp'),
-    _title: 'SMTP',
+    _title: 'smtp.title',
     _requireAuth: true,
     beforeModel()
     {

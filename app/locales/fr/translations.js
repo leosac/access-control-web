@@ -3,6 +3,7 @@ export default {
     'lastname': 'Nom de famille',
     'email': 'Email',
     'username': "Nom d'utilisateur",
+    'username_': "Nom d'utilisateur :",
     'name': 'Nom',
     'description': 'Description',
     'edit': 'Editer',
@@ -73,8 +74,8 @@ export default {
     'remove_selected': 'Supprimer la sélection',
     'search': 'Rechercher',
     'doors': 'Portes',
-    'hardware': 'Hardware',
-    'hardware_update': 'Hardware Update',
+    'hardware': 'Matériels',
+    'hardware_update': 'Mises à jour',
     'modules': 'Modules',
     'other': 'Autre',
     'audit_log': "Log d'audit",
@@ -97,11 +98,14 @@ export default {
     'here': 'ici',
     'test': 'test',
     'url': 'Url',
+    'pending_updates': 'Mises a jour en attente',
+    'update_history': 'Historique des mises a jour',
 
     // To avoid duplication, we may need to put single word into a namespace
     'w': {
         'door': 'Porte',
-        'overview': 'Vue générale'
+        'overview': 'Vue générale',
+        'credentials': 'Crédentiaux'
     },
 
     'cancel_and_refresh': 'Annuler et rafraichir',
@@ -146,9 +150,9 @@ export default {
     },
     'index': {
         'title': 'Index',
-        'manage_access': 'Gérer les access',
-        'apply_update': 'Appliquer les mises a jour',
-        'event': 'Evenements',
+        'manage_access': 'Gérer les accès',
+        'apply_update': 'Appliquer les MaJ',
+        'event': 'Evènements',
         'welcome': "Bienvenue <strong>{{username}}</strong> <br>" +
         "Gerez vos cylindres EvoXS et les permissions utilisateurs. <br>" +
         "Installez, configurez et deployez depuis l'interface web."
@@ -216,6 +220,7 @@ export default {
         'delete_confirm': "Êtes-vous sur de vouloir supprimer ce point d'accès ?",
     },
     'audit': {
+        'title': "Log d'audit",
         'entries_below': "Enregistrements d'audit ci-dessous :",
         'before': 'Avant :',
         'after': 'Après :',
@@ -229,6 +234,7 @@ export default {
         'details_intro': "Affiche un état avant / après de l'enregistrement d'audit de l'objet modifié. Merci de noter que cette fonctionnalité n'est pas disponibles pour tous les types d'enregistrement d'audit.",
     },
     'evoxs': {
+        'title': 'EvoXS',
         'update': {
             'title': 'Gestion des mises à jour',
             'update_acked': 'La mise a jour a été acquittée.',
@@ -245,6 +251,11 @@ export default {
                 'updated_at': 'Date de changement de status',
                 'target_alias': "Alias du point d'access",
             }
+        },
+        'operations': {
+            'title': 'Opérations',
+            'set_time': "Configurer l'heure du cylindre",
+            'extract_event': "Récupérer les évenements",
         },
         'access-point': {
             'title': "Point d'accès EvoXS"
@@ -265,7 +276,7 @@ export default {
         },
         'pin_code': {
             'title': 'Code PIN',
-            'add': 'Add un code PIN',
+            'add': 'Ajouter un code PIN',
         },
         'wiegand_card': {
             'title': 'Carte Wiegand',
@@ -325,12 +336,15 @@ export default {
         'sunday': 'Dimanche',
         'start_time': 'Date de début',
         'end_time': 'Date de fin',
-        'create': 'Créer une horaire',
+        'create_schedule': 'Créer une horaire',
         'create_note': 'Merci de compléter le formulaire suivant afin de créer une nouvelle horaire.',
         'delete_confirm': 'Êtes-vous sûr de vouloir supprimer cette horaire ?',
 
         'list': {
             'title': 'Liste des horaires',
+        },
+        'create': {
+            'title': 'Créer une horaire'
         }
     },
     'overview': {
@@ -340,7 +354,7 @@ export default {
         'total_logs': 'Il y a un total de {{totalLogs}} évènements.',
     },
     'smtp': {
-        'title': 'Page du module SMTP.',
+        'title': 'SMTP',
         'notes': 'Note : le mot de passe SMTP est stocké en clair !',
         'recipient': 'Destinataire',
         'subject': 'Sujet',

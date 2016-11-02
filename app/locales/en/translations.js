@@ -3,6 +3,7 @@ export default {
     'lastname': 'Lastname',
     'email': 'Email',
     'username': "Username",
+    'username_': "Username:",
     'name': 'Name',
     'description': 'Description',
     'edit': 'Edit',
@@ -99,11 +100,14 @@ export default {
     'here': 'here',
     'test': 'test',
     'url': 'Url',
+    'pending_updates': 'Pending updates',
+    'update_history': 'Update history',
 
     // To avoid duplication, we may need to put single word into a namespace
     'w': {
         'door': 'Door',
-        'overview': 'Overview'
+        'overview': 'Overview',
+        'credentials': 'Credentials'
     },
 
     'cancel_and_refresh': 'Cancel & Refresh',
@@ -232,6 +236,7 @@ export default {
         'details_intro': 'This show a before and after the audit entry snapshot of the object that was modified. Note that this features is not available for all kind of audit entry.',
     },
     'evoxs': {
+        'title': 'EvoXS',
         'update': {
             'title': 'Update Management',
             'update_acked': 'Update has been acknowledged.',
@@ -327,12 +332,15 @@ export default {
         'sunday': 'Sunday',
         'start_time': 'Start Time',
         'end_time': 'End Time',
-        'create': 'Create Schedule',
+        'create_schedule': 'Create Schedule',
         'create_note': 'Please fill the form below in order to create a new schedule.',
         'delete_confirm': 'Are you sure you wish to delete this schedule?',
 
         'list': {
             'title': 'Schedule list',
+        },
+        'create': {
+            'title': 'Create schedule'
         }
     },
     'overview': {

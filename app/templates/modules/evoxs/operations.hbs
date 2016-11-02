@@ -1,0 +1,16 @@
+{{autocomplete/access-point label=(t 'access_point')
+                            onChange=(route-action 'changeAP')
+                            selected=model.alias}}
+
+<ul>
+    <li>
+      {{#bs-button}}
+        {{t 'evoxs.operations.set_time'}}
+      {{/bs-button}}
+    </li>
+    <li>
+      {{#bs-button}}
+        {{t 'evoxs.operations.extract_event'}}
+      {{/bs-button}}
+    </li>
+</ul>

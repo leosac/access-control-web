@@ -1,7 +1,7 @@
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
-    _title: 'New Schedule',
+    _title: 'schedule.create.title',
     _requireAuth: true,
     beforeModel()
     {

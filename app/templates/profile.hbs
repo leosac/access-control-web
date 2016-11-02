@@ -1,5 +1,5 @@
 <div>
-    <h2>Username: {{model.user.username}}</h2>
+    <h2>{{t 'username_'}} {{model.user.username}}</h2>
 </div>
 
 <div>
@@ -52,7 +52,7 @@
       {{user-group-membership-table user=model.user}}
     {{/bs-tab-pane}}
 
-    {{#bs-tab-pane title=(t 'credentials')}}
+    {{#bs-tab-pane title=(t 'w.credentials')}}
       {{user-credential-table user=model.user}}
     {{/bs-tab-pane}}
 
