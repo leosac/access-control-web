@@ -50,6 +50,8 @@
     "ember-route-action-helper": "2.0.0",
     "ember-welcome-page": "^1.0.3",
     "eonasdan-bootstrap-datetimepicker": "4.17.43",
-    "loader.js": "^4.0.10"
-  }
+    "loader.js": "^4.0.10",
+    "ember-validators": "0.1.1"
+  },
+  "comment__ember-validators_has_been_added_directly_because_NPMJS_is_broken":{}
 }

@@ -13,7 +13,7 @@
           {{bs-form-element controlType="number" label=(t 'page_size')
                             property="pageSize"}}
         </div>
-        {{t 'total_page'}}: {{totalPage}}  | {{t 'count'}}: {{resultCount}}
+      {{t 'total_page'}}: {{totalPage}}  | {{t 'count'}}: {{resultCount}}
     </div>
 
     <div class="row">
@@ -60,11 +60,11 @@
 {{/bs-form}}
 
 {{#if progressValue}}
-    {{t 'wait'}}
+  {{t 'wait'}}
 
-    {{#bs-progress}}
-      {{bs-progress-bar value=progressValue minValue=0 maxValue=100 type="primary"}}
-    {{/bs-progress}}
+  {{#bs-progress}}
+    {{bs-progress-bar value=progressValue minValue=0 maxValue=100 type="primary"}}
+  {{/bs-progress}}
 {{/if}}
 
 <div class="table-responsive">
@@ -88,7 +88,7 @@
                 <td>{{audit.author.username}}</td>
                 <td>{{audit.timestamp}}</td>
                 <td>{{audit.eventMask}}</td>
-                <td>{{audit.finalized}}</td>
+                <td>{{boolean-to-colored-yes-no audit.finalized}}</td>
                 <td>{{bs-button action=(action 'showDetails' audit) defaultText=(t 'details')}}</td>
             </tr>
         {{/each}}
@@ -97,15 +97,15 @@
 </div>
 
 {{#bs-modal open=openDetailsModal title=(t 'details')}}
-    {{t 'audit.details_intro'}}<br>
+  {{t 'audit.details_intro'}}<br>
 
-    <hr>
+  <hr>
 
-    <i>{{t 'audit.before'}}</i> <br>
-    <code style="white-space: pre;">{{detailedAudit.before}}</code>
+  <i>{{t 'audit.before'}}</i> <br>
+  <code style="white-space: pre;">{{detailedAudit.before}}</code>
 
-    <hr>
+  <hr>
 
-    <i>{{t 'audit.after'}}</i> <br>
-    <code style="white-space: pre;">{{detailedAudit.after}}</code>
+  <i>{{t 'audit.after'}}</i> <br>
+  <code style="white-space: pre;">{{detailedAudit.after}}</code>
 {{/bs-modal}}

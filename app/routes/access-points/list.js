@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
+import {findAllAccessPoints} from 'web/leosac-access-point-helper';
 
 export default LeosacRoute.extend({
     _title: 'access-point.list.title',
@@ -12,7 +13,7 @@ export default LeosacRoute.extend({
     model()
     {
         "use strict";
-        return this.get('store').findAll('access-point', {reload: true});
+        return findAllAccessPoints(this.get('store'));
     },
     actions: {
         deleteAP(ap)
@@ -21,6 +22,7 @@ export default LeosacRoute.extend({
             ap.destroyRecord({}).then(() =>
             {
                 self.get('flashMessages').success('Access Point has been deleted.');
+                self.refresh();
                 self.transitionTo('access-point.list');
             });
         }

@@ -10,11 +10,14 @@ export default Ember.Helper.extend({
       const yes = this.get('i18n').t('yes');
       const not_available = this.get('i18n').t('not_available');
 
+      let str = '';
       if (value === undefined)
-          return not_available;
+          str = not_available;
       if (value === false)
-          return '<strong><span style="color: darkred;">' + no + '</span></strong>';
+          str = '<strong><span style="color: darkred;">' + no + '</span></strong>';
       if (value === true)
-          return '<strong><span style="color: green;">' + yes + '</span></strong>';
+          str = '<strong><span style="color: green;">' + yes + '</span></strong>';
+
+      return Ember.String.htmlSafe(str);
   }
 });
