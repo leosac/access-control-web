@@ -26,4 +26,6 @@ export default DS.Model.extend({
 
     generatedAt: DS.attr('utc'),
     statusUpdatedAt: DS.attr('utc'),
+    sourceModule: DS.attr('string'),
+    description: DS.attr('string'),
 });

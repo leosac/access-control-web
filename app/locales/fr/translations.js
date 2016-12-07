@@ -41,7 +41,6 @@ export default {
     'cancelled': 'Annulé',
     'cancel': 'Annuler',
     'acknowledge': 'Acquitter',
-    'update': 'Mettre a jour',
     'wait': 'Merci de patienter, récupération et préparation des données.',
     'owner_': 'Propriétaire :',
     'owner': 'Propriétaire',
@@ -105,7 +104,8 @@ export default {
     'w': {
         'door': 'Porte',
         'overview': 'Vue générale',
-        'credentials': 'Crédentiaux'
+        'credentials': 'Crédentiaux',
+        'update': 'Mettre a jour',
     },
 
     'cancel_and_refresh': 'Annuler et rafraichir',

@@ -41,7 +41,6 @@ export default {
     'cancelled': 'Cancelled',
     'cancel': 'Cancel',
     'acknowledge': 'Acknowledge',
-    'update': 'Update',
     'wait': 'Please wait, fetching and preparing data.',
     'owner_': 'Owner:',
     'owner': 'Owner',
@@ -107,7 +106,9 @@ export default {
     'w': {
         'door': 'Door',
         'overview': 'Overview',
-        'credentials': 'Credentials'
+        'credentials': 'Credentials',
+        'update': 'Update',
+        'severity': 'Severity'
     },
 
     'cancel_and_refresh': 'Cancel & Refresh',
@@ -379,5 +380,9 @@ export default {
     'autocomplete': {
         'search_group': 'Pick a group (type % to list all)',
         'search_access_point': 'Pick an access point (type % to list all)'
+    },
+    // Update management
+    'update': {
+        title: 'Update management'
     }
 };

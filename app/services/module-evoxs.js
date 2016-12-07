@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import {AccessPointUpdateStatus} from 'web/leosac-constant';
+import {UpdateStatus} from 'web/leosac-constant';
 
 /**
  * A service to interact with Leosac's EvoXS module.
@@ -42,7 +42,7 @@ export default Ember.Service.extend({
     {
         return this.get('websocket').sendJson('module.evoxs.set_update_status', {
             update_id: update.get('numericId'),
-            status: AccessPointUpdateStatus.CANCELLED
+            status: UpdateStatus.CANCELLED
         }).then((data) =>
         {
             this.get('store').pushPayload(data);
@@ -52,7 +52,7 @@ export default Ember.Service.extend({
     {
         return this.get('websocket').sendJson('module.evoxs.set_update_status', {
             update_id: update.get('numericId'),
-            status: AccessPointUpdateStatus.ACKNOWLEDGED
+            status: UpdateStatus.ACKNOWLEDGED
         }).then((data) =>
         {
             this.get('store').pushPayload(data);

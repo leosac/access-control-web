@@ -72,6 +72,7 @@ Router.map(function ()
   this.route('create');
 });
   this.route('access-overview');
+  this.route('update');
 });
 
 export default Router;

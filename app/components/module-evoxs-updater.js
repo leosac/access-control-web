@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import {AccessPointUpdateStatus} from 'web/leosac-constant';
+import {UpdateStatus} from 'web/leosac-constant';
 
 export default Ember.Component.extend({
     i18n: Ember.inject.service(),
@@ -23,7 +23,7 @@ export default Ember.Component.extend({
         const pendingUpdates = [];
         this.get('_updates').forEach((update) =>
         {
-            if (update.get('status') === AccessPointUpdateStatus.PENDING)
+            if (update.get('status') === UpdateStatus.PENDING)
                 pendingUpdates.push(update);
         });
         return pendingUpdates;
@@ -35,7 +35,7 @@ export default Ember.Component.extend({
         this.get('_updates').forEach((update) =>
         {
             const updateApId = Number.parseInt(update.belongsTo('accessPoint').id());
-            if (update.get('status') !== AccessPointUpdateStatus.PENDING)
+            if (update.get('status') !== UpdateStatus.PENDING)
             {
                 if ((this.get('filteredAp.id') && this.get('filteredAp.id') ==
                     updateApId) || !this.get('filteredAp.id'))

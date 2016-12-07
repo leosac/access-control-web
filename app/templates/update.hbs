@@ -1,0 +1,78 @@
+{{#bs-button disabled=pendingCheckUpdate action=(action 'checkUpdate')}}
+  {{#if pendingCheckUpdate}}
+    {{t 'evoxs.update.pending_check_update'}}
+    <i class="fa fa-spinner fa-spin" style="color: orange; font-size:16px"></i>
+  {{else}}
+    {{t 'evoxs.update.check_update'}}
+  {{/if}}
+{{/bs-button}}
+
+
+<h3>Potential updates</h3>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+    <th>Module</th>
+    <th>Description</th>
+    <th>{{t 'w.severity'}}</th>
+    <th>UUID</th>
+    <th>Action</th>
+    </thead>
+
+    <tbody>
+    {{#each updateDescriptors as |u|}}
+      <tr>
+        <td>{{u.source_module}}</td>
+        <td>{{u.update_desc}}</td>
+        <td>{{severity-to-string u.severity}}</td>
+        <td>{{u.uuid}}</td>
+        <td>
+          {{bs-button defaultText='Create Update !' action=(action 'createUpdate' u)}}
+        </td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+</div>
+
+
+
+<h3>{{t 'pending_updates'}}</h3>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+    <th>#Id</th>
+    <th>Module</th>
+    <th>Description</th>
+    <th>{{t 'evoxs.update.table.generated_at'}}</th>
+    <th>{{t 'evoxs.update.table.checkpoint'}}</th>
+    <th>Action</th>
+    </thead>
+
+    <tbody>
+    {{#each pendingUpdates as |update|}}
+      <tr>
+        <td>{{update.id}}</td>
+        <td>{{update.sourceModule}}</td>
+        <td>{{update.description}}</td>
+        <td>{{update.generatedAt}}</td>
+        <td>{{update.checkpoint}}</td>
+        <td>
+          {{#bs-button type='success' action=(action 'acknowledgeUpdate' update)}}
+            {{t 'acknowledge'}}
+          {{/bs-button}}
+
+          <!--
+          {{#bs-button type='danger' action=(action 'cancelUpdate' update)}}
+            {{t 'cancel'}}
+          {{/bs-button}}
+-->
+        </td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+</div>
+
+
+{{json transientUpdates}}
