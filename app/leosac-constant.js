@@ -43,6 +43,7 @@ const AccessPointUpdateStatus = {
     'PENDING': 0,
     'ACKNOWLEDGED': 1,
     'CANCELLED': 2,
+    'TRANSIENT': 3,
 };
 
 export {UserRank, AuditEventType, AccessPointUpdateStatus};
