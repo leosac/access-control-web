@@ -35,8 +35,6 @@
   </table>
 </div>
 
-
-
 <h3>{{t 'pending_updates'}}</h3>
 <div class="table-responsive">
   <table class="table table-striped">
@@ -62,11 +60,9 @@
             {{t 'acknowledge'}}
           {{/bs-button}}
 
-          <!--
           {{#bs-button type='danger' action=(action 'cancelUpdate' update)}}
             {{t 'cancel'}}
           {{/bs-button}}
--->
         </td>
       </tr>
     {{/each}}
@@ -74,5 +70,32 @@
   </table>
 </div>
 
+<h3>{{t 'update_history'}}</h3>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+    <th>#Id</th>
+    <th>Module</th>
+    <th>Description</th>
+    <th>{{t 'evoxs.update.table.generated_at'}}</th>
+    <th>{{t 'evoxs.update.table.checkpoint'}}</th>
+    <th>Status</th>
+    <th>Status Update</th>
+    </thead>
 
-{{json transientUpdates}}
+    <tbody>
+    {{#each updateHistory as |update|}}
+    <!-- 1 is hardcoded for ACKNOWLEDGED -->
+      <tr class="{{if (eq update.status 1) 'success' 'danger'}}">
+        <td>{{update.id}}</td>
+        <td>{{update.sourceModule}}</td>
+        <td>{{update.description}}</td>
+        <td>{{update.generatedAt}}</td>
+        <td>{{update.checkpoint}}</td>
+        <td>{{update.statusString}}</td>
+        <td>{{update.statusUpdatedAt}}</td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+</div>

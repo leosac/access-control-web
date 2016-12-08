@@ -25,21 +25,34 @@ export default Ember.Service.extend({
     {
         return this.get('websocket').sendJson('get_pending_update', {}).then((resp) => {
             this.get('store').pushPayload(resp);
-            return true;
+
+            // We have to hardcode for EvoXS due to emberjs broken
+            // polymorphic support
+            return this.get('store').peekAll('evoxs-access-point-update').filter(e => e.get('status') === UpdateStatus.PENDING);
         });
     },
     acknowledgeUpdate(update)
     {
         return this.get('websocket').sendJson('ack_update',
-            {update_id: update.get('id')}).then((resp) => {
+            {update_id: update.get('numericId')}).then((resp) => {
             return true;
         });
     },
     cancelUpdate(update)
     {
         return this.get('websocket').sendJson('cancel_update',
-            {update_id: update.get('id')}).then((resp) => {
+            {update_id: update.get('numericId')}).then((resp) => {
             return true;
+        });
+    },
+    getHistory()
+    {
+        return this.get('websocket').sendJson('get_update_history', {}).then((resp) => {
+            this.get('store').pushPayload(resp);
+
+            // We have to hardcode for EvoXS due to emberjs broken
+            // polymorphic support
+            return this.get('store').peekAll('evoxs-access-point-update').filter(e => e.get('status') !== UpdateStatus.PENDING);
         });
     }
 
