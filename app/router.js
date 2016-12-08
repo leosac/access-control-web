@@ -60,7 +60,6 @@ Router.map(function ()
     this.route('smtp');
     this.route('evoxs', function() {
       this.route('access-point', {path: '/access-point/:access_point_id'});
-      this.route('update');
       this.route('operations');
     });
   });

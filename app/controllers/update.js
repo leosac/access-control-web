@@ -31,7 +31,7 @@ export default Ember.Controller.extend({
             this.set('pendingCheckUpdate', true);
             this.get('updater').checkUpdate().then((updateDescriptors) => {
                 if (updateDescriptors.length === 0)
-                    this.get('fm').info('No update available.');
+                    this.get('fm').info('Everything is up to date');
                 this.set('updateDescriptors', updateDescriptors);
                 this.set('pendingCheckUpdate', false);
             });
