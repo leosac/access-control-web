@@ -192,7 +192,7 @@ export default {
         'create_group': 'Create Group',
         'list_groups_notice': 'Note that the "Total members" entry may not reflect the real number of members. This is a permission-related issue.',
     },
-    'group':{
+    'group': {
         'title': 'Group',
         'list': {
             'title': 'Group list'
@@ -238,23 +238,6 @@ export default {
     },
     'evoxs': {
         'title': 'EvoXS',
-        'update': {
-            'title': 'Update Management',
-            'update_acked': 'Update has been acknowledged.',
-            'update_acked_failed': 'Failed to acknowledged update.',
-            'update_cancelled': 'Update bas been cancelled.',
-            'update_cancel_failed': 'Cancelling the update has failed.',
-            'pending_check_update': 'Checking for updates. Please wait.',
-            'check_update': 'Check Updates',
-            'filter_access_point': "Filter by access point",
-            'table': {
-                'checkpoint': 'Checkpoint',
-                'update_needed': 'Need update ?',
-                'generated_at': 'Generation date',
-                'updated_at': 'Status change date',
-                'target_alias': 'Target Access Point Alias'
-            }
-        },
         'access-point': {
             'title': "EvoXS Access Point",
         },
@@ -368,8 +351,7 @@ export default {
     'access-overview': {
         'title': 'Access Overview'
     },
-    'access-point':
-    {
+    'access-point': {
         'list': {
             'title': 'Access Point list'
         },
@@ -383,6 +365,22 @@ export default {
     },
     // Update management
     'update': {
-        title: 'Update management'
+        title: 'Update Management',
+        'update_acked': 'Update has been acknowledged.',
+        'update_acked_failed': 'Failed to acknowledged update.',
+        'update_cancelled': 'Update bas been cancelled.',
+        'update_cancel_failed': 'Cancelling the update has failed.',
+        'pending_check_update': 'Checking for updates. Please wait.',
+        'check_update': 'Check Updates',
+        'filter_access_point': "Filter by access point",
+        'potential_update': 'Potential updates',
+        'everything_up_to_date': 'Everything is up to date',
+        'table': {
+            'checkpoint': 'Checkpoint',
+            'update_needed': 'Need update ?',
+            'generated_at': 'Generation date',
+            'updated_at': 'Status change date',
+            'target_alias': 'Target Access Point Alias'
+        },
     }
 };

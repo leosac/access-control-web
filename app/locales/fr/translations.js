@@ -106,6 +106,7 @@ export default {
         'overview': 'Vue générale',
         'credentials': 'Crédentiaux',
         'update': 'Mettre a jour',
+        'severity': 'Sévérité',
     },
 
     'cancel_and_refresh': 'Annuler et rafraichir',
@@ -188,7 +189,7 @@ export default {
         'create_group': 'Créer le groupe',
         'list_groups_notice': "Merci de noter que le 'nombre total de membres' peut ne pas refléter le nombre de membres réel. Ceci est lié aux permissions.",
     },
-    'group':{
+    'group': {
         'title': 'Groupe',
         'list': {
             'title': 'Liste des groupes'
@@ -235,23 +236,6 @@ export default {
     },
     'evoxs': {
         'title': 'EvoXS',
-        'update': {
-            'title': 'Gestion des mises à jour',
-            'update_acked': 'La mise a jour a été acquittée.',
-            'update_acked_failed': "L'acquitement de la mise a jour a echoué.",
-            'update_cancelled': "La mise a jour a été annulée.",
-            'update_cancel_failed': "L'annulation de la mise a jour a echoué.",
-            'pending_check_update': 'Recherche des mises a jour en cours.',
-            'check_update': 'Rechercher les mises a jour',
-            'filter_access_point': "Filtrer par point d'accés",
-            'table': {
-                'checkpoint': 'Checkpoint',
-                'update_needed': 'Mise a jour requise ?',
-                'generated_at': 'Date de génération',
-                'updated_at': 'Date de changement de status',
-                'target_alias': "Alias du point d'access",
-            }
-        },
         'operations': {
             'title': 'Opérations',
             'set_time': "Configurer l'heure du cylindre",
@@ -371,12 +355,10 @@ export default {
     'access-overview': {
         'title': 'Récapitulatif des accès'
     },
-    'system-overview':
-    {
+    'system-overview': {
         'title': 'Vue générale'
     },
-    'access-point':
-    {
+    'access-point': {
         'list': {
             'title': "Liste des point d'accès"
         },
@@ -387,5 +369,25 @@ export default {
     'autocomplete': {
         'search_group': 'Veuillez choisir un groupe (tapez % pour tout voir)',
         'search_access_point': "Veuillez choisir un point d'acces (tapez % pour tout voir)"
+    },
+    'update': {
+        'title': 'Gestion des mises à jour',
+        'update_acked': 'La mise a jour a été acquittée.',
+        'update_acked_failed': "L'acquitement de la mise a jour a echoué.",
+        'update_cancelled': "La mise a jour a été annulée.",
+        'update_cancel_failed': "L'annulation de la mise a jour a echoué.",
+        'pending_check_update': 'Recherche des mises a jour en cours.',
+        'check_update': 'Rechercher les mises a jour',
+        'filter_access_point': "Filtrer par point d'accés",
+        'potential_update': 'Potentielle mises a jour',
+        'everything_up_to_date': 'Tout est a jour.',
+        'table': {
+            'checkpoint': 'Checkpoint',
+            'update_needed': 'Mise a jour requise ?',
+            'generated_at': 'Date de génération',
+            'updated_at': 'Date de changement de status',
+            'target_alias': "Alias du point d'access",
+        },
     }
+
 };

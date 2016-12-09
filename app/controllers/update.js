@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
     updater: Ember.inject.service('update'),
     fm: Ember.inject.service('flash-messages'),
+    i18n: Ember.inject.service(),
 
     updateHistory: [],
     pendingUpdates: [],
@@ -31,7 +32,7 @@ export default Ember.Controller.extend({
             this.set('pendingCheckUpdate', true);
             this.get('updater').checkUpdate().then((updateDescriptors) => {
                 if (updateDescriptors.length === 0)
-                    this.get('fm').info('Everything is up to date');
+                    this.get('fm').info(this.get('i18n').t('update.everything_up_to_date'));
                 this.set('updateDescriptors', updateDescriptors);
                 this.set('pendingCheckUpdate', false);
             });
@@ -52,15 +53,19 @@ export default Ember.Controller.extend({
         acknowledgeUpdate(update)
         {
             this.get('updater').acknowledgeUpdate(update).then(() => {
-                this.get('fm').success('Update acknowledged.');
+                this.get('fm').success(this.get('i18n').t('update.update_acked'));
                 this.refresh();
+            }).catch(()=>{
+                this.get('fm').danger(this.get('i18n').t('update.update_acked_failed'));
             });
         },
         cancelUpdate(update)
         {
             this.get('updater').cancelUpdate(update).then(() => {
-                this.get('fm').success('Update cancelled.');
+                this.get('fm').success(this.get('i18n').t('update.update_cancelled'));
                 this.refresh();
+            }).catch(() => {
+                this.get('fm').danger(this.get('i18n').t('update.update_cancelled_failed'));
             });
         }
     }
