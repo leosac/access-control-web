@@ -241,6 +241,10 @@ export default {
         'access-point': {
             'title': "EvoXS Access Point",
         },
+        update:
+            {
+                title: 'EvoXS Access Point Update'
+            },
         'lockid': 'Lock Id',
     },
     'credential': {

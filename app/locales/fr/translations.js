@@ -241,6 +241,10 @@ export default {
             'set_time': "Configurer l'heure du cylindre",
             'extract_event': "Récupérer les évenements",
         },
+        update:
+            {
+                title: "Mise a jour d'un point d'accès EvoXS",
+            },
         'access-point': {
             'title': "Point d'accès EvoXS"
         },

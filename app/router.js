@@ -61,6 +61,7 @@ Router.map(function ()
     this.route('evoxs', function() {
       this.route('access-point', {path: '/access-point/:access_point_id'});
       this.route('operations');
+      this.route('update', {path: '/update/:update_id'});
     });
   });
   this.route('auditlog');
@@ -71,7 +72,7 @@ Router.map(function ()
   this.route('create');
 });
   this.route('access-overview');
-  this.route('update');
+  this.route('updates');
 });
 
 export default Router;
