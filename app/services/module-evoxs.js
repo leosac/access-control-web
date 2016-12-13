@@ -10,8 +10,7 @@ export default Ember.Service.extend({
 
     checkUpdate()
     {
-        return this.get('websocket').sendJson('module.evoxs.check_update', {}).then((resp) =>
-        {
+        return this.get('websocket').sendJson('module.evoxs.check_update', {}).then((resp) => {
             return resp;
         });
     },
@@ -20,8 +19,7 @@ export default Ember.Service.extend({
      */
     getUpdates()
     {
-        return this.get('websocket').sendJson('module.evoxs.get_updates', {}).then((updates) =>
-        {
+        return this.get('websocket').sendJson('module.evoxs.get_updates', {}).then((updates) => {
             this.get('store').pushPayload(updates);
         });
     },
@@ -33,8 +31,7 @@ export default Ember.Service.extend({
     {
         return this.get('websocket').sendJson('module.evoxs.start_update', {
             ap_id: ap.get('numericId')
-        }).then((update_id) =>
-        {
+        }).then((update_id) => {
             this.getUpdates();
         });
     },
@@ -43,8 +40,7 @@ export default Ember.Service.extend({
         return this.get('websocket').sendJson('module.evoxs.set_update_status', {
             update_id: update.get('numericId'),
             status: UpdateStatus.CANCELLED
-        }).then((data) =>
-        {
+        }).then((data) => {
             this.get('store').pushPayload(data);
         });
     },
@@ -53,9 +49,19 @@ export default Ember.Service.extend({
         return this.get('websocket').sendJson('module.evoxs.set_update_status', {
             update_id: update.get('numericId'),
             status: UpdateStatus.ACKNOWLEDGED
-        }).then((data) =>
-        {
+        }).then((data) => {
             this.get('store').pushPayload(data);
+        });
+    },
+    /**
+     * Retrieve cylinder events.
+     * @note Returns a promise.
+     */
+    getEvents(page, pageSize)
+    {
+        return this.get('websocket').sendJson('module.evoxs.get_events', {
+            p: page,
+            ps: pageSize
         });
     }
 });

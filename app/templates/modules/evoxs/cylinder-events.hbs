@@ -1,0 +1,43 @@
+{{bs-button action=(action 'refresh') type='primary'
+            size='xs' defaultText=(t 'refresh')}}
+
+{{#bs-form formLayout="horizontal" model=this}}
+  <div class="row">
+    <div class="col-md-3">
+      {{bs-form-element controlType="number" label=(t 'current_page')
+                        property="currentPage"}}
+    </div>
+    <div class="col-md-3">
+      {{bs-form-element controlType="number" label=(t 'page_size')
+                        property="pageSize"}}
+    </div>
+    {{t 'total_page'}}: {{totalPage}}  | {{t 'count'}}: {{resultCount}}
+  </div>
+{{/bs-form}}
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+    <th>#Id</th>
+    <th>{{t 'type'}}</th>
+    <th>{{t 'timestamp'}}</th>
+    <th>Local Id</th>
+    <th>{{t 'w.user_id'}}</th>
+    <th>{{t 'evoxs.lockid'}}</th>
+    <th>{{t 'w.state'}}</th>
+    </thead>
+    <tbody>
+    {{#each events as |e|}}
+      <tr>
+        <td>{{e.id}}</td>
+        <td>{{e.type}}</td>
+        <td>{{e.edtime}}</td>
+        <td>{{e.eventId}}</td>
+        <td>{{e.userId}}</td>
+        <td>{{e.lockId}}</td>
+        <td>{{e.state}}</td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+</div>

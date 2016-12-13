@@ -107,6 +107,8 @@ export default {
         'credentials': 'Crédentiaux',
         'update': 'Mettre a jour',
         'severity': 'Sévérité',
+        'state': 'Etat',
+        'user_id': 'Id utilisateur'
     },
 
     'cancel_and_refresh': 'Annuler et rafraichir',
@@ -249,6 +251,10 @@ export default {
         'access-point': {
             'title': "Point d'accès EvoXS"
         },
+        'cylinder-events':
+            {
+                title: 'Evenements cylindre'
+            },
         'lockid': 'Lock Id',
     },
     'credential': {

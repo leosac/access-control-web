@@ -108,7 +108,9 @@ export default {
         'overview': 'Overview',
         'credentials': 'Credentials',
         'update': 'Update',
-        'severity': 'Severity'
+        'severity': 'Severity',
+        'state': 'State',
+        'user_id': 'User Id'
     },
 
     'cancel_and_refresh': 'Cancel & Refresh',
@@ -245,6 +247,10 @@ export default {
         update:
             {
                 title: 'EvoXS Access Point Update'
+            },
+        'cylinder-events':
+            {
+                title: 'Cylinder Events'
             },
         'lockid': 'Lock Id',
     },

@@ -62,6 +62,7 @@ Router.map(function ()
       this.route('access-point', {path: '/access-point/:access_point_id'});
       this.route('operations');
       this.route('update', {path: '/update/:update_id'});
+      this.route('cylinder-events');
     });
   });
   this.route('auditlog');
