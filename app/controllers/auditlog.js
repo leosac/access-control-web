@@ -10,6 +10,7 @@ export default Ember.Controller.extend({
     credentialEventEnabled: true,
     scheduleEventEnabled: true,
     userGroupMembershipEventEnabled: true,
+    updateEventEnabled: true,
     openDetailsModal: false,
 
     pageSize: 25,
@@ -27,6 +28,7 @@ export default Ember.Controller.extend({
     audits: [],
     watch_: Ember.observer('wsapicallEnabled', 'userEventEnabled', 'doorEventEnabled',
         'groupEventEnabled', 'credentialEventEnabled', 'scheduleEventEnabled', 'userGroupMembershipEventEnabled',
+        'updateEventEnabled',
         'currentPage', 'pageSize', function ()
         {
             this.reload();
@@ -58,6 +60,8 @@ export default Ember.Controller.extend({
             enabled_types.push('Leosac::Audit::GroupEvent');
         if (this.get('userGroupMembershipEventEnabled'))
             enabled_types.push('Leosac::Audit::UserGroupMembershipEvent');
+        if (this.get('updateEventEnabled'))
+            enabled_types.push('Leosac::Audit::UpdateEvent');
 
         const currentPage = Number.parseInt(this.get('currentPage')) || 1;
         const pageSize = Number.parseInt(this.get('pageSize')) || 20;

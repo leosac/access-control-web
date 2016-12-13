@@ -234,6 +234,7 @@ export default {
         'enable_credentialevent': 'Enable CredentialEvent',
         'enable_scheduleevent': 'Enable ScheduleEvent',
         'enable_usergroupevent': 'Enable UserGroupMembershipEvent',
+        'enable_updateevent': 'Enable UpdateEvent',
         'details_intro': 'This show a before and after the audit entry snapshot of the object that was modified. Note that this features is not available for all kind of audit entry.',
     },
     'evoxs': {

@@ -232,6 +232,7 @@ export default {
         'enable_credentialevent': 'Activer CredentialEvent',
         'enable_scheduleevent': 'Activer ScheduleEvent',
         'enable_usergroupevent': 'Activer UserGroupMembershipEvent',
+        'enable_updateevent': 'Activer UpdateEvent',
         'details_intro': "Affiche un état avant / après de l'enregistrement d'audit de l'objet modifié. Merci de noter que cette fonctionnalité n'est pas disponibles pour tous les types d'enregistrement d'audit.",
     },
     'evoxs': {

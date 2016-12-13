@@ -1,7 +1,7 @@
-import Update from 'web/models/update';
+import AccessPointUpdate from 'web/models/access-point-update';
 import DS from 'ember-data';
 import Ember from 'ember';
 
-export default Update.extend({
-    accessPoint: DS.belongsTo('evoxs-access-point'),
+export default AccessPointUpdate.extend({
+
 });

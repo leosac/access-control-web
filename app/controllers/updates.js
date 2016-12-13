@@ -12,12 +12,12 @@ export default Ember.Controller.extend({
 
     refresh()
     {
-        this.get('updater').getPending().then((updates) => {
-            this.set('pendingUpdates', updates);
-        });
-
         this.get('updater').getHistory().then((updates) => {
             this.set('updateHistory', updates);
+        });
+
+        this.get('updater').getPending().then((updates) => {
+            this.set('pendingUpdates', updates);
         });
     },
 
@@ -65,7 +65,7 @@ export default Ember.Controller.extend({
                 this.get('fm').success(this.get('i18n').t('update.update_cancelled'));
                 this.refresh();
             }).catch(() => {
-                this.get('fm').danger(this.get('i18n').t('update.update_cancelled_failed'));
+                this.get('fm').danger(this.get('i18n').t('update.update_cancel_failed'));
             });
         }
     }

@@ -28,7 +28,7 @@ export default Ember.Service.extend({
             {
                 // clear store so don't have too many record.
                 ['audit-user-event', 'audit-wsapicall-event', 'audit-door-event', 'audit-user-group-membership-event',
-                    'audit-schedule-event', 'audit-credential-event', 'audit-group-event'].forEach((type) =>
+                    'audit-schedule-event', 'audit-credential-event', 'audit-group-event', 'audit-update-event'].forEach((type) =>
                 {
                     self.get('store').unloadAll(type);
                 });
@@ -64,6 +64,9 @@ export default Ember.Service.extend({
 
                         if (enabled_types.indexOf('Leosac::Audit::UserGroupMembershipEvent') !== -1 || enabled_types.length === 0)
                             tmpArray = tmpArray.concat(self.get('store').peekAll('audit-user-group-membership-event').toArray());
+
+                        if (enabled_types.indexOf('Leosac::Audit::UpdateEvent') !== -1 || enabled_types.length === 0)
+                            tmpArray = tmpArray.concat(self.get('store').peekAll('audit-update-event').toArray());
 
                         progressSetter(100);
                         Ember.run.next(function ()

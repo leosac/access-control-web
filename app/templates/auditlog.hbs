@@ -4,58 +4,63 @@
             size='xs' defaultText=(t 'refresh')}}
 
 {{#bs-form formLayout="horizontal" model=this}}
-    <div class="row">
-        <div class="col-md-3">
-          {{bs-form-element controlType="number" label=(t 'current_page')
-                            property="currentPage"}}
-        </div>
-        <div class="col-md-3">
-          {{bs-form-element controlType="number" label=(t 'page_size')
-                            property="pageSize"}}
-        </div>
-      {{t 'total_page'}}: {{totalPage}}  | {{t 'count'}}: {{resultCount}}
+  <div class="row">
+    <div class="col-md-3">
+      {{bs-form-element controlType="number" label=(t 'current_page')
+                        property="currentPage"}}
     </div>
+    <div class="col-md-3">
+      {{bs-form-element controlType="number" label=(t 'page_size')
+                        property="pageSize"}}
+    </div>
+    {{t 'total_page'}}: {{totalPage}}  | {{t 'count'}}: {{resultCount}}
+  </div>
 
-    <div class="row">
-        <div class="col-md-3">
-          {{bs-form-element label=(t 'audit.enable_wsapicall')
-                            disabled=fetchingData controlType='checkbox'
-                            value=wsapicallEnabled}}
-        </div>
-        <div class="col-md-3">
-          {{bs-form-element label=(t 'audit.enable_userevent')
-                            disabled=fetchingData controlType='checkbox'
-                            value=userEventEnabled}}
-        </div>
-        <div class="col-md-3">
-          {{bs-form-element label=(t 'audit.enable_doorevent')
-                            disabled=fetchingData controlType='checkbox'
-                            value=doorEventEnabled}}
-        </div>
-        <div class="col-md-3">
-          {{bs-form-element label=(t 'audit.enable_groupevent')
-                            disabled=fetchingData controlType='checkbox'
-                            value=groupEventEnabled}}
-        </div>
+  <div class="row">
+    <div class="col-md-3">
+      {{bs-form-element label=(t 'audit.enable_wsapicall')
+                        disabled=fetchingData controlType='checkbox'
+                        value=wsapicallEnabled}}
     </div>
+    <div class="col-md-3">
+      {{bs-form-element label=(t 'audit.enable_userevent')
+                        disabled=fetchingData controlType='checkbox'
+                        value=userEventEnabled}}
+    </div>
+    <div class="col-md-3">
+      {{bs-form-element label=(t 'audit.enable_doorevent')
+                        disabled=fetchingData controlType='checkbox'
+                        value=doorEventEnabled}}
+    </div>
+    <div class="col-md-3">
+      {{bs-form-element label=(t 'audit.enable_groupevent')
+                        disabled=fetchingData controlType='checkbox'
+                        value=groupEventEnabled}}
+    </div>
+  </div>
 
-    <div class="row">
-        <div class="col-md-3">
-          {{bs-form-element label=(t 'audit.enable_credentialevent')
-                            disabled=fetchingData controlType='checkbox'
-                            value=credentialEventEnabled}}
-        </div>
-        <div class="col-md-3">
-          {{bs-form-element label=(t 'audit.enable_scheduleevent')
-                            disabled=fetchingData controlType='checkbox'
-                            value=scheduleEventEnabled}}
-        </div>
-        <div class="col-md-3">
-          {{bs-form-element label=(t 'audit.enable_usergroupevent')
-                            disabled=fetchingData controlType='checkbox'
-                            value=userGroupMembershipEventEnabled}}
-        </div>
+  <div class="row">
+    <div class="col-md-3">
+      {{bs-form-element label=(t 'audit.enable_credentialevent')
+                        disabled=fetchingData controlType='checkbox'
+                        value=credentialEventEnabled}}
     </div>
+    <div class="col-md-3">
+      {{bs-form-element label=(t 'audit.enable_scheduleevent')
+                        disabled=fetchingData controlType='checkbox'
+                        value=scheduleEventEnabled}}
+    </div>
+    <div class="col-md-3">
+      {{bs-form-element label=(t 'audit.enable_usergroupevent')
+                        disabled=fetchingData controlType='checkbox'
+                        value=userGroupMembershipEventEnabled}}
+    </div>
+    <div class="col-md-3">
+      {{bs-form-element label=(t 'audit.enable_updateevent')
+                        disabled=fetchingData controlType='checkbox'
+                        value=updateEventEnabled}}
+    </div>
+  </div>
 
 {{/bs-form}}
 
@@ -68,32 +73,32 @@
 {{/if}}
 
 <div class="table-responsive">
-    <table class="table table-striped">
-        <thead>
-        <th>#Id</th>
-        <th>{{t 'type'}}</th>
-        <th>{{t 'description'}}</th>
-        <th>{{t 'author'}}</th>
-        <th>{{t 'timestamp'}}</th>
-        <th>{{t 'mask'}}</th>
-        <th>{{t 'finalized'}}</th>
-        <th>{{t 'details'}}</th>
-        </thead>
-        <tbody>
-        {{#each audits as |audit|}}
-            <tr>
-                <td>{{audit.id}}</td>
-                <td>{{audit.type}}</td>
-                <td>{{audit.description}}</td>
-                <td>{{audit.author.username}}</td>
-                <td>{{audit.timestamp}}</td>
-                <td>{{audit.eventMask}}</td>
-                <td>{{boolean-to-colored-yes-no audit.finalized}}</td>
-                <td>{{bs-button action=(action 'showDetails' audit) defaultText=(t 'details')}}</td>
-            </tr>
-        {{/each}}
-        </tbody>
-    </table>
+  <table class="table table-striped">
+    <thead>
+    <th>#Id</th>
+    <th>{{t 'type'}}</th>
+    <th>{{t 'description'}}</th>
+    <th>{{t 'author'}}</th>
+    <th>{{t 'timestamp'}}</th>
+    <th>{{t 'mask'}}</th>
+    <th>{{t 'finalized'}}</th>
+    <th>{{t 'details'}}</th>
+    </thead>
+    <tbody>
+    {{#each audits as |audit|}}
+      <tr>
+        <td>{{audit.id}}</td>
+        <td>{{audit.type}}</td>
+        <td>{{audit.description}}</td>
+        <td>{{audit.author.username}}</td>
+        <td>{{audit.timestamp}}</td>
+        <td>{{audit.eventMask}}</td>
+        <td>{{boolean-to-colored-yes-no audit.finalized}}</td>
+        <td>{{bs-button action=(action 'showDetails' audit) defaultText=(t 'details')}}</td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
 </div>
 
 {{#bs-modal open=openDetailsModal title=(t 'details')}}
