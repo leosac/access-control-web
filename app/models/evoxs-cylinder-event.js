@@ -8,6 +8,7 @@ import DS from 'ember-data';
  * use the module-evoxs service to retrieve them.
  */
 export default DS.Model.extend({
+    accessPoint: DS.belongsTo('evoxs-access-point'),
     userId: DS.attr('number'),
     lockId: DS.attr('number'),
     state: DS.attr(),

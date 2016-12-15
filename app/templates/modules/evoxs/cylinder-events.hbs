@@ -19,6 +19,7 @@
   <table class="table table-striped">
     <thead>
     <th>#Id</th>
+    <th>{{t 'access_point'}}</th>
     <th>{{t 'type'}}</th>
     <th>{{t 'timestamp'}}</th>
     <th>Local Id</th>
@@ -30,6 +31,7 @@
     {{#each events as |e|}}
       <tr>
         <td>{{e.id}}</td>
+        <td>{{e.accessPoint.alias}}</td>
         <td>{{e.type}}</td>
         <td>{{e.edtime}}</td>
         <td>{{e.eventId}}</td>
