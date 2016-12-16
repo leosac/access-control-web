@@ -31,7 +31,11 @@
     {{#each events as |e|}}
       <tr>
         <td>{{e.id}}</td>
-        <td>{{e.accessPoint.alias}}</td>
+        <td>
+          {{#link-to-access-point ap=e.accessPoint}}
+            {{e.accessPoint.alias}}
+          {{/link-to-access-point}}
+        </td>
         <td>{{e.type}}</td>
         <td>{{e.edtime}}</td>
         <td>{{e.eventId}}</td>

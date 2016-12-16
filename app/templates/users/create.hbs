@@ -33,7 +33,7 @@
 
     <fieldset>
         <legend>{{t 'security'}}</legend>
-      {{password-input passwordOut=(mut model.user.password)}}
+      {{password-input optional=true passwordOut=(mut model.user.password)}}
     </fieldset>
 
   {{bs-button defaultText=(t 'users.create.title') type="primary"
