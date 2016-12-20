@@ -9,12 +9,12 @@ function findCredential(store, id)
     const promise = Ember.RSVP.defer();
 
     Ember.RSVP.hash({
-        wiegandCard: store.find('wiegand-card', id),
+        rfidCard: store.find('rfid-card', id),
         pinCode: store.find('pin-code', id),
     }).then(function (hash)
     {
-        if (hash.wiegandCard)
-            promise.resolve(hash.wiegandCard);
+        if (hash.rfidCard)
+            promise.resolve(hash.rfidCard);
         else if (hash.pinCode)
             promise.resolve(hash.pinCode);
         promise.reject(null);
@@ -37,11 +37,11 @@ function findAllCredentials(store)
     let tmpArray = [];
 
     Ember.RSVP.hash({
-        wiegandCard: store.findAll('wiegand-card', {reload: true}),
+        rfidCard: store.findAll('rfid-card', {reload: true}),
         pinCode: store.findAll('pin-code', {reload: true}),
     }).then(function (hash)
     {
-        tmpArray = tmpArray.concat(hash.wiegandCard.toArray(),
+        tmpArray = tmpArray.concat(hash.rfidCard.toArray(),
             hash.pinCode.toArray());
         promise.resolve(tmpArray);
     });
@@ -57,7 +57,7 @@ function findAllCredentials(store)
  */
 function deleteCredential(store, credentialId, resolve, reject)
 {
-    let cred = store.peekRecord('wiegand-card', credentialId);
+    let cred = store.peekRecord('rfid-card', credentialId);
     if (!cred)
         cred = store.peekRecord('pin-code', credentialId);
     if (cred)

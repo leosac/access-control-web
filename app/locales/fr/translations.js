@@ -274,14 +274,14 @@ export default {
             'title': 'Code PIN',
             'add': 'Ajouter un code PIN',
         },
-        'wiegand_card': {
-            'title': 'Carte Wiegand',
+        'rfid_card': {
+            'title': 'Carte RFID',
             'hex_id': 'Identifiant de carte hexadécimal',
             'number_bits': 'Nombre de bits',
-            'add': 'Ajouter une carte Wiegand',
+            'add': 'Ajouter une carte RFID',
         },
-        'wiegand_card_create': {
-            'title': 'Créer Carte Wiegand'
+        'rfid_card_create': {
+            'title': 'Créer Carte RFID'
         },
         'delete_confirm': 'Êtes-vous sûr de vouloir supprimer ce crédential ?',
     },

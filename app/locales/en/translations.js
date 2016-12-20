@@ -270,14 +270,14 @@ export default {
             'title': 'PIN Code',
             'add': 'Add PinCode',
         },
-        'wiegand_card': {
-            'title': 'Wiegand Card',
+        'rfid_card': {
+            'title': 'RFID Card',
             'hex_id': 'Hexadecimal Card Identifier',
             'number_bits': 'Number of bits',
-            'add': 'Add WiegandCard',
+            'add': 'Add RFIDCard',
         },
-        'wiegand_card_create': {
-            'title': 'Create Wiegand Card'
+        'rfid_card_create': {
+            'title': 'Create RFID Card'
         },
         'delete_confirm': 'Are you sure you wish to delete this credential?',
     },
