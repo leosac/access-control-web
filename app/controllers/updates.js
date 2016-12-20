@@ -10,13 +10,19 @@ export default Ember.Controller.extend({
     pendingCheckUpdate: false,
     updateDescriptors: [],
 
+    // The update the we are seeing the details of.
+    detailedUpdate: {},
+    openDetailsModal: false,
+
     refresh()
     {
-        this.get('updater').getHistory().then((updates) => {
+        this.get('updater').getHistory().then((updates) =>
+        {
             this.set('updateHistory', updates);
         });
 
-        this.get('updater').getPending().then((updates) => {
+        this.get('updater').getPending().then((updates) =>
+        {
             this.set('pendingUpdates', updates);
         });
     },
@@ -30,7 +36,8 @@ export default Ember.Controller.extend({
         checkUpdate()
         {
             this.set('pendingCheckUpdate', true);
-            this.get('updater').checkUpdate().then((updateDescriptors) => {
+            this.get('updater').checkUpdate().then((updateDescriptors) =>
+            {
                 if (updateDescriptors.length === 0)
                     this.get('fm').info(this.get('i18n').t('update.everything_up_to_date'));
                 this.set('updateDescriptors', updateDescriptors);
@@ -45,28 +52,37 @@ export default Ember.Controller.extend({
                 this.set('updateDescriptors',
                     this.get('updateDescriptors').filter(i => i !== updateDescriptor));
 
-                this.get('updater').getPending().then(()=>{
+                this.get('updater').getPending().then(() =>
+                {
                     this.refresh();
                 });
             });
         },
         acknowledgeUpdate(update)
         {
-            this.get('updater').acknowledgeUpdate(update).then(() => {
+            this.get('updater').acknowledgeUpdate(update).then(() =>
+            {
                 this.get('fm').success(this.get('i18n').t('update.update_acked'));
                 this.refresh();
-            }).catch(()=>{
+            }).catch(() =>
+            {
                 this.get('fm').danger(this.get('i18n').t('update.update_acked_failed'));
             });
         },
         cancelUpdate(update)
         {
-            this.get('updater').cancelUpdate(update).then(() => {
+            this.get('updater').cancelUpdate(update).then(() =>
+            {
                 this.get('fm').success(this.get('i18n').t('update.update_cancelled'));
                 this.refresh();
-            }).catch(() => {
+            }).catch(() =>
+            {
                 this.get('fm').danger(this.get('i18n').t('update.update_cancel_failed'));
             });
-        }
+        },
+        showDetails(update) {
+            this.set('openDetailsModal', true);
+            this.set('detailedUpdate', update);
+        },
     }
 });

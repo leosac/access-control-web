@@ -226,6 +226,7 @@ export default {
         'delete_confirm': 'Are you sure you wish to delete this access point?',
     },
     'audit': {
+        title: 'Audit Trail',
         'entries_below': 'Audits entries below:',
         'before': 'Before:',
         'after': 'After:',
