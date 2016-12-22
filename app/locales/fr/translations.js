@@ -371,6 +371,7 @@ export default {
         'title': 'Vue générale'
     },
     'access-point': {
+        'title': "Point d'accès",
         'list': {
             'title': "Liste des point d'accès"
         },

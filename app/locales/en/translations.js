@@ -245,6 +245,11 @@ export default {
         'access-point': {
             'title': "EvoXS Access Point",
         },
+        'operations': {
+            'title': 'Operations',
+            'set_time': "Configure cylinder's time",
+            'extract_event': "Extract events",
+        },
         update:
             {
                 title: 'EvoXS Access Point Update'
@@ -364,6 +369,7 @@ export default {
         'title': 'Access Overview'
     },
     'access-point': {
+        'title': 'Access Point',
         'list': {
             'title': 'Access Point list'
         },
