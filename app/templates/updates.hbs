@@ -89,7 +89,7 @@
 
     <tbody>
     {{#each updateHistory as |update|}}
-    <!-- 1 is hardcoded for ACKNOWLEDGED -->
+      <!-- 1 is hardcoded for ACKNOWLEDGED -->
       <tr class="{{if (eq update.status 1) 'success' 'danger'}}">
         <td>{{update.id}}</td>
         <td>{{update.sourceModule}}</td>

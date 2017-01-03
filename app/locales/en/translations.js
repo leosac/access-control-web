@@ -97,6 +97,7 @@ export default {
     'display_id': 'Display Identifier',
     'action': 'Action',
     'here': 'here',
+    'message': 'Message',
     'test': 'test',
     'url': 'Url',
     'pending_updates': 'Pending updates',
@@ -364,9 +365,13 @@ export default {
         'verify_host': 'Verify Host',
         'verify_peer': 'Verify Peer',
         'save': 'Save Config',
+        'add_server': 'Add server',
     },
     'access-overview': {
         'title': 'Access Overview'
+    },
+    'system-overview': {
+        'title': 'System Overview'
     },
     'access-point': {
         'title': 'Access Point',

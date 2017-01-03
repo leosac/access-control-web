@@ -96,6 +96,7 @@ export default {
     'display_id': 'Identifiant affiché',
     'action': 'Action',
     'here': 'ici',
+    'message': 'Message',
     'test': 'test',
     'url': 'Url',
     'pending_updates': 'Mises a jour en attente',
