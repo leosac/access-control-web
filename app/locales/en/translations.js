@@ -239,6 +239,7 @@ export default {
         'enable_scheduleevent': 'Enable ScheduleEvent',
         'enable_usergroupevent': 'Enable UserGroupMembershipEvent',
         'enable_updateevent': 'Enable UpdateEvent',
+        'enable_zoneevent': 'Enable ZoneEvent',
         'details_intro': 'This show a before and after the audit entry snapshot of the object that was modified. Note that this features is not available for all kind of audit entry.',
     },
     'evoxs': {

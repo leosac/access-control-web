@@ -237,6 +237,7 @@ export default {
         'enable_scheduleevent': 'Activer ScheduleEvent',
         'enable_usergroupevent': 'Activer UserGroupMembershipEvent',
         'enable_updateevent': 'Activer UpdateEvent',
+        'enable_zoneevent': 'Activer ZoneEvent',
         'details_intro': "Affiche un état avant / après de l'enregistrement d'audit de l'objet modifié. Merci de noter que cette fonctionnalité n'est pas disponibles pour tous les types d'enregistrement d'audit.",
     },
     'evoxs': {
