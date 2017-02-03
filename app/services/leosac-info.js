@@ -46,5 +46,15 @@ export default Ember.Service.extend({
     getLocale()
     {
         return this.get('userLocale');
+    },
+
+    // Server endpoint in localstorage for cloud-based deployment.
+    setServerUrl(u)
+    {
+        localStorage.server_url = u;
+    },
+    getServerUrl()
+    {
+        return localStorage.server_url;
     }
 });
