@@ -39,7 +39,15 @@
         <td>{{e.time}}</td>
         <td>{{e.lockId}}</td>
         <td>{{e.roomNumber}}</td>
-        <td>{{e.cardId}}</td>
+        <td>
+          <!-- Don't show card if event type is 48 (phone settings)
+          because it makes no sense -->
+          {{#if (eq 48 e.type)}}
+            N/A
+          {{else}}
+            {{e.cardId}}
+          {{/if}}
+        </td>
       </tr>
     {{/each}}
     </tbody>
