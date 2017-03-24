@@ -22,10 +22,9 @@
     <th>{{t 'access_point'}}</th>
     <th>{{t 'type'}}</th>
     <th>{{t 'timestamp'}}</th>
-    <th>Local Id</th>
-    <th>{{t 'w.user_id'}}</th>
     <th>{{t 'evoxs.lockid'}}</th>
-    <th>{{t 'w.state'}}</th>
+    <th>{{t 'w.room_number'}}</th>
+    <th>{{t 'w.card_csn'}}</th>
     </thead>
     <tbody>
     {{#each events as |e|}}
@@ -37,11 +36,10 @@
           {{/link-to-access-point}}
         </td>
         <td>{{e.type}}</td>
-        <td>{{e.edtime}}</td>
-        <td>{{e.eventId}}</td>
-        <td>{{e.userId}}</td>
+        <td>{{e.time}}</td>
         <td>{{e.lockId}}</td>
-        <td>{{e.state}}</td>
+        <td>{{e.roomNumber}}</td>
+        <td>{{e.cardId}}</td>
       </tr>
     {{/each}}
     </tbody>

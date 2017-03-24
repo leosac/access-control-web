@@ -111,7 +111,9 @@ export default {
         'update': 'Update',
         'severity': 'Severity',
         'state': 'State',
-        'user_id': 'User Id'
+        'user_id': 'User Id',
+        'room_number': 'Room Number',
+        'card_csn': 'Card Serial Number'
     },
 
     'cancel_and_refresh': 'Cancel & Refresh',

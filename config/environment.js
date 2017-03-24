@@ -22,8 +22,8 @@ module.exports = function (environment)
             // IP:PORT of the leosac server.
             // If set to null, will try to use the value from
             // LEOSAC_ADDR environement variable.
-            //leosacAddr: null,
-            leosacAddr: '10.2.1.5:8888',
+            leosacAddr: null,
+            //leosacAddr: '10.2.1.5:8888',
             appname: 'EvoXS Management Studio',
             logoUrl: 'http://terminator.islog.private:4200/assets/images/logo.png',
             siteUrl: 'izyx-systems.com',

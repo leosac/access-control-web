@@ -9,11 +9,11 @@ import DS from 'ember-data';
  */
 export default DS.Model.extend({
     accessPoint: DS.belongsTo('evoxs-access-point'),
-    userId: DS.attr('number'),
     lockId: DS.attr('number'),
-    state: DS.attr(),
-    eventId: DS.attr('number'),
-    // Enum C++ side.
-    type: DS.attr('number'),
-    edtime: DS.attr('utc'),
+    roomNumber: DS.attr('number'),
+    cardId: DS.attr('string'),
+
+    // Enum C++ side -- Leosac serialize this to string.
+    type: DS.attr('string'),
+    time: DS.attr('utc'),
 });

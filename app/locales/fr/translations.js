@@ -110,7 +110,9 @@ export default {
         'update': 'Mettre a jour',
         'severity': 'Sévérité',
         'state': 'Etat',
-        'user_id': 'Id utilisateur'
+        'user_id': 'Id utilisateur',
+        'room_number': 'Numéro de la piece',
+        'card_csn': 'Numéro de la carte'
     },
 
     'cancel_and_refresh': 'Annuler et rafraichir',
