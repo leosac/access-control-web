@@ -13,7 +13,9 @@ export default DS.Model.extend({
     roomNumber: DS.attr('number'),
     cardId: DS.attr('string'),
 
-    // Enum C++ side -- Leosac serialize this to string.
-    type: DS.attr('string'),
+    // Enum C++ side
+    type: DS.attr('number'),
+    // Type stringified by Leosac.
+    typeStr: DS.attr('string'),
     time: DS.attr('utc'),
 });
