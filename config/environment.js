@@ -25,7 +25,7 @@ module.exports = function (environment)
             leosacAddr: null,
             //leosacAddr: '10.2.1.5:8888',
             appname: 'EvoXS Management Studio',
-            logoUrl: 'http://terminator.islog.private:4200/assets/images/logo.png',
+            logoUrl: '/assets/images/logo.png',
             siteUrl: 'izyx-systems.com',
         }
     };
