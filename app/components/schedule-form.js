@@ -8,7 +8,7 @@ export default Ember.Component.extend({
     actions: {
         removeTimeframe()
         {
-            const newArray = []
+            const newArray = [];
             this.get('schedule').get('timeframes').forEach((tf) =>
             {
                 if (tf !== this.get('currentTimeframe'))

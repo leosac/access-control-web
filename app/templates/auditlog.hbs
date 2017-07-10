@@ -10,8 +10,8 @@
                         property="currentPage"}}
     </div>
     <div class="col-md-3">
-      {{bs-form-element controlType="number" label=(t 'page_size')
-                        property="pageSize"}}
+      {{bs-form-element controlType="number" max=2147483647
+                        label=(t 'page_size') property="pageSize" }}
     </div>
     {{t 'total_page'}}: {{totalPage}}  | {{t 'count'}}: {{resultCount}}
   </div>

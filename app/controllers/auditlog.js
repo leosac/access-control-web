@@ -26,9 +26,9 @@ export default Ember.Controller.extend({
     // The audit object that is currently being shown
     // in the details modal.
     detailedAudit: null,
-    audits: [],
+    audits:  Ember.ArrayProxy.create({ content: Ember.A([]) }),
     watch_: Ember.observer('wsapicallEnabled', 'userEventEnabled', 'doorEventEnabled',
-        'groupEventEnabled', 'credentialEventEnabled', 'scheduleEventEnabled', 'userGroupMembershipEventEnabled',
+        'groupEventEnabled', `credentialEventEnabled`, 'scheduleEventEnabled', 'userGroupMembershipEventEnabled',
         'updateEventEnabled', 'zoneEventEnabled',
         'currentPage', 'pageSize', function ()
         {
@@ -74,12 +74,14 @@ export default Ember.Controller.extend({
         };
 
         self.set('fetchingData', true);
+        console.log(pageSize);
         this.get('auditLog').findAllByTypes(enabled_types,
             currentPage, pageSize, progressSetter).then((result) =>
         {
             self.set('totalPage', result.meta.total_page);
             self.set('resultCount', result.meta.count);
-            self.set('audits', result.data);
+            self.get('audits').set('content', result.data);
+
             progressSetter(0);
             self.set('fetchingData', false);
         });

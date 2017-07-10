@@ -80,9 +80,9 @@ export default Ember.Service.extend({
                                 return b.get('numericId') - a.get('numericId');
                             });
                             promise.resolve({data: tmpArray, meta: obj.meta});
-                        });
-                    });
-                });
+                        }, 1000);
+                    }, 1000);
+                }, 1000);
             },
             (fail) => promise.reject(fail)
         );

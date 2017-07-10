@@ -8,11 +8,14 @@ export default LeosacRoute.extend({
     beforeModel()
     {
         "use strict";
+        console.log("lol!");
         this._super();
     },
     model()
     {
         "use strict";
+        console.log("lol");
+        console.log(this.get('authSrv').username);
         return {user_id: this.get('authSrv').user_id,
             username: this.get('authSrv').username};
     }
