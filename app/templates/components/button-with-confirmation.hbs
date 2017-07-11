@@ -4,12 +4,12 @@
   {{text}}
 {{/bs-button}}
 
-{{#bs-modal body=false footer=false open=modalOpen title=(t 'confirmation')}}
-  {{#bs-modal-body}}
+{{#bs-modal body=false footer=false open=modalOpen title=(t 'confirmation') as | modal|}}
+  {{#modal.body}}
     {{message}} <br>
-  {{/bs-modal-body}}
+  {{/modal.body}}
 
-  {{#bs-modal-footer}}
+  {{#modal.footer as | footer |}}
     {{#bs-button type='primary' action='onCancel'}}
         {{t 'cancel'}}
     {{/bs-button}}
@@ -17,5 +17,5 @@
     {{#bs-button type='danger' action='onConfirm'}}
         {{t 'confirm'}}
     {{/bs-button}}
-  {{/bs-modal-footer}}
+  {{/modal.footer}}
 {{/bs-modal}}

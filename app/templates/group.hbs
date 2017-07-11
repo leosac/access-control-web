@@ -2,13 +2,13 @@
   {{#bs-tab}}
     {{#bs-tab-pane title=(t 'information')}}
         <div class="row col-md-6">
-          {{#bs-form formLayout="horizontal" model=model action="editGroup"}}
+          {{#bs-form formLayout="horizontal" model=model action="editGroup" as  | form |}}
               <fieldset>
                   <legend>{{t 'group_information'}}</legend>
-                {{bs-form-element controlType="text" label=(t 'name')
+                {{form.element controlType="text" label=(t 'name')
                                   property="name"}}
 
-                {{bs-form-element controlType='textarea' label=(t 'description')
+                {{form.element controlType='textarea' label=(t 'description')
                                   property='description'}}
 
                 {{bs-button defaultText=(t 'edit') type="primary" buttonType="submit"

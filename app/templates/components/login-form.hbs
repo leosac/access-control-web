@@ -1,22 +1,23 @@
 <img src="{{getenv 'logoUrl'}}" class="navbar-logo" alt="Logo" />
 
-<form class="form-signin">
+{{#bs-form formLayout="horizontal"  class="form-control" onSubmit=(action "login") as |form|}}
     <h2 class="form-signin-heading">{{t 'login-form.welcome'}}</h2>
-
-  {{bs-form-element controlType='text' label=(t 'form.username.label')
+  {{form.element controlType='text' label=(t 'form.username.label')
                     value=inputUsername required=true
-                    placeholder=(t 'form.username.ph')
+                 onChange=(action (mut inputUsername))
+                 placeholder=(t 'form.username.ph')
                     }}
 
-  {{bs-form-element controlType='password' label=(t 'form.password.label')
+  {{form.element controlType='password' label=(t 'form.password.label')
                     value=inputPassword required=true
-                    placeholder=(t 'form.password.ph')
+                 onChange=(action (mut inputPassword))
+
+                 placeholder=(t 'form.password.ph')
                     }}
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit"
-      {{action 'login'}}>{{t 'login-form.submit'}}
-    </button>
-
+    {{#bs-button class="btn-block" size="lg" type="primary" buttonType="submit"}}
+        {{t 'login-form.submit'}}
+    {{/bs-button}}
   {{#if pending}}
       <span class="fa fa-refresh" style="color: orange" aria-hidden="true"></span>
   {{/if}}
@@ -26,4 +27,5 @@
         {{errorMessage}}
       </div>
   {{/if}}
-</form>
+{{/bs-form}}
+

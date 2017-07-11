@@ -3,14 +3,14 @@
 {{bs-button action=(action 'refresh') type='primary'
             size='xs' defaultText=(t 'refresh')}}
 
-{{#bs-form formLayout="horizontal" model=this}}
+{{#bs-form formLayout="horizontal" model=this as | form |}}
   <div class="row">
     <div class="col-md-3">
-      {{bs-form-element controlType="number" label=(t 'current_page')
+      {{form.element controlType="number" label=(t 'current_page')
                         property="currentPage"}}
     </div>
     <div class="col-md-3">
-      {{bs-form-element controlType="number" max=2147483647
+      {{form.element controlType="number" max=2147483647
                         label=(t 'page_size') property="pageSize" }}
     </div>
     {{t 'total_page'}}: {{totalPage}}  | {{t 'count'}}: {{resultCount}}
@@ -18,22 +18,22 @@
 
   <div class="row">
     <div class="col-md-3">
-      {{bs-form-element label=(t 'audit.enable_wsapicall')
+      {{form.element label=(t 'audit.enable_wsapicall')
                         disabled=fetchingData controlType='checkbox'
                         value=wsapicallEnabled}}
     </div>
     <div class="col-md-3">
-      {{bs-form-element label=(t 'audit.enable_userevent')
+      {{form.element label=(t 'audit.enable_userevent')
                         disabled=fetchingData controlType='checkbox'
                         value=userEventEnabled}}
     </div>
     <div class="col-md-3">
-      {{bs-form-element label=(t 'audit.enable_doorevent')
+      {{form.element label=(t 'audit.enable_doorevent')
                         disabled=fetchingData controlType='checkbox'
                         value=doorEventEnabled}}
     </div>
     <div class="col-md-3">
-      {{bs-form-element label=(t 'audit.enable_groupevent')
+      {{form.element label=(t 'audit.enable_groupevent')
                         disabled=fetchingData controlType='checkbox'
                         value=groupEventEnabled}}
     </div>
@@ -41,27 +41,27 @@
 
   <div class="row">
     <div class="col-md-3">
-      {{bs-form-element label=(t 'audit.enable_credentialevent')
+      {{form.element label=(t 'audit.enable_credentialevent')
                         disabled=fetchingData controlType='checkbox'
                         value=credentialEventEnabled}}
     </div>
     <div class="col-md-3">
-      {{bs-form-element label=(t 'audit.enable_scheduleevent')
+      {{form.element label=(t 'audit.enable_scheduleevent')
                         disabled=fetchingData controlType='checkbox'
                         value=scheduleEventEnabled}}
     </div>
     <div class="col-md-3">
-      {{bs-form-element label=(t 'audit.enable_usergroupevent')
+      {{form.element label=(t 'audit.enable_usergroupevent')
                         disabled=fetchingData controlType='checkbox'
                         value=userGroupMembershipEventEnabled}}
     </div>
     <div class="col-md-3">
-      {{bs-form-element label=(t 'audit.enable_updateevent')
+      {{form.element label=(t 'audit.enable_updateevent')
                         disabled=fetchingData controlType='checkbox'
                         value=updateEventEnabled}}
     </div>
     <div class="col-md-3">
-      {{bs-form-element label=(t 'audit.enable_zoneevent')
+      {{form.element label=(t 'audit.enable_zoneevent')
                         disabled=fetchingData controlType='checkbox'
                         value=zoneEventEnabled}}
     </div>
@@ -72,8 +72,8 @@
 {{#if progressValue}}
   {{t 'wait'}}
 
-  {{#bs-progress}}
-    {{bs-progress-bar value=progressValue minValue=0 maxValue=100 type="primary"}}
+  {{#bs-progress as |p|}}
+    {{p.bar value=progressValue minValue=0 maxValue=100 type="primary"}}
   {{/bs-progress}}
 {{/if}}
 
