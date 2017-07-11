@@ -2,14 +2,14 @@
     <h2>Schedule name: {{model.name}}</h2>
 </div>
 
-{{#bs-tab}}
-  {{#bs-tab-pane title=(t 'timeframes')}}
+{{#bs-tab as |tab|}}
+  {{#tab.pane title=(t 'timeframes')}}
       <div class="col-md-6">
         {{schedule-form schedule=model action=(route-action 'editSchedule')}}
       </div>
-  {{/bs-tab-pane}}
+  {{/tab.pane}}
 
-  {{#bs-tab-pane title=(t 'mapping')}}
+  {{#tab.pane title=(t 'mapping')}}
 
       {{t 'schedule.mapping_list'}}<br> <br>
 
@@ -31,15 +31,15 @@
           </div>
       </div>
 
-      {{#bs-accordion}}
+      {{#bs-accordion as |acc|}}
         {{#each model.mapping as |mapping|}}
-          {{#bs-accordion-item title=(t 'schedule.mapping' alias=mapping.alias)}}
+          {{#acc.item title=(t 'schedule.mapping' alias=mapping.alias)}}
             {{schedule-mapping mapping=mapping}}
-          {{/bs-accordion-item}}
+          {{/acc.item}}
 
           <hr>
 
         {{/each}}
       {{/bs-accordion}}
-  {{/bs-tab-pane}}
+  {{/tab.pane}}
 {{/bs-tab}}

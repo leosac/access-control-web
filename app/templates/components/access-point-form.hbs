@@ -1,15 +1,15 @@
-{{#bs-form formLayout="horizontal" model=ap action=action}}
+{{#bs-form formLayout="horizontal" model=ap action=action as | form|}}
     <fieldset>
         <legend>{{t 'configuration'}}</legend>
-      {{bs-form-element controlType="text" label=(t 'alias')
+      {{form.element controlType="text" label=(t 'alias')
                         placeholder=(t 'access_point_placeholder')
                         property="alias"}}
-      {{bs-form-element controlType="textarea" label=(t 'notes')
+      {{form.element controlType="textarea" label=(t 'notes')
                         placeholder=(t 'notes_placeholder')
                         property="description"}}
 
       {{#if isCreating}}
-        {{#bs-form-element label=(t 'controller_module')}}
+        {{#form.element label=(t 'controller_module')}}
           {{#power-select
             selected=ap.controllerModule
             options=availableAccessPointModules
@@ -19,7 +19,7 @@
           }}
             {{module}}
           {{/power-select}}
-        {{/bs-form-element}}
+        {{/form.element}}
       {{/if}}
 
 

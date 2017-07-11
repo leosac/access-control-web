@@ -1,10 +1,10 @@
-{{#bs-form formLayout="horizontal" model=door action=action}}
+{{#bs-form formLayout="horizontal" model=door action=action as |form|}}
     <fieldset>
         <legend>{{t 'configuration'}}</legend>
-      {{bs-form-element controlType="text" label=(t 'alias')
+      {{form.element controlType="text" label=(t 'alias')
                         placeholder=(t 'door.placeholder')
                         property="alias"}}
-      {{bs-form-element controlType="textarea" label=(t 'notes')
+      {{form.element controlType="textarea" label=(t 'notes')
                         placeholder=(t 'notes_placeholder')
                         property="description"}}
 

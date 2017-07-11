@@ -1,4 +1,4 @@
-{{#bs-form-element label=label}}
+{{#form.element label=label}}
   {{#power-select-typeahead search=(action 'searchAP')
                             selected=selected
                             placeholder=(t 'autocomplete.search_access_point')
@@ -7,4 +7,4 @@
     {{accessPointInfo.alias}}
   {{/power-select-typeahead}}
   <a href="#" {{action 'clear'}}>{{t 'clear_selection'}}</a>
-{{/bs-form-element}}
+{{/form.element}}

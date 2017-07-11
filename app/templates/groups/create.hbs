@@ -1,5 +1,6 @@
 <div class="row col-md-6">
-  {{#bs-form formLayout='horizontal' model=model action='createGroup' as | form |}}
+  {{#bs-form formLayout='horizontal' model=model
+             onSubmit=(route-action "createGroup") as | form |}}
       <fieldset>
           <legend>{{t 'users.group_info'}}</legend>
       </fieldset>

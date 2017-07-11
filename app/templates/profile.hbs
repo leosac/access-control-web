@@ -3,23 +3,23 @@
 </div>
 
 <div>
-  {{#bs-tab}}
-    {{#bs-tab-pane title=(t 'information')}}
+  {{#bs-tab as |tab|}}
+    {{#tab.pane title=(t 'information')}}
         <div class="col-md-6">
-          {{#bs-form formLayout="horizontal" model=model.user action="editProfile"}}
+          {{#bs-form formLayout="horizontal" model=model.user action="editProfile" as |tab|}}
               <fieldset>
                   <legend>{{t 'profile.title'}}</legend>
-                {{bs-form-element disabled=isProfileLocked
+                {{form.element disabled=isProfileLocked
                                   controlType="text" label=(t 'firstname')
                                   placeholder="John" property="firstname"}}
-                {{bs-form-element disabled=isProfileLocked
+                {{form.element disabled=isProfileLocked
                                   controlType="text" label=(t 'lastname')
                                   placeholder="Doe" property="lastname"}}
-                {{bs-form-element disabled=isProfileLocked
+                {{form.element disabled=isProfileLocked
                                   controlType="email" label=(t 'email')
                                   placeholder="john@doe.com" property="email"}}
 
-                {{#bs-form-element label=(t 'rank')}}
+                {{#form.element label=(t 'rank')}}
                   {{#power-select
                     disabled=isRankEditLocked
                     selected=model.user.rank
@@ -29,7 +29,7 @@
                   }}
                     {{rank}}
                   {{/power-select}}
-                {{/bs-form-element}}
+                {{/form.element}}
 
                 {{bs-button disabled=isProfileLocked
                             defaultText=(t 'submit') type="primary" buttonType="submit"}}
@@ -46,18 +46,18 @@
             startDate=(mut model.user.validityStart)
             endDate=(mut model.user.validityEnd)}}
         </div>
-    {{/bs-tab-pane}}
+    {{/tab.pane}}
 
-    {{#bs-tab-pane title=(t 'groups')}}
+    {{#tab.pane title=(t 'groups')}}
       {{user-group-membership-table user=model.user}}
-    {{/bs-tab-pane}}
+    {{/tab.pane}}
 
-    {{#bs-tab-pane title=(t 'w.credentials')}}
+    {{#tab.pane title=(t 'w.credentials')}}
       {{user-credential-table user=model.user}}
-    {{/bs-tab-pane}}
+    {{/tab.pane}}
 
-    {{#bs-tab-pane title=(t 'schedules')}}
+    {{#tab.pane title=(t 'schedules')}}
       {{user-schedules user=model.user}}
-    {{/bs-tab-pane}}
+    {{/tab.pane}}
   {{/bs-tab}}
 </div>

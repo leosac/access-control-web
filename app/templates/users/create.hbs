@@ -1,24 +1,24 @@
 <div class="row col-md-6">
-  {{#bs-form formLayout="horizontal" model=model.user}}
+  {{#bs-form formLayout="horizontal" model=model.user as |form|}}
       <fieldset>
-          <legend>{{t 'users.create.account_info'}}</legend>
-        {{bs-form-element controlType="text" label=(t 'username')
+         <legend>{{t 'users.create.account_info'}}</legend>
+        {{form.element controlType="text" label=(t 'username')
                           placeholder="john_doe" property="username"}}
 
       </fieldset>
 
       <fieldset>
           <legend>{{t 'profile.title'}}</legend>
-        {{bs-form-element controlType="text" label=(t 'firstname')
+        {{form.element controlType="text" label=(t 'firstname')
                           placeholder="John" property="firstname"}}
 
-        {{bs-form-element controlType="text" label=(t 'lastname')
+        {{form.element controlType="text" label=(t 'lastname')
                           placeholder="Doe" property="lastname"}}
 
-        {{bs-form-element controlType="email" label=(t 'email')
+        {{form.element controlType="email" label=(t 'email')
                           placeholder="john@doe.com" property="email"}}
 
-        {{#bs-form-element label=(t 'rank')}}
+        {{#form.element label=(t 'rank')}}
           {{#power-select
             selected=model.user.rank
             options=model.possibleRanks
@@ -27,7 +27,7 @@
           }}
             {{rank}}
           {{/power-select}}
-        {{/bs-form-element}}
+        {{/form.element}}
       </fieldset>
   {{/bs-form}}
 
@@ -37,5 +37,5 @@
     </fieldset>
 
   {{bs-button defaultText=(t 'users.create.title') type="primary"
-              buttonType="submit" action='createUser'}}
+              buttonType="submit" onSubmit=(route-action 'createUser')}}
 </div>

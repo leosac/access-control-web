@@ -1,8 +1,8 @@
 <div>
-  {{#bs-tab}}
-    {{#bs-tab-pane title=(t 'information')}}
+  {{#bs-tab as |tab|}}
+    {{#tab.pane title=(t 'information')}}
         <div class="row col-md-6">
-          {{#bs-form formLayout="horizontal" model=model action="editGroup" as  | form |}}
+          {{#bs-form formLayout="horizontal" model=model onSubmit=(route-action "editGroup") as  | form |}}
               <fieldset>
                   <legend>{{t 'group_information'}}</legend>
                 {{form.element controlType="text" label=(t 'name')
@@ -32,15 +32,15 @@
           {{/bs-form}}
 
         </div>
-    {{/bs-tab-pane}}
+    {{/tab.pane}}
 
-    {{#bs-tab-pane title=(t 'members')}}
+    {{#tab.pane title=(t 'members')}}
       {{group-user-membership-table group=model}}
       {{group-add-one-user group=model}}
-    {{/bs-tab-pane}}
+    {{/tab.pane}}
 
-    {{#bs-tab-pane title=(t 'access')}}
+    {{#tab.pane title=(t 'access')}}
       {{group-schedules group=model}}
-    {{/bs-tab-pane}}
+    {{/tab.pane}}
   {{/bs-tab}}
 </div>
