@@ -1,7 +1,7 @@
 <div>
     <div class="col-md-6">
       {{#access-point-form ap=model action=(route-action 'editAP')}}
-        {{bs-form-element controlType='number' label=(t 'evoxs.lockid')
+        {{form.element controlType='number' label=(t 'evoxs.lockid')
                           placeholder='42'
                           property='lockId'}}
       {{/access-point-form}}

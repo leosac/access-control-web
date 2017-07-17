@@ -1,16 +1,16 @@
-{{#bs-form formLayout='inline' action='scheduleMappingPicked'}}
+{{#bs-form formLayout='inline' action='scheduleMappingPicked' as |form|}}
 
-  {{#bs-form-element label=(t 'schedule.title')}}
+  {{#form.element label=(t 'schedule.title')}}
     {{#power-select-typeahead search=(action 'searchSchedule')
                               selected=selectedSchedule.name
                               placeholder=(t 'schedule.type')
                               onchange=(action 'scheduleChanged') as |schedInfo|}}
       {{schedInfo.name}}
     {{/power-select-typeahead}}
-  {{/bs-form-element}}
+  {{/form.element}}
 
 
-{{#bs-form-element label=(t 'mapping')}}
+{{#form.element label=(t 'mapping')}}
     {{#power-select selected=selectedMapping
                     searchField="alias"
                     options=selectedSchedule.mapping
@@ -20,7 +20,7 @@
     }}
       {{mapping.alias}}
     {{/power-select}}
-  {{/bs-form-element}}
+  {{/form.element}}
 
   {{bs-button size='sm' defaultText=(t 'schedule.join_mapping') type="primary" buttonType="submit"}}
 {{/bs-form}}

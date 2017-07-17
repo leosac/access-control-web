@@ -1,22 +1,22 @@
 <fieldset>
     <legend>{{t 'validity'}}</legend>
-  {{#bs-form-element label=(t 'enabled')}}
+  {{#form.element label=(t 'enabled')}}
     {{input disabled=disabled type='checkbox' name=(t 'enabled') checked=enabled}}
-  {{/bs-form-element}}
+  {{/form.element}}
 
-  {{#bs-form-element label=(t 'start_date')}}
+  {{#form.element label=(t 'start_date')}}
     {{bs-datetimepicker disabled=disabled
                         date=startDate format='YYYY-MM-DD HH:mm'
                         updateDate=(action (mut startDate))
                         minDate=minDate
                         maxDate=maxDate}}
-  {{/bs-form-element}}
+  {{/form.element}}
 
-  {{#bs-form-element label=(t 'end_date')}}
+  {{#form.element label=(t 'end_date')}}
     {{bs-datetimepicker  disabled=disabled
                          date=endDate format='YYYY-MM-DD HH:mm'
-                         updateDate=(action (mut endDate))
+                         updateDate=(action (mut model.date2))
                          minDate=minDate
                          maxDate=maxDate}}
-  {{/bs-form-element}}
+  {{/form.element}}
 </fieldset>

@@ -1,55 +1,58 @@
 {{t 'smtp.title'}}<br>
 {{t 'smtp.notes'}}<br>
-
+{{t "lol"}}
 {{#bs-tab as |tab|}}
-  {{#tab.pane title=(t 'configuration')}}
-    {{bs-button defaultText=(t 'smtp.add_server') type="primary"
-                buttonType="submit" action='addServer'}}
+    {{#tab.pane title=(t 'configuration')}}
+        {{bs-button defaultText=(t 'smtp.add_server') type="primary"
+                    buttonType="submit" onClick=(route-action 'addServer')}}
 
-    {{#each model.servers as |server|}}
-        <div class="panel panel-default">
-            <div class="panel-body">
+      {{#each model.servers as |server|}}
+          <div class="panel panel-default">
+              <div class="panel-body">
 
-              {{bs-button defaultText=(t 'smtp.remove_server') type="danger"
-                          buttonType="submit" action=(route-action 'removeServer' server)}}
+                  {{bs-button defaultText=(t 'smtp.remove_server') type="danger"
+                              buttonType="submit" onClick=(route-action 'removeServer' server)}}
 
-              {{#bs-form model=server onSubmit=(route-action 'editConfig') as |form|}}
-                  <div id="content">
-                    {{form.element controlType="text" label=(t 'url')
-                                      placeholder="smtp://mail.mydomain.com"
-                                      property="url"}}
-                    {{form.element controlType="text" label=(t 'smtp.from')
-                                      placeholder="leosac@my-domain.com"
-                                      property="from"}}
-                    {{form.element controlType="text" label=(t 'username')
-                                      placeholder="my-mail-user"
-                                      property="username"}}
-                    {{form.element controlType="password" label=(t 'password')
+                  {{#bs-form model=server as |form|}}
+                      <div id="content">
+                          {{form.element controlType="text" label=(t 'url')
+                                         placeholder="smtp://mail.mydomain.com"
+                                         property="url"}}
+
+                          {{form.element controlType="text" label=(t 'smtp.from')
+                                         placeholder="leosac@my-domain.com"
+                                         property="from"}}
+
+                          {{form.element controlType="text" label=(t 'username')
+                                         placeholder="my-mail-user"
+                                         property="username"}}
+
+                          {{form.element controlType="password" label=(t 'password')
                                       property="password"}}
 
-                    {{form.element controlType="number" label=(t 'smtp.timeout')
-                                      property="timeout"}}
+                          {{form.element controlType="number" label=(t 'smtp.timeout')
+                                         property="timeout"}}
 
-                    {{form.element controlType="checkbox" label=(t 'smtp.verify_host')
-                                      property="verify_host"}}
+                          {{form.element controlType="checkbox" label=(t 'smtp.verify_host')
+                                         property="verify_host"}}
 
-                    {{form.element controlType="checkbox" label=(t 'smtp.verify_peer')
-                                      property="verify_peer"}}
+                          {{form.element controlType="checkbox" label=(t 'smtp.verify_peer')
+                                         property="verify_peer"}}
 
-                    {{form.element controlType="checkbox" label=(t 'enabled')
-                                      property="enabled"}}
-                  </div>
-              {{/bs-form}}
+                          {{form.element controlType="checkbox" label=(t 'enabled')
+                                         property="enabled"}}
+                      </div>
+                  {{/bs-form}}
             </div>
-        </div>
-    {{/each}}
+          </div>
+      {{/each}}
 
-    {{bs-button defaultText=(t 'smtp.save') type="primary"
-                buttonType="submit" action='updateConfig'}}
-    <br> <br> <br><br> <br> <br>
+      {{bs-button defaultText=(t 'smtp.save') type="primary"
+                  buttonType="submit" onClick=(route-action 'updateConfig')}}
+      <br> <br> <br><br> <br> <br>
   {{/tab.pane}}
 
   {{#tab.pane title=(t 'test')}}
-    {{module-smtp-send-test-mail}}
+      {{module-smtp-send-test-mail}}
   {{/tab.pane}}
 {{/bs-tab}}

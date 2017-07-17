@@ -1,5 +1,5 @@
 <div class="row col-md-6">
-  {{#bs-form formLayout="horizontal" model=model.user as |form|}}
+  {{#bs-form formLayout="horizontal" model=model.user onSubmit=(route-action 'createUser') as |form|}}
       <fieldset>
          <legend>{{t 'users.create.account_info'}}</legend>
         {{form.element controlType="text" label=(t 'username')
@@ -29,13 +29,15 @@
           {{/power-select}}
         {{/form.element}}
       </fieldset>
+      <fieldset>
+          <legend>{{t 'security'}}</legend>
+          {{password-input optional=true passwordOut=(mut model.user.password)}}
+      </fieldset>
+      {{bs-button defaultText=(t 'users.create.title') type="primary"
+                  buttonType="submit"}}
   {{/bs-form}}
 
-    <fieldset>
-        <legend>{{t 'security'}}</legend>
-      {{password-input optional=true passwordOut=(mut model.user.password)}}
-    </fieldset>
 
-  {{bs-button defaultText=(t 'users.create.title') type="primary"
-              buttonType="submit" onSubmit=(route-action 'createUser')}}
+
+
 </div>

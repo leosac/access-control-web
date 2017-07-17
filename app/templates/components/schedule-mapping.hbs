@@ -1,8 +1,8 @@
 <div class="col-md-12 row">
     <div class="pull-left">
-      {{#bs-form-element label=(t 'alias')}}
+      {{#form.element label=(t 'alias')}}
         {{input type='text' value=(mut mapping.alias) class='form-control'}}
-      {{/bs-form-element}}
+      {{/form.element}}
     </div>
     <div class="pull-right">
       {{bs-button icon='glyphicon glyphicon-remove' type='danger'
@@ -85,7 +85,7 @@
     </div>
     <div>
         <div class="col-md-6">
-          {{#bs-form-element label='Group name'}}
+          {{#form.element label='Group name'}}
               <div class="input-group">
                 {{#power-select-typeahead search=(action 'searchGroup')
                                           selected=newGroup.name
@@ -97,7 +97,7 @@
                     {{bs-button size='sm' type="primary" action="addGroup" defaultText=(t 'users.add_group')}}
                   </span>
               </div>
-          {{/bs-form-element}}
+          {{/form.element}}
         </div>
     </div>
 </div>
@@ -135,9 +135,9 @@
     </div>
     <div class="pulled-down-row">
         <div class="col-md-3">
-          {{#bs-form-element label="Id"}}
+          {{#form.element label="Id"}}
             {{input type='number' value=(mut newCredential) class='form_control'}}
-          {{/bs-form-element}}
+          {{/form.element}}
         </div>
         <div class="col-md-3">
           {{bs-button size='sm' type="primary" action="addCredential"
@@ -180,7 +180,7 @@
 
     <div>
         <div class="col-md-6">
-          {{#bs-form-element label='Door alias'}}
+          {{#form.element label='Door alias'}}
               <div class="input-group">
                 {{#power-select-typeahead search=(action 'searchDoor')
                                           selected=newDoor.alias
@@ -192,7 +192,7 @@
                     {{bs-button size='sm' type="primary" action="addDoor" defaultText=(t 'schedule.add_door')}}
                   </span>
               </div>
-          {{/bs-form-element}}
+          {{/form.element}}
         </div>
     </div>
 </div>

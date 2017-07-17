@@ -2,30 +2,28 @@
 
 {{#bs-form formLayout="horizontal"  class="form-control" onSubmit=(action "login") as |form|}}
     <h2 class="form-signin-heading">{{t 'login-form.welcome'}}</h2>
-  {{form.element controlType='text' label=(t 'form.username.label')
-                    value=inputUsername required=true
-                 onChange=(action (mut inputUsername))
-                 placeholder=(t 'form.username.ph')
-                    }}
+    {{form.element controlType='text' label=(t 'form.username.label')
+                   value=inputUsername required=true
+                   onChange=(action (mut inputUsername))
+                   placeholder=(t 'form.username.ph')
+    }}
 
-  {{form.element controlType='password' label=(t 'form.password.label')
-                    value=inputPassword required=true
-                 onChange=(action (mut inputPassword))
+    {{form.element controlType='password' label=(t 'form.password.label')
+                   value=inputPassword required=true
+                   onChange=(action (mut inputPassword))
+                   placeholder=(t 'form.password.ph')
+    }}
 
-                 placeholder=(t 'form.password.ph')
-                    }}
-
-    {{#bs-button class="btn-block" size="lg" type="primary" buttonType="submit"}}
+    {{#bs-button class="btn-block" size="xs" type="primary" buttonType="submit"}}
         {{t 'login-form.submit'}}
     {{/bs-button}}
-  {{#if pending}}
-      <span class="fa fa-refresh" style="color: orange" aria-hidden="true"></span>
-  {{/if}}
+    {{#if pending}}
+        <span class="fa fa-refresh" style="color: orange" aria-hidden="true"></span>
+    {{/if}}
 
-  {{#if errorMessage}}
-      <div class="alert alert-danger">
-        {{errorMessage}}
-      </div>
-  {{/if}}
+    {{#if errorMessage}}
+        <div class="alert alert-danger">
+            {{errorMessage}}
+        </div>
+    {{/if}}
 {{/bs-form}}
-

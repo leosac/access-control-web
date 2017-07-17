@@ -1,14 +1,14 @@
 {{bs-button action=(action 'refresh') type='primary'
             size='xs' defaultText=(t 'refresh')}}
 
-{{#bs-form formLayout="horizontal" model=this}}
+{{#bs-form formLayout="horizontal" model=this as |form|}}
   <div class="row">
     <div class="col-md-3">
-      {{bs-form-element controlType="number" label=(t 'current_page')
+      {{form.element controlType="number" label=(t 'current_page')
                         property="currentPage"}}
     </div>
     <div class="col-md-3">
-      {{bs-form-element controlType="number" label=(t 'page_size')
+      {{form.element controlType="number" label=(t 'page_size')
                         property="pageSize"}}
     </div>
     {{t 'total_page'}}: {{totalPage}}  | {{t 'count'}}: {{resultCount}}

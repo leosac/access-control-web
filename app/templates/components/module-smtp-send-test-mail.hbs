@@ -1,14 +1,14 @@
-{{#bs-form action='sendTestMail' model=this}}
-  {{bs-form-element controlType="text" label="Recipient"
+{{#bs-form model=this as |form|}}
+  {{form.element controlType="email" label="Recipient"
                     placeholder="me@me.com"
                     property='recipient'}}
 
-  {{bs-form-element controlType="text" label=(t 'smtp.subject')
+  {{form.element controlType="text" label=(t 'smtp.subject')
                     property='subject'}}
 
-  {{bs-form-element controlType='textarea' label=(t 'smtp.body')
+  {{form.element controlType='textarea' label=(t 'smtp.body')
                     property='body'}}
 
   {{bs-button defaultText=(t 'smtp.send') type="primary"
-              buttonType="submit"}}
+              buttonType="submit" onClick=(action 'sendTestMail')}}
 {{/bs-form}}

@@ -39,6 +39,7 @@ export default Ember.Service.extend({
     init()
     {
         "use strict";
+        console.log("INIT AUTH SERVICE");
         // Attempt to automatically authenticate if we can find an auth
         // token
         var token = this.fetchLocalAuthToken();
@@ -213,3 +214,4 @@ export default Ember.Service.extend({
         this.get('current_auth').reject();
     }
 });
+

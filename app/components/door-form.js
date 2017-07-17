@@ -9,7 +9,7 @@ export default Ember.Component.extend({
         changeAP(param)
         {
             const door = this.get('door');
-            if (param == null)
+            if (param === null)
             {
                 // Clearing AP.
                 door.set('accessPoint', null);

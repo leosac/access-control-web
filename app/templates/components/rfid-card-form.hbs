@@ -1,15 +1,15 @@
-{{#bs-form formLayout="horizontal" model=card action=action}}
+{{#bs-form formLayout="horizontal" model=card onSubmit=action as |form|}}
     <fieldset>
         <legend>{{t 'configuration'}}</legend>
-      {{bs-form-element controlType="text" label=(t 'alias')
+      {{form.element controlType="text" label=(t 'alias')
                         placeholder=(t 'alias_placeholder')
                         property="alias"}}
-      {{bs-form-element controlType="text" label=(t 'credentials.rfid_card.hex_id')
+      {{form.element controlType="text" label=(t 'credentials.rfid_card.hex_id')
                         placeholder="11:aa:bb:cc" property="cardId"}}
-      {{bs-form-element controlType="number" label=(t 'credentials.rfid_card.number_bits')
+      {{form.element controlType="number" label=(t 'credentials.rfid_card.number_bits')
                         placeholder="32" property="nbBits"}}
 
-      {{bs-form-element controlType="textarea" label=(t 'notes')
+      {{form.element controlType="textarea" label=(t 'notes')
                         placeholder=(t 'notes_placeholder')
                         property="description"}}
 

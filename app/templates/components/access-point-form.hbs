@@ -1,4 +1,4 @@
-{{#bs-form formLayout="horizontal" model=ap action=action as | form|}}
+{{#bs-form formLayout="horizontal" model=ap onSubmit=action as | form|}}
     <fieldset>
         <legend>{{t 'configuration'}}</legend>
       {{form.element controlType="text" label=(t 'alias')

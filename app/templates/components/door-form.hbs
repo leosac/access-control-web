@@ -1,4 +1,4 @@
-{{#bs-form formLayout="horizontal" model=door action=action as |form|}}
+{{#bs-form formLayout="horizontal" model=door onSubmit=action as |form|}}
     <fieldset>
         <legend>{{t 'configuration'}}</legend>
       {{form.element controlType="text" label=(t 'alias')
@@ -9,6 +9,7 @@
                         property="description"}}
 
       {{autocomplete/access-point label=(t 'access_point')
+                                  form=form
                                   onChange=(action 'changeAP')
                                   selected=door.accessPoint.alias}}
 

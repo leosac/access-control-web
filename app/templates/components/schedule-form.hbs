@@ -1,11 +1,11 @@
-{{#bs-form formLayout="horizontal" model=schedule action=action}}
+{{#bs-form formLayout="horizontal" model=schedule action=action as |form|}}
     <fieldset>
         <legend>{{t 'details'}}</legend>
-      {{bs-form-element controlType="text" label=(t 'name')
+      {{form.element controlType="text" label=(t 'name')
                         placeholder=(t 'schedule.placeholder')
                         property="name"}}
 
-      {{bs-form-element controlType="textarea" label=(t 'notes')
+      {{form.element controlType="textarea" label=(t 'notes')
                         placeholder=(t 'notes_placeholder')
                         property="description"}}
     </fieldset>
@@ -14,17 +14,16 @@
         <legend>{{t 'timeframes'}}</legend>
 
         <div class="col-md-6">
-          {{#bs-form-element label="Timeframes"}}
+          {{#form.element label="Timeframes"}}
             {{#power-select
               selected=currentTimeframe
               options=schedule.timeframes
               onchange=(action (mut currentTimeframe))
               allowClear=false
-            as |tf|
-            }}
+            as |tf|}}
               {{t 'timeframe'}} {{tf.id}}
             {{/power-select}}
-          {{/bs-form-element}}
+          {{/form.element}}
 
           {{bs-button defaultText=(t 'add') type='success' action='addTimeframe'}}
           {{bs-button defaultText=(t 'remove_selected') type='danger' action='removeTimeframe'}}

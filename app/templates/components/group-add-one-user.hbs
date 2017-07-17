@@ -1,5 +1,5 @@
-{{#bs-form formLayout='inline'}}
-    {{#bs-form-element label=(t 'username')}}
+{{#bs-form formLayout='inline' as |form|}}
+    {{#form.element label=(t 'username')}}
       {{#power-select
         selected=selectedUsername
         options=allUsernames
@@ -10,9 +10,9 @@
       }}
         {{username}}
       {{/power-select}}
-    {{/bs-form-element}}
+    {{/form.element}}
 
-    {{#bs-form-element label=(t 'rank')}}
+    {{#form.element label=(t 'rank')}}
       {{#power-select
         selected=selectedRank
         options=allRank
@@ -22,11 +22,11 @@
       }}
         {{rank}}
       {{/power-select}}
-    {{/bs-form-element}}
+    {{/form.element}}
 
     {{#bs-button type="success" icon="glyphicon glyphicon-refresh"
                  size="sm"
-                 action='addToGroup'}}
+                 onClick=(action 'addToGroup')}}
         {{t 'users.add_to_group'}}
     {{/bs-button}}
 {{/bs-form}}
