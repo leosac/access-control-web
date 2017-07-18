@@ -1,17 +1,26 @@
 {{#bs-form formLayout="horizontal" model=pin onSubmit=action as |form|}}
-    <fieldset>
-        <legend>{{ t 'configuration'}}</legend>
-      {{form.element controlType="text" label=(t 'alias')
-                        placeholder=(t 'alias_placeholder')
-                        property="alias"}}
-      {{form.element controlType="number" label=(t 'pincode')
-                        placeholder="1234" property="code"}}
+    <div class="col-md-6">
+        <fieldset>
+            <legend>{{ t 'configuration'}}</legend>
+            {{form.element controlType="text" label=(t 'alias')
+                           placeholder=(t 'alias_placeholder')
+                           property="alias"}}
+            {{form.element controlType="text" label=(t 'pincode')
+                           placeholder="1234" property="code"}}
 
-      {{form.element controlType="textarea" label=(t 'notes')
-                        placeholder=(t 'notes_placeholder')
-                        property="description"}}
+            {{form.element controlType="textarea" label=(t 'notes')
+                           placeholder=(t 'notes_placeholder')
+                           property="description"}}
 
-      {{user-picker form=form selected=pin.owner onChange=(action (mut pin.owner))}}
-      {{bs-button defaultText=(t 'submit') type="primary" buttonType="submit"}}
-    </fieldset>
+            {{user-picker form=form selected=pin.owner onChange=(action (mut pin.owner))}}
+            {{bs-button defaultText=(t 'submit') type="primary" buttonType="submit"}}
+        </fieldset>
+    </div>
+    <div class="col-md-6">
+        {{validity-control
+                form=form
+                enabled=(mut model.validityEnabled)
+                startDate=(mut model.validityStart)
+                endDate=(mut model.validityEnd)}}
+    </div>
 {{/bs-form}}

@@ -3,61 +3,63 @@
 </div>
 
 <div>
-  {{#bs-tab as |tab|}}
-    {{#tab.pane title=(t 'information')}}
-        <div class="col-md-6">
-          {{#bs-form formLayout="horizontal" model=model.user action="editProfile" as |tab|}}
-              <fieldset>
-                  <legend>{{t 'profile.title'}}</legend>
-                {{form.element disabled=isProfileLocked
-                                  controlType="text" label=(t 'firstname')
-                                  placeholder="John" property="firstname"}}
-                {{form.element disabled=isProfileLocked
-                                  controlType="text" label=(t 'lastname')
-                                  placeholder="Doe" property="lastname"}}
-                {{form.element disabled=isProfileLocked
-                                  controlType="email" label=(t 'email')
-                                  placeholder="john@doe.com" property="email"}}
+    {{#bs-tab as |tab|}}
+        {{#tab.pane title=(t 'information')}}
+            {{#bs-form formLayout="horizontal" model=model.user action="editProfile" as |form|}}
+            <div class="col-md-6">
+                    <fieldset>
+                        <legend>{{t 'profile.title'}}</legend>
+                        {{form.element disabled=isProfileLocked
+                                       controlType="text" label=(t 'firstname')
+                                       placeholder="John" property="firstname"}}
+                        {{form.element disabled=isProfileLocked
+                                       controlType="text" label=(t 'lastname')
+                                       placeholder="Doe" property="lastname"}}
+                        {{form.element disabled=isProfileLocked
+                                       controlType="email" label=(t 'email')
+                                       placeholder="john@doe.com" property="email"}}
 
-                {{#form.element label=(t 'rank')}}
-                  {{#power-select
-                    disabled=isRankEditLocked
-                    selected=model.user.rank
-                    options=model.possibleRanks
-                    onchange=(action (mut model.user.rank))
-                  as |rank|
-                  }}
-                    {{rank}}
-                  {{/power-select}}
-                {{/form.element}}
+                        {{#form.element label=(t 'rank')}}
+                            {{#power-select
+                                    disabled=isRankEditLocked
+                                    selected=model.user.rank
+                                    options=model.possibleRanks
+                                    onchange=(action (mut model.user.rank))
+                            as |rank|
+                            }}
+                                {{rank}}
+                            {{/power-select}}
+                        {{/form.element}}
 
-                {{bs-button disabled=isProfileLocked
-                            defaultText=(t 'submit') type="primary" buttonType="submit"}}
-              </fieldset>
-          {{/bs-form}}
+                        {{bs-button disabled=isProfileLocked
+                                    defaultText=(t 'submit') type="primary" buttonType="submit"}}
 
-            <!-- Password change -->
-          {{password-change disabled=isProfileLocked user_id=model.user.id}}
-        </div>
-        <div class="col-md-6">
-          {{validity-control
-            disabled=isRankEditLocked
-            enabled=(mut model.user.validityEnabled)
-            startDate=(mut model.user.validityStart)
-            endDate=(mut model.user.validityEnd)}}
-        </div>
-    {{/tab.pane}}
+                        <!-- Password change -->
+                        {{password-change disabled=isProfileLocked user_id=model.user.id}}
+                    </fieldset>
+            </div>
+                    <div class="col-md-6">
+                        {{validity-control
+                                form=form
+                                disabled=isRankEditLocked
+                                enabled=(mut model.user.validityEnabled)
+                                startDate=(mut model.user.validityStart)
+                                endDate=(mut model.user.validityEnd)}}
+                    </div>
+            {{/bs-form}}
 
-    {{#tab.pane title=(t 'groups')}}
-      {{user-group-membership-table user=model.user}}
-    {{/tab.pane}}
+        {{/tab.pane}}
 
-    {{#tab.pane title=(t 'w.credentials')}}
-      {{user-credential-table user=model.user}}
-    {{/tab.pane}}
+        {{#tab.pane title=(t 'groups')}}
+            {{user-group-membership-table user=model.user}}
+        {{/tab.pane}}
 
-    {{#tab.pane title=(t 'schedules')}}
-      {{user-schedules user=model.user}}
-    {{/tab.pane}}
-  {{/bs-tab}}
+        {{#tab.pane title=(t 'w.credentials')}}
+            {{user-credential-table user=model.user}}
+        {{/tab.pane}}
+
+        {{#tab.pane title=(t 'schedules')}}
+            {{user-schedules user=model.user}}
+        {{/tab.pane}}
+    {{/bs-tab}}
 </div>
