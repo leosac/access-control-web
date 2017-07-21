@@ -77,16 +77,23 @@ export default Ember.Service.extend({
                         {
                             tmpArray.sort(function (a, b)
                             {
+                        //console.log(b.get('numericId'));
                                 return b.get('numericId') - a.get('numericId');
                             });
                             promise.resolve({data: tmpArray, meta: obj.meta});
-                        }, 1000);
-                    }, 1000);
-                }, 1000);
+                            if (tmpArray.length === pageSize)
+                                console.log("The number of page displayed is ok");
+                            else
+                                console.log("The number of page displayed does not match, the number should be " +
+                                    pageSize + " but it is " + tmpArray.length + " instead. The difference is " +
+                                    (tmpArray.length - pageSize));
+                        });
+                    });
+                });
             },
             (fail) => promise.reject(fail)
         );
-
+        //console.log(promise.promise);
         return promise.promise;
     }
 });

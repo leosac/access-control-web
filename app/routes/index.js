@@ -13,7 +13,7 @@ export default LeosacRoute.extend({
     model()
     {
         "use strict";
-        let promise = new Ember.RSVP.Promise((resolve, reject) =>
+        let promise = new Ember.RSVP.Promise((resolve) =>
         {
             this.get('authSrv').get('current_auth').promise.then((res) =>
             {

@@ -1,121 +1,121 @@
 {{t 'audit.entries_below'}} <br>
 
-{{bs-button action=(action 'refresh') type='primary'
+{{bs-button onClick=(action 'refresh') type='primary'
             size='xs' defaultText=(t 'refresh')}}
 
 {{#bs-form formLayout="horizontal" model=this as | form |}}
-  <div class="row">
-    <div class="col-md-3">
-      {{form.element controlType="number" label=(t 'current_page')
-                        property="currentPage"}}
+    <div class="row">
+        <div class="col-md-3">
+            {{form.element controlType="number" label=(t 'current_page')
+                           property="currentPage"}}
+        </div>
+        <div class="col-md-3">
+            {{form.element controlType="number" max=2147483647
+                           label=(t 'page_size') property="pageSize" }}
+        </div>
+        {{t 'total_page'}}: {{totalPage}}  | {{t 'count'}}: {{resultCount}}
     </div>
-    <div class="col-md-3">
-      {{form.element controlType="number" max=2147483647
-                        label=(t 'page_size') property="pageSize" }}
-    </div>
-    {{t 'total_page'}}: {{totalPage}}  | {{t 'count'}}: {{resultCount}}
-  </div>
 
-  <div class="row">
-    <div class="col-md-3">
-      {{form.element label=(t 'audit.enable_wsapicall')
-                        disabled=fetchingData controlType='checkbox'
-                        value=wsapicallEnabled}}
-    </div>
-    <div class="col-md-3">
-      {{form.element label=(t 'audit.enable_userevent')
-                        disabled=fetchingData controlType='checkbox'
-                        value=userEventEnabled}}
-    </div>
-    <div class="col-md-3">
-      {{form.element label=(t 'audit.enable_doorevent')
-                        disabled=fetchingData controlType='checkbox'
-                        value=doorEventEnabled}}
-    </div>
-    <div class="col-md-3">
-      {{form.element label=(t 'audit.enable_groupevent')
-                        disabled=fetchingData controlType='checkbox'
-                        value=groupEventEnabled}}
-    </div>
-  </div>
+    <div class="row">
+        <div class="col-md-3">
+            {{form.element label=(t 'audit.enable_wsapicall')
+                           property="wsapicallEnabled"
+                           disabled=fetchingData controlType='checkbox'}}
 
-  <div class="row">
-    <div class="col-md-3">
-      {{form.element label=(t 'audit.enable_credentialevent')
-                        disabled=fetchingData controlType='checkbox'
-                        value=credentialEventEnabled}}
+        </div>
+        <div class="col-md-3">
+            {{form.element label=(t 'audit.enable_userevent')
+                           disabled=fetchingData controlType='checkbox'
+                           property="userEventEnabled"}}
+        </div>
+        <div class="col-md-3">
+            {{form.element label=(t 'audit.enable_doorevent')
+                           disabled=fetchingData controlType='checkbox'
+                           prperty="doorEventEnabled"}}
+        </div>
+        <div class="col-md-3">
+            {{form.element label=(t 'audit.enable_groupevent')
+                           disabled=fetchingData controlType='checkbox'
+                           property="groupEventEnabled"}}
+        </div>
     </div>
-    <div class="col-md-3">
-      {{form.element label=(t 'audit.enable_scheduleevent')
-                        disabled=fetchingData controlType='checkbox'
-                        value=scheduleEventEnabled}}
-    </div>
-    <div class="col-md-3">
-      {{form.element label=(t 'audit.enable_usergroupevent')
-                        disabled=fetchingData controlType='checkbox'
-                        value=userGroupMembershipEventEnabled}}
-    </div>
-    <div class="col-md-3">
-      {{form.element label=(t 'audit.enable_updateevent')
-                        disabled=fetchingData controlType='checkbox'
-                        value=updateEventEnabled}}
-    </div>
-    <div class="col-md-3">
-      {{form.element label=(t 'audit.enable_zoneevent')
-                        disabled=fetchingData controlType='checkbox'
-                        value=zoneEventEnabled}}
-    </div>
-  </div>
 
+    <div class="row">
+        <div class="col-md-3">
+            {{form.element label=(t 'audit.enable_credentialevent')
+                           disabled=fetchingData controlType='checkbox'
+                           property="credentialEventEnabled"}}
+        </div>
+        <div class="col-md-3">
+            {{form.element label=(t 'audit.enable_scheduleevent')
+                           disabled=fetchingData controlType='checkbox'
+                           property="scheduleEventEnabled"}}
+        </div>
+        <div class="col-md-3">
+            {{form.element label=(t 'audit.enable_usergroupevent')
+                           disabled=fetchingData controlType='checkbox'
+                           property="userGroupMembershipEventEnabled"}}
+        </div>
+        <div class="col-md-3">
+            {{form.element label=(t 'audit.enable_updateevent')
+                           disabled=fetchingData controlType='checkbox'
+                           property="updateEventEnabled"}}
+        </div>
+        <div class="col-md-3">
+            {{form.element label=(t 'audit.enable_zoneevent')
+                           disabled=fetchingData controlType='checkbox'
+                           property="zoneEventEnabled"}}
+        </div>
+    </div>
 {{/bs-form}}
 
 {{#if progressValue}}
-  {{t 'wait'}}
+    {{t 'wait'}}
 
-  {{#bs-progress as |p|}}
-    {{p.bar value=progressValue minValue=0 maxValue=100 type="primary"}}
-  {{/bs-progress}}
+    {{#bs-progress as |p|}}
+        {{p.bar value=progressValue minValue=0 maxValue=100 type="primary"}}
+    {{/bs-progress}}
 {{/if}}
 
 <div class="table-responsive">
-  <table class="table table-striped">
-    <thead>
-    <th>#Id</th>
-    <th>{{t 'type'}}</th>
-    <th>{{t 'description'}}</th>
-    <th>{{t 'author'}}</th>
-    <th>{{t 'timestamp'}}</th>
-    <th>{{t 'mask'}}</th>
-    <th>{{t 'finalized'}}</th>
-    <th>{{t 'details'}}</th>
-    </thead>
-    <tbody>
-    {{#each audits as |audit|}}
-      <tr>
-        <td>{{audit.id}}</td>
-        <td>{{audit.type}}</td>
-        <td>{{audit.description}}</td>
-        <td>{{audit.author.username}}</td>
-        <td>{{audit.timestamp}}</td>
-        <td>{{audit.eventMask}}</td>
-        <td>{{boolean-to-colored-yes-no audit.finalized}}</td>
-        <td>{{bs-button action=(action 'showDetails' audit) defaultText=(t 'details')}}</td>
-      </tr>
-    {{/each}}
-    </tbody>
-  </table>
+    <table class="table table-striped">
+        <thead>
+        <th>#Id</th>
+        <th>{{t 'type'}}</th>
+        <th>{{t 'description'}}</th>
+        <th>{{t 'author'}}</th>
+        <th>{{t 'timestamp'}}</th>
+        <th>{{t 'mask'}}</th>
+        <th>{{t 'finalized'}}</th>
+        <th>{{t 'details'}}</th>
+        </thead>
+        <tbody>
+        {{#each audits as |audit|}}
+            <tr>
+                <td>{{audit.id}}</td>
+                <td>{{audit.type}}</td>
+                <td>{{audit.description}}</td>
+                <td>{{audit.author.username}}</td>
+                <td>{{audit.timestamp}}</td>
+                <td>{{audit.eventMask}}</td>
+                <td>{{boolean-to-colored-yes-no audit.finalized}}</td>
+                <td>{{bs-button onClick=(action 'showDetails' audit) defaultText=(t 'details')}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
 </div>
 
-{{#bs-modal open=openDetailsModal title=(t 'details')}}
-  {{t 'audit.details_intro'}}<br>
+{{#bs-modal open=openDetailsModal title=(t 'details') as |modal|}}
+    {{t 'audit.details_intro'}}<br>
 
-  <hr>
+    <hr>
 
-  <i>{{t 'audit.before'}}</i> <br>
-  <code style="white-space: pre;">{{detailedAudit.before}}</code>
+    <i>{{t 'audit.before'}}</i> <br>
+    <code style="white-space: pre;">{{detailedAudit.before}}</code>
 
-  <hr>
+    <hr>
 
-  <i>{{t 'audit.after'}}</i> <br>
-  <code style="white-space: pre;">{{detailedAudit.after}}</code>
+    <i>{{t 'audit.after'}}</i> <br>
+    <code style="white-space: pre;">{{detailedAudit.after}}</code>
 {{/bs-modal}}

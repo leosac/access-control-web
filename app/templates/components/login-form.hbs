@@ -1,24 +1,38 @@
+<!--suppress ALL -->
+
 <img src="{{getenv 'logoUrl'}}" class="navbar-logo" alt="Logo" />
 
 {{#bs-form formLayout="horizontal"  class="form-control" onSubmit=(action "login") as |form|}}
+    <br>
     <h2 class="form-signin-heading">{{t 'login-form.welcome'}}</h2>
-    {{form.element controlType='text' label=(t 'form.username.label')
-                   value=inputUsername required=true
-                   onChange=(action (mut inputUsername))
-                   placeholder=(t 'form.username.ph')
-    }}
+    <div class="row">
+        <div class="col-sm-2 col-sm-offset-5 text-center">
+            {{form.element controlType='text' label=(t 'form.username.label')
+                           value=inputUsername required=true
+                           onChange=(action (mut inputUsername))
+                           placeholder=(t 'form.username.ph')
+            }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 col-sm-offset-5 text-center">
+            {{form.element controlType='password' label=(t 'form.password.label')
+                           value=inputPassword required=true
+                           onChange=(action (mut inputPassword))
 
-    {{form.element controlType='password' label=(t 'form.password.label')
-                   value=inputPassword required=true
-                   onChange=(action (mut inputPassword))
-
-                   placeholder=(t 'form.password.ph')
-    }}
-
-    {{#bs-button class="btn-block" size="xs" type="primary" buttonType="submit"}}
-        {{t 'login-form.submit'}}
-    {{/bs-button}}
+                           placeholder=(t 'form.password.ph')
+            }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 col-sm-offset-5 text-center">
+            {{#bs-button class="btn-block" size="xs" type="primary" buttonType="submit"}}
+                {{t 'login-form.submit'}}
+            {{/bs-button}}
+        </div>
+    </div>
     {{#if pending}}
+        <!--suppress XmlDefaultAttributeValue -->
         <span class="fa fa-refresh" style="color: orange" aria-hidden="true"></span>
     {{/if}}
 

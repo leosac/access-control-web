@@ -5,7 +5,7 @@
 <div>
     {{#bs-tab as |tab|}}
         {{#tab.pane title=(t 'information')}}
-            {{#bs-form formLayout="horizontal" model=model.user action="editProfile" as |form|}}
+            {{#bs-form formLayout="horizontal" model=model.user onSubmit=(route-action "editProfile") as |form|}}
             <div class="col-md-6">
                     <fieldset>
                         <legend>{{t 'profile.title'}}</legend>
@@ -32,7 +32,7 @@
                         {{/form.element}}
 
                         {{bs-button disabled=isProfileLocked
-                                    defaultText=(t 'submit') type="primary" buttonType="submit"}}
+                                    defaultText=(t 'submit') type="primary" onClick=(route-action 'editProfile') buttonType="submit"}}
 
                         <!-- Password change -->
                         {{password-change disabled=isProfileLocked user_id=model.user.id}}
@@ -42,7 +42,7 @@
                         {{validity-control
                                 form=form
                                 disabled=isRankEditLocked
-                                enabled=(mut model.user.validityEnabled)
+                                enabledProperty="validityEnabled"
                                 startDate=(mut model.user.validityStart)
                                 endDate=(mut model.user.validityEnd)}}
                     </div>
