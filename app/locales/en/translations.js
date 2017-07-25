@@ -322,6 +322,7 @@ export default {
         'group_schedule': 'This shows schedules and their mapping that apply <i>directly</i> to the group.',
         'user_schedule': 'This shows schedules and their mapping that apply <i>directly</i> to you. It wont show schedule that are mapped through your groups or credentials.',
         'no_timeframe': 'This schedule has no timeframes. This means it will have no effect.',
+        'no_mapping' : 'There is no mapping',
         'remove_from_mapping': 'Remove from mapping',
         'remove_from_mapping_confirm': 'Are you sure you want to leave this mapping?',
         'grant_to_doors': 'Grants access to the following doors:',

@@ -11,10 +11,10 @@ export default Ember.Component.extend({
   actions: {
     login()
     {
-      var self = this;
+      let self = this;
       this.set('errorMessage', '');
-      var username = this.get('inputUsername');
-      var password = this.get('inputPassword');
+      let username = this.get('inputUsername');
+      let password = this.get('inputPassword');
 
       if (username.length === 0 || password.length === 0)
       {

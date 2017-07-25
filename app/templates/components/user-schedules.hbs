@@ -27,7 +27,7 @@
                     </ul>
                 {{else}}
                     <div class="alert alert-danger text-center" role="alert">
-                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-exclamation-sign"></span>
                         {{t 'schedule.no_timeframe'}}
                     </div>
                 {{/if}}
@@ -42,7 +42,7 @@
                                   type='danger'
                                   icon='glyphicon glyphicon-remove'
                                   size='xs'
-                                  text=(t 'remove_from_mapping')
+                                  text=(t 'schedule.remove_from_mapping')
                                   message=(t 'schedule.remove_from_mapping_confirm')
                                   onConfirm=(action 'leaveMapping' mapping)
                                 }}
@@ -61,7 +61,7 @@
                                     </ul>
                                 {{else}}
                                     <div class="alert alert-danger text-center" role="alert">
-                                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                        <span class="glyphicon glyphicon-exclamation-sign"></span>
                                         {{t 'schedule.no_doors'}}
                                     </div>
                                 {{/if}}

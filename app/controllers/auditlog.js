@@ -72,7 +72,7 @@ export default Ember.Controller.extend({
         const currentPage = Number.parseInt(this.get('currentPage')) || 1;
         const pageSize = Number.parseInt(this.get('pageSize')) || 25;
        // console.log("Page Size = " +pageSize)
-        ;        const progressSetter = function(v)
+        const progressSetter = function(v)
         {
             self.set('progressValue', v);
         };

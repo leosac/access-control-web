@@ -1,28 +1,28 @@
 {{#if timeframe}}
     <div class="col-md-6">
-      {{form.element controlType='checkbox' label=(t 'schedule.monday')
-                        value=timeframe.enabledOnMonday}}
-      {{form.element controlType='checkbox' label=(t 'schedule.tuesday')
-                        value=timeframe.enabledOnTuesday}}
-      {{form.element controlType='checkbox' label=(t 'schedule.wednesday')
-                        value=timeframe.enabledOnWednesday}}
-      {{form.element controlType='checkbox' label=(t 'schedule.thursday')
-                        value=timeframe.enabledOnThursday}}
-      {{form.element controlType='checkbox' label=(t 'schedule.friday')
-                        value=timeframe.enabledOnFriday}}
-      {{form.element controlType='checkbox' label=(t 'schedule.saturday')
-                        value=timeframe.enabledOnSaturday}}
-      {{form.element controlType='checkbox' label=(t 'schedule.sunday')
-                        value=timeframe.enabledOnSunday}}
+        {{form.element controlType='checkbox' label=(t 'schedule.monday')
+                       value=timeframe.enabledOnMonday}}
+        {{form.element controlType='checkbox' label=(t 'schedule.tuesday')
+                       property=timeframe.enabledOnTuesday}}
+        {{form.element controlType='checkbox' label=(t 'schedule.wednesday')
+                       property=timeframe.enabledOnWednesday}}
+        {{form.element controlType='checkbox' label=(t 'schedule.thursday')
+                       property=timeframe.enabledOnThursday}}
+        {{form.element controlType='checkbox' label=(t 'schedule.friday')
+                       property=timeframe.enabledOnFriday}}
+        {{form.element controlType='checkbox' label=(t 'schedule.saturday')
+                       property=timeframe.enabledOnSaturday}}
+        {{form.element controlType='checkbox' label=(t 'schedule.sunday')
+                       property=timeframe.enabledOnSunday}}
     </div>
 
-    <div class="col-md-6">
-      {{#form.element label=(t 'schedule.start_time')}}
-        {{input type='text' placeholder='13:37' value=(mut timeframe.startTime) class='form-control'}}
+    <div class="col-md-4">
+        {{#form.element label=(t 'schedule.start_time')}}
+            {{input type='text' placeholder='13:37'value=(mut timeframe.startTime) class='form-control'}}
       {{/form.element}}
 
-      {{#form.element label=(t 'schedule.end_time')}}
-        {{input type='text' placeholder='18:42' value=(mut timeframe.endTime) class='form-control'}}
-      {{/form.element}}
+        {{#form.element label=(t 'schedule.end_time')}}
+            {{input type='text' placeholder='18:42'value=(mut timeframe.endTime) class='form-control'}}
+        {{/form.element}}
     </div>
 {{/if}}
