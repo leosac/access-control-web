@@ -31,7 +31,8 @@ export default ApplicationAdapter.extend({
         const data = this.serialize(snapshot);
         const ws = this.get('ws');
 
-        if (data.data.relationships['access-point'] && data.data.relationships['access-point'].data)
+        if (data.data.relationships && data.data.relationships['access-point'] &&
+            data.data.relationships['access-point'].data)
             data.data.attributes.access_point_id = Number.parseInt(data.data.relationships['access-point'].data.id);
         else
             data.data.attributes.access_point_id = 0;
@@ -49,7 +50,8 @@ export default ApplicationAdapter.extend({
         const data = this.serialize(snapshot);
         const ws = this.get('ws');
 
-        if (data.data.relationships['access-point'] && data.data.relationships['access-point'].data)
+        if (data.data.relationships && data.data.relationships['access-point'] &&
+            data.data.relationships['access-point'].data)
             data.data.attributes.access_point_id = Number.parseInt(data.data.relationships['access-point'].data.id);
         else
             data.data.attributes.access_point_id = 0;

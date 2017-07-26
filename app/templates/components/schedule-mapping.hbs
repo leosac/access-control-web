@@ -7,7 +7,7 @@
     <div class="pull-right">
       {{bs-button icon='glyphicon glyphicon-remove' type='danger'
                   defaultText=(t 'delete')
-                  action=(route-action 'removeMapping' mapping)}}
+                  onClick=(route-action 'removeMapping' mapping)}}
     </div>
 </div>
 
@@ -35,7 +35,7 @@
                     <td>{{user.username}}</td>
                     <td>
                       {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
-                                  defaultText=(t 'remove') action=(action 'removeUser' user)}}
+                                  defaultText=(t 'remove') onClick=(action 'removeUser' user)}}
                     </td>
                 </tr>
             {{/each}}
@@ -47,7 +47,7 @@
           {{user-picker selected=newUser onChange=(action (mut newUser))}}
         </div>
         <div class="col-md-3">
-          {{bs-button size='sm' type="primary" action="addUser" defaultText=(t 'users.add_user')}}
+          {{bs-button size='sm' type="primary" onClick=(action "addUser" user) defaultText=(t 'users.add_user')}}
         </div>
     </div>
 </div>
@@ -76,7 +76,7 @@
                     <td>{{group.name}}</td>
                     <td>
                       {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
-                                  defaultText=(t 'remove') action=(action 'removeGroup' group)}}
+                                  defaultText=(t 'remove') onClick=(action 'removeGroup' group)}}
                     </td>
                 </tr>
             {{/each}}
@@ -94,7 +94,7 @@
                   {{groupInfo.name}}
                 {{/power-select-typeahead}}
                   <span class="input-group-btn">
-                    {{bs-button size='sm' type="primary" action="addGroup" defaultText=(t 'users.add_group')}}
+                    {{bs-button size='sm' type="primary" onClick=(action "addGroup") defaultText=(t 'users.add_group')}}
                   </span>
               </div>
           {{/form.element}}
@@ -126,7 +126,7 @@
                     <td>{{cred.alias}}</td>
                     <td>
                       {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
-                                  defaultText=(t 'remove') action=(action 'removeCredential' cred)}}
+                                  defaultText=(t 'remove') onClick=(action 'removeCredential' cred)}}
                     </td>
                 </tr>
             {{/each}}
@@ -140,7 +140,7 @@
           {{/form.element}}
         </div>
         <div class="col-md-3">
-          {{bs-button size='sm' type="primary" action="addCredential"
+          {{bs-button size='sm' type="primary" onClick=(action "addCredential")
                       defaultText=(t 'users.add_credential')}}
         </div>
     </div>
@@ -170,7 +170,7 @@
                     <td>{{door.alias}}</td>
                     <td>
                       {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
-                                  defaultText=(t 'remove') action=(action 'removeDoor' door)}}
+                                  defaultText=(t 'remove') onClick=(action 'removeDoor' door)}}
                     </td>
                 </tr>
             {{/each}}
@@ -189,7 +189,7 @@
                   {{doorInfo.alias}}
                 {{/power-select-typeahead}}
                   <span class="input-group-btn">
-                    {{bs-button size='sm' type="primary" action="addDoor" defaultText=(t 'schedule.add_door')}}
+                    {{bs-button size='sm' type="primary" onClick="addDoor" defaultText=(t 'schedule.add_door')}}
                   </span>
               </div>
           {{/form.element}}

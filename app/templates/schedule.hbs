@@ -18,11 +18,11 @@
           <div class="col-md-12">
               <div class="pull-right">
                 {{bs-button defaultText=(t 'save') type="success" buttonType="submit"
-                            action=(route-action 'editSchedule')}}
+                            onClick=(route-action 'editSchedule')}}
               </div>
               <div class="pull-left">
                 {{bs-button icon='glyphicon glyphicon-add' type='success'
-                            defaultText=(t 'schedule.add_mapping') action=(route-action 'addMapping')}}
+                            defaultText=(t 'schedule.add_mapping') onClick=(route-action 'addMapping')}}
               </div>
           </div>
 

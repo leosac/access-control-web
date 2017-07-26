@@ -1,7 +1,7 @@
 {{#if timeframe}}
     <div class="col-md-6">
         {{form.element controlType='checkbox' label=(t 'schedule.monday')
-                       value=timeframe.enabledOnMonday}}
+                       property="timeframe.enabledOnMonday"}}
         {{form.element controlType='checkbox' label=(t 'schedule.tuesday')
                        property=timeframe.enabledOnTuesday}}
         {{form.element controlType='checkbox' label=(t 'schedule.wednesday')
@@ -14,7 +14,7 @@
                        property=timeframe.enabledOnSaturday}}
         {{form.element controlType='checkbox' label=(t 'schedule.sunday')
                        property=timeframe.enabledOnSunday}}
-    </div>
+        </div>
 
     <div class="col-md-4">
         {{#form.element label=(t 'schedule.start_time')}}

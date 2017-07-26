@@ -25,14 +25,13 @@
                                     selected=model.user.rank
                                     options=model.possibleRanks
                                     onchange=(action (mut model.user.rank))
-                            as |rank|
-                            }}
+                            as |rank|}}
                                 {{rank}}
                             {{/power-select}}
                         {{/form.element}}
-
                         {{bs-button disabled=isProfileLocked
                                     defaultText=(t 'submit') type="primary" onClick=(route-action 'editProfile') buttonType="submit"}}
+                        <p></p>
                         <!-- Password change -->
                         {{password-change disabled=isProfileLocked user_id=model.user.id}}
                     </fieldset>

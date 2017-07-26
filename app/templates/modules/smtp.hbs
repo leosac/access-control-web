@@ -1,17 +1,15 @@
 {{t 'smtp.title'}}<br>
 {{t 'smtp.notes'}}<br>
-{{t "lol"}}
 {{#bs-tab as |tab|}}
     {{#tab.pane title=(t 'configuration')}}
         {{bs-button defaultText=(t 'smtp.add_server') type="primary"
                     buttonType="submit" onClick=(route-action 'addServer')}}
+        <p></p><p></p>
 
       {{#each model.servers as |server|}}
           <div class="panel panel-default">
               <div class="panel-body">
 
-                  {{bs-button defaultText=(t 'smtp.remove_server') type="danger"
-                              buttonType="submit" onClick=(route-action 'removeServer' server)}}
 
                   {{#bs-form model=server as |form|}}
                       <div id="content">
@@ -42,6 +40,9 @@
                           {{form.element controlType="checkbox" label=(t 'enabled')
                                          property="enabled"}}
                       </div>
+                      {{bs-button defaultText=(t 'smtp.remove_server') type="danger"
+                                  buttonType="submit" onClick=(route-action 'removeServer' server)}}
+
                   {{/bs-form}}
             </div>
           </div>

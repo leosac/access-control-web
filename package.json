@@ -57,6 +57,7 @@
     "ember-welcome-page": "^3.1.1",
     "eonasdan-bootstrap-datetimepicker": "4.17.47",
     "handlebars": "~2",
+    "minimatch": "3.0.4",
     "loader.js": "^4.0.10"
   },
   "comment__ember-validators_has_been_added_directly_because_NPMJS_is_broken": {}
