@@ -1,26 +1,35 @@
 {{#if timeframe}}
-    <div class="col-md-6">
-        {{form.element controlType='checkbox' label=(t 'schedule.monday')
-                       property="timeframe.enabledOnMonday"}}
-        {{form.element controlType='checkbox' label=(t 'schedule.tuesday')
-                       property=timeframe.enabledOnTuesday}}
-        {{form.element controlType='checkbox' label=(t 'schedule.wednesday')
-                       property=timeframe.enabledOnWednesday}}
-        {{form.element controlType='checkbox' label=(t 'schedule.thursday')
-                       property=timeframe.enabledOnThursday}}
-        {{form.element controlType='checkbox' label=(t 'schedule.friday')
-                       property=timeframe.enabledOnFriday}}
-        {{form.element controlType='checkbox' label=(t 'schedule.saturday')
-                       property=timeframe.enabledOnSaturday}}
-        {{form.element controlType='checkbox' label=(t 'schedule.sunday')
-                       property=timeframe.enabledOnSunday}}
+    <div class="col-lg-12">
+        <!--Be careful, it's monday, friday, tuesday, saturday, wednesday, sunday, thursday -->
+        <div class="col-lg-3">
+            {{form.element controlType='checkbox' label=(t 'schedule.monday')
+                           property="enabledOnMonday"}}
+            {{form.element controlType='checkbox' label=(t 'schedule.friday')
+                           property="enabledOnFriday"}}
         </div>
-
-    <div class="col-md-4">
+        <div class="col-lg-3">
+            {{form.element controlType='checkbox' label=(t 'schedule.tuesday')
+                           property="enabledOnTuesday"}}
+            {{form.element controlType='checkbox' label=(t 'schedule.saturday')
+                           property="enabledOnSaturday"}}
+        </div>
+        <div class="col-lg-3">
+            {{form.element controlType='checkbox' label=(t 'schedule.wednesday')
+                           property="enabledOnWednesday"}}
+            {{form.element controlType='checkbox' label=(t 'schedule.sunday')
+                           property="enabledOnSunday"}}
+        </div>
+        <div class="col-lg-3">
+            {{form.element controlType='checkbox' label=(t 'schedule.thursday')
+                           property="enabledOnThursday"}}
+        </div>
+    </div>
+    <div class="col-lg-4">
         {{#form.element label=(t 'schedule.start_time')}}
             {{input type='text' placeholder='13:37'value=(mut timeframe.startTime) class='form-control'}}
-      {{/form.element}}
-
+        {{/form.element}}
+    </div>
+    <div class="col-lg-4">
         {{#form.element label=(t 'schedule.end_time')}}
             {{input type='text' placeholder='18:42'value=(mut timeframe.endTime) class='form-control'}}
         {{/form.element}}

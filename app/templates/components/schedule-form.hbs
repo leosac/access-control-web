@@ -1,37 +1,40 @@
 {{#bs-form formLayout="horizontal" model=schedule onSubmit=action as |form|}}
-        <fieldset>
-            <legend>{{t 'details'}}</legend>
-            <div>
-                {{form.element controlType="text" label=(t 'name')
-                               placeholder=(t 'schedule.placeholder')
-                               property="name"}}
-
-                {{form.element controlType="textarea" label=(t 'notes')
-                               placeholder=(t 'notes_placeholder')
-                               property="description"}}
-            </div>
-            </fieldset>
-        <fieldset>
-            <legend>{{t 'timeframes'}}</legend>
-
-            <div>
-                {{#form.element label="Timeframes"}}
-                    {{#power-select
-                            selected=currentTimeframe
-                            options=schedule.timeframes
-                            onchange=(action (mut currentTimeframe))
-                            allowClear=false
-                    as |tf|}}
-                        {{t 'timeframe'}} {{tf.id}}
-                    {{/power-select}}
-                {{/form.element}}
-
-                {{bs-button defaultText=(t 'add') type='success' onClick=(action 'addTimeframe')}}
-                {{bs-button defaultText=(t 'remove_selected') type='danger' onClick=(action 'removeTimeframe')}}
-            </div>
-        </fieldset>
-    <div class="row">
-            {{schedule-timeframe form=form timeframe=currentTimeframe}}
+    <fieldset>
+        <legend>{{t 'details'}}</legend>
+        <div class="pull-left col-md-4">
+            {{form.element controlType="text" label=(t 'name')
+                           placeholder=(t 'schedule.placeholder')
+                           property="name"}}
+        </div>
+        <br> <br> <br>
+        <div class="pull-left col-md-4">
+            {{form.element controlType="textarea" label=(t 'notes')
+                           placeholder=(t 'notes_placeholder')
+                           property="description"}}
+        </div>
+    </fieldset>
+    <br> <br>
+    <legend>{{t 'timeframes'}}</legend>
+    <div class="col-md-12">
+        <div class="pull-left row">
+            {{bs-button defaultText=(t 'add') type='success' onClick=(action 'addTimeframe')}}
+        </div>
+        <br> <br>
+        <div class="row">
+            {{#each schedule.timeframes as |tf|}}
+                <div class="panel panel-default">
+                    <div class="row">
+                        {{schedule-timeframe form=form timeframe=tf}}
+                    </div>
+                    <div class="col-md-2">
+                        {{bs-button defaultText=(t 'remove_selected') type='danger'
+                                    onClick=(action 'removeTimeframe')}}
+                    </div>
+                    <br> <br>
+                </div>
+            {{/each}}
+        </div>
+        {{bs-button defaultText=(t 'submit') type="primary" onClick=action buttonType="submit"}}
     </div>
-    {{bs-button defaultText=(t 'submit') type="primary" onClick=action buttonType="submit"}}
+
 {{/bs-form}}
