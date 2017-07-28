@@ -1,4 +1,4 @@
-{{#bs-form formLayout="horizontal" model=schedule onSubmit=action as |form|}}
+{{#bs-form formLayout="horizontal" model=schedule as |form|}}
     <fieldset>
         <legend>{{t 'details'}}</legend>
         <div class="pull-left col-md-4">
@@ -16,25 +16,30 @@
     <br> <br>
     <legend>{{t 'timeframes'}}</legend>
     <div class="col-md-12">
-        <div class="pull-left row">
-            {{bs-button defaultText=(t 'add') type='success' onClick=(action 'addTimeframe')}}
+        <div class="row">
+            <div class="pull-left col-md-1">
+                {{bs-button defaultText=(t 'add') type='success' onClick=(action 'addTimeframe')}}
+            </div>
+            <div class="col-md-1">
+                {{bs-button defaultText=(t 'submit') type="primary" onClick=action buttonType="submit"}}
+            </div>
         </div>
         <br> <br>
         <div class="row">
             {{#each schedule.timeframes as |tf|}}
+
                 <div class="panel panel-default">
+                    <br>
                     <div class="row">
                         {{schedule-timeframe form=form timeframe=tf}}
                     </div>
                     <div class="col-md-2">
                         {{bs-button defaultText=(t 'remove_selected') type='danger'
-                                    onClick=(action 'removeTimeframe')}}
+                                    onClick=(action 'removeTimeframe' tf)}}
                     </div>
                     <br> <br>
                 </div>
             {{/each}}
         </div>
-        {{bs-button defaultText=(t 'submit') type="primary" onClick=action buttonType="submit"}}
     </div>
-
 {{/bs-form}}

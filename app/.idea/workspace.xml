@@ -8,12 +8,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6344e931-a69f-43f9-b9a9-571ba23ee139" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Dockerfile" afterPath="$PROJECT_DIR$/../Dockerfile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/schedule-timeframe.js" afterPath="$PROJECT_DIR$/components/schedule-timeframe.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/schedule-form.js" afterPath="$PROJECT_DIR$/components/schedule-form.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/auditlog.hbs" afterPath="$PROJECT_DIR$/templates/auditlog.hbs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/components/schedule-form.hbs" afterPath="$PROJECT_DIR$/templates/components/schedule-form.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/components/schedule-mapping.hbs" afterPath="$PROJECT_DIR$/templates/components/schedule-mapping.hbs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/components/schedule-timeframe.hbs" afterPath="$PROJECT_DIR$/templates/components/schedule-timeframe.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/schedule.hbs" afterPath="$PROJECT_DIR$/templates/schedule.hbs" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -31,34 +31,43 @@
   <component name="FileEditorManager">
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
-        <leaf>
-          <file leaf-file-name="schedule.hbs" pinned="false" current-in-tab="true">
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="schedule.hbs" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/templates/schedule.hbs">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="0">
-                  <caret line="0" column="5" lean-forward="true" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+                  <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="schedule-form.hbs" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/templates/components/schedule-form.hbs">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="495">
+                  <caret line="33" column="44" lean-forward="false" selection-start-line="33" selection-start-column="44" selection-end-line="33" selection-end-column="44" />
                   <folding>
-                    <element signature="e#1042#1060#0#Handlebars" expanded="true" />
+                    <element signature="e#97#106#0#Handlebars" expanded="true" />
+                    <element signature="e#214#220#0#Handlebars" expanded="true" />
+                    <element signature="e#264#286#0#Handlebars" expanded="true" />
+                    <element signature="e#471#478#0#Handlebars" expanded="true" />
+                    <element signature="e#522#541#0#Handlebars" expanded="true" />
+                    <element signature="e#656#668#0#Handlebars" expanded="true" />
+                    <element signature="e#822#827#0#Handlebars" expanded="true" />
+                    <element signature="e#975#983#0#Handlebars" expanded="true" />
+                    <element signature="e#1470#1487#0#Handlebars" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="schedule-timeframe.hbs" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/templates/components/schedule-timeframe.hbs">
+          <file leaf-file-name="schedule-form.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/components/schedule-form.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="75">
-                  <caret line="5" column="53" lean-forward="false" selection-start-line="5" selection-start-column="53" selection-end-line="5" selection-end-column="53" />
-                  <folding>
-                    <element signature="e#232#249#0#Handlebars" expanded="true" />
-                    <element signature="e#366#383#0#Handlebars" expanded="true" />
-                    <element signature="e#546#564#0#Handlebars" expanded="true" />
-                    <element signature="e#682#701#0#Handlebars" expanded="true" />
-                    <element signature="e#866#886#0#Handlebars" expanded="true" />
-                    <element signature="e#1006#1023#0#Handlebars" expanded="true" />
-                    <element signature="e#1186#1205#0#Handlebars" expanded="true" />
-                    <element signature="e#1351#1372#0#Handlebars" expanded="true" />
-                  </folding>
+                <state relative-caret-position="435">
+                  <caret line="29" column="40" lean-forward="false" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -66,8 +75,8 @@
           <file leaf-file-name="schedule.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/models/schedule.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                <state relative-caret-position="465">
+                  <caret line="31" column="43" lean-forward="true" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
                   <folding>
                     <element signature="e#0#37#0" expanded="true" />
                   </folding>
@@ -75,49 +84,12 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="schedule-timeframe.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/components/schedule-timeframe.js">
+          <file leaf-file-name="schedule.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/routes/schedule.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="60">
-                  <caret line="4" column="30" lean-forward="false" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+                <state relative-caret-position="405">
+                  <caret line="27" column="9" lean-forward="true" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
                   <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="schedule-mapping.hbs" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/templates/components/schedule-mapping.hbs">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="285">
-                  <caret line="19" column="11" lean-forward="false" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
-                  <folding>
-                    <element signature="e#162#169#0#Handlebars" expanded="true" />
-                    <element signature="e#447#455#0#Handlebars" expanded="true" />
-                    <element signature="e#657#670#0#Handlebars" expanded="true" />
-                    <element signature="e#857#867#0#Handlebars" expanded="true" />
-                    <element signature="e#899#929#0#Handlebars" expanded="true" />
-                    <element signature="e#1558#1566#0#Handlebars" expanded="true" />
-                    <element signature="e#2117#2133#0#Handlebars" expanded="true" />
-                    <element signature="e#2284#2292#0#Handlebars" expanded="true" />
-                    <element signature="e#2479#2485#0#Handlebars" expanded="true" />
-                    <element signature="e#2517#2547#0#Handlebars" expanded="true" />
-                    <element signature="e#3175#3183#0#Handlebars" expanded="true" />
-                    <element signature="e#3532#3550#0#Handlebars" expanded="true" />
-                    <element signature="e#3772#3790#0#Handlebars" expanded="true" />
-                    <element signature="e#4229#4246#0#Handlebars" expanded="true" />
-                    <element signature="e#4420#4439#0#Handlebars" expanded="true" />
-                    <element signature="e#4626#4632#0#Handlebars" expanded="true" />
-                    <element signature="e#4664#4671#0#Handlebars" expanded="true" />
-                    <element signature="e#4703#4733#0#Handlebars" expanded="true" />
-                    <element signature="e#5348#5356#0#Handlebars" expanded="true" />
-                    <element signature="e#6028#6050#0#Handlebars" expanded="true" />
-                    <element signature="e#6201#6208#0#Handlebars" expanded="true" />
-                    <element signature="e#6395#6402#0#Handlebars" expanded="true" />
-                    <element signature="e#6434#6464#0#Handlebars" expanded="true" />
-                    <element signature="e#7087#7095#0#Handlebars" expanded="true" />
-                    <element signature="e#7670#7690#0#Handlebars" expanded="true" />
-                    <element signature="e#8088#8107#0#Handlebars" expanded="true" />
-                  </folding>
                 </state>
               </provider>
             </entry>
@@ -126,21 +98,28 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="schedule-form.hbs" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/templates/components/schedule-form.hbs">
+          <file leaf-file-name="schedule-timeframe.hbs" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/templates/components/schedule-timeframe.hbs">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="555">
-                  <caret line="37" column="10" lean-forward="true" selection-start-line="37" selection-start-column="10" selection-end-line="37" selection-end-column="10" />
+                <state relative-caret-position="90">
+                  <caret line="6" column="74" lean-forward="false" selection-start-line="6" selection-start-column="74" selection-end-line="6" selection-end-column="74" />
                   <folding>
-                    <element signature="e#113#122#0#Handlebars" expanded="true" />
-                    <element signature="e#230#236#0#Handlebars" expanded="true" />
-                    <element signature="e#280#302#0#Handlebars" expanded="true" />
-                    <element signature="e#487#494#0#Handlebars" expanded="true" />
-                    <element signature="e#538#557#0#Handlebars" expanded="true" />
-                    <element signature="e#672#684#0#Handlebars" expanded="true" />
-                    <element signature="e#799#804#0#Handlebars" expanded="true" />
-                    <element signature="e#1243#1260#0#Handlebars" expanded="true" />
-                    <element signature="e#1501#1509#0#Handlebars" expanded="true" />
+                    <element signature="e#254#271#0#Handlebars" expanded="true" />
+                    <element signature="e#1048#1068#0#Handlebars" expanded="true" />
+                    <element signature="e#1663#1684#0#Handlebars" expanded="true" />
+                    <element signature="e#1892#1911#0#Handlebars" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="auditlog.hbs" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/templates/auditlog.hbs">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="253">
+                  <caret line="65" column="26" lean-forward="false" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
+                  <folding>
+                    <element signature="e#4#25#0#Handlebars" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -152,7 +131,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>{{access-point</find>
       <find>{{access-point-</find>
       <find>{{aaccess-point-</find>
       <find>{{auaccess-point-</find>
@@ -182,6 +160,7 @@
       <find>gro</find>
       <find>group_</find>
       <find>timeframe</find>
+      <find>id</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -193,7 +172,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/components/user-group-membership-table.hbs" />
         <option value="$PROJECT_DIR$/templates/components/group-user-membership-table.hbs" />
         <option value="$PROJECT_DIR$/templates/components/button-with-confirmation.hbs" />
         <option value="$PROJECT_DIR$/components/autocomplete/access-point.js" />
@@ -208,8 +186,6 @@
         <option value="$PROJECT_DIR$/components/validity-control.js" />
         <option value="$PROJECT_DIR$/templates/components/validity-control.hbs" />
         <option value="$PROJECT_DIR$/components/login-form.js" />
-        <option value="$PROJECT_DIR$/templates/auditlog.hbs" />
-        <option value="$PROJECT_DIR$/components/schedule-form.js" />
         <option value="$PROJECT_DIR$/templates/access-overview.hbs" />
         <option value="$PROJECT_DIR$/components/schedule-mapping.js" />
         <option value="$PROJECT_DIR$/templates/components/group-schedules.hbs" />
@@ -240,9 +216,12 @@
         <option value="$PROJECT_DIR$/templates/doors/create.hbs" />
         <option value="$PROJECT_DIR$/adapters/door.js" />
         <option value="$PROJECT_DIR$/templates/components/schedule-mapping.hbs" />
-        <option value="$PROJECT_DIR$/templates/components/schedule-form.hbs" />
         <option value="$PROJECT_DIR$/components/schedule-timeframe.js" />
         <option value="$PROJECT_DIR$/templates/schedule.hbs" />
+        <option value="$PROJECT_DIR$/models/schedule.js" />
+        <option value="$PROJECT_DIR$/templates/components/schedule-form.hbs" />
+        <option value="$PROJECT_DIR$/templates/auditlog.hbs" />
+        <option value="$PROJECT_DIR$/components/schedule-form.js" />
         <option value="$PROJECT_DIR$/templates/components/schedule-timeframe.hbs" />
       </list>
     </option>
@@ -303,8 +282,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -436,10 +413,17 @@
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="users" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="transforms" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -509,6 +493,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1922" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.165625" sideWeight="0.4914163" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -563,34 +548,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/services/search.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-165">
-          <caret line="40" column="9" lean-forward="true" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/autocomplete/access-point.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/access-point.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/components/autocomplete/access-point.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/users/list.hbs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -791,7 +748,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -807,9 +763,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#48#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -825,9 +778,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
-          <folding>
-            <element signature="e#188#198#0#Handlebars" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -855,6 +805,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/models/schedule-mapping.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#28#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/components/schedule-mapping.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-300">
+          <caret line="10" column="71" lean-forward="false" selection-start-line="10" selection-start-column="71" selection-end-line="10" selection-end-column="71" />
+          <folding>
+            <element signature="e#162#169#0#Handlebars" expanded="false" />
+            <element signature="e#447#455#0#Handlebars" expanded="false" />
+            <element signature="e#657#670#0#Handlebars" expanded="false" />
+            <element signature="e#857#867#0#Handlebars" expanded="false" />
+            <element signature="e#899#929#0#Handlebars" expanded="false" />
+            <element signature="e#1558#1566#0#Handlebars" expanded="false" />
+            <element signature="e#2117#2133#0#Handlebars" expanded="false" />
+            <element signature="e#2284#2292#0#Handlebars" expanded="false" />
+            <element signature="e#2479#2485#0#Handlebars" expanded="false" />
+            <element signature="e#2517#2547#0#Handlebars" expanded="false" />
+            <element signature="e#3175#3183#0#Handlebars" expanded="false" />
+            <element signature="e#3532#3550#0#Handlebars" expanded="false" />
+            <element signature="e#3772#3790#0#Handlebars" expanded="false" />
+            <element signature="e#4229#4246#0#Handlebars" expanded="false" />
+            <element signature="e#4420#4439#0#Handlebars" expanded="false" />
+            <element signature="e#4626#4632#0#Handlebars" expanded="false" />
+            <element signature="e#4664#4671#0#Handlebars" expanded="false" />
+            <element signature="e#4703#4733#0#Handlebars" expanded="false" />
+            <element signature="e#5348#5356#0#Handlebars" expanded="false" />
+            <element signature="e#6028#6050#0#Handlebars" expanded="false" />
+            <element signature="e#6201#6208#0#Handlebars" expanded="false" />
+            <element signature="e#6395#6402#0#Handlebars" expanded="false" />
+            <element signature="e#6434#6464#0#Handlebars" expanded="false" />
+            <element signature="e#7087#7095#0#Handlebars" expanded="false" />
+            <element signature="e#7670#7690#0#Handlebars" expanded="false" />
+            <element signature="e#8088#8107#0#Handlebars" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/components/schedule-mapping.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
@@ -863,20 +858,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/schedule-form.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="9" lean-forward="false" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/schedule-mapping.js">
+    <entry file="file://$PROJECT_DIR$/routes/profile.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -889,29 +876,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/schedule.js">
+    <entry file="file://$PROJECT_DIR$/transforms/audit-event-type.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="30" lean-forward="false" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
-          <folding />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#28#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/components/schedule-form.hbs">
+    <entry file="file://$PROJECT_DIR$/transforms/timeframes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="10" lean-forward="true" selection-start-line="37" selection-start-column="10" selection-end-line="37" selection-end-column="10" />
-          <folding>
-            <element signature="e#113#122#0#Handlebars" expanded="true" />
-            <element signature="e#230#236#0#Handlebars" expanded="true" />
-            <element signature="e#280#302#0#Handlebars" expanded="true" />
-            <element signature="e#487#494#0#Handlebars" expanded="true" />
-            <element signature="e#538#557#0#Handlebars" expanded="true" />
-            <element signature="e#672#684#0#Handlebars" expanded="true" />
-            <element signature="e#799#804#0#Handlebars" expanded="true" />
-            <element signature="e#1243#1260#0#Handlebars" expanded="true" />
-            <element signature="e#1501#1509#0#Handlebars" expanded="true" />
-          </folding>
+        <state relative-caret-position="-583">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -923,16 +902,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/schedule.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/schedule-timeframe.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -941,64 +910,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/components/schedule-mapping.hbs">
+    <entry file="file://$PROJECT_DIR$/templates/schedule.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="11" lean-forward="false" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
+        <state relative-caret-position="0">
+          <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/schedule.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="9" lean-forward="true" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/schedule.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="43" lean-forward="true" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
           <folding>
-            <element signature="e#162#169#0#Handlebars" expanded="true" />
-            <element signature="e#447#455#0#Handlebars" expanded="true" />
-            <element signature="e#657#670#0#Handlebars" expanded="true" />
-            <element signature="e#857#867#0#Handlebars" expanded="true" />
-            <element signature="e#899#929#0#Handlebars" expanded="true" />
-            <element signature="e#1558#1566#0#Handlebars" expanded="true" />
-            <element signature="e#2117#2133#0#Handlebars" expanded="true" />
-            <element signature="e#2284#2292#0#Handlebars" expanded="true" />
-            <element signature="e#2479#2485#0#Handlebars" expanded="true" />
-            <element signature="e#2517#2547#0#Handlebars" expanded="true" />
-            <element signature="e#3175#3183#0#Handlebars" expanded="true" />
-            <element signature="e#3532#3550#0#Handlebars" expanded="true" />
-            <element signature="e#3772#3790#0#Handlebars" expanded="true" />
-            <element signature="e#4229#4246#0#Handlebars" expanded="true" />
-            <element signature="e#4420#4439#0#Handlebars" expanded="true" />
-            <element signature="e#4626#4632#0#Handlebars" expanded="true" />
-            <element signature="e#4664#4671#0#Handlebars" expanded="true" />
-            <element signature="e#4703#4733#0#Handlebars" expanded="true" />
-            <element signature="e#5348#5356#0#Handlebars" expanded="true" />
-            <element signature="e#6028#6050#0#Handlebars" expanded="true" />
-            <element signature="e#6201#6208#0#Handlebars" expanded="true" />
-            <element signature="e#6395#6402#0#Handlebars" expanded="true" />
-            <element signature="e#6434#6464#0#Handlebars" expanded="true" />
-            <element signature="e#7087#7095#0#Handlebars" expanded="true" />
-            <element signature="e#7670#7690#0#Handlebars" expanded="true" />
-            <element signature="e#8088#8107#0#Handlebars" expanded="true" />
+            <element signature="e#0#37#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/components/schedule-form.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="44" lean-forward="false" selection-start-line="33" selection-start-column="44" selection-end-line="33" selection-end-column="44" />
+          <folding>
+            <element signature="e#97#106#0#Handlebars" expanded="true" />
+            <element signature="e#214#220#0#Handlebars" expanded="true" />
+            <element signature="e#264#286#0#Handlebars" expanded="true" />
+            <element signature="e#471#478#0#Handlebars" expanded="true" />
+            <element signature="e#522#541#0#Handlebars" expanded="true" />
+            <element signature="e#656#668#0#Handlebars" expanded="true" />
+            <element signature="e#822#827#0#Handlebars" expanded="true" />
+            <element signature="e#975#983#0#Handlebars" expanded="true" />
+            <element signature="e#1470#1487#0#Handlebars" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/auditlog.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="65" column="26" lean-forward="false" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
+          <folding>
+            <element signature="e#4#25#0#Handlebars" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/schedule-form.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="40" lean-forward="false" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/components/schedule-timeframe.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="53" lean-forward="false" selection-start-line="5" selection-start-column="53" selection-end-line="5" selection-end-column="53" />
+        <state relative-caret-position="90">
+          <caret line="6" column="74" lean-forward="false" selection-start-line="6" selection-start-column="74" selection-end-line="6" selection-end-column="74" />
           <folding>
-            <element signature="e#232#249#0#Handlebars" expanded="true" />
-            <element signature="e#366#383#0#Handlebars" expanded="true" />
-            <element signature="e#546#564#0#Handlebars" expanded="true" />
-            <element signature="e#682#701#0#Handlebars" expanded="true" />
-            <element signature="e#866#886#0#Handlebars" expanded="true" />
-            <element signature="e#1006#1023#0#Handlebars" expanded="true" />
-            <element signature="e#1186#1205#0#Handlebars" expanded="true" />
-            <element signature="e#1351#1372#0#Handlebars" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/schedule.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="5" lean-forward="true" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
-          <folding>
-            <element signature="e#1042#1060#0#Handlebars" expanded="true" />
+            <element signature="e#254#271#0#Handlebars" expanded="true" />
+            <element signature="e#1048#1068#0#Handlebars" expanded="true" />
+            <element signature="e#1663#1684#0#Handlebars" expanded="true" />
+            <element signature="e#1892#1911#0#Handlebars" expanded="true" />
           </folding>
         </state>
       </provider>
