@@ -1,18 +1,19 @@
 {{#bs-form formLayout="horizontal" model=door onSubmit=action as |form|}}
     <fieldset>
         <legend>{{t 'configuration'}}</legend>
-      {{form.element controlType="text" label=(t 'alias')
-                        placeholder=(t 'door.placeholder')
-                        property="alias"}}
-      {{form.element controlType="textarea" label=(t 'notes')
-                        placeholder=(t 'notes_placeholder')
-                        property="description"}}
+        {{form.element controlType="text" label=(t 'alias')
 
-      {{autocomplete/access-point label=(t 'access_point')
-                                  form=form
-                                  onChange=(action 'changeAP')
-                                  selected=door.accessPoint.alias}}
+                       placeholder=(t 'door.placeholder')
+                       property="alias"}}
+        {{form.element controlType="textarea" label=(t 'notes')
+                       placeholder=(t 'notes_placeholder')
+                       property="description"}}
 
-      {{bs-button defaultText=(t 'submit') type="primary" onClick=action buttonType="submit"}}
+        {{autocomplete/access-point label=(t 'access_point')
+                                    form=form
+                                    onChange=(action 'changeAP')
+                                    selected=door.accessPoint.alias}}
+
+        {{bs-button defaultText=(t 'submit') type="primary" onClick=action buttonType="submit"}}
     </fieldset>
 {{/bs-form}}

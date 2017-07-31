@@ -54,9 +54,9 @@ export default {
     'yes': 'Oui',
     'no': 'Non',
     'not_available': 'Indisponible',
-    'access_point': "Point d'Accès",
+    'access_point': "Point d'accès",
     'access_point_placeholder': 'MyAccessPoint',
-    'access_points': "Points d'Accès",
+    'access_points': "Points d'accès",
     'clear_selection': 'Effacer la selection',
     'module': 'Module',
     'configuration': 'Configuration',
@@ -100,7 +100,8 @@ export default {
     'test': 'test',
     'url': 'Url',
     'pending_updates': 'Mises a jour en attente',
-    'update_history': 'Historique des mises a jour',
+    'update_history': 'Historique des mises à jour',
+    'remove_timeframe' : 'Supprimer la zone de temps',
 
     // To avoid duplication, we may need to put single word into a namespace
     'w': {
@@ -115,7 +116,7 @@ export default {
         'card_csn': 'Numéro de la carte'
     },
 
-    'cancel_and_refresh': 'Annuler et rafraichir',
+    'cancel_and_refresh': 'Annuler et rafraîchir',
     'group_information': 'Information de groupe',
     'leave_group_confirmation': 'Etes vous sur de vouloir quitter ce groupe ?',
     'kick_group_confirmation': 'Etes vous sur de vouloir expulser cet utilisateur du groupe ?',
@@ -167,7 +168,7 @@ export default {
     'profile': {
         'title': 'Profile Utilisateur',
         'profile_updated': 'Le profile a été mis a jour',
-        'fail_update': 'Erreur de mise a jour du profile'
+        'fail_update': 'Erreur de mise à jour du profile'
     },
     'users': {
         'title': 'Utilisateurs',
@@ -251,7 +252,7 @@ export default {
         },
         update:
             {
-                title: "Mise a jour d'un point d'accès EvoXS",
+                title: "Mise à jour d'un point d'accès EvoXS",
             },
         'access-point': {
             'title': "Point d'accès EvoXS"
@@ -325,7 +326,7 @@ export default {
         'remove_from_mapping_confirm': 'Êtes-vous sûr de vouloir quitter ce mapping ?',
         'grant_to_doors': 'Autorise les accès aux portes suivantes :',
         'doors': 'Portes',
-        'no_doors': "Ce mapping n'est lié à aucune porte. Ceci veut dire qu'il n'aura aucun effet.",
+        'no_doors': "Ce mapping n'est lié à aucune porte. Cela veut dire qu'il n'aura aucun effet.",
         'placeholder': 'MonHoraire',
         'join_mapping': 'Rejoindre le mapping',
         'monday': 'Lundi',
@@ -349,7 +350,7 @@ export default {
         }
     },
     'overview': {
-        'intro': "Cette page fournie un vue globale de certaines valeurs de configuration du système {{appname}}.",
+        'intro': "Cette page fournie une vue globale de certaines valeurs de configuration du système {{appname}}.",
         'logs_per_page': 'Evènements par page',
         'last_logs': 'Derniers évènements',
         'total_logs': 'Il y a un total de {{totalLogs}} évènements.',
@@ -365,7 +366,7 @@ export default {
         'timeout': 'Timeout (Milliseconds)',
         'add_server': 'Ajouter un serveur',
         'remove_server': 'Supprimer le serveur',
-        'verify_host': "Vérifier l'hote",
+        'verify_host': "Vérifier l'hôte",
         'verify_peer': 'Vérifier le pair',
         'save': 'Enregistrer la configuration',
     },
@@ -386,25 +387,25 @@ export default {
     },
     'autocomplete': {
         'search_group': 'Veuillez choisir un groupe (tapez % pour tout voir)',
-        'search_access_point': "Veuillez choisir un point d'acces (tapez % pour tout voir)"
+        'search_access_point': "Veuillez choisir un point d'accès (tapez % pour tout voir)"
     },
     'update': {
         'title': 'Gestion des mises à jour',
-        'update_acked': 'La mise a jour a été acquittée.',
-        'update_acked_failed': "L'acquitement de la mise a jour a echoué.",
-        'update_cancelled': "La mise a jour a été annulée.",
+        'update_acked': 'La mise à jour a été acquittée.',
+        'update_acked_failed': "L'acquitement de la mise à jour a echoué.",
+        'update_cancelled': "La mise à jour a été annulée.",
         'update_cancel_failed': "L'annulation de la mise a jour a echoué.",
-        'pending_check_update': 'Recherche des mises a jour en cours.',
-        'check_update': 'Rechercher les mises a jour',
-        'filter_access_point': "Filtrer par point d'accés",
-        'potential_update': 'Potentielle mises a jour',
-        'everything_up_to_date': 'Tout est a jour.',
+        'pending_check_update': 'Recherche des mises à jour en cours.',
+        'check_update': 'Rechercher les mises à jour',
+        'filter_access_point': "Filtrer par point d'accès",
+        'potential_update': 'Potentielle mises à jour',
+        'everything_up_to_date': 'Tout est à jour.',
         'table': {
             'checkpoint': 'Checkpoint',
-            'update_needed': 'Mise a jour requise ?',
+            'update_needed': 'Mise à jour requise ?',
             'generated_at': 'Date de génération',
             'updated_at': 'Date de changement de status',
-            'target_alias': "Alias du point d'access",
+            'target_alias': "Alias du point d'accès",
         },
     }
 

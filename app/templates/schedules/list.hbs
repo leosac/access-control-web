@@ -15,19 +15,19 @@
         {{#each model as |sched|}}
             <tr>
                 <td>{{#link-to 'schedule' sched.id}}
-                  {{sched.id}}
+                    {{sched.id}}
                 {{/link-to}}</td>
                 <td>{{sched.name}}</td>
                 <td>{{sched.description}}</td>
                 <td>
-                  {{button-with-confirmation
-                    type='danger'
-                    icon='glyphicon glyphicon-remove'
-                    size='xs'
-                    text=(t 'delete')
-                    message=(t 'schedule.delete_confirm')
-                    onConfirm=(route-action 'deleteSchedule' sched.id)
-                  }}
+                    {{button-with-confirmation
+                            type='danger'
+                            icon='glyphicon glyphicon-remove'
+                            size='xs'
+                            text=(t 'delete')
+                            message=(t 'schedule.delete_confirm')
+                            onConfirm=(route-action 'deleteSchedule' sched.id)
+                    }}
                 </td>
             </tr>
         {{/each}}

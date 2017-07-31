@@ -102,6 +102,7 @@ export default {
     'url': 'Url',
     'pending_updates': 'Pending updates',
     'update_history': 'Update history',
+    'remove_timeframe' : 'Remove timeframe',
 
     // To avoid duplication, we may need to put single word into a namespace
     'w': {
@@ -223,7 +224,7 @@ export default {
     },
     'accesspoint': {
         'belongs_to': 'This access point belongs to door <strong>{{dooralias}}</strong>.',
-        'belongs_to_nolink': 'This access point belongs to door',
+        'belongs_to_nolink': 'This access point belongs to a door',
         'no_belongs': 'This access point is not yet tied to a door.',
         'create': 'Add Access Point',
         'delete_confirm': 'Are you sure you wish to delete this access point?',

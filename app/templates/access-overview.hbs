@@ -7,20 +7,27 @@
         {{/each}}
         </thead>
         <tbody>
-        {{#each userDoorInfo as |userDoorInfo|}}
-            <tr>
-                <td>{{userDoorInfo.user.username}}</td>
-              {{#each userDoorInfo.doors as |accessToDoor|}}
-                  <td class="{{if accessToDoor 'success' 'danger'}}">
-                    {{#if accessToDoor}}
-                      {{t 'yes'}}
-                    {{else}}
-                      {{t 'no'}}
-                    {{/if}}
-                  </td>
-              {{/each}}
-            </tr>
-        {{/each}}
+        {{#bs-accordion as |acc|}}
+            {{#each allDoors as |door|}}
+                {{log "tfsdfest " allDoors.alias}}
+                {{#acc.item title=(t 'doors' alias=door.alias)}}
+                    {{#each userDoorInfo as |userDoorInfo|}}
+                        <tr>
+                            <td>{{userDoorInfo.user.username}}</td>
+                            {{#each userDoorInfo.doors as |accessToDoor|}}
+                                <td class="{{if accessToDoor 'success' 'danger'}}">
+                                    {{#if accessToDoor}}
+                                        {{t 'yes'}}
+                                    {{else}}
+                                        {{t 'no'}}
+                                    {{/if}}
+                                </td>
+                            {{/each}}
+                        </tr>
+                    {{/each}}
+                {{/acc.item}}
+            {{/each}}
+        {{/bs-accordion}}
         </tbody>
     </table>
 </div>

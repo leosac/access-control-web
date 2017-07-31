@@ -1,40 +1,52 @@
 {{#if timeframe}}
     {{log timeframe}}
-    <div class="col-lg-12">
+    <div class="col-lg-8">
         <!--Be careful, it's monday, friday, tuesday, saturday, wednesday, sunday, thursday -->
         <div class="col-lg-2">
             {{form.element controlType='checkbox' label=(t 'schedule.monday')
-                           value=(mut timeframe.enabledOnMonday) onChange=(action (mut timeframe.enabledOnMonday))}}
+                           value=(mut timeframe.enabledOnMonday)
+                           onChange=(action (mut timeframe.enabledOnMonday))}}
+
             {{form.element controlType='checkbox' label=(t 'schedule.friday')
-                           property="enabledOnFriday" value=timeframe.enabledOnFriday}}
+                           value=(mut timeframe.enabledOnFriday)
+                           onChange=(action (mut timeframe.enabledOnFriday))}}
         </div>
         <div class="col-lg-2">
             {{form.element controlType='checkbox' label=(t 'schedule.tuesday')
-                           property="enabledOnTuesday" value=timeframe.enabledOnTuesday}}
+                           value=(mut timeframe.enabledOnTuesday)
+                           onChange=(action (mut timeframe.enabledOnTuesday))}}
+
             {{form.element controlType='checkbox' label=(t 'schedule.saturday')
-                           property="enabledOnSaturday" value=timeframe.enabledOnSaturday}}
+                           value=(mut timeframe.enabledOnSaturday)
+                           onChange=(action (mut timeframe.enabledOnSaturday))}}
         </div>
         <div class="col-lg-2">
             {{form.element controlType='checkbox' label=(t 'schedule.wednesday')
-                           property="enabledOnWednesday" value=timeframe.enabledOnWednesday}}
+                           value=(mut timeframe.enabledOnWednesday)
+                           onChange=(action (mut timeframe.enabledOnWednesday))}}
+
             {{form.element controlType='checkbox' label=(t 'schedule.sunday')
-                           property="enabledOnSunday" value=timeframe.enabledOnSunday}}
+                           value=(mut timeframe.enabledOnSunday)
+                           onChange=(action (mut timeframe.enabledOnSunday))}}
         </div>
         <div class="col-lg-2">
             {{form.element controlType='checkbox' label=(t 'schedule.thursday')
-                           property="enabledOnThursday" value=timeframe.enabledOnThursday}}
+                           value=(mut timeframe.enabledOnThursday)
+                           onChange=(action (mut timeframe.enabledOnThursday))}}
         </div>
     </div>
     <br> <br> <br> <br> <br>
     <div class="col-lg-4">
         {{#form.element label=(t 'schedule.start_time')}}
-            {{input type='text' placeholder='13:37'value=(mut timeframe.startTime) class='form-control'}}
+            {{input type='text' placeholder='13:37' value=(mut timeframe.startTime)
+                    class='form-control'}}
         {{/form.element}}
 
     </div>
     <div class="col-lg-4">
         {{#form.element label=(t 'schedule.end_time')}}
-            {{input type='text' placeholder='18:42'value=(mut timeframe.endTime) class='form-control'}}
+            {{input type='text' placeholder='18:42' value=(mut timeframe.endTime)
+                    class='form-control'}}
         {{/form.element}}
     </div>
 {{/if}}

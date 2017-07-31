@@ -1,4 +1,4 @@
-{{#bs-form formLayout='inline' action='scheduleMappingPicked' as |form|}}
+{{#bs-form formLayout='inline' onSubmit=(action 'scheduleMappingPicked') as |form|}}
     <fieldset>
         {{#form.element label=(t 'schedule.title')}}
             {{#power-select-typeahead search=(action 'searchSchedule')
@@ -15,9 +15,7 @@
                                       searchField="alias"
                                       options=selectedSchedule.mapping
                                       onchange=(action (mut selectedMapping))
-                                      placeholder='...'
-            as |mapping|
-            }}
+                                      placeholder='...' as |mapping|}}
                 {{mapping.alias}}
             {{else}}
                 <div class="text-center">
