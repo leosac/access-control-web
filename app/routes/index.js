@@ -13,14 +13,13 @@ export default LeosacRoute.extend({
     model()
     {
         "use strict";
-        let promise = new Ember.RSVP.Promise((resolve) =>
-        {
-            this.get('authSrv').get('current_auth').promise.then((res) =>
-            {
-                resolve({user_id: this.get('authSrv').user_id,
-                    username: this.get('authSrv').username});
+        return new Ember.RSVP.Promise((resolve) => {
+            this.get('authSrv').get('current_auth').promise.then((res) => {
+                resolve({
+                    user_id: this.get('authSrv').user_id,
+                    username: this.get('authSrv').username
+                });
             });
         });
-        return promise;
     }
 });

@@ -15,9 +15,9 @@ export default Ember.Service.extend({
         "use strict";
         console.log('Service is initializing ...');
 
-        var ws = this.get('ws');
+        let ws = this.get('ws');
         ws = new WebSocket('ws://' + ENV.APP.leosacAddr + '/websocket');
-        var self = this;
+        let self = this;
 
         ws.onopen = function ()
         {
@@ -25,7 +25,7 @@ export default Ember.Service.extend({
 
             // Process item that were queued before the connection
             // was ready.
-            var queue = self.get('beforeOpen');
+            let queue = self.get('beforeOpen');
             if (queue.length > 0)
             {
                 queue.forEach(function (payload)
@@ -50,8 +50,8 @@ export default Ember.Service.extend({
          */
         ws.onmessage = function (event)
         {
-            var obj = JSON.parse(event.data);
-            var cb = self.get('callback')[obj.uuid];
+            let obj = JSON.parse(event.data);
+            let cb = self.get('callback')[obj.uuid];
             // If we didn't find a callback, it means its opportunistic message
             // from server
             if (!cb)
@@ -97,7 +97,7 @@ export default Ember.Service.extend({
 
             // Flush all pending callback and mark them as error.
             const pending_callbacks = self.get('callback');
-            for (var key in pending_callbacks)
+            for (let key in pending_callbacks)
             {
                 if (!pending_callbacks.hasOwnProperty(key))
                     continue;
@@ -111,16 +111,16 @@ export default Ember.Service.extend({
         };
         this.set('ws', ws);
 
-        var timeout_request = function ()
+        let timeout_request = function ()
         {
             const pending_callbacks = self.get('callback');
 
-            for (var key in pending_callbacks)
+            for (let key in pending_callbacks)
             {
                 if (!pending_callbacks.hasOwnProperty(key))
                     continue;
                 let c = pending_callbacks[key];
-                var time_diff = new Date() - c.timestamp;
+                let time_diff = new Date() - c.timestamp;
                 if (time_diff > 10000)
                 {
                     console.log('Timeout for request ' + key);
@@ -168,10 +168,10 @@ export default Ember.Service.extend({
     {
         "use strict";
 
-        var queue = this.get('beforeOpen');
-        var ws = this.get('ws');
-        var callback = this.get('callback');
-        var request = {
+        let queue = this.get('beforeOpen');
+        let ws = this.get('ws');
+        let callback = this.get('callback');
+        let request = {
             uuid: this.guid(),
             type: cmd,
             content: request_content
@@ -188,15 +188,15 @@ export default Ember.Service.extend({
 
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
-            var on_success = function (data)
+            let on_success = function (data)
             {
                 Ember.run(null, resolve, data);
             };
-            var on_error = function (why)
+            let on_error = function (why)
             {
                 Ember.run(null, reject, why);
             };
-            var cb = {
+            let cb = {
                 timestamp: new Date(),
                 request: request, // For debugging purpose.
                 success: on_success,

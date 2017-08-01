@@ -13,7 +13,7 @@ export default Ember.Component.extend({
         logout()
         {
             "use strict";
-            var self = this;
+            let self = this;
             this.get('authSrv').logout().then(() =>
             {
                 self.sendAction('onLogout');

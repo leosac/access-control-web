@@ -1,24 +1,46 @@
 <dl class="row">
-  <dt class="col-sm-3">Status</dt>
-  <dd class="col-sm-9">{{model.statusString}}</dd>
+    <dt class="col-sm-3">
+        {{t 'update.status'}}
+    </dt>
+    <dd class="col-sm-9">
+        {{model.statusString}}
+    </dd>
 
-  <dt class="col-sm-3">{{t 'update.table.generated_at'}}</dt>
-  <dd class="col-sm-9">{{model.generatedAt}}</dd>
+    <dt class="col-sm-3">
+        {{t 'update.table.generated_at'}}
+    </dt>
+    <dd class="col-sm-9">
+        {{model.generatedAt}}
+    </dd>
 
-  <dt class="col-sm-3">{{t 'update.table.updated_at'}}</dt>
-  <dd class="col-sm-9">{{model.statusUpdatedAt}}</dd>
+    <dt class="col-sm-3">
+        {{t 'update.table.updated_at'}}
+    </dt>
+    <dd class="col-sm-9">
+        {{model.statusUpdatedAt}}
+    </dd>
 
-  <dt class="col-sm-3">Description</dt>
-  <dd class="col-sm-9">{{model.description}}</dd>
+    <dt class="col-sm-3">
+        Description
+    </dt>
+    <dd class="col-sm-9">
+        {{model.description}}
+    </dd>
 
-  <dt class="col-sm-3">{{t 'update.table.checkpoint'}}</dt>
-  <dd class="col-sm-9">{{model.checkpoint}}</dd>
+    <dt class="col-sm-3">
+        {{t 'update.table.checkpoint'}}
+    </dt>
+    <dd class="col-sm-9">
+        {{model.checkpoint}}
+    </dd>
 
-  <dt class="col-sm-3">{{t 'access_point'}}</dt>
-  <dd class="col-sm-9">
-    {{#link-to-access-point ap=model.accessPoint}}
-      {{model.accessPoint.alias}}
-    {{/link-to-access-point}}
-  </dd>
+    <dt class="col-sm-3">
+        {{t 'access_point'}}
+    </dt>
+    <dd class="col-sm-9">
+        {{#link-to-access-point ap=model.accessPoint}}
+            {{model.accessPoint.alias}}
+        {{/link-to-access-point}}
+    </dd>
 
 </dl>

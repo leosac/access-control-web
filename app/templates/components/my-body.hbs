@@ -19,18 +19,18 @@ to render if there is no active session.
                 {{/link-to}}
             </div>
             <!-- /.navbar-header -->
-          {{top-menu}}
+            {{top-menu}}
             <!-- /.navbar-top-links -->
-          {{side-menu}}
+            {{side-menu}}
             <!-- /.navbar-static-side -->
         </nav>
 
         <div id="page-wrapper">
-          {{#each flashMessages.queue as |flash|}}
-            {{#flash-message flash=flash as |component flash|}}
-                <p>{{flash.message}}</p>
-            {{/flash-message}}
-          {{/each}}
+            {{#each flashMessages.queue as |flash|}}
+                {{#flash-message flash=flash as |component flash|}}
+                    <p>{{flash.message}}</p>
+                {{/flash-message}}
+            {{/each}}
 
             <div class="row">
                 <div class="col-lg-12">
@@ -40,19 +40,19 @@ to render if there is no active session.
             </div>
             <!-- /.row -->
             <div class="row">
-              {{outlet}}
+                {{outlet}}
             </div>
             <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->
     </div>
 {{else}}
-  {{#each flashMessages.queue as |flash|}}
-    {{#flash-message flash=flash as |component flash|}}
-        <p>{{flash.message}}</p>
-    {{/flash-message}}
-  {{/each}}
+    {{#each flashMessages.queue as |flash|}}
+        {{#flash-message flash=flash as |component flash|}}
+            <p>{{flash.message}}</p>
+        {{/flash-message}}
+    {{/each}}
 
-  {{outlet}}
+    {{outlet}}
 
 {{/if}}

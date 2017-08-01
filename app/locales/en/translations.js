@@ -394,6 +394,7 @@ export default {
     // Update management
     'update': {
         title: 'Update Management',
+        'status': 'status',
         'update_acked': 'Update has been acknowledged.',
         'update_acked_failed': 'Failed to acknowledged update.',
         'update_cancelled': 'Update bas been cancelled.',

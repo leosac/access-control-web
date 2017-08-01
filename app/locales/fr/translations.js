@@ -391,6 +391,7 @@ export default {
     },
     'update': {
         'title': 'Gestion des mises à jour',
+        'status': 'état',
         'update_acked': 'La mise à jour a été acquittée.',
         'update_acked_failed': "L'acquitement de la mise à jour a echoué.",
         'update_cancelled': "La mise à jour a été annulée.",

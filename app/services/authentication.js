@@ -42,7 +42,7 @@ export default Ember.Service.extend({
         console.log("INIT AUTH SERVICE");
         // Attempt to automatically authenticate if we can find an auth
         // token
-        var token = this.fetchLocalAuthToken();
+        let token = this.fetchLocalAuthToken();
         if (!!token && token !== 'false')
         {
             this.authenticateWithToken(token);
@@ -56,8 +56,8 @@ export default Ember.Service.extend({
     authenticate(username, password, onSuccess, onFailure)
     {
         "use strict";
-        var self = this;
-        var ws = this.get('websocket');
+        let self = this;
+        let ws = this.get('websocket');
 
         this.set('pending', true);
         this.set('current_auth', Ember.RSVP.defer());
@@ -74,7 +74,8 @@ export default Ember.Service.extend({
             self.set('pending', false);
             if (data.status === 0) // success
             {
-                self.get('store').findRecord('user', data.user_id).then((u) => {
+                self.get('store').findRecord('user', data.user_id).then((u) =>
+                {
                     self.set('current_user', u);
                     // Store auth token in local storage
                     self.setLocalAuthToken(data.token);
@@ -105,8 +106,8 @@ export default Ember.Service.extend({
     authenticateWithToken(token)
     {
         "use strict";
-        var self = this;
-        var ws = this.get('websocket');
+        let self = this;
+        let ws = this.get('websocket');
 
         this.set('pending', true);
         this.set('current_auth', Ember.RSVP.defer());
@@ -119,7 +120,8 @@ export default Ember.Service.extend({
                 self.set('pending', false);
                 if (data.status === 0)
                 {
-                    self.get('store').findRecord('user', data.user_id).then((u) => {
+                    self.get('store').findRecord('user', data.user_id).then((u) =>
+                    {
                         self.set('current_user', u);
                         self.set('user_id', data.user_id);
                         self.set('username', data.username);
@@ -175,7 +177,8 @@ export default Ember.Service.extend({
     {
         return !!this.get('user_id');
     }),
-    isAdministrator: Ember.computed('user_id', function (){
+    isAdministrator: Ember.computed('user_id', function ()
+    {
         return this.get('store').peekRecord('user', this.get('user_id')).get('rank') === 'Administrator';
     }),
     /**
@@ -192,7 +195,7 @@ export default Ember.Service.extend({
         "use strict";
 
         console.log("AUTH SERVICE LOGOUT");
-        var self = this;
+        let self = this;
         localStorage.auth_token = false;
         return this.get('websocket').sendJson('logout', {}).then(
             () =>
@@ -214,4 +217,3 @@ export default Ember.Service.extend({
         this.get('current_auth').reject();
     }
 });
-

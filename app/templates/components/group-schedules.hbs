@@ -7,77 +7,77 @@
 
 <div class="user-schedule-info" class="{{greyedDisabledIfSyncing}}">
 
-  {{#each group.schedules as |schedule|}}
-      <br>
-      <div class="panel panel-default">
-          <div class="panel-heading">
-              {{t 'schedule.asfield'}} {{schedule.name}}
-          </div>
-          <div class="panel-body">
-              <div id="content">
-                  <!-- Recap of the schedule -->
-                {{#if schedule.timeframes.length}}
-                    {{t 'timeframes_'}}
-                    <ul>
-                      {{#each schedule.timeframes as |tf|}}
-                          <li>
-                            {{tf.startTime}} to {{tf.endTime}} on {{timeframe-weekday-list tf}}
-                          </li>
-                      {{/each}}
-                    </ul>
-                {{else}}
-                    <div class="alert alert-danger text-center" role="alert">
-                        <span class="glyphicon glyphicon-exclamation-sign"></span>
-                        {{t 'schedule.no_timeframe'}}
-                    </div>
-                {{/if}}
+    {{#each group.schedules as |schedule|}}
+        <br>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{t 'schedule.asfield'}} {{schedule.name}}
+            </div>
+            <div class="panel-body">
+                <div id="content">
+                    <!-- Recap of the schedule -->
+                    {{#if schedule.timeframes.length}}
+                        {{t 'timeframes_'}}
+                        <ul>
+                            {{#each schedule.timeframes as |tf|}}
+                                <li>
+                                    {{tf.startTime}} to {{tf.endTime}} on {{timeframe-weekday-list tf}}
+                                </li>
+                            {{/each}}
+                        </ul>
+                    {{else}}
+                        <div class="alert alert-danger text-center" role="alert">
+                            <span class="glyphicon glyphicon-exclamation-sign"></span>
+                            {{t 'schedule.no_timeframe'}}
+                        </div>
+                    {{/if}}
 
-                {{#each schedule.mapping as |mapping|}}
-                  {{#if (is-group-part-of-mapping mapping group.id)}}
-                      <div class="panel panel-default">
-                          <div class="panel-heading">
-                              {{t 'schedule.mapping' alias=mapping.alias}}
-                              <div class="pull-right">
-                                {{button-with-confirmation
-                                  type='danger'
-                                  icon='glyphicon glyphicon-remove'
-                                  size='xs'
-                                  text=(t 'schedule.remove_from_mapping')
-                                  message=(t 'schedule.remove_from_mapping_confirm')
-                                  onConfirm=(action 'leaveMapping' mapping)
-                                }}
-                              </div>
-                          </div>
-                          <div class="panel-body">
-                              <div id="content">
-                                {{#if mapping.doors.length}}
-                                    {{t 'schedule.grant_to_doors'}}
-                                    <ul>
-                                      {{#each mapping.doors as |door|}}
-                                          <li>
-                                            {{#link-to 'door' door.id}}{{door.alias}}{{/link-to}}
-                                          </li>
-                                      {{/each}}
-                                    </ul>
-                                {{else}}
-                                    <div class="alert alert-danger text-center" role="alert">
-                                        <span class="glyphicon glyphicon-exclamation-sign"></span>
-                                        {{t 'schedule.no_doors'}}
+                    {{#each schedule.mapping as |mapping|}}
+                        {{#if (is-group-part-of-mapping mapping group.id)}}
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    {{t 'schedule.mapping' alias=mapping.alias}}
+                                    <div class="pull-right">
+                                        {{button-with-confirmation
+                                                type='danger'
+                                                icon='glyphicon glyphicon-remove'
+                                                size='xs'
+                                                text=(t 'schedule.remove_from_mapping')
+                                                message=(t 'schedule.remove_from_mapping_confirm')
+                                                onConfirm=(action 'leaveMapping' mapping)
+                                        }}
                                     </div>
-                                {{/if}}
-                              </div>
-                          </div>
-                      </div>
-                  {{/if}}
-                {{/each}}
-              </div>
-          </div>
-      </div>
-  {{/each}}
+                                </div>
+                                <div class="panel-body">
+                                    <div id="content">
+                                        {{#if mapping.doors.length}}
+                                            {{t 'schedule.grant_to_doors'}}
+                                            <ul>
+                                                {{#each mapping.doors as |door|}}
+                                                    <li>
+                                                        {{#link-to 'door' door.id}}{{door.alias}}{{/link-to}}
+                                                    </li>
+                                                {{/each}}
+                                            </ul>
+                                        {{else}}
+                                            <div class="alert alert-danger text-center" role="alert">
+                                                <span class="glyphicon glyphicon-exclamation-sign"></span>
+                                                {{t 'schedule.no_doors'}}
+                                            </div>
+                                        {{/if}}
+                                    </div>
+                                </div>
+                            </div>
+                        {{/if}}
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    {{/each}}
 
     <div class="panel panel-default">
         <div class="panel-body">
-          {{schedule-mapping-picker action=(action 'addScheduleMapping')}}
+            {{schedule-mapping-picker action=(action 'addScheduleMapping')}}
         </div>
     </div>
 

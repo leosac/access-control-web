@@ -1,32 +1,39 @@
-{{#bs-form formLayout='inline' as |form|}}
-    {{#form.element label=(t 'username')}}
-      {{#power-select
-        selected=selectedUsername
-        options=allUsernames
-        onchange=(action (mut selectedUsername))
-        allowClear=true
-        placeholder=(t 'username')
-      as |username|
-      }}
-        {{username}}
-      {{/power-select}}
-    {{/form.element}}
-
-    {{#form.element label=(t 'rank')}}
-      {{#power-select
-        selected=selectedRank
-        options=allRank
-        onchange=(action (mut selectedRank))
-        placeholder=(t 'rank_group')
-      as |rank|
-      }}
-        {{rank}}
-      {{/power-select}}
-    {{/form.element}}
-
-    {{#bs-button type="success" icon="glyphicon glyphicon-refresh"
-                 size="sm"
-                 onClick=(action 'addToGroup')}}
-        {{t 'users.add_to_group'}}
-    {{/bs-button}}
+{{#bs-form as |form|}}
+    <div class="col-md-12">
+        <div class="col-md-2">
+            {{#form.element label=(t 'username')}}
+                {{#power-select
+                        selected=selectedUsername
+                        options=allUsernames
+                        onchange=(action (mut selectedUsername))
+                        allowClear=true
+                        placeholder=(t 'username')
+                as |username|
+                }}
+                    {{username}}
+                {{/power-select}}
+            {{/form.element}}
+        </div>
+        <div class="col-md-2">
+            {{#form.element label=(t 'rank')}}
+                {{#power-select
+                        selected=selectedRank
+                        options=allRank
+                        onchange=(action (mut selectedRank))
+                        placeholder=(t 'rank_group')
+                as |rank|
+                }}
+                    {{rank}}
+                {{/power-select}}
+            {{/form.element}}
+        </div>
+        <div class="col-md-2">
+            <br>
+            {{#bs-button type="success" icon="glyphicon glyphicon-refresh"
+                         size="sm"
+                         onClick=(action 'addToGroup')}}
+                {{t 'users.add_to_group'}}
+            {{/bs-button}}
+        </div>
+    </div>
 {{/bs-form}}

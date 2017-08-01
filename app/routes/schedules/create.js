@@ -26,7 +26,8 @@ export default LeosacRoute.extend({
     },
     actions: {
         createSchedule(){
-            this.controller.model.save().then(()=>{
+            this.controller.model.save().then(()=>
+            {
                 this.get('flashMessages').success('Schedule created !');
                 this.transitionTo('schedule', this.controller.model.get('id'));
             });

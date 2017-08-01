@@ -14,7 +14,8 @@ export default LeosacRoute.extend({
         if (model.status_code === 7) // SessionAborted
         {
             this.get('authSrv')._clearAuthentication(true);
-            var self = this;
+            let self = this;
+
             Ember.run.later((function ()
             {
                 self.transitionTo('login');

@@ -23,8 +23,7 @@ export default Ember.Service.extend({
             enabled_type: enabled_types,
             p: page,
             ps: pageSize
-        }).then(
-            (obj) =>
+        }).then((obj) =>
             {
                 // clear store so don't have too many record.
                 ['audit-user-event', 'audit-wsapicall-event', 'audit-door-event', 'audit-user-group-membership-event',
@@ -77,7 +76,7 @@ export default Ember.Service.extend({
                         {
                             tmpArray.sort(function (a, b)
                             {
-                        //console.log(b.get('numericId'));
+                                //console.log(b.get('numericId'));
                                 return b.get('numericId') - a.get('numericId');
                             });
                             promise.resolve({data: tmpArray, meta: obj.meta});

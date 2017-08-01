@@ -83,8 +83,8 @@ export default Ember.Route.extend({
 function redirectIfNotAuth(route)
 {
     "use strict";
-    var self = route;
-    var promise_or_ret = self.get('authSrv').isLoggedIn();
+    let self = route;
+    let promise_or_ret = self.get('authSrv').isLoggedIn();
 
     if (promise_or_ret === false)
     {

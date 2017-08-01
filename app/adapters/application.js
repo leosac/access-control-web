@@ -6,11 +6,11 @@ export default DS.Adapter.extend({
 
     findAll: function (store, type, sinceToken)
     {
-        var def = Ember.RSVP.defer();
+        let def = Ember.RSVP.defer();
 
-        var ws = this.get('ws');
+        let ws = this.get('ws');
         console.log("Try to find all: " + type);
-        var p = ws.sendJson('get_logs', {});
+        let p = ws.sendJson('get_logs', {});
 
         p.then(function (data)
             {
@@ -30,12 +30,12 @@ export default DS.Adapter.extend({
     query: function (store, type, query, recordArray)
     {
         "use strict";
-        var def = Ember.RSVP.defer();
+        let def = Ember.RSVP.defer();
 
-        var ws = this.get('ws');
+        let ws = this.get('ws');
         console.log("QUERY MODE" + type);
         console.log(query);
-        var p = ws.sendJson('get_logs', query);
+        let p = ws.sendJson('get_logs', query);
 
         p.then(function (data)
             {

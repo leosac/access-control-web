@@ -69,9 +69,15 @@ export default Ember.Controller.extend({
         if (this.get('zoneEventEnabled'))
             enabled_types.push('Leosac::Audit::ZoneEvent');
 
-        const currentPage = Number.parseInt(this.get('currentPage')) || 1;
+        // small hack because we can't put the value of currentPage to a negative value,
+        // otherwise, we have to restart the server. This is currently being fixed,
+        // but in the mean time,that will fix it
+
+        let currentPage = Number.parseInt(this.get('currentPage'));
+        if (Number.parseInt(this.get('currentPage')) <= 0)
+            currentPage = 1;
         const pageSize = Number.parseInt(this.get('pageSize')) || 25;
-        // console.log("Page Size = " +pageSize)
+
         const progressSetter = function(v)
         {
             self.set('progressValue', v);

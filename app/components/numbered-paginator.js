@@ -35,7 +35,8 @@ export default Ember.Component.extend({
         // all page number. Rather we propose something else.
         if (last - first > 10)
         {
-            for (let i = 0; i < 50; i += 10)
+            let i = -1;
+            while (++i < 5)
             {
                 const next = current + i > last ? last : current + i;
                 const prev = current - i < first ? first : current - i;

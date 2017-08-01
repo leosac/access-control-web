@@ -25,20 +25,15 @@ export default Ember.Component.extend(Validations, {
     tryUpdatePasswordValue ()
     {
         if (this.attrs.optional)
-        {
             this.attrs.passwordOut.update(this.get('password'));
-        }
         else
         {
             const {m, validations} = this.validateSync();
             if (validations.get('isValid'))
-            {
                 this.attrs.passwordOut.update(this.get('password'));
-            }
             else
-            {
                 this.attrs.passwordOut.update(false);
-            }
+
         }
     },
     init()

@@ -26,6 +26,7 @@ export default Ember.Component.extend({
                 usernames.push(user.get('username'));
                 usernameToObject[user.get('username')] = user;
             });
+            console.log("test " + usernames[0]);
             self.set('allUsernames', usernames);
             self.set('usernameToObject', usernameToObject);
         });

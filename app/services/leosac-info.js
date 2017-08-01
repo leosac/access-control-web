@@ -25,8 +25,8 @@ export default Ember.Service.extend({
         "use strict";
         this.setLocale(localStorage.user_locale || 'en');
 
-        var self = this;
-        var ws = self.get('websocket');
+        let self = this;
+        let ws = self.get('websocket');
         ws.sendJson('get_leosac_version', {}).then(
             function (response)
             {
