@@ -7,18 +7,18 @@
                     <fieldset>
                         <legend>{{t 'group_information'}}</legend>
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 {{form.element controlType="text" label=(t 'name')
                                                property="name"}}
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 {{form.element controlType='textarea' label=(t 'description')
                                                property='description'}}
                             </div>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-offset-2 col-md-8">
                                 {{bs-button defaultText=(t 'edit') type="primary" buttonType="submit"
                                             size='sm'}}
 

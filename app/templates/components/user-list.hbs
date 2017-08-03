@@ -1,27 +1,22 @@
 <div class="table-responsive">
-  <table class="table table-striped">
-    <thead>
-    <th>#Id</th>
-    <th>{{t 'firstname'}}</th>
-    <th>{{t 'lastname'}}</th>
-    <th>{{t 'email'}}</th>
-    <th>{{t 'username'}}</th>
-    </thead>
-    <tbody>
-    {{#each users as |user|}}
-      <tr>
-        <td>
-          {{#link-to 'profile' user.id}}
-            {{user.id}}
-          {{/link-to}}</td>
-        <td>{{user.firstname}}</td>
-        <td>{{user.lastname}}</td>
-        <td>{{user.email}}</td>
-        <td>
-          {{user.username}}
-        </td>
-      </tr>
-    {{/each}}
-    </tbody>
-  </table>
+    <table class="table table-hover" style="margin-top: 1%;">
+        <thead>
+        <th>#Id</th>
+        <th>{{t 'firstname'}}</th>
+        <th>{{t 'lastname'}}</th>
+        <th>{{t 'email'}}</th>
+        <th>{{t 'username'}}</th>
+        </thead>
+        <tbody>
+        {{#each users as |user|}}
+            {{#link-to "profile" user.id tagName = "tr"}}
+                <td>{{user.id}}</td>
+                <td>{{user.firstname}}</td>
+                <td>{{user.lastname}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.username}}</td>
+                {{/link-to}}
+        {{/each}}
+        </tbody>
+    </table>
 </div>

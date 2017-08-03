@@ -13,6 +13,13 @@
   font-weight: normal;
 }
 
+.btn-signin{
+  margin-bottom: auto;
+  background-color: #EE7C00;
+  border-color: #DB7200;
+  width: 100px;
+}
+
 .form-signin .form-control {
   position: relative;
   height: auto;

@@ -2,38 +2,28 @@
 
 <img src="{{getenv 'logoUrl'}}" class="navbar-logo" alt="Logo" />
 
-{{#bs-form formLayout="horizontal"  class="form-control" onSubmit=(action "login") as |form|}}
-    <br>
+{{#bs-form formLayout="horizontal"  class="form-signin" onSubmit=(action "login") as |form|}}
     <h2 class="form-signin-heading">{{t 'login-form.welcome'}}</h2>
-    <div class="row">
-        <div class="col-sm-2 col-sm-offset-5 text-center">
             {{form.element controlType='text' label=(t 'form.username.label')
                            value=inputUsername required=true
                            onChange=(action (mut inputUsername))
                            placeholder=(t 'form.username.ph')
             }}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-2 col-sm-offset-5 text-center">
             {{form.element controlType='password' label=(t 'form.password.label')
                            value=inputPassword required=true
                            onChange=(action (mut inputPassword))
 
                            placeholder=(t 'form.password.ph')
             }}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-2 col-sm-offset-5 text-center">
-            {{#bs-button class="btn-block" size="xs" type="primary" buttonType="submit"}}
+
+            {{#bs-button class="btn-signin" size="md" type="primary" buttonType="submit"}}
                 {{t 'login-form.submit'}}
             {{/bs-button}}
-        </div>
-    </div>
+
+    <br>
     {{#if pending}}
         <!--suppress XmlDefaultAttributeValue -->
-        <span class="fa fa-refresh" style="color: orange" aria-hidden="true"></span>
+        <span class="fa fa-refresh fa-spin" style="color: orange; font-size:30px; margin-top: 10px" aria-hidden="true"></span>
     {{/if}}
 
     {{#if errorMessage}}

@@ -4,14 +4,13 @@
 </div>
 
 <div class="row">
-    <div class="col-md-2">
-{{bs-button onCLick=(action 'refresh') defaultText='Refresh'}}
-</div>
+    <div class="col-md-2" style="margin-bottom: 5px">
+        {{bs-button onCLick=(action 'refresh') defaultText='Refresh'}}
+    </div>
 </div>
 <div class="user-schedule-info" class="{{greyedDisabledIfSyncing}}">
 
     {{#each user.schedules as |schedule|}}
-        <br>
         <div class="panel panel-default">
             <div class="panel-heading">
                 Schedule: {{schedule.name}}
@@ -83,6 +82,4 @@
             {{schedule-mapping-picker action=(action 'addScheduleMapping')}}
         </div>
     </div>
-
-    <br><br><br><br><br><br><br><br><br>
 </div>

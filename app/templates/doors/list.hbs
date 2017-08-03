@@ -4,7 +4,7 @@
 <hr>
 
 <div class="table-responsive">
-    <table class="table table-striped">
+    <table class="table table-striped table-hover">
         <thead>
         <th>#Id</th>
         <th>{{t 'alias'}}</th>
@@ -12,24 +12,19 @@
         </thead>
         <tbody>
         {{#each model as |door|}}
-            <tr>
+            {{#link-to 'door' door.id tagName = "tr"}}
+                <td>{{door.id}}</td>
+                <td>{{door.alias}}</td>
                 <td>
-                    {{#link-to 'door' door.id}}
-                      {{door.id}}
-                    {{/link-to}}
+                    {{button-with-confirmation
+                            type='danger'
+                            icon='glyphicon glyphicon-remove'
+                            size='xs'
+                            text=(t 'delete')
+                            message=(t 'door.delete_confirm')
+                            onConfirm=(route-action 'deleteDoor' door)}}
                 </td>
-              <td>{{door.alias}}</td>
-                <td>
-                  {{button-with-confirmation
-                    type='danger'
-                    icon='glyphicon glyphicon-remove'
-                    size='xs'
-                    text=(t 'delete')
-                    message=(t 'door.delete_confirm')
-                    onConfirm=(route-action 'deleteDoor' door)
-                  }}
-                </td>
-            </tr>
+            {{/link-to}}
         {{/each}}
         </tbody>
     </table>

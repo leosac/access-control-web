@@ -9,8 +9,6 @@ export default Ember.Component.extend({
         enabledOnFriday: false,
         enabledOnSaturday: false,
         enabledOnSunday: false,
-        startTime: '',
-        endTime: '',
     },
     init()
     {

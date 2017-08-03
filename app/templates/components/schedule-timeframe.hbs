@@ -40,20 +40,27 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-5">
             {{#form.element label=(t 'schedule.start_time')}}
-                {{input type='text' placeholder='13:37' value=(mut timeframe.startTime)
+                {{bs-datetimepicker disabled=disabled
+                                    date=timeframe.startTime format='LT'
+                                    updateDate=(action (mut timeframe.startTime))}}
+                {{!input type='text' placeholder='13:37' value=(mut timeframe.startTime)
                         class='form-control'}}
             {{/form.element}}
 
         </div>
-        <div class="col-md-4">
+        <div class="col-md-5">
             {{#form.element label=(t 'schedule.end_time')}}
-                {{input type='text' placeholder='18:42' value=(mut timeframe.endTime)
+                {{!input type='text' placeholder='18:42' value=(mut timeframe.endTime)
                         class='form-control'}}
+                {{bs-datetimepicker disabled=disabled
+                                    date=timeframe.endTime format='LT'
+                                    updateDate=(action (mut timeframe.endTime))}}
+                {{log "test end " timeframe.endTime}}
             {{/form.element}}
         </div>
-        <div class="col-md-4">
+        <div class="col-md-2">
             {{bs-button defaultText=(t 'remove_timeframe') type='danger'
                         onClick=action}}
         </div>

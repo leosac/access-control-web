@@ -18,7 +18,7 @@
     <div class="col-md-12">
         <h3>{{t 'users.title'}}</h3>
         <div class="table-responsive">
-            <table class="table table-striped table-bordered">
+            <table class="table table-hover table-bordered">
                 <thead>
                 <th>#Id</th>
                 <th>{{t 'username'}}</th>
@@ -26,11 +26,9 @@
                 </thead>
                 <tbody>
                 {{#each mapping.users as |user|}}
-                    <tr>
+                    {{#link-to 'profile' user.id tagName="tr"}}
                         <td>
-                            {{#link-to 'profile' user.id}}
-                                {{user.id}}
-                            {{/link-to}}
+                            {{user.id}}
                         </td>
                         <td>{{user.username}}</td>
                         <td>
@@ -39,7 +37,7 @@
                                             defaultText=(t 'remove') onClick=(action 'removeUser' user)}}
                             </div>
                         </td>
-                    </tr>
+                    {{/link-to}}
                 {{/each}}
                 </tbody>
             </table>
@@ -62,7 +60,7 @@
     <div class="col-md-12">
         <h3>{{t 'groups'}}</h3>
         <div class="table-responsive">
-            <table class="table table-striped table-bordered">
+            <table class="table table-hover table-bordered">
                 <thead>
                 <th>#Id</th>
                 <th>{{t 'name'}}</th>
@@ -70,11 +68,9 @@
                 </thead>
                 <tbody>
                 {{#each mapping.groups as |group|}}
-                    <tr>
+                    {{#link-to 'group' group.id tagName="tr"}}
                         <td>
-                            {{#link-to 'group' group.id}}
-                                {{group.id}}
-                            {{/link-to}}
+                            {{group.id}}
                         </td>
                         <td>{{group.name}}</td>
                         <td>
@@ -83,7 +79,7 @@
                                             defaultText=(t 'remove') onClick=(action 'removeGroup' group)}}
                             </div>
                         </td>
-                    </tr>
+                    {{/link-to}}
                 {{/each}}
                 </tbody>
             </table>
@@ -130,7 +126,9 @@
                             {{link-to-credential credential=cred text=cred.id}}
                         </td>
                         <td>{{cred.type}}</td>
-                        <td>{{cred.alias}}</td>
+                        <td>
+                            {{link-to-credential credential=cred text=cred.alias}}
+                        </td>
                         <td>
                             <div class="pull-right">
                                 {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
@@ -162,7 +160,7 @@
     <div class="col-md-12">
         <h3>{{t 'doors'}}</h3>
         <div class="table-responsive">
-            <table class="table table-striped table-bordered">
+            <table class="table table-hover table-bordered">
                 <thead>
                 <th>#Id</th>
                 <th>{{t 'alias'}}</th>
@@ -170,11 +168,9 @@
                 </thead>
                 <tbody>
                 {{#each mapping.doors as |door|}}
-                    <tr>
+                    {{#link-to 'door' door.id tagName="tr"}}
                         <td>
-                            {{#link-to 'door' door.id}}
                                 {{door.id}}
-                            {{/link-to}}
                         </td>
                         <td>{{door.alias}}</td>
                         <td>
@@ -183,7 +179,7 @@
                                             defaultText=(t 'remove') onClick=(action 'removeDoor' door)}}
                             </div>
                         </td>
-                    </tr>
+                    {{/link-to}}
                 {{/each}}
                 </tbody>
             </table>

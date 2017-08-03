@@ -6,7 +6,7 @@
     {{#bs-tab as |tab|}}
         {{#tab.pane title=(t 'information')}}
             {{#bs-form formLayout="horizontal" model=model.user onSubmit=(route-action "editProfile") as |form|}}
-            <div class="col-md-6">
+            <div class="col-md-6" style="margin-top: 1%;">
                     <fieldset>
                         <legend>{{t 'profile.title'}}</legend>
                         {{form.element disabled=isProfileLocked
@@ -37,7 +37,7 @@
                     </fieldset>
                 <p></p>
             </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6" style="margin-top: 1%;">
                         {{validity-control
                                 form=form
                                 disabled=isRankEditLocked
