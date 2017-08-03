@@ -14,4 +14,5 @@ export default Credential.extend(PinCodeValidations, {
     isPinCode: true,
     type: 'PinCode',
     code: DS.attr('string'),
+    displayIdentifier: Ember.computed.alias('code'),
 });

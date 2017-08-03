@@ -4,15 +4,18 @@
 
 {{#bs-tab as |tab|}}
     {{#tab.pane title=(t 'timeframes')}}
-        <div>
+        <div class="col-md-12">
             {{schedule-form schedule=model action=(route-action "editSchedule")}}
         </div>
     {{/tab.pane}}
 
     {{#tab.pane title=(t 'mapping')}}
-
-        {{t 'schedule.mapping_list'}}<br> <br>
-
+        <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                {{t 'schedule.mapping_list'}}<br>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-md-12">
@@ -43,5 +46,6 @@
 
             {{/each}}
         {{/bs-accordion}}
+        </div>
     {{/tab.pane}}
 {{/bs-tab}}

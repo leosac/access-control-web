@@ -62,7 +62,6 @@ export default Ember.Controller.extend({
     {
         this.get('ws').sendJson('access_overview', {}).then((data) =>
         {
-            console.log(data);
             this.set('rawData', data);
         });
     },

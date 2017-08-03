@@ -41,7 +41,7 @@ export default Ember.Controller.extend({
             this.set('openDetailsModal', true);
             this.set('detailedAudit', audit);
         },
-        refresh(){
+        refresh() {
             this.reload();
         }
     },

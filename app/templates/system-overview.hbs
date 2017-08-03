@@ -1,36 +1,47 @@
-<div class="col-lg-12">
-    {{t 'overview.intro' appname=(getenv 'appname')}}
-    <br> <br>
-
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <a href="#" {{action 'refreshOverview'}}>
-                <i style="color: green" class="fa fa-refresh"></i> {{t 'refresh'}}
-            </a>
-        </div>
-
-        <div class="panel-body">
-          {{system-overview}}
+<div class="col-lg-12 col-md-12">
+    <div class="row">
+        <div class="col-md-12">
+            {{t 'overview.intro' appname=(getenv 'appname')}}
         </div>
     </div>
-
    <div class="row">
-      {{input type='number' value=logPerPage
-      label=(t 'overview.logs_per_page')
-      }}
+       <br>
+   </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a href="#" {{action 'refreshOverview'}}>
+                        <i style="color: green" class="fa fa-refresh"></i> {{t 'refresh'}}
+                    </a>
+                </div>
+
+                <div class="panel-body">
+                    {{system-overview}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label class="control-label">{{t 'page_size'}} :</label>
+            {{input type='number' value=logPerPage}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="text-center">
+            {{t 'overview.total_logs' totalLogs=totalLogs}}
+        </div>
     </div>
 
     <div class="row text-center">
-        {{t 'overview.total_logs' totalLogs=totalLogs}}
-    </div>
-
-    <div class="row text-center">
-      {{numbered-paginator first=0
-      last=lastLogPage
-      current=currentLogPage
-      onPageChange=(action "updateLogPageNumber")
-      }}
-    </div>
+            {{numbered-paginator first=0
+                                 last=lastLogPage
+                                 current=currentLogPage
+                                 onPageChange=(action "updateLogPageNumber")
+            }}
+        </div>
 
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -38,7 +49,7 @@
         </div>
 
         <div class="panel-body">
-          {{logs-view logs=lastLogs}}
+            {{logs-view logs=lastLogs}}
         </div>
     </div>
 </div>

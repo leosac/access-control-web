@@ -8,7 +8,7 @@ export default DS.Transform.extend({
     deserialize(serialized) {
         const types = [];
 
-        for (var key in AuditEventType)
+        for (let key in AuditEventType)
         {
             if (AuditEventType.hasOwnProperty(key))
             {

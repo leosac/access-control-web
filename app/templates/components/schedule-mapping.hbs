@@ -45,7 +45,7 @@
             </table>
         </div>
         <div class="row">
-            <div class="col-md-4">
+            <div class="pull-left col-md-4">
                 {{user-picker selected=newUser form=form onChange=(action (mut newUser))}}
             </div>
             <div class="col-md-2">
@@ -148,8 +148,7 @@
                     {{input type='number' value=(mut newCredential) class='form_control'}}
                 {{/form.element}}
             </div>
-            <div>      </div>
-            <div class="col-centered col-md-4">
+            <div class="col-md-2">
                 {{bs-button size='sm' type="primary" onClick=(action "addCredential" cred)
                             defaultText=(t 'users.add_credential')}}
             </div>

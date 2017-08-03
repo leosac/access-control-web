@@ -10,25 +10,23 @@
                             <div class="col-md-4">
                                 {{form.element controlType="text" label=(t 'name')
                                                property="name"}}
-                            </div> <br> <br> <br>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-4">
                                 {{form.element controlType='textarea' label=(t 'description')
                                                property='description'}}
                             </div>
                         </div>
-                        <div class="col-md-9">
-                            <div class="col-md-1">
+                        <div class="col-md-8">
                                 {{bs-button defaultText=(t 'edit') type="primary" buttonType="submit"
                                             size='sm'}}
-                            </div>
-                            <div class="col-md-2">
+
                                 {{#bs-button type="info" icon="glyphicon glyphicon-refresh"
                                              size="sm"
-                                             action='cancelAndRefresh'}}
+                                             onClick=(route-action 'cancelAndRefresh')}}
                                     {{t 'cancel_and_refresh'}}
                                 {{/bs-button}}
-                            </div>
-                            <div class="col-md-1">
                                 {{button-with-confirmation
                                         type='danger'
                                         icon='glyphicon glyphicon-remove'
@@ -37,10 +35,12 @@
                                         message=(t 'delete_group_confirmation')
                                         onConfirm=(route-action 'deleteGroup')
                                 }}
-                            </div>
                         </div>
                     </fieldset>
                 {{/bs-form}}
+                <div class="col-md-12 row">
+                    <hr>
+                </div>
 
             </div>
         {{/tab.pane}}

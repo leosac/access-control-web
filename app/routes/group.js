@@ -45,7 +45,7 @@ export default LeosacRoute.extend({
                 self.transitionTo('groups.list');
             });
         },
-        cancelAndRefresh: function ()
+        cancelAndRefresh ()
         {
             this.controller.get('model').rollbackAttributes();
             this.controller.get('model').reload();

@@ -1,21 +1,23 @@
 {{#bs-form formLayout="horizontal" model=schedule as |form|}}
     <fieldset>
         <legend>{{t 'details'}}</legend>
-        <div class="pull-left col-md-4">
-            {{form.element controlType="text" label=(t 'name')
-                           placeholder=(t 'schedule.placeholder')
-                           property="name"}}
+        <div class="row">
+            <div class="pull-left col-md-6">
+                {{form.element controlType="text" label=(t 'name')
+                               placeholder=(t 'schedule.placeholder')
+                               property="name"}}
+            </div>
         </div>
-        <br> <br> <br>
-        <div class="pull-left col-md-4">
-            {{form.element controlType="textarea" label=(t 'notes')
-                           placeholder=(t 'notes_placeholder')
-                           property="description"}}
+        <div class="row">
+            <div class="pull-left col-md-6">
+                {{form.element controlType="textarea" label=(t 'notes')
+                               placeholder=(t 'notes_placeholder')
+                               property="description"}}
+            </div>
         </div>
     </fieldset>
-    <br> <br>
-    <legend>{{t 'timeframes'}}</legend>
-    <div class="col-md-12">
+    <fieldset>
+        <legend>{{t 'timeframes'}}</legend>
         <div class="row">
             <div class=" col-md-1">
                 {{bs-button defaultText=(t 'add') type='success' onClick=(action 'addTimeframe')}}
@@ -24,22 +26,12 @@
                 {{bs-button defaultText=(t 'submit') type="primary" onClick=action buttonType="submit"}}
             </div>
         </div>
-        <br> <br>
-        <div class="row">
-            {{#each schedule.timeframes as |tf|}}
-
-                <div class="panel panel-default">
-                    <br>
-                    <div class="row">
-                        {{schedule-timeframe form=form timeframe=tf}}
-                    </div>
-                    <div class="col-md-2">
-                        {{bs-button defaultText=(t 'remove_timeframe') type='danger'
-                                    onClick=(action 'removeTimeframe' tf)}}
-                    </div>
-                    <br> <br>
+        {{#each schedule.timeframes as |tf|}}
+            <div class="panel panel-body col-md-8">
+                <div class="row">
+                    {{schedule-timeframe form=form  action=(action 'removeTimeframe' tf) timeframe=tf}}
                 </div>
-            {{/each}}
-        </div>
-    </div>
+            </div>
+        {{/each}}
+    </fieldset>
 {{/bs-form}}
