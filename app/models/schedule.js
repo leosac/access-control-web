@@ -5,7 +5,8 @@ import {validator, buildValidations} from 'ember-cp-validations';
 
 const ScheduleValidations = buildValidations(
     {
-        name: [validator('presence', true),
+        name: [
+            validator('presence', true),
             validator('ds-error'),
             validator('length', {
                 min: 3,

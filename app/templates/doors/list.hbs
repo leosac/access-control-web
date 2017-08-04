@@ -8,6 +8,7 @@
         <thead>
         <th>#Id</th>
         <th>{{t 'alias'}}</th>
+        <th>{{t 'description'}}</th>
         <th>{{t 'delete'}}</th>
         </thead>
         <tbody>
@@ -15,6 +16,7 @@
             {{#link-to 'door' door.id tagName = "tr"}}
                 <td>{{door.id}}</td>
                 <td>{{door.alias}}</td>
+                <td>{{door.description}}</td>
                 <td>
                     {{button-with-confirmation
                             type='danger'

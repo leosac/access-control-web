@@ -42,8 +42,9 @@
     <div class="row">
         <div class="col-md-5">
             {{#form.element label=(t 'schedule.start_time')}}
+                {{log "test start " timeframe.startTime}}
                 {{bs-datetimepicker disabled=disabled
-                                    date=timeframe.startTime format='LT'
+                                    date=timeframe.startTime format='H:mm'
                                     updateDate=(action (mut timeframe.startTime))}}
                 {{!input type='text' placeholder='13:37' value=(mut timeframe.startTime)
                         class='form-control'}}
@@ -52,9 +53,9 @@
         </div>
         <div class="col-md-5">
             {{#form.element label=(t 'schedule.end_time')}}
-                {{!input type='text' placeholder='18:42' value=(mut timeframe.endTime)
+                {{input type='text' placeholder='18:42' value=(mut timeframe.endTime)
                         class='form-control'}}
-                {{bs-datetimepicker disabled=disabled
+                {{!bs-datetimepicker disabled=disabled
                                     date=timeframe.endTime format='LT'
                                     updateDate=(action (mut timeframe.endTime))}}
                 {{log "test end " timeframe.endTime}}

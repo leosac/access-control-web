@@ -27,7 +27,7 @@
         <td>{{severity-to-string u.severity}}</td>
         <td>{{u.uuid}}</td>
         <td>
-          {{bs-button defaultText='Create Update !' action=(action 'createUpdate' u)}}
+          {{bs-button defaultText='Create Update !' onClick=(action 'createUpdate' u)}}
         </td>
       </tr>
     {{/each}}
@@ -57,16 +57,16 @@
         <td>{{update.generatedAt}}</td>
         <td>{{update.checkpoint}}</td>
         <td>
-          {{#bs-button type='success' action=(action 'acknowledgeUpdate' update)}}
+          {{#bs-button type='success' onClick=(action 'acknowledgeUpdate' update)}}
             {{t 'acknowledge'}}
           {{/bs-button}}
 
-          {{#bs-button type='danger' action=(action 'cancelUpdate' update)}}
+          {{#bs-button type='danger' onClick=(action 'cancelUpdate' update)}}
             {{t 'cancel'}}
           {{/bs-button}}
         </td>
         <td>
-          {{bs-button action=(action 'showDetails' update) defaultText=(t 'details')}}<
+          {{bs-button onClick=(action 'showDetails' update) defaultText=(t 'details')}}<
         </td>
       </tr>
     {{/each}}

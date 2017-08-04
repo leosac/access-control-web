@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6" style="padding-bottom: 5px">
         {{t 'audit.entries_below'}}
     </div></div>
 <div class="row">
@@ -99,7 +99,7 @@
 {{/if}}
 
 <div class="table-responsive">
-    <table class="table table-striped">
+    <table class="table table-striped table-bordered">
         <thead>
         <th>#Id</th>
         <th>{{t 'type'}}</th>
@@ -133,10 +133,10 @@
     <hr>
 
     <i>{{t 'audit.before'}}</i> <br>
-    <code style="white-space: pre;">{{detailedAudit.before}}</code>
+    <code style="white-space: pre; padding-left: 5px">{{detailedAudit.before}}</code>
 
     <hr>
 
     <i>{{t 'audit.after'}}</i> <br>
-    <code style="white-space: pre;">{{detailedAudit.after}}</code>
+    <code style="white-space: pre; margin-left: 5px;">{{detailedAudit.after}}</code>
 {{/bs-modal}}

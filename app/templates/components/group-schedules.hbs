@@ -1,14 +1,11 @@
-<br>
-<div class="alert alert-info text-center" role="alert">
+<div class="alert alert-info text-center" style="margin-top: 1%" role="alert">
     {{t 'schedule.group_schedule'}}
 </div>
-<div style="margin-bottom: 1%;">
-    {{bs-button action='refresh' defaultText=(t 'refresh')}}
-</div>
-<div class="user-schedule-info" class="{{greyedDisabledIfSyncing}}">
 
+{{bs-button action='refresh' defaultText=(t 'refresh')}}
+
+<div class="user-schedule-info" style="margin-top: 1%" class="{{greyedDisabledIfSyncing}}">
     {{#each group.schedules as |schedule|}}
-        <br>
         <div class="panel panel-default">
             <div class="panel-heading">
                 {{t 'schedule.asfield'}} {{schedule.name}}

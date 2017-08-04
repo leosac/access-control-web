@@ -1,40 +1,44 @@
-<div class="row col-md-6">
+<div class="col-md-12">
   {{#bs-form formLayout="horizontal" model=model.user onSubmit=(route-action 'createUser') as |form|}}
+      <div class="row">
+      <div class="col-md-6">
       <fieldset>
          <legend>{{t 'users.create.account_info'}}</legend>
-        {{form.element controlType="text" label=(t 'username')
-                          placeholder="john_doe" property="username"}}
+          {{form.element controlType="text" label=(t 'username')
+                         placeholder="john_d" property="username"}}
+          {{password-input optional=true passwordOut=(mut model.user.password)}}
 
+          {{#form.element label=(t 'rank')}}
+              {{#power-select
+                      selected=model.user.rank
+                      options=model.possibleRanks
+                      onchange=(action (mut model.user.rank))
+              as |rank|
+              }}
+                  {{rank}}
+              {{/power-select}}
+          {{/form.element}}
       </fieldset>
-
+      </div>
+      <div class="col-md-6">
       <fieldset>
           <legend>{{t 'profile.title'}}</legend>
-        {{form.element controlType="text" label=(t 'firstname')
-                          placeholder="John" property="firstname"}}
+          {{form.element controlType="text" label=(t 'firstname')
+                         placeholder="John" property="firstname"}}
 
-        {{form.element controlType="text" label=(t 'lastname')
-                          placeholder="Doe" property="lastname"}}
+          {{form.element controlType="text" label=(t 'lastname')
+                         placeholder="Doe" property="lastname"}}
 
-        {{form.element controlType="email" label=(t 'email')
-                          placeholder="john@doe.com" property="email"}}
+          {{form.element controlType="email" label=(t 'email')
+                         placeholder="john@doe.com" property="email"}}
 
-        {{#form.element label=(t 'rank')}}
-          {{#power-select
-            selected=model.user.rank
-            options=model.possibleRanks
-            onchange=(action (mut model.user.rank))
-          as |rank|
-          }}
-            {{rank}}
-          {{/power-select}}
-        {{/form.element}}
       </fieldset>
-      <fieldset>
-          <legend>{{t 'security'}}</legend>
-          {{password-input optional=true passwordOut=(mut model.user.password)}}
-      </fieldset>
+      </div>
+      </div>
+  <div class="row" >
       {{bs-button defaultText=(t 'users.create.title') type="primary"
                   buttonType="submit"}}
+  </div>
       <p></p>
   {{/bs-form}}
 </div>

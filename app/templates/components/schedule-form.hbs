@@ -19,17 +19,16 @@
     <fieldset>
         <legend>{{t 'timeframes'}}</legend>
         <div class="row">
-            <div class=" col-md-1">
+
                 {{bs-button defaultText=(t 'add') type='success' onClick=(action 'addTimeframe')}}
-            </div>
-            <div class="col-md-1">
-                {{bs-button defaultText=(t 'submit') type="primary" onClick=action buttonType="submit"}}
-            </div>
+            &nbsp;
+            {{bs-button defaultText=(t 'submit') type="primary" onClick=action buttonType="submit"}}
+
         </div>
         {{#each schedule.timeframes as |tf|}}
             <div class="panel panel-body col-md-8">
                 <div class="row">
-                    {{schedule-timeframe form=form  action=(action 'removeTimeframe' tf) timeframe=tf}}
+                    {{schedule-timeframe form=form action=(action 'removeTimeframe' tf) timeframe=tf}}
                 </div>
             </div>
         {{/each}}

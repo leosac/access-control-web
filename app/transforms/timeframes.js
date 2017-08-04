@@ -2,7 +2,7 @@ import DS from 'ember-data';
 
 function clone(obj)
 {
-    if (null == obj || "object" !== typeof obj)
+    if (obj === null || "object" !== typeof obj)
         return obj;
     let copy = obj.constructor();
     for (let attr in obj)
@@ -20,7 +20,7 @@ function clone(obj)
  */
 export default DS.Transform.extend({
     deserialize(serialized) {
-        // Remember, asingletimeframe from the server can only be bound to 1 day.
+        // Remember, a single timeframe from the server can only be bound to 1 day.
         // We need to merge timeframe together.
         const output = [];
         const findSameTimeframe = (startTime, endTime) =>

@@ -1,6 +1,8 @@
+<div class="col-md-12">
 {{#bs-form formLayout="horizontal" model=door onSubmit=action as |form|}}
     <fieldset>
         <legend>{{t 'configuration'}}</legend>
+        <div class="col-md-6">
         <div class="row">
             {{form.element controlType="text" label=(t 'alias')
 
@@ -18,6 +20,8 @@
                                         onChange=(action 'changeAP')
                                         selected=door.accessPoint.alias}}
         </div>
-        {{bs-button defaultText=(t 'submit') type="primary" onClick=action buttonType="submit"}}
+        {{bs-button defaultText=(t 'submit') type="primary" size="md" onClick=action buttonType="submit"}}
+        </div>
     </fieldset>
 {{/bs-form}}
+</div>

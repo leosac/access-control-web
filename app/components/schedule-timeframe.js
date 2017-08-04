@@ -1,7 +1,8 @@
 import Ember from 'ember';
+import moment from 'moment';
 
 export default Ember.Component.extend({
-    timeframes: {
+    timeframe: {
         enabledOnMonday: false,
         enabledOnTuesday: false,
         enabledOnWednesday: false,
@@ -9,6 +10,8 @@ export default Ember.Component.extend({
         enabledOnFriday: false,
         enabledOnSaturday: false,
         enabledOnSunday: false,
+        startTime: moment().format('H:mm'),
+        endTime: ''
     },
     init()
     {

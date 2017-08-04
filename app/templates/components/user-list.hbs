@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table table-hover" style="margin-top: 1%;">
+    <table class="table table-hover">
         <thead>
         <th>#Id</th>
         <th>{{t 'firstname'}}</th>
@@ -9,6 +9,7 @@
         </thead>
         <tbody>
         {{#each users as |user|}}
+            {{#if user.id}}
             {{#link-to "profile" user.id tagName = "tr"}}
                 <td>{{user.id}}</td>
                 <td>{{user.firstname}}</td>
@@ -16,6 +17,7 @@
                 <td>{{user.email}}</td>
                 <td>{{user.username}}</td>
                 {{/link-to}}
+        {{/if}}
         {{/each}}
         </tbody>
     </table>

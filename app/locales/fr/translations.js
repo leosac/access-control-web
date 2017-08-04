@@ -159,7 +159,7 @@ export default {
     'index': {
         'title': 'Index',
         'manage_access': 'Gérer les accès',
-        'apply_update': 'Appliquer les MaJ',
+        'apply_update': 'Appliquer les MàJ',
         'event': 'Evènements',
         'welcome': "Bienvenue <strong>{{username}}</strong> <br>" +
         "Gerez vos cylindres EvoXS et les permissions utilisateurs. <br>" +
@@ -167,7 +167,7 @@ export default {
     },
     'profile': {
         'title': 'Profile Utilisateur',
-        'profile_updated': 'Le profile a été mis a jour',
+        'profile_updated': 'Le profile a été mis à jour',
         'fail_update': 'Erreur de mise à jour du profile'
     },
     'users': {
@@ -202,7 +202,7 @@ export default {
             'title': 'Liste des groupes'
         },
         'create': {
-            'title': 'Créer un group'
+            'title': 'Créer un groupe'
         }
     },
     'door': {
