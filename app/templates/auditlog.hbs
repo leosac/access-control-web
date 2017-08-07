@@ -1,8 +1,8 @@
 <div class="row">
-    <div class="col-md-6" style="padding-bottom: 5px">
+    <div class="col-md-6" style="padding-bottom: 1%">
         {{t 'audit.entries_below'}}
     </div></div>
-<div class="row">
+<div class="row" style="padding-bottom: 1%">
     <div class="col-md-6">
         {{bs-button onClick=(action 'refresh') type='primary'
                     size='sm' defaultText=(t 'refresh')}}
@@ -10,7 +10,7 @@
 </div>
 {{#bs-form formLayout="horizontal" model=this as | form |}}
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             {{form.element controlType="number" label=(t 'current_page')
                            property="currentPage"}}
         </div>
@@ -18,7 +18,7 @@
             {{form.element controlType="number" max=2147483647
                            label=(t 'page_size') property="pageSize" }}
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" style="margin-top: 1%">
             {{t 'total_page'}}: {{totalPage}}  | {{t 'count'}}: {{resultCount}}
         </div>
     </div>
@@ -86,7 +86,6 @@
                            controlType='checkbox'
                            property="userGroupMembershipEventEnabled"}}
         </div>
-
     </div>
 {{/bs-form}}
 

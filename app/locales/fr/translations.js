@@ -108,11 +108,11 @@ export default {
         'door': 'Porte',
         'overview': 'Vue générale',
         'credentials': 'Crédentiaux',
-        'update': 'Mettre a jour',
+        'update': 'Mettre à jour',
         'severity': 'Sévérité',
         'state': 'Etat',
         'user_id': 'Id utilisateur',
-        'room_number': 'Numéro de la piece',
+        'room_number': 'Numéro de la pièce',
         'card_csn': 'Numéro de la carte'
     },
 
@@ -194,7 +194,7 @@ export default {
         'group_name': 'Nom du groupe',
         'create_new_group': 'Créer un nouveau groupe',
         'create_group': 'Créer le groupe',
-        'list_groups_notice': "Merci de noter que le 'nombre total de membres' peut ne pas refléter le nombre de membres réel. Ceci est lié aux permissions.",
+        'list_groups_notice': "Merci de noter que le \"nombre total de membres\" peut ne pas refléter le nombre de membres réel. Ceci est lié aux permissions.",
     },
     'group': {
         'title': 'Groupe',
@@ -396,7 +396,7 @@ export default {
         'update_acked': 'La mise à jour a été acquittée.',
         'update_acked_failed': "L'acquitement de la mise à jour a echoué.",
         'update_cancelled': "La mise à jour a été annulée.",
-        'update_cancel_failed': "L'annulation de la mise a jour a echoué.",
+        'update_cancel_failed': "L'annulation de la mise à jour a echoué.",
         'pending_check_update': 'Recherche des mises à jour en cours.',
         'check_update': 'Rechercher les mises à jour',
         'filter_access_point': "Filtrer par point d'accès",

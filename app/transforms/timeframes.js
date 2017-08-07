@@ -1,4 +1,6 @@
 import DS from 'ember-data';
+import moment from 'moment';
+
 
 function clone(obj)
 {
@@ -84,8 +86,16 @@ export default DS.Transform.extend({
         deserialized.forEach((tf) =>
         {
             const leosacTimeFrame = {};
-            leosacTimeFrame['start-time'] = tf.startTime;
-            leosacTimeFrame['end-time'] = tf.endTime;
+
+            if (typeof tf.startTime !== 'string')
+                leosacTimeFrame['start-time'] = tf.startTime.format('H:mm');
+            else
+                leosacTimeFrame['start-time'] = tf.startTime;
+
+            if (typeof tf.endTime !== 'string')
+                leosacTimeFrame['end-time'] = tf.endTime.format('H:mm');
+            else
+                leosacTimeFrame['end-time'] = tf.endTime;
 
             if (tf.enabledOnMonday)
             {

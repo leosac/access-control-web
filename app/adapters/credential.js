@@ -10,7 +10,7 @@ export default ApplicationAdapter.extend({
         const ws = this.get('ws');
 
         // Retrieve owner, if any.
-        if (data.data.relationships && data.data.relationships.owner.data)
+        if (data.data.relationships && data.data.relationships.owner && data.data.relationships.owner.data)
             data.data.attributes.owner_id = Number.parseInt(data.data.relationships.owner.data.id);
         else
             data.data.attributes.owner_id = 0;
@@ -55,9 +55,10 @@ export default ApplicationAdapter.extend({
     updateRecord: function (store, type, snapshot)
     {
         const data = this.serialize(snapshot);
+        console.log(data);
         const ws = this.get('ws');
 
-        if (data.data.relationships && data.data.relationships.owner.data)
+        if (data.data.relationships && data.data.relationships.owner && data.data.relationships.owner.data)
             data.data.attributes.owner_id = Number.parseInt(data.data.relationships.owner.data.id);
         else
             data.data.attributes.owner_id = 0;

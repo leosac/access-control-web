@@ -6,7 +6,23 @@ import moment from 'moment';
 
 const CredentialValidations = buildValidations(
     {
-        alias: validator('ds-error')
+        alias:
+            {
+                validators:
+                    [
+                        validator('ds-error'),
+                        validator('presence', true),
+                        validator('length', {
+                            min: 3,
+                            max: 15
+                        })
+                    ]
+             }
+            // owner:
+            // [
+            //     validator('presence', true)
+            // ]
+
     }
 );
 

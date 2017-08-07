@@ -18,8 +18,8 @@ export default Ember.Service.extend({
     update()
     {
         "use strict";
-        var self = this;
-        var ws = self.get('websocket');
+        let self = this;
+        let ws = self.get('websocket');
         return ws.sendJson('system_overview', {}).then(
             function (response)
             {

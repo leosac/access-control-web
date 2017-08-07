@@ -5,7 +5,23 @@ import {validator, buildValidations} from 'ember-cp-validations';
 
 const PinCodeValidations = buildValidations(
     {
-        code: validator('ds-error')
+        code:
+            {
+                validators:
+                    [
+                        validator('ds-error'),
+                        validator('number', {
+                            allowString: true,
+                            integer: true,
+                            gte: 0,
+                            lte: 9999999999
+                        }),
+                        validator('length', {
+                            min: 4,
+                            max: 10
+                        })
+                    ]
+            }
     }
 );
 
