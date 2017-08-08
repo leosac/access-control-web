@@ -20,20 +20,18 @@ export default LeosacRoute.extend({
         if (isExiting)
         {
             const mod = this.controller.get('model');
-            this.get('store').unloadRecord(mod);
+            if (mod.get('isNew'))
+                mod.unloadRecord();
         }
     },
     actions:
     {
-        createPin()
-        {
-            this.controller.get('model').save().then((pin) =>
-                {
+        createPin() {
+            this.controller.get('model').save().then((pin) => {
                     this.get('flashMessages').success('Pin successfully created.');
                     this.transitionTo('credentials.pin-code', pin.get('id'));
                 },
-                () =>
-                {
+                () => {
                     this.get('flashMessages').danger('An error occurred while creating the PIN');
                 });
         }
