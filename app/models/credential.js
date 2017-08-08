@@ -17,18 +17,7 @@ const CredentialValidations = buildValidations(
                             max: 15
                         })
                     ]
-             },
-             description:
-                 {
-                     validators:
-                     [
-                         validator('length',
-                             {
-                                 min: 5
-                             })
-                     ]
-                 }
-
+            }
     }
 );
 
