@@ -17,11 +17,17 @@ const CredentialValidations = buildValidations(
                             max: 15
                         })
                     ]
-             }
-            // owner:
-            // [
-            //     validator('presence', true)
-            // ]
+             },
+             description:
+                 {
+                     validators:
+                     [
+                         validator('length',
+                             {
+                                 min: 5
+                             })
+                     ]
+                 }
 
     }
 );
