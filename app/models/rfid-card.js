@@ -17,7 +17,7 @@ const RFIDCardValidations = buildValidations(
              validator('format', {
                  // language=JSRegexp
                  // regex for the rfid card number, a sequence of number in hexadecimal (16^n) separated by the ':' character
-                 regex: /([0-9a-fA-F][0-9a-fA-F]:)*[0-9a-fA-F][0-9a-fA-F]/
+                 regex: /[0-9A-F]{2}(?::[0-9A-F]{2})*/i
              })
            ]
         },
@@ -29,8 +29,7 @@ const RFIDCardValidations = buildValidations(
                         validator('number', {
                             allowString: true,
                             integer: true,
-                            positive: true,
-                            //gt: 0
+                            positive: true
                     })
                 ]
             }
