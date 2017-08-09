@@ -2,18 +2,6 @@ import Credential from 'web/models/credential';
 import Ember from 'ember';
 import DS from 'ember-data';
 import {validator, buildValidations} from 'ember-cp-validations';
-import credential from "./credential";
-
-// function catchNbrBits(nbBits)
-// {
-//     return catchNbrBits(credential.extend(RFIDCardValidations).nbBits);
-// }
-//
-// console.log("test " + catchNbrBits(credential.extend(RFIDCardValidations).nbBits));
-
-// myComputed: computed(function() {
-//     return  ((Ember.computed.reads('model.nbBits') / 8) * 3 - 1);
-// });
 
 const RFIDCardValidations = buildValidations(
     {
@@ -34,16 +22,18 @@ const RFIDCardValidations = buildValidations(
                 validator('ds-error'),
                 validator('presence', true),
                 validator('length', {
-                    // 10 here is n number of bytes, it can be changed,
-                    // if you want only a sequences like that: 00:00:00:00, just change 10 by 4
-                    //(Ember.computed.not('model.nbBits') / 8) * 3 - 1
-                    max: 11
-                        //computed.reads('model.myComputed')
+                    is: Ember.computed('model.nbBits', function()
+                    {
+                        let sizeCode = parseInt(Ember.get(this, 'model.nbBits'));
+                        return (Math.ceil((sizeCode / 8)) * 3 - 1);
+
+                    }).volatile()
                 }),
                 validator('format', {
                     // language=JSRegexp
                     // regex for the rfid card number, a sequence of number in hexadecimal (16^n) separated by the ':' character
-                    regex: /[0-9A-F]{2}(?::[0-9A-F]{2})*/i
+                    regex: /^[0-9A-F]{2}(?::[0-9A-F]{2})*$/i,
+                    message : "Invalid format, should be a sequence of two hexadecimal number(0-9A-F), separated by colon(:). Exampe: '0A:2b:8E:9f'"
                 })
             ]
         }
