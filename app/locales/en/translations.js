@@ -283,6 +283,7 @@ export default {
             'add': 'Add PinCode',
         },
         'rfid_card': {
+            'error': "Invalid format, should be a sequence of two hexadecimal number(0-9A-F), separated by colon(:). Exampe: '0A:2b:8E:9f'",
             'title': 'RFID Card',
             'hex_id': 'Hexadecimal Card Identifier',
             'number_bits': 'Number of bits',

@@ -281,6 +281,7 @@ export default {
             'add': 'Ajouter un code PIN',
         },
         'rfid_card': {
+            'error': "Format invalide, il devrait y avoir une suite de deux nombres hexadécimaux(0-9A-F), séparé par deux-points(:). Exemple : '0A:2b:8E:9f'",
             'title': 'Carte RFID',
             'hex_id': 'Identifiant de carte hexadécimal',
             'number_bits': 'Nombre de bits',
