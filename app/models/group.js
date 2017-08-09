@@ -5,13 +5,16 @@ import {validator, buildValidations} from 'ember-cp-validations';
 
 const GroupValidations = buildValidations(
     {
-        name: [validator('presence', true),
-            validator('ds-error'),
-            validator('length', {
-                min: 3,
-                max: 50,
-            })
-        ]
+        name:
+            [
+                validator('presence', true),
+                validator('ds-error'),
+                validator('length',
+                    {
+                        min: 3,
+                        max: 50,
+                    })
+            ]
     }
 );
 
