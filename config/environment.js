@@ -13,13 +13,7 @@ module.exports = function (environment)
                 // e.g. 'with-controller': true
             }
         },
-
-
-	if (environment === 'test') {
-	    ENV.i18n = ENV.i18n || {};
-	    ENV.i18n.suppressWarnings = true;
-	}
-	
+		
         i18n: {
             defaultLocale: 'fr'
         },
@@ -58,6 +52,8 @@ module.exports = function (environment)
 
     if (environment === 'test')
     {
+	ENV.i18n = ENV.i18n || {};
+	ENV.i18n.suppressWarnings = true;
         // Testem prefers this...
         ENV.locationType = 'none';
 
