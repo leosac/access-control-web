@@ -14,6 +14,12 @@ module.exports = function (environment)
             }
         },
 
+
+	if (environment === 'test') {
+	    ENV.i18n = ENV.i18n || {};
+	    ENV.i18n.suppressWarnings = true;
+	}
+	
         i18n: {
             defaultLocale: 'fr'
         },
