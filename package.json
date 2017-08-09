@@ -45,6 +45,7 @@
     "ember-data": "2.14.5",
     "ember-export-application-global": "^2.0.0",
     "ember-i18n": "^5.0.2",
+    "ember-i18n-cp-validations": "^3.0.2",
     "ember-load-initializers": "^1.0.0",
     "ember-power-select": "^1.9.2",
     "ember-power-select-typeahead": "^0.5.8",
