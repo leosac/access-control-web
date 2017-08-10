@@ -19,6 +19,7 @@ app/..idea/dictionaries
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
 
+app/.idea/dictionaries/
 app/.idea/**/dataSources/
 app/.idea/**/dataSources.ids
 app/.idea/**/dataSources.xml
