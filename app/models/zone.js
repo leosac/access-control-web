@@ -15,14 +15,8 @@ const ZoneValidations = buildValidations(
                 })
         ],
         type: [
-            validator('presence', true),
-            validator('number',
-                {
-                    gte: 0,
-                    lte: 1
-                })
+            validator('presence', true)
         ]
-
     }
 );
 
@@ -30,12 +24,13 @@ export default DS.Model.extend(ZoneValidations, {
     numericId: Ember.computed('id', function ()
     {
         "use strict";
+        console.log("passed");
         return Number(this.get('id'));
     }),
     alias: DS.attr('string'),
     description: DS.attr('string'),
-    type: DS.attr('number'),
-    // doors: DS.hasMany('door'),
-    parents: DS.belongsTo('zones'),
-    children: DS.hasMany('zones', {inverse: 'parents'})
+    type: DS.attr('string'),
+    doors: DS.hasMany('door')
+    //parents: DS.belongsTo('zones'),
+    //children: DS.hasMany('zones', {inverse: 'zones'})
 });

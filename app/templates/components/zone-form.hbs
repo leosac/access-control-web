@@ -1,0 +1,91 @@
+<div class="col-md-12">
+    {{#bs-form formLayout="horizontal" model=zone onSubmit=action as |form|}}
+        {{log "test " zone}}
+        <fieldset>
+            <legend>{{t 'configuration'}}</legend>
+            <div class="col-md-6">
+                <div class="row">
+                    {{form.element controlType="text" label=(t 'alias')
+                                   placeholder=(t 'zone.placeholder')
+                                   property="alias"}}
+                </div>
+                <div class="row">
+                    {{form.element controlType="textarea" label=(t 'notes')
+                                   placeholder=(t 'notes_placeholder')
+                                   property="description"}}
+                </div>
+                <div class="row">
+                    {{#form.element label=(t 'type')}}
+                        {{#power-select
+                                selected=selected
+                                searchEnabled=false
+                                options=allType
+                                onchange=(action (mut zone.type))
+                                placeholder=(t 'type_zone')
+                        as |type|}}
+                            {{log "oui " zone.type}}
+                            {{type}}
+                        {{/power-select}}
+                    {{/form.element}}
+                </div>
+                <div class="row">
+                    {{!form.element controlType="text" label=(t 'type')
+                                   placeholder="0-1"
+                                   property="type"}}
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        {{bs-button defaultText=(t 'submit') type="primary" size="md" buttonType="submit"}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <h3>{{t 'doors'}}</h3>
+                <hr>
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                        <th>#Id</th>
+                        <th>{{t 'alias'}}</th>
+                        <th>{{t 'zone.remove_from_zone'}}</th>
+                        </thead>
+                        <tbody>
+                        {{#each zone.doors as |door|}}
+                            {{#link-to 'door' door.id tagName="tr"}}
+                                <td>
+                                    {{door.id}}
+                                </td>
+                                <td>{{door.alias}}</td>
+                                <td>
+                                    <div class="pull-right">
+                                        {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
+                                                    defaultText=(t 'remove') onClick=(action 'removeDoor' door)}}
+                                    </div>
+                                </td>
+                            {{/link-to}}
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            {{#form.element label='Door alias'}}
+                                {{#power-select-typeahead search=(action 'searchDoor')
+                                                          selected=newDoor.alias
+                                                          placeholder=(t 'schedule.type_door')
+                                                          onchange=(action (mut newDoor)) as |doorInfo|}}
+                                    {{doorInfo.alias}}
+                                {{/power-select-typeahead}}
+                            {{/form.element}}
+                        </div>
+                        <div class="col-md-2">
+                            {{bs-button size='sm' type="primary" onClick=(action 'addDoor') defaultText=(t 'schedule.add_door')}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    {{/bs-form}}
+</div>

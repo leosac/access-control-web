@@ -3,72 +3,59 @@ import Ember from 'ember';
 export default Ember.Component.extend({
     search: Ember.inject.service('search'),
     store: Ember.inject.service(),
+    flashMessages: Ember.inject.service(),
 
-    aliasToObject: {},
+    newDoor: null,
+    allType: ['Logical', 'Physical'],
+    selectedType: 'Logical',
+    doorAliasToObject: {},
     allAlias: [],
     selectedAlias: false,
-    zoneVar: false,
+    zone: false,
 
-    // `action` and `door` must be set.
-    didReceiveAttrs()
-    {
-        const self = this;
 
-        const aliasToObject = {};
-        const alias = [];
-        this.get('store').findAll('zone', {reload: true}).then((zones) =>
-        {
-            zones.forEach((zone) =>
-            {
-                alias.push(zone.get('alias'));
-                aliasToObject[zone.get('alias')] = zone;
-            });
-            self.set('allAlias', alias);
-            self.set('aliasToObject', asliasToObject);
-        });
-    },
     actions: {
-        changeDoor(param)
+        addDoor()
         {
-            const zone = this.get('zone');
-            if (param === null)
-            {
-                // Clearing AP.
-                zone.set('door', null);
-            }
-            else
-            {
-                this.get('store').find('door', param.id).then((d) =>
-                {
-                    zone.set('accessPoint', door);
-                });
-            }
-        }
-    },
-    addToZone()
-    {
-        const store = this.get('store');
-        const fm = this.get('flashMessages');
-
-        const zone = this.get('aliasToObject')[this.get('selectedAlias')];
-        if (!zone)
-        {
-            fm.danger('Cannot find this zone.');
-            return;
-        }
-
-        const membership = store.createRecord('zone-zone-membership');
-        membership.set('zoneVar', this.get('zone'));
-        membership.set('zone', zone);
-
-        membership.save().then(() =>
-            {
-                fm.success('Successfully added zone to zone.');
-            },
-            () =>
-            {
-                fm.danger('Failed to add zone to zone');
-                membership.deleteRecord();
+            this.get('store').findRecord('door', this.get('newDoor.id')).then((door) => {
+                this.get('zone').get('doors').addObject(door);
             });
+        },
+        searchDoor(partialName)
+        {
+            return this.get('search').findDoorByAlias(partialName);
+        },
+        removeDoor(door)
+        {
+            this.get('zone').get('doors').removeObject(door);
+        }
+        // addToZone()
+        // {
+        //     const store = this.get('store');
+        //     const fm = this.get('flashMessages');
+        //
+        //     const door = this.get('doorAliasToObject')[this.get('selectedAlias')];
+        //     if (!door)
+        //     {
+        //         fm.danger('Cannot find this door.');
+        //         return;
+        //     }
+        //
+        //     const membership = store.createRecord('door-zone-link');
+        //     membership.set('zone', this.get('zone'));
+        //     membership.set('door', door);
+        //
+        //     membership.save().then(() =>
+        //         {
+        //             fm.success('Successfully added door to zone.');
+        //         },
+        //         () =>
+        //         {
+        //             fm.danger('Failed to add door to zone');
+        //             membership.deleteRecord();
+        //         });
+        // }
+        // Here, we should add something similar to the thing above.
+        // There should be a possibility to add a zone child to a zone parent
     }
 });

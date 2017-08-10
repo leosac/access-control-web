@@ -19,16 +19,19 @@ Router.map(function ()
         this.route('entity-not-found');
         this.route('request-timeout');
     });
+
     this.route('users', function ()
     {
         this.route('list');
         this.route('create');
     });
+
     this.route('groups', function ()
     {
         this.route('create');
         this.route('list');
     });
+
     this.route('group', {path: '/group/:group_id'});
     this.route('credential', {path: '/credential/:credential_id'}, function ()
     {
@@ -51,11 +54,18 @@ Router.map(function ()
     });
 
     this.route('door', {path: '/door/:door_id'});
-  this.route('doors', function ()
-  {
-      this.route('list');
-      this.route('create');
-  });
+    this.route('doors', function ()
+    {
+        this.route('list');
+        this.route('create');
+    });
+
+    this.route('zone', {path: '/zone/:zone_id'});
+    this.route('zones', function ()
+    {
+        this.route('list');
+        this.route('create');
+    });
 
     this.route('modules', function() {
         this.route('smtp');
@@ -66,6 +76,7 @@ Router.map(function ()
             this.route('cylinder-events');
         });
     });
+
     this.route('auditlog');
 
     this.route('access-point', {path: '/access-point/:access_point_id'});
@@ -73,6 +84,7 @@ Router.map(function ()
         this.route('list');
         this.route('create');
     });
+
     this.route('access-overview');
     this.route('updates');
 });
