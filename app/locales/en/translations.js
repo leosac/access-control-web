@@ -68,6 +68,7 @@ export default {
     'confirmation': 'Confirmation',
     'to': 'to',
     'on': 'on',
+    'type_zone':'Zone type (can be logical or physical)',
     'minutes_ago': '{{minutes}} minutes ago',
     'date': 'Date',
     'pincode': 'Pin Code',
@@ -75,6 +76,7 @@ export default {
     'remove_selected': 'Remove selected',
     'search': 'Search',
     'doors': 'Doors',
+    'zones': 'Zones',
     'hardware': 'Hardware',
     'hardware_update': 'Hardware Update',
     'modules': 'Modules',
@@ -206,6 +208,24 @@ export default {
         'create': {
             'title': 'Create group'
         }
+    },
+    'zone': {
+        'delete_confirm': 'Are you sure you wish to delete this zone ?',
+        'create_zone': 'Add Zone',
+        'placeholder': 'MySuperZone',
+        'remove_from_mapping': 'Remove from zone',
+        'create': {
+            'title': 'Create zone'
+        },
+        'type': {
+            'logical': 'Logical',
+            'physical': 'Physical',
+            'format': '0 is for Logical, 1 is for physical'
+        },
+        'list': {
+            'title': 'Zone list',
+        },
+        'title': 'Zone'
     },
     'door': {
         'delete_confirm': 'Are you sure you wish to delete this door ?',

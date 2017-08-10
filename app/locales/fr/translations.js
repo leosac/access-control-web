@@ -26,6 +26,7 @@ export default {
     'alias_': 'Alias:',
     'alias_placeholder': 'Un nom mémorisable',
     'type': 'Type',
+    'type_zone': 'Type de zone (peut-être logique ou physique)',
     'author': 'Auteur',
     'timestamp': 'Timestamp',
     'mask': 'Masque',
@@ -74,6 +75,7 @@ export default {
     'remove_selected': 'Supprimer la sélection',
     'search': 'Rechercher',
     'doors': 'Portes',
+    'zones': 'Zones',
     'hardware': 'Matériels',
     'hardware_update': 'Mises à jour',
     'modules': 'Modules',
@@ -204,6 +206,25 @@ export default {
         'create': {
             'title': 'Créer un groupe'
         }
+    },
+    'zone': {
+        'delete_confirm': 'Êtes-vous sûr de vouloir supprimer cette zone ?',
+        'create_zone': 'Ajouter une zone',
+        'placeholder': 'MySuperZone',
+        'remove_from_zone': 'Supprimer de la zone ?',
+        'create': {
+            'title': 'Ajouter une zone'
+        },
+        'type': {
+            'logical': 'Logique',
+            'physical': 'Physique',
+            'format': '0: type logique, 1: type physique'
+
+        },
+        'list': {
+            'title': 'Liste des zones',
+        },
+        'title': 'Zone'
     },
     'door': {
         'delete_confirm': 'Êtes-vous sûr de vouloir supprimer cette porte ?',
@@ -374,8 +395,8 @@ export default {
         'friday': 'Vendredi',
         'saturday': 'Samedi',
         'sunday': 'Dimanche',
-        'start_time': 'Date de début',
-        'end_time': 'Date de fin',
+        'start_time': 'Heure de début',
+        'end_time': 'Heure de fin',
         'create_schedule': 'Créer une horaire',
         'create_note': 'Merci de compléter le formulaire suivant afin de créer une nouvelle horaire.',
         'delete_confirm': 'Êtes-vous sûr de vouloir supprimer cette horaire ?',
