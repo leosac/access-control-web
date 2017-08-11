@@ -212,6 +212,8 @@ export default {
         'create_zone': 'Ajouter une zone',
         'placeholder': 'MySuperZone',
         'remove_from_zone': 'Supprimer de la zone ?',
+        'child': 'Enfants',
+        'add_child': 'Ajouter une zone enfant',
         'create': {
             'title': 'Ajouter une zone'
         },

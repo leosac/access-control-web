@@ -213,6 +213,9 @@ export default {
         'delete_confirm': 'Are you sure you wish to delete this zone ?',
         'create_zone': 'Add Zone',
         'placeholder': 'MySuperZone',
+        'child': 'Children',
+
+        'add_child': 'Add a child zone',
         'remove_from_mapping': 'Remove from zone',
         'create': {
             'title': 'Create zone'
