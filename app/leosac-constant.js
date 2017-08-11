@@ -1,6 +1,6 @@
 /**
  * It would have been great to put this in the user's model file
- * but somehow emberjs is not able to find the module when doing this...
+ * but somehow ember.js is not able to find the module when doing this...
  */
 
 const UserRank = [
@@ -9,6 +9,11 @@ const UserRank = [
     'Manager',
     'Supervisor',
     'Administrator'
+];
+
+const zoneType = [
+  'Logical,',
+  'Physical'
 ];
 
 /**
@@ -64,4 +69,4 @@ const UpdateSeverity = {
     'CRITICAL': 3,
 };
 
-export {UserRank, AuditEventType, UpdateStatus, UpdateSeverity};
+export {UserRank, AuditEventType, UpdateStatus, UpdateSeverity, zoneType};

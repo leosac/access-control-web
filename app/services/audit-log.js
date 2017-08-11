@@ -40,6 +40,7 @@ export default Ember.Service.extend({
                 {
                     progressSetter(80);
                     self.get('store').pushPayload(obj);
+                    console.log("test");
                     Ember.run.next(function ()
                     {
                         let tmpArray = [];
