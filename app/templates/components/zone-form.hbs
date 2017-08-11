@@ -1,6 +1,5 @@
 <div class="col-md-12">
     {{#bs-form formLayout="horizontal" model=zone onSubmit=action as |form|}}
-        {{log "test " zone}}
         <fieldset>
             <legend>{{t 'configuration'}}</legend>
             <div class="col-md-6">
@@ -15,23 +14,17 @@
                                    property="description"}}
                 </div>
                 <div class="row">
-                    {{#form.element label=(t 'type')}}
+                    {{#form.element property="type" label=(t 'type')}}
                         {{#power-select
-                                selected=selected
+                                selected=zone.type
                                 searchEnabled=false
                                 options=allType
                                 onchange=(action (mut zone.type))
                                 placeholder=(t 'type_zone')
                         as |type|}}
-                            {{log "oui " zone.type}}
                             {{type}}
                         {{/power-select}}
                     {{/form.element}}
-                </div>
-                <div class="row">
-                    {{!form.element controlType="text" label=(t 'type')
-                                   placeholder="0-1"
-                                   property="type"}}
                 </div>
                 <div class="row">
                     <div class="col-md-2">

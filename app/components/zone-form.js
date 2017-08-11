@@ -6,8 +6,8 @@ export default Ember.Component.extend({
     flashMessages: Ember.inject.service(),
 
     newDoor: null,
+    newChild:null,
     allType: ['Logical', 'Physical'],
-    selectedType: 'Logical',
     doorAliasToObject: {},
     allAlias: [],
     selectedAlias: false,
@@ -15,20 +15,34 @@ export default Ember.Component.extend({
 
 
     actions: {
-        addDoor()
-        {
+        addDoor() {
             this.get('store').findRecord('door', this.get('newDoor.id')).then((door) => {
                 this.get('zone').get('doors').addObject(door);
             });
         },
-        searchDoor(partialName)
-        {
+        searchDoor(partialName) {
             return this.get('search').findDoorByAlias(partialName);
         },
-        removeDoor(door)
-        {
+        removeDoor(door) {
             this.get('zone').get('doors').removeObject(door);
         }
+
+        // We need to add a module that allow us to search children zone, like the door search
+
+        // ,
+        // addChild() {
+        //     this.get('store').findRecord('children', this.get('newChild.id')).then((children) => {
+        //         this.get('zone').get('children').addObject(children);
+        //     });
+        // },
+        // searchChild(partialName) {
+        //     return this.get('search').findChildByAlias(partialName);
+        // },
+        // removeChild(children) {
+        //     this.get('zone').get('children').removeObject(children);
+        // }
+
+
         // addToZone()
         // {
         //     const store = this.get('store');

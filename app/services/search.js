@@ -49,6 +49,23 @@ export default Ember.Service.extend({
     },
 
     /**
+     * Doesn't work at all, need the backend of this
+     */
+    findChildByAlias(partialName)
+    {
+        const ws = this.get('websocket');
+        return new Ember.RSVP.Promise(function (resolve, reject)
+        {
+            console.log('searching for ' + partialName);
+            ws.sendJson('search.child_alias',
+                {
+                    'partial_name': partialName
+                }).then((data) => resolve(data),
+                (failure) => reject(failure));
+        });
+    },
+
+    /**
      * Returns a list of enabled AccessPoint modules.
      * Currently this list is hardcoded client side.
      */
