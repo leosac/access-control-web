@@ -216,7 +216,7 @@ export default {
         'child': 'Children',
 
         'add_child': 'Add a child zone',
-        'remove_from_mapping': 'Remove from zone',
+        'remove_from_zone': 'Remove from zone',
         'create': {
             'title': 'Create zone'
         },
