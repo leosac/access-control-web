@@ -214,8 +214,8 @@ export default {
         'create_zone': 'Add Zone',
         'placeholder': 'MySuperZone',
         'child': 'Children',
-
-        'add_child': 'Add a child zone',
+        'add_children': 'Add a child zone',
+        'type_zone': "Start typing a zone's alias",
         'remove_from_zone': 'Remove from zone',
         'create': {
             'title': 'Create zone'
