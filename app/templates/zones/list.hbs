@@ -19,11 +19,7 @@
                 <td>{{zone.alias}}</td>
                 <td>{{zone.description}}</td>
                 <td>
-                    {{#if zone.type}}
-                        {{t 'zone.type.logical'}}
-                    {{else}}
-                        {{t 'zone.type.physical'}}
-                    {{/if}}
+                    {{t zone.type}}
                 </td>
                 <td>
                     {{button-with-confirmation

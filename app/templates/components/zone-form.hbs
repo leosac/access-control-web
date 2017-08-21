@@ -22,7 +22,7 @@
                                 onchange=(action (mut zone.type))
                                 placeholder=(t 'type_zone')
                         as |type|}}
-                            {{type}}
+                            {{t type}}
                         {{/power-select}}
                     {{/form.element}}
                 </div>
@@ -64,7 +64,7 @@
                 <div>
                     <div class="row">
                         <div class="col-md-4">
-                            {{#form.element label='Door alias'}}
+                            {{#form.element label=(t 'doors')}}
                                 {{#power-select-typeahead search=(action 'searchDoor')
                                                           selected=newDoor.alias
                                                           placeholder=(t 'schedule.type_door')
@@ -75,6 +75,52 @@
                         </div>
                         <div class="col-md-2">
                             {{bs-button size='sm' type="primary" onClick=(action 'addDoor') defaultText=(t 'schedule.add_door')}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <h3>{{t 'zone.child'}}</h3>
+                <hr>
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                        <th>#Id</th>
+                        <th>{{t 'alias'}}</th>
+                        <th>{{t 'zone.remove_from_zone'}}</th>
+                        </thead>
+                        <tbody>
+                        {{#each zone.children as |children|}}
+                            {{#link-to 'zones' children.id tagName="tr"}}
+                                <td>
+                                    {{children.id}}
+                                </td>
+                                <td>{{children.alias}}</td>
+                                <td>
+                                    <div class="pull-right">
+                                        {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
+                                                    defaultText=(t 'remove') onClick=(action 'removeChildren' children)}}
+                                    </div>
+                                </td>
+                            {{/link-to}}
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            {{#form.element label=(t 'zone.child')}}
+                                {{#power-select-typeahead search=(action 'searchChildren')
+                                                          selected=newChildren.alias
+                                                          placeholder=(t 'zone.type_zone')
+                                                          onchange=(action (mut newChildren)) as |childrenInfo|}}
+                                    {{childrenInfo.alias}}
+                                {{/power-select-typeahead}}
+                            {{/form.element}}
+                        </div>
+                        <div class="col-md-2">
+                            {{bs-button size='sm' type="primary" onClick=(action 'addChildren') defaultText=(t 'zone.add_children')}}
                         </div>
                     </div>
                 </div>
