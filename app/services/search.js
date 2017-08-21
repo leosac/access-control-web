@@ -49,9 +49,9 @@ export default Ember.Service.extend({
     },
 
     /**
-     * Doesn't work at all, need the backend of this
+     * Doesn't work at all, need the backend of this aka
      */
-    findChildByAlias(partialName)
+    findChildrenByAlias(partialName)
     {
         const ws = this.get('websocket');
         return new Ember.RSVP.Promise(function (resolve, reject)

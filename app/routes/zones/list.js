@@ -14,6 +14,13 @@ export default LeosacRoute.extend({
         return this.get('store').findAll('zone', {reload: true});
     },
     actions: {
+        findType(zone) {
+            console.log("TYPE = " + zone.type);
+            if (zone.type === "Logical")
+                return 1;
+            else
+                return 0;
+        },
         deleteZone(zone)
         {
             const self = this;

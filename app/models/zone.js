@@ -28,6 +28,6 @@ export default DS.Model.extend(ZoneValidations, {
     description: DS.attr('string'),
     type: DS.attr('zone-type'),
     doors: DS.hasMany('door'),
-    //parents: DS.belongsTo('zones'),
-   // children: DS.hasMany('zones', {inverse: 'zones'})
+    children: DS.hasMany('zones')
+    //  parents: DS.belongsTo('zones'),
 });

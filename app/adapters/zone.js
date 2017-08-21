@@ -32,6 +32,7 @@ export default ApplicationAdapter.extend({
         const data = this.serialize(snapshot);
         const ws = this.get('ws');
 
+        // search forEach door, if none, set id to null
         if (data.data.relationships && data.data.relationships['doors'] &&
             data.data.relationships['doors'].data)
         {
@@ -41,7 +42,18 @@ export default ApplicationAdapter.extend({
             });
         }
         else
-            data.data.attributes.doors = 0;
+            data.data.attributes.doors = [];
+
+        // search forEach child, if none, set id to null
+        if (data.data.relationships && data.data.relationships['children'] &&
+            data.data.relationships['children'].data)
+        {
+            data.data.relationships.children.data.forEach(function (zones) {
+                data.data.attributes.children.push(Number.parseInt(zones.id));
+            });
+        }
+        else
+            data.data.attributes.children = [];
 
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
@@ -57,19 +69,28 @@ export default ApplicationAdapter.extend({
         const data = this.serialize(snapshot);
         const ws = this.get('ws');
 
-        // something to do with door and zones, with this you can have a link between the zones, and with the door.
-
-        data.data.attributes.doors = [];
-
         if (data.data.relationships && data.data.relationships['doors'] &&
             data.data.relationships['doors'].data)
         {
+            data.data.attributes.doors = [];
             data.data.relationships.doors.data.forEach(function (door) {
                 data.data.attributes.doors.push(Number.parseInt(door.id));
             });
         }
         else
-            data.data.attributes.doors.id = 0;
+            data.data.attributes.doors = [];
+
+        // search forEach child, if none, set id to null
+        if (data.data.relationships && data.data.relationships['children'] &&
+            data.data.relationships['children'].data)
+        {
+            data.data.attributes.children = [];
+            data.data.relationships.children.data.forEach(function (zones) {
+                data.data.attributes.children.push(Number.parseInt(zones.id));
+            });
+        }
+        else
+            data.data.attributes.children = [];
 
         const params = {
             zone_id: Number.parseInt(snapshot.id),

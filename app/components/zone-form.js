@@ -6,13 +6,12 @@ export default Ember.Component.extend({
     flashMessages: Ember.inject.service(),
 
     newDoor: null,
-    newChild:null,
-    allType: ['Logical', 'Physical'],
+    newChildren: null,
+    allType: ['zone.type.logical', 'zone.type.physical'],
     doorAliasToObject: {},
     allAlias: [],
     selectedAlias: false,
     zone: false,
-
 
     actions: {
         addDoor() {
@@ -25,22 +24,22 @@ export default Ember.Component.extend({
         },
         removeDoor(door) {
             this.get('zone').get('doors').removeObject(door);
+        },
+
+        // We need to add a module that allow us to search children zone,
+        // like the door search (findChildrenByAlias doesn't exist)
+
+        addChildren() {
+            this.get('store').findRecord('children', this.get('newChildren.id')).then((children) => {
+                this.get('zone').get('children').addObject(children);
+            });
+        },
+        searchChildren(partialName) {
+            return this.get('search').findChildrenByAlias(partialName);
+        },
+        removeChildren(children) {
+            this.get('zone').get('children').removeObject(children);
         }
-
-        // We need to add a module that allow us to search children zone, like the door search
-
-        // ,
-        // addChild() {
-        //     this.get('store').findRecord('children', this.get('newChild.id')).then((children) => {
-        //         this.get('zone').get('children').addObject(children);
-        //     });
-        // },
-        // searchChild(partialName) {
-        //     return this.get('search').findChildByAlias(partialName);
-        // },
-        // removeChild(children) {
-        //     this.get('zone').get('children').removeObject(children);
-        // }
 
 
         // addToZone()
