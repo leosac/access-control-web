@@ -4,12 +4,12 @@
             <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
         </a>
         <ul class="dropdown-menu dropdown-alerts">
-<!--
+            <!--
           {{#each flashMessages.queue as |flash|}}
-            {{#if (eq flash.componentName 'flashmessage-as-alert')}}
-              {{component flash.componentName flash=flash}}
-            {{/if}}
-          {{/each}}-->
+                {{#if (eq flash.componentName 'flashmessage-as-alert')}}
+                    {{component flash.componentName flash=flash}}
+                {{/if}}
+            {{/each}}-->
 
             <li>
                 <a href="#">
@@ -83,9 +83,9 @@
         </a>
         <ul class="dropdown-menu dropdown-user">
             <li>
-              {{#link-to 'profile' authSrv.user_id}}
-                  <i class="fa fa-user fa-fw"></i>{{t 'profile.title'}}
-              {{/link-to}}
+                {{#link-to 'profile' authSrv.user_id}}
+                    <i class="fa fa-user fa-fw"></i>{{t 'profile.title'}}
+                {{/link-to}}
             </li>
             <li><a href="#"><i class="fa fa-gear fa-fw"></i> {{t 'settings'}}</a>
             </li>

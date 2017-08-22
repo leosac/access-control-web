@@ -1,114 +1,114 @@
 {{#bs-button disabled=pendingCheckUpdate onClick=(action 'checkUpdate')}}
-  {{#if pendingCheckUpdate}}
-    {{t 'update.pending_check_update'}}
-    <i class="fa fa-spinner fa-spin" style="color: orange; font-size:16px"></i>
-  {{else}}
-    {{t 'update.check_update'}}
-  {{/if}}
+    {{#if pendingCheckUpdate}}
+        {{t 'update.pending_check_update'}}
+        <i class="fa fa-spinner fa-spin" style="color: orange; font-size:16px"></i>
+    {{else}}
+        {{t 'update.check_update'}}
+    {{/if}}
 {{/bs-button}}
 
 
 <h3>{{t 'update.potential_update'}}</h3>
 <div class="table-responsive">
-  <table class="table table-striped">
-    <thead>
-    <th>Module</th>
-    <th>Description</th>
-    <th>{{t 'w.severity'}}</th>
-    <th>UUID</th>
-    <th>Action</th>
-    </thead>
+    <table class="table table-striped">
+        <thead>
+        <th>Module</th>
+        <th>Description</th>
+        <th>{{t 'w.severity'}}</th>
+        <th>UUID</th>
+        <th>Action</th>
+        </thead>
 
-    <tbody>
-    {{#each updateDescriptors as |u|}}
-      <tr>
-        <td>{{u.source_module}}</td>
-        <td>{{u.update_desc}}</td>
-        <td>{{severity-to-string u.severity}}</td>
-        <td>{{u.uuid}}</td>
-        <td>
-          {{bs-button defaultText='Create Update !' onClick=(action 'createUpdate' u)}}
-        </td>
-      </tr>
-    {{/each}}
-    </tbody>
-  </table>
+        <tbody>
+        {{#each updateDescriptors as |u|}}
+            <tr>
+                <td>{{u.source_module}}</td>
+                <td>{{u.update_desc}}</td>
+                <td>{{severity-to-string u.severity}}</td>
+                <td>{{u.uuid}}</td>
+                <td>
+                    {{bs-button defaultText='Create Update !' onClick=(action 'createUpdate' u)}}
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
 </div>
 
 <h3>{{t 'pending_updates'}}</h3>
 <div class="table-responsive">
-  <table class="table table-striped">
-    <thead>
-    <th>#Id</th>
-    <th>Module</th>
-    <th>Description</th>
-    <th>{{t 'update.table.generated_at'}}</th>
-    <th>{{t 'update.table.checkpoint'}}</th>
-    <th>Action</th>
-    <th>Details</th>
-    </thead>
+    <table class="table table-striped">
+        <thead>
+        <th>#Id</th>
+        <th>Module</th>
+        <th>Description</th>
+        <th>{{t 'update.table.generated_at'}}</th>
+        <th>{{t 'update.table.checkpoint'}}</th>
+        <th>Action</th>
+        <th>Details</th>
+        </thead>
 
-    <tbody>
-    {{#each pendingUpdates as |update|}}
-      <tr>
-        <td>{{update.id}}</td>
-        <td>{{update.sourceModule}}</td>
-        <td>{{update.description}}</td>
-        <td>{{update.generatedAt}}</td>
-        <td>{{update.checkpoint}}</td>
-        <td>
-          {{#bs-button type='success' onClick=(action 'acknowledgeUpdate' update)}}
-            {{t 'acknowledge'}}
-          {{/bs-button}}
+        <tbody>
+        {{#each pendingUpdates as |update|}}
+            <tr>
+                <td>{{update.id}}</td>
+                <td>{{update.sourceModule}}</td>
+                <td>{{update.description}}</td>
+                <td>{{update.generatedAt}}</td>
+                <td>{{update.checkpoint}}</td>
+                <td>
+                    {{#bs-button type='success' onClick=(action 'acknowledgeUpdate' update)}}
+                        {{t 'acknowledge'}}
+                    {{/bs-button}}
 
-          {{#bs-button type='danger' onClick=(action 'cancelUpdate' update)}}
-            {{t 'cancel'}}
-          {{/bs-button}}
-        </td>
-        <td>
-          {{bs-button onClick=(action 'showDetails' update) defaultText=(t 'details')}}<
-        </td>
-      </tr>
-    {{/each}}
-    </tbody>
-  </table>
+                    {{#bs-button type='danger' onClick=(action 'cancelUpdate' update)}}
+                        {{t 'cancel'}}
+                    {{/bs-button}}
+                </td>
+                <td>
+                    {{bs-button onClick=(action 'showDetails' update) defaultText=(t 'details')}}<
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
 </div>
 
 <h3>{{t 'update_history'}}</h3>
 <div class="table-responsive">
-  <table class="table table-striped">
-    <thead>
-    <th>#Id</th>
-    <th>Module</th>
-    <th>Description</th>
-    <th>{{t 'update.table.generated_at'}}</th>
-    <th>{{t 'update.table.checkpoint'}}</th>
-    <th>Status</th>
-    <th>{{t 'update.table.updated_at'}}</th>
-    </thead>
+    <table class="table table-striped">
+        <thead>
+        <th>#Id</th>
+        <th>Module</th>
+        <th>Description</th>
+        <th>{{t 'update.table.generated_at'}}</th>
+        <th>{{t 'update.table.checkpoint'}}</th>
+        <th>Status</th>
+        <th>{{t 'update.table.updated_at'}}</th>
+        </thead>
 
-    <tbody>
-    {{#each updateHistory as |update|}}
-      <!-- 1 is hardcoded for ACKNOWLEDGED -->
-      <tr class="{{if (eq update.status 1) 'success' 'danger'}}">
-        <td>{{update.id}}</td>
-        <td>{{update.sourceModule}}</td>
-        <td>{{update.description}}</td>
-        <td>{{update.generatedAt}}</td>
-        <td>{{update.checkpoint}}</td>
-        <td>{{update.statusString}}</td>
-        <td>{{update.statusUpdatedAt}}</td>
-      </tr>
-    {{/each}}
-    </tbody>
-  </table>
+        <tbody>
+        {{#each updateHistory as |update|}}
+            <!-- 1 is hardcoded for ACKNOWLEDGED -->
+            <tr class="{{if (eq update.status 1) 'success' 'danger'}}">
+                <td>{{update.id}}</td>
+                <td>{{update.sourceModule}}</td>
+                <td>{{update.description}}</td>
+                <td>{{update.generatedAt}}</td>
+                <td>{{update.checkpoint}}</td>
+                <td>{{update.statusString}}</td>
+                <td>{{update.statusUpdatedAt}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
 </div>
 
 
 {{#bs-modal open=openDetailsModal title=(t 'details')}}
-  <hr>
+    <hr>
 
-  <i>Content</i> <br>
-  <code style="white-space: pre;">{{detailedUpdate.content}}</code>
+    <i>Content</i> <br>
+    <code style="white-space: pre;">{{detailedUpdate.content}}</code>
 {{/bs-modal}}
 

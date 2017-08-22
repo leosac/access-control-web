@@ -8,8 +8,8 @@
         </thead>
         <tbody>
         {{#each userDoorInfo as |userDoorInfo|}}
-                {{#link-to 'profile' userDoorInfo.user.id tagName="tr"}}
-                    <td>{{userDoorInfo.user.username}}</td>
+            {{#link-to 'profile' userDoorInfo.user.id tagName="tr"}}
+                <td>{{userDoorInfo.user.username}}</td>
                 {{#each userDoorInfo.doors as |accessToDoor|}}
                     <td class="{{if accessToDoor 'success' 'danger'}}">
                         {{#if accessToDoor}}
@@ -19,7 +19,7 @@
                         {{/if}}
                     </td>
                 {{/each}}
-                {{/link-to}}
+            {{/link-to}}
         {{/each}}
         </tbody>
     </table>

@@ -1,31 +1,31 @@
 {{#bs-form formLayout="horizontal" model=ap onSubmit=action as | form|}}
     <fieldset>
         <legend>{{t 'configuration'}}</legend>
-      {{form.element controlType="text" label=(t 'alias')
-                        placeholder=(t 'access_point_placeholder')
-                        property="alias"}}
-      {{form.element controlType="textarea" label=(t 'notes')
-                        placeholder=(t 'notes_placeholder')
-                        property="description"}}
+        {{form.element controlType="text" label=(t 'alias')
+                       placeholder=(t 'access_point_placeholder')
+                       property="alias"}}
+        {{form.element controlType="textarea" label=(t 'notes')
+                       placeholder=(t 'notes_placeholder')
+                       property="description"}}
 
-      {{#if isCreating}}
-        {{#form.element label=(t 'controller_module')}}
-          {{#power-select
-            selected=ap.controllerModule
-            options=availableAccessPointModules
-            onchange=(action (mut ap.controllerModule))
-            allowClear=true
-          as |module|
-          }}
-            {{module}}
-          {{/power-select}}
-        {{/form.element}}
-      {{/if}}
+        {{#if isCreating}}
+            {{#form.element label=(t 'controller_module')}}
+                {{#power-select
+                        selected=ap.controllerModule
+                        options=availableAccessPointModules
+                        onchange=(action (mut ap.controllerModule))
+                        allowClear=true
+                as |module|
+                }}
+                    {{module}}
+                {{/power-select}}
+            {{/form.element}}
+        {{/if}}
 
 
-      <!-- Include module specific stuff -->
-      {{yield}}
+        <!-- Include module specific stuff -->
+        {{yield}}
 
-      {{bs-button defaultText=(t 'submit') type="primary" buttonType="submit"}}
+        {{bs-button defaultText=(t 'submit') type="primary" buttonType="submit"}}
     </fieldset>
 {{/bs-form}}

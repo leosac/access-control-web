@@ -19,22 +19,22 @@
                             </div>
                         </div>
                         <div class="col-offset-2 col-md-8">
-                                {{bs-button defaultText=(t 'edit') type="primary" buttonType="submit"
-                                            size='sm'}}
+                            {{bs-button defaultText=(t 'edit') type="primary" buttonType="submit"
+                                        size='sm'}}
 
-                                {{#bs-button type="info" icon="glyphicon glyphicon-refresh"
-                                             size="sm"
-                                             onClick=(route-action 'cancelAndRefresh')}}
-                                    {{t 'cancel_and_refresh'}}
-                                {{/bs-button}}
-                                {{button-with-confirmation
-                                        type='danger'
-                                        icon='glyphicon glyphicon-remove'
-                                        size='sm'
-                                        text=(t 'delete')
-                                        message=(t 'delete_group_confirmation')
-                                        onConfirm=(route-action 'deleteGroup')
-                                }}
+                            {{#bs-button type="info" icon="glyphicon glyphicon-refresh"
+                                         size="sm"
+                                         onClick=(route-action 'cancelAndRefresh')}}
+                                {{t 'cancel_and_refresh'}}
+                            {{/bs-button}}
+                            {{button-with-confirmation
+                                    type='danger'
+                                    icon='glyphicon glyphicon-remove'
+                                    size='sm'
+                                    text=(t 'delete')
+                                    message=(t 'delete_group_confirmation')
+                                    onConfirm=(route-action 'deleteGroup')
+                            }}
                         </div>
                     </fieldset>
                 {{/bs-form}}

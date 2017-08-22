@@ -6,9 +6,9 @@
         <th>{{t 'rank'}}</th>
         <th>{{t 'table.join_date'}}</th>
         <th>{{t 'table.total_member'}}</th>
-      {{#if kickOrLeave}}
-          <th>{{t 'action'}}</th>
-      {{/if}}
+        {{#if kickOrLeave}}
+            <th>{{t 'action'}}</th>
+        {{/if}}
     </tr>
     </thead>
     <tbody>
@@ -18,22 +18,22 @@
                 {{membership.group.id}}
             </td>
             <td>
-              {{membership.group.name}}
+                {{membership.group.name}}
             </td>
-            <td>{{membership.rank}}</td>
+            <td>{{t membership.rank}}</td>
             <td>{{membership.timestamp}}</td>
             <td>{{membership.group.memberCount}}</td>
-          {{#if kickOrLeave}}
-              <td>
-                {{button-with-confirmation
-                  type='danger'
-                  icon='glyphicon glyphicon-ban-circle'
-                  size='xs'
-                  text=kickOrLeave
-                  message=kickOrLeaveMessage
-                  onConfirm=(action 'deleteMembership' membership.id)
-                }}</td>
-          {{/if}}
+            {{#if kickOrLeave}}
+                <td>
+                    {{button-with-confirmation
+                            type='danger'
+                            icon='glyphicon glyphicon-ban-circle'
+                            size='xs'
+                            text=kickOrLeave
+                            message=kickOrLeaveMessage
+                            onConfirm=(action 'deleteMembership' membership.id)
+                    }}</td>
+            {{/if}}
         {{/link-to}}
     {{/each}}
     </tbody>
