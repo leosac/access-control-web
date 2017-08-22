@@ -9,8 +9,8 @@ export default Ember.Component.extend({
     usernameToObject: {},
     allUsernames: [],
     selectedUsername: false,
-    selectedRank: 'Member',
-    allRank: ['Member', 'Operator', 'Administrator'],
+    selectedRank: 'member',
+    allRank: ['member', 'operator', 'administrator'],
     group: false,
 
     didReceiveAttrs()

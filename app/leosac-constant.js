@@ -4,15 +4,15 @@
  */
 
 const UserRank = [
-    'User',
-    'Viewer',
-    'Manager',
-    'Supervisor',
-    'Administrator'
+    'user',
+    'viewer',
+    'manager',
+    'supervisor',
+    'administrator'
 ];
 
 const zoneType = [
-  'Logical,',
+  'Logical',
   'Physical'
 ];
 

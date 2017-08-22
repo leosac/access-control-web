@@ -11,6 +11,13 @@ export default {
     'remove': 'Supprimer',
     'rank': 'Rang',
     'rank_group': 'Rang dans le groupe',
+    'member': 'Membre',
+    'operator': 'Opérateur',
+    'user': 'Utilisateur',
+    'viewer': 'Spectateur',
+    'manager': 'Manageur',
+    'supervisor': 'Superviseur',
+    'administrator': 'Administrateur',
     'password': 'Mot de passe',
     'leave': 'Quitter',
     'kick': 'Expulser',
@@ -168,7 +175,7 @@ export default {
         "Installez, configurez et deployez depuis l'interface web."
     },
     'profile': {
-        'title': 'Profile Utilisateur',
+        'title': 'Profil Utilisateur',
         'profile_updated': 'Le profile a été mis à jour',
         'fail_update': 'Erreur de mise à jour du profile'
     },
