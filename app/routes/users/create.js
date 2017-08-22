@@ -29,7 +29,7 @@ export default LeosacRoute.extend({
         {
             const u = this.modelFor(this.routeName).user;
             const fm = this.get('flashMessages');
-            const {m, validations} = u.validateSync();
+            const {validations} = u.validateSync();
             if (validations.get('isValid') && u.get('password') !== false)
             {
                 u.save().then(() =>

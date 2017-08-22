@@ -13,21 +13,21 @@ export default Ember.Component.extend({
     search: Ember.inject.service('search'),
 
     actions:
-    {
-        changed(input)
         {
-            this.get('onChange')(input);
-        },
-        // This is a workaround because allowClear from
-        // ember-power-select-typeahead doesn't seems to work.
-        clear()
-        {
-            this.set('selected', null);
-            this.get('onChange')(null);
-        },
-        searchAP(partialAlias)
-        {
-            return this.get('search').findAccessPointByAlias(partialAlias);
+            changed(input)
+            {
+                this.get('onChange')(input);
+            },
+            // This is a workaround because allowClear from
+            // ember-power-select-typeahead doesn't seems to work.
+            clear()
+            {
+                this.set('selected', null);
+                this.get('onChange')(null);
+            },
+            searchAP(partialAlias)
+            {
+                return this.get('search').findAccessPointByAlias(partialAlias);
+            }
         }
-    }
 });
