@@ -1,1 +1,8 @@
-{"name":"web","dependencies":{"startbootstrap-sb-admin-2-blackrockdigital":"1.0.8","ember":"2.14.0"}}
+{
+  "name": "web",
+  "dependencies": {
+    "startbootstrap-sb-admin-2-blackrockdigital": "1.0.8",
+    "ember": "2.14.0",
+    "jstree": "^3.3.4"
+  }
+}
