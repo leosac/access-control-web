@@ -1,0 +1,7 @@
+import Ember from 'ember';
+import LeosacRoute from 'web/leosac-route';
+
+export default LeosacRoute.extend({
+    _title: 'tree-view.title',
+    _requireAuth: true,
+});

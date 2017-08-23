@@ -86,6 +86,7 @@ Router.map(function ()
     });
 
     this.route('access-overview');
+    this.route('tree-view');
     this.route('updates');
 });
 

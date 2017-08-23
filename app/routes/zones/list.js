@@ -3,6 +3,7 @@ import LeosacRoute from 'web/leosac-route';
 export default LeosacRoute.extend({
     _title: 'zone.list.title',
     _requireAuth: true,
+
     beforeModel()
     {
         "use strict";
