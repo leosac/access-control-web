@@ -442,6 +442,9 @@ export default {
     'access-overview': {
         'title': 'Récapitulatif des accès'
     },
+    'tree-view': {
+        'title': 'Récapitulatif des zones'
+    },
     'system-overview': {
         'title': 'Vue générale'
     },

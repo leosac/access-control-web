@@ -259,6 +259,7 @@ export default {
         'create': 'Add Access Point',
         'delete_confirm': 'Are you sure you wish to delete this access point?',
     },
+
     'audit': {
         title: 'Audit Trail',
         'entries_below': 'Audits entries below:',
@@ -442,6 +443,9 @@ export default {
     },
     'access-overview': {
         'title': 'Access Overview'
+    },
+    'tree-view': {
+      'title': 'Zone Overview'
     },
     'system-overview': {
         'title': 'System Overview'
