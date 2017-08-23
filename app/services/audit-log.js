@@ -40,7 +40,6 @@ export default Ember.Service.extend({
                 {
                     progressSetter(80);
                     self.get('store').pushPayload(obj);
-                    console.log("test");
                     Ember.run.next(function ()
                     {
                         let tmpArray = [];
@@ -81,12 +80,12 @@ export default Ember.Service.extend({
                                 return b.get('numericId') - a.get('numericId');
                             });
                             promise.resolve({data: tmpArray, meta: obj.meta});
-                            if (tmpArray.length === pageSize)
-                                console.log("The number of page displayed is ok");
-                            else
-                                console.log("The number of page displayed does not match, the number should be " +
-                                    pageSize + " but it is " + tmpArray.length + " instead. The difference is " +
-                                    (tmpArray.length - pageSize));
+                            // if (tmpArray.length === pageSize)
+                            //     console.log("The number of page displayed is ok");
+                            // else
+                            //     console.log("The number of page displayed does not match, the number should be " +
+                            //         pageSize + " but it is " + tmpArray.length + " instead. The difference is " +
+                            //         (tmpArray.length - pageSize));
                         });
                     });
                 });
