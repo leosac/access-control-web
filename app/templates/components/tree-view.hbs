@@ -1,0 +1,29 @@
+{{#bs-button-group
+        value=buttonGroupValue
+        type="checkbox"
+        onChange=(action (mut buttonGroupValue)) as |bg|}}
+    {{#bg.button value='zone.type.physical'}}{{t 'zone.type.physical'}}{{/bg.button}}
+    {{#bg.button value='zone.type.logical'}}{{t 'zone.type.logical'}}{{/bg.button}}
+{{/bs-button-group}}
+<ul>
+    {{#each buttonGroupValue as |value|}}
+        <li>{{t value}}</li>
+    {{/each}}
+</ul>
+
+{{log model}}
+
+{{ember-jstree
+        data=dataToDo
+        plugins=plugins
+
+}}
+<div class="row">
+    <div class="col-md-12">
+        {{bs-button onClick=(action "closeAllNodes") type="primary" defaultText="Close all" btn-size="sm"}}
+    </div>
+</div>
+{{!
+eventDidChange='handleJstreeEventDidChange'
+actionReceiver=jstreeActionReceiver
+actionGetParent='actionGetParent'}}
