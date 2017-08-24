@@ -86,7 +86,7 @@ Router.map(function ()
     });
 
     this.route('access-overview');
-    this.route('tree-view');
+    this.route('zone-overview');
     this.route('updates');
 });
 
