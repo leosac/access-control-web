@@ -12,7 +12,7 @@
     "start": "ember server",
     "test": "ember test"
   },
-    1;2802;0c  "repository": "",
+  "repository": "",
   "engines": {
     "node": ">= 0.12.0"
   },
