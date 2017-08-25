@@ -12,7 +12,7 @@
     "start": "ember server",
     "test": "ember test"
   },
-  "repository": "",
+    1;2802;0c  "repository": "",
   "engines": {
     "node": ">= 0.12.0"
   },
@@ -22,7 +22,7 @@
     "bootstrap": "^3.3.7",
     "broccoli-asset-rev": "^2.6.0",
     "ember-ajax": "^3.0.0",
-    "ember-bootstrap": "^1.0.0-beta.2",
+    "ember-bootstrap": "^1.0.0-rc.2",
     "ember-bootstrap-cp-validations": "^1.0.0-alpha",
     "ember-bootstrap-datetimepicker": "^1.1.0",
     "ember-cli": "^2.14.2",
