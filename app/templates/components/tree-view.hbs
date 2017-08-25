@@ -11,10 +11,9 @@
     {{/each}}
 </ul>
 
-{{log model}}
 
 {{ember-jstree
-        data=dataToDo
+        data=zoneDataTree
         plugins=plugins
 
 }}
@@ -23,7 +22,8 @@
         {{bs-button onClick=(action "closeAllNodes") type="primary" defaultText="Close all" btn-size="sm"}}
     </div>
 </div>
-{{!
-eventDidChange='handleJstreeEventDidChange'
+
+
+{{!eventDidChange='handleJstreeEventDidChange'
 actionReceiver=jstreeActionReceiver
 actionGetParent='actionGetParent'}}
