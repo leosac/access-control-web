@@ -220,7 +220,7 @@ export default {
         'placeholder': 'MySuperZone',
         'remove_from_zone': 'Supprimer de la zone ?',
         'child': 'Enfants',
-        'type_zone': "Commencez à saisir l'alias de la zone enfants",
+        'type_zone': "Commencez à saisir l'alias de la zone enfant",
         'add_children': 'Ajouter une zone enfant',
         'create': {
             'title': 'Ajouter une zone'
