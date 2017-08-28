@@ -98,8 +98,11 @@
                                 <td>{{children.alias}}</td>
                                 <td>
                                     <div class="pull-right">
-                                        {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
-                                                    defaultText=(t 'remove') onClick=(action 'removeChildren' children)}}
+                                        {{bs-button size='xs'
+                                                    icon='glyphicon glyphicon-remove'
+                                                    type='danger'
+                                                    defaultText=(t 'remove')
+                                                    onClick=(action 'removeChildren' children)}}
                                     </div>
                                 </td>
                             {{/link-to}}
@@ -120,7 +123,10 @@
                             {{/form.element}}
                         </div>
                         <div class="col-md-2">
-                            {{bs-button size='sm' type="primary" onClick=(action 'addChildren') defaultText=(t 'zone.add_children')}}
+                            {{bs-button size='sm'
+                                        type="primary"
+                                        onClick=(action 'addChildren')
+                                        defaultText=(t 'zone.add_children')}}
                         </div>
                     </div>
                 </div>

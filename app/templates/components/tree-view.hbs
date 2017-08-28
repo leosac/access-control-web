@@ -11,19 +11,21 @@
     {{/each}}
 </ul>
 
-
 {{ember-jstree
+        actionReceiver=jsTreeActionReceiver
+        eventDidChange='handleJstreeEventDidChange'
+        actionGetParent='actionGetParent'
         data=zoneDataTree
         plugins=plugins
 
 }}
 <div class="row">
-    <div class="col-md-12">
-        {{bs-button onClick=(action "closeAllNodes") type="primary" defaultText="Close all" btn-size="sm"}}
+    <div class="col-md-6">
+        <div class="col-md-3">
+            {{bs-button onClick=(action "closeAllNodes") type="primary" defaultText="Close all" btn-size="sm"}}
+        </div>
+        <div class="col-md-3">
+            {{bs-button onClick=(action "expandAll") type="primary" defaultText="Expand all" btn-size="sm"}}
+        </div>
     </div>
 </div>
-
-
-{{!eventDidChange='handleJstreeEventDidChange'
-actionReceiver=jstreeActionReceiver
-actionGetParent='actionGetParent'}}
