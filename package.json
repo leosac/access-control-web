@@ -49,7 +49,7 @@
     "ember-i18n-cp-validations": "^3.0.2",
     "ember-load-initializers": "^1.0.0",
     "ember-power-select": "^1.9.5",
-    "ember-power-select-typeahead": "^0.5.8",
+    "ember-power-select-typeahead": "^0.5.9",
     "ember-resolver": "^4.4.0",
     "ember-route-action-helper": "^2.0.6",
     "ember-simple-auth": "^1.4.0",
