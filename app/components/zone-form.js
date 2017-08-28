@@ -26,16 +26,13 @@ export default Ember.Component.extend({
             this.get('zone').get('doors').removeObject(door);
         },
 
-        // We need to add a module that allow us to search children zone,
-        // like the door search (findChildrenByAlias doesn't exist)
-
         addChildren() {
-            this.get('store').findRecord('children', this.get('newChildren.id')).then((children) => {
+            this.get('store').findRecord('zone', this.get('newChildren.id')).then((children) => {
                 this.get('zone').get('children').addObject(children);
             });
         },
         searchChildren(partialName) {
-            return this.get('search').findChildrenByAlias(partialName);
+            return this.get('search').findZoneByAlias(partialName);
         },
         removeChildren(children) {
             this.get('zone').get('children').removeObject(children);

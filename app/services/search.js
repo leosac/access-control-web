@@ -51,13 +51,13 @@ export default Ember.Service.extend({
     /**
      * Doesn't work at all, need the backend of this aka
      */
-    findChildrenByAlias(partialName)
+    findZoneByAlias(partialName)
     {
         const ws = this.get('websocket');
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
             console.log('searching for ' + partialName);
-            ws.sendJson('search.child_alias',
+            ws.sendJson('search.zone_alias',
                 {
                     'partial_name': partialName
                 }).then((data) => resolve(data),

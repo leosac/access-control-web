@@ -2,186 +2,114 @@ import Ember from "ember";
 import DS from "ember-data";
 
 function addNode(root, child) {
+    console.log(root.text + " is the parent and " + child.text + " is the child to add.");
+    console.log("The type of root.children is " + typeof root.children);
+    console.log("The type of child is " + typeof child);
+
     root.children.push(child);
+
+    console.log(child.text + " correctly added as child to " + root.text);
 }
 
-function nodeFromZone(zone) {
+function addChildren(child) {
+    if (child.length)
+        return {
+        };
+    else
+        return {
+            child
+        }
+}
+
+function nodeFromZone(zone)
+{
     return {
         id: zone.get('id'),
         text: zone.get('alias'),
+        children : [
+            //addChildren(zone.get('children'))
+        ]
     };
 }
 
 function getNodeFromCache(zone, cache)
 {
-    if (cache[zone.get('id')])
+    if (cache[zone.get('id')]) {
+        console.log(zone.get('alias') + " was in cache");
         return (cache[zone.get('id')]);
+    }
     else
     {
+        console.log(zone.get('alias') + " was not  in cache");
         cache[zone.get('id')] = nodeFromZone(zone);
+        // console.log(cache[zone.get('id')].children);
         return (cache[zone.get('id')]);
     }
 }
 
 export default Ember.Component.extend({
-    "plugins" : "dnd, type",
-    'jstreeActionReceiver': true,
-    dataOriginal: {
-        "id": "8675309",
-        "type": "user",
-        "attributes": {
-            "name": "Anfanie Farmeo"
+    "plugins" : "types, unique, dnd",
+    "types": {
+        "physical": {
+            "icon": "glyphicon glyphicon-tag"
         },
-        "relationships": {
-            "payment-methods": {
-                "data": [{
-                    "id": "1",
-                    "type": "PaymentMethodPaypal"
-                }, {
-                    "id": "2",
-                    "type": "PaymentMethodCc"
-                }, {
-                    "id": "3",
-                    "type": "PaymentMethodApplePay"
-                }]
-            }
+        "logical": {
+            "icon": "fa fa-building-o"
         }
     },
-    // we should have something like that: ->
-    dataToAim: {
-        "id": "8675309",
-        "type": "user",
-        "text": "Anfanie Farmeo",
-        "children": [{
-            "id": "1",
-            "type": "PaymentMethodPaypal",
-        }, {
-            "id": "2",
-            "type": "PaymentMethodCc"
-        }, {
-            "id": "3",
-            "type": "PaymentMethodApplePay"
-        }]
-    },
-    // findAll() {
-    //     console.log(this.get('model'));
-    // },
-    //     zoneData: Ember.computed('model', function() {
-    //let i = 0;
-    //let treeData = this.get('model').map(function (zone) {
-    //            let branch = zone.get('parent');
-    //                console.log("there is a parent");
-    //               zone.parent = '#';
-    //            console.log(zone.get('parent'));
-    //            let child = null;
-
-    // There is something that need to be done here,
-    // we have to convert the relationships to an array.
-    // It should be like the format above.
-    //});
-    // });
-    // console.log(this.get('model'));
-    data: Ember.computed('model', function(){
-        let seq = 0;
-        let treeData = this.get('model').forEach(function(zone) {
-            console.log(zone.get('alias'));
-            return {
-                id: "node" + seq++,
-                text: zone.get('alias'),
-            };
-        });
-
-        let idMap = {};
-        treeData.forEach(function(node) {
-            idMap[node.parent] = node.id;
-        });
-
-        treeData.forEach(function(node) {
-            if (node.parent !== "#") {
-                node.parent = idMap[node.parent];
-            }
-        });
-        console.log("oui");
-        console.log(treeData);
-        return treeData;
-    }),
+    'jstreeActionReceiver': true,
 
     zoneDataTree: Ember.computed('model', function(){
-        let physicalZoneNode = {'id': 'physicalRoot', 'text': 'physicalRoot', 'children': []};
-        let loggicalZoneNode = {'id': 'logicalRoot', 'text': 'logicalRoot', 'children': []};
+        console.log("ENTERING TREE-VIEW");
+        let physicalZoneNode = {'id': 'physicalRoot', "type": "physical",'text': 'physicalRoot', 'children': []};
+        let logicalZoneNode = {'id': 'logicalRoot', "type": "logical",'text': 'logicalRoot', 'children': []};
         let nodeCache = {};
+        let i = 0;
 
-        let tree = {'children': []};
+        let tree = {'text': 'Root', 'id': 'Root','children': []};
         this.get('model').forEach(function(zone){
-           const n = getNodeFromCache(zone, nodeCache);
-            console.log(zone.get('parent.length'));
+            const n = getNodeFromCache(zone, nodeCache);
+            console.log("Zone loop number " + i++);
+            console.log("The zone for this loop is " + zone.get('alias'));
             if (zone.get('parent.length') === 0)
             {
+                console.log(zone.get('alias') + " got no parent, unfortunately...");
                 if (zone.get('type') === 'zone.type.logical')
-                    addNode(loggicalZoneNode, n);
+                    addNode(logicalZoneNode, n);
                 else
                     addNode(physicalZoneNode, n);
             }
             else
             {
+                let j = 0;
+                console.log(zone.get('alias') + " got a parent!");
                 zone.get('parent').forEach(function(parent) {
                     const m = getNodeFromCache(parent, nodeCache);
+                    console.log("Child loop number " + j++);
                     addNode(m, n);
                 });
             }
         });
         addNode(tree, physicalZoneNode);
-        addNode(tree, loggicalZoneNode);
+        addNode(tree, logicalZoneNode);
+        console.log("Here is the final tree ");
+        console.log(tree);
+        console.log("EXITING TREE-VIEW");
         return tree;
-    }),
-    zoneData: Ember.computed('model', function(){
-        let treeData = this.get('model').forEach(function(zone) {
-            let parent = zone.get('parent');
-            console.log(parent);
-            var getKeys = function(obj){
-                var keys = [];
-                for(var key in obj){
-                    keys.push(key);
-                }
-                return keys;
-            };
-            console.log(getKeys(parent));
-            if (parent.get('content').length === 0) {
-                parent.pushObject('#');
-                console.log(parent);
-            }
-            console.log(getKeys(parent));
-            // let splitPath = path.split("/");
-            // let parentPath = splitPath.slice(0, -1).join("/");
-            // let fileName = splitPath[splitPath.length - 1];
-            // if (parentPath === "") {
-            //     parentPath = "#";
-            // }
-            // return {
-            //     id: "node" + seq++,
-            //     text: fileName,
-            //     parent: parentPath,
-            //     icon: "glyphicon glyphicon-file light-gray",
-            //     path: path,
-            //     leaf: true
-            // };
-        });
     }),
     actions:
         {
-            // handleJstreeEventDidChange(newData, data) {
-            //     let oui = newData;
-            //     console.log(oui);
-            //     const x = this.get('jstreeActionReceiver').send('getParent', oui.node);
-            //     console.log(x);
-            //     //    console.log(this.get('data'));
-            // },
+            expandAll() {
+                this.get('jsTreeActionReceiver').send('openAll');
+            },
+            collapseAll() {
+                this.get('jsTreeActionReceiver').send('closeAll');
+            },
+            handleJstreeEventDidChange(node) {
+               // this.get('jsTreeActionReceiver').send('getNode', node);
+            },
             closeAllNodes() {
-                this.get('jstreeActionReceiver').send('closeAll');
+                this.get('jsTreeActionReceiver').send('closeAll');
             }
-            // actionGetParent(parent) {
-            //     console.log("Received parent.");
-            //     console.log(parent);
-            // }
         }
 });
