@@ -5,6 +5,10 @@
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/dictionaries
+.idea/jsLibraryMappings.xml
+.idea/leosac-web.iml
+.idea/modules.xml
+		
 
 app/.idea/**/workspace.xml
 app/..idea/**/tasks.xml
