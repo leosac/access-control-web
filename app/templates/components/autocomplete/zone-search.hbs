@@ -1,0 +1,11 @@
+{{#form.element label=label}}
+    {{log zone}}
+    {{#power-select-typeahead search=(action 'searchZone')
+                              selected=selected.alias
+                              placeholder=(t 'zone.type_zone')
+                              onchange=(action (mut selected))
+    as |childrenInfo|}}
+        {{childrenInfo.alias}}
+    {{/power-select-typeahead}}
+    <a href="#" {{action 'clear'}}>{{t 'clear_selection'}}</a>
+{{/form.element}}

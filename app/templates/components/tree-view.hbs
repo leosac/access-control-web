@@ -13,10 +13,12 @@
 
 {{ember-jstree
         actionReceiver=jsTreeActionReceiver
-        eventDidChange='handleJstreeEventDidChange'
-        actionGetParent='actionGetParent'
+        eventDidMoveNode='handleJstreeEventDidMoveNode'
+        eventDidSelectNode='handleJstreeEventDidSelectNode'
+        actionGetNode="handleJstreeGetNode"
         data=zoneDataTree
         plugins=plugins
+        typesOptions=typesOptions
 
 }}
 <div class="row">
@@ -29,3 +31,5 @@
         </div>
     </div>
 </div>
+{{!actionGetParent='actionGetParent'
+        eventDidOpen='handleJstreeEventDidOpen'}}
