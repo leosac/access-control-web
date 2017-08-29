@@ -31,41 +31,8 @@ export default Ember.Component.extend({
                 this.get('zone').get('children').addObject(children);
             });
         },
-        searchChildren(partialName) {
-            return this.get('search').findZoneByAlias(partialName);
-        },
         removeChildren(children) {
             this.get('zone').get('children').removeObject(children);
         }
-
-
-        // addToZone()
-        // {
-        //     const store = this.get('store');
-        //     const fm = this.get('flashMessages');
-        //
-        //     const door = this.get('doorAliasToObject')[this.get('selectedAlias')];
-        //     if (!door)
-        //     {
-        //         fm.danger('Cannot find this door.');
-        //         return;
-        //     }
-        //
-        //     const membership = store.createRecord('door-zone-link');
-        //     membership.set('zone', this.get('zone'));
-        //     membership.set('door', door);
-        //
-        //     membership.save().then(() =>
-        //         {
-        //             fm.success('Successfully added door to zone.');
-        //         },
-        //         () =>
-        //         {
-        //             fm.danger('Failed to add door to zone');
-        //             membership.deleteRecord();
-        //         });
-        // }
-        // Here, we should add something similar to the thing above.
-        // There should be a possibility to add a zone child to a zone parent
     }
 });

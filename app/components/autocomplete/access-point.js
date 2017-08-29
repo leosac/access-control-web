@@ -8,8 +8,6 @@ export default Ember.Component.extend({
     // The output of (when something is selected)
     // is a dict {id: ID, alias: "alias"};
 
-    onChange: undefined,
-    selected: '',
     search: Ember.inject.service('search'),
 
     actions:
