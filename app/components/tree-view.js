@@ -11,8 +11,7 @@ function addNode(root, child) {
     console.log(child.text + " correctly added as child to " + root.text);
 }
 
-function nodeFromZone(zone)
-{
+function nodeFromZone(zone) {
     let type;
     if (zone.get('type') === 'zone.type.logical')
         type = 'logicalZone';
@@ -21,7 +20,7 @@ function nodeFromZone(zone)
     return {
         id: zone.get('id'),
         text: zone.get('alias'),
-        children : [],
+        children: [],
         type: type
     };
 }
@@ -31,14 +30,12 @@ function checkType(node, model) {
     console.log(node);
 }
 
-function getNodeFromCache(zone, cache)
-{
+function getNodeFromCache(zone, cache) {
     if (cache[zone.get('id')]) {
         console.log(zone.get('alias') + " was in cache");
         return (cache[zone.get('id')]);
     }
-    else
-    {
+    else {
         console.log(zone.get('alias') + " was not  in cache");
         cache[zone.get('id')] = nodeFromZone(zone);
         // console.log(cache[zone.get('id')].children);
@@ -46,18 +43,31 @@ function getNodeFromCache(zone, cache)
     }
 }
 
+function nodeFromId(nodeId, zones) {
+    let value = null;
+    zones.forEach(function (zone) {
+        if (zone.get('id') === nodeId)
+            value = zone;
+    });
+    if (value)
+        return value;
+    else
+        return -1;
+}
+
 export default Ember.Component.extend({
-    "plugins" : "types, dnd, contextmenu",
+    "plugins": "types, dnd, contextmenu, sort",
 
     typesOptions: {
-        "physical" : {
-            "icon" : "fa fa-building"
+        "physical": {
+            draggable : false,
+            "icon": "fa fa-building"
         },
-        "logical" : {
-            "icon" : "fa fa-users"
+        "logical": {
+            "icon": "fa fa-users"
         },
         "root": {
-            "icon" : "fa fa-cube"
+            "icon": "fa fa-cube"
         },
         "physicalZone": {
             "icon": "fa fa-building-o"
@@ -69,19 +79,21 @@ export default Ember.Component.extend({
 
     'jsTreeActionReceiver': true,
 
-    zoneDataTree: Ember.computed('model', function(){
+    zoneDataTree: Ember.computed('model', function () {
         console.log(this.get('model'));
         console.log("ENTERING TREE-VIEW");
         let physicalZoneNode = {
             'id': 'physicalRoot',
             'type': 'physical',
             'text': 'physicalRoot',
-            'children': []};
+            'children': []
+        };
         let logicalZoneNode = {
             'id': 'logicalRoot',
             "type": "logical",
             'text': 'logicalRoot',
-            'children': []};
+            'children': []
+        };
         let nodeCache = {};
         let i = 0;
 
@@ -89,24 +101,23 @@ export default Ember.Component.extend({
             'text': 'Root',
             'id': 'Root',
             'type': 'root',
-            'children': []};
-        this.get('model').forEach(function(zone){
+            'children': []
+        };
+        this.get('model').forEach(function (zone) {
             const n = getNodeFromCache(zone, nodeCache);
             console.log("Zone loop number " + i++);
             console.log("The zone for this loop is " + zone.get('alias'));
-            if (zone.get('parent.length') === 0)
-            {
+            if (zone.get('parent.length') === 0) {
                 console.log(zone.get('alias') + " got no parent, unfortunately...");
                 if (zone.get('type') === 'zone.type.logical')
                     addNode(logicalZoneNode, n);
                 else
                     addNode(physicalZoneNode, n);
             }
-            else
-            {
+            else {
                 let j = 0;
                 console.log(zone.get('alias') + " got a parent!");
-                zone.get('parent').forEach(function(parent) {
+                zone.get('parent').forEach(function (parent) {
                     const m = getNodeFromCache(parent, nodeCache);
                     console.log("Child loop number " + j++);
                     addNode(m, n);
@@ -120,31 +131,19 @@ export default Ember.Component.extend({
         console.log("EXITING TREE-VIEW");
         return tree;
     }),
+    checkCallback(operation, node, node_parent, node_position, more)
+    {
+        // faire des consoles.log
+        // si jamais
+        console.log("Je suis dedans");
+        return operation !== 'move_node';
+    },
 
     actions:
         {
             saveTree() {
-              this.get('model').save();
+                this.get('model').save();
             },
-           handleJstreeEventDidMoveNode(node) {
-                //console.log(node.parent);
-                let j = 0;
-                let idParent = -1;
-                this.get('model').forEach(function(zone) {
-                    zone.get('parent').forEach(function(parent) {
-                        if (node.parent === parent.get('id'))
-                            idParent = j;
-                        j++;
-                    });
-                    if (idParent !== -1) {
-                        console.log("TYUIOUYTUIOUI");
-                        console.log(zone.get('parent')[idParent]);
-                    }
-                });
-
-               checkType(node, this.get('model'));
-               this.get('jsTreeActionReceiver').send('moveNode');
-           },
             expandAll() {
                 this.get('jsTreeActionReceiver').send('openAll');
             },
@@ -159,6 +158,39 @@ export default Ember.Component.extend({
             },
             closeAllNodes() {
                 this.get('jsTreeActionReceiver').send('closeAll');
+            },
+
+            handleJstreeEventDidMoveNode(node) {
+                console.log(node);
+                let currentZone;
+                let newParent;
+                let oldParent;
+                let allow = 0;
+
+                if ((oldParent = nodeFromId(node.old_parent, this.get('model'))) === -1)
+                    allow += 1;
+                if ((newParent = nodeFromId(node.parent, this.get('model'))) === -1)
+                    allow += 2;
+                if ((currentZone = nodeFromId(node.node.id, this.get('model'))) === -1)
+                    allow = 2;
+
+                    currentZone.get('parent').pushObject(newParent);
+                    currentZone.get('parent').removeObject(oldParent);
+                    oldParent.save().then(() => {
+                            newParent.save().then(() => {
+                                    this.get('flashMessages').success('Zone successfully edited.');
+                                },
+                                () => {
+                                    this.get('flashMessages').danger('An error occurred while editing zone');
+
+                                });
+                        },
+                        () => {
+                            this.get('flashMessages').danger('An error occurred while editing zone');
+                        });
+
+                    console.log("The zone can be moved");
+                this.get('jsTreeActionReceiver').send('moveNode');
             }
         }
 });
