@@ -2,17 +2,12 @@ import Ember from "ember";
 import DS from "ember-data";
 
 function addNode(root, child) {
-    console.log(root.text + " is the parent and " + child.text + " is the child to add.");
-    console.log("The type of root.children is " + typeof root.children);
-    console.log("The type of child is " + typeof child);
-
     root.children.push(child);
-
-    console.log(child.text + " correctly added as child to " + root.text);
 }
 
 function nodeFromZone(zone) {
     let type;
+
     if (zone.get('type') === 'zone.type.logical')
         type = 'logicalZone';
     else
@@ -25,38 +20,61 @@ function nodeFromZone(zone) {
     };
 }
 
-function checkType(node, model) {
-    console.log(model);
-    console.log(node);
-}
-
 function getNodeFromCache(zone, cache) {
     if (cache[zone.get('id')]) {
-        console.log(zone.get('alias') + " was in cache");
         return (cache[zone.get('id')]);
     }
     else {
-        console.log(zone.get('alias') + " was not  in cache");
         cache[zone.get('id')] = nodeFromZone(zone);
-        // console.log(cache[zone.get('id')].children);
         return (cache[zone.get('id')]);
     }
 }
 
-function nodeFromId(nodeId, zones) {
+function zoneFromSelectedZone(selectedZone, zones) {
     let value = null;
+
+    zones.forEach(function (zone) {
+        if (zone.get('id') === selectedZone.get('id'))
+            value = zone;
+    });
+    return value;
+}
+
+function recursiveDoor(selectedZone) {
+    let doorArray = [];
+    selectedZone.get('children').forEach(function (zone) {
+        doorArray = doorArray.concat(recursiveDoor(zone));
+        if (zone.get('doors')) {
+            zone.get('doors').forEach(function (door) {
+                doorArray.push({
+                    zone: zone.get('alias'),
+                    door: door.get('alias'),
+                    doorId: door.get('id')
+                });
+            });
+        }
+    });
+    return (doorArray);
+}
+
+function zoneFromId(nodeId, zones) {
+    let value = null;
+
     zones.forEach(function (zone) {
         if (zone.get('id') === nodeId)
             value = zone;
     });
-    if (value)
-        return value;
-    else
-        return -1;
+    return value;
 }
 
 export default Ember.Component.extend({
-    "plugins": "types, dnd, contextmenu, sort",
+    newDoor: null,
+    search: Ember.inject.service('search'),
+    store: Ember.inject.service(),
+    selectedZone: '',
+    arrayDoor: [],
+
+    "plugins": "types, dnd, sort, states",
 
     typesOptions: {
         "physical": {
@@ -79,8 +97,12 @@ export default Ember.Component.extend({
     'jsTreeActionReceiver': true,
 
     zoneDataTree: Ember.computed('model', function () {
-        console.log(this.get('model'));
-        console.log("ENTERING TREE-VIEW");
+        let tree = {
+            'text': 'Root',
+            'id': 'Root',
+            'type': 'root',
+            'children': []
+        };
         let physicalZoneNode = {
             'id': 'physicalRoot',
             'type': 'physical',
@@ -94,66 +116,47 @@ export default Ember.Component.extend({
             'children': []
         };
         let nodeCache = {};
-        let i = 0;
 
-        let tree = {
-            'text': 'Root',
-            'id': 'Root',
-            'type': 'root',
-            'children': []
-        };
         this.get('model').forEach(function (zone) {
             const n = getNodeFromCache(zone, nodeCache);
-            console.log("Zone loop number " + i++);
-            console.log("The zone for this loop is " + zone.get('alias'));
+
             if (zone.get('parent.length') === 0) {
-                console.log(zone.get('alias') + " got no parent, unfortunately...");
                 if (zone.get('type') === 'zone.type.logical')
                     addNode(logicalZoneNode, n);
                 else
                     addNode(physicalZoneNode, n);
             }
             else {
-                let j = 0;
-                console.log(zone.get('alias') + " got a parent!");
                 zone.get('parent').forEach(function (parent) {
                     const m = getNodeFromCache(parent, nodeCache);
-                    console.log("Child loop number " + j++);
+
                     addNode(m, n);
                 });
             }
         });
         addNode(tree, physicalZoneNode);
         addNode(tree, logicalZoneNode);
-        console.log("Here is the final tree ");
-        console.log(tree);
-        console.log("EXITING TREE-VIEW");
         return tree;
     }),
     checkCallback(operation, node, node_parent, node_position, more) {
-
         //check if we try to move a node
         if (operation === 'move_node') {
             // check if the node is a node that we created otherwise it can't be moved
             if (node.type === 'logicalZone' ||
-                node.type === 'physicalZone')
-            {
+                node.type === 'physicalZone') {
                 // If a node is of type logical,
-                // she can either go in the logical part of the tree,
-                // or in the physical zone that we created
+                // she can only go in the logical part of the tree
                 // For example:
-                // the logical zone "admin_group" can be located in the physical zone "admin_room"
-                if (node.type === 'logicalZone')
-                {
+                // the logical zone "admin_group" can only be located in logical zone like "users"
+                if (node.type === 'logicalZone') {
                     if (node_parent.type === 'logicalZone' ||
                         node_parent.type === 'logical')
                         return true;
                 }
-                // but if a zone is of type physical, she can only go in the physical zone
-                // If we take the example above, the "admin_room" can only be part of the "floor" or "building" physical zone,
-                // there is no point in allowing him to be part of a logical zone
-                else
-                {
+                // but if a zone is of type physical, she can either go in the physical or logical zone
+                //  For example, the "server_room" can be part of the "admin_right" logical zone
+                // or "floor" physical zone,
+                else {
                     if (node_parent.type === 'physicalZone' ||
                         node_parent.type === 'physical' ||
                         node_parent.type === 'logicalZone')
@@ -164,9 +167,26 @@ export default Ember.Component.extend({
         }
         return true;
     },
-
+    didRender: function() {
+        this.get('jsTreeActionReceiver').send('openAll');
+    },
     actions:
         {
+            addDoor() {
+                this.get('store').findRecord('door', this.get('newDoor.id')).then((door) => {
+                    let selectedZone = zoneFromSelectedZone(this.get('selectedZone'), this.get('model'));
+                    selectedZone.get('doors').addObject(door);
+                    selectedZone.save();
+                });
+            },
+            searchDoor(partialName) {
+                return this.get('search').findDoorByAlias(partialName);
+            },
+            removeDoor(door) {
+                let selectedZone = zoneFromSelectedZone(this.get('selectedZone'), this.get('model'));
+                selectedZone.get('doors').removeObject(door);
+                selectedZone.save();
+            },
             saveTree() {
                 this.get('model').save();
             },
@@ -177,75 +197,48 @@ export default Ember.Component.extend({
                 this.get('jsTreeActionReceiver').send('closeAll');
             },
             handleJstreeEventDidSelectNode(node) {
-                this.get('jsTreeActionReceiver').send('getNode', node.id);
+                let selectedNode = zoneFromId(node.id, this.get('model'));
+                this.set('selectedZone', selectedNode);
+                if (selectedNode) {
+                    let arrayOfDoor = recursiveDoor(selectedNode);
+                    arrayOfDoor.sort(function (a, b) {
+                        return a.zone - b.zone;
+                    });
+                    this.set('arrayDoor', arrayOfDoor);
+                }
             },
-            handleJstreeGetNode(node) {
-                console.log(node);
+            listDoor() {
+                return this.get('selectedZone').get('doors');
             },
             closeAllNodes() {
                 this.get('jsTreeActionReceiver').send('closeAll');
             },
-
             handleJstreeEventDidMoveNode(node) {
-                console.log(node);
-                let currentZone;
-                let newParent;
-                let oldParent;
-                let allow = 0;
+                let oldParent = zoneFromId(node.old_parent, this.get('model'));
+                let newParent = zoneFromId(node.parent, this.get('model'));
+                let currentZone = zoneFromId(node.node.id, this.get('model'));
+                let saveOk = () => {
+                    this.get('flashMessages').success('Zone successfully edited.');
+                };
+                let saveFail = () => {
+                    this.get('flashMessages').danger('An error occurred while editing zone');
+                };
 
-                if ((oldParent = nodeFromId(node.old_parent, this.get('model'))) === -1)
-                    allow += 1;
-                if ((newParent = nodeFromId(node.parent, this.get('model'))) === -1)
-                    allow += 2;
-
-                currentZone = nodeFromId(node.node.id, this.get('model'));
-
-                // if the oldParent is illegal, like he is root-like
-                if  (allow === 1)
-                {
-                    currentZone.get('parent').pushObject(newParent);
-                    newParent.save().then(() => {
-                            this.get('flashMessages').success('Zone successfully edited.');
-                        },
-                        () => {
-                            this.get('flashMessages').danger('An error occurred while editing zone');
-
-                        });
-                }
-                // if the newParent is illegal, like he is root-like
-                else if (allow === 2)
-                {
-                    currentZone.get('parent').removeObject(oldParent);
-                    oldParent.save().then(() => {
-                            this.get('flashMessages').success('Zone successfully edited.');
-                        },
-                        () => {
-                            this.get('flashMessages').danger('An error occurred while editing zone');
-                        });
-                }
-                // if both parent are legal
-                else if (allow === 0)
-                {
+                if (oldParent && newParent) {
                     currentZone.get('parent').pushObject(newParent);
                     currentZone.get('parent').removeObject(oldParent);
                     oldParent.save().then(() => {
-                            newParent.save().then(() => {
-                                    this.get('flashMessages').success('Zone successfully edited.');
-                                },
-                                () => {
-                                    this.get('flashMessages').danger('An error occurred while editing zone');
-
-                                });
-                        },
-                        () => {
-                            this.get('flashMessages').danger('An error occurred while editing zone');
-                        });
+                        newParent.save().then(saveOk, saveFail);
+                    }, saveFail);
                 }
-
-                // the last case is when both parent are illegal,
-                // but in this case, with the checkback notification,
-                // it means that the zone doesn't move, so it should be ignored
-                console.log("The zone can be moved");
+                else if (oldParent) {
+                    currentZone.get('parent').removeObject(oldParent);
+                    oldParent.save().then(saveOk, saveFail);
+                }
+                else if (newParent) {
+                    currentZone.get('parent').pushObject(newParent);
+                    newParent.save().then(saveOk, saveFail);
+                }
                 this.get('jsTreeActionReceiver').send('moveNode');
             }
         }
