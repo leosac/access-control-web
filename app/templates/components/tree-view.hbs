@@ -20,15 +20,24 @@
                 data=zoneDataTree
                 plugins=plugins
                 typesOptions=typesOptions
-                checkCallback=checkCallback
-
-        }}
-        <div class="row">
-            <div class="col-md-2">
-                {{bs-button onClick=(action "closeAllNodes") type="primary" defaultText="Close all" btn-size="sm"}}
-            </div>
-            <div class="col-md-2">
-                {{bs-button onClick=(action "expandAll") type="primary" defaultText="Expand all" btn-size="sm"}}
+                checkCallback=checkCallback}}
+        <div class="row" style="padding-top: 1%">
+            <div class="col-md-3">
+                <fieldset class="tree-view">
+                    <legend class="tree-view" style="margin-bottom: 1%;">{{t 'legend.title'}}</legend>
+                    <div class="row">
+                        <div class="col-md-10">
+                            {{t 'legend.logical'}}:
+                        </div>
+                        <i class="fa fa-user"></i><br>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            {{t 'legend.physical'}}:
+                        </div>
+                        <i class="fa fa-building-o"></i>
+                    </div>
+                </fieldset>
             </div>
         </div>
     </div>
@@ -71,7 +80,6 @@
                 </table>
             </div>
         </div>
-
             <div class="col-md-6">
                 <div class="table-responsive">
                     <table class="table table-hover table-bordered">

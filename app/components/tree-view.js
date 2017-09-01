@@ -15,6 +15,7 @@ function nodeFromZone(zone) {
     return {
         id: zone.get('id'),
         text: zone.get('alias'),
+        state : {'opened' : true},
         children: [],
         type: type
     };
@@ -68,13 +69,18 @@ function zoneFromId(nodeId, zones) {
 }
 
 export default Ember.Component.extend({
-    newDoor: null,
+    i18n: Ember.inject.service(),
     search: Ember.inject.service('search'),
     store: Ember.inject.service(),
     selectedZone: '',
+    newDoor: null,
     arrayDoor: [],
 
     "plugins": "types, dnd, sort, states",
+
+    // themes : {
+    //     "variant" : "large"
+    // },
 
     typesOptions: {
         "physical": {
@@ -98,21 +104,23 @@ export default Ember.Component.extend({
 
     zoneDataTree: Ember.computed('model', function () {
         let tree = {
-            'text': 'Root',
-            'id': 'Root',
-            'type': 'root',
+            'id': 'Zones',
             'children': []
         };
         let physicalZoneNode = {
             'id': 'physicalRoot',
+//            'parent': '#',
+            'state' : {'opened' : true},
             'type': 'physical',
-            'text': 'physicalRoot',
+            'text': this.get('i18n').t('physicalRoot'),
             'children': []
         };
         let logicalZoneNode = {
             'id': 'logicalRoot',
+//            'parent': '#',
+            'state' : {'opened' : true},
             "type": "logical",
-            'text': 'logicalRoot',
+            'text': this.get('i18n').t('logicalRoot'),
             'children': []
         };
         let nodeCache = {};
@@ -134,9 +142,10 @@ export default Ember.Component.extend({
                 });
             }
         });
-        addNode(tree, physicalZoneNode);
-        addNode(tree, logicalZoneNode);
-        return tree;
+    //    addNode(tree, physicalZoneNode);
+      //  addNode(tree, logicalZoneNode);
+        //return tree;
+        return [physicalZoneNode, logicalZoneNode];
     }),
     checkCallback(operation, node, node_parent, node_position, more) {
         //check if we try to move a node
@@ -167,16 +176,20 @@ export default Ember.Component.extend({
         }
         return true;
     },
-    didRender: function() {
-        this.get('jsTreeActionReceiver').send('openAll');
-    },
     actions:
         {
             addDoor() {
                 this.get('store').findRecord('door', this.get('newDoor.id')).then((door) => {
                     let selectedZone = zoneFromSelectedZone(this.get('selectedZone'), this.get('model'));
+                    let saveOk = () => {
+                        this.get('flashMessages').success(this.get('i18n').t('zone.error.successfully_added'));
+                    };
+                    let saveFail = () => {
+                        this.get('flashMessages').danger(this.get('i18n').t('zone.error.error_added'));
+                    };
+
                     selectedZone.get('doors').addObject(door);
-                    selectedZone.save();
+                    selectedZone.save().then(saveOk, saveFail);
                 });
             },
             searchDoor(partialName) {
@@ -184,8 +197,15 @@ export default Ember.Component.extend({
             },
             removeDoor(door) {
                 let selectedZone = zoneFromSelectedZone(this.get('selectedZone'), this.get('model'));
+                let saveOk = () => {
+                    this.get('flashMessages').success(this.get('i18n').t('zone.error.successfully_removed'));
+                };
+                let saveFail = () => {
+                    this.get('flashMessages').danger(this.get('i18n').t('zone.error.error_removed'));
+                };
+
                 selectedZone.get('doors').removeObject(door);
-                selectedZone.save();
+                selectedZone.save().then(saveOk, saveFail);
             },
             saveTree() {
                 this.get('model').save();
@@ -218,10 +238,10 @@ export default Ember.Component.extend({
                 let newParent = zoneFromId(node.parent, this.get('model'));
                 let currentZone = zoneFromId(node.node.id, this.get('model'));
                 let saveOk = () => {
-                    this.get('flashMessages').success('Zone successfully edited.');
+                    this.get('flashMessages').success(this.get('i18n').t('zone.error.edited_success'));
                 };
                 let saveFail = () => {
-                    this.get('flashMessages').danger('An error occurred while editing zone');
+                    this.get('flashMessages').danger(this.get('i18n').t('zone.error.edited_error'));
                 };
 
                 if (oldParent && newParent) {
