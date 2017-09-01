@@ -4,6 +4,7 @@ import DS from 'ember-data';
 export default Ember.Component.extend({
     globalInfo: Ember.inject.service('leosac-info'),
     flashMessages: Ember.inject.service(),
+    i18n: Ember.inject.service(),
     store: Ember.inject.service(),
 
     usernameToObject: {},
@@ -39,7 +40,7 @@ export default Ember.Component.extend({
             const user = this.get('usernameToObject')[this.get('selectedUsername')];
             if (!user)
             {
-                fm.danger('Cannot find this user.');
+                fm.danger(this.get('i18n').t('users.error.find_error'));
                 return;
             }
 
@@ -50,11 +51,11 @@ export default Ember.Component.extend({
 
             membership.save().then(() =>
                 {
-                    fm.success('Successfully added user to group.');
+                    fm.success(this.get('i18n').t('users.error.add_success'));
                 },
                 () =>
                 {
-                    fm.danger('Failed to add user to group');
+                    fm.danger(this.get('i18n').t('users.error.add_error'));
                     membership.deleteRecord();
                 });
         }
