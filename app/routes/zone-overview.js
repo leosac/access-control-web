@@ -18,7 +18,7 @@ export default LeosacRoute.extend({
     //         console.log("On y est");
     //     });
     // },
-    _title: 'zone.title',
+    _title: 'zone.tree_view',
     _requireAuth: true,
     model() {
         return this.get('store').findAll('zone');
