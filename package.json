@@ -63,5 +63,10 @@
     "loader.js": "4.6.0",
     "minimatch": "3.0.4",
     "moment-timezone": "0.5.13"
+  },
+  "ember-addon": {
+    "paths": [
+      "lib/smtp"
+    ]
   }
 }

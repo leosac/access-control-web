@@ -8,7 +8,7 @@
 .idea/jsLibraryMappings.xml
 .idea/leosac-web.iml
 .idea/modules.xml
-		
+
 
 app/.idea/**/workspace.xml
 app/..idea/**/tasks.xml
@@ -75,3 +75,9 @@ fabric.properties
 /node_modules
 package-lock.json
 /tmp
+
+## gitignore for the
+
+/lib/**/node_modules
+/lib/**/package-lock.json
+/lib/**/bower_components/
