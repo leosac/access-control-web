@@ -1,6 +1,8 @@
 import Ember from "ember";
 import DS from "ember-data";
 
+// We needed some function for the tree
+
 function addNode(root, child) {
     root.children.push(child);
 }
@@ -31,16 +33,6 @@ function getNodeFromCache(zone, cache) {
     }
 }
 
-function zoneFromSelectedZone(selectedZone, zones) {
-    let value = null;
-
-    zones.forEach(function (zone) {
-        if (zone.get('id') === selectedZone.get('id'))
-            value = zone;
-    });
-    return value;
-}
-
 function recursiveDoor(selectedZone) {
     let doorArray = [];
     selectedZone.get('children').forEach(function (zone) {
@@ -56,6 +48,16 @@ function recursiveDoor(selectedZone) {
         }
     });
     return (doorArray);
+}
+
+function zoneFromSelectedZone(selectedZone, zones) {
+    let value = null;
+
+    zones.forEach(function (zone) {
+        if (zone.get('id') === selectedZone.get('id'))
+            value = zone;
+    });
+    return value;
 }
 
 function zoneFromId(nodeId, zones) {
@@ -89,9 +91,6 @@ export default Ember.Component.extend({
         "logical": {
             "icon": "fa fa-users"
         },
-        "root": {
-            "icon": "fa fa-cube"
-        },
         "physicalZone": {
             "icon": "fa fa-building-o"
         },
@@ -99,55 +98,48 @@ export default Ember.Component.extend({
             "icon": "fa fa-user"
         }
     },
-
     'jsTreeActionReceiver': true,
 
     zoneDataTree: Ember.computed('model', function () {
-        let tree = {
-            'id': 'Zones',
-            'children': []
-        };
+
         let physicalZoneNode = {
             'id': 'physicalRoot',
-//            'parent': '#',
             'state' : {'opened' : true},
             'type': 'physical',
             'text': this.get('i18n').t('physicalRoot'),
-            'children': []
-        };
+            'children': [] };
         let logicalZoneNode = {
             'id': 'logicalRoot',
-//            'parent': '#',
             'state' : {'opened' : true},
             "type": "logical",
             'text': this.get('i18n').t('logicalRoot'),
-            'children': []
-        };
+            'children': [] };
         let nodeCache = {};
 
-        this.get('model').forEach(function (zone) {
+        this.get('model').forEach(function (zone)
+        {
             const n = getNodeFromCache(zone, nodeCache);
 
-            if (zone.get('parent.length') === 0) {
+            if (zone.get('parent.length') === 0)
+            {
                 if (zone.get('type') === 'zone.type.logical')
                     addNode(logicalZoneNode, n);
                 else
                     addNode(physicalZoneNode, n);
             }
-            else {
-                zone.get('parent').forEach(function (parent) {
+            else
+            {
+                zone.get('parent').forEach(function (parent)
+                {
                     const m = getNodeFromCache(parent, nodeCache);
-
                     addNode(m, n);
                 });
             }
         });
-    //    addNode(tree, physicalZoneNode);
-      //  addNode(tree, logicalZoneNode);
-        //return tree;
         return [physicalZoneNode, logicalZoneNode];
     }),
     checkCallback(operation, node, node_parent, node_position, more) {
+
         //check if we try to move a node
         if (operation === 'move_node') {
             // check if the node is a node that we created otherwise it can't be moved
@@ -207,15 +199,6 @@ export default Ember.Component.extend({
                 selectedZone.get('doors').removeObject(door);
                 selectedZone.save().then(saveOk, saveFail);
             },
-            saveTree() {
-                this.get('model').save();
-            },
-            expandAll() {
-                this.get('jsTreeActionReceiver').send('openAll');
-            },
-            collapseAll() {
-                this.get('jsTreeActionReceiver').send('closeAll');
-            },
             handleJstreeEventDidSelectNode(node) {
                 let selectedNode = zoneFromId(node.id, this.get('model'));
                 this.set('selectedZone', selectedNode);
@@ -226,12 +209,6 @@ export default Ember.Component.extend({
                     });
                     this.set('arrayDoor', arrayOfDoor);
                 }
-            },
-            listDoor() {
-                return this.get('selectedZone').get('doors');
-            },
-            closeAllNodes() {
-                this.get('jsTreeActionReceiver').send('closeAll');
             },
             handleJstreeEventDidMoveNode(node) {
                 let oldParent = zoneFromId(node.old_parent, this.get('model'));
