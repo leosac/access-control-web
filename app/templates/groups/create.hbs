@@ -1,4 +1,3 @@
-
 {{#bs-form formLayout='horizontal' model=model
            onSubmit=(route-action "createGroup") as | form |}}
     <div class="row">
@@ -8,9 +7,11 @@
             </fieldset>
 
             {{form.element controlType='text' label=(t 'users.group_name')
+                           placeholder="MySuperGroup"
                            property='name'}}
 
             {{form.element controlType='textarea' label=(t 'description')
+                           placeholder="Description"
                            property='description'}}
         </div>
     </div>
