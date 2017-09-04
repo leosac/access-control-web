@@ -44,7 +44,7 @@ Router.map(function ()
         this.route('rfid-card-create');
         this.route('pin-code', {path: '/pin-code/:credential_id'});
         this.route('pin-code-create');
-  });
+    });
 
     this.route('schedule', {path: '/schedule/:schedule_id'});
     this.route('schedules', function ()
@@ -88,6 +88,7 @@ Router.map(function ()
     this.route('access-overview');
     this.route('zone-overview');
     this.route('updates');
+    this.mount('smtp');
 });
 
 export default Router;
