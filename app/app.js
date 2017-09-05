@@ -5,11 +5,26 @@ import config from './config/environment';
 
 let App;
 
-
 App = Ember.Application.extend({
-  modulePrefix: config.modulePrefix,
-  podModulePrefix: config.podModulePrefix,
-  Resolver
+    engines: {
+        smtp: {
+            dependencies: {
+                externalRoutes: {
+                    home: 'home',
+                    settings: 'settings'
+                },
+                services: [
+                    'websocket',
+                    'store'
+                    // need the service leosac-info
+//                    'leosac-info'
+                ]
+            }
+        }
+    },
+    modulePrefix: config.modulePrefix,
+    podModulePrefix: config.podModulePrefix,
+    Resolver
 });
 
 loadInitializers(App, config.modulePrefix);
