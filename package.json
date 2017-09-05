@@ -21,6 +21,7 @@
   "dependencies": {
     "bootstrap": "3.3.7",
     "broccoli-asset-rev": "2.6.0",
+     "smtp": "../mail",
     "ember-ajax": "3.0.0",
     "ember-bootstrap": "1.0.0-rc.2",
     "ember-bootstrap-cp-validations": "1.0.0-alpha.0",
@@ -63,10 +64,5 @@
     "loader.js": "4.6.0",
     "minimatch": "3.0.4",
     "moment-timezone": "0.5.13"
-  },
-  "ember-addon": {
-    "paths": [
-      "lib/smtp"
-    ]
   }
 }
