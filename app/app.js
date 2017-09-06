@@ -14,10 +14,11 @@ App = Ember.Application.extend({
                     settings: 'settings'
                 },
                 services: [
-                    'websocket',
-                    'store'
+                    // 'leosac-info',
+                    // 'authentication',
+                    // 'websocket',
+                    'store',
                     // need the service leosac-info
-//                    'leosac-info'
                 ]
             }
         }
