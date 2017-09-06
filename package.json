@@ -25,7 +25,7 @@
     "ember-bootstrap": "1.0.0-rc.2",
     "ember-bootstrap-cp-validations": "1.0.0-alpha.0",
     "ember-bootstrap-datetimepicker": "1.1.0",
-    "ember-cli": "2.15.0",
+    "ember-cli": "2.15.1",
     "ember-cli-app-version": "3.1.0",
     "ember-cli-babel": "6.8.2",
     "ember-cli-dependency-checker": "2.0.1",
