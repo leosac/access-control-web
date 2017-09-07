@@ -89,6 +89,7 @@ export default {
     'settings': 'Settings',
     'start_date': 'Start date',
     'submit': 'Submit',
+    'summary': 'Summary',
     'supervisor': 'Supervisor',
     'switch_en': 'Switch to english',
     'switch_fr': 'Passer en francais',
@@ -137,12 +138,12 @@ export default {
     'delete_group_confirmation': 'Are you sure you wish to delete this group ?',
 
     'legend': {
-        'title': 'Key',
+        'title': 'Legend',
         'root': 'Default root',
         'logicalRoot': 'Parent of the logical zone',
         'physicalRoot': 'Parent of the physical zone',
-        'logical': 'Logical zone',
-        'physical': 'Physical zone',
+        'logical': 'Logical',
+        'physical': 'Physical',
     },
 
     'table': {

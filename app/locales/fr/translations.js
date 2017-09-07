@@ -89,6 +89,7 @@ export default {
     'settings': 'Options',
     'start_date': 'Date de début',
     'submit': 'Envoyer',
+    'summary': 'Récapitulatif',
     'supervisor': 'Superviseur',
     'switch_en': 'Switch to english',
     'switch_fr': 'Passer en francais',
@@ -138,8 +139,8 @@ export default {
         'root': 'Racine par défaut',
         'logicalRoot': 'Parent des zones logiques',
         'physicalRoot': 'Parent des zones physiques',
-        'logical': 'Zones logiques',
-        'physical': 'Zones physiques'
+        'logical': 'Logiques',
+        'physical': 'Physiques'
     },
 
     'table': {
