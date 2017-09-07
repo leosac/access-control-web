@@ -5,6 +5,12 @@ import config from './config/environment';
 
 let App;
 
+Ember.warn = function(i){
+    let str1 = 'i18n';
+    if (!str1.localeCompare(i))
+        console.warn(i);
+};
+
 App = Ember.Application.extend({
     engines: {
         smtp: {
@@ -14,11 +20,26 @@ App = Ember.Application.extend({
                     settings: 'settings'
                 },
                 services: [
-                    // 'leosac-info',
-                    // 'authentication',
-                    // 'websocket',
+                    'authentication',
+                    'websocket',
+                    'leosac-info',
+                    'flashMessages',
                     'store',
-                    // need the service leosac-info
+                ]
+            }
+        },
+        evoxs: {
+            dependencies: {
+                externalRoutes: {
+                    home: 'home',
+                    settings: 'settings'
+                },
+                services: [
+                    'authentication',
+                    'websocket',
+                    'leosac-info',
+                    'flashMessages',
+                    'store',
                 ]
             }
         }

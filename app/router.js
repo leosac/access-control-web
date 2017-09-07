@@ -87,9 +87,13 @@ Router.map(function ()
 
   this.route('access-overview');
   this.route('zone-overview');
-  this.route('updates');
-  this.mount('smtp');
-  this.mount('wiegang');
+    this.route('updates');
+    // in-repo module
+    this.mount('smtp');
+    this.mount('wiegang');
+    // addon-like module
+      this.mount('evoxs');
+  this.mount('in-app-blog', {path: 'blog'});
 });
 
 export default Router;
