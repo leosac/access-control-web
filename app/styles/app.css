@@ -1,6 +1,7 @@
 body {
-    background-color: #eee;
-    padding-bottom: 35px;
+  background-color: #eee;
+  min-height: 100%;
+  padding-bottom: 35px;
 }
 
 /**
@@ -145,18 +146,11 @@ h1 {
     padding: 15px 15px 0;
 }
 
-fieldset.tree-view {
-    border: 1px groove #ddd !important;
-    padding: 0 1.01em 1.01em 1.01em !important;
-    margin: 0 0 1.2em 0 !important;
-    -webkit-box-shadow:  0 0 0 0 #000;
-    box-shadow:  0 0 0 0 #000;
-}
-
-legend.tree-view {
-    width: inherit; /* Or auto */
-    padding: 0 10px; /* To give a bit of padding on the left and right */
-    border-bottom: none;
+.page-wrapper {
+  border: 1px;
+  height: 100%;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
 .jstree-node {

@@ -24,8 +24,8 @@ to render if there is no active session.
             {{side-menu}}
             <!-- /.navbar-static-side -->
         </nav>
-
-        <div id="page-wrapper">
+      <!--style="height: 100%;min-height: 905px">-->
+        <div id="page-wrapper" style="height: auto; min-height: 100vh">
             {{#each flashMessages.queue as |flash|}}
                 {{#flash-message flash=flash as |component flash|}}
                     <p>{{flash.message}}</p>
