@@ -8,7 +8,7 @@
 .idea/jsLibraryMappings.xml
 .idea/leosac-web.iml
 .idea/modules.xml
-
+app/.idea/inspectionProfiles/Project_Default.xml 
 
 app/.idea/**/workspace.xml
 app/..idea/**/tasks.xml
