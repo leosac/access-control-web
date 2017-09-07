@@ -13,7 +13,7 @@ module.exports = function (environment)
                 // e.g. 'with-controller': true
             }
         },
-		
+
         i18n: {
             defaultLocale: 'fr'
         },
@@ -36,7 +36,7 @@ module.exports = function (environment)
         timeout: 7000,
     };
 
-    if (ENV.APP.leosacAddr == null)
+    if (ENV.APP.leosacAddr === null)
     {
         ENV.APP.leosacAddr = process.env.LEOSAC_ADDR;
     }
