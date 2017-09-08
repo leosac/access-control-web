@@ -7,14 +7,14 @@ const Router = Ember.Router.extend({
 
 Router.map(function ()
 {
-  this.route('index', {path: '/'});
-  this.route('about');
-  this.route('login');
-  this.route('system-overview');
+    this.route('index', {path: '/'});
+    this.route('about');
+    this.route('login');
+    this.route('system-overview');
   this.route('profile', {path: '/profile/:user_id'});
-  this.route('error', {path: '/error/:error_content'}, function ()
-  {
-      this.route('session-aborted');
+    this.route('error', {path: '/error/:error_content'}, function ()
+	       {
+		   this.route('session-aborted');
       this.route('permission-denied');
       this.route('entity-not-found');
       this.route('request-timeout');
@@ -78,22 +78,21 @@ Router.map(function ()
   });
 
   this.route('auditlog');
-
   this.route('access-point', {path: '/access-point/:access_point_id'});
   this.route('access-points', function() {
       this.route('list');
       this.route('create');
   });
 
-  this.route('access-overview');
-  this.route('zone-overview');
+    this.route('access-overview');
+    this.route('zone-overview');
     this.route('updates');
     // in-repo module
     this.mount('smtp');
-    this.mount('wiegang');
+    // this.mount('wiegang');
     // addon-like module
-      this.mount('evoxs');
-  this.mount('in-app-blog', {path: 'blog'});
+    this.mount('evoxs');
+    this.mount('in-app-blog', {path: 'blog'});
 });
 
 export default Router;

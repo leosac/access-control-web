@@ -36,6 +36,7 @@ App = Ember.Application.extend({
                 },
                 services: [
                     'authentication',
+		    'search',
                     'websocket',
                     'leosac-info',
                     'flashMessages',
