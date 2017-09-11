@@ -16,7 +16,6 @@ export default LeosacRoute.extend({
     },
     actions: {
         findType(zone) {
-            console.log("TYPE = " + zone.type);
             if (zone.type === "Logical")
                 return 1;
             else

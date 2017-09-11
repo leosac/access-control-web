@@ -29,13 +29,11 @@ export default LeosacRoute.extend({
         {
             this.modelFor('zones.create').save().then((d) =>
                 {
-                    console.log("success");
                     this.get('flashMessages').success('Zone created.');
                     this.transitionTo('zone', d.get('id'));
                 },
                 () =>
                 {
-                    console.log("fail");
                     this.get('flashMessages').danger('Failed to create zone.');
                 });
         }
