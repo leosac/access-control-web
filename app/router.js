@@ -7,14 +7,14 @@ const Router = Ember.Router.extend({
 
 Router.map(function ()
 {
-    this.route('index', {path: '/'});
-    this.route('about');
-    this.route('login');
-    this.route('system-overview');
+  this.route('index', {path: '/'});
+  this.route('about');
+  this.route('login');
+  this.route('system-overview');
   this.route('profile', {path: '/profile/:user_id'});
-    this.route('error', {path: '/error/:error_content'}, function ()
-	       {
-		   this.route('session-aborted');
+  this.route('error', {path: '/error/:error_content'}, function ()
+  {
+      this.route('session-aborted');
       this.route('permission-denied');
       this.route('entity-not-found');
       this.route('request-timeout');
@@ -67,16 +67,6 @@ Router.map(function ()
       this.route('create');
   });
 
-  this.route('modules', function() {
-      this.route('smtp');
-      this.route('evoxs', function() {
-          this.route('access-point', {path: '/access-point/:access_point_id'});
-          this.route('operations');
-          this.route('update', {path: '/update/:update_id'});
-          this.route('cylinder-events');
-      });
-  });
-
   this.route('auditlog');
   this.route('access-point', {path: '/access-point/:access_point_id'});
   this.route('access-points', function() {
@@ -84,15 +74,15 @@ Router.map(function ()
       this.route('create');
   });
 
-    this.route('access-overview');
-    this.route('zone-overview');
-    this.route('updates');
-    // in-repo module
-    this.mount('smtp');
-    // this.mount('wiegang');
-    // addon-like module
-    this.mount('evoxs');
-    this.mount('in-app-blog', {path: 'blog'});
+  this.route('access-overview');
+  this.route('zone-overview');
+  this.route('updates');
+  // in-repo module
+  this.mount('smtp');
+  // this.mount('wiegang');
+  // addon-like module
+  this.mount('evoxs');
+  this.route('settings');
 });
 
 export default Router;

@@ -87,7 +87,10 @@
                     <i class="fa fa-user fa-fw"></i>{{t 'profile.title'}}
                 {{/link-to}}
             </li>
-            <li><a href="#"><i class="fa fa-gear fa-fw"></i> {{t 'settings'}}</a>
+            <li>
+                {{#link-to 'settings'}}
+                    <i class="fa fa-gear fa-fw"></i> {{t 'settings'}}
+                {{/link-to}}
             </li>
             <li class="divider"></li>
             <li {{action 'logout'}}>

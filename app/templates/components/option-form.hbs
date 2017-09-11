@@ -1,0 +1,19 @@
+{{log "LOL"}}
+{{#bs-form as |form|}}
+    <div class="col-md-6">
+    {{#form.element label=(t 'language')}}
+        {{#power-select
+                selected=selected
+                options=languageOption
+                searchEnabled=false
+                onchange=(action (mut selected))
+                placeholder="English"
+        as |user|}}
+            {{user}}
+        {{/power-select}}
+    {{/form.element}}
+    <div class="col-sm-4 col-md-1">
+        {{bs-button size='sm' defaultText=(t 'switch') type="primary" onClick=(action 'setLocale' selected)}}
+    </div>
+    </div>
+{{/bs-form}}
