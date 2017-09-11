@@ -44,6 +44,7 @@ export default {
     'instance_name_descr': "Le nom unique de l'instance {{appname}}.",
     'instance_name': "Nom de l'instance",
     'kick': 'Expulser',
+    'language': 'Langue',
     'lastname': 'Nom de famille',
     'leave': 'Quitter',
     'logicalRoot': 'Zones logiques',
@@ -91,6 +92,7 @@ export default {
     'submit': 'Envoyer',
     'summary': 'Récapitulatif',
     'supervisor': 'Superviseur',
+    'switch': 'Changer de langue',
     'switch_en': 'Switch to english',
     'switch_fr': 'Passer en francais',
     'test': 'test',
@@ -450,25 +452,6 @@ export default {
         'logs_per_page': 'Evènements par page',
         'last_logs': 'Derniers évènements',
         'total_logs': 'Il y a un total de {{totalLogs}} évènements.',
-    },
-    'smtp': {
-        'title': 'SMTP',
-        'notes': 'Note : le mot de passe SMTP est stocké en clair !',
-        'recipient': 'Destinataire',
-        'subject': 'Sujet',
-        'body': 'Contenu',
-        'send': 'Envoyer un mail de test',
-        'from': 'Expéditeur',
-        'timeout': 'Timeout (Milliseconds)',
-        'add_server': 'Ajouter un serveur',
-        'remove_server': 'Supprimer le serveur',
-        'verify_host': "Vérifier l'hôte",
-        'verify_peer': 'Vérifier le pair',
-        'save': 'Enregistrer la configuration',
-        'error' : {
-            'send_success' : 'Le mail a été envoyé.',
-            'send_error': 'Erreur durant l\'envoie du mail'
-        }
     },
     'access-overview': {
         'title': 'Récapitulatif des accès'

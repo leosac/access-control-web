@@ -44,6 +44,7 @@ export default {
     'instance_name_descr': 'The (unique) name of the {{appname}} instance.',
     'instance_name': 'Instance Name',
     'kick': 'Kick',
+    "language": 'Language',
     'lastname': 'Lastname',
     'leave': 'Leave',
     'logicalRoot': 'Logical zone',
@@ -91,6 +92,7 @@ export default {
     'submit': 'Submit',
     'summary': 'Summary',
     'supervisor': 'Supervisor',
+    'switch': 'Switch languages',
     'switch_en': 'Switch to english',
     'switch_fr': 'Passer en francais',
     'test': 'test',
@@ -453,26 +455,6 @@ export default {
         'logs_per_page': 'Log per page',
         'last_logs': 'Last logs',
         'total_logs': 'There is a total of {{totalLogs}} log messages.',
-    },
-    'smtp': {
-        'title': 'SMTP module page.',
-        'notes': 'Note: SMTP password are saved in cleartext !',
-        'recipient': 'Recipient',
-        'subject': 'Subject',
-        'body': 'Body',
-        'send': 'Send test mail',
-        'from': 'From',
-        'timeout': 'Timeout (Milliseconds)',
-        'add_server:': 'Add Server',
-        'remove_server': 'Remove Server',
-        'verify_host': 'Verify Host',
-        'verify_peer': 'Verify Peer',
-        'save': 'Save Config',
-        'add_server': 'Add server',
-        'error': {
-            'send_success': 'Mail has been sent.',
-            'send_error': 'Error while sending mail.'
-        }
     },
     'access-overview': {
         'title': 'Access Overview'
