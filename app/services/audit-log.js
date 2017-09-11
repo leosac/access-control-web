@@ -26,6 +26,8 @@ export default Ember.Service.extend({
         }).then((obj) =>
             {
                 // clear store so don't have too many record.
+                //console.log(self.get('store').peekAll('audit-wsapicall-event'));
+//                console.log(self.get('store').findAll('audit-wsapicall-event', {reload: true}));
                 ['audit-user-event', 'audit-wsapicall-event', 'audit-door-event', 'audit-user-group-membership-event',
                     'audit-schedule-event', 'audit-credential-event', 'audit-group-event', 'audit-update-event',
                     'audit-zone-event'].forEach((type) =>
@@ -33,13 +35,23 @@ export default Ember.Service.extend({
                     self.get('store').unloadAll(type);
                 });
 
+                //console.log(self.get('store').peekAll('audit-wsapicall-event'));
+
+                //self.get('store').unloadAll();
+
+                //console.log("Le store devrait etre vide ici");
+                //console.log(self.get('store').peekAll('audit-wsapicall-event'));
+
+
                 progressSetter(40);
                 // This is yet an other hack around EmberJS WTF.
                 // Somehow, unloadAll() is not synchronous.
                 Ember.run.next(function ()
                 {
+
                     progressSetter(80);
                     self.get('store').pushPayload(obj);
+                    
                     Ember.run.next(function ()
                     {
                         let tmpArray = [];
@@ -80,12 +92,12 @@ export default Ember.Service.extend({
                                 return b.get('numericId') - a.get('numericId');
                             });
                             promise.resolve({data: tmpArray, meta: obj.meta});
-                            // if (tmpArray.length === pageSize)
-                            //     console.log("The number of page displayed is ok");
-                            // else
-                            //     console.log("The number of page displayed does not match, the number should be " +
-                            //         pageSize + " but it is " + tmpArray.length + " instead. The difference is " +
-                            //         (tmpArray.length - pageSize));
+                            if (tmpArray.length === pageSize)
+                                console.log("The number of page displayed is ok");
+                            else
+                                console.log("The number of page displayed does not match, the number should be " +
+                                    pageSize + " but it is " + tmpArray.length + " instead. There is a difference of " +
+                                    (tmpArray.length - pageSize));
                         });
                     });
                 });

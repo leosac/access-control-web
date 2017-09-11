@@ -73,8 +73,8 @@ export default Ember.Controller.extend({
         // otherwise, we have to restart the server. This is currently being fixed,
         // but in the mean time,that will fix it
 
-        let currentPage = Number.parseInt(this.get('currentPage'));
-        if (Number.parseInt(this.get('currentPage')) <= 0)
+        let currentPage = Number.parseInt(this.get('currentPage')) || 1;
+        if (currentPage <= 0 || typeof currentPage !== 'number')
             currentPage = 1;
         const pageSize = Number.parseInt(this.get('pageSize')) || 25;
 
@@ -87,6 +87,7 @@ export default Ember.Controller.extend({
         this.get('auditLog').findAllByTypes(enabled_types,
             currentPage, pageSize, progressSetter).then((result) =>
         {
+            //            console.log(result);
             self.set('totalPage', result.meta.total_page);
             self.set('resultCount', result.meta.count);
             self.get('audits').set('content', result.data);
@@ -95,7 +96,7 @@ export default Ember.Controller.extend({
             self.set('fetchingData', false);
         });
     },
-    init(){
+    init() {
         this._super(...arguments);
         this.reload();
     }
