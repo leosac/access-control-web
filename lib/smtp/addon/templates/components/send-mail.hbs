@@ -1,3 +1,4 @@
+<div class="col-md-6" style="margin-top: 1%">
 {{#bs-form model=this as |form|}}
   {{form.element controlType="email" label="Recipient"
                  placeholder="me@me.com"
@@ -12,3 +13,4 @@
   {{bs-button disabled=isButtonDisabled defaultText=(t 'smtp.send') type="primary"
               buttonType="submit" onClick=(action 'sendTestMail')}}
 {{/bs-form}}
+</div>
