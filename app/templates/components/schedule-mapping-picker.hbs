@@ -1,7 +1,7 @@
 {{#bs-form formLayout='inline' onSubmit=(action 'scheduleMappingPicked') as |form|}}
     <div class="row">
-        <fieldset>
-            <div class="col-md-2" style="padding-bottom: 1%">
+        <fieldset >
+            <div class="col-md-2 col-sm-4" style="padding-bottom: 1%">
                 {{#form.element label=(t 'schedule.title')}}
                     {{#power-select-typeahead search=(action 'searchSchedule')
                                               selected=selectedSchedule.name
@@ -11,7 +11,7 @@
                     {{/power-select-typeahead}}
                 {{/form.element}}
             </div>
-            <div class="col-md-2" style="padding-bottom: 1%">
+            <div class="col-sm-4 col-md-2" style="padding-bottom: 1%">
                 {{#form.element label=(t 'mapping')}}
                     {{#power-select-typeahead selected=selectedMapping
                                               form=form
@@ -27,9 +27,9 @@
                     {{/power-select-typeahead}}
                 {{/form.element}}
             </div>
-            <div class="col-md-1" style="white-space: pre; margin-bottom: 1%">
+            <div class="col-sm-4 col-md-1" style="white-space: pre; margin-bottom: 1%">
                 {{bs-button size='sm' defaultText=(t 'schedule.join_mapping') type="primary" buttonType="submit"}}
             </div>
         </fieldset>
-    </div>
+      </div>
 {{/bs-form}}
