@@ -48,6 +48,7 @@ export default ApplicationAdapter.extend({
         if (data.data.relationships && data.data.relationships['children'] &&
             data.data.relationships['children'].data)
         {
+            data.data.attributes.children = [];
             data.data.relationships.children.data.forEach(function (zones) {
                 data.data.attributes.children.push(Number.parseInt(zones.id));
             });
