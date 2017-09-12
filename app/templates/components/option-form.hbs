@@ -1,19 +1,70 @@
-{{log "LOL"}}
 {{#bs-form as |form|}}
-    <div class="col-md-6">
-    {{#form.element label=(t 'language')}}
+  <div class="row">
+    <div class="col-md-4 col-xs-8 col-sm-8">
+      {{#form.element}}
+        <div style="font-weight: 900">
+          {{t 'language'}}
+        </div>
         {{#power-select
-                selected=selected
-                options=languageOption
-                searchEnabled=false
-                onchange=(action (mut selected))
-                placeholder="English"
-        as |user|}}
-            {{user}}
+          selected=language
+          options=languageOption
+          searchEnabled=false
+          onchange=(action 'changeLanguage')
+          placeholder=language
+        as |lang|}}
+          {{lang}}
         {{/power-select}}
-    {{/form.element}}
-    <div class="col-sm-4 col-md-1">
-        {{bs-button size='sm' defaultText=(t 'switch') type="primary" onClick=(action 'setLocale' selected)}}
+      {{/form.element}}
     </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-xs-8 col-sm-4">
+      {{bs-button size='sm' defaultText=(t 'switch') type="primary" onClick=(action 'setLocale' language)}}
     </div>
+  </div>
 {{/bs-form}}
+
+<div class="row" style="margin-top: 1%">
+  <div class="col-md-6">
+    {{bs-button size='sm' defaultText='getLogoPath' type="primary" onClick=(action 'getLogoPath')}}
+  </div>
+</div>
+
+<div class="row" style="margin-top: 1%">
+  <div class="col-md-6">
+    {{bs-button size='sm' defaultText='getNameApp' type="primary" onClick=(action 'getNameApp')}}
+  </div>
+</div>
+
+{{#bs-form as |form|}}
+  <div class="row">
+    <div class="col-md-6">
+      {{form.element controleType='text'
+                     label=(t 'name')
+                     property='newName'
+                     onChange=(action (mut newName))}}
+    </div>
+  </div>
+  {{bs-button size='sm' defaultText=(t 'name') type="primary" onClick=(action 'setNameApp' newName)}}
+{{/bs-form}}
+
+{{!file-upload url="/upload"}}
+{{!--#link-to "profile" authSrv.user_id}}
+  {{bs-button size='sm' defaultText=(t 'profile.title') type='primary'}}
+{{/link-to--}}
+<div style="margin-top: 1%">
+  <div class="row">
+    <div class="col-md-6" style="font-size: medium">
+      {{t 'restart_info'}}:
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      {{button-with-confirmation size='sm'
+                                 text=(t 'restart')
+                                 icon='glyphicon glyphicon-refresh'
+                                 type="danger"
+                                 onConfirm=(action 'restart')}}
+    </div>
+  </div>
+</div>
