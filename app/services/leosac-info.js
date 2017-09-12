@@ -1,5 +1,5 @@
 import Ember from 'ember';
-
+import config from '../config/environment';
 /**
  * This service store global information about the
  * Leosac we are connecting too.
@@ -46,6 +46,32 @@ export default Ember.Service.extend({
     getLocale()
     {
         return this.get('userLocale');
+    },
+
+    restart()
+    {
+        let ws = this.get('websocket');
+        return new Ember.RSVP.Promise(function (resolve, reject)
+        {
+            console.log('Restarting the server... ');
+            ws.sendJson('restart', {}).then(
+                (data) => resolve(data),
+                (failure) => reject(failure));
+        });
+    },
+
+    getNameApp() {
+        return config.APP.appname;
+    },
+    setNameApp(newName) {
+        config.APP.appname = newName;
+    },
+
+    getLogoPath() {
+      return config.APP.logoUrl;
+    },
+    setLogoPath(path) {
+      config.APP.logoUrl = path;
     },
 
     // Server endpoint in localstorage for cloud-based deployment.
