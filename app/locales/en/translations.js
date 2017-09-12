@@ -83,6 +83,8 @@ export default {
     'remove': 'Remove',
     'remove_selected': 'Remove selected',
     'remove_timeframe': 'Remove timeframe',
+    'restart_info': 'This button permit to restart the server',
+    'restart': 'Restart',
     'save': 'Save',
     'schedules': 'Schedules',
     'search': 'Search',

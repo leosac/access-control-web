@@ -83,6 +83,8 @@ export default {
     'remove_selected': 'Supprimer la sélection',
     'remove': 'Supprimer',
     'remove_timeframe' : 'Supprimer la zone de temps',
+    'restart_info': 'Ce bouton permet de redémarrer le serveur',
+    'restart': 'Redémarrage',
     'save': 'Enregistrer',
     'schedules': 'Horaires',
     'search': 'Rechercher',
