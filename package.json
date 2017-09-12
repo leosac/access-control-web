@@ -49,6 +49,7 @@
     "ember-i18n": "5.0.2",
     "ember-i18n-cp-validations": "3.0.2",
     "ember-load-initializers": "1.0.0",
+    "ember-local-storage": "1.4.0",
     "ember-power-select": "1.9.6",
     "ember-power-select-typeahead": "0.5.9",
     "ember-resolver": "4.5.0",
@@ -62,7 +63,8 @@
     "jstree": "3.3.4",
     "loader.js": "4.6.0",
     "minimatch": "3.0.4",
-    "moment-timezone": "^0.4.0"
+    "moment-timezone": "^0.4.0",
+    "ember-uploader": "1.2.3"
   },
   "ember-addon": {
     "paths": [
@@ -70,5 +72,6 @@
       "lib/smtp",
       "lib/wiegang"
     ]
-  }
+  },
+  "devDependencies": {}
 }
