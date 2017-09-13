@@ -15,7 +15,7 @@ to render if there is no active session.
                 </button>
                 <img src="{{getenv 'logoUrl'}}" class="navbar-logo" alt="Logo" />
                 {{#link-to "index" class="navbar-brand"}}
-                    {{getenv 'appname'}}
+                    {{getlocale 'app_name'}}
                 {{/link-to}}
             </div>
             <!-- /.navbar-header -->

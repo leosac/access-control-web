@@ -12,10 +12,13 @@ export default Ember.Component.extend({
     onLogout: 'onLogout',
     languageOption: ['Français', 'English'],
     language: '',
-    newName: null,
+    newName: '',
+
     init() {
         this._super(...arguments);
         let loc = this.get('leosacInfo').getLocale();
+
+        this.set('newName', this.get('leosacInfo').getNameApp());
         if (loc === 'fr')
             this.set('language', 'Français');
         else
@@ -35,22 +38,16 @@ export default Ember.Component.extend({
                 self.sendAction('onLogout');
             });
         },
+
         getNameApp()
         {
             console.log(this.get('leosacInfo').getNameApp());
         },
         setNameApp()
         {
-            let name = this.get('newName');
-            this.get('leosacInfo').setNameApp(name);
+            this.get('leosacInfo').setNameApp(this.get('newName'));
         },
-        getLogoPath() {
-            console.log(this.get('leosacInfo').getLogoPath());
-        },
-        setLogoPath() {
-            let path = this.get('newPath');
-            this.get('leosacInfo').setLogoPath(path);
-        },
+
         changeLanguage(lang)
         {
             this.set('language', lang);
@@ -62,7 +59,7 @@ export default Ember.Component.extend({
                 return 'English';
         },
         // It help the ember-power-select component to change the value of the locale variable,
-        // then refresh it because we need it
+        // then refresh the page because we need to actualize the element of the page
         setLocale(loc)
         {
             if (loc === 'Français')

@@ -17,13 +17,15 @@ export default Ember.Service.extend({
      * Not sure this is the best way to manage this...
      */
     current_view_title: "Default",
-
     userLocale: 'en',
+    appNameLocal: '',
 
     init()
     {
         "use strict";
+        //this will set the locale variable
         this.setLocale(localStorage.user_locale || 'en');
+        this.setNameApp((localStorage.app_name || config.APP.appname), 1);
 
         let self = this;
         let ws = self.get('websocket');
@@ -60,18 +62,16 @@ export default Ember.Service.extend({
         });
     },
 
+    setNameApp(newName, i) {
+        this.set('appNameLocale', newName);
+        localStorage.app_name = newName;
+        // this is necessary if we ant to automatically change the name,
+        // but since we don't want an infinite loop, we have to check if we are in init() or not
+        if (i !== 1)
+            location.reload();
+    },
     getNameApp() {
-        return config.APP.appname;
-    },
-    setNameApp(newName) {
-        config.APP.appname = newName;
-    },
-
-    getLogoPath() {
-      return config.APP.logoUrl;
-    },
-    setLogoPath(path) {
-      config.APP.logoUrl = path;
+        return this.get('appNameLocale');
     },
 
     // Server endpoint in localstorage for cloud-based deployment.
