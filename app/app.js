@@ -5,6 +5,8 @@ import config from './config/environment';
 
 let App;
 
+//remove some warning with ember-i18n.
+// This error are related to ember-engine , so there is not a thing that we can do
 Ember.warn = function(i){
     let str1 = 'i18n';
     if (!str1.localeCompare(i))
