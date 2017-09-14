@@ -1,16 +1,15 @@
 {{#bs-form as |form|}}
-  {{#form.element label=(t 'search')}}
-    {{#power-select
-      selected=selectedObject
-      options=allObjects
-      onchange=(action (mut selectedObject))
-      allowClear=true
-      placeholder=(t 'search')
-    as |searchResult|
-    }}
-      {{searchResult}}
-    {{/power-select}}
-  {{/form.element}}
-  <!--<a href="#" {{action 'clear'}}>{{t 'clear_selection'}}</a>-->
+    {{#form.element label=(t 'search')}}
+        {{#power-select-typeahead
+                search=(action 'findAll')
+                selected=selected
+                renderInPlace=true
+                onchange=(action (mut selected))
+        as |result|}}
+            {{result.nameOrAlias}}
+            <span style="color: #919bb3;font-style: italic; text-align: right">{{t result.type}}</span>
+        {{/power-select-typeahead}}
+    {{/form.element}}
+    <!--<a href="#" {{!action 'clear'}}>{{!t 'clear_selection'}}</a>-->
 {{/bs-form}}
 <!--search=(action 'search')-->
