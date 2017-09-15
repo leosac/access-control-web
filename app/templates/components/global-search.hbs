@@ -1,15 +1,25 @@
-{{#bs-form as |form|}}
-    {{#form.element label=(t 'search')}}
+<div class="row">
+    <div class="col-md-offset-1 col-md-10 col-xs-offset-1">
         {{#power-select-typeahead
+                placeholder=(t 'search')
                 search=(action 'findAll')
-                selected=selected
+                selected=selected.name
                 renderInPlace=true
+                allowClear=true
                 onchange=(action (mut selected))
         as |result|}}
-            {{result.nameOrAlias}}
-            <span style="color: #919bb3;font-style: italic; text-align: right">{{t result.type}}</span>
+            {{result.name}}
+            <span style="color: #9b9aa5;font-style: italic" class="pull-right">{{t result.type}}</span>
         {{/power-select-typeahead}}
-    {{/form.element}}
-    <!--<a href="#" {{!action 'clear'}}>{{!t 'clear_selection'}}</a>-->
-{{/bs-form}}
-<!--search=(action 'search')-->
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-offset-1 col-md-10 col-xs-offset-1">
+        <a href="#" {{action 'clear'}}>{{t 'clear_selection'}}</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-offset-1 col-md-10 col-xs-offset-1">
+        {{bs-button size='sm' type='primary' text='Go to seleccted' onClick=(action 'goToSelected')}}
+    </div>
+</div>
