@@ -79,6 +79,7 @@ Router.map(function ()
   this.route('updates');
   // in-repo module
   this.mount('smtp');
+  this.mount('piface-digital-gpio');
   // this.mount('wiegang');
   // addon-like module
   this.mount('evoxs');

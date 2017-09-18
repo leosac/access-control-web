@@ -30,6 +30,21 @@ App = Ember.Application.extend({
                 ]
             }
         },
+        pifaceDigitalGpio: {
+            dependencies: {
+                externalRoutes: {
+                    home: 'home',
+                    settings: 'settings'
+                },
+                services: [
+                    'authentication',
+                    'websocket',
+                    'leosac-info',
+                    'flashMessages',
+                    'store',
+                ]
+            }
+        },
         evoxs: {
             dependencies: {
                 externalRoutes: {
