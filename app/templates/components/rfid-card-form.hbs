@@ -14,7 +14,7 @@
                            placeholder=(t 'notes_placeholder')
                            property="description"}}
 
-            {{user-picker form=form selected=card.owner onChange=(action (mut card.owner))}}
+            {{user-picker form=form label=(t 'owner') selected=card.owner onChange=(action (mut card.owner))}}
             {{bs-button defaultText=(t 'submit') type="primary" buttonType="submit"}}
         </fieldset>
     </div>
