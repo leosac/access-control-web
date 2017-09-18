@@ -26,7 +26,14 @@ export default Ember.Service.extend({
                 self.set('config_version', response.config_version);
                 self.set('instance_name', response.instance_name);
                 self.set('uptime', response.uptime);
-                self.set('enabledModules', response.modules);
+                let modules = [];
+                let i = 0;
+                while (response.modules[i])
+                {
+                    modules.push(response.modules[i] + ' ');
+                    i++;
+                }
+                self.set('enabledModules', modules);
             }
         );
     }
