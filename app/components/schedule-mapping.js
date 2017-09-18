@@ -14,7 +14,9 @@ export default Ember.Component.extend({
     newGroup: null,
     actions: {
         addUser() {
-            this.get('mapping').get('users').addObject(this.get('newUser'));
+            this.get('store').findRecord('user', this.get('newUser.id')).then((user) => {
+                this.get('mapping').get('users').addObject(user);
+            });
         },
         addGroup() {
             this.get('store').findRecord('group', this.get('newGroup.id')).then((grp) => {
@@ -49,6 +51,9 @@ export default Ember.Component.extend({
         },
         searchGroup(partialName) {
             return this.get('search').findGroupByName(partialName);
+        },
+        searchUser(partialName) {
+            return this.get('search').findUserByUsername(partialName);
         },
         searchDoor(partialName) {
             return this.get('search').findDoorByAlias(partialName);

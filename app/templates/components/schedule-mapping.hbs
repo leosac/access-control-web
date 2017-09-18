@@ -27,10 +27,12 @@
                 <tbody>
                 {{#each mapping.users as |user|}}
                     {{#link-to 'profile' user.id tagName="tr"}}
-                        <td>
+                        <td class="col-md-1">
                             {{user.id}}
                         </td>
-                        <td>{{user.username}}</td>
+                        <td class="col-md-6">
+                            {{user.username}}
+                        </td>
                         <td>
                             <div class="pull-right">
                                 {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
@@ -44,7 +46,14 @@
         </div>
         <div class="row">
             <div class="pull-left col-md-4">
-                {{user-picker selected=newUser form=form onChange=(action (mut newUser))}}
+                {{#form.element label=(t 'table.group_name')}}
+                    {{#power-select-typeahead search=(action 'searchUser')
+                                              selected=newUser.username
+                                              placeholder=(t 'users.type_group')
+                                              onchange=(action (mut newUser)) as |userInfo|}}
+                        {{userInfo.username}}
+                    {{/power-select-typeahead}}
+                {{/form.element}}
             </div>
             <div class="col-md-2">
                 {{bs-button size='sm' type="primary" onClick=(action "addUser" user)
@@ -69,10 +78,12 @@
                 <tbody>
                 {{#each mapping.groups as |group|}}
                     {{#link-to 'group' group.id tagName="tr"}}
-                        <td>
+                        <td class="col-md-1">
                             {{group.id}}
                         </td>
-                        <td>{{group.name}}</td>
+                        <td class="col-md-6">
+                            {{group.name}}
+                        </td>
                         <td>
                             <div class="pull-right">
                                 {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
@@ -122,11 +133,13 @@
                 <tbody>
                 {{#each mapping.credentials as |cred|}}
                     <tr>
-                        <td>
+                        <td class="col-md-1">
                             {{link-to-credential credential=cred text=cred.id}}
                         </td>
-                        <td>{{cred.type}}</td>
-                        <td>
+                        <td class="col-md-4">
+                            {{cred.type}}
+                        </td>
+                        <td class="col-md-4">
                             {{link-to-credential credential=cred text=cred.alias}}
                         </td>
                         <td>
@@ -169,10 +182,12 @@
                 <tbody>
                 {{#each mapping.doors as |door|}}
                     {{#link-to 'door' door.id tagName="tr"}}
-                        <td>
+                        <td class="col-md-1">
                             {{door.id}}
                         </td>
-                        <td>{{door.alias}}</td>
+                        <td class="col-md-6">
+                            {{door.alias}}
+                        </td>
                         <td>
                             <div class="pull-right">
                                 {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
