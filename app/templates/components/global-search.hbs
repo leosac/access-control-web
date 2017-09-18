@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-offset-1 col-md-10 col-xs-offset-1">
+    <div class="col-md-offset-1 col-md-10 col-xs-offset-1" style="margin-bottom: 1%; margin-top: 1%">
         {{#power-select-typeahead
                 placeholder=(t 'search')
                 search=(action 'findAll')
@@ -8,18 +8,10 @@
                 allowClear=true
                 onchange=(action (mut selected))
         as |result|}}
-            {{result.name}}
-            <span style="color: #9b9aa5;font-style: italic" class="pull-right">{{t result.type}}</span>
+            {{#link-to (choose-path-by-type result.type) result.id tagName='div'}}
+                    {{result.name}}
+                    <span style="color: #9b9aa5;font-style: italic;" class="pull-right" >{{t result.type}}</span>
+            {{/link-to}}
         {{/power-select-typeahead}}
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-offset-1 col-md-10 col-xs-offset-1">
-        <a href="#" {{action 'clear'}}>{{t 'clear_selection'}}</a>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-offset-1 col-md-10 col-xs-offset-1">
-        {{bs-button size='sm' type='primary' text='Go to seleccted' onClick=(action 'goToSelected')}}
     </div>
 </div>

@@ -11,35 +11,18 @@ export default Ember.Component.extend({
     allObjects: [],
     selectedObjects: false,
     selectedZone: '',
-    selected: '',
+    selected: null,
 
     init() {
         this._super(...arguments);
+        this.set('selected', null);
+    },
+    didRender() {
+        this.set('selected', null);
     },
 
     actions:
         {
-            clear()
-            {
-                this.set('selected', null);
-                this.get('onChange')(null);
-            },
-            goToSelected() {
-                if (this.get('selected.type') === 'typeUser')
-                    window.location = '/profile/' + this.get('selected.id');
-                else if (this.get('selected.type') === 'typeZone')
-                    window.location = '/zone/' + this.get('selected.id');
-                else if (this.get('selected.type') === 'typeDoor')
-                    window.location = '/door/' + this.get('selected.id');
-                else if (this.get('selected.type') === 'typeSchedule')
-                    window.location = '/schedule/' + this.get('selected.id');
-                else if (this.get('selected.type') === 'typeGroup')
-                    window.location = '/group/' + this.get('selected.id');
-                else if (this.get('selected.type') === 'typePinCode')
-                    window.location = '/credentials/pin-code/' + this.get('selected.id');
-                else if (this.get('selected.type') === 'typeRfidCard')
-                    window.location = '/credentials/rfid-card/' + this.get('selected.id');
-            },
             /**
              * There is some tricky things happening in this function:
              *
@@ -104,18 +87,20 @@ export default Ember.Component.extend({
                                 id: objects.id
                             };
                         }
-                        else if (objects.type === 'pincode')
+                        else if (objects.type === 'pin-code')
                         {
                             typeObject = {
                                 alias:  objects.nameOrAlias,
+                                name:  objects.nameOrAlias,
                                 type: 'typePinCode',
                                 id: objects.id
                             };
                         }
-                        else if (objects.type === 'rfidcard')
+                        else if (objects.type === 'rfid-card')
                         {
                             typeObject = {
                                 alias:  objects.nameOrAlias,
+                                name:  objects.nameOrAlias,
                                 type: 'typeRfidCard',
                                 id: objects.id
                             };

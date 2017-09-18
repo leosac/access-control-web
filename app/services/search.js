@@ -82,10 +82,27 @@ export default Ember.Service.extend({
      * for each zone that matched
      */
     findZoneByAlias(partialName) {
-        const ws = this.get('websocket')
+        const ws = this.get('websocket');
 
         return new Ember.RSVP.Promise(function (resolve, reject) {
             ws.sendJson('search.zone_alias',
+                {
+                    'partial_name': partialName
+                }).then((data) => resolve(data),
+                (failure) => reject(failure));
+        });
+    },
+
+    /**
+     * Return a promise that resolve to an array of {id, alias, type}
+     * The type is needed because it is pincode or rfidcard, which are to complete separate thing
+     * for each zone that matched
+     */
+    findCredentialByAlias(partialName) {
+        const ws = this.get('websocket');
+
+        return new Ember.RSVP.Promise(function (resolve, reject) {
+            ws.sendJson('search.credential_alias',
                 {
                     'partial_name': partialName
                 }).then((data) => resolve(data),
@@ -111,15 +128,15 @@ export default Ember.Service.extend({
         let promiseGroup = this.findGroupByName(partialName);
         let promiseSchedule = this.findScheduleByName(partialName);
         let promiseUser = this.findUserByUsername(partialName);
-//        let promiseCredentiall = this.findCredentialByAlias(partialName);
+        let promiseCredential = this.findCredentialByAlias(partialName);
 
         return new Ember.RSVP.Promise(function (resolve, reject) {
             Ember.RSVP.all([promiseZone,
                 promiseDoor,
                 promiseGroup,
                 promiseSchedule,
-                promiseUser
-            ]).then((data) => {
+                promiseUser,
+            promiseCredential]).then((data) => {
                 if (data[0]) {
                     data[0].forEach(function (zone) {
                         resultSearch.push({
@@ -166,18 +183,18 @@ export default Ember.Service.extend({
                     });
                 }
                 if (data[5]) {
-                    data[5].forEach(function (credentials) {
-                        if (credentials.type === 'pincode')
+                    data[5].forEach(function (credential) {
+                        if (credential.type === 'pincode')
                             resultSearch.push({
-                                type: 'pincode',
-                                id: pincode.id,
-                                nameOrAlias: pincode.alias
+                                type: 'pin-code',
+                                id: credential.id,
+                                nameOrAlias: credential.alias
                             });
                         else
                             resultSearch.push({
-                                type: 'rfidcard',
-                                id: rfidcard.id,
-                                nameOrAlias: rfidcard.alias
+                                type: 'rfid-card',
+                                id: credential.id,
+                                nameOrAlias: credential.alias
                             });
                     });
                 }
