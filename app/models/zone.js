@@ -14,7 +14,6 @@ const ZoneValidations = buildValidations(
                     max: 15
                 })
         ]
-
     }
 );
 
