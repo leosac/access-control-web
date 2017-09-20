@@ -1,16 +1,18 @@
-GENERAL
-  {{!--#bs-form formLayout="horizontal" as |form|}}
-    <div class="col-md-6" style="margin-top: 1%;">
-      <fieldset>
-        <legend>{{t 'profile.title'}}</legend>
-        {{form.element controlType="text" label=(t 'firstname')
-                       placeholder="John" property="name"}}
-        {{form.element controlType="number" label=(t 'lastname')
-                       placeholder="Doe" property="value"}}
-        {{form.element controlType="direction" label=(t 'email')
+{{#bs-form formLayout="horizontal" model=model as |form|}}
+  <div class="col-md-6" style="margin-top: 1%;">
+    <fieldset>
+      {{form.element controlType="text" label=(t 'name')
+                     placeholder="John" property="name"}}
+      {{form.element controlType="text" label=(t 'lastname')
+                     placeholder="Doe" property="number"}}
+      {{form.element controlType="text" label=(t 'email')
+                     placeholder="john@doe.com" property="direction"}}
+      {{#if model.direction}}
+        {{form.element controlType="text" label=(t 'email')
                        placeholder="john@doe.com" property="direction"}}
+      {{/if}}
 
-        {{bs-button defaultText=(t 'submit') type="primary" onClick=(route-action 'editPifaceDigitalGpio') buttonType="submit"}}
-      </fieldset>
-    </div>
-  {{/bs-form--}}
+      {{bs-button defaultText=(t 'submit') type="primary" onClick=(route-action 'editPifaceDigitalGpio') buttonType="submit"}}
+    </fieldset>
+  </div>
+{{/bs-form}}

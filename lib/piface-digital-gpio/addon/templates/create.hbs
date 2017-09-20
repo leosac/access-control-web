@@ -1,1 +1,35 @@
-CREATE
+{{#bs-form formLayout='horizontal' model=model
+           onSubmit=(route-action "createPifaceDigitalGpio") as | form |}}
+  <div class="col-md-6" style="margin-top: 1%;">
+    <fieldset>
+      {{form.element controlType="text" label=(t 'name')
+                     placeholder="mySuperConfig" property="name"}}
+      {{form.element controlType="text" label=(t 'number')
+                     placeholder="0" property="number"}}
+      {{#form.element property='direction' label=(t 'direction')}}
+        {{#power-select
+          selected=selected
+          searchEnabled=false
+          options=allDirection
+          onchange=(action (mut selected))
+          placeholder=(t 'type_zone')
+        as |direction|}}
+          {{t direction}}
+        {{/power-select}}
+      {{/form.element}}
+
+      {{#if pifaceDigitalGpio.direction}}
+        {{form.element controlType="text" label=(t 'email')
+                       placeholder="john@doe.com" property="direction"}}
+      {{/if}}
+    </fieldset>
+    <div class="col-md-6">
+      {{bs-button class="btn-block" size='md' type="primary" onClick=(route-action 'logIt') defaultText='Get model'}}
+    </div>
+    <div class="col-md-6">
+      {{#bs-button class="btn-block" type="primary" buttonType="submit"}}
+        {{t 'piface-digital-gpio.creates'}}
+      {{/bs-button}}
+    </div>
+  </div>
+{{/bs-form}}

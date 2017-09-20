@@ -12,6 +12,7 @@
     "ember-i18n": "5.0.2",
     "ember-cli-flash": "1.4.3",
     "ember-bootstrap": "1.0.0-rc.2",
+    "ember-power-select": "1.9.6",
     "ember-route-action-helper": "2.0.6"
   }
 }
