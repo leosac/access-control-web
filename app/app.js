@@ -18,8 +18,7 @@ App = Ember.Application.extend({
         smtp: {
             dependencies: {
                 externalRoutes: {
-                    home: 'home',
-                    settings: 'settings'
+                    login: 'login'
                 },
                 services: [
                     'authentication',
@@ -33,8 +32,7 @@ App = Ember.Application.extend({
         pifaceDigitalGpio: {
             dependencies: {
                 externalRoutes: {
-                    home: 'home',
-                    settings: 'settings'
+                    login: 'login'
                 },
                 services: [
                     'authentication',
@@ -48,8 +46,7 @@ App = Ember.Application.extend({
         evoxs: {
             dependencies: {
                 externalRoutes: {
-                    home: 'home',
-                    settings: 'settings'
+                    login: 'login'
                 },
                 services: [
                     'authentication',
