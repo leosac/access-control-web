@@ -1,0 +1,48 @@
+{{#bs-form formLayout="horizontal" model=piface-digital-gpio onSubmit=action as |form|}}
+  <fieldset>
+    <legend>{{t 'configuration'}}</legend>
+    <div class="col-md-4">
+      <div class="row">
+        {{form.element controlType="text" label=(t 'name')
+                       placeholder=(t 'name')
+                       property="name"}}
+      </div>
+      <div class="row">
+        {{form.element controlType="number" label=(t 'number')
+                       placeHolder='0-7'
+                       property="number"}}
+      </div>
+      <div class="row">
+        {{#form.element property="direction" label=(t 'direction')}}
+          {{#power-select
+            selected=piface-digital-gpio.direction
+            searchEnabled=false
+            options=allDirection
+            onchange=(action 'changeSelectedDirection')
+            placeholder=(t 'type_direction')
+          as |direction|}}
+            {{t direction}}
+          {{/power-select}}
+        {{/form.element}}
+      </div>
+      {{#if value}}
+        {{#form.element property='defaultValue' label=(t 'value')}}
+          {{#power-select
+            selected=newValue
+            searchEnabled=false
+            options=allValue
+            onchange=(action 'changeDefaultValue')
+            placeholder=(t 'type_value')
+          as |newValue|}}
+            {{t newValue}}
+          {{/power-select}}
+        {{/form.element}}
+      {{/if}}
+      <div class="row">
+        <div class="col-md-2">
+          {{bs-button defaultText=(t 'submit') type="primary" size="md" buttonType="submit"}}
+        </div>
+      </div>
+    </div>
+  </fieldset>
+{{/bs-form}}

@@ -2,7 +2,6 @@
   {{t 'piface-digital-gpio.create_config'}}
 {{/link-to}}
 
-{{log model}}
 <div class="table-responsive">
   <table class="table table-striped table-hover">
     <thead>
@@ -14,12 +13,13 @@
     <th>{{t 'delete'}}</th>
     </thead>
     <tbody>
-    {{#each model as |config|}}
-      {{#link-to 'piface-digital-gpio' config.id tagName = "tr"}}
-        <td>{{config.id}}</td>
-        <td>{{config.name}}</td>
-        <td>{{t config.direction}}</td>
-        <td>{{config.value}}</td>
+    {{#each model as |piface-digital-gpio|}}
+      {{#link-to 'piface-digital-gpio' piface-digital-gpio.id tagName = "tr"}}
+        <td>{{piface-digital-gpio.id}}</td>
+        <td>{{piface-digital-gpio.name}}</td>
+        <td>{{piface-digital-gpio.number}}</td>
+        <td>{{t piface-digital-gpio.direction}}</td>
+        <td>{{piface-digital-gpio.defaultValue}}</td>
         <td>
           {{button-with-confirmation
             type='danger'
@@ -27,7 +27,7 @@
             size='xs'
             text=(t 'delete')
             message=(t 'piface-digital-gpio.delete_confirm')
-            onConfirm=(route-action 'deletePifaceDigitalGpio' config)}}
+            onConfirm=(route-action 'deletePifaceDigitalGpio' piface-digital-gpio)}}
         </td>
       {{/link-to}}
     {{/each}}
