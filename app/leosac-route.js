@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import ENV from 'web/config/environment';
+//import config from 'web/config/environement';
 
 /**
  * This is a base route for the application.
@@ -24,6 +25,11 @@ import ENV from 'web/config/environment';
  *       method, it MUST call `this._super()` otherwise this
  *       base route will be useless.
  */
+
+function test(self) {
+    console.log('We are in test');
+}
+
 export default Ember.Route.extend({
     i18n: Ember.inject.service(),
     globalInfo: Ember.inject.service('leosac-info'),
@@ -88,8 +94,18 @@ function redirectIfNotAuth(route)
 
     if (promise_or_ret === false)
     {
-        self.transitionTo('login');
-        return;
+        /**
+         * This is a small hack that allow us to navigate to login
+         *
+         * The hack is quite simple, it check if the route name match the current route.
+         * if not, then this is an engine. That's it.
+         */
+        if (self.fullRouteName === self.routeName)
+            self.transitionTo('login');
+        else
+            self.transitionToExternal('login');
+        return ;
+
     }
     else if (promise_or_ret === true)
     {
@@ -101,7 +117,11 @@ function redirectIfNotAuth(route)
         // success, do nothing and let user reach page
     }, function ()
     {
-        self.transitionTo('login');
+        if (self.fullRouteName === self.routeName)
+            self.transitionTo('login');
+        else
+            self.transitionToExternal('login');
+
     });
     return promise_or_ret;
 }
