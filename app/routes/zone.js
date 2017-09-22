@@ -11,17 +11,7 @@ export default LeosacRoute.extend({
     model(params)
     {
         "use strict";
-        // fixme: THIS IS AN HORRIBLE HACK !
-        // The alias of the linked door didn't show in the view for
-        // some unknown reason, despite the relationship being fetched.
-        // This is really horrible because it loads all door to make sure
-        // they are present in memory when the zone is loaded.
-        // It works, but THIS NEEDS FIXING.
-        // fixme FIX ME PLS
-        return this.get('store').findAll('door').then(() =>
-        {
-            return this.get('store').findRecord('zone', params.zone_id);
-        });
+        return this.get('store').findRecord('zone', params.zone_id);
     },
     resetController(controller, isExiting/*, transition*/)
     {
