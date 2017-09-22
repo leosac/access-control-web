@@ -31,7 +31,7 @@ const RFIDCardValidations = buildValidations(
                 }),
                 validator('format', {
                     // language=JSRegexp
-                    // regex for the rfid card number, a sequence of number in hexadecimal (16^n) separated by the ':' character
+                    // regex for the rfid card number, a sequence of number in hexadecimal (8 * 2 ^ ( number of hexadecimal double)) separated by the ':' character
                     regex: /^[0-9A-F]{2}(?::[0-9A-F]{2})*$/i,
                     messageKey: 'credentials.rfid_card.error'
 //                    message : "Invalid format, should be a sequence of two hexadecimal number(0-9A-F), separated by colon(:). Exampe: '0A:2b:8E:9f'"
