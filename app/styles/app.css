@@ -156,3 +156,7 @@ h1 {
 .jstree-node {
     font-size: 12pt;
 }
+
+.form-horizontal .has-feedback .form-control-feedback {
+  right: 25px;
+}
