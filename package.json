@@ -69,7 +69,6 @@
   },
   "ember-addon": {
     "paths": [
-      "lib/in-app-blog",
       "lib/piface-digital-gpio",
       "lib/smtp",
       "lib/wiegang"

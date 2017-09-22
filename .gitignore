@@ -82,3 +82,5 @@ package-lock.json
 /lib/**/package-lock.json
 /lib/**/bower_components/
 package-lock.json
+
+tests/
