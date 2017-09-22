@@ -129,6 +129,11 @@ export default {
     'yes': 'Oui',
     'zones': 'Zones',
 
+    'informations': {
+        'card_id': 'Vu que nous devons fournir une suite de nombre hexadécimals suivis de double point, cela doit suivre le format suivant : 00:b1:cC:9f ou l\'expression régulière: /[0-9A-F]{2}(?::[0-9A-F]{2})*$/i .',
+        'number_of_bit': 'Le nombre de bits définit la longueur de l\'identifiant hexadécimal ci-dessus. Pour votre information, un nombre hexadécimal est codé sur 4 bits. Les doubles points n\'entrent pas dans ce compte, mais doivent quand même être écrits.'
+    },
+
     // To avoid duplication, we may need to put single word into a namespace
     'w': {
         'door': 'Porte',
