@@ -1,16 +1,21 @@
 {{#bs-form formLayout="horizontal" model=piface-digital-gpio onSubmit=action as |form|}}
   <fieldset>
-    <legend>{{t 'configuration'}}</legend>
     <div class="col-md-4">
       <div class="row">
-        {{form.element controlType="text" label=(t 'name')
-                       placeholder=(t 'name')
-                       property="name"}}
+        {{#form.element controlType="text" label=(t 'name')
+                        placeholder=(t 'name')
+                        property="name" as |el|}}
+          {{el.control}}
+          {{#bs-tooltip placement="right" triggerEvents='hover'}}{{t 'information.name'}}{{/bs-tooltip}}
+        {{/form.element}}
       </div>
       <div class="row">
-        {{form.element controlType="number" label=(t 'number')
-                       placeHolder='0-7'
-                       property="number"}}
+        {{#form.element controlType="number" label=(t 'number')
+                        placeholder='0 - 7'
+                        property="number" as |el|}}
+          {{el.control}}
+          {{#bs-tooltip placement="right"}}{{t 'information.number'}}{{/bs-tooltip}}
+        {{/form.element}}
       </div>
       <div class="row">
         {{#form.element property="direction" label=(t 'direction')}}
@@ -18,29 +23,37 @@
             selected=piface-digital-gpio.direction
             searchEnabled=false
             options=allDirection
-            onchange=(action 'changeSelectedDirection')
+            onchange=(action (mut piface-digital-gpio.direction))
             placeholder=(t 'type_direction')
           as |direction|}}
             {{t direction}}
           {{/power-select}}
+          {{#bs-tooltip placement="right"}}{{t 'information.direction'}}{{/bs-tooltip}}
         {{/form.element}}
       </div>
-      {{#if value}}
-        {{#form.element property='defaultValue' label=(t 'value')}}
-          {{#power-select
-            selected=newValue
-            searchEnabled=false
-            options=allValue
-            onchange=(action 'changeDefaultValue')
-            placeholder=(t 'type_value')
-          as |newValue|}}
-            {{t newValue}}
-          {{/power-select}}
-        {{/form.element}}
-      {{/if}}
+      <div class="row">
+        {{#if (eq piface-digital-gpio.direction 'out')}}
+          {{#form.element property='defaultValue' label=(t 'value')}}
+            {{#power-select
+              selected=piface-digital-gpio.defaultValue
+              searchEnabled=false
+              options=allValue
+              onchange=(action (mut piface-digital-gpio.defaultValue))
+              placeholder=(t 'type_value')
+            as |newValue|}}
+              {{t newValue}}
+            {{/power-select}}
+            {{#bs-tooltip placement="right" triggerEvent='hover'}}{{t 'information.value'}}{{/bs-tooltip}}
+          {{/form.element}}
+        {{/if}}
+      </div>
       <div class="row">
         <div class="col-md-2">
-          {{bs-button defaultText=(t 'submit') type="primary" size="md" buttonType="submit"}}
+          {{bs-button
+            defaultText=(t 'submit')
+            type="primary"
+            size="md"
+            buttonType="submit"}}
         </div>
       </div>
     </div>
