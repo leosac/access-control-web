@@ -19,7 +19,13 @@
         <td>{{piface-digital-gpio.name}}</td>
         <td>{{piface-digital-gpio.number}}</td>
         <td>{{t piface-digital-gpio.direction}}</td>
-        <td>{{piface-digital-gpio.defaultValue}}</td>
+        <td>
+          {{#if piface-digital-gpio.defaultValue}}
+            {{t 'true'}}
+          {{else}}
+            {{t 'false'}}
+          {{/if}}
+        </td>
         <td>
           {{button-with-confirmation
             type='danger'
