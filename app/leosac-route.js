@@ -26,10 +26,6 @@ import ENV from 'web/config/environment';
  *       base route will be useless.
  */
 
-function test(self) {
-    console.log('We are in test');
-}
-
 export default Ember.Route.extend({
     i18n: Ember.inject.service(),
     globalInfo: Ember.inject.service('leosac-info'),
@@ -42,7 +38,18 @@ export default Ember.Route.extend({
         onLogout()
         {
             "use strict";
-            this.transitionTo('login');
+
+            const  self = this;
+            /**
+             * This is a small hack that allow us to navigate to login
+             *
+             * The hack is quite simple, it check if the route name match the current route.
+             * if not, then this is an engine.
+             */
+            if (self.fullRouteName === self.routeName)
+                self.transitionTo('login');
+            else
+                self.transitionToExternal('login');
         },
         /**
          * An error was raised by a custom component.
@@ -98,7 +105,7 @@ function redirectIfNotAuth(route)
          * This is a small hack that allow us to navigate to login
          *
          * The hack is quite simple, it check if the route name match the current route.
-         * if not, then this is an engine. That's it.
+         * if not, then this is an engine.
          */
         if (self.fullRouteName === self.routeName)
             self.transitionTo('login');
