@@ -21,42 +21,32 @@
     </div>
 
     <div class="row">
-        <div class="col-md-3 tex-center" style="padding-top: 1%">
-            {{#bs-form as |from|}}
-                {{#form.element label=(t 'page_size') property="logPerPage" as |el|}}
-                    <input class="form-control"
-                           placeholder="20"
-                           type="number"
-                           value={{el.value}}
-                                   oninput={{action (mut el.value)
-                                                    value="target.value"}}
-                           onchange={{action (mut el.value)
-                                             value="target.value"}}
-                                   id={{el.id}}>
-                {{/form.element}}
-            {{/bs-form}}
-        </div>
+        <div class="col-md-3" style="padding-top: 1%">
+          {{#bs-form as |form|}}
+            {{form.element controlType='number' property=logPerPage label=(t 'page_size') onChange=(action (mut logPerPage))}}
+          {{/bs-form}}
+      </div>
 
-        <div class="col-md-5 text-center">
-            {{numbered-paginator first=0
-                                 last=lastLogPage
-                                 current=currentLogPage
-                                 onPageChange=(action "updateLogPageNumber")
-            }}
-        </div>
+      <div class="col-md-5 text-center">
+        {{numbered-paginator first=0
+                             last=lastLogPage
+                             current=currentLogPage
+                             onPageChange=(action "updateLogPageNumber")
+        }}
+      </div>
 
-        <div class=" col-md-4 text-center" style="padding-top: 2%">
-            {{t 'overview.total_logs' totalLogs=totalLogs}}
-        </div>
+      <div class=" col-md-4 text-center" style="padding-top: 2%">
+        {{t 'overview.total_logs' totalLogs=totalLogs}}
+      </div>
     </div>
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            {{t 'overview.last_logs'}}
-        </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      {{t 'overview.last_logs'}}
+    </div>
 
-        <div class="panel-body">
-            {{logs-view logs=lastLogs}}
+    <div class="panel-body">
+      {{logs-view logs=lastLogs}}
         </div>
     </div>
 </div>
