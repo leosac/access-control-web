@@ -30,6 +30,7 @@ export default Ember.Service.extend({
             {
                 queue.forEach(function (payload)
                 {
+
                     ws.send(JSON.stringify(payload));
                 });
                 queue = [];
@@ -71,14 +72,33 @@ export default Ember.Service.extend({
             {
                 if (obj.status_code === 11)
                 {
-                    // MODEL_EXCEPTION. We should have a "content.errors" array.
-                    // We wraps the errors array in an DS.InvalidError object
-                    // so that validation can automatically apply.
+                    /**
+                     * If the error returned by the server correspond to the number eleven(11),
+                     * it means that this is an generic error, not specific to one case.
+                     * And to be sure that this error is intended to the front-end,
+                     * we check if the pointer of the error is null.
+                     *
+                     * The error_code is not yet implemented,
+                     * this will be useful if we want to translate the message on the web server
+                     *
+                     * The sticky = true method will help the person using the application to fully read the message.
+                     */
+
+                    let string = obj.content.errors[0].detail;
+                    let pointer = obj.content.errors[0].source.pointer;
+                    // let error_code = obj.content.errors[0].error_code;
+
+                    if (pointer === 'data')
+                        self.get('flashMessages').danger(string, {
+                            sticky: true
+                        });
                     cb.error(new DS.InvalidError(obj.content.errors));
                 }
                 else if (obj.status_code !== 0)
                 {
-                    self.get('flashMessages').danger('Error: ' + obj.status_string);
+                    self.get('flashMessages').danger('Error: ' + obj.status_string, {
+                        sticky: true
+                    });
                     cb.error(obj);
                 }
                 else
