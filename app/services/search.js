@@ -116,9 +116,9 @@ export default Ember.Service.extend({
      *
      * Firstly, we call all our promise that need to be resolved
      *
-     * Then we use Promise all() that will wait that all our promise are resolved,
+     * Then we use Promise all() that will wait that our promise are resolved,
      *
-     * And  then we fill the object that will be sent to the application
+     * And  then we fill the object that will be used by the global research field for example
      */
     findAllByAlias(partialName) {
         let resultSearch = [];
@@ -210,8 +210,7 @@ export default Ember.Service.extend({
     listAccessPointModuleNames()
     {
         return ['EVOXS'];
-    }
-    ,
+    },
 
     /**
      * @see findDoorByAlias.
