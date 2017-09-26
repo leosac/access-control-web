@@ -9,20 +9,43 @@ export default Ember.Service.extend({
     callback: [],
     beforeOpen: [],
     store: Ember.inject.service(),
+    isConnected: false,
 
     init()
     {
         "use strict";
+        this.initWebsocket('ws://' + ENV.APP.leosacAddr + '/websocket', null);
+    },
+
+
+
+    attemptToReconnect() {
+        const self = this;
+        let deferred = Ember.RSVP.defer();
+
+        deferred.promise.then(function() {
+            let token = self.get('authSrv').fetchLocalAuthToken();
+            if (token)
+                self.get('authSrv').authenticateWithToken(token);
+        });
+
+        this.initWebsocket('ws://' + ENV.APP.leosacAddr + '/websocket', deferred);
+    },
+
+    initWebsocket: function(addr, deferred) {
         console.log('Service is initializing ...');
 
         let ws = this.get('ws');
-        ws = new WebSocket('ws://' + ENV.APP.leosacAddr + '/websocket');
+        ws = new WebSocket(addr);
+
         let self = this;
 
         ws.onopen = function ()
         {
             console.log('WS opened');
 
+            if (deferred)
+                deferred.resolve();
             // Process item that were queued before the connection
             // was ready.
             let queue = self.get('beforeOpen');
@@ -30,7 +53,6 @@ export default Ember.Service.extend({
             {
                 queue.forEach(function (payload)
                 {
-
                     ws.send(JSON.stringify(payload));
                 });
                 queue = [];
@@ -117,6 +139,7 @@ export default Ember.Service.extend({
 
             // Flush all pending callback and mark them as error.
             const pending_callbacks = self.get('callback');
+
             for (let key in pending_callbacks)
             {
                 if (!pending_callbacks.hasOwnProperty(key))
@@ -128,6 +151,37 @@ export default Ember.Service.extend({
                     content: {}
                 });
             }
+
+            // we will try to reconnect here
+            let value = 0;
+            let count = 0;
+            let exponential = 0.0;
+            let arrayValue = [];
+
+            while (value < 200)
+            {
+                value = Math.exp(exponential);
+                value = value * exponential * 100;
+                arrayValue[count] = value;
+                count++;
+                exponential += 0.1;
+            }
+
+            self.get('flashMessages').danger('In 5 second, the application will refresh the page automatically.',
+                {
+                    sticky: true
+                });
+
+            setTimeout(function()
+            {
+                self.attemptToReconnect();
+            }, 5000);
+            // Ember.run.later(function () {
+            //     //              let count = 0;
+            //     self.initWebsocket(addr);
+            //     self.get('authServ').init();
+            //     //                timeout(count);
+            // }, 5000);
         };
         this.set('ws', ws);
 
