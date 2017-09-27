@@ -1,9 +1,15 @@
 <footer class="navbar-fixed-bottom">
-    <div class="container">
-        <p class="text-muted text-center">
-            {{getenv 'appname'}} version: {{globalInfo.version}}
-            --
-            {{#link-to "about"}}{{t 'about.title'}}{{/link-to}} - {{getenv 'siteUrl'}}
-        </p>
-    </div>
+  <div class="container">
+    <p class="text-muted text-center">
+      {{getenv 'appname'}} version: {{globalInfo.version}}
+      --
+      {{#link-to "about"}}{{t 'about.title'}}{{/link-to}} - {{getenv 'siteUrl'}}
+      --
+      {{#if ws.isConnected}}
+        <i class="fa fa-check" style="color: #5cb85c"></i> {{t 'connected'}}
+      {{else}}
+        <i class="fa fa-refresh fa-spin" style="color: #b52b27"></i> {{t 'disconnected'}}
+      {{/if}}
+    </p>
+  </div>
 </footer>
