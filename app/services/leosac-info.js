@@ -6,7 +6,7 @@ import config from '../config/environment';
  */
 export default Ember.Service.extend({
     websocket: Ember.inject.service('websocket'),
-
+    modules: Ember.inject.service('module-manager'),
     /**
      * The version number of the Leosac server.
      */
@@ -28,6 +28,7 @@ export default Ember.Service.extend({
         this.setNameApp((localStorage.app_name || config.APP.appname), 1);
 
         let self = this;
+        console.log(this.get('modules'));
         let ws = self.get('websocket');
         ws.sendJson('get_leosac_version', {}).then(
             function (response)
