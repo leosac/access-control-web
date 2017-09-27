@@ -17,15 +17,13 @@ export default Ember.Service.extend({
         this.initWebsocket('ws://' + ENV.APP.leosacAddr + '/websocket', null);
     },
 
-
-
     attemptToReconnect() {
         const self = this;
         let deferred = Ember.RSVP.defer();
 
         deferred.promise.then(function() {
             let token = self.get('authSrv').fetchLocalAuthToken();
-            if (token)
+            if (!!token && token !== 'false')
                 self.get('authSrv').authenticateWithToken(token);
         });
 
@@ -44,8 +42,10 @@ export default Ember.Service.extend({
         {
             console.log('WS opened');
 
-            if (deferred)
+            self.set('isConnected', true);
+            if (deferred) {
                 deferred.resolve();
+            }
             // Process item that were queued before the connection
             // was ready.
             let queue = self.get('beforeOpen');
@@ -131,12 +131,6 @@ export default Ember.Service.extend({
 
         ws.onclose = function (/*event*/)
         {
-            self.get('flashMessages').danger('Websocket connection lost.\n' +
-                'Please refresh the page.',
-                {
-                    sticky: true
-                });
-
             // Flush all pending callback and mark them as error.
             const pending_callbacks = self.get('callback');
 
@@ -167,21 +161,12 @@ export default Ember.Service.extend({
                 exponential += 0.1;
             }
 
-            self.get('flashMessages').danger('In 5 second, the application will refresh the page automatically.',
-                {
-                    sticky: true
-                });
+            self.set('isConnected', false);
 
             setTimeout(function()
             {
                 self.attemptToReconnect();
             }, 5000);
-            // Ember.run.later(function () {
-            //     //              let count = 0;
-            //     self.initWebsocket(addr);
-            //     self.get('authServ').init();
-            //     //                timeout(count);
-            // }, 5000);
         };
         this.set('ws', ws);
 
