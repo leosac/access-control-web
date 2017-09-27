@@ -30,9 +30,7 @@
         </td>
         <td>
           {{#if (eq piface-digital-gpio.direction 'out')}}
-            {{#if (eq piface-digital-gpio.defaultValue 'true')}}
               {{piface-digital-gpio-test gpioId=piface-digital-gpio.id}}
-            {{/if}}
           {{/if}}
         </td>
         <td>

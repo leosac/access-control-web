@@ -45,11 +45,9 @@
               {{/power-select}}
               {{#bs-tooltip placement="right" triggerEvent='hover'}}{{t 'information.value'}}{{/bs-tooltip}}
             {{/form.element}}
-          {{#if (eq piface-digital-gpio.defaultValue 'true')}}
             <div class="col-md-offset-4 col-md-4">
               {{piface-digital-gpio-test gpioId=piface-digital-gpio.id}}
             </div>
-          {{/if}}
         {{/if}}
       </div>
       <div class="row">
