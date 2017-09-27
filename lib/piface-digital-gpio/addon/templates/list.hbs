@@ -22,7 +22,7 @@
         <td>{{piface-digital-gpio.number}}</td>
         <td>{{t piface-digital-gpio.direction}}</td>
         <td>
-          {{#if piface-digital-gpio.defaultValue}}
+          {{#if (eq piface-digital-gpio.defaultValue 'true')}}
             {{t 'true'}}
           {{else}}
             {{t 'false'}}
