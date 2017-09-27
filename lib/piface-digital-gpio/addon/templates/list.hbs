@@ -11,6 +11,7 @@
     <th>{{t 'number'}}</th>
     <th>{{t 'direction'}}</th>
     <th>{{t 'value'}}</th>
+    <th>Test</th>
     <th>{{t 'delete'}}</th>
     </thead>
     <tbody>
@@ -25,6 +26,13 @@
             {{t 'true'}}
           {{else}}
             {{t 'false'}}
+          {{/if}}
+        </td>
+        <td>
+          {{#if (eq piface-digital-gpio.direction 'out')}}
+            {{#if (eq piface-digital-gpio.defaultValue 'true')}}
+              {{piface-digital-gpio-test gpioId=piface-digital-gpio.id}}
+            {{/if}}
           {{/if}}
         </td>
         <td>
