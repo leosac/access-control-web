@@ -25,7 +25,8 @@ module.exports = function (environment)
             leosacAddr: null,
             //leosacAddr: '10.2.1.5:8888',
             appname: 'Leosac Graphical User Interface',
-            logoUrl: '/assets/images/leosac_logo.png',
+            pathToEveryImage: '/assets/leosac/',
+            logoUrl: '/assets/leosac/logo.png',
             siteUrl: 'leosac.com',
         }
     };

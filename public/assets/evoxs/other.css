@@ -1,7 +1,7 @@
 body {
-  background-color: #eee;
-  min-height: 100%;
-  padding-bottom: 35px;
+    background-color: #eee;
+    min-height: 100%;
+    padding-bottom: 35px;
 }
 
 /**
@@ -20,15 +20,6 @@ body {
 
 .form-signin .checkbox {
     font-weight: normal;
-}
-
-.table-striped>tbody>tr:nth-child(odd)>td,
-.table-striped>tbody>tr:nth-child(odd)>th {
-  background-color: #F7F7FF; // Choose your own color here
-}
-
-.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-  background-color: #F7F7FF;
 }
 
 .form-signin .form-control {
@@ -89,11 +80,11 @@ body {
 }
 
 a:hover {
-    color: #0070c0;
+    color: #1E90FF;
 }
 
 .navbar-default {
-    border-color: #0070c0;
+    border-color: #1E90FF;
 }
 
 .navbar-fixed-bottom {
@@ -102,27 +93,31 @@ a:hover {
 }
 
 .btn-primary {
-    background-color: #0070c0;
-    border-color: #0066ff;
+    background-color: #1E90FF;
+    border-color: #DB7200;
 }
 
 .btn-primary.active {
-    background-color: #0066ff;
-    border-color: #0066ff;
+    background-color: #DB7200;
+    border-color: #DB7200;
 }
 
 .btn-primary:hover {
-    background-color: #004D85;
-    border-color: #FFFFFF;
+    background-color: #C06800;
+    border-color: #DB7200;
 }
 
 .btn-primary.active:hover {
-    background-color: #004D85;
-    border-color: #0066ff;
+    background-color: #C06800;
+    border-color: #DB7200;
+}
+
+h1 {
+    color: #1E90FF;
 }
 
 .panel-default .panel-heading {
-    background-color: #0070c0;
+    background-color: #1E90FF;
     color: #fff;
 }
 
@@ -131,7 +126,7 @@ a:hover {
 }
 
 .table-responsive table thead {
-    background-color: #0070c0;
+    background-color: #1E90FF;
     color: #fff;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -152,16 +147,12 @@ a:hover {
 }
 
 .page-wrapper {
-  border: 1px;
-  height: 100%;
-  margin: 0 auto;
-  overflow: hidden;
+    border: 1px;
+    height: 100%;
+    margin: 0 auto;
+    overflow: hidden;
 }
 
 .jstree-node {
     font-size: 12pt;
-}
-
-.form-horizontal .has-feedback .form-control-feedback {
-  right: 25px;
 }

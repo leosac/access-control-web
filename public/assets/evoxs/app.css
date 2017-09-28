@@ -22,15 +22,6 @@ body {
     font-weight: normal;
 }
 
-.table-striped>tbody>tr:nth-child(odd)>td,
-.table-striped>tbody>tr:nth-child(odd)>th {
-  background-color: #F7F7FF; // Choose your own color here
-}
-
-.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-  background-color: #F7F7FF;
-}
-
 .form-signin .form-control {
     position: relative;
     -webkit-box-sizing: border-box;
@@ -89,11 +80,11 @@ body {
 }
 
 a:hover {
-    color: #0070c0;
+    color: #EE7C00;
 }
 
 .navbar-default {
-    border-color: #0070c0;
+    border-color: #EE7C00;
 }
 
 .navbar-fixed-bottom {
@@ -102,27 +93,31 @@ a:hover {
 }
 
 .btn-primary {
-    background-color: #0070c0;
-    border-color: #0066ff;
+    background-color: #EE7C00;
+    border-color: #DB7200;
 }
 
 .btn-primary.active {
-    background-color: #0066ff;
-    border-color: #0066ff;
+    background-color: #DB7200;
+    border-color: #DB7200;
 }
 
 .btn-primary:hover {
-    background-color: #004D85;
-    border-color: #FFFFFF;
+    background-color: #C06800;
+    border-color: #DB7200;
 }
 
 .btn-primary.active:hover {
-    background-color: #004D85;
-    border-color: #0066ff;
+    background-color: #C06800;
+    border-color: #DB7200;
+}
+
+h1 {
+    color: #EE7C00;
 }
 
 .panel-default .panel-heading {
-    background-color: #0070c0;
+    background-color: #EE7C00;
     color: #fff;
 }
 
@@ -131,7 +126,7 @@ a:hover {
 }
 
 .table-responsive table thead {
-    background-color: #0070c0;
+    background-color: #EE7C00;
     color: #fff;
     padding-top: 5px;
     padding-bottom: 5px;

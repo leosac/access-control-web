@@ -19,16 +19,17 @@ export default Ember.Service.extend({
     current_view_title: "Default",
     userLocale: 'en',
     appNameLocal: '',
+    pathToEveryImage: '',
 
     init()
     {
         "use strict";
         //this will set the locale variable
+        this.setPathToEveryImage(localStorage.path_to_every_image || config.APP.pathToEveryImage);
         this.setLocale(localStorage.user_locale || 'en');
         this.setNameApp((localStorage.app_name || config.APP.appname), 1);
 
         let self = this;
-        console.log(this.get('modules'));
         let ws = self.get('websocket');
         ws.sendJson('get_leosac_version', {}).then(
             function (response)
@@ -41,6 +42,13 @@ export default Ember.Service.extend({
             }
         );
     },
+
+    setPathToEveryImage(path)
+    {
+        this.set('pathToEveryImage', path);
+        localStorage.path_to_every_image = path;
+    },
+
     setLocale(loc)
     {
         this.set('userLocale', loc);
