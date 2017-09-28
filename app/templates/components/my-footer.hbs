@@ -3,7 +3,7 @@
     <p class="text-muted text-center">
       {{getenv 'appname'}} version: {{globalInfo.version}}
       --
-      {{#link-to "about"}}{{t 'about.title'}}{{/link-to}} - {{getenv 'siteUrl'}}
+      <a href="http://www.{{getenv 'siteUrl'}}">Leosac</a>
       --
       {{#if ws.isConnected}}
         <i class="fa fa-check" style="color: #5cb85c"></i> {{t 'connected'}}

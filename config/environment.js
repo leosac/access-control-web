@@ -24,9 +24,9 @@ module.exports = function (environment)
             // LEOSAC_ADDR environement variable.
             leosacAddr: null,
             //leosacAddr: '10.2.1.5:8888',
-            appname: 'EvoXS Management Studio',
-            logoUrl: '/assets/images/logo.png',
-            siteUrl: 'izyx-systems.com',
+            appname: 'Leosac Graphical User Interface',
+            logoUrl: '/assets/images/leosac_logo.png',
+            siteUrl: 'leosac.com',
         }
     };
 
