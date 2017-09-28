@@ -110,7 +110,7 @@ export default Ember.Service.extend({
                     let pointer = obj.content.errors[0].source.pointer;
                     // let error_code = obj.content.errors[0].error_code;
 
-                    if (pointer === 'data')
+                    if (pointer === '')
                         self.get('flashMessages').danger(string, {
                             sticky: true
                         });
