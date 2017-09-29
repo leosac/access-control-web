@@ -16,6 +16,9 @@ Ember.warn = function(i){
 App = Ember.Application.extend({
     engines: {
         smtp: {
+            leosacProperty: {
+                needServer: true
+            },
             dependencies: {
                 externalRoutes: {
                     login: 'login'
@@ -31,6 +34,9 @@ App = Ember.Application.extend({
             }
         },
         pifaceDigitalGpio: {
+            leosacProperty: {
+                needServer: true
+            },
             dependencies: {
                 externalRoutes: {
                     login: 'login'
@@ -46,6 +52,9 @@ App = Ember.Application.extend({
             }
         },
         evoxs: {
+            leosacProperty: {
+                needServer: false
+            },
             dependencies: {
                 externalRoutes: {
                     login: 'login'
