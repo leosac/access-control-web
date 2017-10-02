@@ -54,6 +54,10 @@ module.exports = function (environment)
         // ENV.APP.LOG_VIEW_LOOKUPS = true;
     }
 
+    if (environment === 'production') {
+        ENV.rootURL = '/dist';
+    }
+
     if (environment === 'test')
     {
 	ENV.i18n = ENV.i18n || {};
