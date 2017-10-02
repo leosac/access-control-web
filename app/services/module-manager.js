@@ -30,8 +30,8 @@ export default Ember.Service.extend({
     onlyPresentClient: [],
 
     init() {
-      this._super(...arguments);
-      this.fetchModule();
+        this._super(...arguments);
+        this.fetchModule();
     },
 
     /**
@@ -52,11 +52,18 @@ export default Ember.Service.extend({
                  * @type {Array}
                  */
 
-                let modulesServer = [];
+                    // Some commented code here, because the server doesn't make any differences
+                    // between the loaded by both or only the by the server
+
+                let modulesShouldBeLoadedOnServer = [];
+                let modulesShouldBeLoadedOnBothServer = [];
                 let i = 0;
                 while (response.modules[i])
                 {
-                    modulesServer.push(response.modules[i]);
+//                    if (response.modules[i].data === 0)
+                    modulesShouldBeLoadedOnBothServer.push(response.modules[i]);
+//                    else
+                    modulesShouldBeLoadedOnServer.push(response.modules[i]);
                     i++;
                 }
 
@@ -73,35 +80,53 @@ export default Ember.Service.extend({
                  */
 
                 let modulesClient = Object.entries(container);
-                let modulesShouldBeLoadedOnBoth = [];
+                let modulesShouldBeLoadedOnBothClient = [];
                 let modulesShouldBeLoadedOnClient = [];
 
                 modulesClient.forEach(function(module) {
                     if (module[1].leosacProperty.needServer)
-                        modulesShouldBeLoadedOnBoth.push(module[0]);
+                        modulesShouldBeLoadedOnBothClient.push(module[0]);
                     else
                         modulesShouldBeLoadedOnClient.push(module[0]);
                 });
 
-                //  console.log(modulesShouldBeLoadedOnBoth);
-                modulesServer = formatName(modulesServer);
-                modulesShouldBeLoadedOnBoth = formatName(modulesShouldBeLoadedOnBoth);
+                /**
+                 * Here we will reformat the name of each module so that they are serialized:
+                 * - upper case
+                 * - no underscore
+                 */
+
+                modulesShouldBeLoadedOnServer = formatName(modulesShouldBeLoadedOnServer);
+                modulesShouldBeLoadedOnBothServer = formatName(modulesShouldBeLoadedOnBothServer);
                 modulesShouldBeLoadedOnClient = formatName(modulesShouldBeLoadedOnClient);
+                modulesShouldBeLoadedOnBothClient = formatName(modulesShouldBeLoadedOnBothClient);
+
                 let modulesLoadedByBoth = [];
 
                 /**
                  * Now we will fill an array with the module that should be loaded by both,
-                 * but are only loaded by the client
+                 * but are only loaded by the client, and the server afterward
                  * @type {[null,null,null]}
                  */
 
-                let modulesNotLoadedByTheServer = modulesShouldBeLoadedOnBoth;
+                let modulesNotLoadedByTheServer = [];
+                let modulesNotLoadedByTheClient = [];
+
+                modulesShouldBeLoadedOnBothClient.forEach(function(name) {
+                    modulesNotLoadedByTheServer.push(name);
+                });
+                modulesShouldBeLoadedOnBothServer.forEach(function(name) {
+                    modulesNotLoadedByTheClient.push(name);
+                });
                 i = 0;
 
-                while (modulesServer[i]) {
+                while (modulesShouldBeLoadedOnBothServer[i])
+                {
                     let j = 0;
-                    while (modulesShouldBeLoadedOnBoth[j]) {
-                        if (modulesShouldBeLoadedOnBoth[j] === modulesServer[i]) {
+                    while (modulesNotLoadedByTheServer[j])
+                    {
+                        if (modulesNotLoadedByTheServer[j] === modulesShouldBeLoadedOnBothServer[i])
+                        {
                             modulesLoadedByBoth.push(modulesNotLoadedByTheServer[j]);
                             modulesNotLoadedByTheServer.splice(j, 1);
                         }
@@ -109,25 +134,47 @@ export default Ember.Service.extend({
                     }
                     i++;
                 }
-                console.log(modulesServer);
-                console.log(modulesShouldBeLoadedOnClient);
-                console.log(modulesLoadedByBoth);
-                console.log(modulesNotLoadedByTheServer);
 
-                // /**
-                //  * At this point, we have three object:
-                //  *  - Contain all modules from the server (modulesServer)
-                //  *  - Contain all modules from the client (modulesClient)
-                //  *  - Contain every module that are present in both the client and the server (presentInBoth)
-                //  *
-                //  *  Here is function that will remove from the server and client array
-                //  *  everything that is in the presentInBoth.
-                //  */
 
-                self.set('serverModules', modulesServer);
+
+                i = 0;
+                let checkOccurrence = 0;
+                while (modulesShouldBeLoadedOnBothClient[i])
+                {
+                    let j = 0;
+                    while (modulesNotLoadedByTheClient[j])
+                    {
+                        if (modulesNotLoadedByTheClient[j] === modulesShouldBeLoadedOnBothClient[i])
+                        {
+                            if (modulesNotLoadedByTheClient[j] === modulesLoadedByBoth[checkOccurrence]) {
+                                checkOccurrence++;
+                            }
+                            else
+                                modulesLoadedByBoth.push(modulesNotLoadedByTheClient[j])
+                            modulesNotLoadedByTheClient.splice(j, 1);
+                        }
+                        j++;
+                    }
+                    i++;
+                }
+
+
+                /**
+                 * At this point, we have five object:
+                 * - modulesServer, which contain every module loaded by the server
+                 * - clientModules, which contain every modules that should be loaded by the client
+                 * - shouldPresentBoth: which contain the modules that are loaded by the server and the client
+                 * - onlyPresentClient: which contain the modules that are not loaded by the server
+                 * - onlyPresentServer: which contain the modules that are not loaded by the client
+                 *
+                 * The last two should be displayed as error.
+                 */
+
+                self.set('serverModules', modulesShouldBeLoadedOnServer);
                 self.set('clientModules', modulesShouldBeLoadedOnClient);
                 self.set('shouldPresentBoth', modulesLoadedByBoth);
                 self.set('onlyPresentClient', modulesNotLoadedByTheServer);
+                self.set('onlyPresentServer', modulesNotLoadedByTheClient);
             });
     }
 });

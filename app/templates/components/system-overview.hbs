@@ -1,11 +1,11 @@
 <table class="table table-striped">
-    <thead>
-    <tr>
-      <th>{{t 'parameter'}}</th>
-      <th>{{t 'value'}}</th>
-      <th>{{t 'description'}}</th>
-    </tr>
-    </thead>
+  <thead>
+  <tr>
+    <th>{{t 'parameter'}}</th>
+    <th>{{t 'value'}}</th>
+    <th>{{t 'description'}}</th>
+  </tr>
+  </thead>
   <tbody>
   <tr>
     <td>{{t 'instance_name'}}</td>
@@ -45,3 +45,19 @@
   </tr>
   </tbody>
 </table>
+
+{{#if moduleManager.onlyPresentClient}}
+  <div class="alert alert-warning text-center" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign"></span>
+    {{t 'modules_client_error'}}
+    {{moduleManager.onlyPresentClient}}
+  </div>
+{{/if}}
+
+{{#if moduleManager.onlyPresentServer}}
+  <div class="alert alert-warning text-center" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign"></span>
+    {{t 'modules_server_error'}}
+    {{moduleManager.onlyPresentServer}}
+  </div>
+{{/if}}
