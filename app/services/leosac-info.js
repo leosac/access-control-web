@@ -49,6 +49,11 @@ export default Ember.Service.extend({
         localStorage.path_to_every_image = path;
     },
 
+    getPathToEveryImage()
+    {
+        return this.get('pathToEveryImage');
+    },
+
     setLocale(loc)
     {
         this.set('userLocale', loc);
