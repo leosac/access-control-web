@@ -57,15 +57,15 @@
             <li>
                 <a href="#"><i class="fa fa-table fa-plus-square"></i> {{t 'modules'}}<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
+                  {{#each moduleManager.modulesInfos as |module|}}
+                    {{log module}}
                     <li>
-                        {{link-to "SMTP" "smtp"}}
+                      {{link-to module.displayName module.routeName}}
                     </li>
+                  {{/each}}
                   <li>
-                    {{link-to "Piface Digital GPIO" "piface-digital-gpio.list"}}
+                    {{#link-to 'updates'}}{{t 'hardware_update'}}{{/link-to}}
                   </li>
-                    <li>
-                        {{link-to "EvoXS" "evoxs"}}
-                    </li>
                 </ul>
             </li>
             <li>

@@ -19,6 +19,10 @@ function formatName(object)
     return object;
 }
 
+function formatRouteName(input) {
+   return input.replace(/([A-Z])/g, "-$1").toLowerCase();
+}
+
 export default Ember.Service.extend({
     ws: Ember.inject.service('websocket'),
     info: Ember.inject.service('leosac-info'),
@@ -28,10 +32,25 @@ export default Ember.Service.extend({
     shouldPresentBoth: [],
     onlyPresentServer: [],
     onlyPresentClient: [],
+    nameToBeDisplayed: [],
+    modulesInfos: [],
 
     init() {
         this._super(...arguments);
         this.fetchModule();
+    },
+
+    _pushModulesInfos(routeName, displayName, needServer)
+    {
+        let object = this.get('modulesInfos');
+        routeName = formatRouteName(routeName);
+        let moduleInfos = {
+            displayName: displayName,
+            routeName: routeName,
+            needServer: needServer
+        };
+        object.push(moduleInfos);
+        this.set('modulesInfos', object);
     },
 
     /**
@@ -84,10 +103,14 @@ export default Ember.Service.extend({
                 let modulesShouldBeLoadedOnClient = [];
 
                 modulesClient.forEach(function(module) {
-                    if (module[1].leosacProperty.needServer)
+                    if (module[1].leosacProperty.needServer) {
                         modulesShouldBeLoadedOnBothClient.push(module[0]);
-                    else
+                        self._pushModulesInfos(module[0], module[1].leosacProperty.displayName, true);
+                    }
+                    else {
                         modulesShouldBeLoadedOnClient.push(module[0]);
+                        self._pushModulesInfos(module[0], module[1].leosacProperty.displayName, false);
+                    }
                 });
 
                 /**
