@@ -66,6 +66,8 @@ export default {
     'modules_server_descr': 'Which modules are running through the server.',
     'modules_client': 'Client only modules',
     'modules_client_descr': 'Which modules  are running only through the client.',
+    'modules_server_error': 'These modules should have a client part to properly work: ',
+    'modules_client_error': 'These modules should have a server part to properly work: ',
     'modules': 'Modules',
     'name': 'Name',
     'name_app': 'Application name',
