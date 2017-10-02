@@ -28,6 +28,9 @@ module.exports = function (environment)
             pathToEveryImage: '/assets/leosac/',
             logoUrl: '/assets/leosac/logo.png',
             siteUrl: 'leosac.com',
+            fingerprint: {
+                prepend: 'https://leosac.com/'
+            }
         }
     };
 
