@@ -57,8 +57,7 @@
             <li>
                 <a href="#"><i class="fa fa-table fa-plus-square"></i> {{t 'modules'}}<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                  {{#each moduleManager.modulesInfos as |module|}}
-                    {{log module}}
+                  {{#each moduleManager.modulesInfo as |module|}}
                     <li>
                       {{link-to module.displayName module.routeName}}
                     </li>

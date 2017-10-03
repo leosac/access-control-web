@@ -33,7 +33,7 @@ export default Ember.Service.extend({
     onlyPresentServer: [],
     onlyPresentClient: [],
     nameToBeDisplayed: [],
-    modulesInfos: [],
+    modulesInfo: [],
 
     init() {
         this._super(...arguments);
@@ -42,15 +42,13 @@ export default Ember.Service.extend({
 
     _pushModulesInfos(routeName, displayName, needServer)
     {
-        let object = this.get('modulesInfos');
         routeName = formatRouteName(routeName);
         let moduleInfos = {
             displayName: displayName,
             routeName: routeName,
             needServer: needServer
         };
-        object.push(moduleInfos);
-        this.set('modulesInfos', object);
+        return (moduleInfos);
     },
 
     /**
@@ -101,16 +99,26 @@ export default Ember.Service.extend({
                 let modulesClient = Object.entries(container);
                 let modulesShouldBeLoadedOnBothClient = [];
                 let modulesShouldBeLoadedOnClient = [];
+                let modulesInfo = [];
 
                 modulesClient.forEach(function(module) {
                     if (module[1].leosacProperty.needServer) {
                         modulesShouldBeLoadedOnBothClient.push(module[0]);
-                        self._pushModulesInfos(module[0], module[1].leosacProperty.displayName, true);
+                        modulesInfo.push(self._pushModulesInfos(module[0], module[1].leosacProperty.displayName, true));
                     }
                     else {
                         modulesShouldBeLoadedOnClient.push(module[0]);
-                        self._pushModulesInfos(module[0], module[1].leosacProperty.displayName, false);
+                        modulesInfo.push(self._pushModulesInfos(module[0], module[1].leosacProperty.displayName, false));
                     }
+                });
+
+                modulesInfo.sort(function(a, b) {
+                    if (a.routeName >= b.routeName)
+                        return 1;
+                    else if (a.routeName < b.routeName)
+                        return -1;
+                    else
+                        return 0;
                 });
 
                 /**
@@ -173,7 +181,7 @@ export default Ember.Service.extend({
                                 checkOccurrence++;
                             }
                             else
-                                modulesLoadedByBoth.push(modulesNotLoadedByTheClient[j])
+                                modulesLoadedByBoth.push(modulesNotLoadedByTheClient[j]);
                             modulesNotLoadedByTheClient.splice(j, 1);
                         }
                         j++;
@@ -183,12 +191,13 @@ export default Ember.Service.extend({
 
 
                 /**
-                 * At this point, we have five object:
+                 * At this point, we have six object:
                  * - modulesServer, which contain every module loaded by the server
                  * - clientModules, which contain every modules that should be loaded by the client
                  * - shouldPresentBoth: which contain the modules that are loaded by the server and the client
                  * - onlyPresentClient: which contain the modules that are not loaded by the server
                  * - onlyPresentServer: which contain the modules that are not loaded by the client
+                 * - modulesInfo: contain the necessary information about modules that will be used for the route for example
                  *
                  * The last two should be displayed as error.
                  */
@@ -198,6 +207,7 @@ export default Ember.Service.extend({
                 self.set('shouldPresentBoth', modulesLoadedByBoth);
                 self.set('onlyPresentClient', modulesNotLoadedByTheServer);
                 self.set('onlyPresentServer', modulesNotLoadedByTheClient);
+                self.set('modulesInfo', modulesInfo);
             });
     }
 });

@@ -2,7 +2,10 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     moduleManager: Ember.inject.service('module-manager'),
-    modulesName: [],
+    init()
+    {
+      this._super(...arguments);
+    },
     didRender()
     {
         "use strict";
