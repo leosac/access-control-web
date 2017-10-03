@@ -60,8 +60,8 @@ module.exports = function (environment)
 
     if (environment === 'test')
     {
-	ENV.i18n = ENV.i18n || {};
-	ENV.i18n.suppressWarnings = true;
+        ENV.i18n = ENV.i18n || {};
+        ENV.i18n.suppressWarnings = true;
         // Testem prefers this...
         ENV.locationType = 'none';
 
