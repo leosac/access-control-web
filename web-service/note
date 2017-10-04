@@ -1,0 +1,3 @@
+In this repo - the dockerfile for the build
+   	     -  the flask interface for the build
+	     - the script that will be executed when launching the container
