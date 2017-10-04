@@ -1,17 +1,20 @@
-# Default server configuration
+# Leosac-web nginx configuration file
 server {
-	      listen localhost:4200;
-	      
+	      listen 8080;
+
 	      root /home/stagiaire/leosac-gui/leosac-web/dist/;
 
-	      index index.html;
-	      server_name leosac-web.com;
-	      
-	location / {
-		# First attempt to serve request as file, then
-		# as directory, then fall back to displaying a 404.
-		try_files $uri $uri/ =404;
-	}
+	      index index.html index.htm;
+
+	      location /
+	      {
+
+	      # First attempt to serve request as file, then
+	      # as directory, then fall back to displaying a 404.
+	      try_files $uri $uri/ =404;
+	      # autoindex on;
+        # autoindex_exact_size off;
+	      }
 }
 
 

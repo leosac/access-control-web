@@ -28,9 +28,6 @@ module.exports = function (environment)
             pathToEveryImage: '/assets/leosac/',
             logoUrl: '/assets/leosac/logo.png',
             siteUrl: 'leosac.com',
-            fingerprint: {
-                prepend: 'https://leosac.com/'
-            }
         }
     };
 
@@ -55,7 +52,7 @@ module.exports = function (environment)
     }
 
     if (environment === 'production') {
-        ENV.rootURL = '/dist';
+        ENV.rootURL = '/';
     }
 
     if (environment === 'test')

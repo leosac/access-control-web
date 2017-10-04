@@ -23,7 +23,10 @@ module.exports = function (defaults)
         'bootstrapVersion': 3,
         'importBootstrapFont': true,
         'importBootstrapCSS': true
-      }
+      },
+        fingerprint: {
+            enabled: false
+        }
     });
 
     // Use `app.import` to add additional libraries to the generated
