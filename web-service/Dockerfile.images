@@ -20,7 +20,7 @@ RUN git config --global user.email myadress@mydomain.com
 RUN apt-get install -y curl
 
 # Install node
-RUN (curl -sL https://deb.nodesource.com/setup_6.x | bash -)
+RUN (curl -sL https://deb.nodesource.com/setup_7.x | bash -)
 RUN apt-get update
 RUN apt-get install -y nodejs
 
@@ -37,7 +37,12 @@ RUN npm install -g ember-cli@latest
 RUN mkdir -p /leosac
 
 # Copy leosac-web and leosac-web-addons in it
-# Leosac-web and leosac-web-addons should have been downloaded and placed in a file name leosac.
+# Leosac-web and leosac-web-addons should have been cloned and placed in a file name leosac.
 ADD leosac/ /leosac/.
 
-RUN npm list -g --depth=0
+# We then prepare the build and build the application
+CMD (cd /leosac/leosac-web/ && (npm install phantomjs-prebuilt@2.1.13 --ignore-scripts) && (npm install; bower install --allow-root) && ember build --prod)
+
+# This is probably useless since we already call it in the build
+
+VOLUME /leosac

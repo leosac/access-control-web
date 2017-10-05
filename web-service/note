@@ -1,3 +1,7 @@
 In this repo - the dockerfile for the build
    	     -  the flask interface for the build
 	     - the script that will be executed when launching the container
+
+docker build -t leosac-web -f Dockerfile.images .
+docker volume create my-vol
+docker run -ti --name buildtest2 -v my-vol:/leosac/leosac-web/dist/ leosac-web:latest
