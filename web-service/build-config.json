@@ -8,6 +8,7 @@
 	    "wiegang"
     ],
     "extern-addon": [
-        "evoxs"
+        "evoxs",
+        "test"
     ]
 }
