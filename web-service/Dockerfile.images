@@ -1,4 +1,4 @@
-# Dockerfile that will create the leosac-web image
+# The Dockerfile that will create the leosac-web image
 
 # Download base image ubuntu 16.04
 FROM ubuntu:16.04
@@ -36,13 +36,14 @@ RUN npm install -g ember-cli@latest
 # Create a Leosac repository
 RUN mkdir -p /leosac
 
-# Copy leosac-web and leosac-web-addons in it
+# Copy leosac-web and leosac-web-addons in the images
 # Leosac-web and leosac-web-addons should have been cloned and placed in a file name leosac.
 ADD leosac/ /leosac/.
 
-# We then prepare the build and build the application
-CMD (cd /leosac/leosac-web/ && (npm install phantomjs-prebuilt@2.1.13 --ignore-scripts) && (npm install; bower install --allow-root) && ember build --prod)
+# Add the scrypt.py to the images
+COPY script.py script.py
 
-# This is probably useless since we already call it in the build
+# When launching a container, this will execut a python script in which the package.json will be created
+CMD ["usr/bin/python3", "script.py"]
 
 VOLUME /leosac
