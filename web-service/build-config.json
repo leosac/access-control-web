@@ -3,8 +3,11 @@
     "description": "Configuration file for the build",
     "version": "1",
     "addon": [
-	"piface-digital-gpio",
-	"smtp",
-	"wiegang"
+	    "piface-digital-gpio",
+	    "smtp",
+	    "wiegang"
+    ],
+    "extern-addon": [
+        "evoxs"
     ]
 }
