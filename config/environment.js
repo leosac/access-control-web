@@ -52,7 +52,12 @@ module.exports = function (environment)
     }
 
     if (environment === 'production') {
-        ENV.rootURL = '/';
+        if (process.env.LEOSAC_ROOT_URL === null)
+        {
+            ENV.APP.leosacAddr = process.env.LEOSAC_ROOT_URL;
+        }
+        else
+            ENV.rootURL = '/';
     }
 
     if (environment === 'test')
