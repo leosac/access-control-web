@@ -7,14 +7,14 @@ and then it will finally build the Leosac User Interface")
 
 # Go into the leosac/leosac-web/
 
-path = "/home/stagiaire/leosac-gui/leosac-web/web-service/"
+path = "/home/stagiaire/build/leosac/leosac-web/web-service/"
 os.chdir(path)
 all_engines = []
 
 
 # Open the package.json of our app, and keep its data in  dictionary
 
-with open('package.json') as data_file:
+with open('../package.json') as data_file:
     data = json.load(data_file)
 
 # Open the build-config.json, in which there will be the informations of our application 
@@ -45,8 +45,8 @@ for data_addon in config_data['extern-addon']:
 
 # Recreate a writable package.json and write in it the package data that we previously modified 
 
-with open('package.json', 'w') as data_file:
-    data_file.write(json.dumps(data))
+with open('../package.json', 'w') as data_file:
+    data_file.write(json.dumps(data, sort_keys=True, indent=4))
 
 # This section will load the app.js file, thanks to the slimit library
 
@@ -54,7 +54,7 @@ app_data = ''
 
 # Creating the data which is required for the app.js file 
 
-with open('app.js') as data_file:
+with open('../app/app.js') as data_file:
     app_data = data_file.read()
 
 data_dict = {}
@@ -69,8 +69,13 @@ for addon_name in in_repo_addon:
     with open('../lib/'+ addon_name + '/module-config.json') as addon_open:
         addon_config[addon_name] = json.load(addon_open)
 
+def formatRouteName(st):
+    output = ''.join(x for x in st.title() if x.isalpha())
+    return output[0].lower() + output[1:]
+
 for data in all_engines:
-    data_dict[data] = {
+    route_name = formatRouteName(data)
+    data_dict[route_name] = {
         'leosacProperty': {
             'needServer': addon_config[data]['needServer'],
             'displayName': addon_config[data]['displayName']
