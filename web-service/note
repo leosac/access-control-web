@@ -2,6 +2,7 @@ In this repo - the dockerfile for the build
    	     -  the flask interface for the build
 	     - the script that will be executed when launching the container
 
+The first argument in the -v part correspond to the path in our machine, and the second argument correspond to the the path in our images.
+
 docker build -t leosac-web -f Dockerfile.images .
-docker volume create my-vol
-docker run -ti --name buildtest2 -v my-vol:/leosac/leosac-web/dist/ leosac-web:latest
+docker run -ti -v /path/to/where/to/build:/build-output -v /path/to/my/config2.json:/build_config.json leosac-web:latest

@@ -4,11 +4,8 @@
     "version": "1",
     "addon": [
 	    "piface-digital-gpio",
-	    "smtp",
-	    "wiegang"
+	    "smtp"
     ],
     "extern-addon": [
-        "evoxs",
-        "test"
-    ]
+        ]
 }
