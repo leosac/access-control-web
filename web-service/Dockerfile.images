@@ -40,10 +40,17 @@ RUN mkdir -p /leosac
 # Leosac-web and leosac-web-addons should have been cloned and placed in a file name leosac.
 ADD leosac/ /leosac/.
 
+# Installing pip to get a new python library
+RUN apt-get -y install python-pip
+RUN pip install --upgrade pip
+
+# Installing the slimit python library, it will allow our python script to parse the app.js and router.js file 
+RUN usr/bin/pip install slimit
+
 # Add the scrypt.py to the images
 COPY script.py script.py
 
 # When launching a container, this will execut a python script in which the package.json will be created
 CMD ["usr/bin/python3", "script.py"]
 
-VOLUME /leosac
+VOLUME /build-output
