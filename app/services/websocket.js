@@ -14,7 +14,7 @@ export default Ember.Service.extend({
     init()
     {
         "use strict";
-        this.initWebsocket('ws://' + ENV.APP.leosacAddr + '/websocket', null);
+        this.initWebsocket(ENV.APP.leosacAddr + '/websocket', null);
     },
 
     attemptToReconnect() {
