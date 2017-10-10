@@ -5,6 +5,8 @@ import config from './config/environment';
 
 let App;
 
+// Engine name must be camelcased while the repo name and the route must be dasherized
+
 App = Ember.Application.extend({
     engines: {
         smtp: {
