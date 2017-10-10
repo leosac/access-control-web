@@ -1,4 +1,4 @@
 {
-  "name": "SMTP",
+  "displayName": "SMTP",
   "needServer": true
 }
