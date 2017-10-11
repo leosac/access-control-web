@@ -7,13 +7,18 @@ and then it will finally build the Leosac User Interface")
 
 # Set the path to /leosac/leosac-web/web-service in our container
 
-path = "/leosac/leosac-web/web-service/"
+path = "/leosac/leosac-web/"
 os.chdir(path)
 addons_name = []
 
+
+##
+# We will modify the package.json of our app
+#
+
 # Open the package.json of our app, and keep its data in  dictionary
 
-with open('../package.json') as data_file:
+with open('package.json') as data_file:
     data = json.load(data_file)
 
 # Open the build-config.json, in which there will be the informations of our application
@@ -23,10 +28,11 @@ with open('/build-config.json') as data_file:
     config_data = json.load(data_file)
 
 # Set the env variables needed to launch the application
+
 os.environ["LEOSAC_ADDR"] = config_data['leosac_addr']
 os.environ["LEOSAC_ROOT_URL"] = config_data['leosac_root_url']
 
-# Add to our dictionary the in-repo addon 
+# Add to our dictionary the in-repo addons
 
 in_repo_addon = []
 
@@ -36,7 +42,7 @@ for data_addon in config_data['addon']:
     data['ember-addon']['paths'].append("lib/" + data_addon)
 
 
-# Add to our dictionary the out-repo addon 
+# Add to our dictionary the out-repo addons 
 
 out_repo_addon = []
 
@@ -48,30 +54,30 @@ for data_addon in config_data['extern-addon']:
 # Recreate a writable package.json and put in it the dictionary that we previously completed
 # json.dumps() will take a dictionnary and change it to a string that it is put in the package.json
 
-with open('../package.json', 'w') as data_file:
+with open('package.json', 'w') as data_file:
     data_file.write(json.dumps(data, sort_keys=True, indent=4))
-
+##
 # The We will now modify the app.js and router.js file
+#
 
 app_data = ''
 
 # We will load the data in app.js, and complete it
 
-with open('../app/app.js') as data_file:
+with open('app/app.js') as data_file:
     app_data = data_file.read()
 
 data_dict = {}
-
 addon_config = {}
 
 # this will catch the config of each addon, which can be either in or out repo
 
 for addon_name in out_repo_addon:
-    with open('../../leosac-web-addons/'+ addon_name + '/module-config.json') as addon_open:
+    with open('../leosac-web-addons/'+ addon_name + '/module-config.json') as addon_open:
         addon_config[addon_name] = json.load(addon_open)
 
 for addon_name in in_repo_addon:
-    with open('../lib/'+ addon_name + '/module-config.json') as addon_open:
+    with open('lib/'+ addon_name + '/module-config.json') as addon_open:
         addon_config[addon_name] = json.load(addon_open)
 
 # This is a small function that will reformat the name of the addon.
@@ -108,15 +114,18 @@ for data in addons_name:
 # Rewriting the app.js with the newly added dictionary
 # There must be a "__REPLACE_ME__" because this will replace it with our data(no luck if we have a __REPLACE_ME__ as addon name )
 
-with open('../app/app.js', 'w') as data_file:
+with open('app/app.js', 'w') as data_file:
     app_data = app_data.replace("__REPLACE_ME__", json.dumps(data_dict, sort_keys=True, indent=4))
     data_file.write(app_data)
 
+
+##
 # We will now add the necessary route in the router.js
+#
 
 router_data = ''
 
-with open("../app/router.js") as data_file:
+with open("app/router.js") as data_file:
     router_data = data_file.read()
 
 router_addon = ''
@@ -124,12 +133,42 @@ router_addon = ''
 for data in addons_name:
     router_addon += 'this.mount(\'' + data + '\');\n'
 
-with open('../app/router.js', 'w') as data_file:
+with open('app/router.js', 'w') as data_file:
     router_data = router_data.replace('__REPLACE_ME__\n', router_addon)
     data_file.write(router_data)
 
-# The rest of this script will finalize the build of our application
 
+##
+# This will set the name of the application
+#
+
+env_data = ''
+
+with open('config/environment.js') as data_file:
+    env_data = data_file.read()
+
+env_name = config_data['name']
+
+with open('config/environment.js', 'w') as data_file:
+    env_data = env_data.replace('__APP_NAME__', env_name)
+    data_file.write(env_data)
+
+
+##
+# We will then move our logo and custom css styles located in the /custom-assets volumes
+#
+
+os.chdir("/custom-assets")
+if os.path.isfile(config_data['styles']):
+    os.system('cp ' + config_data['styles'] + ' /leosac/leosac-web/app/styles/.')
+
+if (os.path.isfile('logo.png')):
+    os.system('cp logo.png /leosac/leosac-web/public/assets/images/.')
+
+
+##
+# The rest of this script will finalize the build of our application
+#
 os.chdir("/leosac/leosac-web/")
 
 returnValue = os.system("npm install phantomjs-prebuilt@2.1.13 --ignore-scripts")
@@ -150,9 +189,12 @@ if returnValue:
     print("Something went wrong during the build of the application")
     sys.exit(84)
 
+
+##
 # This will copy our newly build application in an accessible mounting point
 
 os.system("cp -r dist/ /build-output/")
+
 
 print("The build is now complete, you can find the build \
 in the mounting point precised in the 'docker run'")
