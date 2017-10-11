@@ -46,5 +46,6 @@ COPY leosac/leosac-web/web-service/script.py script.py
 # When launching a container, this will execut a python script in which the package.json will be created
 CMD ["usr/bin/python3", "script.py"]
 
+VOLUME /custom-assets
 VOLUME /build-config.json
 VOLUME /build-output
