@@ -11,19 +11,19 @@ module.exports = function (defaults)
       // This fix a JS error that happened when installing
       // ember-power-select-typeahead.
       // see https://stackoverflow.com/questions/34549838/ember-2-2-0-getting-regeneratorruntime-is-not-defined
-      'ember-cli-babel': {
-              includePolyfill: true
-          },
-
-      'ember-power-select': {
-          theme: 'bootstrap'
-      },
-
-      'ember-bootstrap': {
-        'bootstrapVersion': 3,
-        'importBootstrapFont': true,
-        'importBootstrapCSS': true
-      },
+	'ember-cli-babel': {
+            includePolyfill: true
+        },
+	
+	'ember-power-select': {
+            theme: 'bootstrap'
+	},
+	
+	'ember-bootstrap': {
+            'bootstrapVersion': 3,
+            'importBootstrapFont': true,
+            'importBootstrapCSS': true
+	},
         fingerprint: {
             enabled: false
         }
@@ -43,15 +43,15 @@ module.exports = function (defaults)
     // along with the exports of each module as its value.
 
     app.import('bower_components/font-awesome/fonts/fontawesome-webfont.ttf',
-        {destDir: 'fonts'});
+               {destDir: 'fonts'});
     app.import('bower_components/font-awesome/fonts/fontawesome-webfont.woff',
-        {destDir: 'fonts'});
-
+               {destDir: 'fonts'});
+    
     app.import('app/styles/form-signin.css');
-
+    
     app.import('bower_components/bootstrap/dist/css/bootstrap.min.css');
     app.import('bower_components/metisMenu/dist/metisMenu.min.css');
-
+    
     app.import('bower_components/startbootstrap-sb-admin-2-blackrockdigital/dist/css/sb-admin-2.css');
     app.import('bower_components/startbootstrap-sb-admin-2-blackrockdigital/dist/css/timeline.css');
 
@@ -64,6 +64,6 @@ module.exports = function (defaults)
     //app.import('bower_components/raphael/raphael-min.js');
     app.import('bower_components/morrisjs/morris.min.js');
     app.import('bower_components/startbootstrap-sb-admin-2-blackrockdigital/dist/js/sb-admin-2.js');
-
+    
     return app.toTree();
 };
