@@ -14,11 +14,9 @@ export default LeosacRoute.extend({
     model()
     {
         "use strict";
-        let pathToEveryImage = this.get('leosacInfo').getPathToEveryImage();
         return new Ember.RSVP.Promise((resolve) => {
             this.get('authSrv').get('current_auth').promise.then((res) => {
                 resolve({
-                    pathToEveryImage: pathToEveryImage,
                     user_id: this.get('authSrv').user_id,
                     username: this.get('authSrv').username
                 });

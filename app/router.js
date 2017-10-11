@@ -77,13 +77,8 @@ Router.map(function ()
   this.route('access-overview');
   this.route('zone-overview');
   this.route('updates');
-  // in-repo module
-  this.mount('smtp');
-  this.mount('piface-digital-gpio');
-  // this.mount('wiegang');
-  // addon-like module
-  this.mount('evoxs');
-  this.route('settings');
+    this.route('settings');
+    __REPLACE_ME__
 });
 
 export default Router;
