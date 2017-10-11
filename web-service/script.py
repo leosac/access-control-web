@@ -56,6 +56,7 @@ for data_addon in config_data['extern-addon']:
 
 with open('package.json', 'w') as data_file:
     data_file.write(json.dumps(data, sort_keys=True, indent=4))
+
 ##
 # The We will now modify the app.js and router.js file
 #
@@ -171,16 +172,12 @@ if (os.path.isfile('logo.png')):
 #
 os.chdir("/leosac/leosac-web/")
 
-returnValue = os.system("npm install phantomjs-prebuilt@2.1.13 --ignore-scripts")
-if returnValue:
-    print("Something went wrong with this command: \
-    npm install phantomjs-prebuilt@2.1.13 --ignore-scripts")
-    sys.exit(84)
+# During the build of the docker image, npm instal was already called.
+# This time, this is just to install our out-repo addon
 
-returnValue = os.system("npm install; bower install --allow-root")
+returnValue = os.system("npm install")
 if returnValue:
-    print("Something went wrong with this command: \
-    npm install; bower install --allow-root")
+    print("Something went wrong with this command: npm install")
     sys.exit(84)
 
 print("We will now build the application")

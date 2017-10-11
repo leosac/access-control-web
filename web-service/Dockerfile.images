@@ -40,6 +40,12 @@ RUN mkdir -p /leosac
 # Leosac-web and leosac-web-addons should have been cloned and placed in a file name leosac.
 ADD leosac/ /leosac/.
 
+# Run npm install and bower install. This will help us gain a lot of time in our container
+
+RUN (cd /leosac/leosac-web && \
+    npm install phantomjs-prebuilt@2.1.13 --ignore-scripts && \
+    npm install; bower install --allow-root)
+
 # Add the scrypt.py to the images
 COPY leosac/leosac-web/web-service/script.py script.py
 
