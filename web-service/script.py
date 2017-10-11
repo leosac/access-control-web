@@ -11,18 +11,20 @@ path = "/leosac/leosac-web/web-service/"
 os.chdir(path)
 addons_name = []
 
-
 # Open the package.json of our app, and keep its data in  dictionary
 
 with open('../package.json') as data_file:
     data = json.load(data_file)
 
-# Open the build-config.json, in which there will be the informations of our application 
+# Open the build-config.json, in which there will be the informations of our application
 # for our package.json, router.js and app.js (and maybe config)
 
-with open('build-config.json') as data_file:
+with open('/build-config.json') as data_file:
     config_data = json.load(data_file)
 
+# Set the env variables needed to launch the application
+os.environ["LEOSAC_ADDR"] = config_data['leosac_addr']
+os.environ["LEOSAC_ROOT_URL"] = config_data['leosac_root_url']
 
 # Add to our dictionary the in-repo addon 
 
@@ -43,7 +45,7 @@ for data_addon in config_data['extern-addon']:
     addons_name.append(data_addon)
     data['dependencies'][data_addon] =  '"' + '../leosac-web-addons/' + data_addon + '"'
 
-# Recreate a writable package.json and put in it the dictionary that we previously completed 
+# Recreate a writable package.json and put in it the dictionary that we previously completed
 # json.dumps() will take a dictionnary and change it to a string that it is put in the package.json
 
 with open('../package.json', 'w') as data_file:
@@ -104,8 +106,53 @@ for data in addons_name:
     }
 
 # Rewriting the app.js with the newly added dictionary
-# There must be a "__REPLACE_ME__" because this will 
+# There must be a "__REPLACE_ME__" because this will replace it with our data(no luck if we have a __REPLACE_ME__ as addon name )
 
 with open('../app/app.js', 'w') as data_file:
     app_data = app_data.replace("__REPLACE_ME__", json.dumps(data_dict, sort_keys=True, indent=4))
     data_file.write(app_data)
+
+# We will now add the necessary route in the router.js
+
+router_data = ''
+
+with open("../app/router.js") as data_file:
+    router_data = data_file.read()
+
+router_addon = ''
+
+for data in addons_name:
+    router_addon += 'this.mount(\'' + data + '\');\n'
+
+with open('../app/router.js', 'w') as data_file:
+    router_data = router_data.replace('__REPLACE_ME__\n', router_addon)
+    data_file.write(router_data)
+
+# The rest of this script will finalize the build of our application
+
+os.chdir("/leosac/leosac-web/")
+
+returnValue = os.system("npm install phantomjs-prebuilt@2.1.13 --ignore-scripts")
+if returnValue:
+    print("Something went wrong with this command: \
+    npm install phantomjs-prebuilt@2.1.13 --ignore-scripts")
+    sys.exit(84)
+
+returnValue = os.system("npm install; bower install --allow-root")
+if returnValue:
+    print("Something went wrong with this command: \
+    npm install; bower install --allow-root")
+    sys.exit(84)
+
+print("We will now build the application")
+returnValue = os.system("ember build --prod")
+if returnValue:
+    print("Something went wrong during the build of the application")
+    sys.exit(84)
+
+# This will copy our newly build application in an accessible mounting point
+
+os.system("cp -r dist/ /build-output/")
+
+print("The build is now complete, you can find the build \
+in the mounting point precised in the 'docker run'")
