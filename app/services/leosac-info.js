@@ -19,13 +19,11 @@ export default Ember.Service.extend({
     current_view_title: "Default",
     userLocale: 'en',
     appNameLocal: '',
-    pathToEveryImage: '',
 
     init()
     {
         "use strict";
         //this will set the locale variable
-        this.setPathToEveryImage(localStorage.path_to_every_image || config.APP.pathToEveryImage);
         this.setLocale(localStorage.user_locale || 'en');
         this.setNameApp((localStorage.app_name || config.APP.appname), 1);
 
@@ -41,17 +39,6 @@ export default Ember.Service.extend({
                 self.set('version', 'UNKNOWN');
             }
         );
-    },
-
-    setPathToEveryImage(path)
-    {
-        this.set('pathToEveryImage', path);
-        localStorage.path_to_every_image = path;
-    },
-
-    getPathToEveryImage()
-    {
-        return this.get('pathToEveryImage');
     },
 
     setLocale(loc)
