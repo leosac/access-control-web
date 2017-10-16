@@ -12,16 +12,11 @@ class ModuleDescription(object):
         self.name = name
         self.addon_type = addon_type
 
-smtp = ModuleDescription('smtp', 'in')
-piface_digital_gpio = ModuleDescription('piface-digital-gpio', 'in')
-wiegand = ModuleDescription('wiegand', 'in')
-evoxs = ModuleDescription('evoxs', 'out')
-
 all_addon = [
-    smtp,
-    piface_digital_gpio,
-    wiegand,
-    evoxs
+    ModuleDescription('smtp', 'in'),
+    ModuleDescription('piface-digital-gpio', 'in'),
+    ModuleDescription('wiegand', 'in'),
+    ModuleDescription('evoxs', 'out')
     ]
 
 def formatName(st):
