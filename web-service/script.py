@@ -163,8 +163,8 @@ os.chdir("/custom-assets")
 if os.path.isfile(config_data['styles']):
     os.system('cp ' + config_data['styles'] + ' /leosac/leosac-web/app/styles/.')
 
-if (os.path.isfile('logo.png')):
-    os.system('cp logo.png /leosac/leosac-web/public/assets/images/.')
+#if (os.path.isfile('logo.png')):
+ #   os.system('cp logo.png /leosac/leosac-web/public/assets/images/.')
 
 
 ##
@@ -191,6 +191,7 @@ if returnValue:
 # This will copy our newly build application in an accessible mounting point
 
 os.system("cp -r dist/ /build-output/")
+os.system('chown -R 1000:1000 /build-output')
 
 
 print("The build is now complete, you can find the build \
