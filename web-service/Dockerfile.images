@@ -44,7 +44,7 @@ ADD leosac/ /leosac/.
 
 RUN (cd /leosac/leosac-web && \
     npm install phantomjs-prebuilt@2.1.13 --ignore-scripts && \
-    npm install; bower install --allow-root)
+    npm install && bower install --allow-root)
 
 # Add the scrypt.py to the images
 COPY leosac/leosac-web/web-service/script.py script.py
