@@ -8,9 +8,65 @@ let App;
 // Engine name must be camelcased while the repo name and the route must be dasherized
 
 App = Ember.Application.extend({
-    engines:
-	__REPLACE_ME__
-    ,
+    engines: {
+        smtp: {
+            leosacProperty: {
+                needServer: true,
+                displayName: 'SMTP'
+            },
+            dependencies: {
+                externalRoutes: {
+                    login: 'login'
+                },
+                services: [
+                    'authentication',
+                    'websocket',
+                    'leosac-info',
+                    'flashMessages',
+                    'store',
+                    'module-manager'
+                ]
+            }
+        },
+        pifaceDigitalGpio: {
+            leosacProperty: {
+                needServer: true,
+                displayName: 'Piface Digital GPIO'
+            },
+            dependencies: {
+                externalRoutes: {
+                    login: 'login'
+                },
+                services: [
+                    'authentication',
+                    'websocket',
+                    'leosac-info',
+                    'flashMessages',
+                    'store',
+                    'module-manager'
+                ]
+            }
+        },
+        wiegand: {
+            leosacProperty: {
+                needServer: true,
+                displayName: 'Wiegand'
+            },
+            dependencies: {
+                externalRoutes: {
+                    login: 'login'
+                },
+                services: [
+                    'authentication',
+                    'websocket',
+                    'leosac-info',
+                    'flashMessages',
+                    'store',
+                    'module-manager'
+                ]
+            }
+        },
+    },
     modulePrefix: config.modulePrefix,
     podModulePrefix: config.podModulePrefix,
     Resolver
