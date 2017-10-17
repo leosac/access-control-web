@@ -1,17 +1,16 @@
-{% extends "bootstrap/base.html" %}
-{% import "bootstrap/wtf.html" as wtf %}
-{% import "bootstrap/fixes.html" as fixes %}
-{% import "bootstrap/utils.html" as util %}
-
-{% block content %}
-{{util.flashed_messages(dismissible=True)}}
+{% extends "bootstrap/base.html" %} {% import "bootstrap/wtf.html" as wtf %} {% import "bootstrap/fixes.html" as fixes %}
+{% import "bootstrap/utils.html" as util %} {% block content %} {{util.flashed_messages(dismissible=True)}}
 <div class="container">
   <h1>Leosac GUI Interface</h1>
-  {{ wtf.quick_form(form, button_map={'submit_button': 'primary'}) }}
+  <div class="row">
+    <div class="col-md-6">
+      {{ wtf.quick_form(form, button_map={'submit_button': 'primary'}) }}
+    </div>
+  </div>
 </div>
-{% endblock %}
-
-{% block head %}
-{{super()}}
-{{fixes.ie8()}}
-{% endblock %}
+<div class="container">
+  <div class='row'>
+    Please wait for about one minute once the form is submited, the server is building the application.
+  </div>
+</div>
+{% endblock %} {% block head %} {{super()}} {{fixes.ie8()}} {% endblock %}
