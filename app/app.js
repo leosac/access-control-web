@@ -62,7 +62,8 @@ App = Ember.Application.extend({
                     'leosac-info',
                     'flashMessages',
                     'store',
-                    'module-manager'
+                    'module-manager',
+                    'search'
                 ]
             }
         },

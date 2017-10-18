@@ -96,13 +96,31 @@ export default Ember.Service.extend({
     /**
      * Return a promise that resolve to an array of {id, alias, type}
      * The type is needed because it is pincode or rfidcard, which are to complete separate thing
-     * for each zone that matched
+     * for each credential that matched
      */
     findCredentialByAlias(partialName) {
         const ws = this.get('websocket');
 
         return new Ember.RSVP.Promise(function (resolve, reject) {
             ws.sendJson('search.credential_alias',
+                {
+                    'partial_name': partialName
+                }).then((data) => resolve(data),
+                (failure) => reject(failure));
+        });
+    },
+
+    /**
+     * Return a promise that resolve to an array of {id, name, device-class, type}
+     * device-class is a number between 0 and 2 (unknown, gpio, rfidreader)
+     * type is the name of the device type (eg 'piface-digital' or 'wiegand')
+     * for each device that matched
+     */
+    findDeviceByAlias(partialName) {
+        const ws = this.get('websocket');
+
+        return new Ember.RSVP.Promise(function (resolve, reject) {
+            ws.sendJson('search.hardware_name',
                 {
                     'partial_name': partialName
                 }).then((data) => resolve(data),
