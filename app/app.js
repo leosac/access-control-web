@@ -47,10 +47,10 @@ App = Ember.Application.extend({
                 ]
             }
         },
-        wiegand: {
+        wiegandReader: {
             leosacProperty: {
                 needServer: true,
-                displayName: 'Wiegand'
+                displayName: 'Wiegand Reader'
             },
             dependencies: {
                 externalRoutes: {

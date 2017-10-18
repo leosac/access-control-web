@@ -1,5 +1,5 @@
 {
-  "name": "wiegand",
+  "name": "wiegand-reader",
   "keywords": [
     "ember-addon",
     "ember-engine"

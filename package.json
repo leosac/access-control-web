@@ -58,7 +58,7 @@
     "paths": [
       "lib/piface-digital-gpio",
       "lib/smtp",
-      "lib/wiegand"
+      "lib/wiegand-reader"
     ]
   },
   "engines": {

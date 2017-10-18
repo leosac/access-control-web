@@ -80,7 +80,7 @@ Router.map(function ()
     this.route('settings');
     this.mount('smtp');
     this.mount('piface-digital-gpio');
-    this.mount('wiegand');
+    this.mount('wiegand-reader');
 });
 
 export default Router;
