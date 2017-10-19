@@ -26,11 +26,14 @@ export default Ember.Component.extend({
                 data.then(function(res) {
                     let i = -1;
                     let j = 0;
-                    res.forEach(function(obj) {
-                        if (obj.id === id)
-                            i = j;
-                        j += 1;
-                    });
+                    if (res)
+                    {
+                        res.forEach(function (obj) {
+                            if (obj.id === id)
+                                i = j;
+                            j += 1;
+                        });
+                    }
                     if (i !== -1)
                         res.splice(i, 1);
                 });
