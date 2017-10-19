@@ -37,6 +37,7 @@
     "ember-route-action-helper": "2.0.6",
     "ember-simple-auth": "1.4.0",
     "ember-template-compiler": "1.9.0-alpha",
+    "ember-toggle": "5.2.0",
     "ember-truth-helpers": "2.0.0",
     "ember-uploader": "1.2.3",
     "ember-validators": "1.0.3",
@@ -49,14 +50,15 @@
     "moment-timezone": "^0.5.13"
   },
   "description": "Small description for web goes here",
-  "devDependencies": {},
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
   "ember-addon": {
     "paths": [
+      "lib/gpio",
       "lib/piface-digital-gpio",
+      "lib/rfid-reader",
       "lib/smtp",
       "lib/wiegand-reader"
     ]
