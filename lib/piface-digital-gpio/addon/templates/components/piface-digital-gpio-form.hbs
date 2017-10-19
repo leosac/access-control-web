@@ -18,6 +18,12 @@
         {{/form.element}}
       </div>
       <div class="row">
+        {{#form.element property="hardwareAddress" label=(t 'hardware_address') controlType='number' placeholder=(t 'type_address') as |el|}}
+          {{el.control}}
+          {{#bs-tooltip placement="right"}}{{t 'information.address'}}{{/bs-tooltip}}
+        {{/form.element}}
+      </div>
+      <div class="row">
         {{#form.element property="direction" label=(t 'direction')}}
           {{#power-select
             selected=piface-digital-gpio.direction
@@ -47,6 +53,10 @@
           {{/form.element}}
         {{/if}}
       </div>
+      {{#form.element property='enabled' controlType='checkbox' label=(t 'enable') as |el|}}
+        {{el.control}}
+      {{#bs-tooltip placement="right" triggerEvent='hover'}}{{t 'information.enable'}}{{/bs-tooltip}}
+      {{/form.element}}
       <div class="row">
         <div class="col-md-2">
           {{bs-button

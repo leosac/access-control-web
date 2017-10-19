@@ -12,26 +12,40 @@
     <th>{{t 'direction'}}</th>
     <th>{{t 'value'}}</th>
     <th>Test</th>
+    <th>Enabled</th>
     <th>{{t 'delete'}}</th>
     </thead>
     <tbody>
     {{#each model as |piface-digital-gpio|}}
-      {{#link-to 'piface-digital-gpio' piface-digital-gpio.id tagName = "tr"}}
-        <td>{{piface-digital-gpio.id}}</td>
-        <td>{{piface-digital-gpio.name}}</td>
-        <td>{{piface-digital-gpio.number}}</td>
-        <td>{{t piface-digital-gpio.direction}}</td>
-        <td>
+      <tr>
+        {{#link-to 'piface-digital-gpio' piface-digital-gpio.id tagName='td'}}
+          {{piface-digital-gpio.id}}
+        {{/link-to}}
+        {{#link-to 'piface-digital-gpio' piface-digital-gpio.id tagName='td'}}
+          {{piface-digital-gpio.name}}
+        {{/link-to}}
+        {{#link-to 'piface-digital-gpio' piface-digital-gpio.id tagName='td'}}
+          {{piface-digital-gpio.number}}
+        {{/link-to}}
+        {{#link-to 'piface-digital-gpio' piface-digital-gpio.id tagName='td'}}
+          {{t piface-digital-gpio.direction}}
+        {{/link-to}}
+        {{#link-to 'piface-digital-gpio' piface-digital-gpio.id tagName='td'}}
           {{#if (eq piface-digital-gpio.defaultValue 'true')}}
             {{t 'true'}}
           {{else}}
             {{t 'false'}}
           {{/if}}
-        </td>
-        <td>
+        {{/link-to}}
+        {{#link-to 'piface-digital-gpio' piface-digital-gpio.id tagName='td'}}
           {{#if (eq piface-digital-gpio.direction 'out')}}
-              {{piface-digital-gpio-test gpioId=piface-digital-gpio.id}}
+            {{piface-digital-gpio-test gpioId=piface-digital-gpio.id}}
           {{/if}}
+        {{/link-to}}
+        <td>
+            {{x-toggle theme='material' size='medium'
+                       value=piface-digital-gpio.enabled
+                       onToggle=(action (mut piface-digitale-gpio.enabled))}}
         </td>
         <td>
           {{button-with-confirmation
@@ -42,7 +56,7 @@
             message=(t 'piface-digital-gpio.delete_confirm')
             onConfirm=(route-action 'deletePifaceDigitalGpio' piface-digital-gpio)}}
         </td>
-      {{/link-to}}
+      </tr>
     {{/each}}
     </tbody>
   </table>
