@@ -1,0 +1,62 @@
+{{#bs-form formLayout="horizontal" model=wiegand-reader onSubmit=action as |form|}}
+  <fieldset>
+    <div class="col-md-4">
+      <div class="row">
+        {{#form.element controlType="text" label=(t 'name')
+                        placeholder=(t 'name')
+                        property="name" as |el|}}
+          {{el.control}}
+          {{#bs-tooltip placement="right" triggerEvents='hover'}}{{t 'information.name'}}{{/bs-tooltip}}
+        {{/form.element}}
+      </div>
+      <div class="row">
+        {{#form.element property="mode" label=(t 'mode')}}
+          {{#power-select
+            selected=wiegand-reader.mode
+            searchEnabled=false
+            options=allMode
+            onchange=(action (mut wiegand-reader.mode))
+            placeholder=(t 'type_mode')
+          as |mode|}}
+            {{t mode}}
+          {{/power-select}}
+          {{#bs-tooltip placement="right"}}{{t 'information.mode'}}{{/bs-tooltip}}
+        {{/form.element}}
+      </div>
+      <div class="row">
+        {{#form.element label=(t 'gpio_high')}}
+          {{#power-select search=(action 'searchGpio')
+                          selected=wiegand-reader.gpioHigh.name
+                          placeholder='GPIO'
+                          onchange=(action 'setGpioHigh') as |gpio|}}
+            {{gpio.name}}
+          {{/power-select}}
+        {{/form.element}}
+      </div>
+      <div class="row">
+        {{#form.element label=(t 'gpio_low')}}
+          {{#power-select search=(action 'searchGpio')
+                          selected=wiegand-reader.gpioLow
+                          placeholder='GPIO'
+                          onchange=(action (mut wiegand-reader.gpioLow)) as |gpio|}}
+            {{gpio.name}}
+          {{/power-select}}
+        {{/form.element}}
+      </div>
+      <!-- Here we will have two power select for each gpio high and gpio low -->
+      {{#form.element property='enabled' controlType='checkbox' label=(t 'enable') as |el|}}
+        {{el.control}}
+        {{#bs-tooltip placement="right" triggerEvent='hover'}}{{t 'information.enable'}}{{/bs-tooltip}}
+      {{/form.element}}
+      <div class="row">
+        <div class="col-md-2">
+          {{bs-button
+            defaultText=(t 'submit')
+            type="primary"
+            size="md"
+            buttonType="submit"}}
+        </div>
+      </div>
+    </div>
+  </fieldset>
+{{/bs-form}}
