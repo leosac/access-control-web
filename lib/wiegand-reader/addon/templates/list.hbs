@@ -9,15 +9,25 @@
     <th>#Id</th>
     <th>{{t 'name'}}</th>
     <th>{{t 'mode'}}</th>
+    <th>{{t 'enable'}}</th>
     <th>{{t 'delete'}}</th>
     </thead>
     <tbody>
     {{#each model as |wiegand|}}
-      {{#link-to 'wiegand-reader' wiegand.id tagName = "tr"}}
-        <td>{{wiegand.id}}</td>
-        <td>{{wiegand.name}}</td>
-        <td>
+      <tr>
+        {{#link-to 'wiegand-reader' wiegand.id tagName = "td"}}
+          {{wiegand.id}}
+        {{/link-to}}
+        {{#link-to 'wiegand-reader' wiegand.id tagName = "td"}}
+          {{wiegand.name}}
+        {{/link-to}}
+        {{#link-to 'wiegand-reader' wiegand.id tagName = "td"}}
           {{t wiegand.mode}}
+        {{/link-to}}
+        <td>
+          {{x-toggle theme='material' size='medium'
+                     value=wiegand.enabled
+                     onToggle=(route-action 'enableWiegand' wiegand)}}
         </td>
         <td>
           {{button-with-confirmation
@@ -28,7 +38,7 @@
             message=(t 'wiegand-reader.delete_confirm')
             onConfirm=(route-action 'deleteWiegandReader' wiegand)}}
         </td>
-      {{/link-to}}
+      </tr>
     {{/each}}
     </tbody>
   </table>
