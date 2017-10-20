@@ -26,24 +26,27 @@
       <div class="row">
         {{#form.element label=(t 'gpio_high')}}
           {{#power-select search=(action 'searchGpio')
-                          selected=wiegand-reader.gpioHigh.name
+                          selected=newGpioHigh
                           placeholder='GPIO'
                           onchange=(action 'setGpioHigh') as |gpio|}}
-            {{gpio.name}}
+              {{gpio.name}}
+              <span style="color: #9b9aa5;font-style: italic;" class="pull-right" >{{gpio.type}}</span>
           {{/power-select}}
+          {{#bs-tooltip placement="right"}}{{t 'information.gpio_high'}}{{/bs-tooltip}}
         {{/form.element}}
       </div>
       <div class="row">
         {{#form.element label=(t 'gpio_low')}}
           {{#power-select search=(action 'searchGpio')
-                          selected=wiegand-reader.gpioLow
+                          selected=newGpioLow
                           placeholder='GPIO'
-                          onchange=(action (mut wiegand-reader.gpioLow)) as |gpio|}}
-            {{gpio.name}}
+                          onchange=(action 'setGpioLow') as |gpio|}}
+              {{gpio.name}}
+              <span style="color: #9b9aa5;font-style: italic;" class="pull-right" >{{gpio.type}}</span>
           {{/power-select}}
+          {{#bs-tooltip placement="right"}}{{t 'information.gpio_low'}}{{/bs-tooltip}}
         {{/form.element}}
       </div>
-      <!-- Here we will have two power select for each gpio high and gpio low -->
       {{#form.element property='enabled' controlType='checkbox' label=(t 'enable') as |el|}}
         {{el.control}}
         {{#bs-tooltip placement="right" triggerEvent='hover'}}{{t 'information.enable'}}{{/bs-tooltip}}
