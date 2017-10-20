@@ -1,6 +1,11 @@
 {
   "name": "gpio",
   "keywords": [
-    "ember-addon"
-  ]
+    "ember-addon",
+    "ember-engine"
+  ],
+  "dependencies": {
+    "ember-cli-htmlbars": "*",
+    "ember-cli-babel": "*"
+  }
 }
