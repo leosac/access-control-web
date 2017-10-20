@@ -12,7 +12,7 @@
     <th>{{t 'direction'}}</th>
     <th>{{t 'value'}}</th>
     <th>Test</th>
-    <th>Enabled</th>
+    <th>{{t 'enable'}}</th>
     <th>{{t 'delete'}}</th>
     </thead>
     <tbody>
@@ -45,7 +45,7 @@
         <td>
             {{x-toggle theme='material' size='medium'
                        value=piface-digital-gpio.enabled
-                       onToggle=(action (mut piface-digitale-gpio.enabled))}}
+                       onToggle=(route-action 'enablePiface' piface-digital-gpio)}}
         </td>
         <td>
           {{button-with-confirmation
