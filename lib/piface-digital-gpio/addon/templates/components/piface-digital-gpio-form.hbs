@@ -53,9 +53,13 @@
           {{/form.element}}
         {{/if}}
       </div>
-      {{#form.element property='enabled' controlType='checkbox' label=(t 'enable') as |el|}}
-        {{el.control}}
-      {{#bs-tooltip placement="right" triggerEvent='hover'}}{{t 'information.enable'}}{{/bs-tooltip}}
+      {{#form.element label=(t 'enable')}}
+      <div class="pull-left">
+        {{x-toggle theme='material' size='medium'
+                   value=piface-digital-gpio.enabled
+                   onToggle=(action (mut piface-digital-gpio.enabled))}}
+        {{#bs-tooltip placement="right" triggerEvent='hover'}}{{t 'information.enable'}}{{/bs-tooltip}}
+      </div>
       {{/form.element}}
       <div class="row">
         <div class="col-md-2">
