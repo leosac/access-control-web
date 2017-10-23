@@ -47,6 +47,26 @@ App = Ember.Application.extend({
                 ]
             }
         },
+        ledBuzzer: {
+            leosacProperty: {
+                needServer: true,
+                displayName: 'LED Buzzer'
+            },
+            dependencies: {
+                externalRoutes: {
+                    login: 'login'
+                },
+                services: [
+                    'authentication',
+                    'websocket',
+                    'leosac-info',
+                    'flashMessages',
+                    'store',
+                    'module-manager',
+                    'search'
+                ]
+            }
+        },
         wiegandReader: {
             leosacProperty: {
                 needServer: true,

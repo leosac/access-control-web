@@ -57,6 +57,7 @@
   "ember-addon": {
     "paths": [
       "lib/gpio",
+      "lib/led-buzzer",
       "lib/piface-digital-gpio",
       "lib/rfid-reader",
       "lib/smtp",
