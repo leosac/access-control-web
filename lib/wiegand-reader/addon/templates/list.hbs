@@ -25,9 +25,11 @@
           {{t wiegand.mode}}
         {{/link-to}}
         <td>
-          {{x-toggle theme='material' size='medium'
+          <div class="pull-left">
+            {{x-toggle theme='material' size='medium'
                      value=wiegand.enabled
                      onToggle=(route-action 'enableWiegand' wiegand)}}
+          </div>
         </td>
         <td>
           {{button-with-confirmation

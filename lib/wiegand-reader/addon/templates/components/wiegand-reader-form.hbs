@@ -26,11 +26,11 @@
       <div class="row">
         {{#form.element label=(t 'gpio_high')}}
           {{#power-select search=(action 'searchGpio')
-                          selected=newGpioHigh
+                          selected=wiegand-reader.gpioHigh
                           placeholder='GPIO'
                           onchange=(action 'setGpioHigh') as |gpio|}}
-              {{gpio.name}}
-              <span style="color: #9b9aa5;font-style: italic;" class="pull-right" >{{gpio.type}}</span>
+            {{gpio.name}}
+            <span style="color: #9b9aa5;font-style: italic;" class="pull-right" >{{gpio.type}}</span>
           {{/power-select}}
           {{#bs-tooltip placement="right"}}{{t 'information.gpio_high'}}{{/bs-tooltip}}
         {{/form.element}}
@@ -38,19 +38,25 @@
       <div class="row">
         {{#form.element label=(t 'gpio_low')}}
           {{#power-select search=(action 'searchGpio')
-                          selected=newGpioLow
+                          selected=wiegand-reader.gpioLow
                           placeholder='GPIO'
                           onchange=(action 'setGpioLow') as |gpio|}}
-              {{gpio.name}}
-              <span style="color: #9b9aa5;font-style: italic;" class="pull-right" >{{gpio.type}}</span>
+            {{gpio.name}}
+            <span style="color: #9b9aa5;font-style: italic;" class="pull-right" >{{gpio.type}}</span>
           {{/power-select}}
           {{#bs-tooltip placement="right"}}{{t 'information.gpio_low'}}{{/bs-tooltip}}
         {{/form.element}}
       </div>
-      {{#form.element property='enabled' controlType='checkbox' label=(t 'enable') as |el|}}
-        {{el.control}}
-        {{#bs-tooltip placement="right" triggerEvent='hover'}}{{t 'information.enable'}}{{/bs-tooltip}}
-      {{/form.element}}
+      <div class="row">
+        {{#form.element label=(t 'enable')}}
+          <div class="pull-left">
+            {{x-toggle theme='material' size='medium'
+                       value=wiegand-reader.enabled
+                       onToggle=(action (mut wiegand-reader.enabled))}}
+            {{#bs-tooltip placement="right"}}{{t 'information.enable'}}{{/bs-tooltip}}
+          </div>
+        {{/form.element}}
+      </div>
       <div class="row">
         <div class="col-md-2">
           {{bs-button
