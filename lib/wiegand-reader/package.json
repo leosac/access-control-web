@@ -21,7 +21,7 @@
   },
   "ember-addon": {
     "paths": [
-      "../gpio"
+      "../piface-digital-gpio"
     ]
   }
 }
