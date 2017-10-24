@@ -1,0 +1,16 @@
+{{#bs-form formLayout="horizontal" model=buzzer onSubmit=action as |form|}}
+  <fieldset>
+    <div class="col-md-4">
+      {{led-buzzer-form model=model ledBuzzer=buzzer form=form}}
+      <div class="row">
+        <div class="col-md-2">
+          {{bs-button
+            defaultText=(t 'submit')
+            type="primary"
+            size="md"
+            buttonType="submit"}}
+        </div>
+      </div>
+    </div>
+  </fieldset>
+{{/bs-form}}

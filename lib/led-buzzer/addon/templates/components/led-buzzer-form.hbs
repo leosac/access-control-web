@@ -1,0 +1,41 @@
+<div class="row">
+  {{#form.element controlType="text" label=(t 'name')
+                  placeholder=(t 'name')
+                  property="name" as |el|}}
+    {{el.control}}
+  {{/form.element}}
+</div>
+<div class="row">
+  {{#form.element property="defaultBlinkDuration" label=(t 'blink_duration') controlType='number' as |el|}}
+    {{el.control}}
+    {{#bs-tooltip placement="right"}}{{t 'information.duration'}}{{/bs-tooltip}}
+  {{/form.element}}
+</div>
+<div class="row">
+  {{#form.element property="defaultBlinkSpeed" label=(t 'blink_speed') controlType='number'  as |el|}}
+    {{el.control}}
+    {{#bs-tooltip placement="right"}}{{t 'information.speed'}}{{/bs-tooltip}}
+  {{/form.element}}
+</div>
+<div class="row">
+  {{#form.element label=(t 'gpio')}}
+    {{#power-select search=(action 'searchGpio')
+                    selected=ledBuzzer.gpio
+                    placeholder='GPIO'
+                    onchange=(action 'setGpio') as |gpio|}}
+      {{gpio.name}}
+      <span style="color: #9b9aa5;font-style: italic;" class="pull-right" >{{gpio.type}}</span>
+    {{/power-select}}
+    {{#bs-tooltip placement="right"}}{{t 'information.gpio'}}{{/bs-tooltip}}
+  {{/form.element}}
+</div>
+<div class="row">
+  {{#form.element label=(t 'enable')}}
+    <div class="pull-left">
+      {{x-toggle theme='material' size='medium'
+                 value=ledBuzzer.enabled
+                 onToggle=(action (mut ledBuzzer.enabled))}}
+      {{#bs-tooltip placement="right"}}{{t 'information.enable'}}{{/bs-tooltip}}
+    </div>
+  {{/form.element}}
+</div>
