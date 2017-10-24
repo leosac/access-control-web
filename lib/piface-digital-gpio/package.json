@@ -18,5 +18,10 @@
     "ember-route-action-helper": "2.0.6",
     "ember-toggle": "5.2.0",
     "ember-truth-helpers": "1.3.0"
+  },
+  "ember-addon": {
+    "paths": [
+      "../shared-tools"
+    ]
   }
 }

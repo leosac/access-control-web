@@ -60,6 +60,7 @@
       "lib/led-buzzer",
       "lib/piface-digital-gpio",
       "lib/rfid-reader",
+      "lib/shared-tools",
       "lib/smtp",
       "lib/wiegand-reader"
     ]
