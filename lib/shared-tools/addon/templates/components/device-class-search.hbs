@@ -1,0 +1,7 @@
+{{#power-select search=(action 'searchDevice')
+                selected=(get device relationshipsName)
+                placeholder=placeholder
+                onchange=(action 'setRelationships') as |device|}}
+  {{device.name}}
+  <span style="color: #9b9aa5;font-style: italic;" class="pull-right" >{{device.type}}</span>
+{{/power-select}}
