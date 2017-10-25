@@ -49,7 +49,7 @@ out_repo_addon = []
 for data_addon in config_data['extern-addon']:
     out_repo_addon.append(data_addon)
     addons_name.append(data_addon)
-    data['dependencies'][data_addon] =  '"' + '../leosac-web-addons/' + data_addon + '"'
+    data['dependencies'][data_addon] = '"' + '../leosac-web-addons/' + data_addon + '"'
 
 # Recreate a writable package.json and put in it the dictionary that we previously completed
 # json.dumps() will take a dictionnary and change it to a string that it is put in the package.json
@@ -60,8 +60,6 @@ with open('package.json', 'w') as data_file:
 ##
 # The We will now modify the app.js and router.js file
 #
-
-app_data = ''
 
 # We will load the data in app.js, and complete it
 
@@ -74,25 +72,26 @@ addon_config = {}
 # this will catch the config of each addon, which can be either in or out repo
 
 for addon_name in out_repo_addon:
-    with open('../leosac-web-addons/'+ addon_name + '/module-config.json') as addon_open:
+    with open('../leosac-web-addons/' + addon_name + '/module-config.json') as addon_open:
         addon_config[addon_name] = json.load(addon_open)
 
 for addon_name in in_repo_addon:
-    with open('lib/'+ addon_name + '/module-config.json') as addon_open:
+    with open('lib/' + addon_name + '/module-config.json') as addon_open:
         addon_config[addon_name] = json.load(addon_open)
 
 # This is a small function that will reformat the name of the addon.
 # In our app.js, our addon name must be camel cased,
 # while in our router.js and package.json the name must be dasherized
 
-def formatRouteName(st):
+
+def format_route_name(st):
     output = ''.join(x for x in st.title() if x.isalpha())
     return output[0].lower() + output[1:]
 
 # We will create a dictionary for each module, based on a blue print.
 
 for data in addons_name:
-    route_name = formatRouteName(data)
+    route_name = format_route_name(data)
     data_dict[route_name] = {
         'leosacProperty': {
             'needServer': addon_config[data]['needServer'],
@@ -113,7 +112,8 @@ for data in addons_name:
     }
 
 # Rewriting the app.js with the newly added dictionary
-# There must be a "__REPLACE_ME__" because this will replace it with our data(no luck if we have a __REPLACE_ME__ as addon name )
+# There must be a "__REPLACE_ME__" because this will replace it with our data
+# (no luck if we have a __REPLACE_ME__ as addon name )
 
 with open('app/app.js', 'w') as data_file:
     app_data = app_data.replace("__REPLACE_ME__", json.dumps(data_dict, sort_keys=True, indent=4))
@@ -123,8 +123,6 @@ with open('app/app.js', 'w') as data_file:
 ##
 # We will now add the necessary route in the router.js
 #
-
-router_data = ''
 
 with open("app/router.js") as data_file:
     router_data = data_file.read()
@@ -142,8 +140,6 @@ with open('app/router.js', 'w') as data_file:
 ##
 # This will set the name of the application
 #
-
-env_data = ''
 
 with open('config/environment.js') as data_file:
     env_data = data_file.read()
@@ -163,8 +159,8 @@ os.chdir("/custom-assets")
 if os.path.isfile(config_data['styles']):
     os.system('cp ' + config_data['styles'] + ' /leosac/leosac-web/app/styles/.')
 
-#if (os.path.isfile('logo.png')):
- #   os.system('cp logo.png /leosac/leosac-web/public/assets/images/.')
+# if (os.path.isfile('logo.png')):
+#   os.system('cp logo.png /leosac/leosac-web/public/assets/images/.')
 
 
 ##
