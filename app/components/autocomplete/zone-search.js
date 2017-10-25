@@ -23,19 +23,20 @@ export default Ember.Component.extend({
             {
                 let id = parseInt(this.get('ignoreZone').id);
                 let data = this.get('search').findZoneByAlias(partialAlias);
+
                 data.then(function(res) {
-                    let i = -1;
-                    let j = 0;
-                    if (res)
-                    {
+                    let currentZoneIndex = -1;
+                    let count = 0;
+
+                    if (res) {
                         res.forEach(function (obj) {
                             if (obj.id === id)
-                                i = j;
-                            j += 1;
+                                currentZoneIndex = count;
+                            count += 1;
                         });
                     }
-                    if (i !== -1)
-                        res.splice(i, 1);
+                    if (currentZoneIndex !== -1)
+                        res.splice(currentZoneIndex, 1);
                 });
                 return data;
             }
