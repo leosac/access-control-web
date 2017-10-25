@@ -19,13 +19,10 @@
 </div>
 <div class="row">
   {{#form.element label=(t 'gpio')}}
-    {{#power-select search=(action 'searchGpio')
-                    selected=ledBuzzer.gpio
-                    placeholder='GPIO'
-                    onchange=(action 'setGpio') as |gpio|}}
-      {{gpio.name}}
-      <span style="color: #9b9aa5;font-style: italic;" class="pull-right" >{{gpio.type}}</span>
-    {{/power-select}}
+    {{device-class-search arrayOfDeviceClass=arrayOfDeviceClass
+                          placeholder='GPIO'
+                          relationshipsName='gpio'
+                          device=ledBuzzer}}
     {{#bs-tooltip placement="right"}}{{t 'information.gpio'}}{{/bs-tooltip}}
   {{/form.element}}
 </div>

@@ -25,25 +25,19 @@
       </div>
       <div class="row">
         {{#form.element label=(t 'gpio_high')}}
-          {{#power-select search=(action 'searchGpio')
-                          selected=wiegand-reader.gpioHigh
-                          placeholder='GPIO'
-                          onchange=(action 'setGpioHigh') as |gpio|}}
-            {{gpio.name}}
-            <span style="color: #9b9aa5;font-style: italic;" class="pull-right" >{{gpio.type}}</span>
-          {{/power-select}}
+          {{device-class-search arrayOfDeviceClass=arrayOfDeviceClass
+                                placeholder='GPIO'
+                                relationshipsName='gpioHigh'
+                                device=wiegand-reader}}
           {{#bs-tooltip placement="right"}}{{t 'information.gpio_high'}}{{/bs-tooltip}}
         {{/form.element}}
       </div>
       <div class="row">
         {{#form.element label=(t 'gpio_low')}}
-          {{#power-select search=(action 'searchGpio')
-                          selected=wiegand-reader.gpioLow
-                          placeholder='GPIO'
-                          onchange=(action 'setGpioLow') as |gpio|}}
-            {{gpio.name}}
-            <span style="color: #9b9aa5;font-style: italic;" class="pull-right" >{{gpio.type}}</span>
-          {{/power-select}}
+          {{device-class-search arrayOfDeviceClass=arrayOfDeviceClass
+                                placeholder='GPIO'
+                                relationshipsName='gpioLow'
+                                device=wiegand-reader}}
           {{#bs-tooltip placement="right"}}{{t 'information.gpio_low'}}{{/bs-tooltip}}
         {{/form.element}}
       </div>
