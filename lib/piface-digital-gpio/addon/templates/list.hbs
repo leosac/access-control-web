@@ -44,9 +44,7 @@
         {{/link-to}}
         <td>
           <div class="pull-left">
-            {{x-toggle theme='material' size='medium'
-                       value=piface-digital-gpio.enabled
-                       onToggle=(route-action 'enablePiface' piface-digital-gpio)}}
+            {{device-toggle-enabled device=piface-digital-gpio}}
           </div>
         </td>
         <td>

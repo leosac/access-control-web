@@ -26,9 +26,7 @@
         {{/link-to}}
         <td>
           <div class="pull-left">
-            {{x-toggle theme='material' size='medium'
-                     value=wiegand.enabled
-                     onToggle=(route-action 'enableWiegand' wiegand)}}
+            {{device-toggle-enabled device=wiegand}}
           </div>
         </td>
         <td>

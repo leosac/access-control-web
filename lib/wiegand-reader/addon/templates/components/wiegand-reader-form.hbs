@@ -44,9 +44,7 @@
       <div class="row">
         {{#form.element label=(t 'enable')}}
           <div class="pull-left">
-            {{x-toggle theme='material' size='medium'
-                       value=wiegand-reader.enabled
-                       onToggle=(action (mut wiegand-reader.enabled))}}
+            {{device-toggle-enabled device=wiegand-reader}}
             {{#bs-tooltip placement="right"}}{{t 'information.enable'}}{{/bs-tooltip}}
           </div>
         {{/form.element}}

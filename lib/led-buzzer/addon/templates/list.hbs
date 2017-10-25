@@ -39,9 +39,7 @@
           {{/link-to}}
           <td>
             <div class="pull-left">
-              {{x-toggle theme='material' size='medium'
-                         value=ledBuzzer.enabled
-                         onToggle=(route-action 'enableLedBuzzer' ledBuzzer)}}
+              {{device-toggle-enabled device=ledBuzzer}}
             </div>
           </td>
           <td>
@@ -73,9 +71,7 @@
           {{/link-to}}
           <td>
             <div class="pull-left">
-              {{x-toggle theme='material' size='medium'
-                         value=ledBuzzer.enabled
-                         onToggle=(route-action 'enableLedBuzzer' ledBuzzer)}}
+              {{device-toggle-enabled device=ledBuzzer}}
             </div>
           </td>
           <td>
