@@ -9,12 +9,11 @@ export default ApplicationAdapter.extend({
         const data = this.serialize(snapshot);
         const ws = this.get('ws');
 
-        // Retrieve owner, if any.
+        // Find owner, if any.
         if (data.data.relationships && data.data.relationships.owner && data.data.relationships.owner.data)
             data.data.attributes.owner_id = Number.parseInt(data.data.relationships.owner.data.id);
         else
             data.data.attributes.owner_id = 0;
-
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
             ws.sendJson('credential.create', {
@@ -27,6 +26,7 @@ export default ApplicationAdapter.extend({
     findRecord: function (store, type, id, snapshot)
     {
         const ws = this.get('ws');
+
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
             ws.sendJson('credential.read',
@@ -44,7 +44,6 @@ export default ApplicationAdapter.extend({
 
         // todo: Maybe add code to remove the object in the inverse side
         // of the relationship (user->credentials).
-
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
             ws.sendJson('credential.delete', {credential_id: credentialId}).then(
@@ -55,7 +54,6 @@ export default ApplicationAdapter.extend({
     updateRecord: function (store, type, snapshot)
     {
         const data = this.serialize(snapshot);
-        console.log(data);
         const ws = this.get('ws');
 
         if (data.data.relationships && data.data.relationships.owner && data.data.relationships.owner.data)

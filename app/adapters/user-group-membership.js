@@ -8,6 +8,7 @@ export default ApplicationAdapter.extend({
     findRecord: function (store, type, id, snapshot)
     {
         const ws = this.get('ws');
+
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
             ws.sendJson('user-group-membership.read',

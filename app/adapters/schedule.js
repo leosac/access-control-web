@@ -21,6 +21,7 @@ export default ApplicationAdapter.extend({
     findRecord: function (store, type, id, snapshot)
     {
         const ws = this.get('ws');
+
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
             ws.sendJson('schedule.read',
@@ -76,6 +77,7 @@ export default ApplicationAdapter.extend({
     findAll: function (store, type, sinceToken)
     {
         const ws = this.get('ws');
+
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
             ws.sendJson('schedule.read',

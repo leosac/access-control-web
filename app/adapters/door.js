@@ -7,6 +7,7 @@ export default ApplicationAdapter.extend({
     findRecord: function (store, type, id, snapshot)
     {
         const ws = this.get('ws');
+
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
             ws.sendJson('door.read', {door_id: Number.parseInt(id)}).then(
@@ -18,6 +19,7 @@ export default ApplicationAdapter.extend({
     findAll: function (store, type, sinceToken, snapshotRecordArray)
     {
         const ws = this.get('ws');
+
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
             ws.sendJson('door.read', {door_id: 0}).then(

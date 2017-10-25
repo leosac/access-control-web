@@ -7,6 +7,7 @@ export default ApplicationAdapter.extend({
     findRecord: function (store, type, id, snapshot)
     {
         const ws = this.get('ws');
+
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
             ws.sendJson('zone.read', {zone_id: Number.parseInt(id)}).then(
@@ -32,7 +33,7 @@ export default ApplicationAdapter.extend({
         const data = this.serialize(snapshot);
         const ws = this.get('ws');
 
-        // search forEach door, if none, set id to null
+        // search for each door, if none set id to null
         if (data.data.relationships && data.data.relationships['doors'] &&
             data.data.relationships['doors'].data)
         {
@@ -44,7 +45,7 @@ export default ApplicationAdapter.extend({
         else
             data.data.attributes.doors = [];
 
-        // search forEach child, if none, set id to null
+        // search for each zone child, if none set id to null
         if (data.data.relationships && data.data.relationships['children'] &&
             data.data.relationships['children'].data)
         {
@@ -81,7 +82,7 @@ export default ApplicationAdapter.extend({
         else
             data.data.attributes.doors = [];
 
-        // search forEach child, if none, set id to null
+        // search for each child, if none set id to null
         if (data.data.relationships && data.data.relationships['children'] &&
             data.data.relationships['children'].data)
         {
