@@ -112,7 +112,7 @@ export default Ember.Service.extend({
 
     /**
      * Return a promise that resolve to an array of {id, name, device-class, type}
-     * device-class is a number between 0 and 2 (unknown, gpio, rfidreader)
+     * device-class is a number between 0 and 4 (unknown, gpio, rfidreader, buzzer, led)
      * type is the name of the device type (eg 'piface-digital' or 'wiegand')
      * for each device that matched
      */
@@ -154,7 +154,7 @@ export default Ember.Service.extend({
                 promiseGroup,
                 promiseSchedule,
                 promiseUser,
-            promiseCredential]).then((data) => {
+                promiseCredential]).then((data) => {
                 if (data[0]) {
                     data[0].forEach(function (zone) {
                         resultSearch.push({
