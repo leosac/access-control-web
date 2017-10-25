@@ -4,7 +4,6 @@ import { validator , buildValidations } from 'ember-cp-validations';
 
 const Validations = buildValidations(
     {
-
         number: [
             validator('presence', {
                 presence: true
