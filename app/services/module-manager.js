@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import App from '../app';
 
 /**
  * This service will help us manage every module that are in our application,
@@ -19,8 +18,35 @@ function formatName(object)
     return object;
 }
 
-function formatRouteName(input) {
-   return input.replace(/([A-Z])/g, "-$1").toLowerCase();
+/**
+ * This function will remove the last point of the path.
+ * If you give as entry point: / , which can be a normal situation,
+ * it will put "." at the end of the path, but this is an incorrect so we remove it
+ *
+ * @param path
+ * @returns {*}
+ */
+
+function removeLastDot(path)
+{
+    if (path.substring(path.length-1) === ".")
+        path = path.substring(0, path.length-1);
+    return path;
+}
+
+/**
+ * The input is camelCased, which is not usable as it is. So we dasherize it, and we put the entry point in the routeName
+ *
+ * @param input
+ * @param entryPoint
+ * @returns {*}
+ */
+
+function formatRouteName(input, entryPoint) {
+    input = input.replace(/([A-Z])/g, "-$1").toLowerCase();
+    input += entryPoint.replace('/', '.');
+    input = removeLastDot(input);
+   return input;
 }
 
 export default Ember.Service.extend({
@@ -40,9 +66,9 @@ export default Ember.Service.extend({
         this.fetchModule();
     },
 
-    _pushModulesInfos(routeName, displayName, needServer)
+    _pushModulesInfos(routeName, displayName, needServer, entryPoint)
     {
-        routeName = formatRouteName(routeName);
+        routeName = formatRouteName(routeName, entryPoint);
         let moduleInfos = {
             displayName: displayName,
             routeName: routeName,
@@ -104,11 +130,11 @@ export default Ember.Service.extend({
                 modulesClient.forEach(function(module) {
                     if (module[1].leosacProperty.needServer) {
                         modulesShouldBeLoadedOnBothClient.push(module[0]);
-                        modulesInfo.push(self._pushModulesInfos(module[0], module[1].leosacProperty.displayName, true));
+                        modulesInfo.push(self._pushModulesInfos(module[0], module[1].leosacProperty.displayName, true, module[1].leosacProperty.entryPoint));
                     }
                     else {
                         modulesShouldBeLoadedOnClient.push(module[0]);
-                        modulesInfo.push(self._pushModulesInfos(module[0], module[1].leosacProperty.displayName, false));
+                        modulesInfo.push(self._pushModulesInfos(module[0], module[1].leosacProperty.displayName, false, module[1].leosacProperty.entryPoint));
                     }
                 });
 

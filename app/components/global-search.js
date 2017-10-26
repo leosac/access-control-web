@@ -40,10 +40,8 @@ export default Ember.Component.extend({
             {
                 return this.get('search').findAllByAlias(partialAlias).then((data) => {
                     let resultObject = [];
-
                     data.forEach(function(objects) {
                         let typeObject = {};
-
                         if (objects.type === 'user')
                         {
                             typeObject = {
@@ -105,12 +103,19 @@ export default Ember.Component.extend({
                                 id: objects.id
                             };
                         }
+                        else
+                        {
+                            typeObject = {
+                                name: objects.nameOrAlias,
+                                type: objects.type,
+                                id: objects.id
+                            };
+                        }
                         resultObject.push(typeObject);
                     });
                     resultObject.sort(function(a, b) {
-                        let typeA = a.type.toLowerCase();
-                        let typeB = b.type.toLowerCase();
-
+                        let typeA = a.type[0].toLowerCase();
+                        let typeB = b.type[0].toLowerCase();
                         if (typeA === typeB)
                         {
                             let nameA = a.name.toLowerCase();

@@ -147,14 +147,16 @@ export default Ember.Service.extend({
         let promiseSchedule = this.findScheduleByName(partialName);
         let promiseUser = this.findUserByUsername(partialName);
         let promiseCredential = this.findCredentialByAlias(partialName);
+        let promiseDevice = this.findDeviceByAlias(partialName);
 
-        return new Ember.RSVP.Promise(function (resolve, reject) {
+        return new Ember.RSVP.Promise(function (resolve) {
             Ember.RSVP.all([promiseZone,
                 promiseDoor,
                 promiseGroup,
                 promiseSchedule,
                 promiseUser,
-                promiseCredential]).then((data) => {
+                promiseCredential,
+                promiseDevice]).then((data) => {
                 if (data[0]) {
                     data[0].forEach(function (zone) {
                         resultSearch.push({
@@ -214,6 +216,15 @@ export default Ember.Service.extend({
                                 id: credential.id,
                                 nameOrAlias: credential.alias
                             });
+                    });
+                }
+                if (data[6]) {
+                    data[6].forEach((device) => {
+                        resultSearch.push({
+                            type: device.type,
+                            id: device.id,
+                            nameOrAlias: device.name
+                        });
                     });
                 }
                 resolve(resultSearch);

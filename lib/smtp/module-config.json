@@ -1,4 +1,5 @@
 {
   "displayName": "SMTP",
-  "needServer": true
+  "needServer": true,
+  "entryPoint": "/"
 }

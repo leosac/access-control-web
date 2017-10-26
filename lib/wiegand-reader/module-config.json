@@ -1,4 +1,5 @@
 {
   "displayName": "Wiegand reader",
-  "needServer": true
+  "needServer": true,
+  "entryPoint": "/list"
 }

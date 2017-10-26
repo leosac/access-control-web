@@ -1,4 +1,5 @@
 {
   "displayName": "LED Buzzer",
-  "needServer": true
+  "needServer": true,
+  "entryPoint": "/list"
 }
