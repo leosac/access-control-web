@@ -25,7 +25,7 @@
       </div>
       <div class="row">
         {{#form.element label=(t 'gpio_high')}}
-          {{device-class-search arrayOfDeviceClass=arrayOfDeviceClass
+          {{device-picker arrayOfDeviceClass=arrayOfDeviceClass
                                 placeholder='GPIO'
                                 relationshipsName='gpioHigh'
                                 device=wiegand-reader}}
@@ -34,7 +34,7 @@
       </div>
       <div class="row">
         {{#form.element label=(t 'gpio_low')}}
-          {{device-class-search arrayOfDeviceClass=arrayOfDeviceClass
+          {{device-picker arrayOfDeviceClass=arrayOfDeviceClass
                                 placeholder='GPIO'
                                 relationshipsName='gpioLow'
                                 device=wiegand-reader}}
