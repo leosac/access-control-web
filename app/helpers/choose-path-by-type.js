@@ -29,6 +29,22 @@ export function choosePathByType(params/*, hash*/) {
     {
         return 'credentials.rfid-card';
     }
+    else if (params[0] === 'piface-digital-gpio')
+    {
+        return 'piface-digital-gpio.piface-digital-gpio';
+    }
+    else if (params[0] === 'wiegand-reader')
+    {
+        return 'wiegand-reader';
+    }
+    else if (params[0] === 'buzzer')
+    {
+        return 'led-buzzer.buzzer';
+    }
+    else if (params[0] === 'led')
+    {
+        return 'led-buzzer.led';
+    }
 }
 
 export default Ember.Helper.helper(choosePathByType);

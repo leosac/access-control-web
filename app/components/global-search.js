@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     globalInfo: Ember.inject.service('leosac-info'),
+    routeHelper: Ember.inject.service('module-route-helper'),
     search: Ember.inject.service('search'),
     flashMessages: Ember.inject.service(),
     i18n: Ember.inject.service(),
@@ -38,6 +39,7 @@ export default Ember.Component.extend({
              */
             findAll(partialAlias)
             {
+                const self = this;
                 return this.get('search').findAllByAlias(partialAlias).then((data) => {
                     let resultObject = [];
                     data.forEach(function(objects) {
@@ -45,35 +47,36 @@ export default Ember.Component.extend({
                         if (objects.type === 'user')
                         {
                             typeObject = {
-                                username: objects.nameOrAlias,
                                 name:  objects.nameOrAlias,
-                                type: 'typeUser',
+                                tradKey: 'typeUser',
+                                type: 'profile',
                                 id: objects.id
                             };
                         }
                         else if (objects.type === 'zone')
                         {
                             typeObject = {
-                                alias: objects.nameOrAlias,
                                 name:  objects.nameOrAlias,
-                                type: 'typeZone',
+                                tradKey: 'typeZone',
+                                type: objects.type,
                                 id: objects.id
                             };
                         }
                         else if (objects.type === 'door')
                         {
                             typeObject = {
-                                alias: objects.nameOrAlias,
                                 name:  objects.nameOrAlias,
-                                type: 'typeDoor',
+                                type: objects.type,
+                                tradKey: 'typeDoor',
                                 id: objects.id
                             };
                         }
                         else if (objects.type === 'schedule')
                         {
                             typeObject = {
-                                name: objects.nameOrAlias,
-                                type: 'typeSchedule',
+                                name:  objects.nameOrAlias,
+                                type: objects.type,
+                                tradKey: 'typeSchedule',
                                 id: objects.id
                             };
                         }
@@ -81,25 +84,26 @@ export default Ember.Component.extend({
                         {
                             typeObject = {
                                 name:  objects.nameOrAlias,
-                                type: 'typeGroup',
+                                type: objects.type,
+                                tradKey: 'typeGroup',
                                 id: objects.id
                             };
                         }
                         else if (objects.type === 'pin-code')
                         {
                             typeObject = {
-                                alias:  objects.nameOrAlias,
                                 name:  objects.nameOrAlias,
-                                type: 'typePinCode',
+                                type: 'credentials.' + objects.type,
+                                tradKey: 'typePinCode',
                                 id: objects.id
                             };
                         }
                         else if (objects.type === 'rfid-card')
                         {
                             typeObject = {
-                                alias:  objects.nameOrAlias,
                                 name:  objects.nameOrAlias,
-                                type: 'typeRfidCard',
+                                type: 'credentials.' + objects.type,
+                                tradKey: 'typeRfidCard',
                                 id: objects.id
                             };
                         }
@@ -107,7 +111,9 @@ export default Ember.Component.extend({
                         {
                             typeObject = {
                                 name: objects.nameOrAlias,
-                                type: objects.type,
+                                tradKey: 'device',
+                                //type: 'led-buzzer.led',
+                                type: self.get('routeHelper').setPath(objects.type),
                                 id: objects.id
                             };
                         }

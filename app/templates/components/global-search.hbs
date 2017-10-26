@@ -8,10 +8,9 @@
       allowClear=true
       onchange=(action (mut selected))
     as |result|}}
-      {{#link-to (choose-path-by-type result.type) result.id tagName='div'}}
-        {{log (choose-path-by-type result.type)}}
+      {{#link-to result.type result.id tagName='div'}}
         {{result.name}}
-        <span style="color: #9b9aa5;font-style: italic;" class="pull-right" >{{t result.type}}</span>
+        <span style="color: #9b9aa5;font-style: italic;" class="pull-right" >{{t result.tradKey}}</span>
       {{/link-to}}
     {{/power-select-typeahead}}
   </div>

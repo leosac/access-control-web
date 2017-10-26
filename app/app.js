@@ -53,7 +53,11 @@ App = Ember.Application.extend({
             leosacProperty: {
                 needServer: true,
                 displayName: 'LED Buzzer',
-                entryPoint: '/list'
+                entryPoint: '/list',
+                modelToRoute: {
+                    led: 'led',
+                    buzzer: 'buzzer'
+                }
             },
             dependencies: {
                 externalRoutes: {

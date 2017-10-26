@@ -29,6 +29,7 @@ export default {
     'delete': 'Delete',
     'description': 'Description',
     'details': 'Details',
+    'device':'Device',
     'disconnected': 'Disconnected',
     'display_id': 'Display Identifier',
     'doors': 'Doors',
