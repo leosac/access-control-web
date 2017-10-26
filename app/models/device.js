@@ -13,5 +13,5 @@ const DeviceValidation = buildValidations(
 export default DS.Model.extend(DeviceValidation, {
     name: DS.attr('string'),
     deviceClass: DS.attr('device-class'), // device type(gpio, reader, buzzer...)
-    enabled: DS.attr('boolean') // active or not
+    enabled: DS.attr('boolean', {defaultValue: true}) // active or not
 });

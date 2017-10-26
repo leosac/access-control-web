@@ -24,6 +24,6 @@ const Validations = buildValidations(
 
 export default Device.extend(Validations, {
     number: DS.attr('number'),
-    direction: DS.attr('direction'),
+    direction: DS.attr('direction', {defaultValue: 'in'}),
     defaultValue: DS.attr('default-value')
 });
