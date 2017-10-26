@@ -29,7 +29,7 @@
 <div class="row">
   {{#form.element label=(t 'enable')}}
     <div class="pull-left">
-      {{device-toggle-enabled device=ledBuzzer}}
+      {{device-toggle-enabled device=ledBuzzer saveIt=false}}
       {{#bs-tooltip placement="right"}}{{t 'information.enable'}}{{/bs-tooltip}}
     </div>
   {{/form.element}}

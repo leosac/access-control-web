@@ -55,7 +55,7 @@
       </div>
       {{#form.element label=(t 'enable')}}
       <div class="pull-left">
-        {{device-toggle-enabled device=piface-digital-gpio}}
+        {{device-toggle-enabled device=piface-digital-gpio saveIt=false}}
         {{#bs-tooltip placement="right" triggerEvent='hover'}}{{t 'information.enable'}}{{/bs-tooltip}}
       </div>
       {{/form.element}}
