@@ -31,10 +31,12 @@
           {{t piface-digital-gpio.direction}}
         {{/link-to}}
         {{#link-to 'piface-digital-gpio' piface-digital-gpio.id tagName='td'}}
-          {{#if (eq piface-digital-gpio.defaultValue 'true')}}
-            {{t 'true'}}
-          {{else}}
-            {{t 'false'}}
+          {{#if (eq piface-digital-gpio.direction 'out')}}
+            {{#if (eq piface-digital-gpio.defaultValue 'true')}}
+              {{t 'true'}}
+            {{else}}
+              {{t 'false'}}
+            {{/if}}
           {{/if}}
         {{/link-to}}
         {{#link-to 'piface-digital-gpio' piface-digital-gpio.id tagName='td'}}
