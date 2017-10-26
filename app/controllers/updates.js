@@ -29,7 +29,6 @@ export default Ember.Controller.extend({
 
     init()
     {
-        this.refresh();
     },
 
     actions: {
