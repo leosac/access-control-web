@@ -39,8 +39,8 @@ You will need the following things properly installed on your computer.
 #### Generate the module
 
 * To generate a new module, we will use [ember-engines](http://ember-engines.com):
- `ember generate in-repo-addon my-addon`. This will create a new engines in the *lib* repository. In your module repository
- you will find something like that:   
+ `ember generate in-repo-addon my-addon`. This will create a new engines in the *lib* repository.
+  In your module repository you will find something like that:   
   .  
   ├── addon  
   │   ├── engine.js  
@@ -61,8 +61,14 @@ You will need the following things properly installed on your computer.
        ```
        myModule: { // ! name is camelCased here !
                   leosacProperty: {
-                      needServer: true,
-                      displayName: 'Cool name'
+                      needServer: true,              // if it need a backend module
+                      displayName: 'Cool name', // name that will be displayed on the side-menu
+                      entryPoint: '/',                    // when you click on your module in the side-mmenu,
+                                                               // this is the route that will be used in the module
+                      modelToRoute: {                // if you have a model, this will be used to redirect
+                                                                // to the model page of your module in the global-search 
+                          myModel: 'my-model' 
+                      }
                   },
                   dependencies: {
                       externalRoutes: {
@@ -74,12 +80,13 @@ You will need the following things properly installed on your computer.
                           'leosac-info',
                           'flashMessages',
                           'store',
-                          'module-manager'
+                          'module-manager',
+                          'search'
                       ]
                   }
               },
          ```
-       2. In leosacProperty, this will be used by the `module-manager` service, this is for display purpose, and error.
+       2. In leosacProperty, this will be used by the `module-manager` service.
        3. the `dependencies` value is necessary, and should be copy pasted as presented above
    2. In the router.js, make sure that there is a newly created line: 
       `this.mount('my-module');`, it should be added automatically when generating the engine.
@@ -87,8 +94,14 @@ You will need the following things properly installed on your computer.
    1. It should respect this syntax:
    
           {
-              "displayName": "My module",
-              "needServer": false // or true if needed
+               needServer: true,     
+               displayName: 'Cool name',
+               entryPoint: '/',         
+                                                             
+               modelToRoute: {
+                    myModel: 'my-model' 
+               }
+              
           }
 3. Stil at the root of the engine, there certain file that need to be changed.
    1. In the *package.json*, you must provide the necessary addon for your module. A good base should be adding:
@@ -110,13 +123,15 @@ You will need the following things properly installed on your computer.
      },
      "ember-addon": {
        "paths": [
-         "../shared-tools" // this is an addon that allow the application and the module to share components (button-with-confirmation) 
+         "../shared-tools" // this is an addon that allow the application
+                           // and the module to share components (button-with-confirmation) 
        ]
      }
      ```
      (The addons may needs some updates)
      
-   2. In the *addon/engine.js*, you must provide the same `dependencies` than in the *app.js*, it must be placed under the `modulePrefix`:
+   2. In the *addon/engine.js*, you must provide the same `dependencies` than in the *app.js*, 
+      it must be placed under the `modulePrefix`:
    ```
    dependencies: {
           services: [
