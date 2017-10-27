@@ -29,8 +29,8 @@ function formatName(object)
 
 function removeLastDot(path)
 {
-    if (path.substring(path.length-1) === ".")
-        path = path.substring(0, path.length-1);
+    if (path.substring(path.length - 1) === ".")
+        path = path.substring(0, path.length - 1);
     return path;
 }
 
@@ -66,13 +66,14 @@ export default Ember.Service.extend({
         this.fetchModule();
     },
 
-    _pushModulesInfos(routeName, displayName, needServer, entryPoint)
+    _pushModulesInfos(routeName, displayName, needServer, entryPoint, modelToRoute)
     {
         routeName = formatRouteName(routeName, entryPoint);
         let moduleInfos = {
             displayName: displayName,
             routeName: routeName,
-            needServer: needServer
+            needServer: needServer,
+            modelToRoute: modelToRoute
         };
         return (moduleInfos);
     },
@@ -130,11 +131,13 @@ export default Ember.Service.extend({
                 modulesClient.forEach(function(module) {
                     if (module[1].leosacProperty.needServer) {
                         modulesShouldBeLoadedOnBothClient.push(module[0]);
-                        modulesInfo.push(self._pushModulesInfos(module[0], module[1].leosacProperty.displayName, true, module[1].leosacProperty.entryPoint));
+                        modulesInfo.push(self._pushModulesInfos(module[0], module[1].leosacProperty.displayName,
+                            true, module[1].leosacProperty.entryPoint, module[1].leosacProperty.modelToRoute));
                     }
                     else {
                         modulesShouldBeLoadedOnClient.push(module[0]);
-                        modulesInfo.push(self._pushModulesInfos(module[0], module[1].leosacProperty.displayName, false, module[1].leosacProperty.entryPoint));
+                        modulesInfo.push(self._pushModulesInfos(module[0], module[1].leosacProperty.displayName,
+                            false, module[1].leosacProperty.entryPoint, module[1].leosacProperty.modelToRoute));
                     }
                 });
 

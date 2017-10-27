@@ -13,7 +13,8 @@ App = Ember.Application.extend({
             leosacProperty: {
                 needServer: true,
                 displayName: 'SMTP',
-                entryPoint: '/'
+                entryPoint: '/',
+                modelToRoute: {}
             },
             dependencies: {
                 externalRoutes: {
@@ -33,7 +34,10 @@ App = Ember.Application.extend({
             leosacProperty: {
                 needServer: true,
                 displayName: 'Piface Digital GPIO',
-                entryPoint: '/list'
+                entryPoint: '/list',
+                modelToRoute: {
+                    pifaceDigitalGpio: 'piface-digital-gpio'
+                }
             },
             dependencies: {
                 externalRoutes: {
@@ -78,7 +82,10 @@ App = Ember.Application.extend({
             leosacProperty: {
                 needServer: true,
                 displayName: 'Wiegand Reader',
-                entryPoint: '/list'
+                entryPoint: '/list',
+                modelToRoute: {
+                    wiegandReader: 'wiegand-reader'
+                }
             },
             dependencies: {
                 externalRoutes: {

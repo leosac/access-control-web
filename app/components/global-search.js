@@ -112,7 +112,6 @@ export default Ember.Component.extend({
                             typeObject = {
                                 name: objects.nameOrAlias,
                                 tradKey: 'device',
-                                //type: 'led-buzzer.led',
                                 type: self.get('routeHelper').setPath(objects.type),
                                 id: objects.id
                             };
