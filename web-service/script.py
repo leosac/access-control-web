@@ -95,7 +95,9 @@ for data in addons_name:
     data_dict[route_name] = {
         'leosacProperty': {
             'needServer': addon_config[data]['needServer'],
-            'displayName': addon_config[data]['displayName']
+            'displayName': addon_config[data]['displayName'],
+            'entryPoint': addon_config[data]['entryPoint'],
+            'modelToRoute': addon_config[data]['modelToRoute']
         },
         'dependencies': {
             'externalRoutes': {
@@ -107,7 +109,8 @@ for data in addons_name:
                 'leosac-info',
                 'flashMessages',    
                 'store',
-                'module-manager']
+                'module-manager',
+                'search']
         }
     }
 

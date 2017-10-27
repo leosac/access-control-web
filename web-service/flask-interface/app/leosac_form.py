@@ -1,7 +1,4 @@
-from flask_bootstrap import Bootstrap
-from flask_appconfig import AppConfig
 from flask_wtf import Form, RecaptchaField
-from flask_wtf.file import FileField
 from wtforms import TextField, HiddenField, ValidationError, RadioField, SelectField, \
     BooleanField, SubmitField, IntegerField, FormField, validators,  SelectMultipleField, widgets
 
@@ -41,7 +38,6 @@ class MyForm(Form):
     addon = SelectMultipleField('Addons:', choices=my_addons)
     my_styles = [(x.name, x.name) for x in all_style]
     style = SelectField('Styles:', choices=my_styles)
-   # recaptcha = RecaptchaField('A simple captcha')
     submit_button = SubmitField('Submit Form')
 
     def validate_hidden_field(form, field):

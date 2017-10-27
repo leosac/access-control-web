@@ -25,6 +25,9 @@ def fill_json_data(form):
                     in_repo_addon.append(value)
                 elif module.addon_type == 'out':
                     out_repo_addon.append(value)
+    # we will add the shared-tools by hand here, this is a module that the application use by default
+    in_repo_addon.append('shared-tools')
+
     data['addon'] = in_repo_addon
     data['extern-addon'] = out_repo_addon
     return data
