@@ -1,5 +1,6 @@
 {
   "displayName": "SMTP",
   "needServer": true,
-  "entryPoint": "/"
+  "entryPoint": "/",
+  "modelToRoute": {}
 }

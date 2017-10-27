@@ -1,5 +1,9 @@
 {
   "displayName": "LED Buzzer",
   "needServer": true,
-  "entryPoint": "/list"
+  "entryPoint": "/list",
+  "modelToRoute": {
+    "led": "led",
+    "buzzer": "buzzer"
+  }
 }
