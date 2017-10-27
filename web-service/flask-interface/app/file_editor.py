@@ -25,9 +25,6 @@ def fill_json_data(form):
                     in_repo_addon.append(value)
                 elif module.addon_type == 'out':
                     out_repo_addon.append(value)
-    # we will add the shared-tools by hand here, this is a module that the application use by default
-    in_repo_addon.append('shared-tools')
-
     data['addon'] = in_repo_addon
     data['extern-addon'] = out_repo_addon
     return data
@@ -42,6 +39,7 @@ def create_and_download_build(form):
         os.system('mkdir my-build')
         with open('build-config.json', 'w') as data_file:
             data_file.write(json.dumps(data, indent=4))
+
         #The config-file is created
         #We will now run the docker
         os.system('docker run -ti -v ' + tmpdirectoryname + '/my-build:/build-output -v ' + tmpdirectoryname + '/build-config.json:/build-config.json -v ~/leosac/leosac-web/custom-assets:/custom-assets leosac-web:latest')

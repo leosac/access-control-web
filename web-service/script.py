@@ -41,6 +41,9 @@ for data_addon in config_data['addon']:
     addons_name.append(data_addon)
     data['ember-addon']['paths'].append("lib/" + data_addon)
 
+# Manually add the shared-tools module,
+#  which is an addon that is used by both the application and the module
+data['ember-addon']['paths'].append("lib/shared-tools")
 
 # Add to our dictionary the out-repo addons 
 

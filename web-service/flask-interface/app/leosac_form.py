@@ -17,7 +17,8 @@ class StyleDescription(object):
 all_addon = [
     ModuleDescription('smtp', 'in'),
     ModuleDescription('piface-digital-gpio', 'in'),
-    ModuleDescription('wiegand', 'in'),
+    ModuleDescription('wiegand-reader', 'in'),
+    ModuleDescription('led-buzzer', 'in'),
     ModuleDescription('evoxs', 'out')
     ]
 
