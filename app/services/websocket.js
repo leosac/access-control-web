@@ -27,7 +27,7 @@ export default Ember.Service.extend({
                 self.get('authSrv').authenticateWithToken(token);
         });
 
-        this.initWebsocket('ws://' + ENV.APP.leosacAddr + '/websocket', deferred);
+        this.initWebsocket(ENV.APP.leosacAddr + '/websocket', deferred);
     },
 
     initWebsocket: function(addr, deferred) {
