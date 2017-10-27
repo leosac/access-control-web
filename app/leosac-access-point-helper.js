@@ -37,15 +37,12 @@ function findAllAccessPoints(store)
     let tmpArray = [];
 
     Ember.RSVP.hash({
-        evoxs: store.findAll('evoxs-access-point', {reload: true}),
         base: store.findAll('access-point', {reload: true}),
     }).then(function (hash)
     {
-        tmpArray = tmpArray.concat(hash.base.toArray(),
-            hash.evoxs.toArray());
+        tmpArray = tmpArray.concat(hash.base.toArray());
         promise.resolve(tmpArray);
     });
-
     return promise.promise;
 }
 
