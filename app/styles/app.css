@@ -165,3 +165,33 @@ a:hover {
 .form-horizontal .has-feedback .form-control-feedback {
   right: 25px;
 }
+
+/*
+This will set the color of the svg icon
+ */
+
+.rectangle {
+  width: 11px;
+  height: 11px;
+  border: 1px;
+  background: #0070c0;
+  border-radius: 4px;
+}
+
+.summary-icon {
+  width: 128px;
+  height: 128px;
+  background: #0070c0;
+  border-radius: 15px;
+}
+
+.summary-icon:hover {
+  background-color: #004D85;
+  border: 1px solid #0052a0;
+}
+
+.summary-puce {
+  width: 11px;
+  height: 17px;
+  fill: #0070c0;
+}
