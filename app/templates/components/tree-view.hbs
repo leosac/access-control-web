@@ -8,26 +8,6 @@
                 plugins=plugins
                 typesOptions=typesOptions
                 checkCallback=checkCallback}}
-        <div class="col-md-6">
-            <!-- 45 is hardcoded because this is the size of the footer-->
-            <div style="float: left; position: fixed;bottom: 45px">
-                <div class="row" style="padding-top: 1%">
-                    <fieldset>
-                        <legend style="margin-bottom: 1%;">{{t 'legend.title'}}</legend>
-                        <div class="row">
-                            <div class="col-md-12">
-                                {{t 'legend.logical'}}: &nbsp;&nbsp;&nbsp;<i class="fa fa-user"></i>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                {{t 'legend.physical'}}: &nbsp;<i class="fa fa-building-o"></i>
-                            </div>
-                        </div>
-                    </fieldset>
-                </div>
-            </div>
-        </div>
     </div>
 
     {{#if selectedZone}}
@@ -46,6 +26,7 @@
                         defaultText=(t 'schedule.add_door')}}
           </div>
         </div>
+
         <div class="row">
           <div class="col-md-12">
             <div class="table-responsive">
@@ -73,31 +54,31 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-1" style="font-size: 16px;font-style: inherit;color: #0070c0;font-weight: 900">
+        {{#if arrayDoor}}
+          <p class="summary-zone-tree">
             {{t 'summary'}}:
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="table-responsive">
-              <table class="table table-hover table-bordered">
-                <thead>
-                <th>{{t 'zone.title'}}</th>
-                <th>{{t 'door.title'}}</th>
-                </thead>
-                <tbody>
-                {{#each arrayDoor as |entry|}}
-                  {{#link-to 'door' entry.doorId tagName="tr"}}
-                    <td>{{entry.zone}}</td>
-                    <td>{{entry.door}}</td>
-                  {{/link-to}}
-                {{/each}}
-                </tbody>
-              </table>
+          </p>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="table-responsive">
+                <table class="table table-hover table-bordered">
+                  <thead>
+                  <th>{{t 'zone.title'}}</th>
+                  <th>{{t 'door.title'}}</th>
+                  </thead>
+                  <tbody>
+                  {{#each arrayDoor as |entry|}}
+                    {{#link-to 'door' entry.doorId tagName="tr"}}
+                      <td>{{entry.zone}}</td>
+                      <td>{{entry.door}}</td>
+                    {{/link-to}}
+                  {{/each}}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
-        </div>
+        {{/if}}
       </div>
     {{/if}}
 </div>
