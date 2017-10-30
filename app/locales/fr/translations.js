@@ -450,7 +450,7 @@ export default {
         'credential_schedule': 'Affiche les horaires et leur mapping qui sont liés <i>directement</i> au crédential.',
         'user_schedule': "Affiche les horaires et leur mapping qui vous sont liés <i>directement</i>. Ceci n'affichage pas les horaires qui sont liés au travers les groupes ou les crédentiaux.",
         'group_schedule': 'Affiche les horaires et leur mapping qui sont liés <i>directement</i> au groupe.',
-        'no_timeframe': "Cette horaires n'a pas de zones horaires. Ceci veut dire qu'il n'aura aucun effet.",
+        'no_timeframe': "Ce programme n'a pas de zones horaires. Ceci veut dire qu'il n'aura aucun effet.",
         'no_mapping' : 'Il n\'y a pas de mapping',
         'remove_from_mapping': 'Supprimer du mapping',
         'remove_from_mapping_confirm': 'Êtes-vous sûr de vouloir quitter ce mapping ?',
