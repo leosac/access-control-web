@@ -233,6 +233,7 @@ export default Ember.Service.extend({
 
                 self.set('serverModules', modulesShouldBeLoadedOnServer);
                 self.set('clientModules', modulesShouldBeLoadedOnClient);
+                self.set('clientMatchServer', modulesShouldBeLoadedOnBothClient);
                 self.set('shouldPresentBoth', modulesLoadedByBoth);
                 self.set('onlyPresentClient', modulesNotLoadedByTheServer);
                 self.set('onlyPresentServer', modulesNotLoadedByTheClient);

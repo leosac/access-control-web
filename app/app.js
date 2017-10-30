@@ -101,7 +101,7 @@ App = Ember.Application.extend({
                     'search'
                 ]
             }
-        },
+        }
     },
     modulePrefix: config.modulePrefix,
     podModulePrefix: config.podModulePrefix,
