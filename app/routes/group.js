@@ -44,11 +44,6 @@ export default LeosacRoute.extend({
                 self.get('flashMessages').success('Group has been deleted.');
                 self.transitionTo('groups.list');
             });
-        },
-        cancelAndRefresh ()
-        {
-            this.controller.get('model').rollbackAttributes();
-            this.controller.get('model').reload();
         }
     }
 });
