@@ -1,58 +1,40 @@
-<div>
-    {{#bs-tab as |tab|}}
-        {{#tab.pane title=(t 'information')}}
-            <br>
-            <div class="row col-md-12">
-                {{#bs-form formLayout="horizontal" model=model onSubmit=(route-action "editGroup") as  | form |}}
-                    <fieldset>
-                        <legend>{{t 'group_information'}}</legend>
-                        <div class="row">
-                            <div class="col-md-6 col-lg-4">
-                                {{form.element controlType="text" label=(t 'name')
-                                               placeholder="MySuperGroup"
-                                               property="name"}}
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 col-lg-4">
-                                {{form.element controlType='textarea' label=(t 'description')
-                                               property='description'}}
-                            </div>
-                        </div>
-                        <div class="col-offset-2 col-md-8">
-                            {{bs-button defaultText=(t 'edit') type="primary" buttonType="submit"
-                                        size='sm'}}
+{{#bs-tab as |tab|}}
+  {{#tab.pane title=(t 'information')}}
+    <div class="col-md-6 button-space">
+      {{#bs-form formLayout="vertical" model=model onSubmit=(route-action "editGroup") as  | form |}}
+        <fieldset>
+          <legend>{{t 'group_information'}}</legend>
+              {{form.element controlType="text" label=(t 'name')
+                             placeholder="MySuperGroup"
+                             property="name"}}
+              {{form.element controlType='textarea' label=(t 'description')
+                             property='description' placeholder='Description'}}
 
-                            {{#bs-button type="info" icon="glyphicon glyphicon-refresh"
-                                         size="sm"
-                                         onClick=(route-action 'cancelAndRefresh')}}
-                                {{t 'cancel_and_refresh'}}
-                            {{/bs-button}}
-                            {{button-with-confirmation
-                                    type='danger'
-                                    icon='glyphicon glyphicon-remove'
-                                    size='sm'
-                                    text=(t 'delete')
-                                    message=(t 'delete_group_confirmation')
-                                    onConfirm=(route-action 'deleteGroup')
-                            }}
-                        </div>
-                    </fieldset>
-                {{/bs-form}}
-                <div class="col-md-12 row">
-                    <hr>
-                </div>
-
+          <div class="row">
+            {{bs-button defaultText=(t 'submit') type="success" buttonType="submit"
+                        size='md'}}
+            <div class="pull-right button-to-left">
+              {{button-with-confirmation type='danger'
+                                         icon='glyphicon glyphicon-remove'
+                                         size='sm'
+                                         text=(t 'delete')
+                                         message=(t 'delete_group_confirmation')
+                                         onConfirm=(route-action 'deleteGroup')
+              }}
             </div>
-        {{/tab.pane}}
+          </div>
+        </fieldset>
+      {{/bs-form}}
 
-        {{#tab.pane title=(t 'members')}}
-            {{group-user-membership-table group=model}}
-            {{group-add-one-user group=model}}
-        {{/tab.pane}}
+    </div>
+  {{/tab.pane}}
 
-        {{#tab.pane title=(t 'access')}}
-            {{group-schedules group=model}}
-        {{/tab.pane}}
-    {{/bs-tab}}
-</div>
+  {{#tab.pane title=(t 'members')}}
+    {{group-user-membership-table group=model}}
+    {{group-add-one-user group=model}}
+  {{/tab.pane}}
+
+  {{#tab.pane title=(t 'access')}}
+    {{group-schedules group=model}}
+  {{/tab.pane}}
+{{/bs-tab}}

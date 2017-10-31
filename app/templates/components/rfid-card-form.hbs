@@ -1,34 +1,51 @@
-{{#bs-form formLayout="horizontal" model=card onSubmit=action as |form|}}
+{{#bs-form formLayout="vertical" model=card onSubmit=action as |form|}}
+  <fieldset>
+    <legend>{{t 'configuration'}}</legend>
     <div class="col-md-6">
-        <fieldset>
-            <legend>{{t 'configuration'}}</legend>
-            {{form.element controlType="text" label=(t 'alias')
-                           placeholder=(t 'alias_placeholder')
-                           property="alias"}}
-          {{#form.element controlType="text" label=(t 'credentials.rfid_card.hex_id')
-                          placeholder="11:aa:bb:cc" property="cardId" as |el|}}
-            {{el.control}}
-            {{#bs-tooltip placement="right"}}{{t 'informations.card_id'}}{{/bs-tooltip}}
-          {{/form.element}}
-          {{#form.element controlType="number" label=(t 'credentials.rfid_card.number_bits')
-                         placeholder="32" property="nbBits" as |el|}}
-    {{el.control}}
-    {{#bs-tooltip placement="right"}}{{t 'informations.number_of_bit'}}{{/bs-tooltip}}
-{{/form.element}}
+      {{form.element controlType="text" label=(t 'alias')
+                     placeholder=(t 'alias_placeholder')
+                     property="alias"}}
 
-            {{form.element controlType="textarea" label=(t 'notes')
-                           placeholder=(t 'notes_placeholder')
-                           property="description"}}
+      {{#form.element controlType="text" label=(t 'credentials.rfid_card.hex_id')
+                      placeholder="11:aa:bb:cc" property="cardId" as |el|}}
+        {{el.control}}
+        {{#bs-tooltip placement="right"}}{{t 'informations.card_id'}}{{/bs-tooltip}}
+      {{/form.element}}
 
-            {{user-picker form=form label=(t 'owner') selected=card.owner onChange=(action (mut card.owner))}}
-            {{bs-button defaultText=(t 'submit') type="primary" buttonType="submit"}}
-        </fieldset>
+      {{#form.element controlType="number" label=(t 'credentials.rfid_card.number_bits')
+                      placeholder="32" property="nbBits" as |el|}}
+        {{el.control}}
+        {{#bs-tooltip placement="right"}}{{t 'informations.number_of_bit'}}{{/bs-tooltip}}
+      {{/form.element}}
+
+      {{form.element controlType="textarea" label=(t 'notes')
+                     placeholder=(t 'notes_placeholder')
+                     property="description"}}
+
+      {{user-picker form=form
+                    label=(t 'owner')
+                    selected=card.owner
+                    onChange=(action (mut card.owner))}}
+
+      {{validity-control form=form
+                         enabledProperty="validityEnabled"
+                         startDate=(mut card.validityStart)
+                         endDate=(mut card.validityEnd)}}
+
+      <div class="row">
+        <div class="col-md-6">
+          {{bs-button defaultText=(t 'submit') type="primary" buttonType="submit"}}
+        </div>
+        <div class="pull-right button-to-left">
+          {{button-with-confirmation type='danger'
+                                     icon='glyphicon glyphicon-remove'
+                                     size='sm'
+                                     text=(t 'delete')
+                                     message=(t 'credentials.delete_confirm')
+                                     onConfirm=(route-action 'deleteCredential')
+          }}
+          </div>
+      </div>
     </div>
-    <div class="col-md-6" >
-        {{validity-control
-                form=form
-                enabledProperty="validityEnabled"
-                startDate=(mut card.validityStart)
-                endDate=(mut card.validityEnd)}}
-    </div>
+  </fieldset>
 {{/bs-form}}

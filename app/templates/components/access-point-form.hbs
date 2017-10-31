@@ -1,7 +1,8 @@
-{{#bs-form formLayout="horizontal" model=ap onSubmit=action as | form|}}
+{{#bs-form formLayout="vertical" model=ap onSubmit=action as | form|}}
     <fieldset>
         <legend>{{t 'configuration'}}</legend>
-      <div class="col-md-4">
+      <div class="col-md-6">
+
         {{form.element controlType="text" label=(t 'alias')
                        placeholder=(t 'access_point_placeholder')
                        property="alias"}}
@@ -26,8 +27,11 @@
 
         <!-- Include module specific stuff -->
         {{yield}}
-
-        {{bs-button defaultText=(t 'submit') type="primary" buttonType="submit"}}
+        <div class="row">
+          <div class="col-md-6">
+            {{bs-button defaultText=(t 'submit') type="primary" buttonType="submit"}}
+          </div>
+        </div>
       </div>
     </fieldset>
 {{/bs-form}}
