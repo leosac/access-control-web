@@ -1,56 +1,52 @@
-{{#bs-form formLayout="horizontal" model=wiegand-reader onSubmit=action as |form|}}
+{{#bs-form formLayout="vertical" model=wiegand-reader onSubmit=action as |form|}}
   <fieldset>
-    <div class="col-md-4">
+    <div class="col-md-6">
+
+      {{#form.element controlType="text" label=(t 'name')
+                      placeholder=(t 'name')
+                      property="name" as |el|}}
+        {{el.control}}
+        {{#bs-tooltip placement="right" triggerEvents='hover'}}{{t 'information.name'}}{{/bs-tooltip}}
+      {{/form.element}}
+
+      {{#form.element property="mode" label=(t 'mode')}}
+        {{#power-select
+          selected=wiegand-reader.mode
+          searchEnabled=false
+          options=allMode
+          onchange=(action (mut wiegand-reader.mode))
+          placeholder=(t 'type_mode')
+        as |mode|}}
+          {{t mode}}
+        {{/power-select}}
+        {{#bs-tooltip placement="right"}}{{t 'information.mode'}}{{/bs-tooltip}}
+      {{/form.element}}
+
+      {{#form.element label=(t 'gpio_high')}}
+        {{device-picker arrayOfDeviceClass=arrayOfDeviceClass
+                        placeholder='GPIO'
+                        relationshipsName='gpioHigh'
+                        device=wiegand-reader}}
+        {{#bs-tooltip placement="right"}}{{t 'information.gpio_high'}}{{/bs-tooltip}}
+      {{/form.element}}
+
+      {{#form.element label=(t 'gpio_low')}}
+        {{device-picker arrayOfDeviceClass=arrayOfDeviceClass
+                        placeholder='GPIO'
+                        relationshipsName='gpioLow'
+                        device=wiegand-reader}}
+        {{#bs-tooltip placement="right"}}{{t 'information.gpio_low'}}{{/bs-tooltip}}
+      {{/form.element}}
+
+      {{#form.element label=(t 'enable')}}
+        <div class="pull-right">
+          {{device-toggle-enabled device=wiegand-reader saveIt=false}}
+          {{#bs-tooltip placement="right"}}{{t 'information.enable'}}{{/bs-tooltip}}
+        </div>
+      {{/form.element}}
+
       <div class="row">
-        {{#form.element controlType="text" label=(t 'name')
-                        placeholder=(t 'name')
-                        property="name" as |el|}}
-          {{el.control}}
-          {{#bs-tooltip placement="right" triggerEvents='hover'}}{{t 'information.name'}}{{/bs-tooltip}}
-        {{/form.element}}
-      </div>
-      <div class="row">
-        {{#form.element property="mode" label=(t 'mode')}}
-          {{#power-select
-            selected=wiegand-reader.mode
-            searchEnabled=false
-            options=allMode
-            onchange=(action (mut wiegand-reader.mode))
-            placeholder=(t 'type_mode')
-          as |mode|}}
-            {{t mode}}
-          {{/power-select}}
-          {{#bs-tooltip placement="right"}}{{t 'information.mode'}}{{/bs-tooltip}}
-        {{/form.element}}
-      </div>
-      <div class="row">
-        {{#form.element label=(t 'gpio_high')}}
-          {{device-picker arrayOfDeviceClass=arrayOfDeviceClass
-                                placeholder='GPIO'
-                                relationshipsName='gpioHigh'
-                                device=wiegand-reader}}
-          {{#bs-tooltip placement="right"}}{{t 'information.gpio_high'}}{{/bs-tooltip}}
-        {{/form.element}}
-      </div>
-      <div class="row">
-        {{#form.element label=(t 'gpio_low')}}
-          {{device-picker arrayOfDeviceClass=arrayOfDeviceClass
-                                placeholder='GPIO'
-                                relationshipsName='gpioLow'
-                                device=wiegand-reader}}
-          {{#bs-tooltip placement="right"}}{{t 'information.gpio_low'}}{{/bs-tooltip}}
-        {{/form.element}}
-      </div>
-      <div class="row">
-        {{#form.element label=(t 'enable')}}
-          <div class="pull-left">
-            {{device-toggle-enabled device=wiegand-reader saveIt=false}}
-            {{#bs-tooltip placement="right"}}{{t 'information.enable'}}{{/bs-tooltip}}
-          </div>
-        {{/form.element}}
-      </div>
-      <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-6">
           {{bs-button
             defaultText=(t 'submit')
             type="primary"
@@ -58,6 +54,7 @@
             buttonType="submit"}}
         </div>
       </div>
+
     </div>
   </fieldset>
 {{/bs-form}}

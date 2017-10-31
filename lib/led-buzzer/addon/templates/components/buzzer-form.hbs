@@ -1,6 +1,6 @@
-{{#bs-form formLayout="horizontal" model=buzzer onSubmit=action as |form|}}
+{{#bs-form formLayout="vertical" model=buzzer onSubmit=action as |form|}}
   <fieldset>
-    <div class="col-md-4">
+    <div class="col-md-6">
       {{led-buzzer-form model=model ledBuzzer=buzzer form=form}}
       <div class="row">
         <div class="col-md-2">

@@ -1,36 +1,30 @@
-<div class="row">
-  {{#form.element controlType="text" label=(t 'name')
-                  placeholder=(t 'name')
-                  property="name" as |el|}}
-    {{el.control}}
-  {{/form.element}}
-</div>
-<div class="row">
-  {{#form.element property="defaultBlinkDuration" label=(t 'blink_duration') controlType='number' as |el|}}
-    {{el.control}}
-    {{#bs-tooltip placement="right"}}{{t 'information.duration'}}{{/bs-tooltip}}
-  {{/form.element}}
-</div>
-<div class="row">
-  {{#form.element property="defaultBlinkSpeed" label=(t 'blink_speed') controlType='number'  as |el|}}
-    {{el.control}}
-    {{#bs-tooltip placement="right"}}{{t 'information.speed'}}{{/bs-tooltip}}
-  {{/form.element}}
-</div>
-<div class="row">
-  {{#form.element label=(t 'gpio')}}
-    {{device-picker arrayOfDeviceClass=arrayOfDeviceClass
-                          placeholder='GPIO'
-                          relationshipsName='gpio'
-                          device=ledBuzzer}}
-    {{#bs-tooltip placement="right"}}{{t 'information.gpio'}}{{/bs-tooltip}}
-  {{/form.element}}
-</div>
-<div class="row">
-  {{#form.element label=(t 'enable')}}
-    <div class="pull-left">
-      {{device-toggle-enabled device=ledBuzzer saveIt=false}}
-      {{#bs-tooltip placement="right"}}{{t 'information.enable'}}{{/bs-tooltip}}
-    </div>
-  {{/form.element}}
-</div>
+{{#form.element controlType="text" label=(t 'name')
+                placeholder=(t 'name')
+                property="name" as |el|}}
+  {{el.control}}
+{{/form.element}}
+
+{{#form.element property="defaultBlinkDuration" label=(t 'blink_duration') controlType='number' as |el|}}
+  {{el.control}}
+  {{#bs-tooltip placement="right"}}{{t 'information.duration'}}{{/bs-tooltip}}
+{{/form.element}}
+
+{{#form.element property="defaultBlinkSpeed" label=(t 'blink_speed') controlType='number'  as |el|}}
+  {{el.control}}
+  {{#bs-tooltip placement="right"}}{{t 'information.speed'}}{{/bs-tooltip}}
+{{/form.element}}
+
+{{#form.element label=(t 'gpio')}}
+  {{device-picker arrayOfDeviceClass=arrayOfDeviceClass
+                  placeholder='GPIO'
+                  relationshipsName='gpio'
+                  device=ledBuzzer}}
+  {{#bs-tooltip placement="right"}}{{t 'information.gpio'}}{{/bs-tooltip}}
+{{/form.element}}
+
+{{#form.element label=(t 'enable')}}
+  <div class="pull-right">
+    {{device-toggle-enabled device=ledBuzzer saveIt=false}}
+    {{#bs-tooltip placement="right"}}{{t 'information.enable'}}{{/bs-tooltip}}
+  </div>
+{{/form.element}}
