@@ -162,8 +162,16 @@ a:hover {
     font-size: 12pt;
 }
 
+/*
+ This will set the validator of the power select a little on the left,
+ because power-select will put them on the dropdown arrow
+ */
 .form-horizontal .has-feedback .form-control-feedback {
   right: 25px;
+}
+
+.has-feedback .form-control-feedback {
+  right: 10px;
 }
 
 /*
@@ -199,4 +207,22 @@ This will set the color of the svg icon
 .summary-zone-tree {
   font: inherit;
   font-weight: bold;
+}
+
+/*
+There is no auto space in the bootstrap theme, so we must add a bit of margin sometime
+ */
+
+.button-space {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/*
+Since the bootstrap theme used by the application has a right-margin of 15 px,
+ we should had to our button the same rule, to harmonize the application
+ */
+
+.button-to-left {
+  margin-right: 15px;
 }
