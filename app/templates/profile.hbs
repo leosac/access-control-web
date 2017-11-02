@@ -6,19 +6,20 @@
   {{#bs-tab as |tab|}}
     {{#tab.pane title=(t 'information')}}
       {{#bs-form formLayout="vertical" model=model.user onSubmit=(route-action "editProfile") as |form|}}
-        <div class="col-md-6" style="margin-top: 1%;">
+        <div class="col-md-6 space-top">
           <fieldset>
             <legend>{{t 'profile.title'}}</legend>
             {{form.element disabled=isProfileLocked
                            controlType="text" label=(t 'firstname')
                            placeholder="John" property="firstname"}}
+
             {{form.element disabled=isProfileLocked
                            controlType="text" label=(t 'lastname')
                            placeholder="Doe" property="lastname"}}
+
             {{form.element disabled=isProfileLocked
                            controlType="email" label=(t 'email')
                            placeholder="john@doe.com" property="email"}}
-
             {{#form.element label=(t 'rank')}}
               {{#power-select
                 disabled=isRankEditLocked
@@ -37,7 +38,6 @@
             startDate=(mut model.user.validityStart)
             endDate=(mut model.user.validityEnd)}}
 
-            {{password-change disabled=isProfileLocked user_id=model.user.id}}
 
             <div class="row">
             <div class="col-md-6">
@@ -47,6 +47,9 @@
             </div>
           </fieldset>
           <p></p>
+        </div>
+        <div class="col-md-6 space-top">
+          {{password-change disabled=isProfileLocked user_id=model.user.id}}
         </div>
       {{/bs-form}}
 

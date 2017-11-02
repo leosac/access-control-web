@@ -3,22 +3,22 @@
     <div class="col-md-6 button-space">
       {{#bs-form formLayout="vertical" model=model onSubmit=(route-action "editGroup") as  | form |}}
         <fieldset>
-          <legend>{{t 'group_information'}}</legend>
-              {{form.element controlType="text" label=(t 'name')
-                             placeholder="MySuperGroup"
-                             property="name"}}
-              {{form.element controlType='textarea' label=(t 'description')
-                             property='description' placeholder='Description'}}
+          <legend>{{t 'configuration'}}</legend>
+          {{form.element controlType="text" label=(t 'name')
+                         placeholder="MySuperGroup"
+                         property="name"}}
+          {{form.element controlType='textarea' label=(t 'description')
+                         property='description' placeholder='Description'}}
 
           <div class="row">
             <div class="col-md-1">
-            {{bs-button defaultText=(t 'submit') type="success" buttonType="submit"
-                        size='md'}}
+              {{bs-button defaultText=(t 'submit') type="success" buttonType="submit"
+                          size='md'}}
             </div>
-            <div class="pull-right button-to-left">
+            <div class="pull-right form-button-delete">
               {{button-with-confirmation type='danger'
                                          icon='glyphicon glyphicon-remove'
-                                         size='sm'
+                                         size='md'
                                          text=(t 'delete')
                                          message=(t 'delete_group_confirmation')
                                          onConfirm=(route-action 'deleteGroup')

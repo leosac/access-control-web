@@ -1,7 +1,7 @@
 {{#bs-form formLayout="vertical" model=card onSubmit=action as |form|}}
-  <fieldset>
-    <legend>{{t 'configuration'}}</legend>
-    <div class="col-md-6">
+  <div class="col-md-6 space-top">
+    <fieldset>
+      <legend>{{t 'configuration'}}</legend>
       {{form.element controlType="text" label=(t 'alias')
                      placeholder=(t 'alias_placeholder')
                      property="alias"}}
@@ -33,19 +33,21 @@
                          endDate=(mut card.validityEnd)}}
 
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-1">
           {{bs-button defaultText=(t 'submit') type="primary" buttonType="submit"}}
         </div>
-        <div class="pull-right button-to-left">
-          {{button-with-confirmation type='danger'
-                                     icon='glyphicon glyphicon-remove'
-                                     size='sm'
-                                     text=(t 'delete')
-                                     message=(t 'credentials.delete_confirm')
-                                     onConfirm=(route-action 'deleteCredential')
-          }}
+        {{#if delete}}
+          <div class="pull-right form-button-delete">
+            {{button-with-confirmation type='danger'
+                                       icon='glyphicon glyphicon-remove'
+                                       size='md'
+                                       text=(t 'delete')
+                                       message=(t 'credentials.delete_confirm')
+                                       onConfirm=delete
+            }}
           </div>
+        {{/if}}
       </div>
-    </div>
-  </fieldset>
+    </fieldset>
+  </div>
 {{/bs-form}}
