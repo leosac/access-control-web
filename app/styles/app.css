@@ -218,11 +218,49 @@ There is no auto space in the bootstrap theme, so we must add a bit of margin so
   margin-bottom: 10px;
 }
 
+.space-top {
+  margin-top: 10px;
+}
+
+.space-bottom {
+  margin-bottom: 10px;
+}
+
 /*
-Since the bootstrap theme used by the application has a right-margin of 15 px,
+ Since the ember bootstrap theme used by the application has a right-margin of 15 px,
  we should had to our button the same rule, to harmonize the application
  */
 
-.button-to-left {
+.form-button-delete {
   margin-right: 15px;
+}
+
+/*
+Since the button automatically center the text, we must add something to follow the border of the div
+ */
+
+.select-all-button {
+  margin-left: -10px;
+}
+/*
+Custom panel-header for the timeframe, the default one is far too big
+ */
+
+.panel-timeframe {
+  padding: 6px 6px 6px 6px;
+}
+ /*
+ Added a space between two <a> (used in schedule->timeframe)
+  */
+
+a + a {
+  margin-left: 10px;
+}
+
+/*
+
+ */
+
+.datetime-picker-margin {
+  margin-top: 10px;
 }
