@@ -89,7 +89,7 @@ export default Ember.Component.extend({
             "icon": "fa fa-building"
         },
         "logical": {
-            "icon": "fa fa-puzzle-piece"
+            "icon": "assets/images/logical.jpg"
         },
         "physicalZone": {
             "icon": "fa fa-building-o"
