@@ -1,6 +1,7 @@
 {{#bs-form formLayout="vertical" model=piface-digital-gpio onSubmit=action as |form|}}
+  <div class="col-md-6">
   <fieldset>
-    <div class="col-md-6">
+    <legend>{{t 'configuration'}}</legend>
 
       {{#form.element controlType="text" label=(t 'name')
                       placeholder=(t 'name')
@@ -65,8 +66,8 @@
           buttonType="submit"}}
       </div>
     </div>
-    </div>
   </fieldset>
+  </div>
 {{/bs-form}}
 
 

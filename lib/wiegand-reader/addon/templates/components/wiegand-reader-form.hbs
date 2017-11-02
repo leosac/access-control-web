@@ -1,6 +1,7 @@
 {{#bs-form formLayout="vertical" model=wiegand-reader onSubmit=action as |form|}}
+  <div class="col-md-6">
   <fieldset>
-    <div class="col-md-6">
+    <legend>{{t 'configuration'}}</legend>
 
       {{#form.element controlType="text" label=(t 'name')
                       placeholder=(t 'name')
@@ -55,6 +56,6 @@
         </div>
       </div>
 
-    </div>
   </fieldset>
+  </div>
 {{/bs-form}}
