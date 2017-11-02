@@ -15,13 +15,10 @@
     {{/bs-form}}
 </div>
 
-{{#bs-form as |form|}}
+{{#bs-form formLayout='vertical' as |form|}}
     <div class="row" style="margin-top: 1%">
         <div class="col-md-3 col-xs-10 col-sm-8">
-            {{#form.element}}
-                <div style="font-weight: 900">
-                    {{t 'language'}}
-                </div>
+            {{#form.element label=(t 'language')}}
                 {{#power-select
                         selected=language
                         options=languageOption
@@ -43,7 +40,7 @@
 
 <div style="margin-top: 1%">
     <div class="row">
-        <div class="col-md-6" style="font-size: medium">
+        <div class="col-md-6">
             {{t 'restart_info'}}:
         </div>
     </div>
@@ -52,7 +49,7 @@
             {{button-with-confirmation size='sm'
                                        text=(t 'restart')
                                        icon='glyphicon glyphicon-refresh'
-                                       type="danger"
+                                       type="warning"
                                        onConfirm=(action 'restart')}}
         </div>
     </div>
