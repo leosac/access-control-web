@@ -3,13 +3,24 @@
     <div class="col-md-6">
       {{led-buzzer-form model=model ledBuzzer=led form=form}}
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-6">
           {{bs-button
             defaultText=(t 'submit')
             type="primary"
             size="md"
             buttonType="submit"}}
         </div>
+        {{#if delete}}
+          <div class="pull-right form-button-delete">
+            {{button-with-confirmation type='danger'
+                                       icon='glyphicon glyphicon-remove'
+                                       size='md'
+                                       text=(t 'delete')
+                                       message=(t 'led-buzzer.delete_confirm')
+                                       onConfirm=delete
+            }}
+          </div>
+        {{/if}}
       </div>
     </div>
   </fieldset>

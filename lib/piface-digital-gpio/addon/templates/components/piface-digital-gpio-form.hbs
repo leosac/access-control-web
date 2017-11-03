@@ -1,7 +1,7 @@
 {{#bs-form formLayout="vertical" model=piface-digital-gpio onSubmit=action as |form|}}
   <div class="col-md-6">
-  <fieldset>
-    <legend>{{t 'configuration'}}</legend>
+    <fieldset>
+      <legend>{{t 'configuration'}}</legend>
 
       {{#form.element controlType="text" label=(t 'name')
                       placeholder=(t 'name')
@@ -50,12 +50,12 @@
         {{/form.element}}
       {{/if}}
 
-        {{#form.element property="enabled" label=(t 'enable')}}
-          <div class="pull-right">
-            {{device-toggle-enabled device=piface-digital-gpio saveIt=false}}
-            {{#bs-tooltip placement="right" triggerEvent='hover'}}{{t 'information.enable'}}{{/bs-tooltip}}
-          </div>
-        {{/form.element}}
+      {{#form.element property="enabled" label=(t 'enable')}}
+        <div class="pull-right">
+          {{device-toggle-enabled device=piface-digital-gpio saveIt=false}}
+          {{#bs-tooltip placement="right" triggerEvent='hover'}}{{t 'information.enable'}}{{/bs-tooltip}}
+        </div>
+      {{/form.element}}
 
     <div class="row">
       <div class="col-md-6">
@@ -65,8 +65,19 @@
           size="md"
           buttonType="submit"}}
       </div>
+      {{#if delete}}
+        <div class="pull-right form-button-delete">
+          {{button-with-confirmation type='danger'
+                                     icon='glyphicon glyphicon-remove'
+                                     size='md'
+                                     text=(t 'delete')
+                                     message=(t 'piface-digital-gpio.delete_confirm')
+                                     onConfirm=delete
+          }}
+        </div>
+      {{/if}}
     </div>
-  </fieldset>
+    </fieldset>
   </div>
 {{/bs-form}}
 

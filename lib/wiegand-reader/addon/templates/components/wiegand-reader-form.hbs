@@ -54,6 +54,17 @@
             size="md"
             buttonType="submit"}}
         </div>
+        {{#if delete}}
+          <div class="pull-right form-button-delete">
+            {{button-with-confirmation type='danger'
+                                       icon='glyphicon glyphicon-remove'
+                                       size='md'
+                                       text=(t 'delete')
+                                       message=(t 'wiegand-reader.delete_confirm')
+                                       onConfirm=delete
+            }}
+          </div>
+        {{/if}}
       </div>
 
   </fieldset>
