@@ -1,0 +1,92 @@
+
+/*
+This will set the color and the size of the svg icon
+ */
+
+.rectangle {
+  width: 11px;
+  height: 11px;
+  border: 1px;
+  background: #0070c0;
+  border-radius: 4px;
+}
+
+.summary-icon {
+  width: 128px;
+  height: 128px;
+  background: #0070c0;
+  border-radius: 15px;
+}
+
+.summary-icon:hover {
+  background-color: #004D85;
+  border: 1px solid #0052a0;
+}
+
+.summary-puce {
+  width: 11px;
+  height: 17px;
+  fill: #0070c0;
+}
+
+/*
+Style that define the theme of our application
+ */
+
+a:hover {
+  color: #0070c0;
+}
+
+.navbar-default {
+  border-color: #0070c0;
+}
+
+.navbar-fixed-bottom {
+  background-color: #CCCCCC;
+  padding-top: 5px;
+}
+
+.btn-primary {
+  background-color: #0070c0;
+  border-color: #0066ff;
+}
+
+.btn-primary.active {
+  background-color: #0066ff;
+  border-color: #0066ff;
+}
+
+.btn-primary:hover {
+  background-color: #004D85;
+  border-color: #FFFFFF;
+}
+
+.btn-primary.active:hover {
+  background-color: #004D85;
+  border-color: #0066ff;
+}
+
+.panel-default .panel-heading {
+  background-color: #0070c0;
+  color: #fff;
+}
+
+.table-responsive {
+  padding-top: 5px;
+}
+
+.table-responsive table thead {
+  background-color: #0070c0;
+  color: #fff;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+/*
+Define the logo size in the index page
+ */
+
+.logo-size-index {
+  width: 400px;
+  height: 106px;
+}

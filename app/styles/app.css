@@ -1,3 +1,6 @@
+@import 'customizable-style.css';
+@import 'workaround-ember-bootstrap.css';
+
 body {
   background-color: #eee;
   min-height: 100%;
@@ -88,55 +91,6 @@ body {
     width: auto;
 }
 
-a:hover {
-    color: #0070c0;
-}
-
-.navbar-default {
-    border-color: #0070c0;
-}
-
-.navbar-fixed-bottom {
-    background-color: #CCCCCC;
-    padding-top: 5px;
-}
-
-.btn-primary {
-    background-color: #0070c0;
-    border-color: #0066ff;
-}
-
-.btn-primary.active {
-    background-color: #0066ff;
-    border-color: #0066ff;
-}
-
-.btn-primary:hover {
-    background-color: #004D85;
-    border-color: #FFFFFF;
-}
-
-.btn-primary.active:hover {
-    background-color: #004D85;
-    border-color: #0066ff;
-}
-
-.panel-default .panel-heading {
-    background-color: #0070c0;
-    color: #fff;
-}
-
-.table-responsive {
-    padding-top: 5px;
-}
-
-.table-responsive table thead {
-    background-color: #0070c0;
-    color: #fff;
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
 .table-responsive table thead th {
     padding: 5px;
 }
@@ -163,120 +117,23 @@ a:hover {
 }
 
 /*
- This will set the validator of the power select a little on the left,
- because power-select will put them on the dropdown arrow
+Set the color in the boolean-to-color-yes-no helper
  */
-.form-horizontal .has-feedback .form-control-feedback {
-  right: 25px;
+
+.boolean-to-colored-no {
+  color: darkred;
 }
 
-.has-feedback .form-control-feedback {
-  right: 10px;
+.boolean-to-colored-yes {
+  color: green;
 }
 
 /*
-This will set the color of the svg icon
+Center the button under the svg image in the index,
+and add a little space to aerate the template
  */
 
-.rectangle {
-  width: 11px;
-  height: 11px;
-  border: 1px;
-  background: #0070c0;
-  border-radius: 4px;
-}
-
-.summary-icon {
-  width: 128px;
-  height: 128px;
-  background: #0070c0;
-  border-radius: 15px;
-}
-
-.summary-icon:hover {
-  background-color: #004D85;
-  border: 1px solid #0052a0;
-}
-
-.summary-puce {
-  width: 11px;
-  height: 17px;
-  fill: #0070c0;
-}
-
-.summary-zone-tree {
-  font: inherit;
-  font-weight: bold;
-}
-
-/*
-There is no auto space in the bootstrap theme, so we must add a bit of margin sometime
- */
-
-.button-space {
+.center-image {
+  text-align: center;
   margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.space-top {
-  margin-top: 10px;
-}
-
-.space-bottom {
-  margin-bottom: 10px;
-}
-
-/*
- Since the ember bootstrap theme used by the application has a right-margin of 15 px,
- we should had to our button the same rule, to harmonize the application
- */
-
-.form-button-delete {
-  margin-right: 15px;
-}
-
-/*
-Since the button automatically center the text, we must add something to follow the border of the div
- */
-
-.select-all-button {
-  margin-left: -10px;
-}
-/*
-Custom panel-header for the timeframe, the default one is far too big
- */
-
-.panel-timeframe {
-  padding: 6px 6px 6px 6px;
-}
- /*
- Added a space between two <a> (used in schedule->timeframe)
-  */
-
-a + a {
-  margin-left: 10px;
-}
-
-/*
-
- */
-
-.datetime-picker-margin {
-  margin-top: 10px;
-}
-
-/*
-The cursor must be changed when above a link, because this is not a text, but more of a button
- */
-
-.cursor-link {
-  cursor: pointer;
-}
-
-/*
-Since we want to align a button with a power select control,
- we have to add manually the needed space for the label(15px) + a margin (5px)
- */
-.button-next-to-power-select {
-  margin-top: 20px;
 }
