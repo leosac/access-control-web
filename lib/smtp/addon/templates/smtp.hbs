@@ -8,10 +8,7 @@
     {{bs-button defaultText=(t 'smtp.add_server') type="primary"
                 buttonType="submit" onClick=(route-action 'addServer')}}
 
-    <div class="pull-right">
-      {{bs-button defaultText=(t 'smtp.save') type="success"
-                  buttonType="submit" onClick=(route-action 'updateConfig')}}
-    </div>
+
   </div>
     <div class="row">
       <div class="col-md-12">
@@ -75,6 +72,10 @@
           </div>
         {{/each}}
       </div>
+    </div>
+    <div>
+      {{bs-button defaultText=(t 'smtp.save') type="success"
+                  buttonType="submit" onClick=(route-action 'updateConfig')}}
     </div>
   {{/tab.pane}}
   {{#tab.pane title=(t 'email')}}
