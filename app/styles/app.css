@@ -264,3 +264,19 @@ a + a {
 .datetime-picker-margin {
   margin-top: 10px;
 }
+
+/*
+The cursor must be changed when above a link, because this is not a text, but more of a button
+ */
+
+.cursor-link {
+  cursor: pointer;
+}
+
+/*
+Since we want to align a button with a power select control,
+ we have to add manually the needed space for the label(15px) + a margin (5px)
+ */
+.button-next-to-power-select {
+  margin-top: 20px;
+}
