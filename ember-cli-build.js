@@ -14,11 +14,11 @@ module.exports = function (defaults)
 	'ember-cli-babel': {
             includePolyfill: true
         },
-	
+
 	'ember-power-select': {
             theme: 'bootstrap'
 	},
-	
+
 	'ember-bootstrap': {
             'bootstrapVersion': 3,
             'importBootstrapFont': true,
@@ -46,12 +46,10 @@ module.exports = function (defaults)
                {destDir: 'fonts'});
     app.import('bower_components/font-awesome/fonts/fontawesome-webfont.woff',
                {destDir: 'fonts'});
-    
-    app.import('app/styles/form-signin.css');
-    
+
     app.import('bower_components/bootstrap/dist/css/bootstrap.min.css');
     app.import('bower_components/metisMenu/dist/metisMenu.min.css');
-    
+
     app.import('bower_components/startbootstrap-sb-admin-2-blackrockdigital/dist/css/sb-admin-2.css');
     app.import('bower_components/startbootstrap-sb-admin-2-blackrockdigital/dist/css/timeline.css');
 
@@ -64,6 +62,6 @@ module.exports = function (defaults)
     //app.import('bower_components/raphael/raphael-min.js');
     app.import('bower_components/morrisjs/morris.min.js');
     app.import('bower_components/startbootstrap-sb-admin-2-blackrockdigital/dist/js/sb-admin-2.js');
-    
+
     return app.toTree();
 };
