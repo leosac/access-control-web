@@ -4,7 +4,7 @@
 
 {{#bs-tab as |tab|}}
     {{#tab.pane title=(t 'timeframes')}}
-            {{schedule-form schedule=model action=(route-action "editSchedule")}}
+            {{schedule-form schedule=model delete=(route-action 'deleteSchedule') action=(route-action "editSchedule")}}
     {{/tab.pane}}
 
     {{#tab.pane title=(t 'mapping')}}

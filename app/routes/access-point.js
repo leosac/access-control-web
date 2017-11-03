@@ -36,6 +36,16 @@ export default LeosacRoute.extend({
                 {
                     this.get('flashMessages').danger('An error occurred while editing Access Point.');
                 });
+        },
+        deleteAP ()
+        {
+            const self = this;
+            const model = this.controller.get('model');
+            model.destroyRecord({}).then(() =>
+            {
+                self.get('flashMessages').success('Access Point has been deleted.');
+                self.transitionTo('access-points.list');
+            });
         }
     }
 });

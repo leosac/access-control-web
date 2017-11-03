@@ -1,37 +1,48 @@
 {{#bs-form formLayout="vertical" model=ap onSubmit=action as | form|}}
+  <div class="col-md-6">
     <fieldset>
-        <legend>{{t 'configuration'}}</legend>
-      <div class="col-md-6">
+      <legend>{{t 'configuration'}}</legend>
 
-        {{form.element controlType="text" label=(t 'alias')
-                       placeholder=(t 'access_point_placeholder')
-                       property="alias"}}
-        {{form.element controlType="textarea" label=(t 'notes')
-                       placeholder=(t 'notes_placeholder')
-                       property="description"}}
+      {{form.element controlType="text" label=(t 'alias')
+                     placeholder=(t 'access_point_placeholder')
+                     property="alias"}}
+      {{form.element controlType="textarea" label=(t 'notes')
+                     placeholder=(t 'notes_placeholder')
+                     property="description"}}
 
-        {{#if isCreating}}
-            {{#form.element label=(t 'controller_module')}}
-                {{#power-select
-                        selected=ap.controllerModule
-                        options=availableAccessPointModules
-                        onchange=(action (mut ap.controllerModule))
-                        allowClear=true
-                as |module|
-                }}
-                    {{module}}
-                {{/power-select}}
-            {{/form.element}}
-        {{/if}}
+      {{#if isCreating}}
+        {{#form.element label=(t 'controller_module')}}
+          {{#power-select
+            selected=ap.controllerModule
+            options=availableAccessPointModules
+            onchange=(action (mut ap.controllerModule))
+            allowClear=true
+          as |module|
+          }}
+            {{module}}
+          {{/power-select}}
+        {{/form.element}}
+      {{/if}}
 
 
-        <!-- Include module specific stuff -->
-        {{yield}}
-        <div class="row">
-          <div class="col-md-6">
-            {{bs-button defaultText=(t 'submit') type="primary" buttonType="submit"}}
-          </div>
+      <!-- Include module specific stuff -->
+      {{yield}}
+      <div class="row">
+        <div class="col-md-6">
+          {{bs-button defaultText=(t 'submit') type="primary" buttonType="submit"}}
         </div>
+        {{#if delete}}
+          <div class="pull-right form-button-delete">
+            {{button-with-confirmation type='danger'
+                                       icon='glyphicon glyphicon-remove'
+                                       size='md'
+                                       text=(t 'delete')
+                                       message=(t 'accesspoint.delete_confirm')
+                                       onConfirm=delete
+            }}
+          </div>
+        {{/if}}
       </div>
     </fieldset>
+  </div>
 {{/bs-form}}

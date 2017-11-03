@@ -45,6 +45,16 @@ export default LeosacRoute.extend({
         removeMapping (mapping)
         {
             this.controller.get('model').get('mapping').removeObject(mapping);
+        },
+        deleteSchedule()
+        {
+            const self = this;
+            const model = this.controller.get('model');
+            model.destroyRecord({}).then(() =>
+            {
+                self.get('flashMessages').success('Schedule has been deleted.');
+                self.transitionTo('schedules.list');
+            });
         }
     }
 });

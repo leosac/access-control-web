@@ -1,140 +1,145 @@
-<div class="col-md-12">
+<div class="col-md-6">
   {{#bs-form formLayout="vertical" model=zone onSubmit=action as |form|}}
     <fieldset>
       <legend>{{t 'configuration'}}</legend>
 
-      <div class="col-md-6">
-        {{form.element controlType="text" label=(t 'alias')
-                       placeholder=(t 'zone.placeholder')
-                       property="alias"}}
+      {{form.element controlType="text" label=(t 'alias')
+                     placeholder=(t 'zone.placeholder')
+                     property="alias"}}
 
-        {{form.element controlType="textarea" label=(t 'notes')
-                       placeholder=(t 'notes_placeholder')
-                       property="description"}}
+      {{form.element controlType="textarea" label=(t 'notes')
+                     placeholder=(t 'notes_placeholder')
+                     property="description"}}
 
-        {{#form.element property="type" label=(t 'type')}}
-          {{#power-select
-            selected=zone.type
-            searchEnabled=false
-            options=allType
-            onchange=(action (mut zone.type))
-            placeholder=(t 'type_zone')
-          as |type|}}
-            {{t type}}
-          {{/power-select}}
-        {{/form.element}}
+      {{#form.element property="type" label=(t 'type')}}
+        {{#power-select
+          selected=zone.type
+          searchEnabled=false
+          options=allType
+          onchange=(action (mut zone.type))
+          placeholder=(t 'type_zone')
+        as |type|}}
+          {{t type}}
+        {{/power-select}}
+      {{/form.element}}
 
+      <hr>
+      <h4>{{t 'doors'}}</h4>
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+          <th>#Id</th>
+          <th class="text-center">{{t 'alias'}}</th>
+          <th class="text-center">{{t 'zone.remove_from_zone'}}</th>
+          </thead>
+          <tbody>
+          {{#each zone.doors as |door|}}
+            <tr>
+              <td>
+                {{door.id}}
+              </td>
+              <td class="text-center">
+                {{door.alias}}</td>
+              <td>
+                <div class="text-center">
+                  {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
+                              defaultText=(t 'remove') onClick=(action 'removeDoor' door)}}
+                </div>
+              </td>
+            </tr>
+          {{/each}}
+          </tbody>
+        </table>
+      </div>
+
+      <div>
         <div class="row">
-          <div class="col-md-2">
-            {{bs-button defaultText=(t 'submit') type="success" size="md" buttonType="submit"}}
+          <div class="col-md-12">
+            {{#form.element label=(t 'doors')}}
+              {{#power-select-typeahead search=(action 'searchDoor')
+                                        selected=newDoor.alias
+                                        placeholder=(t 'schedule.type_door')
+                                        onchange=(action (mut newDoor)) as |doorInfo|}}
+                {{log doorInfo}}
+                {{doorInfo.alias}}
+              {{/power-select-typeahead}}
+            {{/form.element}}
           </div>
-        </div>
-
-      </div>
-
-      <div class="col-md-12">
-        <hr>
-        <h4>{{t 'doors'}}</h4>
-
-        <div class="table-responsive">
-          <table class="table table-hover table-bordered">
-            <thead>
-            <th>#Id</th>
-            <th>{{t 'alias'}}</th>
-            <th>{{t 'zone.remove_from_zone'}}</th>
-            </thead>
-            <tbody>
-            {{#each zone.doors as |door|}}
-              {{#link-to 'door' door.id tagName="tr"}}
-                <td>
-                  {{door.id}}
-                </td>
-                <td>{{door.alias}}</td>
-                <td>
-                  <div class="pull-right">
-                    {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
-                                defaultText=(t 'remove') onClick=(action 'removeDoor' door)}}
-                  </div>
-                </td>
-              {{/link-to}}
-            {{/each}}
-            </tbody>
-          </table>
-        </div>
-
-        <div>
-          <div class="row">
-            <div class="col-md-6">
-              {{#form.element label=(t 'doors')}}
-                {{#power-select-typeahead search=(action 'searchDoor')
-                                          selected=newDoor.alias
-                                          placeholder=(t 'schedule.type_door')
-                                          onchange=(action (mut newDoor)) as |doorInfo|}}
-                  {{doorInfo.alias}}
-                {{/power-select-typeahead}}
-              {{/form.element}}
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              {{bs-button size='sm' type="primary" onClick=(action 'addDoor') defaultText=(t 'schedule.add_door')}}
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="col-md-12">
-        <hr>
-        <h4>{{t 'zone.child'}}</h4>
-
-        <div class="table-responsive">
-          <table class="table table-hover table-bordered">
-            <thead>
-            <th>#Id</th>
-            <th>{{t 'alias'}}</th>
-            <th>{{t 'zone.remove_from_zone'}}</th>
-            </thead>
-            <tbody>
-            {{#each zone.children as |children|}}
-              {{#link-to 'zones' children.id tagName="tr"}}
-                <td>
-                  {{children.id}}
-                </td>
-                <td>{{children.alias}}</td>
-                <td>
-                  <div class="pull-right">
-                    {{bs-button size='xs'
-                                icon='glyphicon glyphicon-remove'
-                                type='danger'
-                                defaultText=(t 'remove')
-                                onClick=(action 'removeChildren' children)}}
-                  </div>
-                </td>
-              {{/link-to}}
-            {{/each}}
-            </tbody>
-          </table>
         </div>
         <div class="row">
           <div class="col-md-6">
-            {{autocomplete/zone-search label=(t 'zone.child')
-                                       form=form
-                                       ignoreZone=zone
-                                       selected=newChildren
+            {{bs-button size='sm' type="primary" onClick=(action 'addDoor') defaultText=(t 'schedule.add_door')}}
+          </div>
+        </div>
+      </div>
+
+      <hr>
+      <h4>{{t 'zone.child'}}</h4>
+
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+          <th>#Id</th>
+          <th class="text-center">{{t 'alias'}}</th>
+          <th class="text-center">{{t 'zone.remove_from_zone'}}</th>
+          </thead>
+          <tbody>
+          {{#each zone.children as |children|}}
+            <tr>
+              <td>
+                {{children.id}}
+              </td>
+              <td class="text-center">
+                {{children.alias}}
+              </td>
+              <td class="text-center">
+                <div class="pull-right">
+                  {{bs-button size='xs'
+                              icon='glyphicon glyphicon-remove'
+                              type='danger'
+                              defaultText=(t 'remove')
+                              onClick=(action 'removeChildren' children)}}
+                </div>
+              </td>
+            </tr>
+          {{/each}}
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          {{autocomplete/zone-search label=(t 'zone.child')
+                                     form=form
+                                     ignoreZone=zone
+                                     selected=newChildren
+          }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          {{bs-button size='sm'
+                      type="primary"
+                      onClick=(action 'addChildren')
+                      defaultText=(t 'zone.add_children')}}
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-6">
+          {{bs-button defaultText=(t 'submit') type="success" size="md" buttonType="submit"}}
+        </div>
+        {{#if delete}}
+          <div class="pull-right form-button-delete">
+            {{button-with-confirmation type='danger'
+                                       icon='glyphicon glyphicon-remove'
+                                       size='md'
+                                       text=(t 'delete')
+                                       message=(t 'zone.delete_confirm')
+                                       onConfirm=delete
             }}
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            {{bs-button size='sm'
-                        type="primary"
-                        onClick=(action 'addChildren')
-                        defaultText=(t 'zone.add_children')}}
-          </div>
-        </div>
+        {{/if}}
       </div>
-
     </fieldset>
   {{/bs-form}}
 </div>
