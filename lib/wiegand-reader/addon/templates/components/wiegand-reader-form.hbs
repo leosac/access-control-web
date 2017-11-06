@@ -24,7 +24,7 @@
       {{/form.element}}
 
       {{#form.element label=(t 'gpio_high')}}
-        {{device-picker arrayOfDeviceClass=arrayOfDeviceClass
+        {{device-picker arrayOfDeviceClass=arrayOfDeviceClassGpio
                         placeholder='GPIO'
                         relationshipsName='gpioHigh'
                         device=wiegand-reader}}
@@ -32,12 +32,28 @@
       {{/form.element}}
 
       {{#form.element label=(t 'gpio_low')}}
-        {{device-picker arrayOfDeviceClass=arrayOfDeviceClass
+        {{device-picker arrayOfDeviceClass=arrayOfDeviceClassGpio
                         placeholder='GPIO'
                         relationshipsName='gpioLow'
                         device=wiegand-reader}}
         {{#bs-tooltip placement="right"}}{{t 'information.gpio_low'}}{{/bs-tooltip}}
       {{/form.element}}
+
+    {{#form.element label=(t 'buzzer')}}
+      {{device-picker arrayOfDeviceClass=arrayOfDeviceClassBuzzer
+                      placeholder='Buzzer'
+                      relationshipsName='buzzer'
+                      device=wiegand-reader}}
+      {{#bs-tooltip placement="right"}}{{t 'information.buzzer'}}{{/bs-tooltip}}
+    {{/form.element}}
+
+    {{#form.element label=(t 'led')}}
+      {{device-picker arrayOfDeviceClass=arrayOfDeviceClassLed
+                      placeholder='LED'
+                      relationshipsName='greenLed'
+                      device=wiegand-reader}}
+      {{#bs-tooltip placement="right"}}{{t 'information.led'}}{{/bs-tooltip}}
+    {{/form.element}}
 
       {{#form.element label=(t 'enable')}}
         <div class="pull-right">
