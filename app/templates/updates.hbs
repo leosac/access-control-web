@@ -1,7 +1,7 @@
 {{#bs-button disabled=pendingCheckUpdate onClick=(action 'checkUpdate')}}
     {{#if pendingCheckUpdate}}
         {{t 'update.pending_check_update'}}
-        <i class="fa fa-spinner fa-spin" style="color: orange; font-size:16px"></i>
+        <i class="fa fa-spinner fa-spin update-spinner-color"></i>
     {{else}}
         {{t 'update.check_update'}}
     {{/if}}
@@ -109,6 +109,6 @@
     <hr>
 
     <i>Content</i> <br>
-    <code style="white-space: pre;">{{detailedUpdate.content}}</code>
+    <code class="space-top">{{detailedUpdate.content}}</code>
 {{/bs-modal}}
 

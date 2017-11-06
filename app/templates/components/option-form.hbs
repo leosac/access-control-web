@@ -1,56 +1,54 @@
 <div>
-    {{#bs-form model=this onSubmit=(action "setNameApp") as |form|}}
-        <div class="row">
-            <div class="col-md-3 col-xs-10 col-sm-8">
-                {{#form.element label=(t 'name_app') placeholder=(t 'name') property="newName" as |el|}}
-                    {{el.control}}
-                {{/form.element}}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2 col-xs-10 col-sm-4">
-                {{bs-button defaultText=(t "save") type="primary" buttonType="submit" size='sm'}}
-            </div>
-        </div>
-    {{/bs-form}}
+  {{#bs-form model=this onSubmit=(action "setNameApp") as |form|}}
+    <div class="row">
+      <div class="col-md-3 col-xs-10 col-sm-8">
+        {{#form.element label=(t 'name_app') placeholder=(t 'name') property="newName" as |el|}}
+          {{el.control}}
+        {{/form.element}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 col-xs-10 col-sm-4">
+        {{bs-button defaultText=(t "save") type="primary" buttonType="submit" size='sm'}}
+      </div>
+    </div>
+  {{/bs-form}}
 </div>
 
 {{#bs-form formLayout='vertical' as |form|}}
-    <div class="row" style="margin-top: 1%">
-        <div class="col-md-3 col-xs-10 col-sm-8">
-            {{#form.element label=(t 'language')}}
-                {{#power-select
-                        selected=language
-                        options=languageOption
-                        searchEnabled=false
-                        onchange=(action 'changeLanguage')
-                        placeholder=language
-                as |lang|}}
-                    {{lang}}
-                {{/power-select}}
-            {{/form.element}}
-        </div>
+  <div class="row space-top">
+    <div class="col-md-3 col-xs-10 col-sm-8">
+      {{#form.element label=(t 'language')}}
+        {{#power-select
+          selected=language
+          options=languageOption
+          searchEnabled=false
+          onchange=(action 'changeLanguage')
+          placeholder=language
+        as |lang|}}
+          {{lang}}
+        {{/power-select}}
+      {{/form.element}}
     </div>
-    <div class="row">
-        <div class="col-md-3 col-xs-8 col-sm-4">
-            {{bs-button size='sm' defaultText=(t 'switch') type="primary" onClick=(action 'setLocale' language)}}
-        </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 col-xs-8 col-sm-4">
+      {{bs-button size='sm' defaultText=(t 'switch') type="primary" onClick=(action 'setLocale' language)}}
     </div>
+  </div>
 {{/bs-form}}
 
-<div style="margin-top: 1%">
-    <div class="row">
-        <div class="col-md-6">
-            {{t 'restart_info'}}:
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            {{button-with-confirmation size='sm'
-                                       text=(t 'restart')
-                                       icon='glyphicon glyphicon-refresh'
-                                       type="warning"
-                                       onConfirm=(action 'restart')}}
-        </div>
-    </div>
+<div class="row space-top">
+  <div class="col-md-6">
+    {{t 'restart_info'}}:
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    {{button-with-confirmation size='sm'
+                               text=(t 'restart')
+                               icon='glyphicon glyphicon-refresh'
+                               type="warning"
+                               onConfirm=(action 'restart')}}
+  </div>
 </div>

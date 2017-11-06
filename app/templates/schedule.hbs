@@ -10,14 +10,14 @@
     {{#tab.pane title=(t 'mapping')}}
         <div class="col-md-12">
             <div class="row">
-                <div class="col-md-12 " style="padding-bottom: 1%; padding-top: 1%">
+                <div class="col-md-12 space-bottom space-top">
                     {{t 'schedule.mapping_list'}}<br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="pull-left">
-                        {{bs-button icon='glyphicon glyphicon-add' type='success'
+                        {{bs-button icon='glyphicon glyphicon-add' type='primary'
                                     defaultText=(t 'schedule.add_mapping')
                                     onClick=(route-action 'addMapping')}}
                     </div>
@@ -27,11 +27,8 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <hr>
-                </div>
-            </div>
+
+            <hr>
 
             {{#bs-accordion as |acc|}}
                 {{#each model.mapping as |mapping|}}
