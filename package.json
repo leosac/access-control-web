@@ -48,7 +48,7 @@
     "jstree": "3.3.4",
     "loader.js": "4.6.0",
     "minimatch": "3.0.4",
-    "moment-timezone": "^0.5.14"
+    "moment-timezone": "^0.5.13"
   },
   "description": "Small description for web goes here",
   "directories": {
