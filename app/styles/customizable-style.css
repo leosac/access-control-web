@@ -90,3 +90,21 @@ Define the logo size in the index page
   width: 400px;
   height: 106px;
 }
+
+/*
+This will define the style of the spinner icon in the login form
+ */
+
+.login-spinner-style {
+  color: #0070c0;
+  font-size:30px;
+  margin-top: 2%;
+}
+
+/*
+This will define the style of the spinner icon in the update
+ */
+.update-spinner-color {
+  color: #0070c0;
+  font-size:16px
+}

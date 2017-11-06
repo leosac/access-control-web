@@ -86,3 +86,7 @@ Since we want to align a button with a power select control,
 .button-next-to-power-select {
   margin-top: 20px;
 }
+
+.space-left {
+  margin-left: 10px;
+}

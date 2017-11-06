@@ -86,9 +86,18 @@ body {
     vertical-align: middle;
 }
 
+/*
+Navbar
+ */
+
 .navbar-logo {
     height: 48px;
     width: auto;
+}
+
+/* https://stackoverflow.com/questions/15071306/mysterious-whitespace-in-between-bootstrap2-navbar-and-row-underneath */
+.navbar-hack {
+  margin-bottom: 0;
 }
 
 .table-responsive table thead th {
@@ -136,4 +145,41 @@ and add a little space to aerate the template
 .center-image {
   text-align: center;
   margin-top: 10px;
+}
+
+/*
+This will define the color in our footer for the logo
+ */
+
+.footer-check-color {
+  color: #5cb85c;
+}
+
+.footer-spinner-color {
+  color: #c02d29;
+}
+
+/*
+This will set the style for the model name in the global search
+ */
+
+.global-search-model-style {
+  color: #9b9aa5;
+  font-style: italic;
+}
+
+/*
+This is mandatory, so that our page-wrapper take the whole page instead of a half of the page most of the time
+ */
+#page-wrapper {
+  height: auto;
+  min-height: 100vh
+}
+
+/*
+Error default color
+ */
+
+.error-default-color {
+  color: darkred;
 }
