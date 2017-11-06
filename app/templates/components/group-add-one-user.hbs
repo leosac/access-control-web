@@ -2,16 +2,16 @@
     <div class="row">
         <div class="col-md-2 col-sm-4">
             {{#form.element label=(t 'username')}}
-                {{#power-select
-                        selected=selectedUsername
-                        options=allUsernames
-                        onchange=(action (mut selectedUsername))
+                {{#power-select-typeahead
+                        selected=selectedUser.username
+                        search=(action 'searchUser')
+                        onchange=(action 'setUser')
                         allowClear=true
                         placeholder=(t 'username')
-                as |username|
+                as |user|
                 }}
-                    {{username}}
-                {{/power-select}}
+                    {{user.username}}
+                {{/power-select-typeahead}}
             {{/form.element}}
         </div>
         <div class="col-md-2 col-sm-4">
@@ -28,7 +28,7 @@
             {{/form.element}}
         </div>
         <div class="col-md-2 col-sm-4 button-next-to-power-select">
-            {{#bs-button type="success" icon="glyphicon glyphicon-plus"
+            {{#bs-button type="primary" icon="glyphicon glyphicon-plus"
                          size="sm"
                          onClick=(action 'addToGroup')}}
                 {{t 'users.add_to_group'}}

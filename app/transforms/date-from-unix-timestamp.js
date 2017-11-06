@@ -5,8 +5,12 @@ export default DS.Transform.extend({
         return new Date(serialized * 1000);
     },
 
+    /**
+     * We must not get there other than the group membership
+     * @param deserialized
+     * @returns {*}
+     */
     serialize(deserialized) {
-        console.log('Hopefully we never get there');
         return deserialized;
     }
 });
