@@ -20,70 +20,72 @@
     </thead>
     <tbody>
     {{#each model as |ledBuzzer|}}
-      {{#if (eq ledBuzzer.deviceClass 'buzzer')}}
-        <tr>
-          {{#link-to 'buzzer' ledBuzzer.id tagName = "td"}}
-            {{ledBuzzer.id}}
-          {{/link-to}}
-          {{#link-to 'buzzer' ledBuzzer.id tagName = "td"}}
-            {{ledBuzzer.name}}
-          {{/link-to}}
-          {{#link-to 'buzzer' ledBuzzer.id tagName = "td"}}
-            {{ledBuzzer.deviceClass}}
-          {{/link-to}}
-          {{#link-to 'buzzer' ledBuzzer.id tagName = "td"}}
-            {{ledBuzzer.defaultBlinkDuration}}
-          {{/link-to}}
-          {{#link-to 'buzzer' ledBuzzer.id tagName = "td"}}
-            {{ledBuzzer.defaultBlinkSpeed}}
-          {{/link-to}}
-          <td>
-            <div class="pull-left">
-              {{device-toggle-enabled device=ledBuzzer saveIt=true}}
-            </div>
-          </td>
-          <td>
-            {{button-with-confirmation
-              type='danger'
-              icon='glyphicon glyphicon-remove'
-              size='xs'
-              text=(t 'delete')
-              message=(t 'led-buzzer.delete_confirm')
-              onConfirm=(route-action 'deleteLedBuzzer' ledBuzzer)}}
-          </td>
-        </tr>
+      {{#if ledBuzzer.id}}
+        {{#if (eq ledBuzzer.deviceClass 'buzzer')}}
+          <tr>
+            {{#link-to 'buzzer' ledBuzzer.id tagName = "td"}}
+              {{ledBuzzer.id}}
+            {{/link-to}}
+            {{#link-to 'buzzer' ledBuzzer.id tagName = "td"}}
+              {{ledBuzzer.name}}
+            {{/link-to}}
+            {{#link-to 'buzzer' ledBuzzer.id tagName = "td"}}
+              {{ledBuzzer.deviceClass}}
+            {{/link-to}}
+            {{#link-to 'buzzer' ledBuzzer.id tagName = "td"}}
+              {{ledBuzzer.defaultBlinkDuration}}
+            {{/link-to}}
+            {{#link-to 'buzzer' ledBuzzer.id tagName = "td"}}
+              {{ledBuzzer.defaultBlinkSpeed}}
+            {{/link-to}}
+            <td>
+              <div class="pull-left">
+                {{device-toggle-enabled device=ledBuzzer saveIt=true}}
+              </div>
+            </td>
+            <td>
+              {{button-with-confirmation
+                type='danger'
+                icon='glyphicon glyphicon-remove'
+                size='xs'
+                text=(t 'delete')
+                message=(t 'led-buzzer.delete_confirm')
+                onConfirm=(route-action 'deleteLedBuzzer' ledBuzzer)}}
+            </td>
+          </tr>
         {{else}}
-        <tr>
-          {{#link-to 'led' ledBuzzer.id tagName = "td"}}
-            {{ledBuzzer.id}}
-          {{/link-to}}
-          {{#link-to 'led' ledBuzzer.id tagName = "td"}}
-            {{ledBuzzer.name}}
-          {{/link-to}}
-          {{#link-to 'led' ledBuzzer.id tagName = "td"}}
-            {{ledBuzzer.deviceClass}}
-          {{/link-to}}
-          {{#link-to 'led' ledBuzzer.id tagName = "td"}}
-            {{ledBuzzer.defaultBlinkDuration}}
-          {{/link-to}}
-          {{#link-to 'led' ledBuzzer.id tagName = "td"}}
-            {{ledBuzzer.defaultBlinkSpeed}}
-          {{/link-to}}
-          <td>
-            <div class="pull-left">
-              {{device-toggle-enabled device=ledBuzzer saveIt=true}}
-            </div>
-          </td>
-          <td>
-            {{button-with-confirmation
-              type='danger'
-              icon='glyphicon glyphicon-remove'
-              size='xs'
-              text=(t 'delete')
-              message=(t 'led-buzzer.delete_confirm')
-              onConfirm=(route-action 'deleteLedBuzzer' ledBuzzer)}}
-          </td>
-        </tr>
+          <tr>
+            {{#link-to 'led' ledBuzzer.id tagName = "td"}}
+              {{ledBuzzer.id}}
+            {{/link-to}}
+            {{#link-to 'led' ledBuzzer.id tagName = "td"}}
+              {{ledBuzzer.name}}
+            {{/link-to}}
+            {{#link-to 'led' ledBuzzer.id tagName = "td"}}
+              {{ledBuzzer.deviceClass}}
+            {{/link-to}}
+            {{#link-to 'led' ledBuzzer.id tagName = "td"}}
+              {{ledBuzzer.defaultBlinkDuration}}
+            {{/link-to}}
+            {{#link-to 'led' ledBuzzer.id tagName = "td"}}
+              {{ledBuzzer.defaultBlinkSpeed}}
+            {{/link-to}}
+            <td>
+              <div class="pull-left">
+                {{device-toggle-enabled device=ledBuzzer saveIt=true}}
+              </div>
+            </td>
+            <td>
+              {{button-with-confirmation
+                type='danger'
+                icon='glyphicon glyphicon-remove'
+                size='xs'
+                text=(t 'delete')
+                message=(t 'led-buzzer.delete_confirm')
+                onConfirm=(route-action 'deleteLedBuzzer' ledBuzzer)}}
+            </td>
+          </tr>
+        {{/if}}
       {{/if}}
     {{/each}}
     </tbody>

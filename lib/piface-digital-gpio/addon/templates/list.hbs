@@ -17,6 +17,7 @@
     </thead>
     <tbody>
     {{#each model as |piface-digital-gpio|}}
+    {{#if piface-digital-gpio.id}}
       <tr>
         {{#link-to 'piface-digital-gpio' piface-digital-gpio.id tagName='td'}}
           {{piface-digital-gpio.id}}
@@ -59,6 +60,7 @@
             onConfirm=(route-action 'deletePifaceDigitalGpio' piface-digital-gpio)}}
         </td>
       </tr>
+    {{/if}}
     {{/each}}
     </tbody>
   </table>
