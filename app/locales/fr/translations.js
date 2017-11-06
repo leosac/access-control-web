@@ -108,7 +108,7 @@ export default {
     'security': 'Securité',
     'settings': 'Options',
     'start_date': 'Date de début',
-    'submit': 'Envoyer',
+    'submit': 'Soumettre',
     'summary': 'Récapitulatif',
     'supervisor': 'Superviseur',
     'switch': 'Changer de langue',
