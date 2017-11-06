@@ -23,9 +23,10 @@
                      property="description"}}
 
       {{user-picker form=form
+                    searchCredential=(action 'searchUser')
                     label=(t 'owner')
-                    selected=card.owner
-                    onChange=(action (mut card.owner))}}
+                    selected=selectedUser
+                    onChange=(action 'setOwner')}}
 
       {{validity-control form=form
                          enabledProperty="validityEnabled"
@@ -34,7 +35,7 @@
 
       <div class="row">
         <div class="col-md-1">
-          {{bs-button defaultText=(t 'submit') type="primary" buttonType="submit"}}
+          {{bs-button defaultText=(t 'submit') type="success" buttonType="submit"}}
         </div>
         {{#if delete}}
           <div class="pull-right form-button-delete">

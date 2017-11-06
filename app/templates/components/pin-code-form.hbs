@@ -12,7 +12,11 @@
                      placeholder=(t 'notes_placeholder')
                      property="description"}}
 
-      {{user-picker form=form label=(t 'owner') selected=pin.owner onChange=(action (mut pin.owner))}}
+      {{user-picker form=form
+                    searchCredential=(action 'searchUser')
+                    label=(t 'owner')
+                    selected=selectedUser
+                    onChange=(action 'setOwner')}}
 
       {{validity-control form=form
                          enabledProperty="validityEnabled"

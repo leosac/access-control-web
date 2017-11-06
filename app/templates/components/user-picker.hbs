@@ -1,12 +1,11 @@
 {{#form.element label=label}}
-    {{#power-select
-            selected=selected
-            searchField="username"
-            options=allUsers
-            onchange=onChange
-            allowClear=true
-            placeholder=(t 'username')
-    as |user|}}
-        {{user.username}}
-    {{/power-select}}
+  {{#power-select-typeahead
+    selected=selected.username
+    onchange=onChange
+    allowClear=true
+    search=searchCredential
+    placeholder=(t 'username')
+  as |user|}}
+    {{user.username}}
+  {{/power-select-typeahead}}
 {{/form.element}}
