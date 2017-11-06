@@ -13,6 +13,7 @@ export default Ember.Controller.extend({
     updateEventEnabled: true,
     zoneEventEnabled: true,
     openDetailsModal: false,
+    toggleValue: true,
 
     pageSize: 25,
     currentPage: 1,
@@ -26,14 +27,13 @@ export default Ember.Controller.extend({
     // The audit object that is currently being shown
     // in the details modal.
     detailedAudit: null,
-    audits:  Ember.ArrayProxy.create({ content: Ember.A([]) }),
+    audits: Ember.ArrayProxy.create({content: Ember.A([])}),
     // Whenever one of those variable change,
     // thanks to Ember.observer, reload is called
     watch_: Ember.observer('wsapicallEnabled', 'userEventEnabled', 'doorEventEnabled',
         'groupEventEnabled', `credentialEventEnabled`, 'scheduleEventEnabled',
         'userGroupMembershipEventEnabled', 'updateEventEnabled', 'zoneEventEnabled',
-        'currentPage', 'pageSize', function ()
-        {
+        'currentPage', 'pageSize', function () {
             this.reload();
         }),
     actions: {
@@ -43,13 +43,27 @@ export default Ember.Controller.extend({
         },
         refresh() {
             this.reload();
+        },
+        /**
+         *  This is a function that will toggle every event in the audit log
+         */
+        toggleAll() {
+            this.set('toggleValue', this.get('toggleValue') !== true);
+            this.set('wsapicallEnabled', this.get('toggleValue'));
+            this.set('userEventEnabled', this.get('toggleValue'));
+            this.set('doorEventEnabled', this.get('toggleValue'));
+            this.set('credentialEventEnabled', this.get('toggleValue'));
+            this.set('scheduleEventEnabled', this.get('toggleValue'));
+            this.set('groupEventEnabled', this.get('toggleValue'));
+            this.set('userGroupMembershipEventEnabled', this.get('toggleValue'));
+            this.set('updateEventEnabled', this.get('toggleValue'));
+            this.set('zoneEventEnabled', this.get('toggleValue'));
         }
     },
-    reload(){
+    reload() {
         const self = this;
 
         const enabled_types = [];
-        //console.log("WSAPICallEnabled value is " + this.get('wsapicallEnabled'));
         if (this.get('wsapicallEnabled'))
             enabled_types.push('Leosac::Audit::WSAPICall');
         if (this.get('userEventEnabled'))
@@ -78,15 +92,13 @@ export default Ember.Controller.extend({
             currentPage = 1;
         const pageSize = Number.parseInt(this.get('pageSize')) || 25;
 
-        const progressSetter = function(v)
-        {
+        const progressSetter = function (v) {
             self.set('progressValue', v);
         };
 
         self.set('fetchingData', true);
         this.get('auditLog').findAllByTypes(enabled_types,
-            currentPage, pageSize, progressSetter).then((result) =>
-        {
+            currentPage, pageSize, progressSetter).then((result) => {
             //            console.log(result);
             self.set('totalPage', result.meta.total_page);
             self.set('resultCount', result.meta.count);
