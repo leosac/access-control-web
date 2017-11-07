@@ -4,12 +4,10 @@ import Ember from 'ember';
  * This service will help us manage every module that are in our application,
  */
 
-function formatName(object)
-{
+function formatName(object) {
     let i = 0;
 
-    while (object[i])
-    {
+    while (object[i]) {
         object[i] = object[i].toUpperCase();
         object[i] = object[i].replace(/_/g, '');
         i++;
@@ -27,8 +25,7 @@ function formatName(object)
  * @returns {*}
  */
 
-function removeLastDot(path)
-{
+function removeLastDot(path) {
     if (path.substring(path.length - 1) === ".")
         path = path.substring(0, path.length - 1);
     return path;
@@ -46,7 +43,7 @@ function formatRouteName(input, entryPoint) {
     input = input.replace(/([A-Z])/g, "-$1").toLowerCase();
     input += entryPoint.replace('/', '.');
     input = removeLastDot(input);
-   return input;
+    return input;
 }
 
 export default Ember.Service.extend({
@@ -55,19 +52,20 @@ export default Ember.Service.extend({
     store: Ember.inject.service('store'),
     serverModules: [],
     clientModules: [],
+    wizards: [],
     shouldPresentBoth: [],
     onlyPresentServer: [],
     onlyPresentClient: [],
     nameToBeDisplayed: [],
     modulesInfo: [],
+    wizardsInfo: [],
 
     init() {
         this._super(...arguments);
         this.fetchModule();
     },
 
-    _pushModulesInfos(routeName, displayName, needServer, entryPoint, modelToRoute)
-    {
+    _pushModulesInfos(routeName, displayName, needServer, entryPoint, modelToRoute, isWizard) {
         routeName = formatRouteName(routeName, entryPoint);
         let moduleInfos = {
             displayName: displayName,
@@ -82,15 +80,13 @@ export default Ember.Service.extend({
      * This function is meant to catch every module,
      * and tell if they are loaded in the server, the client, or both.
      */
-    fetchModule()
-    {
+    fetchModule() {
         let container = Ember.getOwner(this).lookup('application:main').engines;
         const ws = this.get('ws');
         const self = this;
 
         return ws.sendJson('system_overview', {}).then(
-            function (response)
-            {
+            function (response) {
                 /**
                  * This will fill an array with every modules loaded by the server
                  * @type {Array}
@@ -102,8 +98,7 @@ export default Ember.Service.extend({
                 let modulesShouldBeLoadedOnServer = [];
                 let modulesShouldBeLoadedOnBothServer = [];
                 let i = 0;
-                while (response.modules[i])
-                {
+                while (response.modules[i]) {
 //                    if (response.modules[i].data === 0)
                     modulesShouldBeLoadedOnBothServer.push(response.modules[i]);
 //                    else
@@ -118,7 +113,11 @@ export default Ember.Service.extend({
                  * and who need to be loaded by the server
                  *
                  * And the second one, it will be the modules loaded by the client
+                 *
                  * If the leosacProperty.needServer === true, it means that the module need the server too
+                 *
+                 * If the leosacProperty.isWizard === true, it means that this is a wizard module,
+                 *  so it should be considered as a proper module
                  *
                  * @type {Array}
                  */
@@ -127,21 +126,31 @@ export default Ember.Service.extend({
                 let modulesShouldBeLoadedOnBothClient = [];
                 let modulesShouldBeLoadedOnClient = [];
                 let modulesInfo = [];
+                let wizardsInfo = [];
+                let modulesWizard = [];
 
-                modulesClient.forEach(function(module) {
+                modulesClient.forEach(function (module) {
                     if (module[1].leosacProperty.needServer) {
                         modulesShouldBeLoadedOnBothClient.push(module[0]);
                         modulesInfo.push(self._pushModulesInfos(module[0], module[1].leosacProperty.displayName,
                             true, module[1].leosacProperty.entryPoint, module[1].leosacProperty.modelToRoute));
                     }
                     else {
-                        modulesShouldBeLoadedOnClient.push(module[0]);
-                        modulesInfo.push(self._pushModulesInfos(module[0], module[1].leosacProperty.displayName,
-                            false, module[1].leosacProperty.entryPoint, module[1].leosacProperty.modelToRoute));
+                        if (module[1].leosacProperty.isWizard === true) {
+                            modulesWizard.push(module[0]);
+                            wizardsInfo.push(self._pushModulesInfos(module[0], module[1].leosacProperty.displayName,
+                                false, module[1].leosacProperty.entryPoint, module[1].leosacProperty.modelToRoute, module[1].leosacProperty.isWizard));
+                        }
+                        else {
+                            modulesShouldBeLoadedOnClient.push(module[0]);
+                            modulesInfo.push(self._pushModulesInfos(module[0], module[1].leosacProperty.displayName,
+                                false, module[1].leosacProperty.entryPoint, module[1].leosacProperty.modelToRoute));
+                        }
                     }
                 });
 
-                modulesInfo.sort(function(a, b) {
+
+                modulesInfo.sort(function (a, b) {
                     if (a.routeName >= b.routeName)
                         return 1;
                     else if (a.routeName < b.routeName)
@@ -154,12 +163,14 @@ export default Ember.Service.extend({
                  * Here we will reformat the name of each module so that they are serialized:
                  * - upper case
                  * - no underscore
+                 *
                  */
 
                 modulesShouldBeLoadedOnServer = formatName(modulesShouldBeLoadedOnServer);
                 modulesShouldBeLoadedOnBothServer = formatName(modulesShouldBeLoadedOnBothServer);
                 modulesShouldBeLoadedOnClient = formatName(modulesShouldBeLoadedOnClient);
                 modulesShouldBeLoadedOnBothClient = formatName(modulesShouldBeLoadedOnBothClient);
+                modulesWizard = formatName(modulesWizard);
 
                 let modulesLoadedByBoth = [];
 
@@ -172,21 +183,18 @@ export default Ember.Service.extend({
                 let modulesNotLoadedByTheServer = [];
                 let modulesNotLoadedByTheClient = [];
 
-                modulesShouldBeLoadedOnBothClient.forEach(function(name) {
+                modulesShouldBeLoadedOnBothClient.forEach(function (name) {
                     modulesNotLoadedByTheServer.push(name);
                 });
-                modulesShouldBeLoadedOnBothServer.forEach(function(name) {
+                modulesShouldBeLoadedOnBothServer.forEach(function (name) {
                     modulesNotLoadedByTheClient.push(name);
                 });
                 i = 0;
 
-                while (modulesShouldBeLoadedOnBothServer[i])
-                {
+                while (modulesShouldBeLoadedOnBothServer[i]) {
                     let j = 0;
-                    while (modulesNotLoadedByTheServer[j])
-                    {
-                        if (modulesNotLoadedByTheServer[j] === modulesShouldBeLoadedOnBothServer[i])
-                        {
+                    while (modulesNotLoadedByTheServer[j]) {
+                        if (modulesNotLoadedByTheServer[j] === modulesShouldBeLoadedOnBothServer[i]) {
                             modulesLoadedByBoth.push(modulesNotLoadedByTheServer[j]);
                             modulesNotLoadedByTheServer.splice(j, 1);
                         }
@@ -196,16 +204,12 @@ export default Ember.Service.extend({
                 }
 
 
-
                 i = 0;
                 let checkOccurrence = 0;
-                while (modulesShouldBeLoadedOnBothClient[i])
-                {
+                while (modulesShouldBeLoadedOnBothClient[i]) {
                     let j = 0;
-                    while (modulesNotLoadedByTheClient[j])
-                    {
-                        if (modulesNotLoadedByTheClient[j] === modulesShouldBeLoadedOnBothClient[i])
-                        {
+                    while (modulesNotLoadedByTheClient[j]) {
+                        if (modulesNotLoadedByTheClient[j] === modulesShouldBeLoadedOnBothClient[i]) {
                             if (modulesNotLoadedByTheClient[j] === modulesLoadedByBoth[checkOccurrence]) {
                                 checkOccurrence++;
                             }
@@ -238,6 +242,7 @@ export default Ember.Service.extend({
                 self.set('onlyPresentClient', modulesNotLoadedByTheServer);
                 self.set('onlyPresentServer', modulesNotLoadedByTheClient);
                 self.set('modulesInfo', modulesInfo);
+                self.set('wizardsInfo', wizardsInfo);
             });
     }
 });
