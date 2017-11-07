@@ -1,0 +1,115 @@
+<div class="col-md-12">
+  {{#step-manager will-transition=(action 'beforeTransition') as |w|}}
+    <div class="container">
+      <ul class="nav nav-pills nav-justified thumbnail">
+        {{#each steps as |step|}}
+          {{#if (eq w.currentStep step.value)}}
+            <li class="active">
+              <a href="#">
+                <div class="list-group-item-heading">{{step.name}}</div>
+                <p class="list-group-item-text">{{step.description}}</p>
+              </a>
+            </li>
+          {{else}}
+            <li>
+              <a href="#">
+                <div class="list-group-item-heading">{{step.name}}</div>
+                <p class="list-group-item-text">{{step.description}}</p>
+              </a>
+            </li>
+          {{/if}}
+        {{/each}}
+      </ul>
+    </div>
+
+    {{#w.step name='a'}}
+      <div class="col-md-6">
+        <fieldset>
+          <legend>{{t 'configuration'}}</legend>
+
+          {{#bs-form formLayout="vertical" as |form|}}
+            {{#form.element controlType="text" label=(t 'name')
+                            placeholder=(t 'name')
+                            required=true
+                            onChange=(action (mut configName))
+                            property=configName as |el|}}
+              {{el.control}}
+              {{#bs-tooltip placement="right" triggerEvents='hover'}}{{t 'information.name'}}{{/bs-tooltip}}
+            {{/form.element}}
+          {{/bs-form}}
+
+          {{#bs-form formLayout='vertical' model=this as |form|}}
+            Do you want a LED and or a buzzer
+            {{form.element label=(t 'led')
+                           controlType='checkbox'
+                           property='ledEnabled'}}
+
+            {{form.element label=(t 'buzzer')
+                           controlType='checkbox'
+                           property='buzzerEnabled'}}
+          {{/bs-form}}
+
+          {{bs-button type='success' text='Next' onClick=(action w.transition-to 'b')}}
+        </fieldset>
+      </div>
+    {{/w.step}}
+
+    {{#w.step name='b'}}
+      This is the second step!
+
+      {{#bs-form formLayout="vertical" model=wiegand-reader as |form|}}
+        {{#form.element controlType="number" label=(t 'number')
+                        placeholder='0 - 7'
+                        onChange=(action (mut piface-digital-gpio-high.number))
+                        property="number" as |el|}}
+          {{el.control}}
+          {{#bs-tooltip placement="right"}}{{t 'information.number'}}{{/bs-tooltip}}
+        {{/form.element}}
+      {{/bs-form}}
+
+      {{#bs-form formLayout="vertical" model=wiegand-reader as |form|}}
+        {{#form.element controlType="number" label=(t 'number')
+                        placeholder='0 - 7'
+                        onChange=(action (mut piface-digital-gpio-low.number))
+                        property="number" as |el|}}
+          {{el.control}}
+          {{#bs-tooltip placement="right"}}{{t 'information.number'}}{{/bs-tooltip}}
+        {{/form.element}}
+      {{/bs-form}}
+
+      {{#if ledEnabled}}
+      {{#bs-form formLayout="vertical" model=wiegand-reader as |form|}}
+        {{#form.element controlType="number" label=(t 'number')
+                        placeholder='0 - 7'
+                        onChange=(action (mut piface-digital-gpio-led.number))
+                        property="number" as |el|}}
+          {{el.control}}
+          {{#bs-tooltip placement="right"}}{{t 'information.number'}}{{/bs-tooltip}}
+        {{/form.element}}
+      {{/bs-form}}
+      {{/if}}
+
+      {{#if buzzerEnabled}}
+      {{#bs-form formLayout="vertical" model=wiegand-reader as |form|}}
+
+        {{#form.element controlType="number" label=(t 'number')
+                        placeholder='0 - 7'
+                        onChange=(action (mut piface-digital-gpio1))
+                        property="number" as |el|}}
+          {{el.control}}
+          {{#bs-tooltip placement="right"}}{{t 'information.number'}}{{/bs-tooltip}}
+        {{/form.element}}
+      {{/bs-form}}
+      {{/if}}
+    {{/w.step}}
+
+    {{#w.step name='c'}}
+      This is the third step!
+    {{/w.step}}
+
+    {{#w.step name='d'}}
+      This is the forth step!
+    {{/w.step}}
+
+  {{/step-manager}}
+</div>
