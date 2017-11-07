@@ -61,7 +61,8 @@
       "lib/piface-digital-gpio",
       "lib/shared-tools",
       "lib/smtp",
-      "lib/wiegand-reader"
+      "lib/wiegand-reader",
+      "lib/wiegand-reader-wizard"
     ]
   },
   "engines": {

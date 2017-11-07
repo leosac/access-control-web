@@ -101,6 +101,30 @@ App = Ember.Application.extend({
                     'search'
                 ]
             }
+        },
+        wiegandReaderWizard: {
+            leosacProperty: {
+                needServer: false,
+                displayName: 'Wiegand Reader Wizard',
+                isWizard: true,
+                entryPoint: '/',
+                modelToRoute: {
+                }
+            },
+            dependencies: {
+                externalRoutes: {
+                    login: 'login'
+                },
+                services: [
+                    'authentication',
+                    'websocket',
+                    'leosac-info',
+                    'flashMessages',
+                    'store',
+                    'module-manager',
+                    'search'
+                ]
+            }
         }
     },
     modulePrefix: config.modulePrefix,

@@ -82,6 +82,7 @@ Router.map(function ()
   this.mount('piface-digital-gpio');
   this.mount('wiegand-reader');
   this.mount('led-buzzer');
+  this.mount('wiegand-reader-wizard');
 });
 
 export default Router;
