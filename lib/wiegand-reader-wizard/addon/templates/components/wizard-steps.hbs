@@ -1,5 +1,5 @@
 <div class="col-md-12">
-  {{#step-manager will-transition=(action 'beforeTransition') as |w|}}
+  {{#step-manager did-transition=(action 'afterTransition') as |w|}}
     <div class="container">
       <ul class="nav nav-pills nav-justified thumbnail">
         {{#each steps as |step|}}
@@ -36,6 +36,17 @@
               {{el.control}}
               {{#bs-tooltip placement="right" triggerEvents='hover'}}{{t 'information.name'}}{{/bs-tooltip}}
             {{/form.element}}
+
+            {{#form.element label=(t 'gpio')}}
+              {{#power-select
+                selected=gpioType
+                searchEnabled=false
+                options=listOfGpio
+                onchange=(action (mut gpioType))
+              as |gpio|}}
+                {{t gpio}}
+              {{/power-select}}
+            {{/form.element}}
           {{/bs-form}}
 
           {{#bs-form formLayout='vertical' model=this as |form|}}
@@ -49,7 +60,7 @@
                            property='buzzerEnabled'}}
           {{/bs-form}}
 
-          {{bs-button type='success' text='Next' onClick=(action w.transition-to 'b')}}
+          {{bs-button type='success' text='Next' onClick=(action 'transitionFromAToB' (action w.transition-to 'b'))}}
         </fieldset>
       </div>
     {{/w.step}}
@@ -57,20 +68,18 @@
     {{#w.step name='b'}}
       This is the second step!
 
-      {{#bs-form formLayout="vertical" model=wiegand-reader as |form|}}
+      {{#bs-form formLayout="vertical" model=pifaceDigitalGpioHigh as |form|}}
         {{#form.element controlType="number" label=(t 'number')
                         placeholder='0 - 7'
-                        onChange=(action (mut piface-digital-gpio-high.number))
                         property="number" as |el|}}
           {{el.control}}
           {{#bs-tooltip placement="right"}}{{t 'information.number'}}{{/bs-tooltip}}
         {{/form.element}}
       {{/bs-form}}
 
-      {{#bs-form formLayout="vertical" model=wiegand-reader as |form|}}
+      {{#bs-form formLayout="vertical" model=pifaceDigitalGpioLow as |form|}}
         {{#form.element controlType="number" label=(t 'number')
                         placeholder='0 - 7'
-                        onChange=(action (mut piface-digital-gpio-low.number))
                         property="number" as |el|}}
           {{el.control}}
           {{#bs-tooltip placement="right"}}{{t 'information.number'}}{{/bs-tooltip}}
@@ -78,29 +87,28 @@
       {{/bs-form}}
 
       {{#if ledEnabled}}
-      {{#bs-form formLayout="vertical" model=wiegand-reader as |form|}}
-        {{#form.element controlType="number" label=(t 'number')
-                        placeholder='0 - 7'
-                        onChange=(action (mut piface-digital-gpio-led.number))
-                        property="number" as |el|}}
-          {{el.control}}
-          {{#bs-tooltip placement="right"}}{{t 'information.number'}}{{/bs-tooltip}}
-        {{/form.element}}
-      {{/bs-form}}
+        {{#bs-form formLayout="vertical" model=pifaceDigitalGpioLed as |form|}}
+          {{#form.element controlType="number" label=(t 'number')
+                          placeholder='0 - 7'
+                          property="number" as |el|}}
+            {{el.control}}
+            {{#bs-tooltip placement="right"}}{{t 'information.number'}}{{/bs-tooltip}}
+          {{/form.element}}
+        {{/bs-form}}
       {{/if}}
 
       {{#if buzzerEnabled}}
-      {{#bs-form formLayout="vertical" model=wiegand-reader as |form|}}
+        {{#bs-form formLayout="vertical" model=pifaceDigitalGpioBuzzer as |form|}}
 
-        {{#form.element controlType="number" label=(t 'number')
-                        placeholder='0 - 7'
-                        onChange=(action (mut piface-digital-gpio1))
-                        property="number" as |el|}}
-          {{el.control}}
-          {{#bs-tooltip placement="right"}}{{t 'information.number'}}{{/bs-tooltip}}
-        {{/form.element}}
-      {{/bs-form}}
+          {{#form.element controlType="number" label=(t 'number')
+                          placeholder='0 - 7'
+                          property="number" as |el|}}
+            {{el.control}}
+            {{#bs-tooltip placement="right"}}{{t 'information.number'}}{{/bs-tooltip}}
+          {{/form.element}}
+        {{/bs-form}}
       {{/if}}
+      {{bs-button type='success' text='Next' onClick=(action 'transitionFromBToC' (action w.transition-to 'c'))}}
     {{/w.step}}
 
     {{#w.step name='c'}}
