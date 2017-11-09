@@ -69,7 +69,7 @@
       This is the second step!
 
       {{#bs-form formLayout="vertical" model=pifaceDigitalGpioHigh as |form|}}
-        {{#form.element controlType="number" label=(t 'number')
+        {{#form.element controlType="number" label=(t 'number_high')
                         placeholder='0 - 7'
                         property="number" as |el|}}
           {{el.control}}
@@ -78,7 +78,7 @@
       {{/bs-form}}
 
       {{#bs-form formLayout="vertical" model=pifaceDigitalGpioLow as |form|}}
-        {{#form.element controlType="number" label=(t 'number')
+        {{#form.element controlType="number" label=(t 'number_low')
                         placeholder='0 - 7'
                         property="number" as |el|}}
           {{el.control}}
@@ -88,7 +88,7 @@
 
       {{#if ledEnabled}}
         {{#bs-form formLayout="vertical" model=pifaceDigitalGpioLed as |form|}}
-          {{#form.element controlType="number" label=(t 'number')
+          {{#form.element controlType="number" label=(t 'number_led')
                           placeholder='0 - 7'
                           property="number" as |el|}}
             {{el.control}}
@@ -100,7 +100,7 @@
       {{#if buzzerEnabled}}
         {{#bs-form formLayout="vertical" model=pifaceDigitalGpioBuzzer as |form|}}
 
-          {{#form.element controlType="number" label=(t 'number')
+          {{#form.element controlType="number" label=(t 'number_buzzer')
                           placeholder='0 - 7'
                           property="number" as |el|}}
             {{el.control}}
@@ -112,7 +112,8 @@
     {{/w.step}}
 
     {{#w.step name='c'}}
-      This is the third step!
+      There is one more step: restarting the server.
+      {{bs-button type='success' text='Next' onClick=(action 'restart')}}
     {{/w.step}}
 
     {{#w.step name='d'}}
