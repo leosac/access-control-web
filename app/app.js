@@ -113,7 +113,8 @@ App = Ember.Application.extend({
             },
             dependencies: {
                 externalRoutes: {
-                    login: 'login'
+                    login: 'login',
+                    index: 'index'
                 },
                 services: [
                     'authentication',
