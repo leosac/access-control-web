@@ -4,14 +4,14 @@
       <ul class="nav nav-pills nav-justified thumbnail">
         {{#each steps as |step|}}
           {{#if (eq w.currentStep step.value)}}
-            <li class="active">
+            <li class="active inactiveLink">
               <a href="#">
                 <div class="list-group-item-heading">{{step.name}}</div>
                 <p class="list-group-item-text">{{step.description}}</p>
               </a>
             </li>
           {{else}}
-            <li>
+            <li class="inactiveLink">
               <a href="#">
                 <div class="list-group-item-heading">{{step.name}}</div>
                 <p class="list-group-item-text">{{step.description}}</p>
@@ -22,103 +22,186 @@
       </ul>
     </div>
 
-    {{#w.step name='a'}}
-      <div class="col-md-6">
-        <fieldset>
-          <legend>{{t 'configuration'}}</legend>
-
+    {{#w.step name='general'}}
+      <fieldset>
+        <legend>{{t 'configuration'}}</legend>
+        <div class="col-md-12">
           {{#bs-form formLayout="vertical" as |form|}}
-            {{#form.element controlType="text" label=(t 'name')
-                            placeholder=(t 'name')
-                            required=true
-                            onChange=(action (mut configName))
-                            property=configName as |el|}}
-              {{el.control}}
-              {{#bs-tooltip placement="right" triggerEvents='hover'}}{{t 'information.name'}}{{/bs-tooltip}}
-            {{/form.element}}
+            <div class="row">
+            <div class="col-md-6">
+              {{#form.element controlType="text" label=(t 'name')
+                              placeholder=(t 'name')
+                              required=true
+                              onChange=(action (mut configName))
+                              property=configName as |el|}}
+                {{el.control}}
+                {{#bs-tooltip placement="right" triggerEvents='hover'}}{{t 'information.name'}}{{/bs-tooltip}}
+              {{/form.element}}
+            </div>
+            <div class="col-md-6 text-next-to-power-select">
+              <p><b>Name</b>: the name of the Wiegand Reader,
+                and the prefix of all the device related to the Wiegand Reader. You are free to choose the name,
+                but an explicit name is always preferable than a unexplicit name.</p>
+              <p class="wiegand-reader-wizard-lesser-text"> For example: if the Wiegand Reader is connected to the garage door,
+                a good name could be: <b>GARAGE-DOOR-READER</b>.</p>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-md-6">
+              {{#form.element label=(t 'gpio')}}
+                {{#power-select
+                  selected=gpioType
+                  searchEnabled=false
+                  options=listOfGpio
+                  onchange=(action (mut gpioType))
+                as |gpio|}}
+                  {{t gpio}}
+                {{/power-select}}
+              {{/form.element}}
+            </div>
+            <div class="col-md-6 text-next-to-power-select">
+              <p>
+                <b>Gpio type</b>: the type of GPIO on which the Wiegand Reader will be pluged.
+                By default, if you are using a Piface, choose <b>Piface Digital GPIO</b>.
+              </p>
+            </div>
+            </div>
+            {{#if (eq gpioType 'piface-digital-gpio')}}
+              <div class="row">
+              <div class="col-md-6">
+                {{log hardwareAddress}}
+                {{#form.element label=(t 'hardware_address')}}
+                  {{#power-select
+                    selected=hardwareAddress
+                    searchEnabled=false
+                    options=hardwareAddressList
+                    onchange=(action (mut hardwareAddress))
+                  as |address|}}
+                    {{address}}
+                  {{/power-select}}
+                {{/form.element}}
+              </div>
+              <div class="col-md-6 text-next-to-power-select">
+                <p>
+                  <b>Harware Address</b>: 0 by default.????????????????????
+                </p>
+              </div>
+              </div>
+            {{/if}}
 
-            {{#form.element label=(t 'gpio')}}
-              {{#power-select
-                selected=gpioType
-                searchEnabled=false
-                options=listOfGpio
-                onchange=(action (mut gpioType))
-              as |gpio|}}
-                {{t gpio}}
-              {{/power-select}}
-            {{/form.element}}
           {{/bs-form}}
 
           {{#bs-form formLayout='vertical' model=this as |form|}}
-            Do you want a LED and or a buzzer
-            {{form.element label=(t 'led')
-                           controlType='checkbox'
-                           property='ledEnabled'}}
-
-            {{form.element label=(t 'buzzer')
-                           controlType='checkbox'
-                           property='buzzerEnabled'}}
+            <div class="row">
+            <div class="col-md-6">
+              {{form.element label=(t 'led')
+                             controlType='checkbox'
+                             property='ledEnabled'}}
+            </div>
+            <div class="col-md-6 text-next-to-checkbox">
+              <p>
+                <b>LED</b>: toggle if you want to configure a LED, make sure that your Wiegand Reader has one.
+              </p>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-md-6">
+              {{form.element label=(t 'buzzer')
+                             controlType='checkbox'
+                             property='buzzerEnabled'}}
+            </div>
+            <div class="col-md-6 text-next-to-checkbox">
+              <p>
+                <b>Buzzer</b>: toggle if you want to configure a Buzzer, make sure that your Wiegand Reader has one.
+              </p>
+            </div>
+            </div>
           {{/bs-form}}
 
-          {{bs-button type='success' text='Next' onClick=(action 'transitionFromAToB' (action w.transition-to 'b'))}}
-        </fieldset>
+          {{bs-button type='success' text='Next'
+                      onClick=(action 'transitionFromGeneralToGpio' (action w.transition-to 'gpio'))}}
+        </div>
+      </fieldset>
+    {{/w.step}}
+
+    {{#w.step name='gpio'}}
+      <div class="col-md-6">
+        {{#bs-form formLayout="vertical" model=pifaceDigitalGpioHigh as |form|}}
+          {{#form.element controlType="number" label=(t 'number_high')
+                          placeholder='0 - 7'
+                          property="number" as |el|}}
+            {{el.control}}
+            {{#bs-tooltip placement="right"}}{{t 'information.number'}}{{/bs-tooltip}}
+          {{/form.element}}
+        {{/bs-form}}
+
+        {{#bs-form formLayout="vertical" model=pifaceDigitalGpioLow as |form|}}
+          {{#form.element controlType="number" label=(t 'number_low')
+                          placeholder='0 - 7'
+                          property="number" as |el|}}
+            {{el.control}}
+            {{#bs-tooltip placement="right"}}{{t 'information.number'}}{{/bs-tooltip}}
+          {{/form.element}}
+        {{/bs-form}}
+
+        {{#if ledEnabled}}
+          {{#bs-form formLayout="vertical" model=pifaceDigitalGpioLed as |form|}}
+            {{#form.element controlType="number" label=(t 'number_led')
+                            placeholder='0 - 7'
+                            property="number" as |el|}}
+              {{el.control}}
+              {{#bs-tooltip placement="right"}}{{t 'information.number'}}{{/bs-tooltip}}
+            {{/form.element}}
+          {{/bs-form}}
+        {{/if}}
+
+        {{#if buzzerEnabled}}
+          {{#bs-form formLayout="vertical" model=pifaceDigitalGpioBuzzer as |form|}}
+
+            {{#form.element controlType="number" label=(t 'number_buzzer')
+                            placeholder='0 - 7'
+                            property="number" as |el|}}
+              {{el.control}}
+              {{#bs-tooltip placement="right"}}{{t 'information.number'}}{{/bs-tooltip}}
+            {{/form.element}}
+          {{/bs-form}}
+        {{/if}}
+        {{bs-button type='success' text='Next'
+                    onClick=(action 'transitionFromGpioToFinish' (action w.transition-to 'finish'))}}
+      </div>
+      <div class="col-md-6">
+        <p>
+          <b>GPIO High</b>: This is where the Wiegand Reader high wire will be plugged on the piface
+        </p>
+        <p>
+          <b>GPIO Low</b>: This is where the Wiegand Reader low wire will be plugged on the piface
+        </p>
+        {{#if ledEnabled}}
+          <p>
+            <b>GPIO LED</b>: This is where the Wiegand Reader led wire will be plugged on the piface
+          </p>
+        {{/if}}
+        {{#if buzzerEnabled}}
+          <p>
+            <b>GPIO Buzzer</b>: This is where the Wiegand Reader buzzer wire will be plugged on the piface
+          </p>
+        {{/if}}
       </div>
     {{/w.step}}
 
-    {{#w.step name='b'}}
-      This is the second step!
-
-      {{#bs-form formLayout="vertical" model=pifaceDigitalGpioHigh as |form|}}
-        {{#form.element controlType="number" label=(t 'number_high')
-                        placeholder='0 - 7'
-                        property="number" as |el|}}
-          {{el.control}}
-          {{#bs-tooltip placement="right"}}{{t 'information.number'}}{{/bs-tooltip}}
-        {{/form.element}}
-      {{/bs-form}}
-
-      {{#bs-form formLayout="vertical" model=pifaceDigitalGpioLow as |form|}}
-        {{#form.element controlType="number" label=(t 'number_low')
-                        placeholder='0 - 7'
-                        property="number" as |el|}}
-          {{el.control}}
-          {{#bs-tooltip placement="right"}}{{t 'information.number'}}{{/bs-tooltip}}
-        {{/form.element}}
-      {{/bs-form}}
-
-      {{#if ledEnabled}}
-        {{#bs-form formLayout="vertical" model=pifaceDigitalGpioLed as |form|}}
-          {{#form.element controlType="number" label=(t 'number_led')
-                          placeholder='0 - 7'
-                          property="number" as |el|}}
-            {{el.control}}
-            {{#bs-tooltip placement="right"}}{{t 'information.number'}}{{/bs-tooltip}}
-          {{/form.element}}
-        {{/bs-form}}
-      {{/if}}
-
-      {{#if buzzerEnabled}}
-        {{#bs-form formLayout="vertical" model=pifaceDigitalGpioBuzzer as |form|}}
-
-          {{#form.element controlType="number" label=(t 'number_buzzer')
-                          placeholder='0 - 7'
-                          property="number" as |el|}}
-            {{el.control}}
-            {{#bs-tooltip placement="right"}}{{t 'information.number'}}{{/bs-tooltip}}
-          {{/form.element}}
-        {{/bs-form}}
-      {{/if}}
-      {{bs-button type='success' text='Next' onClick=(action 'transitionFromBToC' (action w.transition-to 'c'))}}
+    {{#w.step name='finish'}}
+      <p>
+        Wiegand Reader successfully configured!
+      </p>
+      <p>
+        The server already restarted, so that the reader can be used.
+      </p>
+      <p>
+        Wait for the server to reconnect.
+      </p>
+      {{#link-to-external 'index'}}
+        {{bs-button type='success' text='Home'}}
+      {{/link-to-external}}
     {{/w.step}}
-
-    {{#w.step name='c'}}
-      There is one more step: restarting the server.
-      {{bs-button type='success' text='Next' onClick=(action 'restart')}}
-    {{/w.step}}
-
-    {{#w.step name='d'}}
-      This is the forth step!
-    {{/w.step}}
-
   {{/step-manager}}
 </div>
