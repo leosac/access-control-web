@@ -87,6 +87,14 @@ Since we want to align a button with a power select control,
   margin-top: 20px;
 }
 
+.text-next-to-power-select {
+  margin-top: 20px;
+}
+
+.text-next-to-checkbox {
+  margin-top: 5px;
+}
+
 .space-left {
   margin-left: 10px;
 }

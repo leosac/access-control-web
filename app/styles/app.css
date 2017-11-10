@@ -183,3 +183,12 @@ Error default color
 .error-default-color {
   color: darkred;
 }
+
+/*
+Disable the click when hovering the wizard
+ */
+
+.inactiveLink {
+  pointer-events: none;
+  cursor: default;
+}
