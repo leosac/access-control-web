@@ -192,3 +192,8 @@ Disable the click when hovering the wizard
   pointer-events: none;
   cursor: default;
 }
+
+.wiegand-reader-wizard-lesser-text {
+  margin-top: -5px;
+  font-size: 12px;
+}
