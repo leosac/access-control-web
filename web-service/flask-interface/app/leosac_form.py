@@ -1,18 +1,21 @@
 from flask_wtf import Form, RecaptchaField
-from wtforms import TextField, HiddenField, ValidationError, RadioField, SelectField, \
-    BooleanField, SubmitField, IntegerField, FormField, validators,  SelectMultipleField, widgets
+from wtforms import HiddenField, ValidationError, RadioField, SelectField, \
+    BooleanField, SubmitField, IntegerField, FormField, validators, SelectMultipleField, widgets, StringField
 
-from wtforms.validators import Required, Regexp, Length
+from wtforms.validators import Required, Regexp, Length, DataRequired
+
 
 class ModuleDescription(object):
     def __init__(self, name, addon_type):
         self.name = name
         self.addon_type = addon_type
 
+
 class StyleDescription(object):
     def __init__(self, name, real_name):
         self.name = name
         self.real_name = real_name
+
 
 all_addon = [
     ModuleDescription('smtp', 'in'),
@@ -20,21 +23,23 @@ all_addon = [
     ModuleDescription('wiegand-reader', 'in'),
     ModuleDescription('led-buzzer', 'in'),
     ModuleDescription('evoxs', 'out')
-    ]
+]
 
 all_style = [
     StyleDescription('Style 1', 'app.css'),
     StyleDescription('Style 2', 'app.css')
 ]
 
+
 def formatName(st):
     st = st.replace('-', ' ')
     return st.title()
 
+
 class MyForm(Form):
-    name = TextField('Name:', validators=[Required(), Length(min=3, max=5)])
-    addr = TextField('Leosac Address:', [Required()])
-    root_url = TextField('Root URL:', [Required()])
+    name = StringField('Name:', validators=[DataRequired(), Length(min=3, max=5)])
+    addr = StringField('Leosac Address:', [DataRequired()])
+    root_url = StringField('Root URL:', [DataRequired()])
     my_addons = [(x.name, formatName(x.name)) for x in all_addon]
     addon = SelectMultipleField('Addons:', choices=my_addons)
     my_styles = [(x.name, x.name) for x in all_style]
