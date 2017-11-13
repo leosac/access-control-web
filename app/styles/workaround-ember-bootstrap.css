@@ -98,3 +98,10 @@ Since we want to align a button with a power select control,
 .space-left {
   margin-left: 10px;
 }
+
+/*
+This is a workaround of ember-bootstrap tooltip, it doesn't recognize the vertical Layout of a form
+ */
+.tooltip .right{
+  margin-top: 10px;
+}
