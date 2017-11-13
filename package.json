@@ -18,7 +18,7 @@
     "ember-cli-jshint": "2.0.1",
     "ember-cli-jstree": "1.0.9",
     "ember-cli-moment-shim": "3.5.0",
-    "ember-cli-qunit": "4.0.2",
+    "ember-cli-qunit": "4.1.1",
     "ember-cli-shims": "1.1.0",
     "ember-cli-sri": "2.1.1",
     "ember-cli-test-loader": "2.2.0",
