@@ -11,9 +11,13 @@ export default Ember.Service.extend({
     store: Ember.inject.service(),
     isConnected: false,
 
-    init()
-    {
+    init() {
         "use strict";
+
+        // Override server address if set in local storage.
+        // Used when browsing from centralized web ui.
+        if (localStorage.leosacAddr)
+            ENV.APP.leosacAddr = localStorage.leosacAddr;
         this.initWebsocket(ENV.APP.leosacAddr + '/websocket', null);
     },
 
@@ -21,7 +25,7 @@ export default Ember.Service.extend({
         const self = this;
         let deferred = Ember.RSVP.defer();
 
-        deferred.promise.then(function() {
+        deferred.promise.then(function () {
             let token = self.get('authSrv').fetchLocalAuthToken();
             if (!!token && token !== 'false')
                 self.get('authSrv').authenticateWithToken(token);
@@ -30,7 +34,7 @@ export default Ember.Service.extend({
         this.initWebsocket(ENV.APP.leosacAddr + '/websocket', deferred);
     },
 
-    initWebsocket: function(addr, deferred) {
+    initWebsocket: function (addr, deferred) {
         console.log('Service is initializing ...');
 
         let ws = this.get('ws');
@@ -38,8 +42,7 @@ export default Ember.Service.extend({
 
         let self = this;
 
-        ws.onopen = function ()
-        {
+        ws.onopen = function () {
             console.log('WS opened');
 
             self.set('isConnected', true);
@@ -49,10 +52,8 @@ export default Ember.Service.extend({
             // Process item that were queued before the connection
             // was ready.
             let queue = self.get('beforeOpen');
-            if (queue.length > 0)
-            {
-                queue.forEach(function (payload)
-                {
+            if (queue.length > 0) {
+                queue.forEach(function (payload) {
                     ws.send(JSON.stringify(payload));
                 });
                 queue = [];
@@ -71,16 +72,13 @@ export default Ember.Service.extend({
          * (with `status_code` and `status_string` property) is passed
          * to the rejection handler.
          */
-        ws.onmessage = function (event)
-        {
+        ws.onmessage = function (event) {
             let obj = JSON.parse(event.data);
             let cb = self.get('callback')[obj.uuid];
             // If we didn't find a callback, it means its opportunistic message
             // from server
-            if (!cb)
-            {
-                if (obj.type === 'session_closed')
-                {
+            if (!cb) {
+                if (obj.type === 'session_closed') {
                     // todo UI becomes broken after this.
                     self.get('flashMessages').danger('Your session has been terminated: ' +
                         obj.content.reason,
@@ -90,10 +88,8 @@ export default Ember.Service.extend({
                     self.get('authSrv')._clearAuthentication(true);
                 }
             }
-            else
-            {
-                if (obj.status_code === 11)
-                {
+            else {
+                if (obj.status_code === 11) {
                     /**
                      * If the error returned by the server correspond to the number eleven(11),
                      * it means that this is an generic error, not specific to one case.
@@ -116,8 +112,7 @@ export default Ember.Service.extend({
                         });
                     cb.error(new DS.InvalidError(obj.content.errors));
                 }
-                else if (obj.status_code !== 0)
-                {
+                else if (obj.status_code !== 0) {
                     self.get('flashMessages').danger('Error: ' + obj.status_string, {
                         sticky: true
                     });
@@ -129,13 +124,11 @@ export default Ember.Service.extend({
             }
         };
 
-        ws.onclose = function (/*event*/)
-        {
+        ws.onclose = function (/*event*/) {
             // Flush all pending callback and mark them as error.
             const pending_callbacks = self.get('callback');
 
-            for (let key in pending_callbacks)
-            {
+            for (let key in pending_callbacks) {
                 if (!pending_callbacks.hasOwnProperty(key))
                     continue;
                 let c = pending_callbacks[key];
@@ -152,8 +145,7 @@ export default Ember.Service.extend({
             let exponential = 0.0;
             let arrayValue = [];
 
-            while (value < 200)
-            {
+            while (value < 200) {
                 value = Math.exp(exponential);
                 value = value * exponential * 100;
                 arrayValue[count] = value;
@@ -163,25 +155,21 @@ export default Ember.Service.extend({
 
             self.set('isConnected', false);
 
-            setTimeout(function()
-            {
+            setTimeout(function () {
                 self.attemptToReconnect();
             }, 5000);
         };
         this.set('ws', ws);
 
-        let timeout_request = function ()
-        {
+        let timeout_request = function () {
             const pending_callbacks = self.get('callback');
 
-            for (let key in pending_callbacks)
-            {
+            for (let key in pending_callbacks) {
                 if (!pending_callbacks.hasOwnProperty(key))
                     continue;
                 let c = pending_callbacks[key];
                 let time_diff = new Date() - c.timestamp;
-                if (time_diff > 10000)
-                {
+                if (time_diff > 10000) {
                     console.log('Timeout for request ' + key);
                     console.log(c.request);
                     delete self.get('callback')[key];
@@ -199,8 +187,7 @@ export default Ember.Service.extend({
         };
 
         // Setup timer to check for timeout
-        Ember.run.later(function ()
-        {
+        Ember.run.later(function () {
             timeout_request();
         }, 5000);
 
@@ -212,8 +199,7 @@ export default Ember.Service.extend({
      * @returns {string}
      */
     guid() {
-        function s4()
-        {
+        function s4() {
             return Math.floor((1 + Math.random()) * 0x10000)
                 .toString(16)
                 .substring(1);
@@ -223,8 +209,7 @@ export default Ember.Service.extend({
             s4() + '-' + s4() + s4() + s4();
     },
 
-    sendJson(cmd, request_content)
-    {
+    sendJson(cmd, request_content) {
         "use strict";
 
         let queue = this.get('beforeOpen');
@@ -236,23 +221,18 @@ export default Ember.Service.extend({
             content: request_content
         };
 
-        if (ws.readyState === 1)
-        {
+        if (ws.readyState === 1) {
             ws.send(JSON.stringify(request));
         }
-        else
-        {
+        else {
             queue.push(request);
         }
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
-        {
-            let on_success = function (data)
-            {
+        return new Ember.RSVP.Promise(function (resolve, reject) {
+            let on_success = function (data) {
                 Ember.run(null, resolve, data);
             };
-            let on_error = function (why)
-            {
+            let on_error = function (why) {
                 Ember.run(null, reject, why);
             };
             let cb = {
