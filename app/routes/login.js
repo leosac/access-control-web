@@ -3,7 +3,7 @@ import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
     authSrv: Ember.inject.service('authentication'),
-    _title: 'Login',
+    _title: 'login',
     actions: {
         onLoginSuccess: function ()
         {

@@ -56,6 +56,7 @@ export default {
     'leave': 'Leave',
     'link_to_profil': 'Link to the user profile',
     'logicalRoot': 'Logical zone',
+    'login': 'Login',
     'logout': 'Logout',
     'manager': 'Manager',
     'mapping': 'Mapping',
