@@ -26,23 +26,19 @@
       <fieldset>
         <legend>{{t 'configuration'}}</legend>
         <div class="col-md-12">
-          {{#bs-form formLayout="vertical" as |form|}}
+          {{#bs-form model=this formLayout="vertical" as |form|}}
             <div class="row">
               <div class="col-md-6">
                 {{#form.element controlType="text" label=(t 'name')
                                 placeholder=(t 'name')
-                                required=true
-                                onChange=(action (mut configName))
-                                property=configName as |el|}}
+                                property='configName'
+                                as |el|}}
                   {{el.control}}
                 {{/form.element}}
               </div>
               <div class="col-md-6 text-next-to-power-select">
-                <p><b>Name</b>: the name of the Wiegand Reader,
-                  and the prefix of all the device related to the Wiegand Reader. You are free to choose the name,
-                  but an explicit name is always preferable than a unexplicit name.</p>
-                <p class="wiegand-reader-wizard-lesser-text"> For example: if the Wiegand Reader is connected to the
-                  garage door, an explicit name could be: <b>GARAGE-DOOR-READER</b>.</p>
+                <p><b>{{t 'name'}}</b>{{t 'information.name'}}</p>
+                <p class="wiegand-reader-wizard-lesser-text"> {{t 'information.name_example'}}</p>
               </div>
             </div>
             <div class="row">
@@ -60,8 +56,7 @@
               </div>
               <div class="col-md-6 text-next-to-power-select">
                 <p>
-                  <b>Gpio type</b>: the type of GPIO on which the Wiegand Reader will be pluged.
-                  By default, if you are using a Piface, choose <b>Piface Digital GPIO</b>.
+                  <b>{{t 'gpio'}}</b>{{t 'information.gpio'}}
                 </p>
               </div>
             </div>
@@ -81,7 +76,7 @@
                 </div>
                 <div class="col-md-6 text-next-to-power-select">
                   <p>
-                    <b>Harware Address</b>: 0 by default.????????????????????
+                    <b>{{t 'hardware_address'}}</b>{{t 'information.hardware_address'}}
                   </p>
                 </div>
               </div>
@@ -98,7 +93,7 @@
               </div>
               <div class="col-md-6 text-next-to-checkbox">
                 <p>
-                  <b>LED</b>: toggle if you want to configure a LED. Be sure that your Wiegand Reader has one.
+                  <b>{{t 'led'}}</b>{{t 'information.led'}}
                 </p>
               </div>
             </div>
@@ -110,7 +105,7 @@
               </div>
               <div class="col-md-6 text-next-to-checkbox">
                 <p>
-                  <b>Buzzer</b>: toggle if you want to configure a Buzzer. Be sure that your Wiegand Reader has one.
+                  <b>{{t 'buzzer'}}</b>{{t 'information.buzzer'}}
                 </p>
               </div>
             </div>
@@ -135,7 +130,7 @@
         </div>
         <div class="col-md-6 text-next-to-power-select">
           <p>
-            <b>GPIO High</b>: This is where the Wiegand Reader high wire will be plugged on the piface
+            <b>{{t 'number_high'}}</b>{{t 'information.gpio_high'}}
           </p>
         </div>
       </div>
@@ -151,7 +146,7 @@
         </div>
         <div class="col-md-6 text-next-to-power-select">
           <p>
-            <b>GPIO Low</b>: This is where the Wiegand Reader low wire will be plugged on the piface
+            <b>{{t 'number_low'}}</b>{{t 'information.gpio_low'}}
           </p>
         </div>
       </div>
@@ -168,7 +163,7 @@
           </div>
           <div class="col-md-6 text-next-to-power-select">
             <p>
-              <b>GPIO LED</b>: This is where the Wiegand Reader led wire will be plugged on the piface
+              <b>{{t 'number_led'}}</b>{{t 'information.gpio_led'}}
             </p>
           </div>
         </div>
@@ -187,7 +182,7 @@
           </div>
           <div class="col-md-6  text-next-to-power-select">
             <p>
-              <b>GPIO Buzzer</b>: This is where the Wiegand Reader buzzer wire will be plugged on the piface
+              <b>{{t 'number_buzzer'}}</b>{{t 'information.gpio_buzzer'}}
             </p>
           </div>
         </div>
@@ -199,18 +194,10 @@
     {{#w.step name='finish'}}
       <div class="row">
         <div class="col-md-6">
-      <p>
-        Wiegand Reader successfully configured!
-      </p>
-      <p>
-        The server already restarted, so that the reader can be used.
-      </p>
-      <p>
-        Wait for the server to reconnect.
-      </p>
-      {{#link-to-external 'index'}}
-        {{bs-button type='success' text='Home'}}
-      {{/link-to-external}}
+          {{t 'finish'}}
+          {{#link-to-external 'index'}}
+            {{bs-button type='success' text='Home'}}
+          {{/link-to-external}}
 
         </div>
       </div>
