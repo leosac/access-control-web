@@ -49,7 +49,6 @@ def create_app(configfile=None):
     def browse():
         form = BrowseForm()
         if form.validate_on_submit():
-            print("http://127.0.0.1/entry-point/" + quote_plus(form.address.data))
             return redirect("http://127.0.0.1/entry-point/" + quote_plus(form.address.data))
         else:
             return render_template('browse.html', form=form)
