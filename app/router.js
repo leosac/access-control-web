@@ -69,7 +69,7 @@ Router.map(function () {
     this.route('zone-overview');
     this.route('updates');
     this.route('settings');
-    this.route('entry-point', {path: '/entry-point/:entry_point_websocket//:entry_point_address'});
+    this.route('entry-point', {path: '/entry-point/:entry_point_address'});
 
     this.mount('smtp');
     this.mount('piface-digital-gpio');

@@ -12,18 +12,18 @@ import ENV from 'web/config/environment';
  */
 
 export default Ember.Route.extend({
-    beforeModel() {
+    beforeModel: function () {
         /**
          * This will retrieve the url, add the missing slash (/),
          * and then set the leosac address with the new address.
          */
         let rawAddress = this.get('router.url');
+
         let address = rawAddress.replace('/entry-point/', '');
-        if (address.substring(0, 3) === 'ws:')
-            address = address.substr(0, 3) + '/' + address.substr(3);
-        else if (address.substring(0, 4) === 'wss:')
-            address = address.substr(0, 4) + '/' + address.substr(4);
-        ENV.APP.leosacAddr = address;
+        let finalAddress = decodeURI(address);
+        console.log(finalAddress);
+
+        ENV.APP.leosacAddr = finalAddress;
         this.transitionTo('index');
     }
 });
