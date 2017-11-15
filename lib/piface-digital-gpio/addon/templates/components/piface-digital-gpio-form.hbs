@@ -14,12 +14,12 @@
                       placeholder='0 - 7'
                       property="number" as |el|}}
         {{el.control id="Tooltip-number"}}
-        {{#bs-tooltip triggerElement="#Tooltip-number" placement="right"}}{{t 'information.number'}}{{/bs-tooltip}}
+        {{#bs-tooltip  placement="right" triggerElement="#Tooltip-number"}}{{t 'information.number'}}{{/bs-tooltip}}
       {{/form.element}}
 
       {{#form.element property="hardwareAddress" label=(t 'hardware_address') controlType='number' placeholder=(t 'type_address') as |el|}}
         {{el.control id="Tooltip-address"}}
-        {{#bs-tooltip triggerElement="#Tooltip-address" placement="right"}}{{t 'information.address'}}{{/bs-tooltip}}
+        {{#bs-tooltip placement="right"  triggerElement="#Tooltip-address"}}{{t 'information.address'}}{{/bs-tooltip}}
       {{/form.element}}
 
       {{#form.element property="direction" label=(t 'direction')}}
@@ -55,7 +55,7 @@
       {{/if}}
 
       {{#form.element property="enabled" label=(t 'enable')}}
-        <div class="pull-right" id="#Tooltip-enable">
+        <div class="pull-right" id="Tooltip-enable">
           {{device-toggle-enabled device=piface-digital-gpio saveIt=false}}
           {{#bs-tooltip placement="right" triggerElement="#Tooltip-enable" triggerEvent='hover'}}{{t 'information.enable'}}{{/bs-tooltip}}
         </div>
