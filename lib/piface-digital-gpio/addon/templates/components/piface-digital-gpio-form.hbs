@@ -6,23 +6,24 @@
       {{#form.element controlType="text" label=(t 'name')
                       placeholder=(t 'name')
                       property="name" as |el|}}
-        {{el.control}}
-        {{#bs-tooltip placement="right" triggerEvents='hover'}}{{t 'information.name'}}{{/bs-tooltip}}
+        {{el.control id="Tooltip-name"}}
+        {{#bs-tooltip placement="right" triggerElement="#Tooltip-name" triggerEvents='hover'}}{{t 'information.name'}}{{/bs-tooltip}}
       {{/form.element}}
 
       {{#form.element controlType="number" label=(t 'number')
                       placeholder='0 - 7'
                       property="number" as |el|}}
-        {{el.control}}
-        {{#bs-tooltip placement="right"}}{{t 'information.number'}}{{/bs-tooltip}}
+        {{el.control id="Tooltip-number"}}
+        {{#bs-tooltip triggerElement="#Tooltip-number" placement="right"}}{{t 'information.number'}}{{/bs-tooltip}}
       {{/form.element}}
 
       {{#form.element property="hardwareAddress" label=(t 'hardware_address') controlType='number' placeholder=(t 'type_address') as |el|}}
-        {{el.control}}
-        {{#bs-tooltip placement="right"}}{{t 'information.address'}}{{/bs-tooltip}}
+        {{el.control id="Tooltip-address"}}
+        {{#bs-tooltip triggerElement="#Tooltip-address" placement="right"}}{{t 'information.address'}}{{/bs-tooltip}}
       {{/form.element}}
 
       {{#form.element property="direction" label=(t 'direction')}}
+      <div id="Tooltip-direction">
         {{#power-select
           selected=piface-digital-gpio.direction
           searchEnabled=false
@@ -32,11 +33,13 @@
         as |direction|}}
           {{t direction}}
         {{/power-select}}
-        {{#bs-tooltip placement="right"}}{{t 'information.direction'}}{{/bs-tooltip}}
+        {{#bs-tooltip placement="right" triggerElement="#Tooltip-direction"}}{{t 'information.direction'}}{{/bs-tooltip}}
+      </div>
       {{/form.element}}
 
       {{#if (eq piface-digital-gpio.direction 'out')}}
         {{#form.element property='defaultValue' label=(t 'value')}}
+          <div id="Tooltip-value">
           {{#power-select
             selected=piface-digital-gpio.defaultValue
             searchEnabled=false
@@ -46,14 +49,15 @@
           as |newValue|}}
             {{t newValue}}
           {{/power-select}}
-          {{#bs-tooltip placement="right" triggerEvent='hover'}}{{t 'information.value'}}{{/bs-tooltip}}
+          {{#bs-tooltip placement="right" triggerElement="#Tooltip-value" triggerEvent='hover'}}{{t 'information.value'}}{{/bs-tooltip}}
+          </div>
         {{/form.element}}
       {{/if}}
 
       {{#form.element property="enabled" label=(t 'enable')}}
-        <div class="pull-right">
+        <div class="pull-right" id="#Tooltip-enable">
           {{device-toggle-enabled device=piface-digital-gpio saveIt=false}}
-          {{#bs-tooltip placement="right" triggerEvent='hover'}}{{t 'information.enable'}}{{/bs-tooltip}}
+          {{#bs-tooltip placement="right" triggerElement="#Tooltip-enable" triggerEvent='hover'}}{{t 'information.enable'}}{{/bs-tooltip}}
         </div>
       {{/form.element}}
 

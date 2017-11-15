@@ -1,3 +1,5 @@
+<div id="Tooltip-test">
 {{#bs-button text=(t 'test') onClick=(action 'testPiface') size='xs' type='warning'}}
-  {{#bs-tooltip placement="right" triggerEvent='hover'}}{{t 'information.test'}}{{/bs-tooltip}}
+  {{#bs-tooltip placement="right" triggerElement="#Tooltip-test" triggerEvent='hover'}}{{t 'information.test'}}{{/bs-tooltip}}
 {{/bs-button}}
+</div>
