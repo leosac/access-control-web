@@ -3,10 +3,7 @@ import {validator, buildValidations} from 'ember-cp-validations';
 
 const DeviceValidation = buildValidations(
     {
-        name: [
-            validator('presence', true),
-            validator('ds-error')
-        ]
+        name: validator('presence', true)
     }
 );
 
