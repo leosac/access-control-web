@@ -123,7 +123,8 @@ App = Ember.Application.extend({
                     'flashMessages',
                     'store',
                     'module-manager',
-                    'search'
+                    'search',
+                    'i18n'
                 ]
             }
         }
