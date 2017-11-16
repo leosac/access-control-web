@@ -7,10 +7,10 @@
                       placeholder=(t 'name')
                       property="name" as |el|}}
         {{el.control id="Tooltip-name"}}
-        {{#bs-tooltip placement="right" triggerElement="#Tooltip-name" triggerEvents='hover'}}{{t 'information.name'}}{{/bs-tooltip}}
+        {{#bs-tooltip placement="right" triggerElement="#Tooltip-name" triggerEvents='hover'}}{{t 'information.gpio_name'}}{{/bs-tooltip}}
       {{/form.element}}
 
-      {{#form.element controlType="number" label=(t 'number')
+      {{#form.element controlType="number" label=(t 'gpio_number')
                       placeholder='0 - 7'
                       property="number" as |el|}}
         {{el.control id="Tooltip-number"}}
@@ -38,7 +38,7 @@
       {{/form.element}}
 
       {{#if (eq piface-digital-gpio.direction 'out')}}
-        {{#form.element property='defaultValue' label=(t 'value')}}
+        {{#form.element property='defaultValue' label=(t 'default_value')}}
           <div id="Tooltip-value">
           {{#power-select
             selected=piface-digital-gpio.defaultValue

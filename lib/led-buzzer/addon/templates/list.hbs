@@ -1,9 +1,9 @@
 {{#link-to 'buzzer-create' class='btn btn-primary'}}
-  {{t 'buzzer.create'}}
+  {{t 'buzzers.create'}}
 {{/link-to}}
 &nbsp;
 {{#link-to 'led-create' class='btn btn-primary'}}
-  {{t 'led.create'}}
+  {{t 'leds.create'}}
 {{/link-to}}
 <hr>
 
@@ -30,7 +30,7 @@
               {{ledBuzzer.name}}
             {{/link-to}}
             {{#link-to 'buzzer' ledBuzzer.id tagName = "td"}}
-              {{ledBuzzer.deviceClass}}
+              {{t 'buzzer'}}
             {{/link-to}}
             {{#link-to 'buzzer' ledBuzzer.id tagName = "td"}}
               {{ledBuzzer.defaultBlinkDuration}}
@@ -62,7 +62,7 @@
               {{ledBuzzer.name}}
             {{/link-to}}
             {{#link-to 'led' ledBuzzer.id tagName = "td"}}
-              {{ledBuzzer.deviceClass}}
+              {{t 'led'}}
             {{/link-to}}
             {{#link-to 'led' ledBuzzer.id tagName = "td"}}
               {{ledBuzzer.defaultBlinkDuration}}

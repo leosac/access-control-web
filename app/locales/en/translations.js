@@ -14,6 +14,7 @@ export default {
     'alias_placeholder': 'A friendly name to remember me by',
     'audit_log': 'Audit Log',
     'author': 'Author',
+    'buzzer': 'Buzzer',
     'cancel': 'Cancel',
     'cancelled': 'Cancelled',
     'clear_selection': 'Clear selection',
@@ -27,17 +28,20 @@ export default {
     'count': 'Count',
     'current_page': 'Current Page',
     'date': 'Date',
+    'default_value': 'Default value',
     'delete': 'Delete',
     'description': 'Description',
     'deselect_all': 'Deselect all',
     'details': 'Details',
     'device':'Device',
+    'direction': 'Direction',
     'disconnected': 'Disconnected',
     'display_id': 'Display Identifier',
     'doors': 'Doors',
     'edit': 'Edit',
     'email': 'Email',
     'enabled': 'Enabled',
+    'enable': 'Enable',
     'end_date': 'End date',
     'finalized': 'Finalized',
     'firstname': 'Firstname',
@@ -54,6 +58,7 @@ export default {
     "language": 'Language',
     'lastname': 'Lastname',
     'leave': 'Leave',
+    'led': 'LED',
     'link_to_profil': 'Link to the user profile',
     'logicalRoot': 'Logical zone',
     'login': 'Login',
@@ -153,6 +158,16 @@ export default {
         'number_of_bit': 'The number of bit define the length of the Hexadecimal Identifier above. For you information, an hexadecimal numeral is coded on 4 bits. The colons doesn\'t enter in our calculus, but they still need to be written.',
     },
 
+    'configurations' : {
+        'error': {
+            'update_success': 'Config correctly updated.',
+            'create_success': 'Config correctly created.',
+            'remove_success': 'Config correctly removed.',
+            'update_error': 'An error occured while updating the config.',
+            'create_error': 'An error occured while creating the config.',
+            'remove_error': 'An error occured while removing the config.'
+        }
+    },
     // To avoid duplication, we may need to put single word into a namespace
     'w': {
         'door': 'Door',

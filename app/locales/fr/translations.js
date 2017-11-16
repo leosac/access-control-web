@@ -14,6 +14,7 @@ export default {
     'alias_placeholder': 'Un nom mémorisable',
     'audit_log': "Log d'audit",
     'author': 'Auteur',
+    'buzzer': 'Buzzer',
     'cancel': 'Annuler',
     'cancelled': 'Annulé',
     'clear_selection': 'Effacer la selection',
@@ -27,16 +28,20 @@ export default {
     'count': 'Nombre',
     'current_page': 'Page actuelle',
     'date': 'Date',
+    'default_value': 'Valeur par défaut',
     'delete': 'Supprimer',
     'description': 'Description',
+    'deselect_all': 'Tout désélectionner',
     'details': 'Détails',
     'device': 'Device',
+    'direction': 'Direction',
     'disconnected': 'Déconnecté',
     'display_id': 'Identifiant affiché',
     'doors': 'Portes',
     'edit': 'Editer',
     'email': 'Email',
     'enabled': 'Actif',
+    'enable': 'Activer',
     'end_date': 'Date de fin',
     'finalized': 'Finalisé',
     'firstname': 'Prénom',
@@ -53,6 +58,7 @@ export default {
     'language': 'Langue',
     'lastname': 'Nom de famille',
     'leave': 'Quitter',
+    'led': 'LED',
     'link_to_profil': 'Lien vers le profil d\'utilisateur',
     'logicalRoot': 'Zones logiques',
     'login': 'Se connecter',
@@ -151,6 +157,17 @@ export default {
         'number_of_bit': 'Le nombre de bits définit la longueur de l\'identifiant hexadécimal ci-dessus. Pour votre information, un nombre hexadécimal est codé sur 4 bits. Les doubles points n\'entrent pas dans ce compte, mais doivent quand même être écrits.'
     },
 
+    'configurations': {
+        'delete_confirm': 'Êtes-vous sûr de vouloir supprimer cette configuration ?',
+        'error': {
+            'update_success': 'Configuration correctement mise à jour.',
+            'create_success': 'Configuration correctement crée.',
+            'remove_success': 'Configuration correctement supprimée.',
+            'update_error': 'Une erreur est survenue lors de la mise à jour de la configuration.',
+            'create_error': 'Une erreur est survenue lors de la création de la configuration.',
+            'remove_error': 'Une erreur est survenue lors de la suppression de la configuration.'
+        }
+    },
     // To avoid duplication, we may need to put single word into a namespace
     'w': {
         'door': 'Porte',

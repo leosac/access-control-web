@@ -26,7 +26,9 @@ App = Ember.Application.extend({
                     'leosac-info',
                     'flashMessages',
                     'store',
-                    'module-manager'
+                    'module-manager',
+                    'search',
+                    'i18n'
                 ]
             }
         },
@@ -49,7 +51,9 @@ App = Ember.Application.extend({
                     'leosac-info',
                     'flashMessages',
                     'store',
-                    'module-manager'
+                    'module-manager',
+                    'search',
+                    'i18n'
                 ]
             }
         },
@@ -74,7 +78,8 @@ App = Ember.Application.extend({
                     'flashMessages',
                     'store',
                     'module-manager',
-                    'search'
+                    'search',
+                    'i18n'
                 ]
             }
         },
@@ -98,7 +103,8 @@ App = Ember.Application.extend({
                     'flashMessages',
                     'store',
                     'module-manager',
-                    'search'
+                    'search',
+                    'i18n'
                 ]
             }
         },
