@@ -13,11 +13,10 @@
         </thead>
         <tbody>
         {{#each model as |ap|}}
-            <tr>
+          {{#link-to-access-point ap=ap tagName='tr'}}
+            {{#if ap.id}}
                 <td>
-                  {{#link-to-access-point ap=ap}}
                     {{ap.id}}
-                  {{/link-to-access-point}}
                 </td>
                 <td>{{ap.alias}}</td>
                 <td>{{ap.controllerModule}}</td>
@@ -31,7 +30,8 @@
                     onConfirm=(route-action 'deleteAP' ap)
                   }}
                 </td>
-            </tr>
+            {{/if}}
+          {{/link-to-access-point}}
         {{/each}}
         </tbody>
     </table>
