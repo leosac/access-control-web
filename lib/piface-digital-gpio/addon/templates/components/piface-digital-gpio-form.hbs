@@ -7,19 +7,19 @@
                       placeholder=(t 'name')
                       property="name" as |el|}}
         {{el.control id="Tooltip-name"}}
-        {{#bs-tooltip placement="right" triggerElement="#Tooltip-name" triggerEvents='hover'}}{{t 'information.gpio_name'}}{{/bs-tooltip}}
+        {{#bs-tooltip placement="right" triggerElement="#Tooltip-name" triggerEvents='hover'}}{{t 'piface_digital_gpio_information.gpio_name'}}{{/bs-tooltip}}
       {{/form.element}}
 
       {{#form.element controlType="number" label=(t 'gpio_number')
                       placeholder='0 - 7'
                       property="number" as |el|}}
         {{el.control id="Tooltip-number"}}
-        {{#bs-tooltip  placement="right" triggerElement="#Tooltip-number"}}{{t 'information.number'}}{{/bs-tooltip}}
+        {{#bs-tooltip  placement="right" triggerElement="#Tooltip-number"}}{{t 'piface_digital_gpio_information.number'}}{{/bs-tooltip}}
       {{/form.element}}
 
       {{#form.element property="hardwareAddress" label=(t 'hardware_address') controlType='number' placeholder=(t 'type_address') as |el|}}
         {{el.control id="Tooltip-address"}}
-        {{#bs-tooltip placement="right"  triggerElement="#Tooltip-address"}}{{t 'information.address'}}{{/bs-tooltip}}
+        {{#bs-tooltip placement="right"  triggerElement="#Tooltip-address"}}{{t 'piface_digital_gpio_information.address'}}{{/bs-tooltip}}
       {{/form.element}}
 
       {{#form.element property="direction" label=(t 'direction')}}
@@ -33,7 +33,7 @@
         as |direction|}}
           {{t direction}}
         {{/power-select}}
-        {{#bs-tooltip placement="right" triggerElement="#Tooltip-direction"}}{{t 'information.direction'}}{{/bs-tooltip}}
+        {{#bs-tooltip placement="right" triggerElement="#Tooltip-direction"}}{{t 'piface_digital_gpio_information.direction'}}{{/bs-tooltip}}
       </div>
       {{/form.element}}
 
@@ -49,7 +49,7 @@
           as |newValue|}}
             {{t newValue}}
           {{/power-select}}
-          {{#bs-tooltip placement="right" triggerElement="#Tooltip-value" triggerEvent='hover'}}{{t 'information.value'}}{{/bs-tooltip}}
+          {{#bs-tooltip placement="right" triggerElement="#Tooltip-value" triggerEvent='hover'}}{{t 'piface_digital_gpio_information.value'}}{{/bs-tooltip}}
           </div>
         {{/form.element}}
       {{/if}}
@@ -57,7 +57,7 @@
       {{#form.element property="enabled" label=(t 'enable')}}
         <div class="pull-right" id="Tooltip-enable">
           {{device-toggle-enabled device=piface-digital-gpio saveIt=false}}
-          {{#bs-tooltip placement="right" triggerElement="#Tooltip-enable" triggerEvent='hover'}}{{t 'information.enable'}}{{/bs-tooltip}}
+          {{#bs-tooltip placement="right" triggerElement="#Tooltip-enable" triggerEvent='hover'}}{{t 'piface_digital_gpio_information.enable'}}{{/bs-tooltip}}
         </div>
       {{/form.element}}
 
@@ -75,7 +75,7 @@
                                      icon='glyphicon glyphicon-remove'
                                      size='md'
                                      text=(t 'delete')
-                                     message=(t 'piface-digital-gpio.delete_confirm')
+                                     message=(t 'piface-digital-gpios.delete_confirm')
                                      onConfirm=delete
           }}
         </div>

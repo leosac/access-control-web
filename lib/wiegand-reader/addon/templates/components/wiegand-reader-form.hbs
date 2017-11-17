@@ -8,7 +8,7 @@
                       property="name" as |el|}}
         {{el.control id="Tooltip-name"}}
         {{#bs-tooltip placement="right" triggerElement="#Tooltip-name" triggerEvents='hover'}}{{t
-          'information.wiegand_name'}}{{/bs-tooltip}}
+          'wiegand_information.wiegand_name'}}{{/bs-tooltip}}
       {{/form.element}}
 
       {{#form.element property="mode" label=(t 'mode')}}
@@ -22,7 +22,7 @@
           as |mode|}}
             {{t mode}}
           {{/power-select}}
-          {{#bs-tooltip placement="right" triggerElement="#Tooltip-mode"}}{{t 'information.mode'}}{{/bs-tooltip}}
+          {{#bs-tooltip placement="right" triggerElement="#Tooltip-mode"}}{{t 'wiegand_information.mode'}}{{/bs-tooltip}}
         </div>
       {{/form.element}}
 
@@ -32,7 +32,7 @@
                           placeholder='GPIO'
                           relationshipsName='gpioHigh'
                           device=wiegand-reader}}
-          {{#bs-tooltip placement="right" triggerElement="#Tooltip-high"}}{{t 'information.gpio_high'}}{{/bs-tooltip}}
+          {{#bs-tooltip placement="right" triggerElement="#Tooltip-high"}}{{t 'wiegand_information.gpio_high'}}{{/bs-tooltip}}
         </div>
       {{/form.element}}
 
@@ -42,7 +42,7 @@
                           placeholder='GPIO'
                           relationshipsName='gpioLow'
                           device=wiegand-reader}}
-          {{#bs-tooltip placement="right" triggerElement="#Tooltip-low"}}{{t 'information.gpio_low'}}{{/bs-tooltip}}
+          {{#bs-tooltip placement="right" triggerElement="#Tooltip-low"}}{{t 'wiegand_information.gpio_low'}}{{/bs-tooltip}}
         </div>
       {{/form.element}}
 
@@ -52,7 +52,7 @@
                           placeholder='Buzzer'
                           relationshipsName='buzzer'
                           device=wiegand-reader}}
-          {{#bs-tooltip placement="right" triggerElement="#Tooltip-buzzer"}}{{t 'information.buzzer'}}{{/bs-tooltip}}
+          {{#bs-tooltip placement="right" triggerElement="#Tooltip-buzzer"}}{{t 'wiegand_information.buzzer'}}{{/bs-tooltip}}
         </div>
       {{/form.element}}
 
@@ -62,7 +62,7 @@
                           placeholder='LED'
                           relationshipsName='greenLed'
                           device=wiegand-reader}}
-          {{#bs-tooltip placement="right" triggerElement="#Tooltip-led"}}{{t 'information.led'}}{{/bs-tooltip}}
+          {{#bs-tooltip placement="right" triggerElement="#Tooltip-led"}}{{t 'wiegand_information.led'}}{{/bs-tooltip}}
         </div>
       {{/form.element}}
 
