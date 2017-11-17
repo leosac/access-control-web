@@ -1,7 +1,7 @@
-from flask_wtf import Form, RecaptchaField
-from wtforms import TextField, HiddenField, ValidationError, RadioField, SelectField, \
-    BooleanField, SubmitField, IntegerField, FormField, validators,  SelectMultipleField, widgets, StringField
-from wtforms.validators import Required, Regexp, Length, DataRequired
+from flask_wtf import Form
+from wtforms import ValidationError, SubmitField, StringField
+from wtforms.validators import DataRequired
+
 
 class BrowseForm(Form):
     address = StringField('Leosac Address:', [DataRequired()])

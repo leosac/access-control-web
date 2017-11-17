@@ -2,15 +2,15 @@ import os
 import json
 import tempfile
 from app.leosac_form import all_addon, all_style
-from flask import send_file, abort, make_response, render_template
+from flask import make_response
+
 
 def fill_json_data(form):
-    data = {}
-    data['name'] = form['name']
-    data['leosac_addr'] = form['addr']
-    data['leosac_root_url'] = form['root_url']
-    data['description'] = 'Config file for the leosac build'
-    data['version'] = '1'
+    data = {'name': form['name'],
+            'leosac_addr': form['addr'],
+            'leosac_root_url': form['root_url'],
+            'description': 'Config file for the leosac build',
+            'version': '1'}
     for style in all_style:
         if style.name == form['style']:
             data['styles'] = style.real_name
@@ -31,6 +31,8 @@ def fill_json_data(form):
 
 # At this point we filled our data with the form 
 # We will now create a temporary directory in which we will build the leosac application, and then create a gzip with it
+
+
 def create_and_download_build(form):
     data = fill_json_data(form)
     print(data)

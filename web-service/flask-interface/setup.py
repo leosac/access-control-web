@@ -10,9 +10,19 @@ setup(name='Falsk Interface',
       url='https://www.islog.com/',
       install_requires=(
           'flask>=0.8',
+          'Falsk-Interface',
           'flask_wtf',
           'flask_debug',
           'flask_nav',
+          'flask_debug',
+          'pkg-resources'
+          'psycopg2',
+          'pylint',
+          'setuptools',
+          'wheel',
+          'flask_script',
           'flask_appconfig',
-          'flask-bootstrap'
+          'flask_bootstrap',
+          'flask_sqlalchemy',
+          'flask_migrate'
       ))

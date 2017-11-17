@@ -1,8 +1,8 @@
-from flask_wtf import Form, RecaptchaField
-from wtforms import HiddenField, ValidationError, RadioField, SelectField, \
-    BooleanField, SubmitField, IntegerField, FormField, validators, SelectMultipleField, widgets, StringField
+from flask_wtf import Form
+from wtforms import ValidationError, SelectField, \
+    SubmitField, SelectMultipleField, StringField
 
-from wtforms.validators import Required, Regexp, Length, DataRequired
+from wtforms.validators import Length, DataRequired
 
 
 class ModuleDescription(object):
