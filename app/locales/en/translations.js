@@ -156,6 +156,7 @@ export default {
     'informations': {
         'card_id': 'Since this is a sequence of hexedecimal(0 to f) number, it should respect the following patern: 00:b1:cC:9f. It follow this regular expression: /[0-9A-F]{2}(?::[0-9A-F]{2})*$/i.',
         'number_of_bit': 'The number of bit define the length of the Hexadecimal Identifier above. For you information, an hexadecimal numeral is coded on 4 bits. The colons doesn\'t enter in our calculus, but they still need to be written.',
+        'enable': 'Activer cet appareil'
     },
 
     'configurations' : {
