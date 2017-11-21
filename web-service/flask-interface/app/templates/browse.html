@@ -1,12 +1,22 @@
 {% extends "bootstrap/base.html" %} {% import "bootstrap/wtf.html" as wtf %} {% import "bootstrap/fixes.html" as fixes %}
-{% import "bootstrap/utils.html" as util %} {% block content %} {{util.flashed_messages(dismissible=True)}}
+{% import "bootstrap/utils.html" as util %} {% block content %} {{ util.flashed_messages(dismissible=True) }}
     <div class="container">
         <h1>Leosac Browser Version Form</h1>
-        <div class="row">
-            <div class="col-md-6">
-                {{ wtf.quick_form(form,id='lama', button_map={'submit_button': 'primary'}) }}
-            </div>
+        <div class="row pull-right">
+            <a class="btn btn-default" href="/logout">Logout</a>
         </div>
+        {% if session['logged_in'] %}
+            <div class="row">
+                <div class="col-md-6">
+                    {{ wtf.quick_form(form,id='lama', button_map={'submit_button': 'primary'}) }}
+                </div>
+            </div>
+        {% else %}
+            <p>Please login</p>
+
+            <a class="btn btn-default" href="/login">Login</a>
+            <a class="btn btn-default" href="/register">Register</a>
+        {% endif %}
     </div>
     <script type=text/javascript
             src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
@@ -16,10 +26,10 @@
             $('#lama').submit(function (e) {
                 localStorage.leosacAddr = $('#address').val();
 //                console.log(localStorage);
-    //            e.preventDefault();
-               // console.log($(this).get('address'));
+                //            e.preventDefault();
+                // console.log($(this).get('address'));
             });
         });
     </script>
 
-{% endblock %} {% block head %} {{super()}} {{fixes.ie8()}} {% endblock %}
+{% endblock %} {% block head %} {{ super() }} {{ fixes.ie8() }} {% endblock %}

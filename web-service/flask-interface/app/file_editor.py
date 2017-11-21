@@ -1,8 +1,8 @@
-import os
 import json
+import os
 import tempfile
-from app.leosac_form import all_addon, all_style
 from flask import make_response
+from app.forms.leosac_form import all_addon, all_style
 
 
 def fill_json_data(form):
@@ -35,15 +35,13 @@ def fill_json_data(form):
 
 def create_and_download_build(form):
     data = fill_json_data(form)
-    print(data)
     with tempfile.TemporaryDirectory() as tmpdirectoryname:
         os.chdir(tmpdirectoryname)
         os.system('mkdir my-build')
         with open('build-config.json', 'w') as data_file:
             data_file.write(json.dumps(data, indent=4))
-
-        #The config-file is created
-        #We will now run the docker
+        # The config-file is created
+        # We will now run the docker
         os.system('docker run -ti -v ' + tmpdirectoryname + '/my-build:/build-output -v ' + tmpdirectoryname + '/build-config.json:/build-config.json -v ~/leosac/leosac-web/custom-assets:/custom-assets leosac-web:latest')
         os.chdir(tmpdirectoryname + '/my-build/')
         os.system('tar -zcvf build.tar.gz dist/')

@@ -18,13 +18,13 @@ def allowed_file(filename):
 # SQLite forthis example
 POSTGRES = {
     'user': 'postgres',
-    'pw': 'password',
-    'db': 'my_database',
+    'pw': 'postgres',
+    'db': 'leosac',
     'host': 'localhost',
     'port': '5432',
 }
 
-
+SQLALCHEMY_TRACK_MODIFICATIONS = True
 SQLALCHEMY_DATABASE_URI = 'postgresql://%(user)s:%(pw)s@%(host)s:%(port)s/%(db)s' % POSTGRES
 DATABASE_CONNECT_OPTIONS = {}
 

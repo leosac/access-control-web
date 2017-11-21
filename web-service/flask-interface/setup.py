@@ -6,6 +6,10 @@ setup(name='Falsk Interface',
       version='1.0',
       description='Flask interface that setup and build the leosac GUI application',
       author='ISLOG',
+      entry_points={
+          'console_scripts': [
+              'foo = app.manage:entry',
+          ]},
       author_email='islog@islog.com',
       url='https://www.islog.com/',
       install_requires=(
@@ -15,7 +19,6 @@ setup(name='Falsk Interface',
           'flask_debug',
           'flask_nav',
           'flask_debug',
-          'pkg-resources'
           'psycopg2',
           'pylint',
           'setuptools',
