@@ -8,7 +8,22 @@
         {% if session['logged_in'] %}
             <div class="row">
                 <div class="col-md-6">
-                    {{ wtf.quick_form(form,id='lama', button_map={'submit_button': 'primary'}) }}
+                    <form action="" method="POST" role="form" class="form">
+                        {{ form.hidden_tag() }} {{ wtf.form_errors(form, hiddens="only") }}
+                        <div class="form-group  required">
+                            <label class="control-label" for="address">Leosac Address</label>
+                            {{ form.address(class="form-control",id="address",required="required",type="text",value="",placeholder="e.g. ws://172.17.0.3:8888/") }}
+                        </div>
+                        <div class="form-group  required">
+                            <label class="control-label" for="host">Host</label>
+                            {{ form.host(class="form-control",id="host",required="required",type="text",value="",placeholder="Enter host defined by your NGINX config") }}
+                        </div>
+                        <div class="form-group  required">
+                            <label class="control-label" for="port">Port</label>
+                            {{ form.port(class="form-control",id="port",required="required",type="text",value="",placeholder="Port defined by your NGINX config") }}
+                        </div>
+                        {{ form.submit(class="btn btn-success") }}
+                    </form>
                 </div>
             </div>
         {% else %}

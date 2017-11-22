@@ -5,7 +5,9 @@ from wtforms.validators import DataRequired
 
 class BrowseForm(Form):
     address = StringField('Leosac Address:', [DataRequired()])
-    submit_button = SubmitField('Submit Form')
+    host = StringField('Host:')
+    port = StringField('Port:')
+    submit = SubmitField('Submit Form')
 
-    def validate_hidden_field(form, field):
+    def validate_hidden_field(self, field):
         raise ValidationError('Always wrong')

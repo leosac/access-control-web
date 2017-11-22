@@ -2,7 +2,6 @@ from flask import Flask
 from flask_appconfig import AppConfig
 from flask_bootstrap import Bootstrap
 from app.create_db import db
-from flask_sqlalchemy import SQLAlchemy
 from app.routes import routes
 
 # Define the WSGI application object
