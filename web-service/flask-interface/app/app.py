@@ -17,3 +17,5 @@ app.register_blueprint(routes)
 
 AppConfig(app, configfile=None)
 bootstrap = Bootstrap(app)
+
+app.secret_key = '\x84\xa4{;\x7f\xa6\xc4\x1f\xbf\x89\xd7\x17T\xd88\xbe\x0b\xfam=E\xdc6'

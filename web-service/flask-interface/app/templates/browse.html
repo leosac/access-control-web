@@ -1,5 +1,9 @@
-{% extends "bootstrap/base.html" %} {% import "bootstrap/wtf.html" as wtf %} {% import "bootstrap/fixes.html" as fixes %}
-{% import "bootstrap/utils.html" as util %} {% block content %} {{ util.flashed_messages(dismissible=True) }}
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/fixes.html" as fixes %}
+{% import "bootstrap/utils.html" as util %}
+{% block content %}
+    {{ util.flashed_messages(dismissible=True) }}
     <div class="container">
         <h1>Leosac Browser Version Form</h1>
         <div class="row pull-right">
@@ -14,14 +18,6 @@
                             <label class="control-label" for="address">Leosac Address</label>
                             {{ form.address(class="form-control",id="address",required="required",type="text",value="",placeholder="e.g. ws://172.17.0.3:8888/") }}
                         </div>
-                        <div class="form-group  required">
-                            <label class="control-label" for="host">Host</label>
-                            {{ form.host(class="form-control",id="host",required="required",type="text",value="",placeholder="Enter host defined by your NGINX config") }}
-                        </div>
-                        <div class="form-group  required">
-                            <label class="control-label" for="port">Port</label>
-                            {{ form.port(class="form-control",id="port",required="required",type="text",value="",placeholder="Port defined by your NGINX config") }}
-                        </div>
                         {{ form.submit(class="btn btn-success") }}
                     </form>
                 </div>
@@ -33,18 +29,8 @@
             <a class="btn btn-default" href="/register">Register</a>
         {% endif %}
     </div>
-    <script type=text/javascript
-            src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script type=text/javascript>
-        $(document).ready(function () {
-
-            $('#lama').submit(function (e) {
-                localStorage.leosacAddr = $('#address').val();
-//                console.log(localStorage);
-                //            e.preventDefault();
-                // console.log($(this).get('address'));
-            });
-        });
-    </script>
-
-{% endblock %} {% block head %} {{ super() }} {{ fixes.ie8() }} {% endblock %}
+{% endblock %}
+{% block head %}
+    {{ super() }}
+    {{ fixes.ie8() }}
+{% endblock %}

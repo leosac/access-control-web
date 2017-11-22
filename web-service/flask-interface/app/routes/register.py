@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, session
 from app.routes import routes
 from app.forms.register_form import RegisterForm
 from app.models.user_model import User
@@ -11,7 +11,7 @@ def register():
     """Register Form"""
     form = RegisterForm()
     if form.validate_on_submit():
-        new_user = User(email=form.email.data, password=form.password.data)
+        new_user = User(username=form.username.data, email=form.email.data, password=form.password.data)
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('routes.login'))

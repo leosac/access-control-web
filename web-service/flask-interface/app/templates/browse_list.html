@@ -1,0 +1,55 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/fixes.html" as fixes %}
+{% import "bootstrap/utils.html" as util %}
+{% block content %}
+    {{ util.flashed_messages(dismissible=True) }}
+    <div class="container">
+        <h1>Leosac Browser Version Form</h1>
+        <div class="row pull-right">
+            <a class="btn btn-default" href="/">Home</a>
+            <a class="btn btn-default" href="/logout">Logout</a>
+        </div>
+        {% if session['logged_in'] %}
+            <div class="row">
+                <div class="col-md-6">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Link to</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for config in configs %}
+                            <tr>
+                                <td>{{ config.id }}</td>
+                                <td>{{ config.name }}</td>
+                                <td>{{ config.address }}</td>
+                                <td><a class="btn btn-default" href="{{ url_for('routes.browse_config', id=config.id) }}">Modify</a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <a class="btn btn-default" href="/browse_config">Create Config</a>
+                    {#                                <a class="btn btn-default" href="/login">Login</a>#}
+                </div>
+            </div>
+        {% else %}
+            <p>Please login</p>
+
+            <a class="btn btn-default" href="/login">Login</a>
+            <a class="btn btn-default" href="/register">Register</a>
+        {% endif %}
+    </div>
+{% endblock %}
+{% block head %}
+    {{ super() }}
+    {{ fixes.ie8() }}
+{% endblock %}

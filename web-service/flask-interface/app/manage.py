@@ -3,6 +3,8 @@ from flask_script import Manager, Shell, Server
 from flask import current_app
 from app.app import app, db
 from app.models.user_model import User
+from app.models.browse_config_model import BrowseConfig
+
 # from .user_model import User
 
 app.config.from_object('config')
@@ -32,9 +34,17 @@ def initdb():
 
     # add sample user
     user = User(
+        username="user",
         email="test@gmail.com",
         password='123456')
     db.session.add(user)
+    db.session.commit()
+    config = BrowseConfig(
+        name="config-test",
+        address='ws://172.0.0.3:8888',
+        user_id=user.id
+    )
+    db.session.add(config)
     db.session.commit()
 
 

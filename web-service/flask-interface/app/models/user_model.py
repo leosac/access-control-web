@@ -1,17 +1,18 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-import sqlalchemy
-
 from app.create_db import db
 
 
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
-    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
-    email = sqlalchemy.Column(sqlalchemy.String(128), index=True)
-    password_hash = sqlalchemy.Column(sqlalchemy.String(256))
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(64), index=True)
+    email = db.Column(db.String(128), index=True)
+    password_hash = db.Column(db.String(256))
+    browse_configs = db.relationship('BrowseConfig', backref='user', lazy=True)
 
-    def __init__(self, email, password):
+    def __init__(self, email, password, username):
+        self.username = username
         self.email = email
         self.set_password(password)
 

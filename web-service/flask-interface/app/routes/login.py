@@ -13,8 +13,10 @@ def login():
         email = form.email.data
         password = form.password.data
         try:
-            data = User.query.filter_by(email=email).first()
-            if data and check_password_hash(data.password_hash, password):
+            user = User.query.filter_by(email=email).first()
+            if user and check_password_hash(user.password_hash, password):
+                session['username'] = user.username
+                session['id'] = user.id
                 session['logged_in'] = True
                 return redirect(url_for('routes.home'))
             else:

@@ -5,19 +5,21 @@
 {% block content %}
     {{ util.flashed_messages(dismissible=True) }}
     <div class="container">
-        <h1>Leosac </h1>
+        <h1>Leosac Browser Config</h1>
         <div class="row pull-right">
             <a class="btn btn-default" href="/logout">Logout</a>
         </div>
         {% if session['logged_in'] %}
-            <a class="btn btn-default" href="/browse_list">Browse Leosac</a>
-            <a class="btn btn-default" href="/build">Build Leosac</a>
+            <div class="row">
+                <div class="col-md-6">
+                      {{ wtf.quick_form(form, button_map={'submit_button': 'primary'}) }}
+                </div>
+            </div>
         {% else %}
-            <p>You are not logged!</p>
+            <p>Please login</p>
 
             <a class="btn btn-default" href="/login">Login</a>
             <a class="btn btn-default" href="/register">Register</a>
-
         {% endif %}
     </div>
 {% endblock %}
