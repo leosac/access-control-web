@@ -14,10 +14,13 @@ def login():
         password = form.password.data
         try:
             user = User.query.filter_by(email=email).first()
-            if user and check_password_hash(user.password_hash, password):
+            if user and user.verify_password(password):
+                print(user.roles)
+                # session['role'] = user.roles
                 session['username'] = user.username
                 session['id'] = user.id
                 session['logged_in'] = True
+                # print(session['role'])
                 return redirect(url_for('routes.home'))
             else:
                 flash("Bad combination of email/password", 'danger')

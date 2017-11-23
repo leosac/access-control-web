@@ -1,26 +1,37 @@
-from urllib.parse import quote_plus
+from functools import wraps
+
 from flask import render_template, redirect, url_for, session
-from flask_login import current_user
+from werkzeug.exceptions import NotFound, Forbidden
+
 from app.routes import routes
 from app.forms.browse_form import BrowseForm
 from app.models.browse_config_model import BrowseConfig
+from app.app import db
+
+
+def check_user_right(f):
+    @wraps(f)
+    def wrapper(*args, **kwds):
+        id = kwds['id']
+        user_config = BrowseConfig.query.get(id)
+        if user_config is not None:
+            if user_config.user_id != session['id']:
+                raise Forbidden()
+        return f(*args, **kwds)
+    return wrapper
 
 
 @routes.route('/browse_config/<id>', methods=('GET', 'POST'))
+@check_user_right
 def browse_config(id):
-    from app.app import db
-
-    if id is not None:
-        loaded_object = BrowseConfig.query.get(id)
-        form = BrowseForm(obj=loaded_object)
-        form.populate_obj(loaded_object)
+    user_config = BrowseConfig.query.get(id)
+    if user_config is not None:
+        form = BrowseForm(obj=user_config)
+        form.populate_obj(user_config)
+        if form.validate_on_submit():
+            db.session.commit()
+            return redirect(url_for('routes.browse_list'))
+        else:
+            return render_template('browse_config.html', form=form)
     else:
-        form = BrowseForm()
-    if form.validate_on_submit():
-        config = BrowseConfig(name=form.name.data, address=form.address.data, user_id=session['id'])
-        if id is None:
-            db.session.add(config)
-        db.session.commit()
-        return redirect(url_for('routes.browse_list'))
-    else:
-        return render_template('browse_config.html', form=form)
+        raise NotFound()

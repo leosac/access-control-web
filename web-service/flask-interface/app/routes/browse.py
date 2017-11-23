@@ -1,13 +1,10 @@
 from urllib.parse import quote_plus
 from flask import render_template, redirect
 from app.routes import routes
-from app.forms.browse_form import BrowseForm
+from app.models.browse_config_model import BrowseConfig
 
 
-@routes.route('/browse', methods=('GET', 'POST'))
-def browse():
-    form = BrowseForm()
-    if form.validate_on_submit():
-        return redirect("http://localhost:80/entry-point/" + quote_plus(form.address.data))
-    else:
-        return render_template('browse.html', form=form)
+@routes.route('/browse/<id>', methods=('GET', 'POST'))
+def browse(id):
+    loaded_config = BrowseConfig.query.get(id)
+    return redirect("http://localhost:80/entry-point/" + quote_plus(loaded_config.address))

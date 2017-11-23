@@ -12,14 +12,16 @@
         </div>
         {% if session['logged_in'] %}
             <div class="row">
-                <div class="col-md-6">
-                    <table class="table table-striped table-hover">
+                <div class="col-md-12">
+                    <table class="table">
                         <thead>
                         <tr>
-                            <th>Id</th>
+                            <th>#Id</th>
                             <th>Name</th>
                             <th>Address</th>
-                            <th>Link to</th>
+                            <th>Update</th>
+                            <th>Browse</th>
+                            <th>Delete</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -28,7 +30,12 @@
                                 <td>{{ config.id }}</td>
                                 <td>{{ config.name }}</td>
                                 <td>{{ config.address }}</td>
-                                <td><a class="btn btn-default" href="{{ url_for('routes.browse_config', id=config.id) }}">Modify</a></td>
+                                <td><a class="btn btn-default"
+                                       href="{{ url_for('routes.browse_config', id=config.id) }}">Update</a></td>
+                                <td><a class="btn btn-primary"
+                                       href="{{ url_for('routes.browse', id=config.id) }}">Browse</a></td>
+                                <td><a class="btn btn-danger"
+                                       href="{{ url_for('routes.delete_config', id=config.id) }}">Delete</a></td>
                             </tr>
                         {% endfor %}
                         </tbody>
@@ -37,7 +44,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <a class="btn btn-default" href="/browse_config">Create Config</a>
+                    <a class="btn btn-primary" href="/browse_config_create">Create New Config</a>
                     {#                                <a class="btn btn-default" href="/login">Login</a>#}
                 </div>
             </div>

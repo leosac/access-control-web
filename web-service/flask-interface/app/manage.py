@@ -4,8 +4,7 @@ from flask import current_app
 from app.app import app, db
 from app.models.user_model import User
 from app.models.browse_config_model import BrowseConfig
-
-# from .user_model import User
+from app.create_roles import admin
 
 app.config.from_object('config')
 
@@ -37,6 +36,7 @@ def initdb():
         username="user",
         email="test@gmail.com",
         password='123456')
+    user.roles.append(admin)
     db.session.add(user)
     db.session.commit()
     config = BrowseConfig(
