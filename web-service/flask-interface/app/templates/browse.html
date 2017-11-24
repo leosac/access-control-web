@@ -9,7 +9,7 @@
         <div class="row pull-right">
             <a class="btn btn-default" href="/logout">Logout</a>
         </div>
-        {% if session['logged_in'] %}
+        {% if current_user.is_authenticated %}
             <div class="row">
                 <div class="col-md-6">
                     <form action="" method="POST" role="form" class="form">

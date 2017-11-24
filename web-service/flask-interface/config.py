@@ -43,3 +43,18 @@ CSRF_SESSION_KEY = "secret"
 
 # Secret key for signing cookies
 SECRET_KEY = "dev_key"
+
+# Flask-Mail settings
+# For smtp.gmail.com to work, you MUST set "Allow less secure apps" to ON in Google Accounts.
+# Change it in https://myaccount.google.com/security#connectedapps (near the bottom).
+MAIL_SERVER = 'smtp.gmail.com'
+MAIL_PORT = 587
+MAIL_USE_SSL = False
+MAIL_USE_TLS = True
+MAIL_USERNAME = 'test.flask.leosac@gmail.com'
+MAIL_PASSWORD = 'neutronseries'
+MAIL_DEFAULT_SENDER = '"Test Test" <test.flask.leosac@gmail.com>'
+
+ADMINS = [
+    '"Test Test" <test.flask.leosac@gmail.com>',
+    ]

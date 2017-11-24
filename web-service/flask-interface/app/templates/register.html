@@ -2,7 +2,7 @@
 {% import "bootstrap/utils.html" as util %} {% block content %} {{ util.flashed_messages(dismissible=True) }}
     <div class="container">
         <h1>Register</h1>
-        {% if session['logged_in'] %}
+        {% if current_user.is_authenticated %}
             <p>Already logged?</p>
             <a class="btn btn-default" href="/">Return home</a>
         {% else %}

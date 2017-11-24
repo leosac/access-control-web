@@ -4,9 +4,11 @@ from app.routes import routes
 from app.models.user_model import User
 from app.models.browse_config_model import BrowseConfig
 from app.forms.browse_form import BrowseForm
+from flask_login import login_required
 
 
 @routes.route('/delete_config/<id>', methods=('GET', 'POST'))
+@login_required
 def delete_config(id):
     from app.app import db
 

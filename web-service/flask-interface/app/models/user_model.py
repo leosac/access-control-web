@@ -1,5 +1,5 @@
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import UserMixin
+from flask_user import UserMixin
 from app.create_db import db
 
 
@@ -12,24 +12,37 @@ class Role(db.Model):
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
+
+    # User authentication information (required for Flask-User)
+    email = db.Column(db.Unicode(255), nullable=False, server_default=u'', unique=True)
+    confirmed_at = db.Column(db.DateTime())
+    password = db.Column(db.String(255), nullable=False, server_default='')
+
+    # User information
+    active = db.Column('is_active', db.Boolean(), nullable=False, server_default='0')
     username = db.Column(db.String(64), index=True)
-    email = db.Column(db.String(128), index=True)
-    password_hash = db.Column(db.String(256))
+
+    # List of the browser config affiliated to the user
     browse_configs = db.relationship('BrowseConfig', backref='users', lazy=True)
 
+    # Roles of the user
     roles = db.relationship('Role', secondary='user_roles',
                             backref=db.backref('users', lazy='dynamic'))
 
-    def __init__(self, email, password, username):
+    def __init__(self, email, password, username, active):
         self.username = username
         self.email = email
+        self.active = active
         self.set_password(password)
 
+    def is_active(self):
+        return self.active
+
     def set_password(self, password):
-        self.password_hash = generate_password_hash(password)
+        self.password = generate_password_hash(password)
 
     def verify_password(self, password):
-        return check_password_hash(self.password_hash, password)
+        return check_password_hash(self.password, password)
 
 
 # Define the UserRoles DataModel

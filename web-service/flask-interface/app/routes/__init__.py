@@ -12,3 +12,6 @@ import app.routes.login
 import app.routes.logout
 import app.routes.register
 import app.routes.delete_config
+import app.routes.forgot_password
+import app.routes.reset_password
+import app.routes.reset_password_wait

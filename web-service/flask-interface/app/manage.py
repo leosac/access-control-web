@@ -34,7 +34,8 @@ def initdb():
     # add sample user
     user = User(
         username="user",
-        email="test@gmail.com",
+        email="marinbrunel1@gmail.com",
+        active=True,
         password='123456')
     user.roles.append(admin)
     db.session.add(user)
