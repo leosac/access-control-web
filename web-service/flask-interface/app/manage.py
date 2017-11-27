@@ -2,9 +2,9 @@ from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager, Shell, Server
 from flask import current_app
 from app.app import app, db
-from app.models.user_model import User
+from app.fetch_role import fetch_admin_role, fetch_user_role
+from app.models.user_model import User, Role
 from app.models.browse_config_model import BrowseConfig
-from app.create_roles import admin
 
 app.config.from_object('config')
 
@@ -34,10 +34,15 @@ def initdb():
     # add sample user
     user = User(
         username="user",
-        email="marinbrunel1@gmail.com",
+        email="marin.brunel@epitech.eu",
         active=True,
         password='123456')
-    user.roles.append(admin)
+    user_role = Role(name='user')
+    db.session.add(user_role)
+    admin_role = Role(name='admin')
+    db.session.add(admin_role)
+    user.roles.append(fetch_admin_role())
+    user.roles.append(fetch_user_role())
     db.session.add(user)
     db.session.commit()
     config = BrowseConfig(

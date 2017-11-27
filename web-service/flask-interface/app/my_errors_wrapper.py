@@ -13,7 +13,7 @@ def check_if_admin(f):
     def wrapper(*args, **kwds):
         user = User.query.get(current_user.id)
         for role in user.roles:
-            if role == 'admin':
+            if role.name == 'admin':
                 return f(*args, **kwds)
         raise Forbidden()
     return wrapper

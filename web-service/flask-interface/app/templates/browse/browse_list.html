@@ -1,0 +1,61 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/fixes.html" as fixes %}
+{% import "bootstrap/utils.html" as util %}
+{% block content %}
+    {{ util.flashed_messages(dismissible=True) }}
+    <div class="container">
+        <h1>Leosac Browser Version Form</h1>
+        <div class="row pull-right">
+            <a class="btn btn-default" href="/">Home</a>
+            <a class="btn btn-default" href="/logout">Logout</a>
+        </div>
+        {% if current_user.is_authenticated %}
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#Id</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Update</th>
+                            <th>Browse</th>
+                            <th>Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for config in configs %}
+                            <tr>
+                                <td>{{ config.id }}</td>
+                                <td>{{ config.name }}</td>
+                                <td>{{ config.address }}</td>
+                                <td><a class="btn btn-default"
+                                       href="{{ url_for('routes.browse_config', id=config.id) }}">Update</a></td>
+                                <td><a class="btn btn-primary"
+                                       href="{{ url_for('routes.browse', id=config.id) }}">Browse</a></td>
+                                <td><a class="btn btn-danger"
+                                       href="{{ url_for('routes.delete_config', id=config.id) }}">Delete</a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <a class="btn btn-primary" href="{{ url_for('routes.admin_create_config') }}">Create New Config</a>
+                </div>
+            </div>
+        {% else %}
+            <p>Please login</p>
+
+            <a class="btn btn-default" href="/login">Login</a>
+            <a class="btn btn-default" href="/register">Register</a>
+        {% endif %}
+    </div>
+{% endblock %}
+{% block head %}
+    {{ super() }}
+    {{ fixes.ie8() }}
+{% endblock %}

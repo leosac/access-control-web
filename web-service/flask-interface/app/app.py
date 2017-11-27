@@ -3,11 +3,8 @@ from flask_login import LoginManager
 from flask_appconfig import AppConfig
 from flask_bootstrap import Bootstrap
 from flask_mail import Mail
-from flask_user import SQLAlchemyAdapter, UserManager
-from app.forms.register_form import MyRegisterForm
 from app.create_db import db
 from app.routes import routes
-from app.create_roles import user, admin
 from app.models.user_model import User  # Define the WSGI application object
 
 app = Flask(__name__)

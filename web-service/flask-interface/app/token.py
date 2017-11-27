@@ -3,8 +3,8 @@ import os
 import binascii
 import crypt
 
-secret_key = binascii.hexlify(os.urandom(24))
-salt = crypt.mksalt(crypt.METHOD_SHA512)
+secret_key = "3f1b62ce6ef907745f52c56b9393f28ccafbf759b7dfecc9"
+salt = '$6$8sJWE4ficeNbR37f'
 
 
 def generate_confirmation_token(email):

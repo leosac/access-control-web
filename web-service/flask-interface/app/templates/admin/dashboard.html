@@ -1,0 +1,69 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/fixes.html" as fixes %}
+{% import "bootstrap/utils.html" as util %}
+{% block content %}
+    {{ util.flashed_messages(dismissible=True) }}
+    <div class="container">
+        <h1>Leosac Admin Dashboard</h1>
+        {% if (current_user.is_authenticated) %}
+            <div class="row pull-right">
+                <a class="btn btn-default" href="/">Home</a>
+                <a class="btn btn-default" href="/logout">Logout</a>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#Id</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Browse list</th>
+                            <th>Modify user</th>
+                            <th>Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <td>{{ user.id }}</td>
+                                <td>{{ user.username }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>
+                                    {% for role in user.roles %}
+                                        {{ role.name }}
+                                    {% endfor %}
+                                </td>
+                                <td><a class="btn btn-default"
+                                       href="{{ url_for('routes.admin_browse_list', id=user.id) }}">
+                                    List of the Browse config</a></td>
+                                <td><a class="btn btn-default"
+                                       href="{{ url_for('routes.admin_modify_user', id=user.id) }}">Modify user</a></td>
+                                <td><a class="btn btn-danger"
+                                       href="{{ url_for('routes.admin_delete_user', id=user.id) }}">Delete user</a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <a class="btn btn-primary" href="{{ url_for('routes.admin_create_user') }}">Create New User</a>
+                    {#                                <a class="btn btn-default" href="/login">Login</a>#}
+                </div>
+            </div>
+        {% else %}
+            <p>Please login</p>
+
+            <a class="btn btn-default" href="/login">Login</a>
+            <a class="btn btn-default" href="/register">Register</a>
+        {% endif %}
+    </div>
+{% endblock %}
+{% block head %}
+    {{ super() }}
+    {{ fixes.ie8() }}
+{% endblock %}

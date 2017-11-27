@@ -33,6 +33,6 @@ def browse_config(id):
             db.session.commit()
             return redirect(url_for('routes.browse_list'))
         else:
-            return render_template('browse_config.html', form=form)
+            return render_template('browse/browse_config.html', form=form)
     else:
         raise NotFound()

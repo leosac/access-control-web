@@ -20,7 +20,6 @@
                             <th>Name</th>
                             <th>Address</th>
                             <th>Update</th>
-                            <th>Browse</th>
                             <th>Delete</th>
                         </tr>
                         </thead>
@@ -31,11 +30,9 @@
                                 <td>{{ config.name }}</td>
                                 <td>{{ config.address }}</td>
                                 <td><a class="btn btn-default"
-                                       href="{{ url_for('routes.browse_config', id=config.id) }}">Update</a></td>
-                                <td><a class="btn btn-primary"
-                                       href="{{ url_for('routes.browse', id=config.id) }}">Browse</a></td>
+                                       href="{{ url_for('routes.admin_browse_config', id=config.id) }}">Update</a></td>
                                 <td><a class="btn btn-danger"
-                                       href="{{ url_for('routes.delete_config', id=config.id) }}">Delete</a></td>
+                                       href="{{ url_for('routes.admin_delete_config', id=config.id) }}">Delete</a></td>
                             </tr>
                         {% endfor %}
                         </tbody>
@@ -44,7 +41,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <a class="btn btn-primary" href="/browse_config_create">Create New Config</a>
+                    <a class="btn btn-primary" href="{{ url_for('routes.admin_browse_config_create', id=user_id) }}">Create New Config</a>
                     {#                                <a class="btn btn-default" href="/login">Login</a>#}
                 </div>
             </div>

@@ -19,4 +19,4 @@ def browse_config_create():
         db.session.commit()
         return redirect(url_for('routes.browse_list'))
     else:
-        return render_template('browse_config_create.html', form=form)
+        return render_template('browse/browse_config_create.html', form=form)

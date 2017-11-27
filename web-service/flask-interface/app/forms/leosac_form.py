@@ -31,7 +31,7 @@ all_style = [
 ]
 
 
-def formatName(st):
+def format_name(st):
     st = st.replace('-', ' ')
     return st.title()
 
@@ -40,7 +40,7 @@ class MyForm(Form):
     name = StringField('Name:', validators=[DataRequired(), Length(min=3, max=5)])
     addr = StringField('Leosac Address:', [DataRequired()])
     root_url = StringField('Root URL:', [DataRequired()])
-    my_addons = [(x.name, formatName(x.name)) for x in all_addon]
+    my_addons = [(x.name, format_name(x.name)) for x in all_addon]
     addon = SelectMultipleField('Addons:', choices=my_addons)
     my_styles = [(x.name, x.name) for x in all_style]
     style = SelectField('Styles:', choices=my_styles)
