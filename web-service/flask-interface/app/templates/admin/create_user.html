@@ -12,6 +12,12 @@
         {% if current_user.is_authenticated %}
             <div class="row">
                 <div class="col-md-6">
+                    {% if error %}
+                        <div class="alert alert-danger alert-dismissable fade in">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                            <strong>Danger! </strong> {{ error }}
+                        </div>
+                    {% endif %}
                     {{ wtf.quick_form(form, button_map={'submit': 'primary'}) }}
                 </div>
             </div>

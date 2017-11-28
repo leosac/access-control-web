@@ -1,3 +1,5 @@
+import logging
+
 from flask import Flask, render_template
 from flask_login import LoginManager
 from flask_appconfig import AppConfig
@@ -8,6 +10,9 @@ from app.routes import routes
 from app.models.user_model import User  # Define the WSGI application object
 
 app = Flask(__name__)
+
+logging.basicConfig()
+logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
 
 db.init_app(app)
 

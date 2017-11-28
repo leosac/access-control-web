@@ -1,3 +1,4 @@
+from sqlalchemy import UniqueConstraint
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_user import UserMixin
 from app.create_db import db
@@ -51,3 +52,5 @@ class UserRoles(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     role_id = db.Column(db.Integer(), db.ForeignKey('roles.id', ondelete='CASCADE'))
     user_id = db.Column(db.Integer(), db.ForeignKey('users.id', ondelete='CASCADE'))
+
+    UniqueConstraint('role_id', 'user_id', name='role_only_once')

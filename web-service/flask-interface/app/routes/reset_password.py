@@ -16,10 +16,8 @@ def reset_password(token):
     form = ResetPasswordForm()
     if form.validate_on_submit() and request.method == 'POST' and email:
         user = User.query.filter_by(email=email).first()
-        password = form.password.data
-        user.password = generate_password_hash(password)
+        user.password = generate_password_hash(form.password.data)
         db.session.commit()
-
         return redirect(url_for('routes.login', form=LoginForm))
     else:
         return render_template('reset_password.html', form=form)

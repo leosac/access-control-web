@@ -36,13 +36,23 @@
                                         {{ role.name }}
                                     {% endfor %}
                                 </td>
-                                <td><a class="btn btn-default"
-                                       href="{{ url_for('routes.admin_browse_list', id=user.id) }}">
-                                    List of the Browse config</a></td>
-                                <td><a class="btn btn-default"
-                                       href="{{ url_for('routes.admin_modify_user', id=user.id) }}">Modify user</a></td>
-                                <td><a class="btn btn-danger"
-                                       href="{{ url_for('routes.admin_delete_user', id=user.id) }}">Delete user</a></td>
+                                <td>
+                                    <a class="btn btn-default"
+                                       href="{{ url_for('routes.admin_browse_list', id=user.id) }}">List of the Browse
+                                        config</a>
+                                </td>
+                                {% if current_user.id != user.id %}
+                                    <td>
+                                        <a class="btn btn-default"
+                                           href="{{ url_for('routes.admin_modify_user', id=user.id) }}">Modify user</a>
+                                    </td>
+                                {% endif %}
+                                {% if current_user.id != user.id %}
+                                    <td>
+                                        <a onclick="myFunction('{{ url_for('routes.admin_delete_user', id=user.id) }}')"
+                                           class="btn btn-danger">Delete user</a>
+                                    </td>
+                                {% endif %}
                             </tr>
                         {% endfor %}
                         </tbody>
@@ -62,8 +72,24 @@
             <a class="btn btn-default" href="/register">Register</a>
         {% endif %}
     </div>
+    {% block scripts %}
+        {{ super() }}
+        <script>
+            function myFunction(route) {
+                if (confirm("Are you sure you want to delete this user?")) {
+                    window.location.href = route;
+                }
+                else
+                    return false;
+            }
+        </script>
+
+    {% endblock %}
 {% endblock %}
 {% block head %}
     {{ super() }}
     {{ fixes.ie8() }}
+    <title>
+        Admin Dashboard
+    </title>
 {% endblock %}

@@ -12,7 +12,7 @@ class UserForm(Form):
     username = StringField('Username', validators=[DataRequired(), Length(min=3, max=40)])
     email = StringField('Email', validators=[DataRequired(), Email()])
     user_role = [(x, x) for x in all_role]
-    roles = SelectMultipleField('Roles:', choices=user_role)
+    my_roles = SelectMultipleField('Roles:', choices=user_role)
     submit = SubmitField('Register')
 
     def __init__(self, *args, **kwargs):

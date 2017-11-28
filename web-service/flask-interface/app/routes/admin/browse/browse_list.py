@@ -15,9 +15,6 @@ def admin_browse_list(id):
     config = []
     all_config = BrowseConfig.query.all()
     for data in all_config:
-        print(type(id))
-        print(type(data.user_id))
         if data.user_id == int(id):
-            print("LOOL")
             config.append(data)
     return render_template('admin/browse/browse_list.html', configs=config, user_id=id)

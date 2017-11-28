@@ -11,6 +11,9 @@ def register():
     """Register Form"""
     form = MyRegisterForm()
     if form.validate_on_submit():
+        if db.session.query(User).filter_by(email=form.email.data) is not None:
+            return render_template('register.html', form=form,
+                                   error='There is already an account with this email address')
         new_user = User(username=form.username.data, email=form.email.data, password=form.password.data, active=True)
         new_user.roles.append(fetch_user_role())
         db.session.add(new_user)

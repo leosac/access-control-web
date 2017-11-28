@@ -1,6 +1,8 @@
-from flask import redirect, url_for
+from flask import redirect, url_for, render_template
+from wtforms import SubmitField
+from flask_wtf import Form
 from app.models.user_model import User
-from app.my_errors_wrapper import check_if_admin
+from app.my_errors_wrapper import check_if_admin, confirmation_required
 from app.routes import routes
 from flask_login import login_required
 

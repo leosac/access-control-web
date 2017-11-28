@@ -17,6 +17,6 @@ def admin_browse_config_create(id):
         config = BrowseConfig(name=form.name.data, address=form.address.data, user_id=id)
         db.session.add(config)
         db.session.commit()
-        return redirect(url_for('routes.dashboard'))
+        return redirect(url_for('routes.admin_browse_list', id=id))
     else:
         return render_template('admin/browse/create_config.html', form=form)

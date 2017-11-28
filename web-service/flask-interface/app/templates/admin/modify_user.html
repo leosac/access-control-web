@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/fixes.html" as fixes %}
+{% import "bootstrap/utils.html" as util %}
+{% block content %}
+    {{ util.flashed_messages(dismissible=True) }}
+    <div class="container">
+        <h1>Leosac Modify User</h1>
+        <div class="row pull-right">
+            <a class="btn btn-default" href="/logout">Logout</a>
+        </div>
+        {% if current_user.is_authenticated %}
+            <div class="row">
+                <div class="col-md-6">
+                    {{ wtf.quick_form(form, button_map={'submit': 'primary'}) }}
+                </div>
+            </div>
+        {% else %}
+            <p>Please login</p>
 
-</body>
-</html>
+            <a class="btn btn-default" href="/login">Login</a>
+            <a class="btn btn-default" href="/register">Register</a>
+        {% endif %}
+    </div>
+{% endblock %}
+{% block head %}
+    <title>Leosac Admin</title>
+    {{ super() }}
+    {{ fixes.ie8() }}
+{% endblock %}
