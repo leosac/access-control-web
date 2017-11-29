@@ -36,7 +36,8 @@ def initdb():
         username="user",
         email="marin.brunel@epitech.eu",
         active=True,
-        password='123456')
+        password='123456',
+        confirmed=True)
     user_role = Role(name='user')
     db.session.add(user_role)
     admin_role = Role(name='admin')

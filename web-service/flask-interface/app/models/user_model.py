@@ -20,6 +20,7 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(255), nullable=False, server_default='')
 
     # User information
+    confirmed = db.Column(db.Boolean, nullable=False, default=False)
     active = db.Column('is_active', db.Boolean(), nullable=False, server_default='0')
     username = db.Column(db.String(64), index=True)
 
@@ -30,10 +31,11 @@ class User(UserMixin, db.Model):
     roles = db.relationship('Role', secondary='user_roles',
                             backref=db.backref('users', lazy='dynamic'))
 
-    def __init__(self, email, password, username, active):
+    def __init__(self, email, password, username, active, confirmed):
         self.username = username
         self.email = email
         self.active = active
+        self.confirmed = confirmed
         self.set_password(password)
 
     def is_active(self):

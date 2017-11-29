@@ -3,6 +3,8 @@ from flask import Blueprint
 routes = Blueprint('routes', __name__)
 
 import app.routes.browse.browse
+import app.routes.browse.browse_list
+import app.routes.browse.browse_config
 import app.routes.browse.browse_config_create
 import app.routes.browse.delete_config
 import app.routes.build
@@ -21,3 +23,4 @@ import app.routes.admin.browse.browse_config
 import app.routes.admin.browse.delete_config
 import app.routes.admin.browse.browse_list
 import app.routes.admin.browse.create_config
+import app.routes.confirm_email
