@@ -1,0 +1,110 @@
+1511967877866	geckodriver	INFO	geckodriver 0.19.1
+1511967877868	geckodriver	INFO	Listening on 127.0.0.1:58399
+1511967878939	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.D7gV7loQPikL"
+1511967879285	Marionette	INFO	Enabled via --marionette
+1511967880104	Marionette	INFO	Listening on port 37059
+1511967880144	Marionette	WARN	TLS certificate errors will be ignored for this session
+1511967880184	Marionette	DEBUG	Register listener.js for window 2147483649
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1511967898745	geckodriver	INFO	geckodriver 0.19.1
+1511967898747	geckodriver	INFO	Listening on 127.0.0.1:44657
+1511967899818	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.chRWOchAnnif"
+1511967900174	Marionette	INFO	Enabled via --marionette
+1511967900999	Marionette	INFO	Listening on port 45329
+1511967901028	Marionette	WARN	TLS certificate errors will be ignored for this session
+1511967901072	Marionette	DEBUG	Register listener.js for window 2147483649
+1511967901083	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1511967901361	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1511967901361	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1511967901684	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.python.org/"
+1511967901983	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.python.org/"
+1511967908849	geckodriver	INFO	geckodriver 0.19.1
+1511967908851	geckodriver	INFO	Listening on 127.0.0.1:34387
+1511967909922	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.ppvcUinQ9cAa"
+1511967910280	Marionette	INFO	Enabled via --marionette
+1511967911046	Marionette	INFO	Listening on port 44943
+1511967911128	Marionette	WARN	TLS certificate errors will be ignored for this session
+1511967911174	Marionette	DEBUG	Register listener.js for window 2147483649
+1511967911199	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1511967911323	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1511967911323	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1511967911608	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.python.org/"
+1511967911671	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.python.org/"
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1511968045943	geckodriver	INFO	geckodriver 0.19.1
+1511968045945	geckodriver	INFO	Listening on 127.0.0.1:43139
+1511968047017	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.NQlyL8vo2olt"
+1511968047371	Marionette	INFO	Enabled via --marionette
+1511968048221	Marionette	INFO	Listening on port 43957
+1511968048229	Marionette	WARN	TLS certificate errors will be ignored for this session
+1511968048279	Marionette	DEBUG	Register listener.js for window 2147483649
+1511968048294	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1511968048718	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1511968048718	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1511968049071	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.python.org/"
+1511968049397	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.python.org/"
+1511968480606	geckodriver	INFO	geckodriver 0.19.1
+1511968480608	geckodriver	INFO	Listening on 127.0.0.1:55755
+1511968481679	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.kcmIkn9u11xv"
+1511968482028	Marionette	INFO	Enabled via --marionette
+1511968482936	Marionette	INFO	Listening on port 41721
+1511968482984	Marionette	WARN	TLS certificate errors will be ignored for this session
+1511968483023	Marionette	DEBUG	Register listener.js for window 2147483649
+1511968483037	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1511968483931	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1511968483931	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1511968484400	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.python.org/"
+1511968484627	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.python.org/"
+[Child 6595, Chrome_ChildThread] WARNING: pipe error (17): Connection reset by peer: file /build/firefox-woLN5w/firefox-57.0+build4/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 6595, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-woLN5w/firefox-57.0+build4/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1511968551764	geckodriver	INFO	geckodriver 0.19.1
+1511968551767	geckodriver	INFO	Listening on 127.0.0.1:37671
+1511968552839	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.S9ifq5qYA7fW"
+1511968553197	Marionette	INFO	Enabled via --marionette
+1511968553967	Marionette	INFO	Listening on port 43857
+1511968554045	Marionette	WARN	TLS certificate errors will be ignored for this session
+1511968554090	Marionette	DEBUG	Register listener.js for window 2147483649
+1511968554108	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1511968554420	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1511968554420	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1511968554911	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.python.org/"
+1511968555135	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.python.org/"
+1511968983848	geckodriver	INFO	geckodriver 0.19.1
+1511968983850	geckodriver	INFO	Listening on 127.0.0.1:40785
+1511968984920	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.4Rm53HRlM6sN"
+1511968985268	Marionette	INFO	Enabled via --marionette
+1511968986171	Marionette	INFO	Listening on port 42487
+1511968986226	Marionette	WARN	TLS certificate errors will be ignored for this session
+1511968986273	Marionette	DEBUG	Register listener.js for window 2147483649
+1511968986289	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1511968986851	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1511968986851	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1511968986920	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.google.fr/?gfe_rd=cr&dcr=0&ei=2tAeWpSzFs_CXuDJs5gH&gws_rd=ssl"
+1511968987336	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.google.fr/?gfe_rd=cr&dcr=0&ei=2tAeWpSzFs_CXuDJs5gH&gws_rd=ssl"
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1511969284339	geckodriver	INFO	geckodriver 0.19.1
+1511969284341	geckodriver	INFO	Listening on 127.0.0.1:45885
+1511969285415	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.oOUxIIrHUrDk"
+1511969285762	Marionette	INFO	Enabled via --marionette
+1511969286546	Marionette	INFO	Listening on port 38121
+1511969286621	Marionette	WARN	TLS certificate errors will be ignored for this session
+1511969286667	Marionette	DEBUG	Register listener.js for window 2147483649
+1511969286697	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1511969287217	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1511969287217	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1511969287304	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.google.fr/?gfe_rd=cr&dcr=0&ei=BtIeWuTzLtTCXv37sZgN&gws_rd=ssl"
+1511969287632	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.google.fr/?gfe_rd=cr&dcr=0&ei=BtIeWuTzLtTCXv37sZgN&gws_rd=ssl"
+1511969287678	geckodriver	INFO	geckodriver 0.19.1
+1511969287680	geckodriver	INFO	Listening on 127.0.0.1:48085
+1511969288751	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.P8p70azo7eWR"
+1511969289115	Marionette	INFO	Enabled via --marionette
+1511969289981	Marionette	INFO	Listening on port 37641
+1511969290060	Marionette	WARN	TLS certificate errors will be ignored for this session
+1511969290103	Marionette	DEBUG	Register listener.js for window 2147483649
+1511969290115	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1511969291065	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1511969291065	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1511969291617	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.python.org/"
+1511969291642	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.python.org/"
+[Child 7766, Chrome_ChildThread] WARNING: pipe error (16): Connection reset by peer: file /build/firefox-woLN5w/firefox-57.0+build4/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 7766, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-woLN5w/firefox-57.0+build4/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
