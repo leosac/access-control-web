@@ -96,3 +96,5 @@ tests/
 web-service/leosac/
 **/.vscode
 **/note
+
+selenium-test/venv/
