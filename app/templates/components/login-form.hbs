@@ -4,19 +4,19 @@
 
 {{#bs-form formLayout="horizontal"  class="form-signin" onSubmit=(action "login") as |form|}}
     <h2 class="form-signin-heading">{{t 'login-form.welcome'}}</h2>
-    {{form.element controlType='text' label=(t 'form.username.label')
+    {{form.element controlType='text' id='username-input' label=(t 'form.username.label')
                    value=inputUsername required=true
                    onChange=(action (mut inputUsername))
                    placeholder=(t 'form.username.ph')
     }}
-    {{form.element controlType='password' label=(t 'form.password.label')
+    {{form.element controlType='password' id='password-input' label=(t 'form.password.label')
                    value=inputPassword required=true
                    onChange=(action (mut inputPassword))
 
                    placeholder=(t 'form.password.ph')
     }}
 
-    {{#bs-button class="btn-signin" size="md" type="primary" buttonType="submit"}}
+    {{#bs-button class="btn-signin" id='login-submit' size="md" type="primary" buttonType="submit"}}
         {{t 'login-form.submit'}}
     {{/bs-button}}
 

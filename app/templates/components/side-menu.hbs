@@ -5,68 +5,71 @@
         {{global-search label=(t 'search')}}
         <!-- /input-group -->
       </li>
-      <li>
+      <li id="side-menu-index">
         {{#link-to 'index'}}
           <i class="fa fa-dashboard fa-fw"></i> {{t 'index.title'}}
         {{/link-to}}
       </li>
-      <li>
+      <li id="side-menu-index">
         {{#link-to 'system-overview'}}
           <i class="fa fa-cog fa-fw"></i> {{t 'w.overview'}}
         {{/link-to}}
       </li>
-      <li>
+      <li id="side-menu-access-dropdown">
         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> {{t 'access'}}<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
-          <li>
+          <li id="side-menu-access-access-overview">
             {{#link-to 'access-overview'}}{{t 'access-overview.title'}}{{/link-to}}
           </li>
-          <li>
+          <li id="side-menu-access-zone-overview">
             {{#link-to 'zone-overview'}}{{t 'tree-view.title'}}{{/link-to}}
           </li>
-          <li>
+          <li id="side-menu-access-users">
             {{#link-to 'users.list'}}{{t 'users.title'}}{{/link-to}}
           </li>
-
-          <li>{{#link-to 'groups.list'}}{{t 'groups'}}{{/link-to}}</li>
-
-          <li>{{#link-to 'credentials.list'}}{{t 'credentials.title'}}{{/link-to}}</li>
-
-          <li>{{#link-to 'schedules.list'}}{{t 'schedules'}}{{/link-to}}</li>
+          <li id="side-menu-access-groups">
+            {{#link-to 'groups.list'}}{{t 'groups'}}{{/link-to}}
+          </li>
+          <li id="side-menu-access-credentials">
+            {{#link-to 'credentials.list'}}{{t 'credentials.title'}}{{/link-to}}
+          </li>
+          <li id="side-menu-access-schedules">
+            {{#link-to 'schedules.list'}}{{t 'schedules'}}{{/link-to}}
+          </li>
 
         </ul>
         <!-- /.nav-second-level -->
       </li>
-      <li>
+      <li id="side-menu-hardware-dropdown">
         <a href="#"><i class="fa fa-cogs"></i> {{t 'hardware'}}<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
-          <li>
+          <li id="side-menu-hardware-zones">
             {{#link-to 'zones.list'}}{{t 'zones'}}{{/link-to}}
           </li>
-          <li>
+          <li id="side-menu-hardware-doors">
             {{#link-to 'doors.list'}}{{t 'doors'}}{{/link-to}}
           </li>
-          <li>
+          <li id="side-menu-hardware-access-points">
             {{#link-to 'access-points.list'}}{{t 'access_points'}}{{/link-to}}
           </li>
-          <li>
+          <li id="side-menu-hardware-updates">
             {{#link-to 'updates'}}{{t 'hardware_update'}}{{/link-to}}
           </li>
         </ul>
       </li>
-      <li>
+      <li id="side-menu-modules-dropdown">
         <a href="#"><i class="fa fa-table fa-plus-square"></i> {{t 'modules'}}<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
           {{#each moduleManager.modulesInfo as |module|}}
-            <li>
+            <li id="side-menu-modules-{{module.displayName}}">
               {{link-to module.displayName module.routeName}}
             </li>
           {{/each}}
-          <li class="dropdown-submenu">
+          <li class="dropdown-submenu"  id="side-menu-modules-wizard-dropdown">
             <a href="#"><i class="fa fa-magic"></i> Wizard<span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
               {{#each moduleManager.wizardsInfo as | wizard |}}
-                <li>
+                <li id="side-menu-modules-wizard-{{wizard.displayName}}">
                   {{link-to wizard.displayName wizard.routeName}}
                 </li>
               {{/each}}
@@ -77,10 +80,10 @@
           <!--</li>-->
         </ul>
       </li>
-      <li>
+      <li id="side-menu-auditlog-dropdown">
         <a href="#"><i class="fa fa-table fa-fw"></i> Log<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
-          <li>
+          <li id="side-menu-auditlog-link">
             {{#link-to 'auditlog'}}{{t 'audit_log'}}{{/link-to}}
           </li>
         </ul>
