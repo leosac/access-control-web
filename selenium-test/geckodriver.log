@@ -108,3 +108,478 @@
 1511969291642	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.python.org/"
 [Child 7766, Chrome_ChildThread] WARNING: pipe error (16): Connection reset by peer: file /build/firefox-woLN5w/firefox-57.0+build4/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
 [Child 7766, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-woLN5w/firefox-57.0+build4/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1512031043869	geckodriver	INFO	geckodriver 0.19.1
+1512031043872	geckodriver	INFO	Listening on 127.0.0.1:33245
+1512031044945	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.YvzhJ66z0yar"
+1512031045540	Marionette	INFO	Enabled via --marionette
+1512031046507	Marionette	INFO	Listening on port 33643
+1512031046554	Marionette	WARN	TLS certificate errors will be ignored for this session
+1512031046597	Marionette	DEBUG	Register listener.js for window 2147483649
+1512031046612	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1512031046621	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1512031046621	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1512031047110	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:4200/"
+1512031047113	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:4200/"
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1512031650565	geckodriver	INFO	geckodriver 0.19.1
+1512031650567	geckodriver	INFO	Listening on 127.0.0.1:56487
+1512031651642	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.BdceiBXqvvQK"
+1512031651985	Marionette	INFO	Enabled via --marionette
+1512031652726	Marionette	INFO	Listening on port 40773
+1512031652766	Marionette	WARN	TLS certificate errors will be ignored for this session
+1512031652809	Marionette	DEBUG	Register listener.js for window 2147483649
+1512031652822	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1512031652839	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1512031652839	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1512031653280	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:4200/"
+1512031653282	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:4200/"
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1512031773101	geckodriver	INFO	geckodriver 0.19.1
+1512031773104	geckodriver	INFO	Listening on 127.0.0.1:57941
+1512031774173	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.uEs2U5HjArI5"
+1512031774520	Marionette	INFO	Enabled via --marionette
+1512031775247	Marionette	INFO	Listening on port 34357
+1512031775289	Marionette	WARN	TLS certificate errors will be ignored for this session
+1512031775334	Marionette	DEBUG	Register listener.js for window 2147483649
+1512031775347	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1512031775360	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1512031775360	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1512031775800	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:4200/"
+1512031775802	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:4200/"
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1512031846510	geckodriver	INFO	geckodriver 0.19.1
+1512031846512	geckodriver	INFO	Listening on 127.0.0.1:57717
+1512031847583	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.dw8Nh7dAQmrI"
+1512031847936	Marionette	INFO	Enabled via --marionette
+1512031848724	Marionette	INFO	Listening on port 46635
+1512031848791	Marionette	WARN	TLS certificate errors will be ignored for this session
+1512031848833	Marionette	DEBUG	Register listener.js for window 2147483649
+1512031848842	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1512031848852	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1512031848852	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1512031849442	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:4200/"
+1512031849445	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:4200/"
+console.warn: LoginRecipes: getRecipes: falling back to a synchronous message for: http://localhost:4200
+console.warn: nsLoginManager: searchLogins: `formSubmitURL` or `httpRealm` is recommended
+console.error: 
+  Message: Error: Source map at http://localhost:4200/assets/bootstrap.min.css.map not found or invalid
+  Stack:
+    _fetchSourceMap/map<@resource://devtools/shared/base-loader.js -> resource://devtools/server/actors/stylesheets.js:578:25
+process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:922:23
+walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:806:7
+scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:742:11
+
+_fetchSourceMap/map<@resource://devtools/shared/base-loader.js -> resource://devtools/server/actors/stylesheets.js:578:25
+process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:922:23
+walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:806:7
+scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:742:11
+console.error: 
+  Protocol error (unknownError): Source map at http://localhost:4200/assets/bootstrap.min.css.map not found or invalid
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1512033193165	geckodriver	INFO	geckodriver 0.19.1
+1512033193167	geckodriver	INFO	Listening on 127.0.0.1:55729
+1512033194238	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.5bNvDVgGoU5T"
+1512033194588	Marionette	INFO	Enabled via --marionette
+1512033195385	Marionette	INFO	Listening on port 43455
+1512033195445	Marionette	WARN	TLS certificate errors will be ignored for this session
+1512033195489	Marionette	DEBUG	Register listener.js for window 2147483649
+1512033195513	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1512033195521	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1512033195521	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1512033195981	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:4200/"
+1512033195983	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:4200/"
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1512033215520	geckodriver	INFO	geckodriver 0.19.1
+1512033215522	geckodriver	INFO	Listening on 127.0.0.1:51823
+1512033216593	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.g4aIvMOXe1ZK"
+1512033216938	Marionette	INFO	Enabled via --marionette
+1512033217708	Marionette	INFO	Listening on port 34547
+1512033217800	Marionette	WARN	TLS certificate errors will be ignored for this session
+1512033217849	Marionette	DEBUG	Register listener.js for window 2147483649
+1512033217861	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1512033217871	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1512033217871	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1512033218354	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:4200/"
+1512033218356	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:4200/"
+console.warn: LoginRecipes: getRecipes: falling back to a synchronous message for: http://localhost:4200
+console.warn: nsLoginManager: searchLogins: `formSubmitURL` or `httpRealm` is recommended
+console.error: 
+  Message: Error: Source map at http://localhost:4200/assets/bootstrap.min.css.map not found or invalid
+  Stack:
+    _fetchSourceMap/map<@resource://devtools/shared/base-loader.js -> resource://devtools/server/actors/stylesheets.js:578:25
+process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:922:23
+walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:806:7
+scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:742:11
+
+_fetchSourceMap/map<@resource://devtools/shared/base-loader.js -> resource://devtools/server/actors/stylesheets.js:578:25
+process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:922:23
+walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:806:7
+scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:742:11
+console.error: 
+  Protocol error (unknownError): Source map at http://localhost:4200/assets/bootstrap.min.css.map not found or invalid
+console.warn: LoginRecipes: getRecipes: falling back to a synchronous message for: http://localhost:4200
+console.warn: nsLoginManager: searchLogins: `formSubmitURL` or `httpRealm` is recommended
+console.warn: LoginRecipes: getRecipes: falling back to a synchronous message for: http://localhost:4200
+console.warn: nsLoginManager: searchLogins: `formSubmitURL` or `httpRealm` is recommended
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1512033322729	geckodriver	INFO	geckodriver 0.19.1
+1512033322732	geckodriver	INFO	Listening on 127.0.0.1:32783
+1512033323803	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.5D6caRlILP3Q"
+1512033324153	Marionette	INFO	Enabled via --marionette
+1512033324917	Marionette	INFO	Listening on port 42641
+1512033325008	Marionette	WARN	TLS certificate errors will be ignored for this session
+1512033325049	Marionette	DEBUG	Register listener.js for window 2147483649
+1512033325060	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1512033325078	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1512033325078	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1512033325519	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:4200/"
+1512033325522	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:4200/"
+console.warn: LoginRecipes: getRecipes: falling back to a synchronous message for: http://localhost:4200
+console.warn: nsLoginManager: searchLogins: `formSubmitURL` or `httpRealm` is recommended
+console.error: 
+  Message: Error: Source map at http://localhost:4200/assets/bootstrap.min.css.map not found or invalid
+  Stack:
+    _fetchSourceMap/map<@resource://devtools/shared/base-loader.js -> resource://devtools/server/actors/stylesheets.js:578:25
+process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:922:23
+walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:806:7
+scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:742:11
+
+_fetchSourceMap/map<@resource://devtools/shared/base-loader.js -> resource://devtools/server/actors/stylesheets.js:578:25
+process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:922:23
+walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:806:7
+scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:742:11
+console.error: 
+  Protocol error (unknownError): Source map at http://localhost:4200/assets/bootstrap.min.css.map not found or invalid
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1512033349347	geckodriver	INFO	geckodriver 0.19.1
+1512033349349	geckodriver	INFO	Listening on 127.0.0.1:55261
+1512033350419	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.y4kxB2GvEO4J"
+1512033350765	Marionette	INFO	Enabled via --marionette
+1512033351521	Marionette	INFO	Listening on port 34355
+1512033351529	Marionette	WARN	TLS certificate errors will be ignored for this session
+1512033351573	Marionette	DEBUG	Register listener.js for window 2147483649
+1512033351597	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1512033351608	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1512033351608	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1512033352050	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:4200/"
+1512033352052	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:4200/"
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1512033379313	geckodriver	INFO	geckodriver 0.19.1
+1512033379316	geckodriver	INFO	Listening on 127.0.0.1:35289
+1512033380385	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.aVr5aSgVcxC3"
+1512033380737	Marionette	INFO	Enabled via --marionette
+1512033381580	Marionette	INFO	Listening on port 40131
+1512033381590	Marionette	WARN	TLS certificate errors will be ignored for this session
+1512033381636	Marionette	DEBUG	Register listener.js for window 2147483649
+1512033381659	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1512033381671	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1512033381671	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1512033382110	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:4200/"
+1512033382112	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:4200/"
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1512033624077	geckodriver	INFO	geckodriver 0.19.1
+1512033624079	geckodriver	INFO	Listening on 127.0.0.1:53565
+1512033625156	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.E30HZZRhemZ1"
+1512033625506	Marionette	INFO	Enabled via --marionette
+1512033626293	Marionette	INFO	Listening on port 37663
+1512033626368	Marionette	WARN	TLS certificate errors will be ignored for this session
+1512033626410	Marionette	DEBUG	Register listener.js for window 2147483649
+1512033626424	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1512033626432	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1512033626432	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1512033626886	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:4200/"
+1512033626890	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:4200/"
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1512033633690	geckodriver	INFO	geckodriver 0.19.1
+1512033633693	geckodriver	INFO	Listening on 127.0.0.1:42355
+1512033634766	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.1uSlFoOleHQt"
+1512033635111	Marionette	INFO	Enabled via --marionette
+1512033635874	Marionette	INFO	Listening on port 38077
+1512033635976	Marionette	WARN	TLS certificate errors will be ignored for this session
+1512033636020	Marionette	DEBUG	Register listener.js for window 2147483649
+1512033636030	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1512033636045	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1512033636045	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1512033636487	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:4200/"
+1512033636489	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:4200/"
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1512033681333	geckodriver	INFO	geckodriver 0.19.1
+1512033681336	geckodriver	INFO	Listening on 127.0.0.1:53355
+1512033682404	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.ksKEexMSsjcV"
+1512033682751	Marionette	INFO	Enabled via --marionette
+1512033683529	Marionette	INFO	Listening on port 37171
+1512033683612	Marionette	WARN	TLS certificate errors will be ignored for this session
+1512033683654	Marionette	DEBUG	Register listener.js for window 2147483649
+1512033683668	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1512033683682	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1512033683682	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1512033684116	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:4200/"
+1512033684118	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:4200/"
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1512033690371	geckodriver	INFO	geckodriver 0.19.1
+1512033690373	geckodriver	INFO	Listening on 127.0.0.1:55417
+1512033691444	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.QZnLD3Gwq2YF"
+1512033691792	Marionette	INFO	Enabled via --marionette
+1512033692670	Marionette	INFO	Listening on port 37767
+1512033692753	Marionette	WARN	TLS certificate errors will be ignored for this session
+1512033692796	Marionette	DEBUG	Register listener.js for window 2147483649
+1512033692805	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1512033692813	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1512033692813	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1512033693306	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:4200/"
+1512033693308	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:4200/"
+console.warn: LoginRecipes: getRecipes: falling back to a synchronous message for: http://localhost:4200
+console.warn: nsLoginManager: searchLogins: `formSubmitURL` or `httpRealm` is recommended
+console.error: 
+  Message: Error: Source map at http://localhost:4200/assets/bootstrap.min.css.map not found or invalid
+  Stack:
+    _fetchSourceMap/map<@resource://devtools/shared/base-loader.js -> resource://devtools/server/actors/stylesheets.js:578:25
+process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:922:23
+walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:806:7
+scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:742:11
+
+_fetchSourceMap/map<@resource://devtools/shared/base-loader.js -> resource://devtools/server/actors/stylesheets.js:578:25
+process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:922:23
+walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:806:7
+scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:742:11
+console.error: 
+  Protocol error (unknownError): Source map at http://localhost:4200/assets/bootstrap.min.css.map not found or invalid
+1512033728767	geckodriver	INFO	geckodriver 0.19.1
+1512033728769	geckodriver	INFO	Listening on 127.0.0.1:45681
+1512033729841	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.BwbcgXyst5cJ"
+1512033730196	Marionette	INFO	Enabled via --marionette
+1512033731116	Marionette	INFO	Listening on port 43635
+1512033731156	Marionette	WARN	TLS certificate errors will be ignored for this session
+1512033731195	Marionette	DEBUG	Register listener.js for window 2147483649
+1512033731206	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1512033731217	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1512033731217	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1512033731676	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:4200/"
+1512033731679	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:4200/"
+console.warn: LoginRecipes: getRecipes: falling back to a synchronous message for: http://localhost:4200
+console.warn: nsLoginManager: searchLogins: `formSubmitURL` or `httpRealm` is recommended
+console.error: 
+  Message: Error: Source map at http://localhost:4200/assets/bootstrap.min.css.map not found or invalid
+  Stack:
+    _fetchSourceMap/map<@resource://devtools/shared/base-loader.js -> resource://devtools/server/actors/stylesheets.js:578:25
+process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:922:23
+walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:806:7
+scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:742:11
+
+_fetchSourceMap/map<@resource://devtools/shared/base-loader.js -> resource://devtools/server/actors/stylesheets.js:578:25
+process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:922:23
+walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:806:7
+scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:742:11
+console.error: 
+  Protocol error (unknownError): Source map at http://localhost:4200/assets/bootstrap.min.css.map not found or invalid
+1512033801969	geckodriver	INFO	geckodriver 0.19.1
+1512033801971	geckodriver	INFO	Listening on 127.0.0.1:41203
+1512033803040	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.qmiYDoga8S0K"
+1512033803396	Marionette	INFO	Enabled via --marionette
+1512033804200	Marionette	INFO	Listening on port 42275
+1512033804246	Marionette	WARN	TLS certificate errors will be ignored for this session
+1512033804288	Marionette	DEBUG	Register listener.js for window 2147483649
+1512033804304	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1512033804313	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1512033804313	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1512033804793	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:4200/"
+1512033804795	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:4200/"
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+1512033843081	geckodriver	INFO	geckodriver 0.19.1
+1512033843084	geckodriver	INFO	Listening on 127.0.0.1:43103
+1512033844157	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.Uf7JEgTvTptL"
+1512033844507	Marionette	INFO	Enabled via --marionette
+1512033845266	Marionette	INFO	Listening on port 36765
+1512033845363	Marionette	WARN	TLS certificate errors will be ignored for this session
+1512033845405	Marionette	DEBUG	Register listener.js for window 2147483649
+1512033845430	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1512033845442	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1512033845443	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1512033845895	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:4200/"
+1512033845897	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:4200/"
+console.error: 
+  Message: Error: Source map at http://localhost:4200/assets/bootstrap.min.css.map not found or invalid
+  Stack:
+    _fetchSourceMap/map<@resource://devtools/shared/base-loader.js -> resource://devtools/server/actors/stylesheets.js:578:25
+process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:922:23
+walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:806:7
+scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:742:11
+
+_fetchSourceMap/map<@resource://devtools/shared/base-loader.js -> resource://devtools/server/actors/stylesheets.js:578:25
+process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:922:23
+walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:806:7
+scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:742:11
+console.error: 
+  Protocol error (unknownError): Source map at http://localhost:4200/assets/bootstrap.min.css.map not found or invalid
+1512033868546	geckodriver	INFO	geckodriver 0.19.1
+1512033868548	geckodriver	INFO	Listening on 127.0.0.1:41889
+1512033869619	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.BpYHXL7Ea11W"
+1512033869976	Marionette	INFO	Enabled via --marionette
+1512033870765	Marionette	INFO	Listening on port 43515
+1512033870829	Marionette	WARN	TLS certificate errors will be ignored for this session
+1512033870878	Marionette	DEBUG	Register listener.js for window 2147483649
+1512033870897	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1512033870916	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1512033870916	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1512033871399	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:4200/"
+1512033871402	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:4200/"
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1512033883282	geckodriver	INFO	geckodriver 0.19.1
+1512033883285	geckodriver	INFO	Listening on 127.0.0.1:44021
+1512033884354	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.M4HMicZk0S37"
+1512033884704	Marionette	INFO	Enabled via --marionette
+1512033885459	Marionette	INFO	Listening on port 41737
+1512033885560	Marionette	WARN	TLS certificate errors will be ignored for this session
+1512033885602	Marionette	DEBUG	Register listener.js for window 2147483649
+1512033885613	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1512033885622	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1512033885622	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1512033886056	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:4200/"
+1512033886058	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:4200/"
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1512033892530	geckodriver	INFO	geckodriver 0.19.1
+1512033892532	geckodriver	INFO	Listening on 127.0.0.1:52371
+1512033893601	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.TwvA1SMFce2L"
+1512033893952	Marionette	INFO	Enabled via --marionette
+1512033894731	Marionette	INFO	Listening on port 43711
+1512033894807	Marionette	WARN	TLS certificate errors will be ignored for this session
+1512033894852	Marionette	DEBUG	Register listener.js for window 2147483649
+1512033894866	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1512033894885	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1512033894886	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1512033895352	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:4200/"
+1512033895355	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:4200/"
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1512033915091	geckodriver	INFO	geckodriver 0.19.1
+1512033915094	geckodriver	INFO	Listening on 127.0.0.1:43513
+1512033916165	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.coRRtdx4zLN5"
+1512033916514	Marionette	INFO	Enabled via --marionette
+1512033917395	Marionette	INFO	Listening on port 38567
+1512033917469	Marionette	WARN	TLS certificate errors will be ignored for this session
+1512033917509	Marionette	DEBUG	Register listener.js for window 2147483649
+1512033917521	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1512033917532	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1512033917532	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1512033918154	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:4200/"
+1512033918157	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:4200/"
+console.warn: LoginRecipes: getRecipes: falling back to a synchronous message for: http://localhost:4200
+console.warn: nsLoginManager: searchLogins: `formSubmitURL` or `httpRealm` is recommended
+console.error: 
+  Message: Error: Source map at http://localhost:4200/assets/bootstrap.min.css.map not found or invalid
+  Stack:
+    _fetchSourceMap/map<@resource://devtools/shared/base-loader.js -> resource://devtools/server/actors/stylesheets.js:578:25
+process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:922:23
+walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:806:7
+scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:742:11
+
+_fetchSourceMap/map<@resource://devtools/shared/base-loader.js -> resource://devtools/server/actors/stylesheets.js:578:25
+process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:922:23
+walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:806:7
+scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:742:11
+console.error: 
+  Protocol error (unknownError): Source map at http://localhost:4200/assets/bootstrap.min.css.map not found or invalid
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1512034044153	geckodriver	INFO	geckodriver 0.19.1
+1512034044155	geckodriver	INFO	Listening on 127.0.0.1:37275
+1512034045226	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.6dkxbjST7OUl"
+1512034045580	Marionette	INFO	Enabled via --marionette
+1512034046408	Marionette	INFO	Listening on port 46341
+1512034046434	Marionette	WARN	TLS certificate errors will be ignored for this session
+1512034046474	Marionette	DEBUG	Register listener.js for window 2147483649
+1512034046491	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1512034046504	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1512034046504	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1512034046975	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:4200/"
+1512034046977	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:4200/"
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1512034050928	geckodriver	INFO	geckodriver 0.19.1
+1512034050930	geckodriver	INFO	Listening on 127.0.0.1:36887
+1512034051999	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.mDvJ5tPDJ6as"
+1512034052343	Marionette	INFO	Enabled via --marionette
+1512034053102	Marionette	INFO	Listening on port 35059
+1512034053204	Marionette	WARN	TLS certificate errors will be ignored for this session
+1512034053246	Marionette	DEBUG	Register listener.js for window 2147483649
+1512034053261	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1512034053273	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1512034053273	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1512034053749	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:4200/"
+1512034053752	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:4200/"
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1512034058262	geckodriver	INFO	geckodriver 0.19.1
+1512034058264	geckodriver	INFO	Listening on 127.0.0.1:34529
+1512034059336	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.bmApNlhTsxbG"
+1512034059686	Marionette	INFO	Enabled via --marionette
+1512034060557	Marionette	INFO	Listening on port 33539
+1512034060647	Marionette	WARN	TLS certificate errors will be ignored for this session
+1512034060687	Marionette	DEBUG	Register listener.js for window 2147483649
+1512034060701	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1512034060710	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1512034060710	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1512034061181	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:4200/"
+1512034061183	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:4200/"
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1512034073343	geckodriver	INFO	geckodriver 0.19.1
+1512034073346	geckodriver	INFO	Listening on 127.0.0.1:59423
+1512034074416	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.peSrcnmWpYhe"
+1512034074760	Marionette	INFO	Enabled via --marionette
+1512034075531	Marionette	INFO	Listening on port 44407
+1512034075620	Marionette	WARN	TLS certificate errors will be ignored for this session
+1512034075663	Marionette	DEBUG	Register listener.js for window 2147483649
+1512034075678	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1512034075689	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1512034075689	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1512034076121	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:4200/"
+1512034076124	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:4200/"
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1512034082006	geckodriver	INFO	geckodriver 0.19.1
+1512034082008	geckodriver	INFO	Listening on 127.0.0.1:33865
+1512034083078	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.94qiN25ITJow"
+1512034083432	Marionette	INFO	Enabled via --marionette
+1512034084202	Marionette	INFO	Listening on port 34815
+1512034084284	Marionette	WARN	TLS certificate errors will be ignored for this session
+1512034084326	Marionette	DEBUG	Register listener.js for window 2147483649
+1512034084349	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1512034084360	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1512034084360	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1512034084837	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:4200/"
+1512034084839	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:4200/"
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping

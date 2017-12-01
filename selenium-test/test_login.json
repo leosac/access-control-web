@@ -1,0 +1,47 @@
+{
+  "id": "0f02f3f0-c130-49b3-bb64-897e23a159d1",
+  "name": "Untitled Project",
+  "url": "http://localhost:4200",
+  "tests": [
+    {
+      "id": "3073ea96-9ca5-4fbc-98a0-953b910bdb60",
+      "name": "Login",
+      "commands": [
+        {
+          "id": "ac4acc2e-d99d-4bf2-b5c2-180d9afe64d6",
+          "command": "open",
+          "target": "/login",
+          "value": ""
+        },
+        {
+          "id": "790458e0-7d7a-4bc0-8e01-02bc275253f9",
+          "command": "clickAt",
+          "target": "id=ember428-field",
+          "value": "124,24"
+        },
+        {
+          "id": "34055d65-0c0b-45a0-8916-6a4d5523e67d",
+          "command": "type",
+          "target": "id=ember428-field",
+          "value": "admin"
+        },
+        {
+          "id": "05fbcf86-f649-45cb-8b6a-e1dddf8e3e68",
+          "command": "type",
+          "target": "id=ember480-field",
+          "value": "admin"
+        },
+        {
+          "id": "848c8829-61a3-4304-93e4-0e327614dd21",
+          "command": "clickAt",
+          "target": "id=ember486",
+          "value": "22,23"
+        }
+      ]
+    }
+  ],
+  "urls": [
+    "https://en.wikipedia.org",
+    "http://localhost:4200"
+  ]
+}
