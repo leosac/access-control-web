@@ -1,0 +1,15 @@
+{
+  "name": "snaptest-harness",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/nightwatch snaptests/tests",
+    "harness": "./node_modules/.bin/nightwatch -t harness.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nightwatch": "0.9.12"
+  }
+}

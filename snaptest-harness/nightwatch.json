@@ -1,0 +1,65 @@
+{
+  "src_folders" : ["snaptests/tests"],
+  "output_folder" : "reports",
+  "custom_commands_path" : "",
+  "custom_assertions_path" : "",
+  "page_objects_path" : "",
+  "globals_path" : "",
+  "test_workers": {
+    "enabled": true,
+    "workers": 4
+  },
+  "selenium" : {
+    "start_process" : true,
+    "server_path" : "./bin/selenium-server-standalone-3.0.0-beta3.jar",
+    "log_path" : "",
+    "host" : "127.0.0.1",
+    "port" : 4444
+  },
+
+  "test_settings" : {
+    "default" : {
+      "selenium_port"  : 4444,
+      "selenium_host"  : "127.0.0.1",
+      "silent": true,
+      "screenshots" : {
+        "enabled" : false,
+        "path" : ""
+      },
+      "desiredCapabilities": {
+        "browserName": "firefox",
+        "javascriptEnabled": true,
+        "acceptSslCerts": true
+      }
+    },
+    "prod": {
+      "selenium_port"  : 4444,
+      "selenium_host"  : "127.0.0.1",
+      "silent": true,
+      "screenshots" : {
+        "enabled" : false,
+        "path" : ""
+      },
+      "desiredCapabilities": {
+        "browserName": "chrome",
+        "javascriptEnabled": true,
+        "acceptSslCerts": true
+      },
+      "launch_url": "https://dashboard.hologram.io"
+    },
+    "firefox" : {
+      "selenium_port"  : 4444,
+      "selenium_host"  : "127.0.0.1",
+      "silent": true,
+      "screenshots" : {
+        "enabled" : false,
+        "path" : ""
+      },
+      "desiredCapabilities": {
+        "browserName": "firefox",
+        "javascriptEnabled": true,
+        "acceptSslCerts": true
+      }
+    }
+  }
+}

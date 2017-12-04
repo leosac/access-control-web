@@ -1,0 +1,7 @@
+/dist/
+/node_modules/
+/.idea/
+*.iml
+*.DS_Store
+/reports/
+selenium-debug.log
