@@ -5,71 +5,71 @@
         {{global-search label=(t 'search')}}
         <!-- /input-group -->
       </li>
-      <li id="side-menu-index">
+      <li>
         {{#link-to 'index'}}
           <i class="fa fa-dashboard fa-fw"></i> {{t 'index.title'}}
         {{/link-to}}
       </li>
-      <li id="side-menu-index">
+      <li>
         {{#link-to 'system-overview'}}
           <i class="fa fa-cog fa-fw"></i> {{t 'w.overview'}}
         {{/link-to}}
       </li>
-      <li id="side-menu-access-dropdown">
+      <li>
         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> {{t 'access'}}<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
-          <li id="side-menu-access-access-overview">
+          <li>
             {{#link-to 'access-overview'}}{{t 'access-overview.title'}}{{/link-to}}
           </li>
-          <li id="side-menu-access-zone-overview">
+          <li>
             {{#link-to 'zone-overview'}}{{t 'tree-view.title'}}{{/link-to}}
           </li>
-          <li id="side-menu-access-users">
+          <li>
             {{#link-to 'users.list'}}{{t 'users.title'}}{{/link-to}}
           </li>
-          <li id="side-menu-access-groups">
+          <li>
             {{#link-to 'groups.list'}}{{t 'groups'}}{{/link-to}}
           </li>
-          <li id="side-menu-access-credentials">
+          <li>
             {{#link-to 'credentials.list'}}{{t 'credentials.title'}}{{/link-to}}
           </li>
-          <li id="side-menu-access-schedules">
+          <li>
             {{#link-to 'schedules.list'}}{{t 'schedules'}}{{/link-to}}
           </li>
 
         </ul>
         <!-- /.nav-second-level -->
       </li>
-      <li id="side-menu-hardware-dropdown">
+      <li>
         <a href="#"><i class="fa fa-cogs"></i> {{t 'hardware'}}<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
-          <li id="side-menu-hardware-zones">
+          <li>
             {{#link-to 'zones.list'}}{{t 'zones'}}{{/link-to}}
           </li>
-          <li id="side-menu-hardware-doors">
+          <li>
             {{#link-to 'doors.list'}}{{t 'doors'}}{{/link-to}}
           </li>
-          <li id="side-menu-hardware-access-points">
+          <li>
             {{#link-to 'access-points.list'}}{{t 'access_points'}}{{/link-to}}
           </li>
-          <li id="side-menu-hardware-updates">
+          <li>
             {{#link-to 'updates'}}{{t 'hardware_update'}}{{/link-to}}
           </li>
         </ul>
       </li>
-      <li id="side-menu-modules-dropdown">
+      <li>
         <a href="#"><i class="fa fa-table fa-plus-square"></i> {{t 'modules'}}<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
           {{#each moduleManager.modulesInfo as |module|}}
-            <li id="side-menu-modules-{{module.displayName}}">
+            <li>
               {{link-to module.displayName module.routeName}}
             </li>
           {{/each}}
-          <li class="dropdown-submenu"  id="side-menu-modules-wizard-dropdown">
+          <li class="dropdown-submenu">
             <a href="#"><i class="fa fa-magic"></i> Wizard<span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
               {{#each moduleManager.wizardsInfo as | wizard |}}
-                <li id="side-menu-modules-wizard-{{wizard.displayName}}">
+                <li>
                   {{link-to wizard.displayName wizard.routeName}}
                 </li>
               {{/each}}
@@ -80,10 +80,10 @@
           <!--</li>-->
         </ul>
       </li>
-      <li id="side-menu-auditlog-dropdown">
+      <li>
         <a href="#"><i class="fa fa-table fa-fw"></i> Log<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
-          <li id="side-menu-auditlog-link">
+          <li>
             {{#link-to 'auditlog'}}{{t 'audit_log'}}{{/link-to}}
           </li>
         </ul>
