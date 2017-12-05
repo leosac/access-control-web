@@ -14,7 +14,12 @@
     "server_path" : "./bin/selenium-server-standalone-3.0.0-beta3.jar",
     "log_path" : "",
     "host" : "127.0.0.1",
-    "port" : 4444
+    "port": 4444,
+    "cli_args": {
+      "webdriver.chrome.driver": "",
+      "webdriver.gecko.driver": "/usr/bin/geckodriver",
+      "webdriver.edge.driver": ""
+    }
   },
 
   "test_settings" : {
@@ -27,9 +32,9 @@
         "path" : ""
       },
       "desiredCapabilities": {
-        "browserName": "firefox",
+        "browserName": "opera",
         "javascriptEnabled": true,
-        "acceptSslCerts": true
+        "marionette": true
       }
     },
     "prod": {
@@ -42,8 +47,9 @@
       },
       "desiredCapabilities": {
         "browserName": "chrome",
+        "acceptSslCerts": true,
         "javascriptEnabled": true,
-        "acceptSslCerts": true
+        "marionette": true
       },
       "launch_url": "https://dashboard.hologram.io"
     },
@@ -57,8 +63,9 @@
       },
       "desiredCapabilities": {
         "browserName": "firefox",
+        "acceptSslCerts": true,
         "javascriptEnabled": true,
-        "acceptSslCerts": true
+        "marionette": true
       }
     }
   }

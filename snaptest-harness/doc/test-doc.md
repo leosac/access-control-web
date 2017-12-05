@@ -41,7 +41,7 @@ replace `google chrome` with `firefox` in the _nightwatch.json_ file here:
   "test_settings" : {
   * * *
      "desiredCapabilities": {
-     "browserName": "<browser name>",
+        "browserName": "<browser name>",
      * * *
      }
   },

@@ -1,129 +1,6 @@
 {
   "tests": [
     {
-      "lastUpdated": "2017-12-04T12:32:25.762Z",
-      "user": "5964c14ef8cc5580989c77ea",
-      "variables": [
-        {
-          "id": "ryl9_Unf-M",
-          "name": "baseUrl",
-          "defaultValue": "http://localhost:4200",
-          "type": "STRING_VAR"
-        }
-      ],
-      "type": "test",
-      "actions": [
-        {
-          "type": "URL_CHANGE_INDICATOR",
-          "selector": "",
-          "selectorType": "CSS",
-          "nodeName": null,
-          "description": null,
-          "timeout": null,
-          "warnings": [],
-          "suggestions": [],
-          "continueOnFail": false,
-          "id": "Hk-9u83zZf",
-          "value": "/login",
-          "index": null
-        },
-        {
-          "type": "FULL_PAGELOAD",
-          "selector": "",
-          "selectorType": "CSS",
-          "nodeName": null,
-          "description": null,
-          "timeout": null,
-          "warnings": [],
-          "suggestions": [],
-          "continueOnFail": false,
-          "id": "H15dUnMWM",
-          "value": "${baseUrl}/login",
-          "isInitialLoad": false,
-          "width": 950,
-          "height": 969
-        },
-        {
-          "type": "MOUSEDOWN",
-          "selector": ".form-horizontal > :nth-child(2) .form-control",
-          "selectorType": "CSS",
-          "nodeName": null,
-          "description": null,
-          "timeout": null,
-          "warnings": [],
-          "suggestions": [],
-          "continueOnFail": false,
-          "id": "Bki_82GZz",
-          "textContent": null,
-          "textAsserted": false,
-          "x": 298,
-          "y": 173
-        },
-        {
-          "type": "INPUT",
-          "selector": ".form-horizontal > :nth-child(2) .form-control",
-          "selectorType": "CSS",
-          "nodeName": null,
-          "description": null,
-          "timeout": null,
-          "warnings": [],
-          "suggestions": [],
-          "continueOnFail": false,
-          "id": "HJl2dInfbz",
-          "value": "admin",
-          "inputType": "text",
-          "isContentEditable": false
-        },
-        {
-          "type": "INPUT",
-          "selector": ".form-horizontal > :nth-child(3) .form-control",
-          "selectorType": "CSS",
-          "nodeName": null,
-          "description": null,
-          "timeout": null,
-          "warnings": [],
-          "suggestions": [],
-          "continueOnFail": false,
-          "id": "ByradInM-M",
-          "value": "admin",
-          "inputType": "password",
-          "isContentEditable": false
-        },
-        {
-          "type": "MOUSEDOWN",
-          "selector": ".ember-application .ember-view .btn-primary",
-          "selectorType": "CSS",
-          "nodeName": null,
-          "description": null,
-          "timeout": null,
-          "warnings": [],
-          "suggestions": [],
-          "continueOnFail": false,
-          "id": "B1yK8hf-z",
-          "textContent": "Sign in",
-          "textAsserted": false,
-          "x": 487,
-          "y": 309
-        },
-        {
-          "type": "PUSHSTATE",
-          "selector": "",
-          "selectorType": "CSS",
-          "nodeName": null,
-          "description": null,
-          "timeout": null,
-          "warnings": [],
-          "suggestions": [],
-          "continueOnFail": false,
-          "id": "r1eYLhfZG",
-          "value": "/",
-          "index": 6
-        }
-      ],
-      "name": "Login",
-      "id": "Hk0BgpMbz"
-    },
-    {
       "lastUpdated": "2017-12-04T13:54:10.744Z",
       "user": "5964c14ef8cc5580989c77ea",
       "variables": [
@@ -137,6 +14,100 @@
       "type": "test",
       "actions": [
         {
+          "type": "COMPONENT",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "S1cULk4bG",
+          "componentId": "HJOt4yVbG",
+          "variables": []
+        },
+        {
+          "type": "URL_CHANGE_INDICATOR",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "HJDKJeEWz",
+          "value": "/",
+          "index": null
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": "div:nth-of-type(3) > div > div > ul > li:nth-of-type(5) > a",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [
+            8
+          ],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "HkvXyg4-f",
+          "textContent": "Hardware",
+          "textAsserted": false,
+          "x": 130,
+          "y": 260
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": "div > div > ul > li:nth-of-type(5) > ul > li > a",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [
+            8
+          ],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "SJu71gE-f",
+          "textContent": null,
+          "textAsserted": false,
+          "x": 101,
+          "y": 297
+        },
+        {
+          "type": "PUSHSTATE",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "S1O7kgV-z",
+          "value": "/zones/list",
+          "index": 15
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": ".ember-application .ember-view .btn-primary",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "H1tX1lNbM",
+          "textContent": "Add Zone",
+          "textAsserted": false,
+          "x": 305,
+          "y": 179
+        },
+        {
           "type": "URL_CHANGE_INDICATOR",
           "selector": "",
           "selectorType": "CSS",
@@ -149,22 +120,6 @@
           "id": "r1gTSQAz-f",
           "value": "/zones/create",
           "index": null
-        },
-        {
-          "type": "FULL_PAGELOAD",
-          "selector": "",
-          "selectorType": "CSS",
-          "nodeName": null,
-          "description": null,
-          "timeout": null,
-          "warnings": [],
-          "suggestions": [],
-          "continueOnFail": false,
-          "id": "ryprQCGbf",
-          "value": "${baseUrl}/zones/create",
-          "isInitialLoad": false,
-          "width": 950,
-          "height": 969
         },
         {
           "type": "INPUT",
@@ -219,7 +174,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "HJyDmRGbf",
@@ -235,7 +192,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "rJWwmCMZG",
@@ -251,7 +210,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "HJlmDQ0fZG",
@@ -266,7 +227,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "r1Vv7RM-G",
@@ -282,7 +245,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "B1rP7Af-f",
@@ -301,23 +266,25 @@
           "warnings": [],
           "suggestions": [],
           "continueOnFail": false,
-          "id": "Sk8wQ0z-z",
+          "id": "BJk7beV-M",
           "textContent": "Submit",
           "textAsserted": false,
-          "x": 343,
-          "y": 888
+          "x": 334,
+          "y": 913
         },
         {
-          "type": "SUBMIT",
-          "selector": "div:nth-of-type(2) > div > div > div > form",
+          "type": "PUSHSTATE",
+          "selector": "",
           "selectorType": "CSS",
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [],
           "suggestions": [],
           "continueOnFail": false,
-          "id": "rke8wmCfbf"
+          "id": "BJymZxN-f",
+          "value": "/zone/9",
+          "index": 16
         }
       ],
       "name": "Create Zone parent",
@@ -336,6 +303,86 @@
       ],
       "type": "test",
       "actions": [
+        {
+          "type": "COMPONENT",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "rkCoH1VWz",
+          "componentId": "HJOt4yVbG",
+          "variables": []
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": "div:nth-of-type(3) > div > div > ul > li:nth-of-type(4) > a",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [
+            8
+          ],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "HkEMjkEZf",
+          "textContent": "Access",
+          "textAsserted": false,
+          "x": 170,
+          "y": 217
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": "div > div > ul > li:nth-of-type(4) > ul > li:nth-of-type(4) > a",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [
+            8
+          ],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "BySfskN-z",
+          "textContent": "Groups",
+          "textAsserted": false,
+          "x": 75,
+          "y": 361
+        },
+        {
+          "type": "PUSHSTATE",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "rkBfi1EbG",
+          "value": "/groups/list",
+          "index": 11
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": ".ember-application .ember-view .btn-primary",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "r18Gj1VWf",
+          "textContent": "Create New Group",
+          "textAsserted": false,
+          "x": 340,
+          "y": 180
+        },
         {
           "type": "URL_CHANGE_INDICATOR",
           "selector": "",
@@ -476,6 +523,102 @@
       "type": "test",
       "actions": [
         {
+          "type": "COMPONENT",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "Hyp3r1Vbf",
+          "componentId": "HJOt4yVbG",
+          "variables": []
+        },
+        {
+          "type": "URL_CHANGE_INDICATOR",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "B1HJUlVbf",
+          "value": "/",
+          "index": null
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": "div:nth-of-type(3) > div > div > ul > li:nth-of-type(4) > a",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [
+            8
+          ],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "ByhXBg4Wf",
+          "textContent": "Access",
+          "textAsserted": false,
+          "x": 108,
+          "y": 202
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": "div > div > ul > li:nth-of-type(4) > ul > li:nth-of-type(4) > a",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [
+            8
+          ],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "HkTmSeN-M",
+          "textContent": "Groups",
+          "textAsserted": false,
+          "x": 66,
+          "y": 356
+        },
+        {
+          "type": "PUSHSTATE",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "BJa7HxVWM",
+          "value": "/groups/list",
+          "index": 13
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": "div > div > table > tbody > tr:nth-of-type(3) > td:nth-of-type(2)",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [
+            8
+          ],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "S1xEBxNbf",
+          "textContent": "test",
+          "textAsserted": false,
+          "x": 347,
+          "y": 404
+        },
+        {
           "type": "URL_CHANGE_INDICATOR",
           "selector": "",
           "selectorType": "CSS",
@@ -528,7 +671,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "ryQsmpfWG",
@@ -544,7 +689,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "r1xEsQTGWf",
@@ -575,7 +722,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "SkpomTMWz",
@@ -591,7 +740,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "Syyh7pG-z",
@@ -607,7 +758,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "ry-2m6z-z",
@@ -623,7 +776,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "SJV2mpzWf",
@@ -631,6 +786,20 @@
           "textAsserted": false,
           "x": 720,
           "y": 72
+        },
+        {
+          "type": "PUSHSTATE",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "r1gVSl4WM",
+          "value": "/group/3",
+          "index": 15
         }
       ],
       "name": "Add user to group",
@@ -649,6 +818,86 @@
       ],
       "type": "test",
       "actions": [
+        {
+          "type": "COMPONENT",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "ryVHIk4-z",
+          "componentId": "HJOt4yVbG",
+          "variables": []
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": "div:nth-of-type(3) > div > div > ul > li:nth-of-type(5) > a",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [
+            8
+          ],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "S1ieXgNWz",
+          "textContent": "Hardware",
+          "textAsserted": false,
+          "x": 176,
+          "y": 250
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": "div > ul > li:nth-of-type(5) > ul > li:nth-of-type(2) > a > div",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [
+            8
+          ],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "S18Z7gN-z",
+          "textContent": "Doors",
+          "textAsserted": false,
+          "x": 88,
+          "y": 328
+        },
+        {
+          "type": "PUSHSTATE",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "HJ8Zml4bz",
+          "value": "/doors/list",
+          "index": 9
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": ".ember-application .ember-view .btn-primary",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "SyvZXlVWG",
+          "textContent": "Add Door",
+          "textAsserted": false,
+          "x": 313,
+          "y": 184
+        },
         {
           "type": "URL_CHANGE_INDICATOR",
           "selector": "",
@@ -756,6 +1005,102 @@
       ],
       "type": "test",
       "actions": [
+        {
+          "type": "COMPONENT",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "B1aCBJV-f",
+          "componentId": "HJOt4yVbG",
+          "variables": []
+        },
+        {
+          "type": "URL_CHANGE_INDICATOR",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "r1eyreEbz",
+          "value": "/",
+          "index": null
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": "div:nth-of-type(3) > div > div > ul > li:nth-of-type(4) > a",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [
+            8
+          ],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "HJOjVlN-M",
+          "textContent": "Access",
+          "textAsserted": false,
+          "x": 129,
+          "y": 211
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": "div > div > ul > li:nth-of-type(4) > ul > li:nth-of-type(5) > a",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [
+            8
+          ],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "B1Ki4gN-z",
+          "textContent": "Credentials",
+          "textAsserted": false,
+          "x": 123,
+          "y": 408
+        },
+        {
+          "type": "PUSHSTATE",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "Bk5oNxVZG",
+          "value": "/credentials/list",
+          "index": 17
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": "div > div > div:nth-of-type(3) > a",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [
+            8
+          ],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "H1ojExEZf",
+          "textContent": "Add RFIDCard",
+          "textAsserted": false,
+          "x": 328,
+          "y": 180
+        },
         {
           "type": "URL_CHANGE_INDICATOR",
           "selector": "",
@@ -884,7 +1229,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "SyKMNazbM",
@@ -900,7 +1247,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "SJjGETGZG",
@@ -916,7 +1265,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "B1aGVTzbf",
@@ -932,7 +1283,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "SJAG4pGZf",
@@ -958,16 +1311,18 @@
           "y": 859
         },
         {
-          "type": "SUBMIT",
-          "selector": "div > div:nth-of-type(2) > div > div > form",
+          "type": "PUSHSTATE",
+          "selector": "",
           "selectorType": "CSS",
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [],
           "suggestions": [],
           "continueOnFail": false,
-          "id": "SkljQNaMZf"
+          "id": "rJ2jVgEbG",
+          "value": "/credentials/rfid-card-create",
+          "index": 19
         }
       ],
       "name": "Create RFID Card",
@@ -987,6 +1342,102 @@
       "type": "test",
       "actions": [
         {
+          "type": "COMPONENT",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "BJvxIkN-z",
+          "componentId": "HJOt4yVbG",
+          "variables": []
+        },
+        {
+          "type": "URL_CHANGE_INDICATOR",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "Sy_mVlVWM",
+          "value": "/",
+          "index": null
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": "div:nth-of-type(3) > div > div > ul > li:nth-of-type(4) > a",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [
+            8
+          ],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "HkQlElV-G",
+          "textContent": "Access",
+          "textAsserted": false,
+          "x": 124,
+          "y": 207
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": "div > div > ul > li:nth-of-type(4) > ul > li:nth-of-type(5) > a",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [
+            8
+          ],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "ByNxVgEWG",
+          "textContent": "Credentials",
+          "textAsserted": false,
+          "x": 93,
+          "y": 402
+        },
+        {
+          "type": "PUSHSTATE",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "HkVg4gV-G",
+          "value": "/credentials/list",
+          "index": 18
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": "div > div > div:nth-of-type(3) > a:nth-of-type(2)",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [
+            8
+          ],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "S1kD4eNWf",
+          "textContent": "Add PinCode",
+          "textAsserted": false,
+          "x": 440,
+          "y": 237
+        },
+        {
           "type": "URL_CHANGE_INDICATOR",
           "selector": "",
           "selectorType": "CSS",
@@ -999,22 +1450,6 @@
           "id": "r1-RP4pzZz",
           "value": "/credentials/pin-code-create",
           "index": null
-        },
-        {
-          "type": "FULL_PAGELOAD",
-          "selector": "",
-          "selectorType": "CSS",
-          "nodeName": null,
-          "description": null,
-          "timeout": null,
-          "warnings": [],
-          "suggestions": [],
-          "continueOnFail": false,
-          "id": "BJAP4afbz",
-          "value": "${baseUrl}/credentials/pin-code-create",
-          "isInitialLoad": false,
-          "width": 950,
-          "height": 969
         },
         {
           "type": "MOUSEDOWN",
@@ -1115,7 +1550,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "B1LYNTf-z",
@@ -1131,7 +1568,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "SJtKEaz-M",
@@ -1163,7 +1602,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "rkatEpfZz",
@@ -1179,7 +1620,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "Hy7cVpzbz",
@@ -1205,16 +1648,18 @@
           "y": 783
         },
         {
-          "type": "SUBMIT",
-          "selector": "div > div:nth-of-type(2) > div > div > form",
+          "type": "PUSHSTATE",
+          "selector": "",
           "selectorType": "CSS",
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [],
           "suggestions": [],
           "continueOnFail": false,
-          "id": "S1lVqVpf-M"
+          "id": "rkgwEeEWz",
+          "value": "/credentials/pin-code-create",
+          "index": 22
         }
       ],
       "name": "Create Pin Code",
@@ -1234,6 +1679,100 @@
       "type": "test",
       "actions": [
         {
+          "type": "COMPONENT",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "H1wVIJEZz",
+          "componentId": "HJOt4yVbG",
+          "variables": []
+        },
+        {
+          "type": "URL_CHANGE_INDICATOR",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "SJiuQxVWM",
+          "value": "/",
+          "index": null
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": "div:nth-of-type(3) > div > div > ul > li:nth-of-type(4) > a",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [
+            8
+          ],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "HJlHXlNZz",
+          "textContent": "Access",
+          "textAsserted": false,
+          "x": 95,
+          "y": 210
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": "div > div > ul > li:nth-of-type(4) > ul > li:nth-of-type(6) > a",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [
+            8
+          ],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "HkGrmxE-M",
+          "textContent": "Schedules",
+          "textAsserted": false,
+          "x": 90,
+          "y": 438
+        },
+        {
+          "type": "URL_CHANGE_INDICATOR",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "ByivXeVWz",
+          "value": "/schedules/list",
+          "index": null
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": ".ember-application .ember-view .btn-primary",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "rkNBmg4Wf",
+          "textContent": "Create Schedule",
+          "textAsserted": false,
+          "x": 320,
+          "y": 183
+        },
+        {
           "type": "URL_CHANGE_INDICATOR",
           "selector": "",
           "selectorType": "CSS",
@@ -1246,22 +1785,6 @@
           "id": "HJWQ486MWM",
           "value": "/schedules/create",
           "index": null
-        },
-        {
-          "type": "FULL_PAGELOAD",
-          "selector": "",
-          "selectorType": "CSS",
-          "nodeName": null,
-          "description": null,
-          "timeout": null,
-          "warnings": [],
-          "suggestions": [],
-          "continueOnFail": false,
-          "id": "rJXVLTzWM",
-          "value": "${baseUrl}/schedules/create",
-          "isInitialLoad": false,
-          "width": 950,
-          "height": 969
         },
         {
           "type": "MOUSEDOWN",
@@ -1286,7 +1809,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "rJ-HiUazbG",
@@ -1348,7 +1873,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "rJurL6fbz",
@@ -1364,7 +1891,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "rJ3B8TMbf",
@@ -1380,7 +1909,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "HyRBLpGWG",
@@ -1412,7 +1943,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "r1fUUpfbM",
@@ -1444,7 +1977,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "By8886zWf",
@@ -1460,7 +1995,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "SJKILTfZz",
@@ -1492,7 +2029,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "rkhILaMbf",
@@ -1524,7 +2063,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "By0ILTzZM",
@@ -1540,7 +2081,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "SyXa86M-M",
@@ -1596,6 +2139,86 @@
       "type": "test",
       "actions": [
         {
+          "type": "COMPONENT",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "ryxUU1VWz",
+          "componentId": "HJOt4yVbG",
+          "variables": []
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": "div:nth-of-type(3) > div > div > ul > li:nth-of-type(5) > a",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [
+            8
+          ],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "SJ5cRkE-G",
+          "textContent": "Hardware",
+          "textAsserted": false,
+          "x": 175,
+          "y": 254
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": "div > ul > li:nth-of-type(5) > ul > li > a > div",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [
+            8
+          ],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "B1sq0JE-G",
+          "textContent": "Zones",
+          "textAsserted": false,
+          "x": 112,
+          "y": 291
+        },
+        {
+          "type": "PUSHSTATE",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "SJoq0JNbz",
+          "value": "/zones/list",
+          "index": 13
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": ".ember-application .ember-view .btn-primary",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "ryn9Ck4bM",
+          "textContent": "Add Zone",
+          "textAsserted": false,
+          "x": 288,
+          "y": 179
+        },
+        {
           "type": "URL_CHANGE_INDICATOR",
           "selector": "",
           "selectorType": "CSS",
@@ -1608,22 +2231,6 @@
           "id": "HJW0tPaGWf",
           "value": "/zones/create",
           "index": null
-        },
-        {
-          "type": "FULL_PAGELOAD",
-          "selector": "",
-          "selectorType": "CSS",
-          "nodeName": null,
-          "description": null,
-          "timeout": null,
-          "warnings": [],
-          "suggestions": [],
-          "continueOnFail": false,
-          "id": "HJAFDTM-G",
-          "value": "${baseUrl}/zones/create",
-          "isInitialLoad": false,
-          "width": 950,
-          "height": 969
         },
         {
           "type": "INPUT",
@@ -1678,7 +2285,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "H112PpGWG",
@@ -1694,7 +2303,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "rJ73DpG-G",
@@ -1710,7 +2321,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "S1xEnwpzWM",
@@ -1741,7 +2354,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "H133vTfbz",
@@ -1765,6 +2380,20 @@
           "textAsserted": false,
           "x": 326,
           "y": 898
+        },
+        {
+          "type": "PUSHSTATE",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "Bk2qRy4bM",
+          "value": "/zones/create",
+          "index": 15
         }
       ],
       "name": "Create Zone",
@@ -1784,6 +2413,20 @@
       "type": "test",
       "actions": [
         {
+          "type": "COMPONENT",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "rySmH1VWG",
+          "componentId": "HJOt4yVbG",
+          "variables": []
+        },
+        {
           "type": "URL_CHANGE_INDICATOR",
           "selector": "",
           "selectorType": "CSS",
@@ -1793,12 +2436,48 @@
           "warnings": [],
           "suggestions": [],
           "continueOnFail": false,
-          "id": "H1WFJmpGbf",
-          "value": "/users/create",
+          "id": "rJqxVyNWz",
+          "value": "/",
           "index": null
         },
         {
-          "type": "FULL_PAGELOAD",
+          "type": "MOUSEDOWN",
+          "selector": "div:nth-of-type(3) > div > div > ul > li:nth-of-type(4) > a",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [
+            8
+          ],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "SJSfQ1N-f",
+          "textContent": "Access",
+          "textAsserted": false,
+          "x": 110,
+          "y": 217
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": "div > div > ul > li:nth-of-type(4) > ul > li:nth-of-type(3) > a",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [
+            8
+          ],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "By8G7yV-G",
+          "textContent": "Users",
+          "textAsserted": false,
+          "x": 80,
+          "y": 326
+        },
+        {
+          "type": "PUSHSTATE",
           "selector": "",
           "selectorType": "CSS",
           "nodeName": null,
@@ -1807,15 +2486,13 @@
           "warnings": [],
           "suggestions": [],
           "continueOnFail": false,
-          "id": "HJZIU0MZM",
-          "value": "${baseUrl}/users/create",
-          "isInitialLoad": false,
-          "width": 950,
-          "height": 969
+          "id": "Ska92RX-z",
+          "value": "/users/create",
+          "index": 12
         },
         {
           "type": "MOUSEDOWN",
-          "selector": "fieldset > :nth-child(2) .form-control",
+          "selector": ".ember-application .ember-view .btn-primary",
           "selectorType": "CSS",
           "nodeName": null,
           "description": null,
@@ -1823,11 +2500,11 @@
           "warnings": [],
           "suggestions": [],
           "continueOnFail": false,
-          "id": "r1iJQ6MWz",
+          "id": "ryC9207ZG",
           "textContent": null,
           "textAsserted": false,
-          "x": 463,
-          "y": 262
+          "x": 363,
+          "y": 255
         },
         {
           "type": "INPUT",
@@ -1839,8 +2516,8 @@
           "warnings": [],
           "suggestions": [],
           "continueOnFail": false,
-          "id": "ryl3yQpzWM",
-          "value": "test",
+          "id": "H1lein0XZG",
+          "value": "Test",
           "inputType": "text",
           "isContentEditable": false
         },
@@ -1854,8 +2531,8 @@
           "warnings": [],
           "suggestions": [],
           "continueOnFail": false,
-          "id": "Byb61Q6Gbf",
-          "value": "test",
+          "id": "r1ezjhCQbf",
+          "value": "Test",
           "inputType": "text",
           "isContentEditable": false
         },
@@ -1869,8 +2546,8 @@
           "warnings": [],
           "suggestions": [],
           "continueOnFail": false,
-          "id": "rkSCJ76Mbz",
-          "value": "test@test.test",
+          "id": "HyxDon0QZf",
+          "value": "test@test.fr",
           "inputType": "email",
           "isContentEditable": false
         },
@@ -1884,7 +2561,7 @@
           "warnings": [],
           "suggestions": [],
           "continueOnFail": false,
-          "id": "r1lVxXTfZz",
+          "id": "H1xWn2AQ-M",
           "value": "testest",
           "inputType": "text",
           "isContentEditable": false
@@ -1896,10 +2573,12 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
-          "id": "rJZLemTzZz",
+          "id": "Bygr32AmWM",
           "value": "test",
           "inputType": "password",
           "isContentEditable": false
@@ -1911,13 +2590,49 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
-          "id": "SyxOl76fZM",
+          "id": "BJZI3nRXWf",
           "value": "test",
           "inputType": "password",
           "isContentEditable": false
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": "div .page-wrapper-whole-page .ember-basic-dropdown-trigger",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "S1F3hC7-M",
+          "textContent": null,
+          "textAsserted": false,
+          "x": 397,
+          "y": 694
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": "div > ul > li:nth-of-type(2)",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [
+            8
+          ],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "HJq2hR7-M",
+          "textContent": "Viewer",
+          "textAsserted": false,
+          "x": 380,
+          "y": 762
         },
         {
           "type": "MOUSEDOWN",
@@ -1929,11 +2644,11 @@
           "warnings": [],
           "suggestions": [],
           "continueOnFail": false,
-          "id": "SJql7az-M",
+          "id": "Hyjn2C7WM",
           "textContent": "Create New User",
           "textAsserted": false,
-          "x": 340,
-          "y": 736
+          "x": 385,
+          "y": 750
         },
         {
           "type": "PUSHSTATE",
@@ -1945,9 +2660,9 @@
           "warnings": [],
           "suggestions": [],
           "continueOnFail": false,
-          "id": "rJce76MZf",
+          "id": "H1j3hCX-M",
           "value": "/users/list",
-          "index": 10
+          "index": 23
         }
       ],
       "name": "Create user",
@@ -1966,6 +2681,100 @@
       ],
       "type": "test",
       "actions": [
+        {
+          "type": "COMPONENT",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "BkAPUkE-G",
+          "componentId": "HJOt4yVbG",
+          "variables": []
+        },
+        {
+          "type": "URL_CHANGE_INDICATOR",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "BymqWlVWz",
+          "value": "/",
+          "index": null
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": "div:nth-of-type(3) > div > div > ul > li:nth-of-type(4) > a",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [
+            8
+          ],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "H1Uv-xNZf",
+          "textContent": "Access",
+          "textAsserted": false,
+          "x": 138,
+          "y": 214
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": "div > div > ul > li:nth-of-type(4) > ul > li:nth-of-type(6) > a",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [
+            8
+          ],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "H1DwbeNWf",
+          "textContent": "Schedules",
+          "textAsserted": false,
+          "x": 89,
+          "y": 437
+        },
+        {
+          "type": "URL_CHANGE_INDICATOR",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "HJTUfeVWG",
+          "value": "/schedule/list",
+          "index": null
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": "div:nth-of-type(2) > div > table > tbody > tr:nth-of-type(2) > td:nth-of-type(2)",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "B14mzeVZG",
+          "textContent": "testschedule",
+          "textAsserted": false,
+          "x": 346,
+          "y": 288
+        },
         {
           "type": "URL_CHANGE_INDICATOR",
           "selector": "",
@@ -2019,7 +2828,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "HkNAopMWM",
@@ -2067,7 +2878,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "B1WHg2TGZz",
@@ -2082,7 +2895,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "SkgRlhTG-G",
@@ -2113,7 +2928,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "H1SW3aMWM",
@@ -2129,7 +2946,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "SJv-2afbf",
@@ -2145,7 +2964,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "Byl_W2azbf",
@@ -2176,7 +2997,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "HkobnaM-f",
@@ -2192,7 +3015,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "SJMG3aGbM",
@@ -2208,7 +3033,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "SJWGG26M-G",
@@ -2239,7 +3066,9 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [8],
+          "warnings": [
+            8
+          ],
           "suggestions": [],
           "continueOnFail": false,
           "id": "S16zhpGWz",
@@ -2263,23 +3092,29 @@
           "textAsserted": false,
           "x": 878,
           "y": 325
+        },
+        {
+          "type": "PUSHSTATE",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "Sy_vWgE-z",
+          "value": "/schedules/list",
+          "index": 22
         }
       ],
       "name": "Add user, group adn door to the schedule",
       "id": "S18YjpMWz"
-    },
+    }
+  ],
+  "components": [
     {
-      "lastUpdated": "2017-12-04T14:04:32.250Z",
-      "user": "5964c14ef8cc5580989c77ea",
-      "variables": [
-        {
-          "id": "SkxRNNCMbz",
-          "name": "baseUrl",
-          "defaultValue": "http://localhost:4200",
-          "type": "STRING_VAR"
-        }
-      ],
-      "type": "test",
+      "name": "Login",
       "actions": [
         {
           "type": "URL_CHANGE_INDICATOR",
@@ -2291,7 +3126,7 @@
           "warnings": [],
           "suggestions": [],
           "continueOnFail": false,
-          "id": "Hk-CNVAzWG",
+          "id": "r1WLxr1NZG",
           "value": "/login",
           "index": null
         },
@@ -2305,7 +3140,7 @@
           "warnings": [],
           "suggestions": [],
           "continueOnFail": false,
-          "id": "rkC44RMWz",
+          "id": "B1UgHkEZf",
           "value": "${baseUrl}/login",
           "isInitialLoad": false,
           "width": 950,
@@ -2321,27 +3156,11 @@
           "warnings": [],
           "suggestions": [],
           "continueOnFail": false,
-          "id": "Hy1HN0fZz",
+          "id": "HkugSkNWG",
           "textContent": null,
           "textAsserted": false,
-          "x": 540,
-          "y": 179
-        },
-        {
-          "type": "MOUSEDOWN",
-          "selector": ".form-horizontal > :nth-child(2) .form-control",
-          "selectorType": "CSS",
-          "nodeName": null,
-          "description": null,
-          "timeout": null,
-          "warnings": [],
-          "suggestions": [],
-          "continueOnFail": false,
-          "id": "HkxHVRf-G",
-          "textContent": null,
-          "textAsserted": false,
-          "x": 540,
-          "y": 179
+          "x": 521,
+          "y": 180
         },
         {
           "type": "INPUT",
@@ -2353,12 +3172,28 @@
           "warnings": [],
           "suggestions": [],
           "continueOnFail": false,
-          "id": "By-lHE0MWf",
+          "id": "rylYxSyEbf",
           "value": "admin",
           "inputType": "text",
           "isContentEditable": false
         },
         {
+          "type": "MOUSEDOWN",
+          "selector": ".form-horizontal > :nth-child(3) .form-control",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "HkjeHy4bG",
+          "textContent": null,
+          "textAsserted": false,
+          "x": 469,
+          "y": 255
+        },
+        {
           "type": "INPUT",
           "selector": ".form-horizontal > :nth-child(3) .form-control",
           "selectorType": "CSS",
@@ -2368,25 +3203,10 @@
           "warnings": [],
           "suggestions": [],
           "continueOnFail": false,
-          "id": "HkvWBV0zbM",
+          "id": "HkengS1VWz",
           "value": "admin",
           "inputType": "password",
           "isContentEditable": false
-        },
-        {
-          "type": "KEYDOWN",
-          "selector": ".form-horizontal > :nth-child(3) .form-control",
-          "selectorType": "CSS",
-          "nodeName": null,
-          "description": null,
-          "timeout": null,
-          "warnings": [],
-          "suggestions": [],
-          "continueOnFail": false,
-          "id": "BJDMBERGWM",
-          "keyValue": "Enter",
-          "keyCode": 13,
-          "inputValue": "adminEnter"
         },
         {
           "type": "MOUSEDOWN",
@@ -2398,23 +3218,11 @@
           "warnings": [],
           "suggestions": [],
           "continueOnFail": false,
-          "id": "r1z0B0GWM",
-          "textContent": null,
+          "id": "SyAgS1V-M",
+          "textContent": "Sign in",
           "textAsserted": false,
-          "x": null,
-          "y": null
-        },
-        {
-          "type": "SUBMIT",
-          "selector": ".form-horizontal",
-          "selectorType": "CSS",
-          "nodeName": null,
-          "description": null,
-          "timeout": null,
-          "warnings": [],
-          "suggestions": [],
-          "continueOnFail": false,
-          "id": "SkOfBEAGbf"
+          "x": 473,
+          "y": 307
         },
         {
           "type": "PUSHSTATE",
@@ -2426,12 +3234,28 @@
           "warnings": [],
           "suggestions": [],
           "continueOnFail": false,
-          "id": "r1mBVCMWz",
+          "id": "r1kZHkE-z",
           "value": "/",
-          "index": 8
-        },
+          "index": 7
+        }
+      ],
+      "id": "HJOt4yVbG",
+      "isBlank": true,
+      "type": "component",
+      "variables": [
         {
-          "type": "PATH_ASSERT",
+          "id": "rygIeHJEWM",
+          "name": "baseUrl",
+          "defaultValue": "http://localhost:4200",
+          "type": "STRING_VAR"
+        }
+      ]
+    },
+    {
+      "name": "Logout",
+      "actions": [
+        {
+          "type": "URL_CHANGE_INDICATOR",
           "selector": "",
           "selectorType": "CSS",
           "nodeName": null,
@@ -2440,16 +3264,88 @@
           "warnings": [],
           "suggestions": [],
           "continueOnFail": false,
-          "id": "ByMIE0fZf",
-          "value": "/credentials/rfid-card-create",
-          "regex": false
+          "id": "B1bgcS1VWG",
+          "value": "/",
+          "index": null
+        },
+        {
+          "type": "FULL_PAGELOAD",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "HJg9B1NZf",
+          "value": "${baseUrl}/",
+          "isInitialLoad": false,
+          "width": 950,
+          "height": 969
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": ".navbar-top-links > :nth-child(2) .dropdown-toggle",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "SkzcrJNbf",
+          "textContent": null,
+          "textAsserted": false,
+          "x": 884,
+          "y": 34
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": "div:nth-of-type(2) > ul > li:nth-of-type(2) > ul > li:nth-of-type(4) > a",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [
+            8
+          ],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "S14qryNbf",
+          "textContent": "Logout",
+          "textAsserted": false,
+          "x": 838,
+          "y": 145
+        },
+        {
+          "type": "PUSHSTATE",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "S1NcHk4-G",
+          "value": "/login",
+          "index": 4
         }
       ],
-      "name": "Unnamed test",
-      "id": "BkVE4Rz-f"
+      "id": "HJTuSyN-G",
+      "isBlank": true,
+      "type": "component",
+      "variables": [
+        {
+          "id": "rkglcBkE-z",
+          "name": "baseUrl",
+          "defaultValue": "http://localhost:4200",
+          "type": "STRING_VAR"
+        }
+      ]
     }
   ],
-  "components": [],
   "directory": {
     "module": "Tests",
     "topLevel": true,
@@ -2461,11 +3357,18 @@
         "id": "Hy3s0TGWf",
         "children": [
           {
-            "module": "Copy of Login",
-            "testId": "Hk0BgpMbz",
+            "module": "Unnamed component",
+            "testId": "HJOt4yVbG",
             "leaf": true,
-            "id": "HyAHe6MbG",
-            "type": "test"
+            "id": "HyuK4JE-G",
+            "type": "component"
+          },
+          {
+            "module": "Unnamed component",
+            "testId": "HJTuSyN-G",
+            "leaf": true,
+            "id": "By6dSJEWM",
+            "type": "component"
           },
           {
             "module": "Unnamed test",
@@ -2535,13 +3438,6 @@
             "testId": "S18YjpMWz",
             "leaf": true,
             "id": "B1IYjpf-f",
-            "type": "test"
-          },
-          {
-            "module": "Unnamed test",
-            "testId": "BkVE4Rz-f",
-            "leaf": true,
-            "id": "B1E4VAf-f",
             "type": "test"
           }
         ]
