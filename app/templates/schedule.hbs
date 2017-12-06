@@ -1,47 +1,49 @@
 <div>
-    <h2>Alias: {{model.name}}</h2>
+  <h2>Alias: {{model.name}}</h2>
 </div>
-
-{{#bs-tab as |tab|}}
+<div>
+  {{#bs-tab  as |tab|}}
     {{#tab.pane title=(t 'timeframes')}}
-            {{schedule-form schedule=model delete=(route-action 'deleteSchedule') action=(route-action "editSchedule")}}
+      {{schedule-form schedule=model
+                      delete=(route-action 'deleteSchedule')
+                      action=(route-action "editSchedule")}}
     {{/tab.pane}}
 
     {{#tab.pane title=(t 'mapping')}}
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-12 space-bottom space-top">
-                    {{t 'schedule.mapping_list'}}<br>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="pull-left">
-                        {{bs-button icon='glyphicon glyphicon-add' type='primary'
-                                    defaultText=(t 'schedule.add_mapping')
-                                    onClick=(route-action 'addMapping')}}
-                    </div>
-                    <div class="pull-right">
-                        {{bs-button defaultText=(t 'save') type="success" buttonType="submit"
-                                    onClick=(route-action 'editSchedule')}}
-                    </div>
-                </div>
-            </div>
-
-            <hr>
-
-            {{#bs-accordion as |acc|}}
-                {{#each model.mapping as |mapping|}}
-                    {{#if mapping}}
-                        {{#acc.item title=(t 'schedule.mapping' alias=mapping.alias)}}
-                            {{schedule-mapping mapping=mapping}}
-                        {{/acc.item}}
-                    {{/if}}
-
-                    <hr>
-
-                {{/each}}
-            {{/bs-accordion}}
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-12 space-bottom space-top">
+            {{t 'schedule.mapping_list'}}<br>
+          </div>
         </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="pull-left">
+              {{bs-button type='primary'
+                          defaultText=(t 'schedule.add_mapping')
+                          onClick=(route-action 'addMapping')}}
+            </div>
+            <div class="pull-right">
+              {{bs-button defaultText=(t 'save') type="success"
+                          onClick=(route-action 'editSchedule')}}
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+
+        {{#bs-accordion as |acc|}}
+          {{#each model.mapping as |mapping|}}
+            {{#acc.item title='schedule.mapping'}}
+              lol
+              {{!schedule-mapping mapping=mapping}}
+            {{/acc.item}}
+            <hr>
+          {{/each}}
+        {{/bs-accordion}}
+
+      </div>
     {{/tab.pane}}
-{{/bs-tab}}
+  {{/bs-tab}}
+</div>

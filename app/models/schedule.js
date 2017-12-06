@@ -1,7 +1,7 @@
-import Model from 'ember-data/model';
 import Ember from 'ember';
 import DS from 'ember-data';
-import {validator, buildValidations} from 'ember-cp-validations';
+import {buildValidations, validator} from 'ember-cp-validations';
+import DependentRelationships from '../mixins/dependent-relationships';
 
 const ScheduleValidations = buildValidations(
     {
@@ -16,7 +16,7 @@ const ScheduleValidations = buildValidations(
     }
 );
 
-export default DS.Model.extend(ScheduleValidations, {
+export default DS.Model.extend(ScheduleValidations, DependentRelationships, {
     numericId: Ember.computed('id', function ()
     {
         "use strict";
@@ -30,5 +30,5 @@ export default DS.Model.extend(ScheduleValidations, {
     // However, in the WebUI a timeframe entry can span multiple day
     // while Leosac's SingleTimeFrame is for 1 day only.
     timeframes: DS.attr('timeframes'),
-    mapping: DS.hasMany('schedule-mapping')
+    mapping: DS.hasMany('schedule-mapping', { async: false })
 });

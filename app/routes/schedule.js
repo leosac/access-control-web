@@ -1,6 +1,8 @@
 import LeosacRoute from 'web/leosac-route';
+import Ember from 'ember';
 
 export default LeosacRoute.extend({
+    flashMessage: Ember.inject.service('flash-messages'),
     _title: 'schedule.title',
     _requireAuth: true,
     beforeModel()
@@ -27,12 +29,6 @@ export default LeosacRoute.extend({
         editSchedule ()
         {
             const self = this;
-            let i = 0;
-
-            self.controller.get('model').get('mapping').forEach(() => {
-                i++;
-            });
-            console.log(i);
             self.controller.get('model').save().then(() =>
                 {
                     this.get('flashMessages').success('Schedule successfully edited.');
@@ -44,21 +40,10 @@ export default LeosacRoute.extend({
         },
         addMapping ()
         {
+            this.get('flashMessage').success('TEST');
             const newMapping = this.get('store').createRecord('schedule-mapping');
-            let modeltest = this.controller.get('model');
-            let i = 0;
-            modeltest.get('mapping').forEach((mapping) => {
-                i++;
-            });
-            console.log('i first round = ' + i);
             newMapping.set('alias', 'Unnamed mapping');
             this.controller.get('model').get('mapping').addObject(newMapping);
-            let model = this.controller.get('model');
-            i = 0;
-            model.get('mapping').forEach((mapping) => {
-                i++;
-            });
-            console.log('i second round = ' + i);
         },
         removeMapping (mapping)
         {
