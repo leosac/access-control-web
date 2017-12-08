@@ -114,6 +114,11 @@ App = Ember.Application.extend({
                 displayName: 'Wiegand Reader Wizard',
                 isWizard: true,
                 entryPoint: '/',
+                neededModule: [
+                    "wiegandreader",
+                    "pifacedigitalGPIO",
+                    "LEDbuzzer"
+                ],
                 modelToRoute: {
                 }
             },

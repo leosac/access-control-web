@@ -1,5 +1,12 @@
 import Ember from 'ember';
 
+function camelize(str) {
+    return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, function (match, index) {
+        if (+match === 0) return ""; // or if (/\s+/.test(match)) for white spaces
+        return index === 0 ? match.toLowerCase() : match.toUpperCase();
+    });
+}
+
 /**
  * This service will help us manage every module that are in our application,
  */
@@ -46,6 +53,10 @@ function formatRouteName(input, entryPoint) {
     return input;
 }
 
+function formatModuleName(str) {
+    return str.replace(/-/g, ' ').toUpperCase();
+}
+
 export default Ember.Service.extend({
     ws: Ember.inject.service('websocket'),
     info: Ember.inject.service('leosac-info'),
@@ -65,7 +76,7 @@ export default Ember.Service.extend({
         this.fetchModule();
     },
 
-    _pushModulesInfos(routeName, displayName, needServer, entryPoint, modelToRoute, isWizard) {
+    _pushModulesInfos(routeName, displayName, needServer, entryPoint, modelToRoute) {
         routeName = formatRouteName(routeName, entryPoint);
         let moduleInfos = {
             displayName: displayName,
@@ -75,7 +86,21 @@ export default Ember.Service.extend({
         };
         return (moduleInfos);
     },
-
+    _pushWizardInfos(routeName, displayName, needServer, entryPoint, modelToRoute, neededModule) {
+        routeName = formatRouteName(routeName, entryPoint);
+        let formatedNeededModules = [];
+        neededModule.forEach((module) => {
+            formatedNeededModules.push(formatModuleName(module));
+        });
+        let wizardInfos = {
+            displayName: displayName,
+            routeName: routeName,
+            needServer: needServer,
+            modelToRoute: modelToRoute,
+            neededModule: formatedNeededModules
+        };
+        return (wizardInfos);
+    },
     /**
      * This function is meant to catch every module,
      * and tell if they are loaded in the server, the client, or both.
@@ -138,8 +163,8 @@ export default Ember.Service.extend({
                     else {
                         if (module[1].leosacProperty.isWizard === true) {
                             modulesWizard.push(module[0]);
-                            wizardsInfo.push(self._pushModulesInfos(module[0], module[1].leosacProperty.displayName,
-                                false, module[1].leosacProperty.entryPoint, module[1].leosacProperty.modelToRoute, module[1].leosacProperty.isWizard));
+                            wizardsInfo.push(self._pushWizardInfos(module[0], module[1].leosacProperty.displayName,
+                                false, module[1].leosacProperty.entryPoint, module[1].leosacProperty.modelToRoute, module[1].leosacProperty.neededModule));
                         }
                         else {
                             modulesShouldBeLoadedOnClient.push(module[0]);
@@ -149,7 +174,9 @@ export default Ember.Service.extend({
                     }
                 });
 
-
+                /**
+                 * This will sort the modules by name, ASC
+                 */
                 modulesInfo.sort(function (a, b) {
                     if (a.routeName >= b.routeName)
                         return 1;
@@ -177,7 +204,6 @@ export default Ember.Service.extend({
                 /**
                  * Now we will fill an array with the module that should be loaded by both,
                  * but are only loaded by the client, and the server afterward
-                 * @type {[null,null,null]}
                  */
 
                 let modulesNotLoadedByTheServer = [];
@@ -189,6 +215,7 @@ export default Ember.Service.extend({
                 modulesShouldBeLoadedOnBothServer.forEach(function (name) {
                     modulesNotLoadedByTheClient.push(name);
                 });
+
                 i = 0;
 
                 while (modulesShouldBeLoadedOnBothServer[i]) {
@@ -203,8 +230,17 @@ export default Ember.Service.extend({
                     i++;
                 }
 
+                let modulesNeededByWizard = [];
+
+                for (i = 0; wizardsInfo[i]; i++) {
+                    for (let j = 0; wizardsInfo[i].neededModule[j]; j++) {
+                        if (modulesNeededByWizard.includes(wizardsInfo[i].neededModule[j]) === false)
+                            modulesNeededByWizard.push(wizardsInfo[i].neededModule[j]);
+                    }
+                }
 
                 i = 0;
+
                 let checkOccurrence = 0;
                 while (modulesShouldBeLoadedOnBothClient[i]) {
                     let j = 0;
@@ -230,8 +266,10 @@ export default Ember.Service.extend({
                  * - shouldPresentBoth: which contain the modules that are loaded by the server and the client
                  * - onlyPresentClient: which contain the modules that are not loaded by the server
                  * - onlyPresentServer: which contain the modules that are not loaded by the client
+                 * - wizardModules: contain the wizards that are loaded by the client
+                 * - modulesNeededByWizard: this is a list of modules needed by the wizards located in the application
                  * - modulesInfo: contain the necessary information about modules that will be used for the route for example
-                 *
+                 * - wizardsInfo: contain the necessary information about wizards
                  * The last two should be displayed as error.
                  */
 
@@ -241,6 +279,8 @@ export default Ember.Service.extend({
                 self.set('shouldPresentBoth', modulesLoadedByBoth);
                 self.set('onlyPresentClient', modulesNotLoadedByTheServer);
                 self.set('onlyPresentServer', modulesNotLoadedByTheClient);
+                self.set('wizardModules');
+                self.set('modulesNeededByWizard', modulesNeededByWizard);
                 self.set('modulesInfo', modulesInfo);
                 self.set('wizardsInfo', wizardsInfo);
             });
