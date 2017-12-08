@@ -2,9 +2,7 @@
   "author": "",
   "dependencies": {
     "bootstrap": "3.3.7",
-    "bower": "^1.8.2",
     "broccoli-asset-rev": "2.6.0",
-    "ember-ajax": "3.0.0",
     "ember-bootstrap": "1.0.0-rc.5",
     "ember-bootstrap-cp-validations": "1.0.0-alpha.0",
     "ember-bootstrap-datetimepicker": "1.1.0",
@@ -22,7 +20,6 @@
     "ember-cli-qunit": "4.1.1",
     "ember-cli-shims": "1.2.0",
     "ember-cli-sri": "2.1.1",
-    "ember-cli-test-loader": "2.2.0",
     "ember-cli-uglify": "2.0.0",
     "ember-cp-validations": "3.5.1",
     "ember-data": "2.17.0",
@@ -32,26 +29,20 @@
     "ember-i18n-cp-validations": "3.0.2",
     "ember-inline-svg": "^0.1.11",
     "ember-load-initializers": "1.0.0",
-    "ember-local-storage": "1.4.0",
     "ember-power-select": "1.10.4",
     "ember-power-select-typeahead": "0.6.1",
     "ember-resolver": "4.5.0",
     "ember-route-action-helper": "2.0.6",
     "ember-simple-auth": "1.4.0",
     "ember-steps": "^2.3.1",
-    "ember-template-compiler": "1.9.0-alpha",
     "ember-toggle": "5.2.1",
     "ember-truth-helpers": "2.0.0",
-    "ember-uploader": "1.2.3",
     "ember-validators": "1.0.4",
     "ember-welcome-page": "3.1.1",
     "eonasdan-bootstrap-datetimepicker": "4.17.47",
-    "handlebars": "~4",
     "jstree": "3.3.4",
     "loader.js": "4.6.0",
-    "minimatch": "3.0.4",
-    "moment-timezone": "^0.5.14",
-    "selenium-webdriver": "^3.6.0"
+    "moment-timezone": "^0.5.14"
   },
   "description": "Small description for web goes here",
   "directories": {
@@ -76,6 +67,7 @@
   "private": true,
   "repository": "",
   "scripts": {
+    "postinstall": "bower install",
     "build": "ember build",
     "start": "ember server",
     "test": "ember test"
