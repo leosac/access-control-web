@@ -1,9 +1,13 @@
 {
-  "displayName": "Wiegand reader",
-  "needServer": true,
-  "entryPoint": "/list",
+  "displayName": "Wiegand Reader Wizard",
+  "needServer": false,
+  "entryPoint": "/",
   "isWizard": true,
+  "neededModule": [
+    "wiegandreader",
+    "pifacedigitalgpio",
+    "ledbuzzer"
+  ],
   "modelToRoute": {
-    "wiegandReader": "wiegand-reader"
   }
 }
