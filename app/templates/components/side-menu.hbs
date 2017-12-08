@@ -92,3 +92,22 @@
   </div>
   <!-- /.sidebar-collapse -->
 </div>
+<script>
+  /**
+   * This jquery function is needed because there is a strange behaviour with the drop-down arrow of the side-menu.
+   * Not very interesting...
+   */
+  $(".nav li").on("click", function (e) {
+    if ($(this).hasClass('active')) {
+      $(this).removeClass('active');
+    }
+    else {
+      if ($(this).parent().parent().hasClass('active')) {
+      }
+      else
+        $('.nav li.active').removeClass('active');
+      $(this).addClass("active");
+    }
+    e.preventDefault();
+  });
+</script>
