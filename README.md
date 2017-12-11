@@ -68,7 +68,11 @@ You will need the following things properly installed on your computer.
                       modelToRoute: {                // if you have a model, this will be used to redirect
                                                                 // to the model page of your module in the global-search 
                           myModel: 'my-model' 
-                      }
+                      },
+                      isWizard: false, // if this is a wizard
+                      neededModule: [
+                      // if it is a wizard, list of the module needed by it
+                      ]
                   },
                   dependencies: {
                       externalRoutes: {
@@ -97,13 +101,15 @@ You will need the following things properly installed on your computer.
                needServer: true,     
                displayName: 'Cool name',
                entryPoint: '/',         
-                                                             
+               isWizard: true                        
                modelToRoute: {
                     myModel: 'my-model' 
-               }
-              
+               },
+               neededModule: [
+               // list of needed module, if this is a wizard.
+               ]
           }
-3. Stil at the root of the engine, there certain file that need to be changed.
+3. Still at the root of the engine, there certain file that need to be changed.
    1. In the *package.json*, you must provide the necessary addon for your module. A good base should be adding:
    ```
    "dependencies": {
@@ -160,7 +166,7 @@ You will need the following things properly installed on your computer.
 
 * Use the bootstrap theme provided by ember-bootstrap. The whole application is based on this theme.
 * Every time you create a new file, if you want that the application take into account the new file,
- restart the application (kill the process, and relaucnh with `ember s`)
+ restart the application (kill the process, and relaunch with `ember s`)
 * For now, only the only languages supported are english and french, if you want to provide more language, please do so!
 
 ### Code Generators
@@ -169,13 +175,17 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Running Tests
 
-* `ember test`
-* `ember test --server`
+The test are wrote with snaptest and selenium, you can find more about it int the snaptest-harness file.
 
 ### Building
 
-* `ember build` (development)
-* `ember build --environment production` (production)
+* `ember build --prod`
+
+### Run
+
+*  `ember serve` or `ember s`  
+Don't forget to provide the leosac address. It should either be in your `ENV`, or you can provide it like that for example:
+` LEOSAC_ADDR='ws://172.17.0.3:8888' ember s`
 
 ## Further Reading / Useful Links
 
