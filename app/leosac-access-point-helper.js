@@ -52,7 +52,7 @@ function findAllAccessPoints(store)
  * The concrete type of the access point doesn't matter, this function
  * will search for all.
  */
-function deleteAccessPoint(store, apId, resolve, reject)
+function deleteAccessPoint(store, apId, resolve)
 {
     let ap = store.peekRecord('evoxs-access-point', apId);
     if (!ap)

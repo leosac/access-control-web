@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
 import {findAllAccessPoints} from 'web/leosac-access-point-helper';
 

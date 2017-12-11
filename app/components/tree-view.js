@@ -1,5 +1,4 @@
 import Ember from "ember";
-import DS from "ember-data";
 
 // We needed some function for the tree
 
@@ -138,7 +137,15 @@ export default Ember.Component.extend({
         });
         return [physicalZoneNode, logicalZoneNode];
     }),
-    checkCallback(operation, node, node_parent, node_position, more) {
+    /**
+     * This is a native function that we override.
+     *
+     * @param operation
+     * @param node
+     * @param node_parent
+     * @returns {boolean}
+     */
+    checkCallback(operation, node, node_parent) {
 
         //check if we try to move a node
         if (operation === 'move_node') {

@@ -35,9 +35,8 @@
 
         {{#bs-accordion as |acc|}}
           {{#each model.mapping as |mapping|}}
-            {{#acc.item title='schedule.mapping'}}
-              lol
-              {{!schedule-mapping mapping=mapping}}
+            {{#acc.item title=(t 'schedule.mapping' alias=mapping.alias)}}
+              {{schedule-mapping mapping=mapping}}
             {{/acc.item}}
             <hr>
           {{/each}}

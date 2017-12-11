@@ -31,8 +31,9 @@ export default Ember.Controller.extend({
                 userIds.push(uid);
             });
         });
+        console.log(userIds);
         userIds = Array.from(new Set(userIds));
-
+        console.log(userIds);
         const userCanAccessDoor = function (userId, door)
         {
             return door.user_ids.indexOf(userId) !== -1;

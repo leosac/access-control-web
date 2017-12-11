@@ -6,9 +6,7 @@ export default Ember.Component.extend({
     current: 0,
     pages: [],
     // The action that is triggered when a user change page by clicking.
-    onPageChange: (n) =>
-    {
-        n = n;
+    onPageChange: () => {
     },
     didUpdateAttrs() {
         "use strict";

@@ -55,7 +55,7 @@ function findAllCredentials(store)
  * The concrete type of the credential doesn't matter, this function
  * will search for all.
  */
-function deleteCredential(store, credentialId, resolve, reject)
+function deleteCredential(store, credentialId, resolve)
 {
     let cred = store.peekRecord('rfid-card', credentialId);
     if (!cred)

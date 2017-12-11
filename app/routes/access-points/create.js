@@ -20,7 +20,7 @@ export default LeosacRoute.extend({
         ap.set('controllerModule', 'EVOXS');
         return ap;
     },
-    resetController(controller, isExiting, transition)
+    resetController(controller, isExiting)
     {
         if (isExiting)
         {

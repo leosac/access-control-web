@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
@@ -14,7 +13,7 @@ export default LeosacRoute.extend({
         "use strict";
         return this.get('store').createRecord('pin-code');
     },
-    resetController(controller, isExiting, transition)
+    resetController(controller, isExiting)
     {
         // Rollback change when leaving the page.
         if (isExiting)

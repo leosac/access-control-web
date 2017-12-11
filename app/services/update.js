@@ -45,7 +45,7 @@ export default Ember.Service.extend({
     acknowledgeUpdate(update)
     {
         return this.get('websocket').sendJson('ack_update',
-            {update_id: update.get('numericId')}).then((resp) =>
+            {update_id: update.get('numericId')}).then(() =>
         {
             return true;
         });
@@ -53,7 +53,7 @@ export default Ember.Service.extend({
     cancelUpdate(update)
     {
         return this.get('websocket').sendJson('cancel_update',
-            {update_id: update.get('numericId')}).then((resp) =>
+            {update_id: update.get('numericId')}).then(() =>
         {
             return true;
         });

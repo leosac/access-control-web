@@ -4,7 +4,7 @@ import Ember from 'ember';
 export default ApplicationAdapter.extend({
     ws: Ember.inject.service('websocket'),
 
-    findRecord: function (store, type, id, snapshot)
+    findRecord: function (store, type, id)
     {
         const ws = this.get('ws');
 
@@ -16,7 +16,7 @@ export default ApplicationAdapter.extend({
             );
         });
     },
-    findAll: function (store, type, sinceToken, snapshotRecordArray)
+    findAll: function ()
     {
         const ws = this.get('ws');
 

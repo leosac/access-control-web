@@ -11,7 +11,7 @@ const ZoneValidations = buildValidations(
             validator('length',
                 {
                     min: 3,
-                    max: 15
+                    max: 30
                 })
         ]
     }

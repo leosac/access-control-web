@@ -23,7 +23,7 @@ export default ApplicationAdapter.extend({
                 (failure) => reject(failure));
         });
     },
-    findRecord: function (store, type, id, snapshot)
+    findRecord: function (store, type, id)
     {
         const ws = this.get('ws');
 
@@ -71,7 +71,7 @@ export default ApplicationAdapter.extend({
                 (failure) => reject(failure));
         });
     },
-    findAll: function (store, type, sinceToken)
+    findAll: function ()
     {
         const ws = this.get('ws');
         return new Ember.RSVP.Promise(function (resolve, reject)

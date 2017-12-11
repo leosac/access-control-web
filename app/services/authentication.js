@@ -146,7 +146,7 @@ export default Ember.Service.extend({
     fetchLocalAuthToken()
     {
         "use strict";
-        if (!!localStorage.auth_token)
+        if (localStorage.auth_token && localStorage.auth_token.length)
         {
             return localStorage.auth_token;
         }

@@ -1,6 +1,4 @@
 import Ember from 'ember';
-import moment from 'moment';
-import DS from 'ember-data';
 
 export default Ember.Component.extend({
     timeframe: {

@@ -1,6 +1,4 @@
-import LeosacRoute from 'web/leosac-route';
 import Ember from 'ember';
-import ENV from 'web/config/environment';
 
 /**
  * This route is a bit odd as you can see. The template is empty,
@@ -42,10 +40,6 @@ export default Ember.Route.extend({
          * This will retrieve the url, add the missing slash (/),
          * and then set the leosac address with the new address.
          */
-        // let rawAddress = this.get('router.url');
-        // console.log(rawAddress);
-        // let address = rawAddress.replace('/entry-point/', '');
-        // console.log(address);
         return this._super();
     }
 });

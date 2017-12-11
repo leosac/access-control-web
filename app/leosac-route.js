@@ -63,9 +63,8 @@ export default Ember.Route.extend({
         /**
          * An error was raised from a route model() method (or similar).
          * @param err
-         * @param transition
          */
-        error(err, transition)
+        error(err)
         {
             this.intermediateTransitionTo('error', err);
             return false;

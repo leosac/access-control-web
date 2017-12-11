@@ -1,5 +1,4 @@
 import DS from 'ember-data';
-import moment from 'moment';
 
 
 function clone(obj)
