@@ -32,10 +32,13 @@ To import the test, you need the API key (it will import all the test from the e
 `snaptest -f Hy3s0TGWf -r nightwatch -s flat -t <API key>`. Be careful, it will remove the _/snaptests_ folder to 
 replace it with the new tests. 
 
+If you want to import the snaptest from the extensions, you should have put them in a json format file. Then use this
+ command: `snaptest -r nightwatch -s flat -i <JSONFILE.json>`
+
 You will then have all the tests in a folder named _snaptests_. To run this tests, use the command: `npm test`.
 
 If you want to run the test on an other browser than Google chrome,
-replace `google chrome` with `firefox` in the _nightwatch.json_ file here:
+replace `chrome` with `firefox` in the _nightwatch.json_ file here( only `firefox` and `chrome` supported right now):
 ```
 {
   "test_settings" : {

@@ -11,7 +11,7 @@
   },
   "selenium" : {
     "start_process" : true,
-    "server_path" : "./bin/selenium-server-standalone-3.0.0-beta3.jar",
+    "server_path" : "./bin/selenium-server-standalone-3.8.1.jar",
     "log_path" : "",
     "host" : "127.0.0.1",
     "port": 4444,
@@ -32,7 +32,7 @@
         "path" : ""
       },
       "desiredCapabilities": {
-        "browserName": "opera",
+        "browserName": "firefox",
         "javascriptEnabled": true,
         "marionette": true
       }

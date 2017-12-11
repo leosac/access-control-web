@@ -48,9 +48,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "HkvXyg4-f",
@@ -66,9 +64,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "SJu71gE-f",
@@ -174,9 +170,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "HJyDmRGbf",
@@ -192,9 +186,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "rJWwmCMZG",
@@ -210,9 +202,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "HJlmDQ0fZG",
@@ -227,9 +217,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "r1Vv7RM-G",
@@ -245,9 +233,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "B1rP7Af-f",
@@ -324,9 +310,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "HkEMjkEZf",
@@ -342,9 +326,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "BySfskN-z",
@@ -557,9 +539,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "ByhXBg4Wf",
@@ -575,9 +555,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "HkTmSeN-M",
@@ -607,9 +585,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "S1xEBxNbf",
@@ -671,9 +647,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "ryQsmpfWG",
@@ -689,9 +663,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "r1xEsQTGWf",
@@ -722,9 +694,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "SkpomTMWz",
@@ -740,9 +710,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "Syyh7pG-z",
@@ -758,9 +726,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "ry-2m6z-z",
@@ -776,9 +742,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "SJV2mpzWf",
@@ -839,9 +803,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "S1ieXgNWz",
@@ -852,14 +814,12 @@
         },
         {
           "type": "MOUSEDOWN",
-          "selector": "div > ul > li:nth-of-type(5) > ul > li:nth-of-type(2) > a > div",
+          "selector": "div > div > ul > li:nth-of-type(5) > ul > li:nth-of-type(2) > a",
           "selectorType": "CSS",
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [],
           "suggestions": [],
           "continueOnFail": false,
           "id": "S18Z7gN-z",
@@ -1040,9 +1000,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "HJOjVlN-M",
@@ -1058,9 +1016,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "B1Ki4gN-z",
@@ -1090,9 +1046,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "H1ojExEZf",
@@ -1229,9 +1183,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "SyKMNazbM",
@@ -1247,9 +1199,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "SJjGETGZG",
@@ -1265,9 +1215,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "B1aGVTzbf",
@@ -1283,9 +1231,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "SJAG4pGZf",
@@ -1376,9 +1322,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "HkQlElV-G",
@@ -1394,9 +1338,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "ByNxVgEWG",
@@ -1426,9 +1368,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "S1kD4eNWf",
@@ -1550,9 +1490,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "B1LYNTf-z",
@@ -1568,9 +1506,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "SJtKEaz-M",
@@ -1602,9 +1538,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "rkatEpfZz",
@@ -1620,9 +1554,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "Hy7cVpzbz",
@@ -1713,9 +1645,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "HJlHXlNZz",
@@ -1731,9 +1661,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "HkGrmxE-M",
@@ -1809,9 +1737,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "rJ-HiUazbG",
@@ -1873,9 +1799,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "rJurL6fbz",
@@ -1891,9 +1815,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "rJ3B8TMbf",
@@ -1909,9 +1831,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "HyRBLpGWG",
@@ -1943,9 +1863,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "r1fUUpfbM",
@@ -1977,9 +1895,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "By8886zWf",
@@ -1995,9 +1911,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "SJKILTfZz",
@@ -2029,9 +1943,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "rkhILaMbf",
@@ -2063,9 +1975,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "By0ILTzZM",
@@ -2081,9 +1991,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "SyXa86M-M",
@@ -2159,9 +2067,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "SJ5cRkE-G",
@@ -2172,14 +2078,12 @@
         },
         {
           "type": "MOUSEDOWN",
-          "selector": "div > ul > li:nth-of-type(5) > ul > li > a > div",
+          "selector": "div > div > ul > li:nth-of-type(5) > ul > li > a",
           "selectorType": "CSS",
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [],
           "suggestions": [],
           "continueOnFail": false,
           "id": "B1sq0JE-G",
@@ -2285,9 +2189,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "H112PpGWG",
@@ -2303,9 +2205,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "rJ73DpG-G",
@@ -2321,9 +2221,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "S1xEnwpzWM",
@@ -2354,9 +2252,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "H133vTfbz",
@@ -2447,9 +2343,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "SJSfQ1N-f",
@@ -2465,9 +2359,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "By8G7yV-G",
@@ -2573,9 +2465,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "Bygr32AmWM",
@@ -2590,9 +2480,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "BJZI3nRXWf",
@@ -2623,9 +2511,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "HJq2hR7-M",
@@ -2716,9 +2602,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "H1Uv-xNZf",
@@ -2734,9 +2618,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "H1DwbeNWf",
@@ -2828,9 +2710,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "HkNAopMWM",
@@ -2878,9 +2758,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "B1WHg2TGZz",
@@ -2895,9 +2773,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "SkgRlhTG-G",
@@ -2928,9 +2804,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "H1SW3aMWM",
@@ -2946,9 +2820,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "SJv-2afbf",
@@ -2964,9 +2836,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "Byl_W2azbf",
@@ -2997,9 +2867,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "HkobnaM-f",
@@ -3015,9 +2883,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "SJMG3aGbM",
@@ -3033,9 +2899,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "SJWGG26M-G",
@@ -3066,9 +2930,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "S16zhpGWz",
@@ -3110,6 +2972,110 @@
       ],
       "name": "Add user, group adn door to the schedule",
       "id": "S18YjpMWz"
+    },
+    {
+      "name": "Test zone name field",
+      "description": "",
+      "actions": [
+        {
+          "type": "URL_CHANGE_INDICATOR",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "HyedVIQnZM",
+          "value": "/zones/create",
+          "index": null
+        },
+        {
+          "type": "FULL_PAGELOAD",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "HyONUX2Zz",
+          "value": "${baseUrl}/zones/create",
+          "isInitialLoad": false,
+          "width": 950,
+          "height": 969
+        },
+        {
+          "type": "INPUT",
+          "selector": "fieldset > :nth-child(2) .form-control",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "ryeWrUX3bG",
+          "value": "asdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfg",
+          "inputType": "text",
+          "isContentEditable": false
+        },
+        {
+          "type": "INPUT",
+          "selector": "fieldset > :nth-child(3) .form-control",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "rk0FT73ZM",
+          "value": "jlouiioli"
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": ".btn-success",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "ByrIyNnbf",
+          "textContent": null,
+          "textAsserted": false,
+          "x": null,
+          "y": null
+        },
+        {
+          "type": "TEXT_ASSERT",
+          "selector": ".help-block",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "rk3B8X3bG",
+          "value": "This field is too long (maximum is 30 characters)",
+          "regex": false
+        }
+      ],
+      "id": "r1hIkX3-f",
+      "type": "test",
+      "variables": [
+        {
+          "id": "HyeW2Hm2bf",
+          "name": "baseUrl",
+          "defaultValue": "http://localhost:4200",
+          "type": "STRING_VAR"
+        }
+      ]
     }
   ],
   "components": [
@@ -3307,9 +3273,7 @@
           "nodeName": null,
           "description": null,
           "timeout": null,
-          "warnings": [
-            8
-          ],
+          "warnings": [8],
           "suggestions": [],
           "continueOnFail": false,
           "id": "S14qryNbf",
@@ -3344,6 +3308,144 @@
           "type": "STRING_VAR"
         }
       ]
+    },
+    {
+      "name": "Login",
+      "actions": [
+        {
+          "type": "URL_CHANGE_INDICATOR",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "r1WLxr1NZG",
+          "value": "/login",
+          "index": null
+        },
+        {
+          "type": "FULL_PAGELOAD",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "B1UgHkEZf",
+          "value": "${baseUrl}/login",
+          "isInitialLoad": false,
+          "width": 950,
+          "height": 969
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": ".form-horizontal > :nth-child(2) .form-control",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "HkugSkNWG",
+          "textContent": null,
+          "textAsserted": false,
+          "x": 521,
+          "y": 180
+        },
+        {
+          "type": "INPUT",
+          "selector": ".form-horizontal > :nth-child(2) .form-control",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "rylYxSyEbf",
+          "value": "admin",
+          "inputType": "text",
+          "isContentEditable": false
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": ".form-horizontal > :nth-child(3) .form-control",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "HkjeHy4bG",
+          "textContent": null,
+          "textAsserted": false,
+          "x": 469,
+          "y": 255
+        },
+        {
+          "type": "INPUT",
+          "selector": ".form-horizontal > :nth-child(3) .form-control",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "HkengS1VWz",
+          "value": "admin",
+          "inputType": "password",
+          "isContentEditable": false
+        },
+        {
+          "type": "MOUSEDOWN",
+          "selector": ".ember-application .ember-view .btn-primary",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "SyAgS1V-M",
+          "textContent": "Sign in",
+          "textAsserted": false,
+          "x": 473,
+          "y": 307
+        },
+        {
+          "type": "PUSHSTATE",
+          "selector": "",
+          "selectorType": "CSS",
+          "nodeName": null,
+          "description": null,
+          "timeout": null,
+          "warnings": [],
+          "suggestions": [],
+          "continueOnFail": false,
+          "id": "r1kZHkE-z",
+          "value": "/",
+          "index": 7
+        }
+      ],
+      "id": "Bk4kJQnbG",
+      "isBlank": true,
+      "type": "component",
+      "variables": [
+        {
+          "id": "rygIeHJEWM",
+          "name": "baseUrl",
+          "defaultValue": "http://localhost:4200",
+          "type": "STRING_VAR"
+        }
+      ]
     }
   ],
   "directory": {
@@ -3351,6 +3453,27 @@
     "topLevel": true,
     "showGen": true,
     "children": [
+      {
+        "collapsed": false,
+        "module": "Test the field validator",
+        "id": "ryzeJmn-G",
+        "children": [
+          {
+            "module": "Copy of Login",
+            "testId": "Bk4kJQnbG",
+            "leaf": true,
+            "id": "rJEyJQnZz",
+            "type": "component"
+          },
+          {
+            "module": "Copy of Copy of Unnamed test",
+            "testId": "r1hIkX3-f",
+            "leaf": true,
+            "id": "r1nU172Zz",
+            "type": "test"
+          }
+        ]
+      },
       {
         "collapsed": false,
         "module": "Setup the application",
