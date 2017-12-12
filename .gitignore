@@ -97,5 +97,6 @@ web-service/leosac/
 **/.vscode
 **/note
 
-selenium-test/venv/
+acceptance-test/reports
+acceptance-test/selenium-debug.log
 yarn-error.log
