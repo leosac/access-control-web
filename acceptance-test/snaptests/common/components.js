@@ -19,5 +19,26 @@ module.exports.bindComponents = function(browser) {
       .click(`div:nth-of-type(2) > ul > li:nth-of-type(2) > ul > li:nth-of-type(4) > a`, `CSS`, `Click element`)
   };
 
+  browser.components.goToZoneCreate = function(baseUrl) {
+    return browser
+      .click(`div:nth-of-type(3) > div > div > ul > li:nth-of-type(5) > a`, `CSS`, `Click element`)
+      .click(`div > div > ul > li:nth-of-type(5) > ul > li > a`, `CSS`, `Click element`)
+      .click(`.ember-application .ember-view .btn-primary`, `CSS`, `Click element`)
+  };
+
+  browser.components.gotToRfidCard = function(baseUrl) {
+    return browser
+      .click(`div:nth-of-type(3) > div > div > ul > li:nth-of-type(4) > a`, `CSS`, `Click element`)
+      .click(`div > div > ul > li:nth-of-type(4) > ul > li:nth-of-type(5) > a`, `CSS`, `Click element`)
+      .click(`div > div > div:nth-of-type(2) > a`, `CSS`, `Click element`)
+  };
+
+  browser.components.goToPinCodeCreate = function(baseUrl) {
+    return browser
+      .click(`div:nth-of-type(3) > div > div > ul > li:nth-of-type(4) > a`, `CSS`, `Click element`)
+      .click(`div > div > ul > li:nth-of-type(4) > ul > li:nth-of-type(5) > a`, `CSS`, `Click element`)
+      .click(`div > div > div:nth-of-type(2) > a:nth-of-type(2)`, `CSS`, `Click element`)
+  };
+
 
 }
