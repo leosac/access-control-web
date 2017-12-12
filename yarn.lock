@@ -2482,9 +2482,9 @@ ember-cli-eslint@^4.2.3:
     rsvp "^4.6.1"
     walk-sync "^0.3.0"
 
-ember-cli-flash@1.6.1:
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/ember-cli-flash/-/ember-cli-flash-1.6.1.tgz#3fb430417425ff7c5db7defbd47ace7adad7da6b"
+ember-cli-flash@1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/ember-cli-flash/-/ember-cli-flash-1.6.2.tgz#7c3527aa6016039fc63265135fc21501d1c2bde0"
   dependencies:
     ember-cli-babel "^6.10.0"
     ember-cli-htmlbars "^2.0.1"
@@ -2699,9 +2699,9 @@ ember-cli-version-checker@^2.0.0, ember-cli-version-checker@^2.1.0:
     resolve "^1.3.3"
     semver "^5.3.0"
 
-ember-cli@2.17.0:
-  version "2.17.0"
-  resolved "https://registry.yarnpkg.com/ember-cli/-/ember-cli-2.17.0.tgz#4f8b1890724e54e780242ff4d05b498e367e3461"
+ember-cli@2.17.1:
+  version "2.17.1"
+  resolved "https://registry.yarnpkg.com/ember-cli/-/ember-cli-2.17.1.tgz#915a140732cd28d6c3d5b2e890731864ea55ad5b"
   dependencies:
     amd-name-resolver "1.0.0"
     babel-plugin-transform-es2015-modules-amd "^6.24.0"
