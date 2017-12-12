@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="1"
+            tests="1">
+
+  <testsuite name="test the field validator.Test zone name field"
+    errors="0" failures="1" hostname="" id="" package="test the field validator" skipped="0"
+    tests="1" time="12.80" timestamp="Tue, 12 Dec 2017 10:14:34 GMT">
+  
+    <testcase name="Test zone name field" classname="test the field validator.Test zone name field" time="12.80" assertions="1">  <failure message="Failed [ok]: (FAILED: &#39;31 character&#39; - Couldn&#39;t find element. (Change input &#39;fieldset &gt; :nth-child(2) .form-control&#39; using &#39;CSS&#39;))">    at browser._elementPresent (/home/stagiaire/build/leosac/leosac-web/acceptance-test/snaptests/common/snaptest-nw-driver.js:237:22)
+    at Object.&lt;anonymous&gt; (/home/stagiaire/build/leosac/leosac-web/acceptance-test/snaptests/common/snaptest-nw-driver.js:383:11)</failure>
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>

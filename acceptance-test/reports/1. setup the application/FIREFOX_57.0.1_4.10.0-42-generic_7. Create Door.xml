@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="1">
+
+  <testsuite name="1. setup the application.7. Create Door"
+    errors="0" failures="0" hostname="" id="" package="1. setup the application" skipped="0"
+    tests="1" time="7.624" timestamp="Tue, 12 Dec 2017 09:42:47 GMT">
+  
+    <testcase name="7. Create Door" classname="1. setup the application.7. Create Door" time="7.624" assertions="11">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>
