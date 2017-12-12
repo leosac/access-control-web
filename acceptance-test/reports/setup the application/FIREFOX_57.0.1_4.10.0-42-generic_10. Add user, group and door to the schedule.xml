@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="1"
+            tests="1">
+
+  <testsuite name="setup the application.10. Add user, group and door to the schedule"
+    errors="0" failures="1" hostname="" id="" package="setup the application" skipped="0"
+    tests="1" time="15.27" timestamp="Tue, 12 Dec 2017 09:26:54 GMT">
+  
+    <testcase name="10. Add user, group and door to the schedule" classname="setup the application.10. Add user, group and door to the schedule" time="15.27" assertions="8">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+      <failure message="Failed [ok]: (FAILED: &#39;Click element&#39; - Couldn&#39;t find element to click. (Click &#39;div:nth-of-type(2) &gt; div &gt; table &gt; tbody &gt; tr:nth-of-type(2) &gt; td:nth-of-type(2)&#39; using &#39;CSS&#39;))">    at browser._elementPresent (/home/stagiaire/build/leosac/leosac-web/acceptance-test/snaptests/common/snaptest-nw-driver.js:200:22)
+    at Object.&lt;anonymous&gt; (/home/stagiaire/build/leosac/leosac-web/acceptance-test/snaptests/common/snaptest-nw-driver.js:383:11)</failure>
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>

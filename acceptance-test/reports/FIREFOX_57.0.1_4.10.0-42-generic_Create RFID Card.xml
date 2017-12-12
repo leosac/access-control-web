@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="1">
+
+  <testsuite name="Create RFID Card"
+    errors="0" failures="0" hostname="" id="" package="Create RFID Card" skipped="0"
+    tests="1" time="9.025" timestamp="Tue, 12 Dec 2017 09:25:19 GMT">
+  
+    <testcase name="Create RFID Card" classname="Create RFID Card" time="9.025" assertions="19">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>

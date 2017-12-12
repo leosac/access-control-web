@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="1">
+
+  <testsuite name="setup the application.1. Create user"
+    errors="0" failures="0" hostname="" id="" package="setup the application" skipped="0"
+    tests="1" time="5.852" timestamp="Tue, 12 Dec 2017 09:26:54 GMT">
+  
+    <testcase name="1. Create user" classname="setup the application.1. Create user" time="5.852" assertions="17">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>

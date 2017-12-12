@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="1"
+            tests="1">
+
+  <testsuite name="test the field validator.Test zone name field"
+    errors="0" failures="1" hostname="" id="" package="test the field validator" skipped="0"
+    tests="1" time="13.28" timestamp="Tue, 12 Dec 2017 09:42:56 GMT">
+  
+    <testcase name="Test zone name field" classname="test the field validator.Test zone name field" time="13.28" assertions="6">
+
+    
+
+    
+
+    
+
+    
+
+      <failure message="Failed [ok]: (FAILED: &#39;Change input to... &#34;asdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfgasdfg&#34;&#39; - Couldn&#39;t find element. (Change input &#39;fieldset &gt; :nth-child(2) .form-control&#39; using &#39;CSS&#39;))">    at browser._elementPresent (/home/stagiaire/build/leosac/leosac-web/acceptance-test/snaptests/common/snaptest-nw-driver.js:237:22)
+    at Object.&lt;anonymous&gt; (/home/stagiaire/build/leosac/leosac-web/acceptance-test/snaptests/common/snaptest-nw-driver.js:383:11)</failure>
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>

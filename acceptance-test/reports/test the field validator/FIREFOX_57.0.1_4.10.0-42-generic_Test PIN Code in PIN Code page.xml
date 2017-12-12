@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="1"
+            tests="1">
+
+  <testsuite name="test the field validator.Test PIN Code in PIN Code page"
+    errors="0" failures="1" hostname="" id="" package="test the field validator" skipped="0"
+    tests="1" time="14.15" timestamp="Tue, 12 Dec 2017 09:42:52 GMT">
+  
+    <testcase name="Test PIN Code in PIN Code page" classname="test the field validator.Test PIN Code in PIN Code page" time="14.15" assertions="6">
+
+    
+
+    
+
+    
+
+    
+
+      <failure message="Failed [ok]: (FAILED: &#39;Change input to... &#34;Test&#34;&#39; - Couldn&#39;t find element. (Change input &#39;fieldset .is-required .form-control&#39; using &#39;CSS&#39;))">    at browser._elementPresent (/home/stagiaire/build/leosac/leosac-web/acceptance-test/snaptests/common/snaptest-nw-driver.js:237:22)
+    at Object.&lt;anonymous&gt; (/home/stagiaire/build/leosac/leosac-web/acceptance-test/snaptests/common/snaptest-nw-driver.js:383:11)</failure>
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>

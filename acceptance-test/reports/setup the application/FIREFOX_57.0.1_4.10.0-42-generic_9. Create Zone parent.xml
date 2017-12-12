@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="1">
+
+  <testsuite name="setup the application.9. Create Zone parent"
+    errors="0" failures="0" hostname="" id="" package="setup the application" skipped="0"
+    tests="1" time="4.919" timestamp="Tue, 12 Dec 2017 09:27:10 GMT">
+  
+    <testcase name="9. Create Zone parent" classname="setup the application.9. Create Zone parent" time="4.919" assertions="17">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>
