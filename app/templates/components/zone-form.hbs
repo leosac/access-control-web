@@ -60,7 +60,6 @@
                                         selected=newDoor.alias
                                         placeholder=(t 'schedule.type_door')
                                         onchange=(action (mut newDoor)) as |doorInfo|}}
-                {{log doorInfo}}
                 {{doorInfo.alias}}
               {{/power-select-typeahead}}
             {{/form.element}}
