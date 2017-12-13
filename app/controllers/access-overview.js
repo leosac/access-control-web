@@ -118,7 +118,6 @@ export default Ember.Controller.extend({
                     });
                 });
 
-                console.log(userIds);
                 userIds = [...new Set(userIds)];
 
                 userIds.forEach((uid) => {
