@@ -107,7 +107,7 @@ export default {
     'reader': 'Lecteur',
     'refresh': 'Actualiser',
     'remove_selected': 'Supprimer la sélection',
-    'remove': 'Supprimer',
+    'remove': 'Enlever',
     'remove_timeframe' : 'Supprimer la zone de temps',
     'restart_info': 'Ce bouton permet de redémarrer le serveur',
     'restart': 'Redémarrage',

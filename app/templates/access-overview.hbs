@@ -1,26 +1,106 @@
-<div class="table-responsive">
-    <table class="table table-hover table-bordered">
+This part will let you select which door and user the comparison should be made:
+
+<div class="row">
+  <div class="col-md-6">
+    {{#power-select-typeahead options=allUsers
+                              placeholder=(t 'user')
+                              searchField='username'
+                              onchange=(action "addUser") as |user|}}
+      {{user.username}}
+    {{/power-select-typeahead}}
+  </div>
+  <div class="col-md-6">
+    {{#power-select-typeahead options=allDoors
+                              placeholder=(t 'doors')
+                              searchField='alias'
+                              onchange=(action "addDoor") as |door|}}
+      {{door.alias}}
+    {{/power-select-typeahead}}
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="table-responsive">
+      <table class="table table-hover">
         <thead>
-        <th>{{t 'username'}} / {{t 'w.door'}}</th>
-        {{#each allDoors as |door|}}
-            <th>{{door.alias}}</th>
-        {{/each}}
+        <th>#Id</th>
+        <th class="text-center">{{t 'alias'}}</th>
+        <th class="text-center">{{t 'remove'}}</th>
         </thead>
         <tbody>
-        {{#each userDoorInfo as |userDoorInfo|}}
-            {{#link-to 'profile' userDoorInfo.user.id tagName="tr"}}
-                <td>{{userDoorInfo.user.username}}</td>
-                {{#each userDoorInfo.doors as |accessToDoor|}}
-                    <td class="{{if accessToDoor 'success' 'danger'}}">
-                        {{#if accessToDoor}}
-                            {{t 'yes'}}
-                        {{else}}
-                            {{t 'no'}}
-                        {{/if}}
-                    </td>
-                {{/each}}
-            {{/link-to}}
+        {{#each selectedUsers as |user|}}
+          <tr>
+            <td>
+              {{user.id}}
+            </td>
+            <td class="text-center">
+              {{user.username}}</td>
+            <td>
+              <div class="text-center">
+                {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
+                            defaultText=(t 'remove') onClick=(action 'removeUser' user)}}
+              </div>
+            </td>
+          </tr>
         {{/each}}
         </tbody>
-    </table>
+      </table>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+        <th>#Id</th>
+        <th class="text-center">{{t 'alias'}}</th>
+        <th class="text-center">{{t 'remove'}}</th>
+        </thead>
+        <tbody>
+        {{#each selectedDoors as |door|}}
+          <tr>
+            <td>
+              {{door.id}}
+            </td>
+            <td class="text-center">
+              {{door.alias}}</td>
+            <td>
+              <div class="text-center">
+                {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
+                            defaultText=(t 'remove') onClick=(action 'removeDoor' door)}}
+              </div>
+            </td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-hover table-bordered">
+    <thead>
+    <th>{{t 'username'}} / {{t 'w.door'}}</th>
+    {{#each displayedDoors as |door|}}
+      <th>{{door.alias}}</th>
+    {{/each}}
+    </thead>
+    <tbody>
+    {{#each userDoorInfo as |userDoorInfo|}}
+      {{#link-to 'profile' userDoorInfo.user.id tagName="tr"}}
+        <td>{{userDoorInfo.user.username}}</td>
+        {{#each userDoorInfo.doors as |accessToDoor|}}
+          <td class="{{if accessToDoor 'success' 'danger'}}">
+            {{#if accessToDoor}}
+              {{t 'yes'}}
+            {{else}}
+              {{t 'no'}}
+            {{/if}}
+          </td>
+        {{/each}}
+      {{/link-to}}
+    {{/each}}
+    </tbody>
+  </table>
 </div>
