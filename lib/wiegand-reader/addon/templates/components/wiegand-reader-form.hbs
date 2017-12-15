@@ -75,11 +75,11 @@
 
       <div class="row">
         <div class="col-md-6">
-          {{bs-button
-            defaultText=(t 'submit')
-            type="success"
-            size="md"
-            buttonType="submit"}}
+          {{bs-button defaultText=(t 'submit')
+                      type="success"
+                      size="md"
+                      onClick=action
+                      buttonType="submit"}}
         </div>
         {{#if delete}}
           <div class="pull-right form-button-delete">
@@ -93,7 +93,6 @@
           </div>
         {{/if}}
       </div>
-
     </fieldset>
   </div>
 {{/bs-form}}
