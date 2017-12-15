@@ -235,10 +235,13 @@ export default Ember.Service.extend({
     /**
      * Returns a list of enabled AccessPoint modules.
      * Currently this list is hardcoded client side.
+     *
+     * EVOXS will be removed
+     * leosac-builtin-access-point is a generic access point, it is builtin
      */
     listAccessPointModuleNames()
     {
-        return ['EVOXS'];
+        return ['EVOXS', 'LEOSAC-BUILTIN-ACCESS-POINT'];
     },
 
     /**

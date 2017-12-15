@@ -76,6 +76,8 @@ Router.map(function () {
   this.mount('wiegand-reader');
   this.mount('led-buzzer');
   this.mount('wiegand-reader-wizard');
+  this.route('leosac-builtin-access-point', {path: '/leosac-builtin-access-point/:access_point_id'});
+  this.route('leosac-builtin-access-point-list');
 });
 
 export default Router;

@@ -12,7 +12,8 @@ export default LeosacRoute.extend({
     model()
     {
         "use strict";
-        return findAllAccessPoints(this.get('store'));
+//        return findAllAccessPoints(this.get('store'));
+        return this.get('store').peekAll('access-point');
     },
     actions: {
         deleteAP(ap)
