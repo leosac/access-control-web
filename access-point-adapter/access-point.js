@@ -28,34 +28,35 @@ export default ApplicationAdapter.extend({
             );
         });
     },
-    createRecord: function (store, type, snapshot)
-    {
-        const data = this.serialize(snapshot);
-        const ws = this.get('ws');
+   // createRecord: function (store, type, snapshot)
+    //{
+        // const data = this.serialize(snapshot);
+        // const ws = this.get('ws');
+        //
+        // return new Ember.RSVP.Promise(function (resolve, reject)
+        // {
+        //     ws.sendJson('access_point.create', {
+        //         attributes: data.data.attributes
+        //     }).then((data) => resolve(data),
+        //         (failure) => reject(failure));
+        // });
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
-        {
-            ws.sendJson('access_point.create', {
-                attributes: data.data.attributes
-            }).then((data) => resolve(data),
-                (failure) => reject(failure));
-        });
-    },
-    updateRecord: function (store, type, snapshot)
-    {
-        const data = this.serialize(snapshot);
-        const ws = this.get('ws');
-
-        const params = {
-            access_point_id: Number.parseInt(snapshot.id),
-            attributes: data.data.attributes
-        };
-        return new Ember.RSVP.Promise(function (resolve, reject)
-        {
-            ws.sendJson('access_point.update', params).then((data) => resolve(data),
-                (failure) => reject(failure));
-        });
-    },
+    //},
+    // updateRecord: function (store, type, snapshot)
+    // {
+    //     const data = this.serialize(snapshot);
+    //     const ws = this.get('ws');
+    //
+    //     const params = {
+    //         access_point_id: Number.parseInt(snapshot.id),
+    //         attributes: data.data.attributes
+    //     };
+    //     return new Ember.RSVP.Promise(function (resolve, reject)
+    //     {
+    //         ws.sendJson('access_point.update', params).then((data) => resolve(data),
+    //             (failure) => reject(failure));
+    //     });
+    // },
     deleteRecord: function (store, type, snapshot)
     {
         const access_point_id = Number.parseInt(snapshot.id);
