@@ -25,7 +25,6 @@ export default Ember.Component.extend({
         removeDoor(door) {
             this.get('zone').get('doors').removeObject(door);
         },
-
         addChildren() {
             this.get('store').findRecord('zone', this.get('newChildren.id')).then((children) => {
                 this.get('zone').get('children').addObject(children);

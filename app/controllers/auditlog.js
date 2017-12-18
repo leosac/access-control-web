@@ -98,11 +98,9 @@ export default Ember.Controller.extend({
         self.set('fetchingData', true);
         this.get('auditLog').findAllByTypes(enabled_types,
             currentPage, pageSize, progressSetter).then((result) => {
-            //            console.log(result);
             self.set('totalPage', result.meta.total_page);
             self.set('resultCount', result.meta.count);
             self.get('audits').set('content', result.data);
-            //       console.log("content = " + self.get('audits').set('content', result.data));
             progressSetter(0);
             self.set('fetchingData', false);
         });

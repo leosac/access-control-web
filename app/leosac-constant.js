@@ -51,14 +51,14 @@ const AuditEventType = {
     'UPDATE_CANCELLED': 1 << 26,
     'ZONE_CREATED': 1 << 27,
     'ZONE_UPDATED': 1 << 28,
-    'ZONE_DELETED': 1 << 29,
+    'ZONE_DELETED': 1 << 29
 };
 
 const UpdateStatus = {
     'PENDING': 0,
     'ACKNOWLEDGED': 1,
     'CANCELLED': 2,
-    'TRANSIENT': 3,
+    'TRANSIENT': 3
 };
 
 
@@ -66,7 +66,20 @@ const UpdateSeverity = {
     'LOW': 0,
     'NORMAL': 1,
     'HIGH': 2,
-    'CRITICAL': 3,
+    'CRITICAL': 3
 };
 
-export {UserRank, AuditEventType, UpdateStatus, UpdateSeverity, zoneType};
+/**
+ * This will be used by leosac to communicate data between the front and the backend.
+ * This is related to the device class.
+ * @type {{unknown: number, gpio: number, reader: number, led: number, buzzer: number}}
+ */
+const DeviceClass = {
+    'unknown': 0,
+    'gpio': 1,
+    'reader': 2,
+    'led': 3,
+    'buzzer': 4
+};
+
+export {UserRank, AuditEventType, UpdateStatus, UpdateSeverity, zoneType, DeviceClass};
