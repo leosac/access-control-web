@@ -1,1 +1,8 @@
-{{leosac-builtin-access-point-form ap=model}}
+{{#bs-tab as | tab |}}
+  {{#tab.pane title=(t 'information')}}
+    {{leosac-builtin-access-point-form ap=model}}
+  {{/tab.pane}}
+  {{#tab.pane title=(t 'action')}}
+    {{leosac-builtin-access-point-action-list ap=model}}
+  {{/tab.pane}}
+{{/bs-tab}}

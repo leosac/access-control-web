@@ -1,0 +1,27 @@
+<h3>{{t 'leosac_builtin_ap_action.title'}}</h3>
+<div class="row">
+  <div class="col-md-6">
+    <h4>{{t 'leosac_builtin_ap_action.success_actions'}}</h4>
+    {{#each ap.actionOnSuccess as |success|}}
+    {{! Faire un accordion ici}}
+    {{/each}}
+  </div>
+  <div class="col-md-6">
+    <h4>{{t 'leosac_builtin_ap_action.error_actions'}}</h4>
+    {{#each ap.actionOnError as |error|}}
+
+    {{/each}}
+  </div>
+</div>
+
+<div>
+  {{leosac-builtin-access-point-action-form model=newAction}}
+  {{bs-button size='sm'
+              type="warning"
+              onClick=(action 'addSuccessAction')
+              defaultText=(t 'leosac_builtin_ap_action.add_success')}}
+  {{bs-button size='sm'
+              type="warning"
+              onClick=(action 'addErrorAction')
+              defaultText=(t 'leosac_builtin_ap_action.add_error')}}
+</div>
