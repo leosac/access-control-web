@@ -23,7 +23,7 @@ module.exports = function (environment) {
             // LEOSAC_ADDR environement variable.
             leosacAddr: null,
             //leosacAddr: '10.2.1.5:8888',
-            appname: '__APP_NAME__',
+            appname: 'Leosac Web GUI',
             logoUrl: '/assets/images/logo.png',
             siteUrl: 'leosac.com',
         }
