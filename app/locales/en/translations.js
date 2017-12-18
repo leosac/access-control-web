@@ -280,7 +280,8 @@ export default {
         "device_placeholder": "Please type device name(% for all)",
         "schedule_picker": "Schedules Picker",
         "schedules": "Schedules",
-        "schedules_placeholder": "Type or choose a schedules"
+        "schedules_placeholder": "Type or choose a schedules",
+        "title": "Leosac Builtin Access Point"
     },
     "link_to_profil": "Link to the user profile",
     "loading": {

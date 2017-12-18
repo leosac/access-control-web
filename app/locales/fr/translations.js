@@ -280,7 +280,8 @@ export default {
         "device_placeholder": "Taper le nom de l'appareil(% pour tout)",
         "schedule_picker": "Sélectionner une horaire",
         "schedules": "Horaires",
-        "schedules_placeholder": "Choisissez une horaire"
+        "schedules_placeholder": "Choisissez une horaire",
+        "title": "Point d'accès intégré à Leosac"
     },
     "link_to_profil": "Lien vers le profil d'utilisateur",
     "loading": {

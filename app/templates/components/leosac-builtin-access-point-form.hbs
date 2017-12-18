@@ -61,7 +61,6 @@
         </div>
       </div>
 
-
       <hr>
       <h3>{{t 'leosac_builtin_ap.schedules'}}</h3>
       <div class="row">
@@ -134,7 +133,7 @@
         <div class="row">
           <div class="col-md-12">
             {{#form.element label=(t 'leosac_builtin_ap.schedule_picker')}}
-              {{#power-select-typeahead options=allSchedules
+              {{#power-select-typeahead search=(action 'searchSchedule')
                                         selected=newSchedule.name
                                         placeholder=(t 'leosac_builtin_ap.schedules_placeholder')
                                         onchange=(action (mut newSchedule)) as |schedule|}}
@@ -169,6 +168,7 @@
           </div>
         {{/if}}
       </div>
+
     </fieldset>
   </div>
 {{/bs-form}}
