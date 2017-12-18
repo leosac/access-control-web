@@ -32,7 +32,7 @@
                   <td>
                     <div class="text-center">
                       {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
-                                  defaultText=(t 'remove') onClick=(action 'removeDevice' device)}}
+                                  defaultText=(t 'remove') onClick=(action 'removeAuthSources' device)}}
                     </div>
                   </td>
                 </tr>
@@ -55,7 +55,7 @@
         </div>
         <div class="row">
           <div class="col-md-6">
-            {{bs-button size='sm' type="primary" onClick=(action 'addDevice')
+            {{bs-button size='sm' type="primary" onClick=(action 'addAuthSources')
                         defaultText=(t 'leosac_builtin_ap.add_device')}}
           </div>
         </div>

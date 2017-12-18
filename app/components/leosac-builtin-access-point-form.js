@@ -32,7 +32,7 @@ export default Ember.Component.extend({
     },
 
     actions: {
-            addDevice() {
+            addAuthSources() {
                 let device = this.get('newDevice');
 
                 // if there is no device, this will do nothing
@@ -44,7 +44,7 @@ export default Ember.Component.extend({
                     this.set('newDevice', null);
                 });
             },
-            removeDevice(device) {
+            removeAuthSources(device) {
                 this.get('ap').get('authSourcesDevice').removeObject(device);
             },
             /**
