@@ -5,20 +5,20 @@
     "ember-engine"
   ],
   "dependencies": {
-    "ember-bootstrap": "1.0.0-rc.3",
-    "ember-bootstrap-cp-validations": "1.0.0-alpha.0",
-    "ember-cli-babel": "6.8.2",
-    "ember-cli-htmlbars": "2.0.3",
-    "ember-cli-htmlbars-inline-precompile": "1.0.2",
-    "ember-cli-flash": "1.5.0",
-    "ember-cp-validations": "3.5.0",
-    "ember-data": "2.16.3",
-    "ember-i18n": "5.0.2",
-    "ember-i18n-cp-validations": "3.0.2",
-    "ember-power-select": "1.10.0",
-    "ember-route-action-helper": "2.0.6",
-    "ember-toggle": "5.2.0",
-    "ember-truth-helpers": "2.0.0"
+    "ember-bootstrap": "*",
+    "ember-bootstrap-cp-validations": "*",
+    "ember-cli-babel": "*",
+    "ember-cli-htmlbars": "*",
+    "ember-cli-htmlbars-inline-precompile": "*",
+    "ember-cli-flash": "*",
+    "ember-cp-validations": "*",
+    "ember-data": "*",
+    "ember-i18n": "*",
+    "ember-i18n-cp-validations": "*",
+    "ember-power-select": "*",
+    "ember-route-action-helper": "*",
+    "ember-toggle": "*",
+    "ember-truth-helpers": "*"
   },
   "ember-addon": {
     "paths": [
