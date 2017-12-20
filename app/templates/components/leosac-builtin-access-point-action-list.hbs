@@ -1,27 +1,116 @@
-<h3>{{t 'leosac_builtin_ap_action.title'}}</h3>
+<h3>{{t 'leosac_builtin_ap.action.title'}}</h3>
 <div class="row">
-  <div class="col-md-6">
-    <h4>{{t 'leosac_builtin_ap_action.success_actions'}}</h4>
-    {{#each ap.actionOnSuccess as |success|}}
-    {{! Faire un accordion ici}}
+  <div class="col-md-3">
+    <h4>{{t 'leosac_builtin_ap.action.success_actions'}}</h4>
+    {{#each sortedSuccessAction as |success|}}
+      {{#bs-accordion as |acc|}}
+        {{#acc.item title=(t "leosac_builtin_ap.action.action_number"
+          command=success.command device=success.target.name)}}
+          <div class="row">
+            <div class="col-md-6">
+              {{t 'leosac_builtin_ap.action.targeted_device'}}:
+            </div>
+            <div class="col-md-6">
+              {{success.target.name}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              {{t 'leosac_builtin_ap.action.command'}}:
+            </div>
+            <div class="col-md-6">
+              {{success.command}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              {{leosac-builtin-access-point-action-params customAction=success}}
+            </div>
+          </div>
+          <div class="space-bottom">
+            {{bs-button defaultText=(t 'remove')
+                        type='danger'
+                        size='xs'
+                        onClick=(action 'removeSuccessAction' success)}}
+          </div>
+        {{/acc.item}}
+      {{/bs-accordion}}
     {{/each}}
   </div>
-  <div class="col-md-6">
-    <h4>{{t 'leosac_builtin_ap_action.error_actions'}}</h4>
-    {{#each ap.actionOnError as |error|}}
-
+  <div class="col-md-3">
+    <h4>{{t 'leosac_builtin_ap.action.error_actions'}}</h4>
+    {{#each sortedErrorAction as |error|}}
+      {{#bs-accordion as |acc|}}
+        {{#acc.item title=(t "leosac_builtin_ap.action.action_number"
+          command=error.command device=error.target.name)}}
+          <div class="row">
+            <div class="col-md-6">
+              {{t 'leosac_builtin_ap.action.targeted_device'}}:
+            </div>
+            <div class="col-md-6">
+              {{error.target.name}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              {{t 'leosac_builtin_ap.action.command'}}:
+            </div>
+            <div class="col-md-6">
+              {{error.command}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              {{leosac-builtin-access-point-action-params customAction=error}}
+            </div>
+          </div>
+          <div class="space-bottom">
+            {{bs-button defaultText=(t 'remove')
+                        type='danger'
+                        size='xs'
+                        onClick=(action 'removeErrorAction' error)}}
+          </div>
+        {{/acc.item}}
+      {{/bs-accordion}}
     {{/each}}
   </div>
 </div>
 
-<div>
-  {{leosac-builtin-access-point-action-form model=newAction}}
+{{#bs-form formLayout='vertical' as |form|}}
+  <div class="row">
+    <div class="col-md-6">
+      <legend>{{t 'leosac_builtin_ap.action.create_action'}}</legend>
+      {{#form.element label=(t 'leosac_builtin_ap.device_picker')}}
+        {{device-list-picker arrayOfDeviceClass=arrayOfValidDevice
+                             placeholder=(t 'leosac_builtin_ap.device_placeholder')
+                             newDevice=selectedDevice}}
+      {{/form.element}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      {{#form.element label=(t 'leosac_builtin_ap.action.command_picker')}}
+        {{#power-select options=availableCommand
+                        searchEnabled=false
+                        placeholder=(t 'leosac_builtin_ap.action.command_placeholder')
+                        onchange=(action (mut selectedCommand))
+                        selected=selectedCommand
+        as |command|}}
+          {{command}}
+        {{/power-select}}
+      {{/form.element}}
+    </div>
+  </div>
+{{/bs-form}}
+<div class="row">
+  <div class="col-md-12">
   {{bs-button size='sm'
               type="warning"
               onClick=(action 'addSuccessAction')
-              defaultText=(t 'leosac_builtin_ap_action.add_success')}}
+              defaultText=(t 'leosac_builtin_ap.action.add_success')}}
   {{bs-button size='sm'
               type="warning"
               onClick=(action 'addErrorAction')
-              defaultText=(t 'leosac_builtin_ap_action.add_error')}}
+              defaultText=(t 'leosac_builtin_ap.action.add_error')}}
+  </div>
 </div>

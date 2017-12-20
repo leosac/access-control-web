@@ -279,7 +279,9 @@ export default {
             "add_success": "Ajoutés aux actions réussites",
             "add_error": "Ajoutés aux actions échoués",
             "action_number": "Action {{command}} sur {{device}}",
-            "title": "Action points d'accès"
+            "title": "Interface de gestion des actions",
+            "command_picker": "Sélectionner une commande",
+            "create_action": "Créer une action"
         },
         "add_close_schedule": "Ajouter aux horaires fermés",
         "add_device": "Ajouter un appareil",

@@ -279,7 +279,9 @@ export default {
             "add_success": "Add to the success actions",
             "add_error": "Add to the error actions",
             "action_number": "Action {{command}} on {{device}}",
-            "title": "Access Point actions"
+            "title": "Action management",
+            "command_picker": "Command Picker",
+            "create_action": "Create Action"
         },
         "add_close_schedule": "Add Close Schedules",
         "add_device": "Add Device",
