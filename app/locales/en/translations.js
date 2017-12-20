@@ -270,6 +270,17 @@ export default {
         "title": "Legend"
     },
     "leosac_builtin_ap": {
+        "action": {
+            "error_actions": "Error Actions",
+            "success_actions": "Success Actions",
+            "targeted_device": "Targeted Device",
+            "command": "Action Command",
+            "command_placeholder": "Choose the command",
+            "add_success": "Add to the success actions",
+            "add_error": "Add to the error actions",
+            "action_number": "Action {{command}} on {{device}}",
+            "title": "Access Point actions"
+        },
         "add_close_schedule": "Add Close Schedules",
         "add_device": "Add Device",
         "add_open_schedule": "Add Open Schedules",

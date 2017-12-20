@@ -270,6 +270,17 @@ export default {
         "title": "Légende"
     },
     "leosac_builtin_ap": {
+        "action": {
+            "error_actions": "Actions erreurs",
+            "success_actions": "Action réussite",
+            "targeted_device": "Appareil visé",
+            "command": "Commande de l'action",
+            "command_placeholder": "Choisissez la commande",
+            "add_success": "Ajoutés aux actions réussites",
+            "add_error": "Ajoutés aux actions échoués",
+            "action_number": "Action {{command}} sur {{device}}",
+            "title": "Action points d'accès"
+        },
         "add_close_schedule": "Ajouter aux horaires fermés",
         "add_device": "Ajouter un appareil",
         "add_open_schedule": "Ajouter aux horaires ouvertes",
