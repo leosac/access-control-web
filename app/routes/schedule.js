@@ -40,7 +40,6 @@ export default LeosacRoute.extend({
         },
         addMapping ()
         {
-            this.get('flashMessage').success('TEST');
             const newMapping = this.get('store').createRecord('schedule-mapping');
             newMapping.set('alias', 'Unnamed mapping');
             this.controller.get('model').get('mapping').addObject(newMapping);
