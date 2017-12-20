@@ -3,7 +3,7 @@
   "dependencies": {
     "bootstrap": "3.3.7",
     "broccoli-asset-rev": "2.6.0",
-    "ember-bootstrap": "1.0.0-rc.5",
+    "ember-bootstrap": "1.0.0",
     "ember-bootstrap-cp-validations": "1.0.0-alpha.0",
     "ember-bootstrap-datetimepicker": "1.1.0",
     "ember-cli": "2.17.1",
