@@ -38,7 +38,7 @@ RUN mkdir -p /leosac
 
 # Copy leosac-web and leosac-web-addons in the images
 # Leosac-web and leosac-web-addons should have been cloned and placed in a file name leosac.
-ADD leosac/ /opt/leosac-web-full/.
+ADD /opt/leosac-web-full/ /leosac/.
 
 # Run npm install and bower install. This will help us gain a lot of time in our container
 
