@@ -11,9 +11,16 @@ function removeSchedule(selectedSchedules, schedule) {
     return selectedSchedules;
 }
 
+/**
+ * This component is here to allow us to modify the leosac-builtin-access-point.
+ *
+ * Thanks to the already created access-point(ap), the component will help make the ap useful.
+ */
+
 export default Ember.Component.extend({
     store: Ember.inject.service('store'),
     search: Ember.inject.service('search'),
+    ap: null,
     arrayOfDeviceClassWiegandReader: [DeviceClass.reader],
     newDevice: null,
 
@@ -32,83 +39,97 @@ export default Ember.Component.extend({
     },
 
     actions: {
-            addAuthSources() {
-                let device = this.get('newDevice');
+        // This will add an authSource(device) to the access-point
+        addAuthSources() {
+            let device = this.get('newDevice');
 
                 // if there is no device, this will do nothing
-                if (!device)
-                    return;
+            if (!device)
+                return;
 
-                this.get('store').find(device.type, device.id).then((device) => {
-                    this.get('ap').get('authSourcesDevice').addObject(device);
-                    this.set('newDevice', null);
+            this.get('store').find(device.type, device.id).then((device) => {
+                this.get('ap').get('authSourcesDevice').addObject(device);
+                this.set('newDevice', null);
+            });
+        },
+        //This will remove a device from the authSources
+        removeAuthSources(device) {
+            this.get('ap').get('authSourcesDevice').removeObject(device);
+        },
+        /**
+         * This function take a partial name of a Schedule
+         *
+         * it will search through the backend for every schedule matching this partial name,
+         * and it will remove the schedules already used by this access point.
+         *
+         * @param partialName
+         * @returns {*|PromiseLike<T>|Promise<T>}
+         */
+        searchSchedule(partialName) {
+            return this.get('search').findScheduleByName(partialName).then((allSchedules) => {
+                // allSchedules: A list of array with this parameter: ['id', 'name']
+                let result = [];
+                let selectedSchedules = this.get('selectedSchedules');
+                let arrayOfSelectedSchedulesId = [];
+
+                selectedSchedules.forEach((schedule) => {
+                    arrayOfSelectedSchedulesId.push(schedule.id);
                 });
-            },
-            removeAuthSources(device) {
-                this.get('ap').get('authSourcesDevice').removeObject(device);
-            },
-            /**
-             * This function take a partial name of a Schedule
-             *
-             * it will search through the backend for every schedule matching this partial name,
-             * and it will remove the schedules already used by this access point.
-             *
-             * @param partialName
-             * @returns {*|PromiseLike<T>|Promise<T>}
-             */
-            searchSchedule(partialName) {
-                return this.get('search').findScheduleByName(partialName).then((allSchedules) => {
-                    // allSchedules: A list of array with this parameter: ['id', 'name']
-                    let result = [];
-                    let selectedSchedules = this.get('selectedSchedules');
-                    let arrayOfSelectedSchedulesId = [];
 
-                    selectedSchedules.forEach((schedule) => {
-                        arrayOfSelectedSchedulesId.push(schedule.id);
-                    });
-
-                    allSchedules.forEach((schedule) => {
-                        if (!arrayOfSelectedSchedulesId.includes(schedule.id)) {
-                            result.push(schedule);
-                        }
-                    });
-                    return result;
+                allSchedules.forEach((schedule) => {
+                    if (!arrayOfSelectedSchedulesId.includes(schedule.id)) {
+                        result.push(schedule);
+                    }
                 });
-            },
-            addCloseSchedule() {
-                const self = this;
-                let schedule = this.get('newSchedule');
+                return result;
+            });
+        },
+        /**
+         * This will add a schedule to the access-point alwaysCloseSchedule
+         */
+        addCloseSchedule() {
+            const self = this;
+            let schedule = this.get('newSchedule');
 
-                // if there is no schedule, this will do nothing
-                if (!schedule)
-                    return;
+            // if there is no schedule, this will do nothing
+            if (!schedule)
+                return;
 
-                this.get('selectedSchedules').addObject(schedule);
-                this.get('store').find('schedule', schedule.id).then((newSchedule) => {
-                    self.get('ap').get('alwaysCloseSchedules').addObject(newSchedule);
-                    self.set('newSchedule', null);
-                });
-            },
-            addOpenSchedule() {
-                const self = this;
-                let schedule = this.get('newSchedule');
+            this.get('selectedSchedules').addObject(schedule);
+            this.get('store').find('schedule', schedule.id).then((newSchedule) => {
+                self.get('ap').get('alwaysCloseSchedules').addObject(newSchedule);
+                self.set('newSchedule', null);
+            });
+        },
+        /**
+         * This will add a schedule to the access-point alwaysOpenSchedule
+         */
+        addOpenSchedule() {
+            const self = this;
+            let schedule = this.get('newSchedule');
 
-                if (!schedule)
-                    return;
+            if (!schedule)
+                return;
 
-                this.get('selectedSchedules').addObject(schedule);
-                this.get('store').find('schedule', schedule.id).then((newSchedule) => {
-                    self.get('ap').get('alwaysOpenSchedules').addObject(newSchedule);
-                    self.set('newSchedule', null);
-                });
-            },
-            removeCloseSchedule(schedule) {
-                this.set('selectedSchedules', removeSchedule(this.get('selectedSchedules'), schedule));
-                this.get('ap').get('alwaysCloseSchedules').removeObject(schedule);
-            },
-            removeOpenSchedule(schedule) {
-                this.set('selectedSchedules', removeSchedule(this.get('selectedSchedules'), schedule));
-                this.get('ap').get('alwaysOpenSchedules').removeObject(schedule);
-            }
+            this.get('selectedSchedules').addObject(schedule);
+            this.get('store').find('schedule', schedule.id).then((newSchedule) => {
+                self.get('ap').get('alwaysOpenSchedules').addObject(newSchedule);
+                self.set('newSchedule', null);
+            });
+        },
+        /**
+         * This will remove a schedule to the access-point alwaysCloseSchedule
+         */
+        removeCloseSchedule(schedule) {
+            this.set('selectedSchedules', removeSchedule(this.get('selectedSchedules'), schedule));
+            this.get('ap').get('alwaysCloseSchedules').removeObject(schedule);
+        },
+        /**
+         * This will remove a schedule to the access-point alwaysOpenSchedule
+         */
+        removeOpenSchedule(schedule) {
+            this.set('selectedSchedules', removeSchedule(this.get('selectedSchedules'), schedule));
+            this.get('ap').get('alwaysOpenSchedules').removeObject(schedule);
         }
+    }
 });

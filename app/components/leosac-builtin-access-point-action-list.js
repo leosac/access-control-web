@@ -2,27 +2,38 @@ import Ember from 'ember';
 import {DeviceClass} from "web/leosac-constant";
 import { v4 } from "ember-uuid";
 
+/**
+ * This component take an access-point(ap) as a parameter.
+ *
+ * This page is here to help us CRUD the actions of the leosac-builtin-access-points.
+ */
 export default Ember.Component.extend({
     store: Ember.inject.service('store'),
+    ap: null,
     newAction: null,
     selectedDevice: null,
     selectedCommand: null,
     indexErrorAction: 0,
     indexSuccessAction: 0,
 
+    // this will sort the SuccessActions by index. It will be displayed given this Computed property
     sortedSuccessAction: Ember.computed('ap.actionOnSuccess', function () {
         return this.get('ap.actionOnSuccess').sortBy('index');
     }),
+    // this will sort the ErrorActions by index. It will be displayed given this Computed property
     sortedErrorAction: Ember.computed('ap.actionOnError', function () {
         return this.get('ap.actionOnError').sortBy('index');
     }),
 
+    // This is an array of device that can be associated to the access-points action
     arrayOfValidDevice: [
         DeviceClass.gpio,
         DeviceClass.buzzer,
         DeviceClass.led,
         DeviceClass.reader],
 
+    // This will help us setting the index, this only purpose for now is the sorting process,
+    // but we can also think of a drag and drop in the future
     init() {
         let i = 0;
 
@@ -37,6 +48,9 @@ export default Ember.Component.extend({
       this._super(...arguments);
     },
 
+    /**
+     * This computed property will return the available command given the type of the previously selectedDevice
+     */
     availableCommand: Ember.computed('selectedDevice.length', function () {
         let deviceType = this.get('selectedDevice.type');
 
@@ -63,6 +77,9 @@ export default Ember.Component.extend({
         return commands;
     }),
     actions: {
+        /**
+         * This will add a successAction to the ap
+         */
         addSuccessAction() {
             let selectedDevice = this.get('selectedDevice');
             let selectedCommand = this.get('selectedCommand');
@@ -83,6 +100,9 @@ export default Ember.Component.extend({
             this.set('selectedDevice', null);
             this.set('selectedCommand', null);
         },
+        /**
+         * This will add a errorAction to the ap
+         */
         addErrorAction() {
             let selectedDevice = this.get('selectedDevice');
             let selectedCommand = this.get('selectedCommand');
@@ -103,10 +123,16 @@ export default Ember.Component.extend({
             this.set('selectedDevice', null);
             this.set('selectedCommand', null);
         },
+        /**
+         * This will remove the given successAction from the ap
+         */
         removeSuccessAction(successAction) {
             let actionToRemove = this.get('store').peekRecord('leosac-builtin-access-point-action', successAction.id);
             actionToRemove.deleteRecord();
         },
+        /**
+         * This will remove the given removeAction from the ap
+         */
         removeErrorAction(errorAction) {
             let actionToRemove = this.get('store').peekRecord('leosac-builtin-access-point-action', errorAction.id);
             actionToRemove.deleteRecord();

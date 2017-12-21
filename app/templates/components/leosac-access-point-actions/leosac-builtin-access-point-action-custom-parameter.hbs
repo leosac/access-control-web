@@ -1,1 +1,11 @@
-{{yield}}
+{{#bs-form formLayout='vertical' model=this as | form |}}
+  {{form.element property='command' controleType='text' label='Command'}}
+  {{properties}}
+  {{#each properties as | parameter index |}}
+    {{form.element property=parameter onChange=(action 'setValue' index) controlType='text' label='Custom parameter'}}
+  {{/each}}
+  <div class="space-bottom">
+    {{bs-button defaultText='Add parameter' onClick=(action 'addProperty') size='sm' type='primary'}}
+  </div>
+{{/bs-form}}
+{{params}}
