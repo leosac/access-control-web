@@ -38,7 +38,7 @@ RUN mkdir -p /leosac
 
 # Copy leosac-web and leosac-web-addons in the images
 # Leosac-web and leosac-web-addons should have been cloned and placed in a file name leosac.
-ADD leosac/ /leosac/.
+ADD ../../leosac/ /leosac/.
 
 # Run npm install and bower install. This will help us gain a lot of time in our container
 
@@ -51,6 +51,15 @@ COPY leosac/leosac-web/web-service/script.py script.py
 
 # When launching a container, this will execut a python script in which the package.json will be created
 CMD ["usr/bin/python3", "script.py"]
+
+
+# We move our template/placeholder files so that they replace the normal app.js/router.js etc.
+# This will allow our entrypoint/build script to replace content with its generated content.
+
+RUN mv /leosac/leosac-web/app/app-docker-template.js /leosac/leosac-web/app/app.js
+RUN mv /leosac/leosac-web/app/router-docker-template.js /leosac/leosac-web/app/router.js
+RUN mv /leosac/leosac-web/config/environment-docker-template.js /leosac/leosac-web/config/environment.js
+
 
 VOLUME /custom-assets
 VOLUME /build-config.json

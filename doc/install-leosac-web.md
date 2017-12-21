@@ -1,6 +1,6 @@
 # Install Leosac Web
 
-In order to install leosac-web, you should already have some programm installed.
+In order to install leosac-web, you should already have some program installed.
 
 Since this application use the npm package, you should have Node and npm installed on the machine that will use it.
 

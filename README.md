@@ -16,13 +16,12 @@ You will need the following things properly installed on your computer.
 ## Installation
 
 * `git clone <repository-url>` this repository
-* change into the new directory
-* `npm install`
-* `bower install`
+* cd into the new directory
+* `yarn install`
 
 ## Running / Development
 
-* You should have a Leosac docker running. 
+* You should have a Leosac server(docker) running. 
 * There is an address provided by docker. It should putted in your ENV, with the prefix **ws** or **wss**(websocket).
  (eg "export LEOSAC_ADDR=ws://10.10.10.25:8888/) 
 * `ember serve`
@@ -85,7 +84,8 @@ You will need the following things properly installed on your computer.
                           'flashMessages',
                           'store',
                           'module-manager',
-                          'search'
+                          'search',
+                          'i18n'
                       ]
                   }
               },
@@ -109,31 +109,38 @@ You will need the following things properly installed on your computer.
                // list of needed module, if this is a wizard.
                ]
           }
+      NOTE: This content should match exactly the `leosacProperty` dict in `app.js`. 
+          
 3. Still at the root of the engine, there certain file that need to be changed.
    1. In the *package.json*, you must provide the necessary addon for your module. A good base should be adding:
+   Note that when referencing a dependency that is provided by the application, you must use `*`
+   for the version.   
    ```
    "dependencies": {
-       "ember-bootstrap": "1.0.0-rc.3", //the application respect a bootstrap theme 
-       "ember-bootstrap-cp-validations": "1.0.0-alpha.0", // bootstrap theme for the validation
-       "ember-cli-babel": "6.8.2", // necessary
-       "ember-cli-htmlbars": "2.0.3", // necessary
-       "ember-cli-htmlbars-inline-precompile": "1.0.2", // necessary
-       "ember-cli-flash": "1.4.3", // allow the flash messages
-       "ember-cp-validations": "3.5.0", // special validation
-       "ember-data": "2.15.0", // necessary if you want to create a model or manipulate data
-       "ember-i18n": "5.0.2", // tranlation addons
-       "ember-power-select": "1.9.6", // allow the user to select something among a list 
-       "ember-route-action-helper": "2.0.6", // this permit to call actions defined in the route from the template
-       "ember-toggle": "5.2.0", // this is a toggle switch
-       "ember-truth-helpers": "1.3.0" // allow simple condition in hbs template (==, !=, >, ...)
+       "ember-bootstrap": "*", //the application respect a bootstrap theme 
+       "ember-bootstrap-cp-validations": "*", // bootstrap theme for the validation
+       "ember-cli-babel": "*", // necessary
+       "ember-cli-htmlbars": "*", // necessary
+       "ember-cli-htmlbars-inline-precompile": "*", // necessary
+       "ember-cli-flash": "*", // allow the flash messages
+       "ember-cp-validations": "*", // special validation
+       "ember-data": "*", // necessary if you want to create a model or manipulate data
+       "ember-i18n": "*", // tranlation addons
+       "ember-power-select": "*", // allow the user to select something among a list 
+       "ember-route-action-helper": "*", // this permit to call actions defined in the route from the template
+       "ember-toggle": "*", // this is a toggle switch
+       "ember-truth-helpers": "*" // allow simple condition in hbs template (==, !=, >, ...)
      },
      "ember-addon": {
+       # Allow reference an application-level addon. This allows modules and application
+       # to shared addons / component / ...
        "paths": [
          "../shared-tools" // this is an addon that allow the application
                            // and the module to share components (button-with-confirmation) 
        ]
      }
      ```
+     
      (The addons may needs some updates)
      
    2. In the *addon/engine.js*, you must provide the same `dependencies` than in the *app.js*, 
@@ -146,19 +153,14 @@ You will need the following things properly installed on your computer.
             'leosac-info',
             'flashMessages',
             'store',
-            'module-manager'
+            'module-manager',
+            'i18n'
           ],
           externalRoutes: [
             'login'
           ]
     }
    ``` 
-   3. (OPTIONAL) If you want to use your translation, put in *config/environment.js*, under `environment: environment`:
-        ```
-        i18n: {
-            defaultLocale: 'en'
-        }
-        ```
 
 * At this point, your in-repo-engines is configured to work with the application. 
 
@@ -186,6 +188,14 @@ The test are wrote with snaptest and selenium, you can find more about it int th
 *  `ember serve` or `ember s`  
 Don't forget to provide the leosac address. It should either be in your `ENV`, or you can provide it like that for example:
 ` LEOSAC_ADDR='ws://172.17.0.3:8888' ember s`
+
+
+### Updating
+
+Dependencies' versions are frozen in package.json to prevent WTF JSON PACKAGE CHANGE.
+Use ncu (npm check update) to check for and upgrade the dependencies version.
+
+
 
 ## Further Reading / Useful Links
 

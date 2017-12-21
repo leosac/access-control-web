@@ -45,7 +45,7 @@ for data_addon in config_data['addon']:
 #  which is an addon that is used by both the application and the module
 data['ember-addon']['paths'].append("lib/shared-tools")
 
-# Add to our dictionary the out-repo addons 
+# Add to our dictionary the out-repo addons
 
 out_repo_addon = []
 
@@ -110,8 +110,9 @@ for data in addons_name:
                 'authentication',
                 'websocket',
                 'leosac-info',
-                'flashMessages',    
+                'flashMessages',
                 'store',
+                'i18n',
                 'module-manager',
                 'search']
         }
