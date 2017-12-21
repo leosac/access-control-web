@@ -4,5 +4,9 @@ In this repo - the dockerfile for the build
 
 The first argument in the -v part correspond to the path in our machine, and the second argument correspond to the the path in our images.
 
+
+We need to have a leosac directory  with cloned leosac-web and leosac-web-addons
+repository inside.
+
 docker build -t leosac-web -f Dockerfile.images .
 docker run -ti -v /path/to/where/to/build:/build-output -v /path/to/my/config2.json:/build_config.json leosac-web:latest

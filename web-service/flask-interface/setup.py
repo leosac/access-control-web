@@ -27,5 +27,9 @@ setup(name='Falsk Interface',
           'flask_appconfig',
           'flask_bootstrap',
           'flask_sqlalchemy',
-          'flask_migrate'
+          'flask_migrate',
+          'flask_login',
+          'flask_mail',
+          'flask_user',
+          'flask_admin',
       ))
