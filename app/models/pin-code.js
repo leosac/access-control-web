@@ -16,9 +16,10 @@ const PinCodeValidations = buildValidations(
                             gte: 0,
                             lte: 9999999999
                         }),
+                        // This is not a 'valid' length, this is just a pre-identifier
                         validator('length', {
                             min: 4,
-                            max: 10
+                            max: 8
                         })
                     ]
             }
@@ -30,5 +31,5 @@ export default Credential.extend(PinCodeValidations, {
     isPinCode: true,
     type: 'PinCode',
     code: DS.attr('string'),
-    displayIdentifier: Ember.computed.alias('code'),
+    displayIdentifier: Ember.computed.alias('code')
 });

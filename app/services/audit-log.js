@@ -28,6 +28,9 @@ export default Ember.Service.extend({
             ps: pageSize
         }).then((obj) => {
             // Normally, we should use unloadAll, but since the ember-data 2.14 release, there is a known issue with it.
+            // https://github.com/emberjs/data/issues/5175
+            // https://github.com/emberjs/data/issues/5167
+            // https://github.com/emberjs/data/issues/5111
             // Instead, we enumerate every audit in order to clear the store.
             ['audit-user-event', 'audit-wsapicall-event', 'audit-door-event', 'audit-user-group-membership-event',
                 'audit-schedule-event', 'audit-credential-event', 'audit-group-event', 'audit-update-event',

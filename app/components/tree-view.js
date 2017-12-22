@@ -2,10 +2,12 @@ import Ember from "ember";
 
 // We needed some function for the tree
 
+// This will add a node to the root, given a children
 function addNode(root, child) {
     root.children.push(child);
 }
 
+// This will create a node that can be used by the jstree
 function nodeFromZone(zone) {
     let type;
 
@@ -22,6 +24,7 @@ function nodeFromZone(zone) {
     };
 }
 
+// This will get a node from the previously filled cache.
 function getNodeFromCache(zone, cache) {
     if (cache[zone.get('id')]) {
         return (cache[zone.get('id')]);
@@ -32,6 +35,7 @@ function getNodeFromCache(zone, cache) {
     }
 }
 
+// This will get the door of the child zone recursively
 function recursiveDoor(selectedZone) {
     let doorArray = [];
     selectedZone.get('children').forEach(function (zone) {
@@ -49,6 +53,7 @@ function recursiveDoor(selectedZone) {
     return (doorArray);
 }
 
+// This will return the zone that match the selected zone
 function zoneFromSelectedZone(selectedZone, zones) {
     let value = null;
 
@@ -59,6 +64,7 @@ function zoneFromSelectedZone(selectedZone, zones) {
     return value;
 }
 
+// This will return the nodeId given the selected zone
 function zoneFromId(nodeId, zones) {
     let value = null;
 
@@ -77,12 +83,10 @@ export default Ember.Component.extend({
     newDoor: null,
     arrayDoor: [],
 
+    // This is a list of plugin useful for the jstree
     "plugins": "types, dnd, sort, states",
 
-    // themes : {
-    //     "variant" : "large"
-    // },
-
+    // This is a list of the type options. There is a different icon for each of them
     typesOptions: {
         "physical": {
             "icon": "fa fa-building"
@@ -99,8 +103,9 @@ export default Ember.Component.extend({
     },
     'jsTreeActionReceiver': true,
 
+    // This ember computed will set the data necessary for the jstree to work. This is a node tree
     zoneDataTree: Ember.computed('model', function () {
-
+        // Blueprint for the physical and logical zone
         let physicalZoneNode = {
             'id': 'physicalRoot',
             'state' : {'opened' : true},
@@ -115,8 +120,10 @@ export default Ember.Component.extend({
             'children': [] };
         let nodeCache = {};
 
+        // enumerate each zone
         this.get('model').forEach(function (zone)
         {
+            // check if the zone is in the cache
             const n = getNodeFromCache(zone, nodeCache);
 
             if (zone.get('parent.length') === 0)
@@ -217,6 +224,7 @@ export default Ember.Component.extend({
                     this.set('arrayDoor', arrayOfDoor);
                 }
             },
+            // Mange the dragAndDrop
             handleJstreeEventDidMoveNode(node) {
                 let oldParent = zoneFromId(node.old_parent, this.get('model'));
                 let newParent = zoneFromId(node.parent, this.get('model'));

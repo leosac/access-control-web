@@ -75,6 +75,7 @@ export default Ember.Controller.extend({
         });
         return result;
     }),
+    // will set the user door information
     userDoorInfo: Ember.computed('allDoors', 'allUsers', "selectedDoors.length", "selectedUsers.length", function () {
         let selectedDoors = [];
         let userInfos = [];
@@ -180,6 +181,7 @@ export default Ember.Controller.extend({
         }
         return userInfos;
     }),
+    //this will load and fetch all the user and door
     reload() {
         this.get('store').findAll('user', {reload: true}).then(() => {
             this.get('store').findAll('door', {reload: true}).then(() => {

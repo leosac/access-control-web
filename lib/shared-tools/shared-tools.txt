@@ -1,0 +1,5 @@
+This is an in-repo-addon, not an ember-engines. It's purpose is to have the possibilities to share components through
+the ember-engines and the application.
+
+The models are shared through the store, and the services can be shared through the ember-engines. But the components,
+ in order to avoid duplicate, cannot be shared. Thats why an ember addons can act like a bridge for the components.

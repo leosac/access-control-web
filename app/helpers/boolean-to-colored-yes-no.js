@@ -1,5 +1,5 @@
 import Ember from 'ember';
-
+// This helper will set the color of the cells in the access overview
 export default Ember.Helper.extend({
   i18n: Ember.inject.service('i18n'),
 
