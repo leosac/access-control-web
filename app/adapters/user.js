@@ -5,9 +5,10 @@ export default ApplicationAdapter.extend({
     ws: Ember.inject.service('websocket'),
     flashMessages: Ember.inject.service(),
 
-    findRecord: function (store, type, id, snapshot)
+    findRecord: function (store, type, id)
     {
         const ws = this.get('ws');
+
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
             ws.sendJson('user.read', {user_id: Number.parseInt(id)}).then(
@@ -17,9 +18,10 @@ export default ApplicationAdapter.extend({
         });
     },
 
-    findAll: function(store, type, sinceToken, snapshotRecordArray)
+    findAll: function()
     {
         const ws = this.get('ws');
+
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
             ws.sendJson('user.read', {user_id: 0}).then(

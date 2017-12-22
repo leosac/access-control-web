@@ -3,19 +3,19 @@ import DS from 'ember-data';
 export default DS.Transform.extend({
     deserialize(serialized) {
         if (serialized === 2)
-            return 'Administrator';
+            return 'administrator';
         else if (serialized === 1)
-            return 'Operator';
+            return 'operator';
         else if (serialized === 0)
-            return 'Member';
+            return 'member';
     },
 
     serialize(deserialized) {
-        if (deserialized === 'Administrator')
+        if (deserialized === 'administrator')
             return 2;
-        else if (deserialized === 'Operator')
+        else if (deserialized === 'operator')
             return 1;
-        else if (deserialized === 'Member')
+        else if (deserialized === 'member')
             return 0;
     }
 });

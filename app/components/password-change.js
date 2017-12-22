@@ -18,6 +18,7 @@ const Validations = buildValidations({
 });
 
 export default Ember.Component.extend(Validations, {
+    i18n: Ember.inject.service(),
     passwordChange: Ember.inject.service('password-change'),
     // Shall be injected when invoking the component.
     user_id: null,
@@ -35,7 +36,7 @@ export default Ember.Component.extend(Validations, {
                 this.get('current_password'),
                 this.get('new_password')).then(() =>
             {
-                fm.success('Password successfully changed.');
+                fm.success(this.get('i18n').t('password-change.successfully_changed'));
             });
         },
     }

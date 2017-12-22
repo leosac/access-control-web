@@ -1,0 +1,27 @@
+{{#bs-form formLayout="vertical" model=buzzer onSubmit=action as |form|}}
+  <fieldset>
+    <div class="col-md-6">
+      {{led-buzzer-form model=model ledBuzzer=buzzer form=form}}
+      <div class="row">
+        <div class="col-md-6">
+          {{bs-button
+            defaultText=(t 'submit')
+            type="success"
+            size="md"
+            buttonType="submit"}}
+        </div>
+        {{#if delete}}
+          <div class="pull-right form-button-delete">
+            {{button-with-confirmation type='danger'
+                                       icon='glyphicon glyphicon-remove'
+                                       size='md'
+                                       text=(t 'delete')
+                                       message=(t 'led-buzzer.delete_confirm')
+                                       onConfirm=delete
+            }}
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  </fieldset>
+{{/bs-form}}

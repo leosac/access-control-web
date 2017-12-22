@@ -1,0 +1,22 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/fixes.html" as fixes %}
+{% import "bootstrap/utils.html" as util %}
+{% block content %}
+    {{ util.flashed_messages(dismissible=True) }}
+    <div class="container">
+        <h1>Permission denied</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <p>
+                    You don't have the permission to access this page.
+                <p>
+                    <a class="btn btn-default" href="/">Home</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block head %}
+    {{ super() }}
+    {{ fixes.ie8() }}
+{% endblock %}

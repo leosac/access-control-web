@@ -3,7 +3,11 @@ import Ember from 'ember';
 import DS from 'ember-data';
 import {validator, buildValidations} from 'ember-cp-validations';
 
-export default Model.extend({
+const AccesPointValidations = buildValidations({
+    alias: validator('presence', true)
+});
+
+export default Model.extend(AccesPointValidations, {
     numericId: Ember.computed('id', function ()
     {
         "use strict";

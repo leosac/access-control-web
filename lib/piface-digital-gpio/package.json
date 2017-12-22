@@ -1,0 +1,28 @@
+{
+  "name": "piface-digital-gpio",
+  "keywords": [
+    "ember-addon",
+    "ember-engine"
+  ],
+  "dependencies": {
+    "ember-bootstrap": "*",
+    "ember-bootstrap-cp-validations": "*",
+    "ember-cli-babel": "*",
+    "ember-cli-htmlbars": "*",
+    "ember-cli-htmlbars-inline-precompile": "*",
+    "ember-cli-flash": "*",
+    "ember-cp-validations": "*",
+    "ember-data": "*",
+    "ember-i18n": "*",
+    "ember-i18n-cp-validations": "*",
+    "ember-power-select": "*",
+    "ember-route-action-helper": "*",
+    "ember-toggle": "*",
+    "ember-truth-helpers": "*"
+  },
+  "ember-addon": {
+    "paths": [
+      "../shared-tools"
+    ]
+  }
+}

@@ -1,0 +1,206 @@
+<div class="col-md-12">
+  {{#step-manager did-transition=(action 'afterTransition') as |w|}}
+    <div class="container">
+      <ul class="nav nav-pills nav-justified thumbnail">
+        {{#each steps as |step|}}
+          {{#if (eq w.currentStep step.value)}}
+            <li class="active inactiveLink">
+              <a href="#">
+                <div class="list-group-item-heading">{{step.name}}</div>
+                <p class="list-group-item-text">{{step.description}}</p>
+              </a>
+            </li>
+          {{else}}
+            <li class="inactiveLink">
+              <a href="#">
+                <div class="list-group-item-heading">{{step.name}}</div>
+                <p class="list-group-item-text">{{step.description}}</p>
+              </a>
+            </li>
+          {{/if}}
+        {{/each}}
+      </ul>
+    </div>
+
+    {{#w.step name='general'}}
+      <fieldset>
+        <legend>{{t 'configuration'}}</legend>
+        <div class="col-md-12">
+          {{#bs-form model=this formLayout="vertical" as |form|}}
+            <div class="row">
+              <div class="col-md-6">
+                {{#form.element controlType="text" label=(t 'name')
+                                placeholder=(t 'name')
+                                property='configName'
+                                as |el|}}
+                  {{el.control}}
+                {{/form.element}}
+              </div>
+              <div class="col-md-6 text-next-to-power-select">
+                <p><b>{{t 'name'}}</b>{{t 'wiegand_wizard_information.wizard_name'}}</p>
+                <p class="wiegand-reader-wizard-lesser-text"> {{t 'wiegand_wizard_information.wizard_name_example'}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                {{#form.element label=(t 'gpio')}}
+                  {{#power-select
+                    selected=gpioType
+                    searchEnabled=false
+                    options=listOfGpio
+                    onchange=(action (mut gpioType))
+                  as |gpio|}}
+                    {{t gpio}}
+                  {{/power-select}}
+                {{/form.element}}
+              </div>
+              <div class="col-md-6 text-next-to-power-select">
+                <p>
+                  <b>{{t 'gpio_type'}}</b>{{t 'wiegand_wizard_information.wizard_gpio'}}
+                </p>
+              </div>
+            </div>
+            {{#if (eq gpioType 'piface-digital-gpio')}}
+              <div class="row">
+                <div class="col-md-6">
+                  {{#form.element label=(t 'hardware_address')}}
+                    {{#power-select
+                      selected=hardwareAddress
+                      searchEnabled=false
+                      options=hardwareAddressList
+                      onchange=(action (mut hardwareAddress))
+                    as |address|}}
+                      {{address}}
+                    {{/power-select}}
+                  {{/form.element}}
+                </div>
+                <div class="col-md-6 text-next-to-power-select">
+                  <p>
+                    <b>{{t 'hardware_address'}}</b>{{t 'wiegand_wizard_information.wizard_hardware_address'}}
+                  </p>
+                </div>
+              </div>
+            {{/if}}
+
+          {{/bs-form}}
+
+          {{#bs-form formLayout='vertical' model=this as |form|}}
+            <div class="row">
+              <div class="col-md-6">
+                {{form.element label=(t 'led')
+                               controlType='checkbox'
+                               property='ledEnabled'}}
+              </div>
+              <div class="col-md-6 text-next-to-checkbox">
+                <p>
+                  <b>{{t 'led'}}</b>{{t 'wiegand_wizard_information.wizard_led'}}
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                {{form.element label=(t 'buzzer')
+                               controlType='checkbox'
+                               property='buzzerEnabled'}}
+              </div>
+              <div class="col-md-6 text-next-to-checkbox">
+                <p>
+                  <b>{{t 'buzzer'}}</b>{{t 'wiegand_wizard_information.wizard_buzzer'}}
+                </p>
+              </div>
+            </div>
+          {{/bs-form}}
+
+          {{bs-button type='success' text='Next'
+                      onClick=(action 'transitionFromGeneralToGpio' (action w.transition-to 'gpio'))}}
+        </div>
+      </fieldset>
+    {{/w.step}}
+
+    {{#w.step name='gpio'}}
+      <div class="row">
+        <div class="col-md-6">
+          {{#bs-form formLayout="vertical" model=pifaceDigitalGpioHigh as |form|}}
+            {{#form.element controlType="number" label=(t 'number_high')
+                            placeholder='0 - 7'
+                            property="number" as |el|}}
+              {{el.control}}
+            {{/form.element}}
+          {{/bs-form}}
+        </div>
+        <div class="col-md-6 text-next-to-power-select">
+          <p>
+            <b>{{t 'number_high'}}</b>{{t 'wiegand_wizard_information.wizard_gpio_high'}}
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          {{#bs-form formLayout="vertical" model=pifaceDigitalGpioLow as |form|}}
+            {{#form.element controlType="number" label=(t 'number_low')
+                            placeholder='0 - 7'
+                            property="number" as |el|}}
+              {{el.control}}
+            {{/form.element}}
+          {{/bs-form}}
+        </div>
+        <div class="col-md-6 text-next-to-power-select">
+          <p>
+            <b>{{t 'number_low'}}</b>{{t 'wiegand_wizard_information.wizard_gpio_low'}}
+          </p>
+        </div>
+      </div>
+      {{#if ledEnabled}}
+        <div class="row">
+          <div class="col-md-6">
+            {{#bs-form formLayout="vertical" model=pifaceDigitalGpioLed as |form|}}
+              {{#form.element controlType="number" label=(t 'number_led')
+                              placeholder='0 - 7'
+                              property="number" as |el|}}
+                {{el.control}}
+              {{/form.element}}
+            {{/bs-form}}
+          </div>
+          <div class="col-md-6 text-next-to-power-select">
+            <p>
+              <b>{{t 'number_led'}}</b>{{t 'wiegand_wizard_information.wizard_gpio_led'}}
+            </p>
+          </div>
+        </div>
+      {{/if}}
+      {{#if buzzerEnabled}}
+        <div class="row">
+          <div class="col-md-6">
+            {{#bs-form formLayout="vertical" model=pifaceDigitalGpioBuzzer as |form|}}
+
+              {{#form.element controlType="number" label=(t 'number_buzzer')
+                              placeholder='0 - 7'
+                              property="number" as |el|}}
+                {{el.control}}
+              {{/form.element}}
+            {{/bs-form}}
+          </div>
+          <div class="col-md-6  text-next-to-power-select">
+            <p>
+              <b>{{t 'number_buzzer'}}</b>{{t 'wiegand_wizard_information.wizard_gpio_buzzer'}}
+            </p>
+          </div>
+        </div>
+      {{/if}}
+      {{bs-button type='success' text='Next'
+                  onClick=(action 'transitionFromGpioToFinish' (action w.transition-to 'finish'))}}
+    {{/w.step}}
+
+    {{#w.step name='finish'}}
+      <div class="row">
+        <div class="col-md-6">
+          {{t 'finish'}}
+          {{#link-to-external 'index'}}
+            {{bs-button type='success' text='Home'}}
+          {{/link-to-external}}
+
+        </div>
+      </div>
+    {{/w.step}}
+  {{/step-manager}}
+</div>

@@ -1,15 +1,22 @@
-<div class="row col-md-6">
-  {{#bs-form formLayout='horizontal' model=model action='createGroup'}}
-      <fieldset>
-          <legend>{{t 'users.group_info'}}</legend>
-      </fieldset>
+{{#bs-form formLayout='vertical' model=model
+           onSubmit=(route-action "createGroup") as | form |}}
+  <div class="col-md-6 space-top">
+    <fieldset>
+      <legend>{{t 'configuration'}}</legend>
+      {{form.element controlType='text' label=(t 'users.group_name')
+                     placeholder="MySuperGroup"
+                     property='name'}}
+      {{form.element controlType='textarea' label=(t 'description')
+                     placeholder="Description"
+                     property='description'}}
 
-    {{bs-form-element controlType='text' label=(t 'users.group_name')
-                      property='name'}}
-
-    {{bs-form-element controlType='textarea' label=(t 'description')
-                      property='description'}}
-
-    {{bs-button defaultText=(t 'users.create_group') type="primary" buttonType="submit"}}
-  {{/bs-form}}
-</div>
+      <div class="row">
+        <div class="col-md-4">
+          {{#bs-button type="success" buttonType="submit"}}
+            {{t 'users.create_group'}}
+          {{/bs-button}}
+        </div>
+      </div>
+    </fieldset>
+  </div>
+{{/bs-form}}

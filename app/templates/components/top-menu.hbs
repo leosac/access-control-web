@@ -4,12 +4,12 @@
             <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
         </a>
         <ul class="dropdown-menu dropdown-alerts">
-<!--
+            <!--
           {{#each flashMessages.queue as |flash|}}
-            {{#if (eq flash.componentName 'flashmessage-as-alert')}}
-              {{component flash.componentName flash=flash}}
-            {{/if}}
-          {{/each}}-->
+                {{#if (eq flash.componentName 'flashmessage-as-alert')}}
+                    {{component flash.componentName flash=flash}}
+                {{/if}}
+            {{/each}}-->
 
             <li>
                 <a href="#">
@@ -78,27 +78,27 @@
     </li>
     <!-- /.dropdown -->
     <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <a class="dropdown-toggle" id="dropdown-toggle" data-toggle="dropdown" href="#">
             <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
         </a>
         <ul class="dropdown-menu dropdown-user">
             <li>
-              {{#link-to 'profile' authSrv.user_id}}
-                  <i class="fa fa-user fa-fw"></i>{{t 'profile.title'}}
-              {{/link-to}}
+                {{#link-to 'profile' authSrv.user_id}}
+                    <i class="fa fa-user fa-fw"></i>{{t 'profile.title'}}
+                {{/link-to}}
             </li>
-            <li><a href="#"><i class="fa fa-gear fa-fw"></i> {{t 'settings'}}</a>
+            <li>
+                {{#link-to 'settings'}}
+                    <i class="fa fa-gear fa-fw"></i> {{t 'settings'}}
+                {{/link-to}}
             </li>
             <li class="divider"></li>
             <li {{action 'logout'}}>
-                <a href="#">
+                <a id="logout-button" href="#">
                     <i class="fa fa-sign-out fa-fw"></i>
                     {{t 'logout'}}
                 </a>
             </li>
-            <li class="divider"></li>
-            <li {{action 'setLocale' 'en'}}><a href="#">{{t 'switch_en'}}</a></li>
-            <li {{action 'setLocale' 'fr'}}><a href="#">{{t 'switch_fr'}}</a></li>
         </ul>
         <!-- /.dropdown-user -->
     </li>

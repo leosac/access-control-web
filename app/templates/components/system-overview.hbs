@@ -1,33 +1,74 @@
-<table class="table table-hover">
-    <thead>
-    <tr>
-        <th>{{t 'parameter'}}</th>
-        <th>{{t 'value'}}</th>
-        <th>{{t 'description'}}</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>{{t 'instance_name'}}</td>
-        <td>{{systemOverview.instance_name}}</td>
-        <td>{{t 'instance_name_descr' appname=(getenv 'appname')}}</td>
-    </tr>
-    <tr>
-        <td>{{t 'config_version'}}</td>
-        <td>{{systemOverview.config_version}}</td>
-        <td>{{t 'config_version_descr'}}</td>
-    </tr>
-    <tr>
-        <td>{{t 'uptime'}}</td>
-        <td>{{format-duration systemOverview.uptime}}</td>
-        <td>{{t 'uptime_descr' appname=(getenv 'appname')}}</td>
-    </tr>
-    <tr>
-        <td>{{t 'modules'}}</td>
-        <td>
-            {{systemOverview.enabledModules}}
-        </td>
-        <td>{{t 'modules_descr'}}</td>
-    </tr>
-    </tbody>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>{{t 'parameter'}}</th>
+    <th>{{t 'value'}}</th>
+    <th>{{t 'description'}}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>{{t 'instance_name'}}</td>
+    <td>{{systemOverview.instance_name}}</td>
+    <td>{{t 'instance_name_descr' appname=(getenv 'appname')}}</td>
+  </tr>
+  <tr>
+    <td>{{t 'config_version'}}</td>
+    <td>{{systemOverview.config_version}}</td>
+    <td>{{t 'config_version_descr'}}</td>
+  </tr>
+  <tr>
+    <td>{{t 'uptime'}}</td>
+    <td>{{format-duration systemOverview.uptime}}</td>
+    <td>{{t 'uptime_descr' appname=(getenv 'appname')}}</td>
+  </tr>
+  <tr>
+    <td>{{t 'modules_server'}}</td>
+    <td>
+      {{moduleManager.serverModules}}
+    </td>
+    <td>{{t 'modules_server_desc'}}</td>
+  </tr>
+  <tr>
+    <td>{{t 'modules_client'}}</td>
+    <td>
+      {{moduleManager.clientMatchServer}}
+    </td>
+    <td>{{t 'modules_client_desc'}}</td>
+  </tr>
+  <tr>
+    <td>{{t 'modules_both'}}</td>
+    <td>
+      {{moduleManager.shouldPresentBoth}}
+    </td>
+    <td>{{t 'modules_both_desc'}}</td>
+  </tr>
+  <tr>
+    <td>
+      {{t 'modules_wizard'}}
+    </td>
+    <td>
+      {{moduleManager.modulesNeededByWizard}}
+    </td>
+    <td>
+      {{t 'modules_wizard_desc'}}
+    </td>
+  </tr>
+  </tbody>
 </table>
+
+{{#if moduleManager.onlyPresentClient}}
+  <div class="alert alert-warning text-center" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign"></span>
+    {{t 'modules_client_error'}}
+    {{moduleManager.onlyPresentClient}}
+  </div>
+{{/if}}
+
+{{#if moduleManager.onlyPresentServer}}
+  <div class="alert alert-warning text-center" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign"></span>
+    {{t 'modules_server_error'}}
+    {{moduleManager.onlyPresentServer}}
+  </div>
+{{/if}}

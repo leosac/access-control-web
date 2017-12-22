@@ -1,40 +1,47 @@
-{{#bs-form formLayout="horizontal" model=schedule action=action}}
+{{#bs-form formLayout="vertical" model=schedule as |form|}}
+  <div class="col-md-6">
     <fieldset>
-        <legend>{{t 'details'}}</legend>
-      {{bs-form-element controlType="text" label=(t 'name')
-                        placeholder=(t 'schedule.placeholder')
-                        property="name"}}
+      <legend>{{t 'configuration'}}</legend>
+      {{form.element controlType="text" label=(t 'name')
+                     placeholder=(t 'schedule.placeholder')
+                     property="name"}}
 
-      {{bs-form-element controlType="textarea" label=(t 'notes')
-                        placeholder=(t 'notes_placeholder')
-                        property="description"}}
+      {{form.element controlType="textarea" label=(t 'notes')
+                     placeholder=(t 'notes_placeholder')
+                     property="description"}}
     </fieldset>
-
     <fieldset>
-        <legend>{{t 'timeframes'}}</legend>
-
-        <div class="col-md-6">
-          {{#bs-form-element label="Timeframes"}}
-            {{#power-select
-              selected=currentTimeframe
-              options=schedule.timeframes
-              onchange=(action (mut currentTimeframe))
-              allowClear=false
-            as |tf|
-            }}
-              {{t 'timeframe'}} {{tf.id}}
-            {{/power-select}}
-          {{/bs-form-element}}
-
-          {{bs-button defaultText=(t 'add') type='success' action='addTimeframe'}}
-          {{bs-button defaultText=(t 'remove_selected') type='danger' action='removeTimeframe'}}
+      <legend>{{t 'timeframes'}}</legend>
+      <div class="row">
+        <div class="col-md-6 space-bottom">
+          {{bs-button defaultText=(t 'add_time_zone') type='primary' onClick=(action 'addTimeframe')}}
         </div>
-
-        <div class="col-md-6">
-          {{schedule-timeframe timeframe=currentTimeframe}}
+      </div>
+      {{#each schedule.timeframes as |tf|}}
+        <div class="panel panel-warning">
+          <div class="panel-heading panel-timeframe">{{t 'timeframe'}}
+          </div>
+          <div class="panel-body">
+            {{schedule-timeframe form=form delete=(action 'removeTimeframe' tf) timeframe=tf}}
+          </div>
         </div>
-
+      {{/each}}
+      <div class="row space-top space-bottom">
+        <div class="col-md-6">
+          {{bs-button defaultText=(t 'submit') type="success" onClick=action buttonType="submit"}}
+        </div>
+          {{#if delete}}
+            <div class="pull-right form-button-delete">
+              {{button-with-confirmation type='danger'
+                                         icon='glyphicon glyphicon-remove'
+                                         size='md'
+                                         text=(t 'delete')
+                                         message=(t 'schedule.delete_confirm')
+                                         onConfirm=delete
+              }}
+            </div>
+          {{/if}}
+      </div>
     </fieldset>
-    {{bs-button defaultText=(t 'submit') type="primary" buttonType="submit"}}
-
+  </div>
 {{/bs-form}}

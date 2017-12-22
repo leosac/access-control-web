@@ -1,140 +1,199 @@
+@import 'customizable-style.css';
+@import 'workaround-ember-bootstrap.css';
+
 body {
   background-color: #eee;
+  min-height: 100%;
+  padding-bottom: 35px;
 }
 
 /**
  * Style for the login form
  */
 .form-signin {
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
+    max-width: 440px;
+    padding: 15px;
+    margin: 0 auto;
 }
 
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
-  margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .form-signin .checkbox {
-  font-weight: normal;
+    font-weight: normal;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+  background-color: #F7F7FF; // Choose your own color here
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #F7F7FF;
 }
 
 .form-signin .form-control {
-  position: relative;
-  height: auto;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding: 10px;
-  font-size: 16px;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 5px 5px 5px 15px;
+    font-size: 16px;
 }
 
 .form-signin .form-control:focus {
-  z-index: 2;
+    z-index: 2;
 }
 
 .form-signin input[type="text"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
 .form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
 /* centered columns styles */
 .row-centered {
-    text-align:center;
+    text-align: center;
 }
+
 .col-centered {
-    display:inline-block;
-    float:none;
+    display: inline-block;
+    float: none;
     /* reset the text-align */
-    text-align:left;
+    text-align: left;
     /* inline-block space fix */
-    margin-right:-4px;
+    margin-right: -4px;
 }
 
 .pulled-down-row {
     font-size: 0;
 }
+
 .pulled-down-row > * {
     float: none;
     display: inline-block;
     font-size: 14px; /* if using LESS it's quicker to just use @font-size-base */
 }
+
 .pulled-down-row > *:last-child {
     vertical-align: middle;
 }
 
+/*
+Navbar
+ */
+
 .navbar-logo {
-  height: 48px;
-  width: auto;
+    height: 48px;
+    width: auto;
 }
 
-a:hover {
-  color: #EE7C00;
-}
-
-.navbar-default {
-  border-color: #EE7C00;
-}
-
-.navbar-fixed-bottom {
-  background-color: #CCCCCC;
-  padding-top: 5px;
-}
-
-.btn-primary {
-  background-color: #EE7C00;
-  border-color: #DB7200;
-}
-
-.btn-primary.active {
-  background-color: #DB7200;
-  border-color: #DB7200;
-}
-
-.btn-primary:hover {
-  background-color: #C06800;
-  border-color: #DB7200;
-}
-
-.btn-primary.active:hover {
-  background-color: #C06800;
-  border-color: #DB7200;
-}
-
-h1 {
-  color: #EE7C00;
-}
-
-.panel-default .panel-heading {
-  background-color: #EE7C00;
-  color: #fff;
-}
-
-.table-responsive {
-  padding-top: 5px;
-}
-
-.table-responsive table thead {
-  background-color: #EE7C00;
-  color: #fff;
-  padding-top: 5px;
-  padding-bottom: 5px;
+/* https://stackoverflow.com/questions/15071306/mysterious-whitespace-in-between-bootstrap2-navbar-and-row-underneath */
+.navbar-hack {
+  margin-bottom: 0;
 }
 
 .table-responsive table thead th {
-  padding: 5px;
+    padding: 5px;
 }
 
-.disabled-greyed
-{
-  opacity: 0.4;
+.disabled-greyed {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.panel-body {
+    margin-top: 0;
+    padding: 15px 15px 0;
+}
+
+.page-wrapper {
+  border: 1px;
+  height: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.jstree-node {
+    font-size: 12pt;
+}
+
+/*
+Set the color in the boolean-to-color-yes-no helper
+ */
+
+.boolean-to-colored-no {
+  color: darkred;
+}
+
+.boolean-to-colored-yes {
+  color: green;
+}
+
+/*
+Center the button under the svg image in the index,
+and add a little space to aerate the template
+ */
+
+.center-image {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/*
+This will define the color in our footer for the logo
+ */
+
+.footer-check-color {
+  color: #5cb85c;
+}
+
+.footer-spinner-color {
+  color: #c02d29;
+}
+
+/*
+This will set the style for the model name in the global search
+ */
+
+.global-search-model-style {
+  color: #9b9aa5;
+  font-style: italic;
+}
+
+/*
+This is mandatory, so that our page-wrapper take the whole page instead of a half of the page most of the time
+ */
+#page-wrapper {
+  height: auto;
+  min-height: 100vh
+}
+
+/*
+Error default color
+ */
+
+.error-default-color {
+  color: darkred;
+}
+
+/*
+Disable the click when hovering the wizard
+ */
+
+.inactiveLink {
   pointer-events: none;
+  cursor: default;
+}
+
+.wiegand-reader-wizard-lesser-text {
+  margin-top: -5px;
+  font-size: 12px;
 }

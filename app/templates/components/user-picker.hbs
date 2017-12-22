@@ -1,13 +1,11 @@
-{{#bs-form-element label=(t 'username')}}
-  {{#power-select
-    selected=selected
-    searchField="username"
-    options=allUsers
+{{#form.element label=label}}
+  {{#power-select-typeahead
+    selected=selected.username
     onchange=onChange
     allowClear=true
+    search=searchCredential
     placeholder=(t 'username')
-  as |user|
-  }}
+  as |user|}}
     {{user.username}}
-  {{/power-select}}
-{{/bs-form-element}}
+  {{/power-select-typeahead}}
+{{/form.element}}

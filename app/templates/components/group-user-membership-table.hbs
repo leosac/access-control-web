@@ -1,4 +1,4 @@
-<table class="table table-striped">
+<table class="table table-hover space-top">
     <thead>
     <tr>
         <th>#Id</th>
@@ -7,36 +7,34 @@
         <th>{{t 'username'}}</th>
         <th>{{t 'table.join_date'}}</th>
         <th>{{t 'rank'}}</th>
-      {{#if canRemoveUserFromGroup}}
-          <th>{{t 'remove'}}</th>
-      {{/if}}
+        {{#if canRemoveUserFromGroup}}
+            <th>{{t 'remove'}}</th>
+        {{/if}}
     </tr>
     </thead>
     <tbody>
     {{#each group.memberships as |membership|}}
-        <tr>
+        {{#link-to 'profile' membership.user.id tagName="tr"}}
             <td>{{membership.user.id}}</td>
             <td>{{membership.user.firstname}}</td>
             <td>{{membership.user.lastname}}</td>
             <td>
-              {{#link-to 'profile' membership.user.id}}
                 {{membership.user.username}}
-              {{/link-to}}
             </td>
             <td>{{membership.timestamp}}</td>
-            <td>{{membership.rank}}</td>
-          {{#if canRemoveUserFromGroup}}
-              <td>
-                {{button-with-confirmation
-                  type='danger'
-                  icon='glyphicon glyphicon-ban-circle'
-                  size='xs'
-                  text=(t 'remove')
-                  message=(t 'users.remove_from_group' username=membership.user.username)
-                  onConfirm=(action 'deleteMembership' membership.id)
-                }}</td>
-          {{/if}}
-        </tr>
+            <td>{{t membership.rank}}</td>
+            {{#if canRemoveUserFromGroup}}
+                <td>
+                    {{button-with-confirmation
+                            type='danger'
+                            icon='glyphicon glyphicon-ban-circle'
+                            size='xs'
+                            text=(t 'remove')
+                            message=(t 'users.remove_from_group' username=membership.user.username)
+                            onConfirm=(action 'deleteMembership' membership.id)
+                    }}</td>
+            {{/if}}
+        {{/link-to}}
     {{/each}}
     </tbody>
 </table>

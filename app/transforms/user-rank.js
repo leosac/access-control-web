@@ -3,27 +3,27 @@ import DS from 'ember-data';
 export default DS.Transform.extend({
     deserialize(serialized) {
         if (serialized === 4)
-            return 'Administrator';
+            return 'administrator';
         else if (serialized === 3)
-            return 'Supervisor';
+            return 'supervisor';
         else if (serialized === 2)
-            return 'Manager';
+            return 'manager';
         else if (serialized === 1)
-            return 'Viewer';
+            return 'viewer';
         else if (serialized === 0)
-            return 'User';
+            return 'user';
     },
 
     serialize(deserialized) {
-        if (deserialized === 'Administrator')
+        if (deserialized === 'administrator')
             return 4;
-        else if (deserialized === 'Supervisor')
+        else if (deserialized === 'supervisor')
             return 3;
-        else if (deserialized === 'Manager')
+        else if (deserialized === 'manager')
             return 2;
-        else if (deserialized === 'Viewer')
+        else if (deserialized === 'viewer')
             return 1;
-        else if (deserialized === 'User')
+        else if (deserialized === 'user')
             return 0;
     }
 });

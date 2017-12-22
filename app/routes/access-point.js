@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
@@ -14,7 +13,7 @@ export default LeosacRoute.extend({
         "use strict";
         return this.get('store').findRecord('access-point', params.access_point_id);
     },
-    resetController(controller, isExiting, transition)
+    resetController(controller, isExiting)
     {
         // Rollback change when leaving the page.
         if (isExiting)
@@ -36,6 +35,16 @@ export default LeosacRoute.extend({
                 {
                     this.get('flashMessages').danger('An error occurred while editing Access Point.');
                 });
+        },
+        deleteAP ()
+        {
+            const self = this;
+            const model = this.controller.get('model');
+            model.destroyRecord({}).then(() =>
+            {
+                self.get('flashMessages').success('Access Point has been deleted.');
+                self.transitionTo('access-points.list');
+            });
         }
     }
 });

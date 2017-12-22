@@ -1,5 +1,5 @@
 import Ember from 'ember';
-
+// This helper will set the color of the cells in the access overview
 export default Ember.Helper.extend({
   i18n: Ember.inject.service('i18n'),
 
@@ -14,9 +14,9 @@ export default Ember.Helper.extend({
       if (value === undefined)
           str = not_available;
       if (value === false)
-          str = '<strong><span style="color: darkred;">' + no + '</span></strong>';
+          str = '<strong><span class="boolean-to-colored-no">' + no + '</span></strong>';
       if (value === true)
-          str = '<strong><span style="color: green;">' + yes + '</span></strong>';
+          str = '<strong><span class="boolean-to-colored-yes">' + yes + '</span></strong>';
 
       return Ember.String.htmlSafe(str);
   }

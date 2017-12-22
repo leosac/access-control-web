@@ -19,7 +19,8 @@ export default Ember.Service.extend({
     websocket: Ember.inject.service('websocket'),
     checkUpdate()
     {
-        return this.get('websocket').sendJson('check_update', {}).then((resp) => {
+        return this.get('websocket').sendJson('check_update', {}).then((resp) =>
+        {
             return resp;
         });
     },
@@ -32,7 +33,8 @@ export default Ember.Service.extend({
     },
     getPending()
     {
-        return this.get('websocket').sendJson('get_pending_update', {}).then((resp) => {
+        return this.get('websocket').sendJson('get_pending_update', {}).then((resp) =>
+        {
             this.get('store').pushPayload(resp);
 
             // We have to hardcode for EvoXS due to emberjs broken
@@ -43,20 +45,23 @@ export default Ember.Service.extend({
     acknowledgeUpdate(update)
     {
         return this.get('websocket').sendJson('ack_update',
-            {update_id: update.get('numericId')}).then((resp) => {
+            {update_id: update.get('numericId')}).then(() =>
+        {
             return true;
         });
     },
     cancelUpdate(update)
     {
         return this.get('websocket').sendJson('cancel_update',
-            {update_id: update.get('numericId')}).then((resp) => {
+            {update_id: update.get('numericId')}).then(() =>
+        {
             return true;
         });
     },
     getHistory()
     {
-        return this.get('websocket').sendJson('get_update_history', {}).then((resp) => {
+        return this.get('websocket').sendJson('get_update_history', {}).then((resp) =>
+        {
             this.get('store').pushPayload(resp);
 
             // We have to hardcode for EvoXS due to emberjs broken
@@ -66,7 +71,8 @@ export default Ember.Service.extend({
     },
     getUpdate(uid)
     {
-        return this.get('websocket').sendJson('get_update', {update_id: uid}).then((resp) => {
+        return this.get('websocket').sendJson('get_update', {update_id: uid}).then((resp) =>
+        {
             this.get('store').pushPayload(resp);
 
             // We have to hardcode for EvoXS due to emberjs broken

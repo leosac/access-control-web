@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
@@ -14,26 +13,24 @@ export default LeosacRoute.extend({
         "use strict";
         return this.get('store').createRecord('pin-code');
     },
-    resetController(controller, isExiting, transition)
+    resetController(controller, isExiting)
     {
         // Rollback change when leaving the page.
         if (isExiting)
         {
             const mod = this.controller.get('model');
-            this.get('store').unloadRecord(mod);
+            if (mod.get('isNew'))
+                mod.unloadRecord();
         }
     },
     actions:
     {
-        createPin()
-        {
-            this.controller.get('model').save().then((pin) =>
-                {
+        createPin() {
+            this.controller.get('model').save().then((pin) => {
                     this.get('flashMessages').success('Pin successfully created.');
                     this.transitionTo('credentials.pin-code', pin.get('id'));
                 },
-                () =>
-                {
+                () => {
                     this.get('flashMessages').danger('An error occurred while creating the PIN');
                 });
         }

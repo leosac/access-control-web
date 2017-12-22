@@ -1,0 +1,84 @@
+<div class="row">
+    <div class="col-md-6">
+        {{ember-jstree
+                actionReceiver=jsTreeActionReceiver
+                eventDidMoveNode='handleJstreeEventDidMoveNode'
+                eventDidSelectNode='handleJstreeEventDidSelectNode'
+                data=zoneDataTree
+                plugins=plugins
+                typesOptions=typesOptions
+                checkCallback=checkCallback}}
+    </div>
+
+    {{#if selectedZone}}
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-sm-8">
+            {{#power-select-typeahead search=(action 'searchDoor')
+                                      selected=newDoor.alias
+                                      placeholder=(t 'schedule.type_door')
+                                      onchange=(action (mut newDoor)) as |doorInfo|}}
+              {{doorInfo.alias}}
+            {{/power-select-typeahead}}
+          </div>
+          <div class="col-sm-4">
+            {{bs-button size='sm' type="primary" onClick=(action 'addDoor')
+                        defaultText=(t 'schedule.add_door')}}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="table-responsive">
+              <table class="table table-hover table-bordered">
+                <thead>
+                <th>#Id</th>
+                <th>{{t 'alias'}}</th>
+                <th>{{t 'zone.remove_from_zone'}}</th>
+                </thead>
+                <tbody>
+                {{#each selectedZone.doors as |door|}}
+                  {{#link-to 'door' door.id tagName="tr"}}
+                    <td>{{door.id}}</td>
+                    <td>{{door.alias}}</td>
+                    <td>
+                      <div class="pull-right">
+                        {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
+                                    defaultText=(t 'remove') onClick=(action 'removeDoor' door)}}
+                      </div>
+                    </td>
+                  {{/link-to}}
+                {{/each}}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        {{#if arrayDoor}}
+          <p class="summary-zone-tree">
+            {{t 'summary'}}:
+          </p>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="table-responsive">
+                <table class="table table-hover table-bordered">
+                  <thead>
+                  <th>{{t 'zone.title'}}</th>
+                  <th>{{t 'door.title'}}</th>
+                  </thead>
+                  <tbody>
+                  {{#each arrayDoor as |entry|}}
+                    {{#link-to 'door' entry.doorId tagName="tr"}}
+                      <td>{{entry.zone}}</td>
+                      <td>{{entry.door}}</td>
+                    {{/link-to}}
+                  {{/each}}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        {{/if}}
+      </div>
+    {{/if}}
+</div>

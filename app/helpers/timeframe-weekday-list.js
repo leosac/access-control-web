@@ -1,7 +1,8 @@
 import Ember from 'ember';
 
+// converte a boolean to a string, depending of the given boolean
 export function timeframeWeekdayList(params/*, hash*/) {
-  const timeframe = params[0];
+    const timeframe = params[0];
     const weekdays = [];
 
     if (timeframe.enabledOnMonday)

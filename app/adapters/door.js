@@ -4,9 +4,10 @@ import Ember from 'ember';
 export default ApplicationAdapter.extend({
     ws: Ember.inject.service('websocket'),
 
-    findRecord: function (store, type, id, snapshot)
+    findRecord: function (store, type, id)
     {
         const ws = this.get('ws');
+
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
             ws.sendJson('door.read', {door_id: Number.parseInt(id)}).then(
@@ -15,9 +16,10 @@ export default ApplicationAdapter.extend({
             );
         });
     },
-    findAll: function (store, type, sinceToken, snapshotRecordArray)
+    findAll: function ()
     {
         const ws = this.get('ws');
+
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
             ws.sendJson('door.read', {door_id: 0}).then(
@@ -31,7 +33,8 @@ export default ApplicationAdapter.extend({
         const data = this.serialize(snapshot);
         const ws = this.get('ws');
 
-        if (data.data.relationships['access-point'] && data.data.relationships['access-point'].data)
+        if (data.data.relationships && data.data.relationships['access-point'] &&
+            data.data.relationships['access-point'].data)
             data.data.attributes.access_point_id = Number.parseInt(data.data.relationships['access-point'].data.id);
         else
             data.data.attributes.access_point_id = 0;
@@ -49,7 +52,8 @@ export default ApplicationAdapter.extend({
         const data = this.serialize(snapshot);
         const ws = this.get('ws');
 
-        if (data.data.relationships['access-point'] && data.data.relationships['access-point'].data)
+        if (data.data.relationships && data.data.relationships['access-point'] &&
+            data.data.relationships['access-point'].data)
             data.data.attributes.access_point_id = Number.parseInt(data.data.relationships['access-point'].data.id);
         else
             data.data.attributes.access_point_id = 0;

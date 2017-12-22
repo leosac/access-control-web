@@ -1,0 +1,12 @@
+In the app file, you can declare your models (and adapters), instance-initializers, serializers and transforms.
+
+There may be more, but this is not tested yet.
+
+There is nothing in ember-engine that allow us to share models, but if you share the store from the application,
+you will have access to the models from the application, because they are in the store.
+This is useful if you need to set a relationships.
+
+An other important point is the translations specific to the engines. In order to use the translations from the
+application, and to avoid duplicate, you have to share the i18n service from the application,
+and then add the translation in an instance-initializer like in the blueprint.
+

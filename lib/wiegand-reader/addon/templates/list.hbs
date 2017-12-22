@@ -1,0 +1,45 @@
+{{#link-to 'create' class='btn btn-primary'}}
+  {{t 'wiegand-reader.create_config'}}
+{{/link-to}}
+<hr>
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+    <th>#Id</th>
+    <th class="col-md-2">{{t 'name'}}</th>
+    <th>{{t 'mode'}}</th>
+    <th>{{t 'enable'}}</th>
+    <th class="col-md-offset-10 col-md-2">{{t 'delete'}}</th>
+    </thead>
+    <tbody>
+    {{#each model as |wiegand|}}
+      <tr>
+        {{#link-to 'wiegand-reader' wiegand.id tagName = "td"}}
+          {{wiegand.id}}
+        {{/link-to}}
+        {{#link-to 'wiegand-reader' wiegand.id tagName = "td"}}
+          {{wiegand.name}}
+        {{/link-to}}
+        {{#link-to 'wiegand-reader' wiegand.id tagName = "td"}}
+          {{t wiegand.mode}}
+        {{/link-to}}
+        <td>
+          <div class="pull-left">
+            {{device-toggle-enabled device=wiegand saveIt=true}}
+          </div>
+        </td>
+        <td>
+          {{button-with-confirmation
+            type='danger'
+            icon='glyphicon glyphicon-remove'
+            size='xs'
+            text=(t 'delete')
+            message=(t 'wiegand-reader.delete_confirm')
+            onConfirm=(route-action 'deleteWiegandReader' wiegand)}}
+        </td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,8 @@
+{
+  "displayName": "Piface Digital GPIO",
+  "needServer": true,
+  "entryPoint": "/list",
+  "modelToRoute": {
+    "pifaceDigitalGpio": "piface-digital-gpio"
+  }
+}

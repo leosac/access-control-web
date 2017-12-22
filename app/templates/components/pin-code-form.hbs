@@ -1,17 +1,44 @@
-{{#bs-form formLayout="horizontal" model=pin action=action}}
+{{#bs-form formLayout="vertical" model=pin onSubmit=action as |form|}}
+  <div class="col-md-6 space-top">
     <fieldset>
-        <legend>{{ t 'configuration'}}</legend>
-      {{bs-form-element controlType="text" label=(t 'alias')
-                        placeholder=(t 'alias_placeholder')
-                        property="alias"}}
-      {{bs-form-element controlType="text" label=(t 'pincode')
-                        placeholder="1234" property="code"}}
+      <legend>{{ t 'configuration'}}</legend>
+      {{form.element controlType="text" label=(t 'alias')
+                     placeholder=(t 'alias_placeholder')
+                     property="alias"}}
+      {{form.element controlType="text" label=(t 'pincode')
+                     placeholder="1234" property="code"}}
 
-      {{bs-form-element controlType="textarea" label=(t 'notes')
-                        placeholder=(t 'notes_placeholder')
-                        property="description"}}
+      {{form.element controlType="textarea" label=(t 'notes')
+                     placeholder=(t 'notes_placeholder')
+                     property="description"}}
 
-      {{user-picker selected=pin.owner onChange=(action (mut pin.owner))}}
-      {{bs-button defaultText=(t 'submit') type="primary" buttonType="submit"}}
+      {{user-picker form=form
+                    searchCredential=(action 'searchUser')
+                    label=(t 'owner')
+                    selected=selectedUser
+                    onChange=(action 'setOwner')}}
+
+      {{validity-control form=form
+                         enabledProperty="validityEnabled"
+                         startDate=(mut pin.validityStart)
+                         endDate=(mut pin.validityEnd)}}
+
+      <div class="row">
+        <div class="col-md-4">
+          {{bs-button defaultText=(t 'submit') type="success" buttonType="submit"}}
+        </div>
+        {{#if delete}}
+          <div class="pull-right form-button-delete">
+            {{button-with-confirmation type='danger'
+                                       icon='glyphicon glyphicon-remove'
+                                       size='md'
+                                       text=(t 'delete')
+                                       message=(t 'credentials.delete_confirm')
+                                       onConfirm=delete
+            }}
+          </div>
+        {{/if}}
+      </div>
     </fieldset>
+  </div>
 {{/bs-form}}

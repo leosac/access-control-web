@@ -1,28 +1,76 @@
 {{#if timeframe}}
-    <div class="col-md-6">
-      {{bs-form-element controlType='checkbox' label=(t 'schedule.monday')
-                        value=timeframe.enabledOnMonday}}
-      {{bs-form-element controlType='checkbox' label=(t 'schedule.tuesday')
-                        value=timeframe.enabledOnTuesday}}
-      {{bs-form-element controlType='checkbox' label=(t 'schedule.wednesday')
-                        value=timeframe.enabledOnWednesday}}
-      {{bs-form-element controlType='checkbox' label=(t 'schedule.thursday')
-                        value=timeframe.enabledOnThursday}}
-      {{bs-form-element controlType='checkbox' label=(t 'schedule.friday')
-                        value=timeframe.enabledOnFriday}}
-      {{bs-form-element controlType='checkbox' label=(t 'schedule.saturday')
-                        value=timeframe.enabledOnSaturday}}
-      {{bs-form-element controlType='checkbox' label=(t 'schedule.sunday')
-                        value=timeframe.enabledOnSunday}}
+  <div class="row">
+    <div class="col-md-3">
+      {{form.element controlType='checkbox' label=(t 'schedule.monday')
+                     value=(mut timeframe.enabledOnMonday)
+                     onChange=(action (mut timeframe.enabledOnMonday))}}
     </div>
 
-    <div class="col-md-6">
-      {{#bs-form-element label=(t 'schedule.start_time')}}
-        {{input type='text' placeholder='13:37' value=(mut timeframe.startTime) class='form-control'}}
-      {{/bs-form-element}}
-
-      {{#bs-form-element label=(t 'schedule.end_time')}}
-        {{input type='text' placeholder='18:42' value=(mut timeframe.endTime) class='form-control'}}
-      {{/bs-form-element}}
+    <div class="col-md-3">
+      {{form.element controlType='checkbox' label=(t 'schedule.tuesday')
+                     value=(mut timeframe.enabledOnTuesday)
+                     onChange=(action (mut timeframe.enabledOnTuesday))}}
     </div>
+
+    <div class="col-md-3">
+      {{form.element controlType='checkbox' label=(t 'schedule.wednesday')
+                     value=(mut timeframe.enabledOnWednesday)
+                     onChange=(action (mut timeframe.enabledOnWednesday))}}
+    </div>
+    <div class="col-md-3">
+      {{form.element controlType='checkbox' label=(t 'schedule.thursday')
+                     value=(mut timeframe.enabledOnThursday)
+                     onChange=(action (mut timeframe.enabledOnThursday))}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      {{form.element controlType='checkbox' label=(t 'schedule.friday')
+                     value=(mut timeframe.enabledOnFriday)
+                     onChange=(action (mut timeframe.enabledOnFriday))}}
+    </div>
+    <div class="col-md-3">
+      {{form.element controlType='checkbox' label=(t 'schedule.saturday')
+                     value=(mut timeframe.enabledOnSaturday)
+                     onChange=(action (mut timeframe.enabledOnSaturday))}}
+    </div>
+
+    <div class="col-md-3">
+      {{form.element controlType='checkbox' label=(t 'schedule.sunday')
+                     value=(mut timeframe.enabledOnSunday)
+                     onChange=(action (mut timeframe.enabledOnSunday))}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 cursor-link">
+      <a {{action 'toggleAll'}}>{{t 'toggle_all'}}</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5 datetime-picker-margin">
+      {{#form.element label=(t 'schedule.start_time')}}
+        {{bs-datetimepicker disabled=disabled
+                            date=timeframe.startTime format='H:mm'
+                            updateDate=(action (mut timeframe.startTime))}}
+      {{/form.element}}
+
+    </div>
+
+    <div class="col-md-5 datetime-picker-margin">
+      {{#form.element label=(t 'schedule.end_time')}}
+        {{bs-datetimepicker disabled=disabled
+                            date=timeframe.endTime format='H:mm'
+                            updateDate=(action (mut timeframe.endTime))}}
+      {{/form.element}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 space-bottom">
+      {{bs-button defaultText=(t 'remove_timeframe')
+                  size='sm'
+                  type='danger'
+                  onClick=delete}}
+    </div>
+  </div>
 {{/if}}

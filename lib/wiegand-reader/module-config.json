@@ -1,0 +1,8 @@
+{
+  "displayName": "Wiegand reader",
+  "needServer": true,
+  "entryPoint": "/list",
+  "modelToRoute": {
+    "wiegandReader": "wiegand-reader"
+  }
+}

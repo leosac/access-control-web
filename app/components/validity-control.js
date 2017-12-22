@@ -3,7 +3,7 @@ import moment from 'moment';
 
 export default Ember.Component.extend({
     // Must set 3 attributes.
-    //   + enabled
+    //   + enabledProperty: string
     //   + startDate
     //   + endDate
 

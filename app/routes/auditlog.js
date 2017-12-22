@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
@@ -13,7 +12,7 @@ export default LeosacRoute.extend({
     {
         "use strict";
     },
-    setupController(controller, model)
+    setupController(controller)
     {
         this._super(...arguments);
         controller.reload();

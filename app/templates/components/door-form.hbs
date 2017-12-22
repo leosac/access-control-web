@@ -1,17 +1,36 @@
-{{#bs-form formLayout="horizontal" model=door action=action}}
-    <fieldset>
+<div class="col-md-12">
+  {{#bs-form formLayout="vertical" model=door onSubmit=action as |form|}}
+    <div class="col-md-6">
+      <fieldset>
         <legend>{{t 'configuration'}}</legend>
-      {{bs-form-element controlType="text" label=(t 'alias')
-                        placeholder=(t 'door.placeholder')
-                        property="alias"}}
-      {{bs-form-element controlType="textarea" label=(t 'notes')
-                        placeholder=(t 'notes_placeholder')
-                        property="description"}}
+        {{form.element controlType="text" label=(t 'alias')
+                       placeholder=(t 'door.placeholder')
+                       property="alias"}}
+        {{form.element controlType="textarea" label=(t 'notes')
+                       placeholder=(t 'notes_placeholder')
+                       property="description"}}
+        {{autocomplete/access-point label=(t 'access_point')
+                                    form=form
+                                    onChange=(action 'changeAP')
+                                    selected=door.accessPoint.alias}}
+        <div class="row">
+          <div class="col-md-6">
+            {{bs-button defaultText=(t 'submit') type="success" size="md" onClick=action buttonType="submit"}}
+          </div>
+          {{#if delete}}
+            <div class="pull-right form-button-delete">
+              {{button-with-confirmation type='danger'
+                                         icon='glyphicon glyphicon-remove'
+                                         size='md'
+                                         text=(t 'delete')
+                                         message=(t 'door.delete_confirm')
+                                         onConfirm=delete
+              }}
+            </div>
+          {{/if}}
+        </div>
 
-      {{autocomplete/access-point label=(t 'access_point')
-                                  onChange=(action 'changeAP')
-                                  selected=door.accessPoint.alias}}
-
-      {{bs-button defaultText=(t 'submit') type="primary" buttonType="submit"}}
-    </fieldset>
-{{/bs-form}}
+      </fieldset>
+    </div>
+  {{/bs-form}}
+</div>

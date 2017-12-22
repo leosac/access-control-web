@@ -1,11 +1,11 @@
 <div>
-    <div class="col-md-6">
-      {{access-point-form ap=model action=(route-action 'editAP')}}
+    <div class="col-md-12">
+        {{access-point-form ap=model action=(route-action 'editAP') delete=(route-action 'deleteAP')}}
     </div>
 </div>
 
 {{#if model.door}}
-	{{t 'accesspoint.belongs_to' dooralias=model.door.alias}}
+    {{t 'accesspoint.belongs_to' dooralias=model.door.alias}}
 {{else}}
     {{t 'accesspoint.no_belongs'}}
 {{/if}}

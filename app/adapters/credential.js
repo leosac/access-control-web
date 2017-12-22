@@ -9,12 +9,11 @@ export default ApplicationAdapter.extend({
         const data = this.serialize(snapshot);
         const ws = this.get('ws');
 
-        // Retrieve owner, if any.
-        if (data.data.relationships && data.data.relationships.owner.data)
+        // Find owner, if any.
+        if (data.data.relationships && data.data.relationships.owner && data.data.relationships.owner.data)
             data.data.attributes.owner_id = Number.parseInt(data.data.relationships.owner.data.id);
         else
             data.data.attributes.owner_id = 0;
-
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
             ws.sendJson('credential.create', {
@@ -24,9 +23,10 @@ export default ApplicationAdapter.extend({
                 (failure) => reject(failure));
         });
     },
-    findRecord: function (store, type, id, snapshot)
+    findRecord: function (store, type, id)
     {
         const ws = this.get('ws');
+
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
             ws.sendJson('credential.read',
@@ -44,7 +44,6 @@ export default ApplicationAdapter.extend({
 
         // todo: Maybe add code to remove the object in the inverse side
         // of the relationship (user->credentials).
-
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
             ws.sendJson('credential.delete', {credential_id: credentialId}).then(
@@ -57,7 +56,7 @@ export default ApplicationAdapter.extend({
         const data = this.serialize(snapshot);
         const ws = this.get('ws');
 
-        if (data.data.relationships && data.data.relationships.owner.data)
+        if (data.data.relationships && data.data.relationships.owner && data.data.relationships.owner.data)
             data.data.attributes.owner_id = Number.parseInt(data.data.relationships.owner.data.id);
         else
             data.data.attributes.owner_id = 0;
@@ -72,7 +71,7 @@ export default ApplicationAdapter.extend({
                 (failure) => reject(failure));
         });
     },
-    findAll: function (store, type, sinceToken)
+    findAll: function ()
     {
         const ws = this.get('ws');
         return new Ember.RSVP.Promise(function (resolve, reject)

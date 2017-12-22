@@ -12,7 +12,7 @@ export default LeosacRoute.extend({
         refreshOverview()
         {
             "use strict";
-            console.log('sysoverview route refresh');
+            //console.log('sysoverview route refresh');
             this.get('systemOverview').update();
         }
     },

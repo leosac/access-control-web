@@ -5,7 +5,24 @@ import {validator, buildValidations} from 'ember-cp-validations';
 
 const PinCodeValidations = buildValidations(
     {
-        code: validator('ds-error')
+        code:
+            {
+                validators:
+                    [
+                        validator('ds-error'),
+                        validator('number', {
+                            allowString: true,
+                            integer: true,
+                            gte: 0,
+                            lte: 9999999999
+                        }),
+                        // This is not a 'valid' length, this is just a pre-identifier
+                        validator('length', {
+                            min: 4,
+                            max: 8
+                        })
+                    ]
+            }
     }
 );
 
@@ -14,4 +31,5 @@ export default Credential.extend(PinCodeValidations, {
     isPinCode: true,
     type: 'PinCode',
     code: DS.attr('string'),
+    displayIdentifier: Ember.computed.alias('code')
 });

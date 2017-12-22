@@ -4,22 +4,20 @@ import Ember from 'ember';
 export default DS.Adapter.extend({
     ws: Ember.inject.service('websocket'),
 
-    findAll: function (store, type, sinceToken)
+    findAll: function (store, type)
     {
-        var def = Ember.RSVP.defer();
+        let def = Ember.RSVP.defer();
 
-        var ws = this.get('ws');
+        let ws = this.get('ws');
         console.log("Try to find all: " + type);
-        var p = ws.sendJson('get_logs', {});
+        let p = ws.sendJson('get_logs', {});
 
-        p.then(function (data)
-            {
+        p.then((data) => {
                 "use strict";
                 console.log("RESPONSE");
                 def.resolve(data);
             },
-            function (failure)
-            {
+            () => {
                 "use strict";
                 console.log("FAILURE");
                 def.reject();
@@ -27,23 +25,21 @@ export default DS.Adapter.extend({
 
         return def.promise;
     },
-    query: function (store, type, query, recordArray)
+    query: function (store, type, query)
     {
         "use strict";
-        var def = Ember.RSVP.defer();
+        let def = Ember.RSVP.defer();
 
-        var ws = this.get('ws');
+        let ws = this.get('ws');
         console.log("QUERY MODE" + type);
         console.log(query);
-        var p = ws.sendJson('get_logs', query);
+        let p = ws.sendJson('get_logs', query);
 
-        p.then(function (data)
-            {
+        p.then((data) => {
                 console.log("RESPONSE");
                 def.resolve(data);
             },
-            function (failure)
-            {
+            () => {
                 console.log("FAILURE QUERY");
                 def.reject();
             });

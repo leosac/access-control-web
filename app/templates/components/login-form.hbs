@@ -1,29 +1,34 @@
+<!--suppress ALL -->
+
 <img src="{{getenv 'logoUrl'}}" class="navbar-logo" alt="Logo" />
 
-<form class="form-signin">
+{{#bs-form formLayout="horizontal"  class="form-signin" onSubmit=(action "login") as |form|}}
     <h2 class="form-signin-heading">{{t 'login-form.welcome'}}</h2>
+    {{form.element controlType='text' id='username-input' label=(t 'form.username.label')
+                   value=inputUsername required=true
+                   onChange=(action (mut inputUsername))
+                   placeholder=(t 'form.username.ph')
+    }}
+    {{form.element controlType='password' id='password-input' label=(t 'form.password.label')
+                   value=inputPassword required=true
+                   onChange=(action (mut inputPassword))
 
-  {{bs-form-element controlType='text' label=(t 'form.username.label')
-                    value=inputUsername required=true
-                    placeholder=(t 'form.username.ph')
-                    }}
+                   placeholder=(t 'form.password.ph')
+    }}
 
-  {{bs-form-element controlType='password' label=(t 'form.password.label')
-                    value=inputPassword required=true
-                    placeholder=(t 'form.password.ph')
-                    }}
+    {{#bs-button class="btn-signin" id='login-submit' size="md" type="primary" buttonType="submit"}}
+        {{t 'login-form.submit'}}
+    {{/bs-button}}
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit"
-      {{action 'login'}}>{{t 'login-form.submit'}}
-    </button>
+    <br>
+    {{#if pending}}
+        <!--suppress XmlDefaultAttributeValue -->
+        <span class="fa fa-refresh fa-spin login-spinner-style" aria-hidden="true"></span>
+    {{/if}}
 
-  {{#if pending}}
-      <span class="fa fa-refresh" style="color: orange" aria-hidden="true"></span>
-  {{/if}}
-
-  {{#if errorMessage}}
-      <div class="alert alert-danger">
-        {{errorMessage}}
-      </div>
-  {{/if}}
-</form>
+    {{#if errorMessage}}
+        <div class="alert alert-danger">
+            {{errorMessage}}
+        </div>
+    {{/if}}
+{{/bs-form}}

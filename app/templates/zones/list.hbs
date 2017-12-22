@@ -1,0 +1,36 @@
+{{#link-to 'zones.create' class='btn btn-primary'}}
+    {{t 'zone.create_zone'}}
+{{/link-to}}
+<hr>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+        <th>#Id</th>
+        <th class="col-md-2">{{t 'alias'}}</th>
+        <th>{{t 'description'}}</th>
+        <th>{{t 'type'}}</th>
+        <th class="col-md-offset-10 col-md-2">{{t 'delete'}}</th>
+        </thead>
+        <tbody>
+        {{#each model as |zone|}}
+            {{#link-to 'zone' zone.id tagName = "tr"}}
+                <td>{{zone.id}}</td>
+                <td>{{zone.alias}}</td>
+                <td>{{zone.description}}</td>
+                <td>
+                    {{t zone.type}}
+                </td>
+                <td>
+                  {{button-with-confirmation type='danger'
+                                             icon='glyphicon glyphicon-remove'
+                                             size='xs'
+                                             text=(t 'delete')
+                                             message=(t 'door.delete_confirm')
+                                             onConfirm=(route-action 'deleteZone' zone)}}
+                </td>
+            {{/link-to}}
+        {{/each}}
+        </tbody>
+    </table>
+</div>

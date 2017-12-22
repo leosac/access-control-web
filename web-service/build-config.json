@@ -1,0 +1,14 @@
+{
+    "name": "OUIIIIIIIIIIIIi",
+    "description": "Configuration file for the build",
+    "version": "1",
+    "styles": "app.css",
+    "leosac_addr": "ws://172.17.0.3:8888",
+    "leosac_root_url": "/",
+    "addon": [
+	    "piface-digital-gpio",
+	    "smtp"
+    ],
+    "extern-addon": [
+        ]
+}

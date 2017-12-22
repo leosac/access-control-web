@@ -1,0 +1,88 @@
+{{#bs-form formLayout="vertical" model=piface-digital-gpio onSubmit=action as |form|}}
+  <div class="col-md-6">
+    <fieldset>
+      <legend>{{t 'configuration'}}</legend>
+
+      {{#form.element controlType="text" label=(t 'name')
+                      placeholder=(t 'name')
+                      property="name" as |el|}}
+        {{el.control id="Tooltip-name"}}
+        {{#bs-tooltip placement="right" triggerElement="#Tooltip-name" triggerEvents='hover'}}{{t 'piface_digital_gpio_information.gpio_name'}}{{/bs-tooltip}}
+      {{/form.element}}
+
+      {{#form.element controlType="number" label=(t 'gpio_number')
+                      placeholder='0 - 7'
+                      property="number" as |el|}}
+        {{el.control id="Tooltip-number"}}
+        {{#bs-tooltip  placement="right" triggerElement="#Tooltip-number"}}{{t 'piface_digital_gpio_information.number'}}{{/bs-tooltip}}
+      {{/form.element}}
+
+      {{#form.element property="hardwareAddress" label=(t 'hardware_address') controlType='number' placeholder=(t 'type_address') as |el|}}
+        {{el.control id="Tooltip-address"}}
+        {{#bs-tooltip placement="right"  triggerElement="#Tooltip-address"}}{{t 'piface_digital_gpio_information.address'}}{{/bs-tooltip}}
+      {{/form.element}}
+
+      {{#form.element property="direction" label=(t 'direction')}}
+      <div id="Tooltip-direction">
+        {{#power-select
+          selected=piface-digital-gpio.direction
+          searchEnabled=false
+          options=allDirection
+          onchange=(action (mut piface-digital-gpio.direction))
+          placeholder=(t 'type_direction')
+        as |direction|}}
+          {{t direction}}
+        {{/power-select}}
+        {{#bs-tooltip placement="right" triggerElement="#Tooltip-direction"}}{{t 'piface_digital_gpio_information.direction'}}{{/bs-tooltip}}
+      </div>
+      {{/form.element}}
+
+      {{#if (eq piface-digital-gpio.direction 'out')}}
+        {{#form.element property='defaultValue' label=(t 'default_value')}}
+          <div id="Tooltip-value">
+          {{#power-select
+            selected=piface-digital-gpio.defaultValue
+            searchEnabled=false
+            options=allValue
+            onchange=(action (mut piface-digital-gpio.defaultValue))
+            placeholder=(t 'type_value')
+          as |newValue|}}
+            {{t newValue}}
+          {{/power-select}}
+          {{#bs-tooltip placement="right" triggerElement="#Tooltip-value" triggerEvent='hover'}}{{t 'piface_digital_gpio_information.value'}}{{/bs-tooltip}}
+          </div>
+        {{/form.element}}
+      {{/if}}
+
+      {{#form.element property="enabled" label=(t 'enable')}}
+        <div class="pull-right" id="Tooltip-enable">
+          {{device-toggle-enabled device=piface-digital-gpio saveIt=false}}
+          {{#bs-tooltip placement="right" triggerElement="#Tooltip-enable" triggerEvent='hover'}}{{t 'piface_digital_gpio_information.enable'}}{{/bs-tooltip}}
+        </div>
+      {{/form.element}}
+
+    <div class="row">
+      <div class="col-md-6">
+        {{bs-button
+          defaultText=(t 'submit')
+          type="success"
+          size="md"
+          buttonType="submit"}}
+      </div>
+      {{#if delete}}
+        <div class="pull-right form-button-delete">
+          {{button-with-confirmation type='danger'
+                                     icon='glyphicon glyphicon-remove'
+                                     size='md'
+                                     text=(t 'delete')
+                                     message=(t 'piface-digital-gpios.delete_confirm')
+                                     onConfirm=delete
+          }}
+        </div>
+      {{/if}}
+    </div>
+    </fieldset>
+  </div>
+{{/bs-form}}
+
+

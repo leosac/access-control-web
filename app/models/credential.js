@@ -1,14 +1,22 @@
-import Model from 'ember-data/model';
 import Ember from 'ember';
 import DS from 'ember-data';
-import {validator, buildValidations} from 'ember-cp-validations';
+import {buildValidations, validator} from 'ember-cp-validations';
 import moment from 'moment';
 
-const CredentialValidations = buildValidations(
-    {
-        alias: validator('ds-error')
-    }
-);
+const CredentialValidations = buildValidations({
+    alias:
+        {
+            validators:
+                [
+                    validator('ds-error'),
+                    validator('presence', true),
+                    validator('length', {
+                        min: 3,
+                        max: 15
+                    })
+                ]
+        }
+});
 
 export default DS.Model.extend(CredentialValidations, {
     numericId: Ember.computed('id', function ()

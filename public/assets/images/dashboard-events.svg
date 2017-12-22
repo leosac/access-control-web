@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+     viewBox="0 0 128 128" style="enable-background:new 0 0 128 128;" xml:space="preserve">
+  <style type="text/css">
+    #image-pattern{fill:#FFFFFF;}
+  </style>
+  <g>
+    <defs>
+      <path id="SVGID_1_" d="M8.9,126h110.3c3.8,0,6.9-3.1,6.9-6.9V8.9c0-3.8-3.1-6.9-6.9-6.9H8.9C5.1,2,2,5.1,2,8.9v110.3
+			C2,122.9,5.1,126,8.9,126z"/>
+    </defs>
+    <clipPath id="SVGID_2_">
+      <use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+    </clipPath>
+  </g>
+
+  <g>
+    <g>
+      <path id="image-pattern" d="M94,21H82v10.8h12V21z M106,21h-6v16.1H76V21H52v16.1H28V21h-6c-3.3,0-6,2.4-6,5.4v75.3c0,3,2.7,5.4,6,5.4h84
+			c3.3,0,6-2.4,6-5.4V26.4C112,23.4,109.3,21,106,21z M100,96.3H28V47.9h72V96.3z M46,21H34v10.8h12V21z M70,58.6H58v10.8h12V58.6z
+			 M88,58.6H76v10.8h12V58.6z M52,74.8H40v10.8h12V74.8z M52,58.6H40v10.8h12V58.6z M70,74.8H58v10.8h12V74.8z M88,74.8H76v10.8h12
+			V74.8z"/>
+    </g>
+  </g>
+</svg>

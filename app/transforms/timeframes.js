@@ -1,11 +1,12 @@
 import DS from 'ember-data';
 
+
 function clone(obj)
 {
-    if (null == obj || "object" !== typeof obj)
+    if (obj === null || "object" !== typeof obj)
         return obj;
-    var copy = obj.constructor();
-    for (var attr in obj)
+    let copy = obj.constructor();
+    for (let attr in obj)
     {
         if (obj.hasOwnProperty(attr))
             copy[attr] = clone(obj[attr]);
@@ -20,7 +21,7 @@ function clone(obj)
  */
 export default DS.Transform.extend({
     deserialize(serialized) {
-        // Remember, asingletimeframe from the server can only be bound to 1 day.
+        // Remember, a single timeframe from the server can only be bound to 1 day.
         // We need to merge timeframe together.
         const output = [];
         const findSameTimeframe = (startTime, endTime) =>
@@ -84,8 +85,16 @@ export default DS.Transform.extend({
         deserialized.forEach((tf) =>
         {
             const leosacTimeFrame = {};
-            leosacTimeFrame['start-time'] = tf.startTime;
-            leosacTimeFrame['end-time'] = tf.endTime;
+
+            if (typeof tf.startTime !== 'string')
+                leosacTimeFrame['start-time'] = tf.startTime.format('H:mm');
+            else
+                leosacTimeFrame['start-time'] = tf.startTime;
+
+            if (typeof tf.endTime !== 'string')
+                leosacTimeFrame['end-time'] = tf.endTime.format('H:mm');
+            else
+                leosacTimeFrame['end-time'] = tf.endTime;
 
             if (tf.enabledOnMonday)
             {

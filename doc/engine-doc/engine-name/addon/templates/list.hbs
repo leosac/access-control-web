@@ -1,0 +1,41 @@
+{{#link-to 'model-name-create' class='btn btn-primary'}}
+  {{t 'translation.key.create'}}
+{{/link-to}}
+<hr>
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+    <th>#Id</th>
+    <th class="col-md-2">{{t 'name'}}</th>
+    <th>{{t 'enable'}}</th>
+    <th class="col-md-offset-10 col-md-2">{{t 'delete'}}</th>
+    </thead>
+    <tbody>
+    {{#each model as |model-name|}}
+      <tr>
+        {{#link-to 'model-name' model-name.id tagName = "td"}}
+          {{model-name.id}}
+        {{/link-to}}
+        {{#link-to 'model-name' model-name.id tagName = "td"}}
+          {{model-name.name}}
+        {{/link-to}}
+        <td>
+          <div class="pull-left">
+            {{device-toggle-enabled device=model-name saveIt=true}}
+          </div>
+        </td>
+        <td>
+          {{button-with-confirmation
+            type='danger'
+            icon='glyphicon glyphicon-remove'
+            size='xs'
+            text=(t 'delete')
+            message=(t 'model-name.delete_confirm')
+            onConfirm=(route-action 'deleteModelName' model-name)}}
+        </td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+</div>

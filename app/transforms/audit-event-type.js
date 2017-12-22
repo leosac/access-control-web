@@ -1,14 +1,14 @@
-import Transform from 'ember-data/transform';
+import DS from 'ember-data';
 import {AuditEventType} from 'web/leosac-constant';
 
-export default Transform.extend({
+export default DS.Transform.extend({
     /**
      * We receive an integer. We must output a string.
      */
     deserialize(serialized) {
         const types = [];
 
-        for (var key in AuditEventType)
+        for (let key in AuditEventType)
         {
             if (AuditEventType.hasOwnProperty(key))
             {

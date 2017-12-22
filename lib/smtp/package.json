@@ -1,0 +1,16 @@
+{
+  "name": "smtp",
+  "keywords": [
+    "ember-addon",
+    "ember-engine"
+  ],
+  "dependencies": {
+    "ember-cli-babel": "*",
+    "ember-cli-htmlbars": "*",
+    "ember-cli-htmlbars-inline-precompile": "*",
+    "ember-i18n": "*",
+    "ember-cli-flash": "*",
+    "ember-bootstrap": "*",
+    "ember-route-action-helper": "*"
+  }
+}

@@ -5,9 +5,10 @@ export default ApplicationAdapter.extend({
     ws: Ember.inject.service('websocket'),
     flashMessages: Ember.inject.service(),
 
-    findRecord: function (store, type, id, snapshot)
+    findRecord: function (store, type, id)
     {
         const ws = this.get('ws');
+
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
             ws.sendJson('user-group-membership.read',

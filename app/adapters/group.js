@@ -4,9 +4,10 @@ import Ember from 'ember';
 export default ApplicationAdapter.extend({
     ws: Ember.inject.service('websocket'),
 
-    findRecord: function (store, type, id, snapshot)
+    findRecord: function (store, type, id)
     {
         const ws = this.get('ws');
+
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
             ws.sendJson('group.read', {group_id: Number.parseInt(id)}).then(
@@ -15,9 +16,10 @@ export default ApplicationAdapter.extend({
             );
         });
     },
-    findAll: function (store, type, sinceToken, snapshotRecordArray)
+    findAll: function ()
     {
         const ws = this.get('ws');
+
         return new Ember.RSVP.Promise(function (resolve, reject)
         {
             ws.sendJson('group.read', {group_id: 0}).then(

@@ -1,0 +1,36 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/fixes.html" as fixes %}
+{% import "bootstrap/utils.html" as util %}
+{% block content %}
+    {{ util.flashed_messages(dismissible=True) }}
+    <div class="container">
+        <h1>Leosac Browser Version Form</h1>
+        <div class="row pull-right">
+            <a class="btn btn-default" href="/logout">Logout</a>
+        </div>
+        {% if current_user.is_authenticated %}
+            <div class="row">
+                <div class="col-md-6">
+                    <form action="" method="POST" role="form" class="form">
+                        {{ form.hidden_tag() }} {{ wtf.form_errors(form, hiddens="only") }}
+                        <div class="form-group  required">
+                            <label class="control-label" for="address">Leosac Address</label>
+                            {{ form.address(class="form-control",id="address",required="required",type="text",value="",placeholder="e.g. ws://172.17.0.3:8888/") }}
+                        </div>
+                        {{ form.submit(class="btn btn-success") }}
+                    </form>
+                </div>
+            </div>
+        {% else %}
+            <p>Please login</p>
+
+            <a class="btn btn-default" href="/login">Login</a>
+            <a class="btn btn-default" href="/register">Register</a>
+        {% endif %}
+    </div>
+{% endblock %}
+{% block head %}
+    {{ super() }}
+    {{ fixes.ie8() }}
+{% endblock %}

@@ -1,26 +1,33 @@
-{{#bs-form formLayout='inline' action='scheduleMappingPicked'}}
-
-  {{#bs-form-element label=(t 'schedule.title')}}
-    {{#power-select-typeahead search=(action 'searchSchedule')
-                              selected=selectedSchedule.name
-                              placeholder=(t 'schedule.type')
-                              onchange=(action 'scheduleChanged') as |schedInfo|}}
-      {{schedInfo.name}}
-    {{/power-select-typeahead}}
-  {{/bs-form-element}}
-
-
-{{#bs-form-element label=(t 'mapping')}}
-    {{#power-select selected=selectedMapping
-                    searchField="alias"
-                    options=selectedSchedule.mapping
-                    onchange=(action (mut selectedMapping))
-                    placeholder='...'
-    as |mapping|
-    }}
-      {{mapping.alias}}
-    {{/power-select}}
-  {{/bs-form-element}}
-
-  {{bs-button size='sm' defaultText=(t 'schedule.join_mapping') type="primary" buttonType="submit"}}
+{{#bs-form formLayout='inline' onSubmit=(action 'scheduleMappingPicked') as |form|}}
+  <fieldset>
+    <div class="col-md-4 col-sm-4">
+      {{#form.element label=(t 'schedule.title')}}
+        {{#power-select-typeahead search=(action 'searchSchedule')
+                                  selected=selectedSchedule.name
+                                  placeholder=(t 'schedule.type')
+                                  onchange=(action 'scheduleChanged') as |schedInfo|}}
+          {{schedInfo.name}}
+        {{/power-select-typeahead}}
+      {{/form.element}}
+    </div>
+    <div class="col-sm-4 col-md-4">
+      {{#form.element label=(t 'mapping')}}
+        {{#power-select-typeahead selected=selectedMapping
+                                  form=form
+                                  searchField="alias"
+                                  options=selectedSchedule.mapping
+                                  onchange=(action (mut selectedMapping))
+                                  placeholder='...' as |mapping|}}
+          {{mapping.alias}}
+        {{else}}
+          <div class="text-center">
+            <p>{{t 'schedule.no_mapping'}}</p>
+          </div>
+        {{/power-select-typeahead}}
+      {{/form.element}}
+    </div>
+    <div class="pull-right button-next-to-power-select">
+      {{bs-button size='sm' defaultText=(t 'schedule.join_mapping') type="primary" buttonType="submit"}}
+    </div>
+  </fieldset>
 {{/bs-form}}

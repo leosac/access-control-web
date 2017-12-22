@@ -13,57 +13,49 @@ export default Ember.Component.extend({
     newUser: null,
     newGroup: null,
     actions: {
-        addUser()
-        {
-            this.get('mapping').get('users').addObject(this.get('newUser'));
+        addUser() {
+            this.get('store').findRecord('user', this.get('newUser.id')).then((user) => {
+                this.get('mapping').get('users').addObject(user);
+            });
         },
-        addGroup()
-        {
-            this.get('store').findRecord('group', this.get('newGroup.id')).then((grp) =>
-            {
+        addGroup() {
+            this.get('store').findRecord('group', this.get('newGroup.id')).then((grp) => {
                 this.get('mapping').get('groups').addObject(grp);
             });
         },
-        addCredential()
-        {
+        addCredential() {
             findCredential(this.get('store'), this.get('newCredential')).then((cred) => {
                 this.get('mapping').get('credentials').addObject(cred);
             });
-            /*
-            this.get('store').findRecord('credential', this.get('newCredential')).then((cred) =>
+            /*            this.get('store').findRecord('credential', this.get('newCredential')).then((cred) =>
             {
                 this.get('mapping').get('credentials').addObject(cred);
             });*/
         },
-        addDoor()
-        {
-            this.get('store').findRecord('door', this.get('newDoor.id')).then((door) =>
-            {
+        addDoor() {
+            this.get('store').findRecord('door', this.get('newDoor.id')).then((door) => {
                 this.get('mapping').get('doors').addObject(door);
             });
         },
-        removeUser(user)
-        {
+        removeUser(user) {
             this.get('mapping').get('users').removeObject(user);
         },
-        removeGroup(group)
-        {
+        removeGroup(group) {
             this.get('mapping').get('groups').removeObject(group);
         },
-        removeCredential(cred)
-        {
+        removeCredential(cred) {
             this.get('mapping').get('credentials').removeObject(cred);
         },
-        removeDoor(door)
-        {
+        removeDoor(door) {
             this.get('mapping').get('doors').removeObject(door);
         },
-        searchGroup(partialName)
-        {
+        searchGroup(partialName) {
             return this.get('search').findGroupByName(partialName);
         },
-        searchDoor(partialName)
-        {
+        searchUser(partialName) {
+            return this.get('search').findUserByUsername(partialName);
+        },
+        searchDoor(partialName) {
             return this.get('search').findDoorByAlias(partialName);
         }
     }

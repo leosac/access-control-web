@@ -23,6 +23,9 @@ export default Ember.Controller.extend({
             });
         p.then((msgs) =>
         {
+            p.forEach(function(msg) {
+                msg.data.message = msg.data.message.substring(43, 200);
+            });
             self.set('totalLogs', msgs.get('meta').total);
             self.set('lastLogPage', msgs.get('meta').last);
         });

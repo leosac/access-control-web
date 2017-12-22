@@ -1,8 +1,7 @@
 /* jshint node: true */
 
-module.exports = function (environment)
-{
-    var ENV = {
+module.exports = function (environment) {
+    let ENV = {
         modulePrefix: 'web',
         environment: environment,
         rootURL: '/',
@@ -24,9 +23,9 @@ module.exports = function (environment)
             // LEOSAC_ADDR environement variable.
             leosacAddr: null,
             //leosacAddr: '10.2.1.5:8888',
-            appname: 'EvoXS Management Studio',
+            appname: 'Leosac Web GUI',
             logoUrl: '/assets/images/logo.png',
-            siteUrl: 'izyx-systems.com',
+            siteUrl: 'leosac.com',
         }
     };
 
@@ -36,13 +35,11 @@ module.exports = function (environment)
         timeout: 7000,
     };
 
-    if (ENV.APP.leosacAddr == null)
-    {
+    if (ENV.APP.leosacAddr === null) {
         ENV.APP.leosacAddr = process.env.LEOSAC_ADDR;
     }
 
-    if (environment === 'development')
-    {
+    if (environment === 'development') {
         // ENV.APP.LOG_RESOLVER = true;
         // ENV.APP.LOG_ACTIVE_GENERATION = true;
         // ENV.APP.LOG_TRANSITIONS = true;
@@ -50,8 +47,17 @@ module.exports = function (environment)
         // ENV.APP.LOG_VIEW_LOOKUPS = true;
     }
 
-    if (environment === 'test')
-    {
+    if (environment === 'production') {
+        if (process.env.LEOSAC_ROOT_URL !== null) {
+            ENV.APP.rootURL = process.env.LEOSAC_ROOT_URL;
+        }
+        else
+            ENV.rootURL = '/';
+    }
+
+    if (environment === 'test') {
+        ENV.i18n = ENV.i18n || {};
+        ENV.i18n.suppressWarnings = true;
         // Testem prefers this...
         ENV.locationType = 'none';
 
@@ -62,8 +68,7 @@ module.exports = function (environment)
         ENV.APP.rootElement = '#ember-testing';
     }
 
-    if (environment === 'production')
-    {
+    if (environment === 'production') {
 
     }
 

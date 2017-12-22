@@ -31,9 +31,9 @@ export default Ember.Component.extend({
         const self = this;
         mapping.get('schedule').then((sched) =>
         {
-            sched.save().then((ok) =>
+            sched.save().then(() =>
             {
-                self.get('user').reload().then((ok) =>
+                self.get('user').reload().then(() =>
                 {
                     self.decrSyncing();
                 });
@@ -54,14 +54,14 @@ export default Ember.Component.extend({
     {
         const self = this;
         this.incrSyncing();
-        self.get('user').reload().then((ok) =>
+        self.get('user').reload().then(() =>
         {
             self.get('user').get('schedules').then((scheds) =>
             {
                 scheds.forEach((sched) =>
                 {
                     self.incrSyncing();
-                    sched.reload().then((ok) =>
+                    sched.reload().then(() =>
                     {
                         self.decrSyncing();
                     });

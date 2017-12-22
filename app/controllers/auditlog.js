@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import DS from 'ember-data';
 
 export default Ember.Controller.extend({
     auditLog: Ember.inject.service('audit-log'),
@@ -13,6 +12,7 @@ export default Ember.Controller.extend({
     updateEventEnabled: true,
     zoneEventEnabled: true,
     openDetailsModal: false,
+    toggleValue: true,
 
     pageSize: 25,
     currentPage: 1,
@@ -26,12 +26,13 @@ export default Ember.Controller.extend({
     // The audit object that is currently being shown
     // in the details modal.
     detailedAudit: null,
-    audits: [],
+    audits: Ember.ArrayProxy.create({content: Ember.A([])}),
+    // Whenever one of those variable change,
+    // thanks to Ember.observer, reload is called
     watch_: Ember.observer('wsapicallEnabled', 'userEventEnabled', 'doorEventEnabled',
-        'groupEventEnabled', 'credentialEventEnabled', 'scheduleEventEnabled', 'userGroupMembershipEventEnabled',
-        'updateEventEnabled', 'zoneEventEnabled',
-        'currentPage', 'pageSize', function ()
-        {
+        'groupEventEnabled', `credentialEventEnabled`, 'scheduleEventEnabled',
+        'userGroupMembershipEventEnabled', 'updateEventEnabled', 'zoneEventEnabled',
+        'currentPage', 'pageSize', function () {
             this.reload();
         }),
     actions: {
@@ -39,11 +40,26 @@ export default Ember.Controller.extend({
             this.set('openDetailsModal', true);
             this.set('detailedAudit', audit);
         },
-        refresh(){
+        refresh() {
             this.reload();
+        },
+        /**
+         *  This is a function that will toggle every event in the audit log
+         */
+        toggleAll() {
+            this.set('toggleValue', this.get('toggleValue') !== true);
+            this.set('wsapicallEnabled', this.get('toggleValue'));
+            this.set('userEventEnabled', this.get('toggleValue'));
+            this.set('doorEventEnabled', this.get('toggleValue'));
+            this.set('credentialEventEnabled', this.get('toggleValue'));
+            this.set('scheduleEventEnabled', this.get('toggleValue'));
+            this.set('groupEventEnabled', this.get('toggleValue'));
+            this.set('userGroupMembershipEventEnabled', this.get('toggleValue'));
+            this.set('updateEventEnabled', this.get('toggleValue'));
+            this.set('zoneEventEnabled', this.get('toggleValue'));
         }
     },
-    reload(){
+    reload() {
         const self = this;
 
         const enabled_types = [];
@@ -66,26 +82,30 @@ export default Ember.Controller.extend({
         if (this.get('zoneEventEnabled'))
             enabled_types.push('Leosac::Audit::ZoneEvent');
 
-        const currentPage = Number.parseInt(this.get('currentPage')) || 1;
-        const pageSize = Number.parseInt(this.get('pageSize')) || 20;
-        const progressSetter = function(v)
-        {
+        // small hack because we can't put the value of currentPage to a negative value,
+        // otherwise, we have to restart the server. This is currently being fixed,
+        // but in the mean time,that will fix it
+
+        let currentPage = Number.parseInt(this.get('currentPage')) || 1;
+        if (currentPage <= 0 || typeof currentPage !== 'number')
+            currentPage = 1;
+        const pageSize = Number.parseInt(this.get('pageSize')) || 25;
+
+        const progressSetter = function (v) {
             self.set('progressValue', v);
         };
 
         self.set('fetchingData', true);
         this.get('auditLog').findAllByTypes(enabled_types,
-            currentPage, pageSize, progressSetter).then((result) =>
-        {
+            currentPage, pageSize, progressSetter).then((result) => {
             self.set('totalPage', result.meta.total_page);
             self.set('resultCount', result.meta.count);
-            self.set('audits', result.data);
+            self.get('audits').set('content', result.data);
             progressSetter(0);
             self.set('fetchingData', false);
         });
     },
-    init(){
+    init() {
         this._super(...arguments);
-        this.reload();
     }
 });

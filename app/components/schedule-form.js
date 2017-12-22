@@ -4,18 +4,19 @@ export default Ember.Component.extend({
     // `action` and `schedule` must be set.
 
     // The timeframe currently under edition
-    currentTimeframe: null,
+    timeframeBuffer: 0,
     actions: {
-        removeTimeframe()
+        removeTimeframe(timeframeToRemove)
         {
-            const newArray = []
+            const newArray = [];
             this.get('schedule').get('timeframes').forEach((tf) =>
             {
-                if (tf !== this.get('currentTimeframe'))
+                if (tf !== timeframeToRemove)
+                {
                     newArray.push(tf);
+                }
             });
             this.set('schedule.timeframes', newArray);
-            this.set('currentTimeframe', null);
         },
         addTimeframe()
         {
@@ -28,7 +29,6 @@ export default Ember.Component.extend({
             const newTimeframe = {id: newArray.length};
             newArray.push(newTimeframe);
             this.set('schedule.timeframes', newArray);
-            this.set('currentTimeframe', newTimeframe);
         }
     }
 });

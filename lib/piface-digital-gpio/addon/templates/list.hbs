@@ -1,0 +1,67 @@
+{{#link-to 'create' class='btn btn-primary'}}
+  {{t 'piface-digital-gpios.create_config'}}
+{{/link-to}}
+<hr>
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+    <th>#Id</th>
+    <th class="col-md-2">{{t 'name'}}</th>
+    <th>{{t 'gpio_number'}}</th>
+    <th>{{t 'direction'}}</th>
+    <th>{{t 'default_value'}}</th>
+    <th>Test</th>
+    <th>{{t 'enable'}}</th>
+    <th class="col-md-offset-10 col-md-2">{{t 'delete'}}</th>
+    </thead>
+    <tbody>
+    {{#each model as |piface-digital-gpio|}}
+    {{#if piface-digital-gpio.id}}
+      <tr>
+        {{#link-to 'piface-digital-gpio' piface-digital-gpio.id tagName='td'}}
+          {{piface-digital-gpio.id}}
+        {{/link-to}}
+        {{#link-to 'piface-digital-gpio' piface-digital-gpio.id tagName='td'}}
+          {{piface-digital-gpio.name}}
+        {{/link-to}}
+        {{#link-to 'piface-digital-gpio' piface-digital-gpio.id tagName='td'}}
+          {{piface-digital-gpio.number}}
+        {{/link-to}}
+        {{#link-to 'piface-digital-gpio' piface-digital-gpio.id tagName='td'}}
+          {{t piface-digital-gpio.direction}}
+        {{/link-to}}
+        {{#link-to 'piface-digital-gpio' piface-digital-gpio.id tagName='td'}}
+          {{#if (eq piface-digital-gpio.direction 'out')}}
+            {{#if (eq piface-digital-gpio.defaultValue 'true')}}
+              {{t 'true'}}
+            {{else}}
+              {{t 'false'}}
+            {{/if}}
+          {{/if}}
+        {{/link-to}}
+        {{#link-to 'piface-digital-gpio' piface-digital-gpio.id tagName='td'}}
+          {{#if (eq piface-digital-gpio.direction 'out')}}
+            {{piface-digital-gpio-test gpioId=piface-digital-gpio.id}}
+          {{/if}}
+        {{/link-to}}
+        <td>
+          <div class="pull-left">
+            {{device-toggle-enabled device=piface-digital-gpio saveIt=true}}
+          </div>
+        </td>
+        <td>
+          {{button-with-confirmation
+            type='danger'
+            icon='glyphicon glyphicon-remove'
+            size='xs'
+            text=(t 'delete')
+            message=(t 'piface-digital-gpios.delete_confirm')
+            onConfirm=(route-action 'deletePifaceDigitalGpio' piface-digital-gpio)}}
+        </td>
+      </tr>
+    {{/if}}
+    {{/each}}
+    </tbody>
+  </table>
+</div>

@@ -13,20 +13,19 @@ export default Ember.Service.extend({
     instance_name: "",
     config_version: false,
     uptime: false,
-    enabledModules: [],
 
     update()
     {
         "use strict";
-        var self = this;
-        var ws = self.get('websocket');
+        let self = this;
+        let ws = self.get('websocket');
+
         return ws.sendJson('system_overview', {}).then(
             function (response)
             {
                 self.set('config_version', response.config_version);
                 self.set('instance_name', response.instance_name);
                 self.set('uptime', response.uptime);
-                self.set('enabledModules', response.modules);
             }
         );
     }

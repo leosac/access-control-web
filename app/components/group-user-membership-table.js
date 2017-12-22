@@ -18,7 +18,7 @@ export default Ember.Component.extend({
             {
                 if (m.get('group').get('id') === self.get('group').get('id'))
                 {
-                    if (m.get('rank') === 'Administrator')
+                    if (m.get('rank') === 'administrator')
                         this.set('canRemoveUserFromGroup', true);
                 }
             });

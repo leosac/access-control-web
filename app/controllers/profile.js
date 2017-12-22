@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
     {
         const p = this.get('store').findRecord('user', this.get('authSrv').get('user_id')).then((u) =>
         {
-            return u.get('rank') === 'Administrator' || u.get('rank') === 'Supervisor' || u.get('rank') === 'Manager' ||
+            return u.get('rank') === 'administrator' || u.get('rank') === 'supervisor' || u.get('rank') === 'manager' ||
                 this.get('targetUserId') === u.get('id');
         });
 
@@ -25,7 +25,7 @@ export default Ember.Controller.extend({
     {
         const p = this.get('store').findRecord('user', this.get('authSrv').get('user_id')).then((u) =>
         {
-            return u.get('rank') === 'Administrator' || u.get('rank') === 'Supervisor' || u.get('rank') === 'Manager';
+            return u.get('rank') === 'administrator' || u.get('rank') === 'supervisor' || u.get('rank') === 'manager';
         });
 
         return DS.PromiseObject.create({

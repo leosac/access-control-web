@@ -1,0 +1,22 @@
+{% extends "bootstrap/base.html" %} {% import "bootstrap/wtf.html" as wtf %} {% import "bootstrap/fixes.html" as fixes %}
+{% import "bootstrap/utils.html" as util %} {% block content %} {{ util.flashed_messages(dismissible=True) }}
+    <div class="container">
+        <h1>Register</h1>
+        {% if current_user.is_authenticated %}
+            <p>Already logged?</p>
+            <a class="btn btn-default" href="/">Return home</a>
+        {% else %}
+            <div class="row">
+                <div class="col-md-6">
+                    {% if error %}
+                        <div class="alert alert-danger alert-dismissable fade in">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                            <strong>Danger! </strong> {{ error }}
+                        </div>
+                    {% endif %}
+                    {{ wtf.quick_form(form, button_map={'submit_button': 'primary'}) }}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %} {% block head %} {{ super() }} {{ fixes.ie8() }} {% endblock %}

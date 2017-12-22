@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
 import {findAllCredentials, deleteCredential} from 'web/leosac-credential-helper';
 

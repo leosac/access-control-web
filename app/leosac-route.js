@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import ENV from 'web/config/environment';
+//import config from 'web/config/environement';
 
 /**
  * This is a base route for the application.
@@ -24,6 +25,7 @@ import ENV from 'web/config/environment';
  *       method, it MUST call `this._super()` otherwise this
  *       base route will be useless.
  */
+
 export default Ember.Route.extend({
     i18n: Ember.inject.service(),
     globalInfo: Ember.inject.service('leosac-info'),
@@ -36,7 +38,18 @@ export default Ember.Route.extend({
         onLogout()
         {
             "use strict";
-            this.transitionTo('login');
+
+            const  self = this;
+            /**
+             * This is a small hack that allow us to navigate to login
+             *
+             * The hack is quite simple, it check if the route name match the current route.
+             * if not, then this is an engine.
+             */
+            if (self.fullRouteName === self.routeName)
+                self.transitionTo('login');
+            else
+                self.transitionToExternal('login');
         },
         /**
          * An error was raised by a custom component.
@@ -50,9 +63,8 @@ export default Ember.Route.extend({
         /**
          * An error was raised from a route model() method (or similar).
          * @param err
-         * @param transition
          */
-        error(err, transition)
+        error(err)
         {
             this.intermediateTransitionTo('error', err);
             return false;
@@ -83,13 +95,23 @@ export default Ember.Route.extend({
 function redirectIfNotAuth(route)
 {
     "use strict";
-    var self = route;
-    var promise_or_ret = self.get('authSrv').isLoggedIn();
+    let self = route;
+    let promise_or_ret = self.get('authSrv').isLoggedIn();
 
     if (promise_or_ret === false)
     {
-        self.transitionTo('login');
-        return;
+        /**
+         * This is a small hack that allow us to navigate to login
+         *
+         * The hack is quite simple, it check if the route name match the current route.
+         * if not, then this is an engine.
+         */
+        if (self.fullRouteName === self.routeName)
+            self.transitionTo('login');
+        else
+            self.transitionToExternal('login');
+        return ;
+
     }
     else if (promise_or_ret === true)
     {
@@ -101,7 +123,11 @@ function redirectIfNotAuth(route)
         // success, do nothing and let user reach page
     }, function ()
     {
-        self.transitionTo('login');
+        if (self.fullRouteName === self.routeName)
+            self.transitionTo('login');
+        else
+            self.transitionToExternal('login');
+
     });
     return promise_or_ret;
 }

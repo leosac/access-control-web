@@ -1,12 +1,16 @@
-import Transform from 'ember-data/transform';
+import DS from 'ember-data';
 
-export default Transform.extend({
+export default DS.Transform.extend({
     deserialize(serialized) {
         return new Date(serialized * 1000);
     },
 
+    /**
+     * We must not get there other than the group membership
+     * @param deserialized
+     * @returns {*}
+     */
     serialize(deserialized) {
-        console.log('Hopefully we never get there');
         return deserialized;
     }
 });

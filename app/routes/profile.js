@@ -40,7 +40,7 @@ export default LeosacRoute.extend({
     actions: {
         editProfile: function ()
         {
-            var user = this.controller.get('model').user;
+            let user = this.controller.get('model').user;
             const fm = this.get('flashMessages');
             const i18n = this.get('i18n');
 

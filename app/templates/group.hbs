@@ -1,46 +1,42 @@
-<div>
-  {{#bs-tab}}
-    {{#bs-tab-pane title=(t 'information')}}
-        <div class="row col-md-6">
-          {{#bs-form formLayout="horizontal" model=model action="editGroup"}}
-              <fieldset>
-                  <legend>{{t 'group_information'}}</legend>
-                {{bs-form-element controlType="text" label=(t 'name')
-                                  property="name"}}
+{{#bs-tab as |tab|}}
+  {{#tab.pane title=(t 'information')}}
+    <div class="col-md-6 button-space">
+      {{#bs-form formLayout="vertical" model=model onSubmit=(route-action "editGroup") as  | form |}}
+        <fieldset>
+          <legend>{{t 'configuration'}}</legend>
+          {{form.element controlType="text" label=(t 'name')
+                         placeholder="MySuperGroup"
+                         property="name"}}
+          {{form.element controlType='textarea' label=(t 'description')
+                         property='description' placeholder='Description'}}
 
-                {{bs-form-element controlType='textarea' label=(t 'description')
-                                  property='description'}}
+          <div class="row">
+            <div class="col-md-1">
+              {{bs-button defaultText=(t 'submit') type="success" buttonType="submit"
+                          size='md'}}
+            </div>
+            <div class="pull-right form-button-delete">
+              {{button-with-confirmation type='danger'
+                                         icon='glyphicon glyphicon-remove'
+                                         size='md'
+                                         text=(t 'delete')
+                                         message=(t 'delete_group_confirmation')
+                                         onConfirm=(route-action 'deleteGroup')
+              }}
+            </div>
+          </div>
+        </fieldset>
+      {{/bs-form}}
 
-                {{bs-button defaultText=(t 'edit') type="primary" buttonType="submit"
-                            size='sm'}}
+    </div>
+  {{/tab.pane}}
 
-                {{#bs-button type="info" icon="glyphicon glyphicon-refresh"
-                             size="sm"
-                             action='cancelAndRefresh'}}
-                    {{t 'cancel_and_refresh'}}
-                {{/bs-button}}
+  {{#tab.pane title=(t 'members')}}
+    {{group-user-membership-table group=model}}
+    {{group-add-one-user group=model}}
+  {{/tab.pane}}
 
-                {{button-with-confirmation
-                  type='danger'
-                  icon='glyphicon glyphicon-remove'
-                  size='sm'
-                  text=(t 'delete')
-                  message=(t 'delete_group_confirmation')
-                  onConfirm=(route-action 'deleteGroup')
-                }}
-              </fieldset>
-          {{/bs-form}}
-
-        </div>
-    {{/bs-tab-pane}}
-
-    {{#bs-tab-pane title=(t 'members')}}
-      {{group-user-membership-table group=model}}
-      {{group-add-one-user group=model}}
-    {{/bs-tab-pane}}
-
-    {{#bs-tab-pane title=(t 'access')}}
-      {{group-schedules group=model}}
-    {{/bs-tab-pane}}
-  {{/bs-tab}}
-</div>
+  {{#tab.pane title=(t 'access')}}
+    {{group-schedules group=model}}
+  {{/tab.pane}}
+{{/bs-tab}}

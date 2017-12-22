@@ -1,198 +1,221 @@
-<div class="col-md-12 row">
-    <div class="pull-left">
-      {{#bs-form-element label=(t 'alias')}}
-        {{input type='text' value=(mut mapping.alias) class='form-control'}}
-      {{/bs-form-element}}
-    </div>
-    <div class="pull-right">
-      {{bs-button icon='glyphicon glyphicon-remove' type='danger'
-                  defaultText=(t 'delete')
-                  action=(route-action 'removeMapping' mapping)}}
-    </div>
-</div>
-
-<div class="col-md-12 row">
-    <hr>
-</div>
-
-<div class="col-md-12">
-    <h3>{{t 'users.title'}}</h3>
-    <div class="table-responsive">
-        <table class="table table-striped table-bordered">
-            <thead>
-            <th>#Id</th>
-            <th>{{t 'username'}}</th>
-            <th>{{t 'schedule.remove_from_mapping'}}</th>
-            </thead>
-            <tbody>
-            {{#each mapping.users as |user|}}
-                <tr>
-                    <td>
-                      {{#link-to 'profile' user.id}}
-                        {{user.id}}
-                      {{/link-to}}
-                    </td>
-                    <td>{{user.username}}</td>
-                    <td>
-                      {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
-                                  defaultText=(t 'remove') action=(action 'removeUser' user)}}
-                    </td>
-                </tr>
-            {{/each}}
-            </tbody>
-        </table>
-    </div>
-    <div class="pulled-down-row">
-        <div class="col-md-3">
-          {{user-picker selected=newUser onChange=(action (mut newUser))}}
+{{#bs-form formLayout="horizontal" model=mapping as |form|}}
+    <div class="col-md-12 row">
+        <div class="pull-left">
+            {{#form.element label=(t 'alias')}}
+                {{input type='text' value=(mut mapping.alias) class='form-control'}}
+            {{/form.element}}
         </div>
-        <div class="col-md-3">
-          {{bs-button size='sm' type="primary" action="addUser" defaultText=(t 'users.add_user')}}
+        <div class="pull-right">
+            {{bs-button icon='glyphicon glyphicon-remove' type='danger'
+                        defaultText=(t 'delete')
+                        onClick=(route-action 'removeMapping' mapping)}}
         </div>
     </div>
-</div>
 
-<div class="col-md-12 row">
-    <hr>
-</div>
-
-<div class="col-md-12">
-    <h3>{{t 'groups'}}</h3>
-    <div class="table-responsive">
-        <table class="table table-striped table-bordered">
-            <thead>
-            <th>#Id</th>
-            <th>{{t 'name'}}</th>
-            <th>{{t 'schedule.remove_from_mapping'}}</th>
-            </thead>
-            <tbody>
-            {{#each mapping.groups as |group|}}
-                <tr>
-                    <td>
-                      {{#link-to 'group' group.id}}
-                        {{group.id}}
-                      {{/link-to}}
-                    </td>
-                    <td>{{group.name}}</td>
-                    <td>
-                      {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
-                                  defaultText=(t 'remove') action=(action 'removeGroup' group)}}
-                    </td>
-                </tr>
-            {{/each}}
-            </tbody>
-        </table>
+    <div class="col-md-12 row">
+        <hr>
     </div>
-    <div>
-        <div class="col-md-6">
-          {{#bs-form-element label='Group name'}}
-              <div class="input-group">
-                {{#power-select-typeahead search=(action 'searchGroup')
-                                          selected=newGroup.name
-                                          placeholder=(t 'users.type_group')
-                                          onchange=(action (mut newGroup)) as |groupInfo|}}
-                  {{groupInfo.name}}
-                {{/power-select-typeahead}}
-                  <span class="input-group-btn">
-                    {{bs-button size='sm' type="primary" action="addGroup" defaultText=(t 'users.add_group')}}
-                  </span>
-              </div>
-          {{/bs-form-element}}
+    <div class="col-md-12">
+        <h3>{{t 'users.title'}}</h3>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered">
+                <thead>
+                <th>#Id</th>
+                <th>{{t 'username'}}</th>
+                <th>{{t 'schedule.remove_from_mapping'}}</th>
+                </thead>
+                <tbody>
+                {{#each mapping.users as |user|}}
+                    {{#link-to 'profile' user.id tagName="tr"}}
+                        <td class="col-md-1">
+                            {{user.id}}
+                        </td>
+                        <td class="col-md-6">
+                            {{user.username}}
+                        </td>
+                        <td>
+                            <div class="pull-right">
+                                {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
+                                            defaultText=(t 'remove') onClick=(action 'removeUser' user)}}
+                            </div>
+                        </td>
+                    {{/link-to}}
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="pull-left col-md-4">
+                {{#form.element label=(t 'table.group_name')}}
+                    {{#power-select-typeahead search=(action 'searchUser')
+                                              selected=newUser.username
+                                              placeholder=(t 'users.type_group')
+                                              onchange=(action (mut newUser)) as |userInfo|}}
+                        {{userInfo.username}}
+                    {{/power-select-typeahead}}
+                {{/form.element}}
+            </div>
+            <div class="col-md-2">
+                {{bs-button size='sm' type="primary" onClick=(action "addUser" user)
+                            defaultText=(t 'users.add_user')}}
+            </div>
         </div>
     </div>
-</div>
 
-<div class="col-md-12 row">
-    <hr>
-</div>
-
-<div class="col-md-12">
-    <h3>{{t 'credentials.title'}}</h3>
-    <div class="table-responsive">
-        <table class="table table-striped table-bordered">
-            <thead>
-            <th>#Id</th>
-            <th>{{t 'type'}}</th>
-            <th>{{t 'alias'}}</th>
-            <th>{{t 'schedule.remove_from_mapping'}}</th>
-            </thead>
-            <tbody>
-            {{#each mapping.credentials as |cred|}}
-                <tr>
-                    <td>
-                      {{link-to-credential credential=cred text=cred.id}}
-                    </td>
-                    <td>{{cred.type}}</td>
-                    <td>{{cred.alias}}</td>
-                    <td>
-                      {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
-                                  defaultText=(t 'remove') action=(action 'removeCredential' cred)}}
-                    </td>
-                </tr>
-            {{/each}}
-            </tbody>
-        </table>
+    <div class="col-md-12 row">
+        <hr>
     </div>
-    <div class="pulled-down-row">
-        <div class="col-md-3">
-          {{#bs-form-element label="Id"}}
-            {{input type='number' value=(mut newCredential) class='form_control'}}
-          {{/bs-form-element}}
+
+    <div class="col-md-12">
+        <h3>{{t 'groups'}}</h3>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered">
+                <thead>
+                <th>#Id</th>
+                <th>{{t 'name'}}</th>
+                <th>{{t 'schedule.remove_from_mapping'}}</th>
+                </thead>
+                <tbody>
+                {{#each mapping.groups as |group|}}
+                    {{#link-to 'group' group.id tagName="tr"}}
+                        <td class="col-md-1">
+                            {{group.id}}
+                        </td>
+                        <td class="col-md-6">
+                            {{group.name}}
+                        </td>
+                        <td>
+                            <div class="pull-right">
+                                {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
+                                            defaultText=(t 'remove') onClick=(action 'removeGroup' group)}}
+                            </div>
+                        </td>
+                    {{/link-to}}
+                {{/each}}
+                </tbody>
+            </table>
         </div>
-        <div class="col-md-3">
-          {{bs-button size='sm' type="primary" action="addCredential"
-                      defaultText=(t 'users.add_credential')}}
-        </div>
-    </div>
-</div>
 
-<div class="col-md-12 row">
-    <hr>
-</div>
-
-<div class="col-md-12">
-    <h3>{{t 'doors'}}</h3>
-    <div class="table-responsive">
-        <table class="table table-striped table-bordered">
-            <thead>
-            <th>#Id</th>
-            <th>{{t 'alias'}}</th>
-            <th>{{t 'schedule.remove_from_mapping'}}</th>
-            </thead>
-            <tbody>
-            {{#each mapping.doors as |door|}}
-                <tr>
-                    <td>
-                      {{#link-to 'door' door.id}}
-                        {{door.id}}
-                      {{/link-to}}
-                    </td>
-                    <td>{{door.alias}}</td>
-                    <td>
-                      {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
-                                  defaultText=(t 'remove') action=(action 'removeDoor' door)}}
-                    </td>
-                </tr>
-            {{/each}}
-            </tbody>
-        </table>
-    </div>
-
-    <div>
-        <div class="col-md-6">
-          {{#bs-form-element label='Door alias'}}
-              <div class="input-group">
-                {{#power-select-typeahead search=(action 'searchDoor')
-                                          selected=newDoor.alias
-                                          placeholder=(t 'schedule.type_door')
-                                          onchange=(action (mut newDoor)) as |doorInfo|}}
-                  {{doorInfo.alias}}
-                {{/power-select-typeahead}}
-                  <span class="input-group-btn">
-                    {{bs-button size='sm' type="primary" action="addDoor" defaultText=(t 'schedule.add_door')}}
-                  </span>
-              </div>
-          {{/bs-form-element}}
+        <div>
+            <div class="row">
+                <div class="pull-left col-md-4">
+                    {{#form.element label=(t 'table.group_name')}}
+                        {{#power-select-typeahead search=(action 'searchGroup')
+                                                  selected=newGroup.name
+                                                  placeholder=(t 'users.type_group')
+                                                  onchange=(action (mut newGroup)) as |groupInfo|}}
+                            {{groupInfo.name}}
+                        {{/power-select-typeahead}}
+                    {{/form.element}}
+                </div>
+                <div class="col-md-2">
+                    {{bs-button size='sm' type="primary" onClick=(action "addGroup" group)
+                                defaultText=(t 'users.add_group')}}
+                </div>
+            </div>
         </div>
     </div>
-</div>
+
+    <div class="col-md-12 row">
+        <hr>
+    </div>
+
+    <div class="col-md-12">
+        <h3>{{t 'credentials.title'}}</h3>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead>
+                <th>#Id</th>
+                <th>{{t 'type'}}</th>
+                <th>{{t 'alias'}}</th>
+                <th>{{t 'schedule.remove_from_mapping'}}</th>
+                </thead>
+                <tbody>
+                {{#each mapping.credentials as |cred|}}
+                    <tr>
+                        <td class="col-md-1">
+                            {{link-to-credential credential=cred text=cred.id}}
+                        </td>
+                        <td class="col-md-4">
+                            {{cred.type}}
+                        </td>
+                        <td class="col-md-4">
+                            {{link-to-credential credential=cred text=cred.alias}}
+                        </td>
+                        <td>
+                            <div class="pull-right">
+                                {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
+                                            defaultText=(t 'remove') onClick=(action 'removeCredential' cred)}}
+                            </div>
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="pull-left col-md-4">
+                {{#form.element label="Id"}}
+                    {{input type='number' value=(mut newCredential) class='form_control'}}
+                {{/form.element}}
+            </div>
+            <div class="col-md-2">
+                {{bs-button size='sm' type="primary" onClick=(action "addCredential" cred)
+                            defaultText=(t 'users.add_credential')}}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12 row">
+        <hr>
+    </div>
+
+    <div class="col-md-12">
+        <h3>{{t 'doors'}}</h3>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered">
+                <thead>
+                <th>#Id</th>
+                <th>{{t 'alias'}}</th>
+                <th>{{t 'schedule.remove_from_mapping'}}</th>
+                </thead>
+                <tbody>
+                {{#each mapping.doors as |door|}}
+                    {{#link-to 'door' door.id tagName="tr"}}
+                        <td class="col-md-1">
+                            {{door.id}}
+                        </td>
+                        <td class="col-md-6">
+                            {{door.alias}}
+                        </td>
+                        <td>
+                            <div class="pull-right">
+                                {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
+                                            defaultText=(t 'remove') onClick=(action 'removeDoor' door)}}
+                            </div>
+                        </td>
+                    {{/link-to}}
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <div class="row">
+                <div class="pull-left col-md-4">
+                    {{#form.element label='Door alias'}}
+                        {{#power-select-typeahead search=(action 'searchDoor')
+                                                  selected=newDoor.alias
+                                                  placeholder=(t 'schedule.type_door')
+                                                  onchange=(action (mut newDoor)) as |doorInfo|}}
+                            {{doorInfo.alias}}
+                        {{/power-select-typeahead}}
+                    {{/form.element}}
+                </div>
+                <div class="col-md-2">
+                    {{bs-button size='sm' type="primary" onClick=(action "addDoor") defaultText=(t 'schedule.add_door')}}
+                </div>
+            </div>
+        </div>
+    </div>
+{{/bs-form}}

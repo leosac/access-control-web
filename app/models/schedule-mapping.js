@@ -1,7 +1,12 @@
 import DS from 'ember-data';
 import Ember from 'ember';
+import {validator, buildValidations} from 'ember-cp-validations';
 
-export default DS.Model.extend({
+const MappingValidations = buildValidations({
+    alias: validator('presence', true),
+});
+
+export default DS.Model.extend(MappingValidations, {
     numericId: Ember.computed('id', function ()
     {
         "use strict";

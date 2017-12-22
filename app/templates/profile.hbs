@@ -3,61 +3,68 @@
 </div>
 
 <div>
-  {{#bs-tab}}
-    {{#bs-tab-pane title=(t 'information')}}
-        <div class="col-md-6">
-          {{#bs-form formLayout="horizontal" model=model.user action="editProfile"}}
-              <fieldset>
-                  <legend>{{t 'profile.title'}}</legend>
-                {{bs-form-element disabled=isProfileLocked
-                                  controlType="text" label=(t 'firstname')
-                                  placeholder="John" property="firstname"}}
-                {{bs-form-element disabled=isProfileLocked
-                                  controlType="text" label=(t 'lastname')
-                                  placeholder="Doe" property="lastname"}}
-                {{bs-form-element disabled=isProfileLocked
-                                  controlType="email" label=(t 'email')
-                                  placeholder="john@doe.com" property="email"}}
+  {{#bs-tab as |tab|}}
+    {{#tab.pane title=(t 'information')}}
+      {{#bs-form formLayout="vertical" model=model.user onSubmit=(route-action "editProfile") as |form|}}
+        <div class="col-md-6 space-top">
+          <fieldset>
+            <legend>{{t 'profile.title'}}</legend>
+            {{form.element disabled=isProfileLocked
+                           controlType="text" label=(t 'firstname')
+                           placeholder="John" property="firstname"}}
 
-                {{#bs-form-element label=(t 'rank')}}
-                  {{#power-select
-                    disabled=isRankEditLocked
-                    selected=model.user.rank
-                    options=model.possibleRanks
-                    onchange=(action (mut model.user.rank))
-                  as |rank|
-                  }}
-                    {{rank}}
-                  {{/power-select}}
-                {{/bs-form-element}}
+            {{form.element disabled=isProfileLocked
+                           controlType="text" label=(t 'lastname')
+                           placeholder="Doe" property="lastname"}}
 
-                {{bs-button disabled=isProfileLocked
-                            defaultText=(t 'submit') type="primary" buttonType="submit"}}
-              </fieldset>
-          {{/bs-form}}
+            {{form.element disabled=isProfileLocked
+                           controlType="email" label=(t 'email')
+                           placeholder="john@doe.com" property="email"}}
+            {{#form.element label=(t 'rank')}}
+              {{#power-select
+                disabled=isRankEditLocked
+                selected=model.user.rank
+                options=model.possibleRanks
+                onchange=(action (mut model.user.rank))
+              as |rank|}}
+                {{t rank}}
+              {{/power-select}}
+            {{/form.element}}
 
-            <!-- Password change -->
-          {{password-change disabled=isProfileLocked user_id=model.user.id}}
-        </div>
-        <div class="col-md-6">
           {{validity-control
+            form=form
             disabled=isRankEditLocked
-            enabled=(mut model.user.validityEnabled)
+            enabledProperty="validityEnabled"
             startDate=(mut model.user.validityStart)
             endDate=(mut model.user.validityEnd)}}
+
+
+            <div class="row">
+            <div class="col-md-6">
+            {{bs-button disabled=isProfileLocked
+                        defaultText=(t 'submit') type="success" onClick=(route-action 'editProfile') buttonType="submit"}}
+            </div>
+            </div>
+          </fieldset>
+          <p></p>
         </div>
-    {{/bs-tab-pane}}
+        <div class="col-md-6 space-top">
+          {{password-change disabled=isProfileLocked user_id=model.user.id}}
+        </div>
+      {{/bs-form}}
 
-    {{#bs-tab-pane title=(t 'groups')}}
+    {{/tab.pane}}
+
+    {{#tab.pane title=(t 'groups')}}
       {{user-group-membership-table user=model.user}}
-    {{/bs-tab-pane}}
+    {{/tab.pane}}
 
-    {{#bs-tab-pane title=(t 'w.credentials')}}
+    {{#tab.pane title=(t 'w.credentials')}}
       {{user-credential-table user=model.user}}
-    {{/bs-tab-pane}}
+    {{/tab.pane}}
 
-    {{#bs-tab-pane title=(t 'schedules')}}
+    {{#tab.pane title=(t 'schedules')}}
       {{user-schedules user=model.user}}
-    {{/bs-tab-pane}}
+    {{/tab.pane}}
   {{/bs-tab}}
 </div>

@@ -1,4 +1,3 @@
-import Model from 'ember-data/model';
 import Ember from 'ember';
 import DS from 'ember-data';
 

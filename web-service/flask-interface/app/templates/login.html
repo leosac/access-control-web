@@ -1,0 +1,38 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/fixes.html" as fixes %}
+{% import "bootstrap/utils.html" as util %}
+{% block content %}
+    {{ util.flashed_messages(dismissible=True) }}
+    <div class="container">
+        <h1>Login</h1>
+      <div class="row pull-right">
+            <a class="btn btn-primary" href="/register">Sign up</a>
+        </div>
+        {% if current_user.is_authenticated %}
+            <p>You are already logged in</p>
+            <a class="btn btn-default" href="/">Return home</a>
+
+        {% else %}
+            <div class="row">
+                <div class="col-md-6">
+                    <form class="form form-horizontal" method="post" role="form">
+                        {{ form.hidden_tag() }}
+                        {{ wtf.form_errors(form, hiddens="only") }}
+
+                        {{ wtf.form_field(form.email) }}
+                        {{ wtf.form_field(form.password) }}
+                        <div class="row">
+                            <a href="/forgot_password">Forgot password?</a>
+                        </div>
+                        {{ wtf.form_field(form.submit, style="margin-top: 10px;margin-left: -15px;",class="pull-left btn btn-primary") }}
+                    </form>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+{% block head %}
+    {{ super() }}
+    {{ fixes.ie8() }}
+{% endblock %}

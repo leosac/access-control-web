@@ -1,0 +1,174 @@
+{{#bs-form formLayout="vertical" model=ap onSubmit=action as | form|}}
+  <div class="col-md-6">
+    <fieldset>
+      <legend>{{t 'configuration'}}</legend>
+
+      {{form.element controlType="text" label=(t 'alias')
+                     placeholder=(t 'access_point_placeholder')
+                     property="alias"}}
+      {{form.element controlType="textarea" label=(t 'notes')
+                     placeholder=(t 'notes_placeholder')
+                     property="description"}}
+
+      <hr>
+      <h3>{{t 'leosac_builtin_ap.authentication_sources_device'}}</h3>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+              <th>#Id</th>
+              <th class="text-center">{{t 'name'}}</th>
+              <th class="text-center">{{t 'remove'}}</th>
+              </thead>
+              <tbody>
+              {{#each ap.authSourcesDevice as |device|}}
+                <tr>
+                  <td>
+                    {{device.id}}
+                  </td>
+                  <td class="text-center">
+                    {{device.name}}</td>
+                  <td>
+                    <div class="text-center">
+                      {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
+                                  defaultText=(t 'remove') onClick=(action 'removeAuthSources' device)}}
+                    </div>
+                  </td>
+                </tr>
+              {{/each}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="row">
+          <div class="col-md-12">
+            {{#form.element label=(t 'leosac_builtin_ap.device_picker')}}
+              {{device-list-picker arrayOfDeviceClass=arrayOfDeviceClassWiegandReader
+                                   newDevice=newDevice
+                                   placeholder=(t 'leosac_builtin_ap.device_placeholder')
+              }}
+            {{/form.element}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            {{bs-button size='sm' type="primary" onClick=(action 'addAuthSources')
+                        defaultText=(t 'leosac_builtin_ap.add_device')}}
+          </div>
+        </div>
+      </div>
+
+      <hr>
+      <h3>{{t 'leosac_builtin_ap.schedules'}}</h3>
+      <div class="row">
+        <div class="col-md-6">
+          <h4>{{t 'leosac_builtin_ap.always_open_schedules'}}</h4>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+              <th>#Id</th>
+              <th class="text-center">{{t 'name'}}</th>
+              <th class="text-center">{{t 'remove'}}</th>
+              </thead>
+              <tbody>
+              {{#each ap.alwaysCloseSchedules as |schedule|}}
+                <tr>
+                  <td>
+                    {{schedule.id}}
+                  </td>
+                  <td class="text-center">
+                    {{schedule.name}}</td>
+                  <td>
+                    <div class="text-center">
+                      {{bs-button size='xs'
+                                  icon='glyphicon glyphicon-remove'
+                                  type='danger'
+                                  defaultText=(t 'remove')
+                                  onClick=(action 'removeCloseSchedule' schedule)}}
+                    </div>
+                  </td>
+                </tr>
+              {{/each}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h4>{{t 'leosac_builtin_ap.always_close_schedules'}}</h4>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+              <th>#Id</th>
+              <th class="text-center">{{t 'name'}}</th>
+              <th class="text-center">{{t 'remove'}}</th>
+              </thead>
+              <tbody>
+              {{#each ap.alwaysOpenSchedules as |schedule|}}
+                <tr>
+                  <td>
+                    {{schedule.id}}
+                  </td>
+                  <td class="text-center">
+                    {{schedule.name}}</td>
+                  <td>
+                    <div class="text-center">
+                      {{bs-button size='xs'
+                                  icon='glyphicon glyphicon-remove'
+                                  type='danger'
+                                  defaultText=(t 'remove')
+                                  onClick=(action 'removeOpenSchedule' schedule)}}
+                    </div>
+                  </td>
+                </tr>
+              {{/each}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="row">
+          <div class="col-md-12">
+            {{#form.element label=(t 'leosac_builtin_ap.schedule_picker')}}
+              {{#power-select-typeahead search=(action 'searchSchedule')
+                                        selected=newSchedule.name
+                                        placeholder=(t 'leosac_builtin_ap.schedules_placeholder')
+                                        onchange=(action (mut newSchedule)) as |schedule|}}
+                {{schedule.name}}
+              {{/power-select-typeahead}}
+            {{/form.element}}
+          </div>
+        </div>
+            {{bs-button size='sm'
+                        type="warning"
+                        onClick=(action 'addCloseSchedule')
+                        defaultText=(t 'leosac_builtin_ap.add_close_schedule')}}
+            {{bs-button size='sm'
+                        type="warning"
+                        onClick=(action 'addOpenSchedule')
+                        defaultText=(t 'leosac_builtin_ap.add_open_schedule')}}
+      </div>
+
+      <div class="row space-top">
+        <div class="col-md-12">
+          {{bs-button defaultText=(t 'submit') type="success" size="md" onClick=action buttonType="submit"}}
+        </div>
+        {{#if delete}}
+          <div class="pull-right form-button-delete">
+            {{button-with-confirmation type='danger'
+                                       icon='glyphicon glyphicon-remove'
+                                       size='md'
+                                       text=(t 'delete')
+                                       message=(t 'door.delete_confirm')
+                                       onConfirm=delete
+            }}
+          </div>
+        {{/if}}
+      </div>
+
+    </fieldset>
+  </div>
+{{/bs-form}}
