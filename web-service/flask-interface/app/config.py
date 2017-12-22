@@ -26,7 +26,7 @@ POSTGRES = {
 
 SQLALCHEMY_TRACK_MODIFICATIONS = True
 #SQLALCHEMY_DATABASE_URI = 'postgresql://%(user)s:%(pw)s@%(host)s:%(port)s/%(db)s' % POSTGRES
-SQLALCHEMY_DATABASE_URI = 'sqlite:///tmp/db'
+SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/db'
 DATABASE_CONNECT_OPTIONS = {}
 
 # Application threads. A common general assumption is

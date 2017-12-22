@@ -6,13 +6,17 @@ setup(name='Falsk Interface',
       version='1.0',
       description='Flask interface that setup and build the leosac GUI application',
       author='ISLOG',
+      packages=['app', 'app.routes', 'app.routes.browse',
+                'app.routes.admin', 'app.routes.admin.browse',
+                ],
       entry_points={
           'console_scripts': [
-              'foo = app.manage:entry',
+              'leosac-web-manager = app.manage:entry',
+              'leosac-web-run = app.manage:run'
           ]},
       author_email='islog@islog.com',
       url='https://www.islog.com/',
-      install_requires=(
+      install_requires=[
           'flask>=0.8',
           'Falsk-Interface',
           'flask_wtf',
@@ -32,4 +36,4 @@ setup(name='Falsk Interface',
           'flask_mail',
           'flask_user',
           'flask_admin',
-      ))
+      ])

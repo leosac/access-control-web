@@ -17,7 +17,7 @@ logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
 db.init_app(app)
 
 # Configurations
-app.config.from_object('config')
+app.config.from_pyfile('config.py')
 
 # add the app blueprints
 app.register_blueprint(routes)

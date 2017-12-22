@@ -6,7 +6,7 @@ from app.fetch_role import fetch_admin_role, fetch_user_role
 from app.models.user_model import User, Role
 from app.models.browse_config_model import BrowseConfig
 
-app.config.from_object('config')
+app.config.from_pyfile('config.py')
 
 migrate = Migrate(app, db)
 manager = Manager(app)
@@ -53,6 +53,11 @@ def initdb():
     )
     db.session.add(config)
     db.session.commit()
+
+
+@manager.command
+def run():
+    app.run()
 
 
 def entry():
