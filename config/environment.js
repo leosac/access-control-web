@@ -1,6 +1,5 @@
 /* jshint node: true */
 
-<<<<<<< HEAD
 module.exports = function (environment) {
     let ENV = {
         modulePrefix: 'web',
