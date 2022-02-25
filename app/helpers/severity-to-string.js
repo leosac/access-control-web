@@ -1,5 +1,5 @@
-import Ember from 'ember';
-import {UpdateSeverity} from 'web/leosac-constant';
+import { helper as buildHelper } from '@ember/component/helper';
+import { UpdateSeverity } from 'web/leosac-constant';
 
 // return a severity depending of the given severity
 export function severityToString(params/*, hash*/) {
@@ -16,4 +16,4 @@ export function severityToString(params/*, hash*/) {
     return 'N/A';
 }
 
-export default Ember.Helper.helper(severityToString);
+export default buildHelper(severityToString);

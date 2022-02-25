@@ -1,4 +1,6 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
 
 /**
  * For now the following 3 components are almost copy-pasted.
@@ -7,12 +9,12 @@ import Ember from 'ember';
  *     + group-schedules
  *     + credential-schedules
  */
-export default Ember.Component.extend({
-    authSrv: Ember.inject.service('authentication'),
+export default Component.extend({
+    authSrv: service('authentication'),
 
     syncing: 0,
 
-    greyedDisabledIfSyncing: Ember.computed('syncing', function ()
+    greyedDisabledIfSyncing: computed('syncing', function ()
     {
         if (this.get('syncing'))
             return 'disabled-greyed';

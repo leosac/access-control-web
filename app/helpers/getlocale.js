@@ -1,8 +1,8 @@
-import Ember from 'ember';
+import { helper as buildHelper } from '@ember/component/helper';
 
 // This will get the localStorage
 export function getlocale(params/*, hash*/) {
     return localStorage[params[0]];
 }
 
-export default Ember.Helper.helper(getlocale);
+export default buildHelper(getlocale);

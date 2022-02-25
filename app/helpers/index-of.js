@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { helper as buildHelper } from '@ember/component/helper';
 
 export function indexOf(params/*, hash*/) {
     const obj = params[0];
@@ -7,4 +7,4 @@ export function indexOf(params/*, hash*/) {
     return obj[idx];
 }
 
-export default Ember.Helper.helper(indexOf);
+export default buildHelper(indexOf);

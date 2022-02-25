@@ -1,9 +1,10 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import Controller from '@ember/controller';
 
-export default Ember.Controller.extend({
-    updater: Ember.inject.service('update'),
-    fm: Ember.inject.service('flash-messages'),
-    i18n: Ember.inject.service(),
+export default Controller.extend({
+    updater: service('update'),
+    fm: service('flash-messages'),
+    i18n: service(),
 
     updateHistory: [],
     pendingUpdates: [],

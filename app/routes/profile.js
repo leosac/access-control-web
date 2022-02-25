@@ -1,9 +1,10 @@
-import Ember from 'ember';
+import { hash } from 'rsvp';
+import { inject as service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
-import {UserRank} from 'web/leosac-constant';
+import { UserRank } from 'web/leosac-constant';
 
 export default LeosacRoute.extend({
-    passwordChange: Ember.inject.service('password-change'),
+    passwordChange: service('password-change'),
     _title: 'profile.title',
     _requireAuth: true,
     passwordInfo: null,
@@ -16,7 +17,7 @@ export default LeosacRoute.extend({
     model(params)
     {
         "use strict";
-        return Ember.RSVP.hash({
+        return hash({
             user: this.get('store').findRecord('user', params.user_id),
             possibleRanks: UserRank,
             currentUser: this.get('store').findRecord('user', this.get('authSrv').user_id),

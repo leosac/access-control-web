@@ -1,6 +1,7 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
+export default Component.extend({
     // Needs the `onChange` and `selected` property set.
     // Also needs the `label` property
     //form property can be detected with form
@@ -8,7 +9,7 @@ export default Ember.Component.extend({
     // The output of (when something is selected)
     // is a dict {id: ID, alias: "alias"};
 
-    search: Ember.inject.service('search'),
+    search: service('search'),
 
     actions:
         {

@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { defer, hash } from 'rsvp';
 
 
 /**
@@ -6,9 +6,9 @@ import Ember from 'ember';
  */
 function findAccessPoint(store, id)
 {
-    const promise = Ember.RSVP.defer();
+    const promise = defer();
 
-    Ember.RSVP.hash({
+    hash({
         evoxs: store.find('evoxs-access-point', id),
         base: store.find('access-point', id),
     }).then(function (hash)
@@ -33,10 +33,10 @@ function findAccessPoint(store, id)
 function findAllAccessPoints(store)
 {
     "use strict";
-    const promise = Ember.RSVP.defer();
+    const promise = defer();
     let tmpArray = [];
 
-    Ember.RSVP.hash({
+    hash({
         base: store.findAll('access-point', {reload: true}),
     }).then(function (hash)
     {

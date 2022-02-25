@@ -1,7 +1,11 @@
-import Ember from 'ember';
+import { observer } from '@ember/object';
+import { A } from '@ember/array';
+import ArrayProxy from '@ember/array/proxy';
+import { inject as service } from '@ember/service';
+import Controller from '@ember/controller';
 
-export default Ember.Controller.extend({
-    auditLog: Ember.inject.service('audit-log'),
+export default Controller.extend({
+    auditLog: service('audit-log'),
     wsapicallEnabled: true,
     userEventEnabled: true,
     doorEventEnabled: true,
@@ -26,10 +30,10 @@ export default Ember.Controller.extend({
     // The audit object that is currently being shown
     // in the details modal.
     detailedAudit: null,
-    audits: Ember.ArrayProxy.create({content: Ember.A([])}),
+    audits: ArrayProxy.create({content: A([])}),
     // Whenever one of those variable change,
     // thanks to Ember.observer, reload is called
-    watch_: Ember.observer('wsapicallEnabled', 'userEventEnabled', 'doorEventEnabled',
+    watch_: observer('wsapicallEnabled', 'userEventEnabled', 'doorEventEnabled',
         'groupEventEnabled', `credentialEventEnabled`, 'scheduleEventEnabled',
         'userGroupMembershipEventEnabled', 'updateEventEnabled', 'zoneEventEnabled',
         'currentPage', 'pageSize', function () {

@@ -1,7 +1,8 @@
+import { alias } from '@ember/object/computed';
+import { computed, get } from '@ember/object';
 import Credential from 'web/models/credential';
-import Ember from 'ember';
 import DS from 'ember-data';
-import {validator, buildValidations} from 'ember-cp-validations';
+import { validator, buildValidations } from 'ember-cp-validations';
 
 const RFIDCardValidations = buildValidations(
     {
@@ -22,9 +23,9 @@ const RFIDCardValidations = buildValidations(
                 validator('ds-error'),
                 validator('presence', true),
                 validator('length', {
-                    is: Ember.computed('model.nbBits', function()
+                    is: computed('model.nbBits', function()
                     {
-                        let sizeCode = parseInt(Ember.get(this, 'model.nbBits'));
+                        let sizeCode = parseInt(get(this, 'model.nbBits'));
                         return (Math.ceil((sizeCode / 8)) * 3 - 1);
 
                     }).volatile()
@@ -48,5 +49,5 @@ export default Credential.extend(RFIDCardValidations, {
     cardId: DS.attr('string'),
     nbBits: DS.attr('number'),
 
-    displayIdentifier: Ember.computed.alias('cardId'),
+    displayIdentifier: alias('cardId'),
 });

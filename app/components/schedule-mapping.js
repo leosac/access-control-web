@@ -1,9 +1,10 @@
-import Ember from 'ember';
-import {findCredential} from 'web/leosac-credential-helper';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
+import { findCredential } from 'web/leosac-credential-helper';
 
-export default Ember.Component.extend({
-    search: Ember.inject.service('search'),
-    store: Ember.inject.service('store'),
+export default Component.extend({
+    search: service('search'),
+    store: service('store'),
 
     // Set the following properties:
     //    + mapping

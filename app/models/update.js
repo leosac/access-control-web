@@ -1,16 +1,17 @@
+import { computed } from '@ember/object';
+import { inject as service } from '@ember/service';
 import DS from 'ember-data';
-import Ember from 'ember';
 
 export default DS.Model.extend({
-    i18n: Ember.inject.service(),
+    i18n: service(),
 
-    numericId: Ember.computed('id', function ()
+    numericId: computed('id', function ()
     {
         "use strict";
         return Number(this.get('id'));
     }),
 
-    statusString: Ember.computed('status', function()
+    statusString: computed('status', function()
     {
         const i18n = this.get('i18n');
         const st = this.get('status');

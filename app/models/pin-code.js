@@ -1,7 +1,7 @@
+import { alias } from '@ember/object/computed';
 import Credential from 'web/models/credential';
-import Ember from 'ember';
 import DS from 'ember-data';
-import {validator, buildValidations} from 'ember-cp-validations';
+import { validator, buildValidations } from 'ember-cp-validations';
 
 const PinCodeValidations = buildValidations(
     {
@@ -31,5 +31,5 @@ export default Credential.extend(PinCodeValidations, {
     isPinCode: true,
     type: 'PinCode',
     code: DS.attr('string'),
-    displayIdentifier: Ember.computed.alias('code')
+    displayIdentifier: alias('code')
 });

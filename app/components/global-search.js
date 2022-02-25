@@ -1,12 +1,13 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
-    globalInfo: Ember.inject.service('leosac-info'),
-    routeHelper: Ember.inject.service('module-route-helper'),
-    search: Ember.inject.service('search'),
-    flashMessages: Ember.inject.service(),
-    i18n: Ember.inject.service(),
-    store: Ember.inject.service(),
+export default Component.extend({
+    globalInfo: service('leosac-info'),
+    routeHelper: service('module-route-helper'),
+    search: service('search'),
+    flashMessages: service(),
+    i18n: service(),
+    store: service(),
 
     dataToObject: {},
     allObjects: [],

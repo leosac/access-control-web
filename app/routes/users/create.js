@@ -1,6 +1,6 @@
-import Ember from 'ember';
+import { hash } from 'rsvp';
 import LeosacRoute from 'web/leosac-route';
-import {UserRank} from 'web/leosac-constant';
+import { UserRank } from 'web/leosac-constant';
 
 export default LeosacRoute.extend({
     _title: 'users.create.title',
@@ -15,7 +15,7 @@ export default LeosacRoute.extend({
         "use strict";
         const newUser = this.get('store').createRecord('user');
         newUser.set('rank', 'user');
-        return Ember.RSVP.hash({
+        return hash({
             user: newUser,
             possibleRanks: UserRank,
         });

@@ -1,16 +1,17 @@
+import { Promise } from 'rsvp';
+import { inject as service } from '@ember/service';
 import ApplicationAdapter from './application';
-import Ember from 'ember';
 
 export default ApplicationAdapter.extend({
-    ws: Ember.inject.service('websocket'),
-    flashMessages: Ember.inject.service(),
+    ws: service('websocket'),
+    flashMessages: service(),
 
     createRecord: function (store, type, snapshot)
     {
         const data = this.serialize(snapshot);
         const ws = this.get('ws');
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('schedule.create', {
                 attributes: data.data.attributes
@@ -22,7 +23,7 @@ export default ApplicationAdapter.extend({
     {
         const ws = this.get('ws');
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('schedule.read',
                 {schedule_id: Number.parseInt(id)}).then(
@@ -37,7 +38,7 @@ export default ApplicationAdapter.extend({
         const scheduleId = Number.parseInt(snapshot.id);
         const ws = this.get('ws');
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('schedule.delete', {schedule_id: scheduleId}).then(
                 (data) => resolve(data),
@@ -68,7 +69,7 @@ export default ApplicationAdapter.extend({
             attributes: data.data.attributes,
             mapping: mapping,
         };
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('schedule.update', params).then((data) => resolve(data),
                 (failure) => reject(failure));
@@ -78,7 +79,7 @@ export default ApplicationAdapter.extend({
     {
         const ws = this.get('ws');
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('schedule.read',
                 {schedule_id: 0}).then(

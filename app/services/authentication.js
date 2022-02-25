@@ -1,4 +1,6 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
+import { defer } from 'rsvp';
+import Service, { inject as service } from '@ember/service';
 
 /**
  * This service provide support for authentication.
@@ -8,10 +10,10 @@ import Ember from 'ember';
  * authentication as well as manages authentication token
  * stored in the local storage.
  */
-export default Ember.Service.extend({
-    websocket: Ember.inject.service('websocket'),
-    store: Ember.inject.service(),
-    flashMessages: Ember.inject.service(),
+export default Service.extend({
+    websocket: service('websocket'),
+    store: service(),
+    flashMessages: service(),
 
     /**
      * User Id of the currently logged in user.
@@ -60,7 +62,7 @@ export default Ember.Service.extend({
         let ws = this.get('websocket');
 
         this.set('pending', true);
-        this.set('current_auth', Ember.RSVP.defer());
+        this.set('current_auth', defer());
         const flashMessages = this.get('flashMessages');
 
         return ws.sendJson('create_auth_token',
@@ -110,7 +112,7 @@ export default Ember.Service.extend({
         let ws = this.get('websocket');
 
         this.set('pending', true);
-        this.set('current_auth', Ember.RSVP.defer());
+        this.set('current_auth', defer());
 
         return ws.sendJson('authenticate_with_token',
             {
@@ -173,11 +175,11 @@ export default Ember.Service.extend({
             return !!this.get('user_id');
         return this.get('current_auth').promise;
     },
-    _isLoggedIn: Ember.computed('user_id', function ()
+    _isLoggedIn: computed('user_id', function ()
     {
         return !!this.get('user_id');
     }),
-    isAdministrator: Ember.computed('user_id', function ()
+    isAdministrator: computed('user_id', function ()
     {
         return this.get('store').peekRecord('user', this.get('user_id')).get('rank') === 'Administrator';
     }),

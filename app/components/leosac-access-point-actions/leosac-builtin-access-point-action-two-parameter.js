@@ -1,4 +1,5 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
+import Component from '@ember/component';
 import { validator, buildValidations } from 'ember-cp-validations';
 
 /**
@@ -30,7 +31,7 @@ const paramsValidation = buildValidations({
  * customAction is normally autoprovided by the leosac-builtin-access-point-action-params
  *
  */
-export default Ember.Component.extend(paramsValidation, {
+export default Component.extend(paramsValidation, {
     duration: 3000,
     speed: 1500,
     customAction: null,
@@ -48,7 +49,7 @@ export default Ember.Component.extend(paramsValidation, {
 
     // The sole purpose of this computed property is to catch when a value is modified so that you can update the mode.
     // Not very beautiful hack
-    params: Ember.computed('{speed,duration}', function() {
+    params: computed('{speed,duration}', function() {
         let speed = this.get('speed');
         let duration = this.get('duration');
 

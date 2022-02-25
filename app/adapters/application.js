@@ -1,12 +1,13 @@
+import { defer } from 'rsvp';
+import { inject as service } from '@ember/service';
 import DS from 'ember-data';
-import Ember from 'ember';
 
 export default DS.Adapter.extend({
-    ws: Ember.inject.service('websocket'),
+    ws: service('websocket'),
 
     findAll: function (store, type)
     {
-        let def = Ember.RSVP.defer();
+        let def = defer();
 
         let ws = this.get('ws');
         console.log("Try to find all: " + type);
@@ -28,7 +29,7 @@ export default DS.Adapter.extend({
     query: function (store, type, query)
     {
         "use strict";
-        let def = Ember.RSVP.defer();
+        let def = defer();
 
         let ws = this.get('ws');
         console.log("QUERY MODE" + type);

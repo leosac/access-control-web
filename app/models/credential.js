@@ -1,6 +1,6 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
 import DS from 'ember-data';
-import {buildValidations, validator} from 'ember-cp-validations';
+import { buildValidations, validator } from 'ember-cp-validations';
 import moment from 'moment';
 
 const CredentialValidations = buildValidations({
@@ -19,12 +19,12 @@ const CredentialValidations = buildValidations({
 });
 
 export default DS.Model.extend(CredentialValidations, {
-    numericId: Ember.computed('id', function ()
+    numericId: computed('id', function ()
     {
         "use strict";
         return Number(this.get('id'));
     }),
-    isEnabled: Ember.computed('validityEnabled', 'validityStart', 'validityEnd', function ()
+    isEnabled: computed('validityEnabled', 'validityStart', 'validityEnd', function ()
     {
         const now = moment.utc();
         return this.get('validityEnabled') && now.isAfter(this.get('validityStart')) &&

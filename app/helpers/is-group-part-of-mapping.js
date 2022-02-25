@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { helper as buildHelper } from '@ember/component/helper';
 
 export function isUserPartOfMapping(params/*, hash*/) {
     const mapping = params[0];
@@ -8,4 +8,4 @@ export function isUserPartOfMapping(params/*, hash*/) {
 
 }
 
-export default Ember.Helper.helper(isUserPartOfMapping);
+export default buildHelper(isUserPartOfMapping);

@@ -1,4 +1,6 @@
-import Ember from "ember";
+import { computed } from '@ember/object';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
 
 // We needed some function for the tree
 
@@ -75,10 +77,10 @@ function zoneFromId(nodeId, zones) {
     return value;
 }
 
-export default Ember.Component.extend({
-    i18n: Ember.inject.service(),
-    search: Ember.inject.service('search'),
-    store: Ember.inject.service(),
+export default Component.extend({
+    i18n: service(),
+    search: service('search'),
+    store: service(),
     selectedZone: '',
     newDoor: null,
     arrayDoor: [],
@@ -104,7 +106,7 @@ export default Ember.Component.extend({
     'jsTreeActionReceiver': true,
 
     // This ember computed will set the data necessary for the jstree to work. This is a node tree
-    zoneDataTree: Ember.computed('model', function () {
+    zoneDataTree: computed('model', function () {
         // Blueprint for the physical and logical zone
         let physicalZoneNode = {
             'id': 'physicalRoot',

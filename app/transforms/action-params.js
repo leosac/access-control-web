@@ -1,13 +1,13 @@
+import { typeOf } from '@ember/utils';
 import DS from 'ember-data';
-import Ember from 'ember';
 
 export default DS.Transform.extend({
     deserialize: function (serialized) {
-        return (Ember.typeOf(serialized) === "array") ? serialized : [];
+        return (typeOf(serialized) === "array") ? serialized : [];
     },
 
     serialize: function (deserialized) {
-        let type = Ember.typeOf(deserialized);
+        let type = typeOf(deserialized);
         if (type === 'array') {
             return deserialized;
         }

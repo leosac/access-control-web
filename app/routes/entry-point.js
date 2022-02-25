@@ -1,4 +1,5 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import Route from '@ember/routing/route';
 
 /**
  * This route is a bit odd as you can see. The template is empty,
@@ -14,8 +15,8 @@ import Ember from 'ember';
  *
  */
 
-export default Ember.Route.extend({
-    websocket: Ember.inject.service('websocket'),
+export default Route.extend({
+    websocket: service('websocket'),
     model(params) {
         "use strict";
         localStorage.leosacAddr = params.entry_point_address;

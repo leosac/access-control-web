@@ -1,8 +1,9 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
-    globalInfo: Ember.inject.service('leosac-info'),
-    ws: Ember.inject.service('websocket'),
+export default Component.extend({
+    globalInfo: service('leosac-info'),
+    ws: service('websocket'),
 
     init() {
         this._super(...arguments);

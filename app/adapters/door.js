@@ -1,14 +1,15 @@
+import { Promise } from 'rsvp';
+import { inject as service } from '@ember/service';
 import ApplicationAdapter from './application';
-import Ember from 'ember';
 
 export default ApplicationAdapter.extend({
-    ws: Ember.inject.service('websocket'),
+    ws: service('websocket'),
 
     findRecord: function (store, type, id)
     {
         const ws = this.get('ws');
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('door.read', {door_id: Number.parseInt(id)}).then(
                 (data) => resolve(data),
@@ -20,7 +21,7 @@ export default ApplicationAdapter.extend({
     {
         const ws = this.get('ws');
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('door.read', {door_id: 0}).then(
                 (data) => resolve(data),
@@ -39,7 +40,7 @@ export default ApplicationAdapter.extend({
         else
             data.data.attributes.access_point_id = 0;
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('door.create', {
                 attributes: data.data.attributes
@@ -62,7 +63,7 @@ export default ApplicationAdapter.extend({
             door_id: Number.parseInt(snapshot.id),
             attributes: data.data.attributes
         };
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('door.update', params).then((data) => resolve(data),
                 (failure) => reject(failure));
@@ -73,7 +74,7 @@ export default ApplicationAdapter.extend({
         const door_id = Number.parseInt(snapshot.id);
         const ws = this.get('ws');
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('door.delete', {door_id: door_id}).then(
                 (data) => resolve(data),

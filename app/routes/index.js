@@ -1,9 +1,10 @@
-import Ember from 'ember';
+import { Promise } from 'rsvp';
+import { inject as service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
-    authSrv: Ember.inject.service('authentication'),
-    leosacInfo: Ember.inject.service('leosac-info'),
+    authSrv: service('authentication'),
+    leosacInfo: service('leosac-info'),
     _title: 'index.title',
     _requireAuth: true,
     init()
@@ -14,7 +15,7 @@ export default LeosacRoute.extend({
     model()
     {
         "use strict";
-        return new Ember.RSVP.Promise((resolve) => {
+        return new Promise((resolve) => {
             this.get('authSrv').get('current_auth').promise.then(() => {
                 resolve({
                     user_id: this.get('authSrv').user_id,

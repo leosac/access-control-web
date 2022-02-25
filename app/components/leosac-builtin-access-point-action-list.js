@@ -1,5 +1,7 @@
-import Ember from 'ember';
-import {DeviceClass} from "web/leosac-constant";
+import { computed } from '@ember/object';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
+import { DeviceClass } from "web/leosac-constant";
 import { v4 } from "ember-uuid";
 
 /**
@@ -7,8 +9,8 @@ import { v4 } from "ember-uuid";
  *
  * This page is here to help us CRUD the actions of the leosac-builtin-access-points.
  */
-export default Ember.Component.extend({
-    store: Ember.inject.service('store'),
+export default Component.extend({
+    store: service('store'),
     ap: null,
     newAction: null,
     selectedDevice: null,
@@ -17,11 +19,11 @@ export default Ember.Component.extend({
     indexSuccessAction: 0,
 
     // this will sort the SuccessActions by index. It will be displayed given this Computed property
-    sortedSuccessAction: Ember.computed('ap.actionOnSuccess', function () {
+    sortedSuccessAction: computed('ap.actionOnSuccess', function () {
         return this.get('ap.actionOnSuccess').sortBy('index');
     }),
     // this will sort the ErrorActions by index. It will be displayed given this Computed property
-    sortedErrorAction: Ember.computed('ap.actionOnError', function () {
+    sortedErrorAction: computed('ap.actionOnError', function () {
         return this.get('ap.actionOnError').sortBy('index');
     }),
 
@@ -51,7 +53,7 @@ export default Ember.Component.extend({
     /**
      * This computed property will return the available command given the type of the previously selectedDevice
      */
-    availableCommand: Ember.computed('selectedDevice.length', function () {
+    availableCommand: computed('selectedDevice.length', function () {
         let deviceType = this.get('selectedDevice.type');
 
         if (!deviceType) {

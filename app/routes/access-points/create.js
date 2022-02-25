@@ -1,5 +1,5 @@
 import LeosacRoute from 'web/leosac-route';
-import {v4} from 'ember-uuid';
+import { v4 } from 'ember-uuid';
 
 /**
  * Create a new door.

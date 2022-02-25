@@ -1,5 +1,5 @@
 import DS from 'ember-data';
-import {DeviceClass} from 'web/leosac-constant';
+import { DeviceClass } from 'web/leosac-constant';
 
 export default DS.Transform.extend({
     deserialize(serialized) {

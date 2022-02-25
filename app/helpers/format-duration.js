@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { helper as buildHelper } from '@ember/component/helper';
 
 export function formatDuration(params)
 {
@@ -8,4 +8,4 @@ export function formatDuration(params)
     return date.toISOString().substr(11, 8);
 }
 
-export default Ember.Helper.helper(formatDuration);
+export default buildHelper(formatDuration);

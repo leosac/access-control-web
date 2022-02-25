@@ -1,11 +1,12 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
+export default Component.extend({
     // `action` and `pin` must be set.
-    i18n: Ember.inject.service(),
-    store: Ember.inject.service(),
-    search: Ember.inject.service(),
-    flashMessages: Ember.inject.service(),
+    i18n: service(),
+    store: service(),
+    search: service(),
+    flashMessages: service(),
 
     selectedUser: false,
     pin: false,

@@ -1,7 +1,9 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
+import { inject as service } from '@ember/service';
+import Controller from '@ember/controller';
 
-export default Ember.Controller.extend({
-    ws: Ember.inject.service('websocket'),
+export default Controller.extend({
+    ws: service('websocket'),
 
     // JSON as returned by the `access_overview` Leosac WS call.
 
@@ -10,14 +12,14 @@ export default Ember.Controller.extend({
     selectedUsers: [],
     selectedDoors: [],
 
-    displayedDoors: Ember.computed("allDoors", "selectedDoors.length", function () {
+    displayedDoors: computed("allDoors", "selectedDoors.length", function () {
         if (!this.get('selectedDoors.length')) {
             return this.get('allDoors');
         }
         else
             return this.get('selectedDoors');
     }),
-    allDoors: Ember.computed('rawData', "selectedDoors.length", function ()
+    allDoors: computed('rawData', "selectedDoors.length", function ()
     {
         const doors = [];
         let selectedDoorsId = [];
@@ -42,7 +44,7 @@ export default Ember.Controller.extend({
         });
         return result;
     }),
-    allUsers: Ember.computed('rawData', 'selectedUsers.length', function () {
+    allUsers: computed('rawData', 'selectedUsers.length', function () {
         let userIds = [];
         let selectedUsersId = [];
         let users = [];
@@ -76,7 +78,7 @@ export default Ember.Controller.extend({
         return result;
     }),
     // will set the user door information
-    userDoorInfo: Ember.computed('allDoors', 'allUsers', "selectedDoors.length", "selectedUsers.length", function () {
+    userDoorInfo: computed('allDoors', 'allUsers', "selectedDoors.length", "selectedUsers.length", function () {
         let selectedDoors = [];
         let userInfos = [];
 

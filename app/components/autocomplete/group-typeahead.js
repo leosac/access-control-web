@@ -1,6 +1,7 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
+export default Component.extend({
     // Needs the `onChange` and `selected` property set.
     // Also needs the `label` property
 
@@ -9,7 +10,7 @@ export default Ember.Component.extend({
 
     onChange: undefined,
     selected: '',
-    search: Ember.inject.service('search'),
+    search: service('search'),
 
     actions:
     {

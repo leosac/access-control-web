@@ -7,6 +7,7 @@
   ],
   "browser": true,
   "boss": true,
+  "curly": true,
   "debug": false,
   "devel": true,
   "eqeqeq": true,
@@ -29,6 +30,5 @@
   "eqnull": true,
   "esversion": 6,
   "unused": true,
-  "curly": false,
   "jquery": true
 }

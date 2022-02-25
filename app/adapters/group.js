@@ -1,14 +1,15 @@
+import { Promise } from 'rsvp';
+import { inject as service } from '@ember/service';
 import ApplicationAdapter from './application';
-import Ember from 'ember';
 
 export default ApplicationAdapter.extend({
-    ws: Ember.inject.service('websocket'),
+    ws: service('websocket'),
 
     findRecord: function (store, type, id)
     {
         const ws = this.get('ws');
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('group.read', {group_id: Number.parseInt(id)}).then(
                 (data) => resolve(data),
@@ -20,7 +21,7 @@ export default ApplicationAdapter.extend({
     {
         const ws = this.get('ws');
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('group.read', {group_id: 0}).then(
                 (data) => resolve(data),
@@ -33,7 +34,7 @@ export default ApplicationAdapter.extend({
         const data = this.serialize(snapshot);
         const ws = this.get('ws');
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('group.create', {
                 attributes: data.data.attributes
@@ -50,7 +51,7 @@ export default ApplicationAdapter.extend({
             group_id: Number.parseInt(snapshot.id),
             attributes: data.data.attributes
         };
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('group.update', params).then((data) => resolve(data),
                 (failure) => reject(failure));
@@ -73,7 +74,7 @@ export default ApplicationAdapter.extend({
             });
         });
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('group.delete', {group_id: group_id}).then(
                 (data) =>

@@ -1,7 +1,7 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 
 /**
  * Print a table of users.
  */
-export default Ember.Component.extend({
+export default Component.extend({
 });

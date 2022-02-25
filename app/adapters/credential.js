@@ -1,8 +1,9 @@
+import { Promise } from 'rsvp';
+import { inject as service } from '@ember/service';
 import ApplicationAdapter from './application';
-import Ember from 'ember';
 
 export default ApplicationAdapter.extend({
-    ws: Ember.inject.service('websocket'),
+    ws: service('websocket'),
 
     createRecord: function (store, type, snapshot)
     {
@@ -14,7 +15,7 @@ export default ApplicationAdapter.extend({
             data.data.attributes.owner_id = Number.parseInt(data.data.relationships.owner.data.id);
         else
             data.data.attributes.owner_id = 0;
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('credential.create', {
                 'credential-type': type.modelName,
@@ -27,7 +28,7 @@ export default ApplicationAdapter.extend({
     {
         const ws = this.get('ws');
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('credential.read',
                 {credential_id: Number.parseInt(id)}).then(
@@ -44,7 +45,7 @@ export default ApplicationAdapter.extend({
 
         // todo: Maybe add code to remove the object in the inverse side
         // of the relationship (user->credentials).
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('credential.delete', {credential_id: credentialId}).then(
                 (data) => resolve(data),
@@ -65,7 +66,7 @@ export default ApplicationAdapter.extend({
             credential_id: Number.parseInt(snapshot.id),
             attributes: data.data.attributes
         };
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('credential.update', params).then((data) => resolve(data),
                 (failure) => reject(failure));
@@ -74,7 +75,7 @@ export default ApplicationAdapter.extend({
     findAll: function ()
     {
         const ws = this.get('ws');
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('credential.read',
                 {credential_id: 0}).then(

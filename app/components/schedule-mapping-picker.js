@@ -1,8 +1,9 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
-    store: Ember.inject.service(),
-    search: Ember.inject.service('search'),
+export default Component.extend({
+    store: service(),
+    search: service('search'),
     // `action`
 
     selectedSchedule: null,

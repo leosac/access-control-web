@@ -1,6 +1,6 @@
-import Ember from 'ember';
+import Mixin from '@ember/object/mixin';
 
-export default Ember.Mixin.create({
+export default Mixin.create({
     /**
      * This is the save method for the schedule mapping
      * There is an issue related to it on github: https://github.com/emberjs/data/issues/1829

@@ -1,5 +1,5 @@
 import LeosacRoute from 'web/leosac-route';
-import {findAllAccessPoints} from 'web/leosac-access-point-helper';
+import { findAllAccessPoints } from 'web/leosac-access-point-helper';
 
 export default LeosacRoute.extend({
     _title: 'access-point.list.title',

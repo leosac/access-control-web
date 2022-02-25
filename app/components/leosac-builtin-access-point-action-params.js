@@ -1,4 +1,5 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
+import Component from '@ember/component';
 
 /**
  * This component is here to get the correct component name,
@@ -8,10 +9,10 @@ import Ember from 'ember';
  *
  * You need to pass customAction to the component, so that it can fetch the command name.
  */
-export default Ember.Component.extend({
+export default Component.extend({
     customAction: null,
     
-    getComponentName: Ember.computed(function () {
+    getComponentName: computed(function () {
         let command = this.get('customAction.command');
 
 

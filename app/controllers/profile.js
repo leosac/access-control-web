@@ -1,11 +1,13 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
+import { inject as service } from '@ember/service';
+import Controller from '@ember/controller';
 import DS from 'ember-data';
 
-export default Ember.Controller.extend({
-    authSrv: Ember.inject.service('authentication'),
+export default Controller.extend({
+    authSrv: service('authentication'),
     targetUserId: {},
 
-    canEditProfile: Ember.computed('model.user.version', function ()
+    canEditProfile: computed('model.user.version', function ()
     {
         const p = this.get('store').findRecord('user', this.get('authSrv').get('user_id')).then((u) =>
         {
@@ -17,11 +19,11 @@ export default Ember.Controller.extend({
             promise: p
         });
     }),
-    isProfileLocked: Ember.computed('canEditProfile.content', function ()
+    isProfileLocked: computed('canEditProfile.content', function ()
     {
         return !this.get('canEditProfile.content');
     }),
-    canEditRank: Ember.computed('model.user.version', function ()
+    canEditRank: computed('model.user.version', function ()
     {
         const p = this.get('store').findRecord('user', this.get('authSrv').get('user_id')).then((u) =>
         {
@@ -32,7 +34,7 @@ export default Ember.Controller.extend({
             promise: p
         });
     }),
-    isRankEditLocked: Ember.computed('canEditRank.content', function ()
+    isRankEditLocked: computed('canEditRank.content', function ()
     {
         return !this.get('canEditRank.content');
     }),

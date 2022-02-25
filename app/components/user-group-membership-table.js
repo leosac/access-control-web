@@ -1,9 +1,10 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
-    i18n: Ember.inject.service(),
-    authSrv: Ember.inject.service('authentication'),
-    store: Ember.inject.service(),
+export default Component.extend({
+    i18n: service(),
+    authSrv: service('authentication'),
+    store: service(),
     // The user whose membership we display.
     user: false,
     // Should we display the "kick" or "leave" button.

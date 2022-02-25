@@ -1,5 +1,6 @@
-import Ember from 'ember';
-import {DeviceClass} from 'web/leosac-constant';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
+import { DeviceClass } from 'web/leosac-constant';
 
 function removeSchedule(selectedSchedules, schedule) {
     let loc = selectedSchedules.length || 0;
@@ -17,9 +18,9 @@ function removeSchedule(selectedSchedules, schedule) {
  * Thanks to the already created access-point(ap), the component will help make the ap useful.
  */
 
-export default Ember.Component.extend({
-    store: Ember.inject.service('store'),
-    search: Ember.inject.service('search'),
+export default Component.extend({
+    store: service('store'),
+    search: service('search'),
     ap: null,
     arrayOfDeviceClassWiegandReader: [DeviceClass.reader],
     newDevice: null,

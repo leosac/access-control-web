@@ -1,7 +1,8 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
-    moduleManager: Ember.inject.service('module-manager'),
+export default Component.extend({
+    moduleManager: service('module-manager'),
     init()
     {
       this._super(...arguments);

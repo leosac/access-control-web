@@ -1,8 +1,8 @@
+import { inject as service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
-import Ember from 'ember';
 
 export default LeosacRoute.extend({
-    flashMessage: Ember.inject.service('flash-messages'),
+    flashMessage: service('flash-messages'),
     _title: 'schedule.title',
     _requireAuth: true,
     beforeModel()

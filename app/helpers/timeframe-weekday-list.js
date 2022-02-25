@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { helper as buildHelper } from '@ember/component/helper';
 
 // converte a boolean to a string, depending of the given boolean
 export function timeframeWeekdayList(params/*, hash*/) {
@@ -23,4 +23,4 @@ export function timeframeWeekdayList(params/*, hash*/) {
     return weekdays.join(', ');
 }
 
-export default Ember.Helper.helper(timeframeWeekdayList);
+export default buildHelper(timeframeWeekdayList);

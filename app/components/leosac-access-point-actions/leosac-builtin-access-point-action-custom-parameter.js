@@ -1,4 +1,5 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
+import Component from '@ember/component';
 
 /**
  * You need to provide customAction to that component.
@@ -6,7 +7,7 @@ import Ember from 'ember';
  *
  */
 
-export default Ember.Component.extend({
+export default Component.extend({
     customAction: null,
     command: '',
     properties: [],
@@ -37,7 +38,7 @@ export default Ember.Component.extend({
      * we use a Computed property that his only purpose is to refresh the customAction.params,
      * given the command and properties
      */
-    params: Ember.computed('{command,properties}', function () {
+    params: computed('{command,properties}', function () {
         let command = this.get('command');
         let arrayOfProperties = this.get('properties');
 

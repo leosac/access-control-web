@@ -1,8 +1,9 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
-    systemOverview: Ember.inject.service('system-overview'),
-    moduleManager: Ember.inject.service('module-manager'),
+export default Component.extend({
+    systemOverview: service('system-overview'),
+    moduleManager: service('module-manager'),
     onSessionLost: 'onSessionLost',
     myError: 'myError',
 

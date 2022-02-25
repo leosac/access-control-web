@@ -1,5 +1,7 @@
-import Ember from 'ember';
-import {validator, buildValidations} from 'ember-cp-validations';
+import { once } from '@ember/runloop';
+import { observer } from '@ember/object';
+import Component from '@ember/component';
+import { validator, buildValidations } from 'ember-cp-validations';
 
 // Validation for password change
 const Validations = buildValidations({
@@ -15,12 +17,12 @@ const Validations = buildValidations({
  * Attributes: passwordOut
  *             optional (do we allow empty pw)
  */
-export default Ember.Component.extend(Validations, {
+export default Component.extend(Validations, {
     password: '',
     password2: '',
-    _observerPassword: Ember.observer('password', 'password2', function ()
+    _observerPassword: observer('password', 'password2', function ()
     {
-        Ember.run.once(this, 'tryUpdatePasswordValue');
+        once(this, 'tryUpdatePasswordValue');
     }),
     tryUpdatePasswordValue ()
     {

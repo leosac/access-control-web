@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { defer, hash } from 'rsvp';
 
 
 /**
@@ -6,9 +6,9 @@ import Ember from 'ember';
  */
 function findCredential(store, id)
 {
-    const promise = Ember.RSVP.defer();
+    const promise = defer();
 
-    Ember.RSVP.hash({
+    hash({
         rfidCard: store.find('rfid-card', id),
         pinCode: store.find('pin-code', id),
     }).then(function (hash)
@@ -33,10 +33,10 @@ function findCredential(store, id)
 function findAllCredentials(store)
 {
     "use strict";
-    const promise = Ember.RSVP.defer();
+    const promise = defer();
     let tmpArray = [];
 
-    Ember.RSVP.hash({
+    hash({
         rfidCard: store.findAll('rfid-card', {reload: true}),
         pinCode: store.findAll('pin-code', {reload: true}),
     }).then(function (hash)

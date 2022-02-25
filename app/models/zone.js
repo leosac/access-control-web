@@ -1,7 +1,7 @@
+import { computed } from '@ember/object';
 import DS from 'ember-data';
-import Ember from 'ember';
 
-import {validator, buildValidations} from 'ember-cp-validations';
+import { validator, buildValidations } from 'ember-cp-validations';
 
 const ZoneValidations = buildValidations(
     {
@@ -18,7 +18,7 @@ const ZoneValidations = buildValidations(
 );
 
 export default DS.Model.extend(ZoneValidations, {
-    numericId: Ember.computed('id', function ()
+    numericId: computed('id', function ()
     {
         "use strict";
         return Number(this.get('id'));

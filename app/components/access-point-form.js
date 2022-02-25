@@ -1,7 +1,8 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
-    search: Ember.inject.service('search'),
+export default Component.extend({
+    search: service('search'),
     availableAccessPointModules: [],
 
     didReceiveAttrs() {

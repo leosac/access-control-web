@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+=======
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+>>>>>>> d245385 (v2.17.1...v2.18.2)
 
 **/.jshintrc
 .idea/
@@ -84,8 +88,6 @@ fabric.properties
 package-lock.json
 /tmp
 
-## gitignore for the
-
 /lib/**/node_modules
 /lib/**/package-lock.json
 /lib/**/bower_components/
@@ -100,3 +102,10 @@ web-service/leosac/
 acceptance-test/reports
 acceptance-test/selenium-debug.log
 yarn-error.log
+# misc
+/.sass-cache
+/connect.lock
+/coverage/*
+/libpeerconnection.log
+npm-debug.log*
+testem.log

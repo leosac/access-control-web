@@ -1,10 +1,11 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
-    authSrv: Ember.inject.service('authentication'),
-    leosacInfo: Ember.inject.service('leosac-info'),
-    websocket: Ember.inject.service('websocket'),
-    store: Ember.inject.service(),
+export default Component.extend({
+    authSrv: service('authentication'),
+    leosacInfo: service('leosac-info'),
+    websocket: service('websocket'),
+    store: service(),
     _title: 'settings',
     /**
      * onLogout action name.

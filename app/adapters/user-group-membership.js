@@ -1,15 +1,16 @@
+import { Promise } from 'rsvp';
+import { inject as service } from '@ember/service';
 import ApplicationAdapter from './application';
-import Ember from 'ember';
 
 export default ApplicationAdapter.extend({
-    ws: Ember.inject.service('websocket'),
-    flashMessages: Ember.inject.service(),
+    ws: service('websocket'),
+    flashMessages: service(),
 
     findRecord: function (store, type, id)
     {
         const ws = this.get('ws');
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('user-group-membership.read',
                 {membership_id: Number.parseInt(id)}).then(
@@ -23,7 +24,7 @@ export default ApplicationAdapter.extend({
         const membershipId = Number.parseInt(snapshot.id);
         const ws = this.get('ws');
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('user-group-membership.delete',
                 {membership_id: membershipId}).then(
@@ -41,7 +42,7 @@ export default ApplicationAdapter.extend({
         data.data.attributes.group_id = Number.parseInt(data.data.relationships.group.data.id);
         data.data.attributes.user_id = Number.parseInt(data.data.relationships.user.data.id);
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('user-group-membership.create', {
                 attributes: data.data.attributes

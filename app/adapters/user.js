@@ -1,15 +1,16 @@
+import { Promise } from 'rsvp';
+import { inject as service } from '@ember/service';
 import ApplicationAdapter from './application';
-import Ember from 'ember';
 
 export default ApplicationAdapter.extend({
-    ws: Ember.inject.service('websocket'),
-    flashMessages: Ember.inject.service(),
+    ws: service('websocket'),
+    flashMessages: service(),
 
     findRecord: function (store, type, id)
     {
         const ws = this.get('ws');
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('user.read', {user_id: Number.parseInt(id)}).then(
                 (data) => resolve(data),
@@ -22,7 +23,7 @@ export default ApplicationAdapter.extend({
     {
         const ws = this.get('ws');
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('user.read', {user_id: 0}).then(
                 (data) => resolve(data),
@@ -40,7 +41,7 @@ export default ApplicationAdapter.extend({
             user_id: Number.parseInt(snapshot.id),
             attributes: data.data.attributes
         };
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('user.update', params).then((data) => resolve(data),
                 (failure) => reject(failure));
@@ -51,7 +52,7 @@ export default ApplicationAdapter.extend({
         const data = this.serialize(snapshot);
         const ws = this.get('ws');
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('user.create', {
                 attributes: data.data.attributes

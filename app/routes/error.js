@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { later } from '@ember/runloop';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
@@ -16,7 +16,7 @@ export default LeosacRoute.extend({
             this.get('authSrv')._clearAuthentication(true);
             let self = this;
 
-            Ember.run.later((function ()
+            later((function ()
             {
                 self.transitionTo('login');
             }), 7000);

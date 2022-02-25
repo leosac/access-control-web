@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import Service, { inject as service } from '@ember/service';
 
 /**
  * This service collects system information
@@ -7,9 +7,9 @@ import Ember from 'ember';
  * May need to be merged with leosac-info service. Not
  * sure what is best for now.
  */
-export default Ember.Service.extend({
-    websocket: Ember.inject.service('websocket'),
-    flashMessages: Ember.inject.service(),
+export default Service.extend({
+    websocket: service('websocket'),
+    flashMessages: service(),
     instance_name: "",
     config_version: false,
     uptime: false,

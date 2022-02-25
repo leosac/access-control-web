@@ -1,4 +1,5 @@
-import Ember from 'ember';
+import { Promise, all } from 'rsvp';
+import Service, { inject as service } from '@ember/service';
 
 /**
  * This service provides the ability to query the
@@ -9,8 +10,8 @@ import Ember from 'ember';
  *
  * The various method returns a promise.
  */
-export default Ember.Service.extend({
-    websocket: Ember.inject.service('websocket'),
+export default Service.extend({
+    websocket: service('websocket'),
 
     /**
      * Returns a promise that resolves to an array of {id,name}
@@ -19,7 +20,7 @@ export default Ember.Service.extend({
     findGroupByName(partialName) {
         const ws = this.get('websocket');
 
-        return new Ember.RSVP.Promise(function (resolve, reject) {
+        return new Promise(function (resolve, reject) {
             ws.sendJson('search.group_name',
                 {
                     'partial_name': partialName
@@ -36,7 +37,7 @@ export default Ember.Service.extend({
     {
         const ws = this.get('websocket');
 
-        return new Ember.RSVP.Promise(function (resolve, reject) {
+        return new Promise(function (resolve, reject) {
             ws.sendJson('search.schedule_name',
                 {
                     'partial_name': partialName
@@ -52,7 +53,7 @@ export default Ember.Service.extend({
     findDoorByAlias(partialName) {
         const ws = this.get('websocket');
 
-        return new Ember.RSVP.Promise(function (resolve, reject) {
+        return new Promise(function (resolve, reject) {
             ws.sendJson('search.door_alias',
                 {
                     'partial_name': partialName
@@ -68,7 +69,7 @@ export default Ember.Service.extend({
     findUserByUsername(partialName) {
         const ws = this.get('websocket');
 
-        return new Ember.RSVP.Promise(function (resolve, reject) {
+        return new Promise(function (resolve, reject) {
             ws.sendJson('search.user_username',
                 {
                     'partial_name': partialName
@@ -84,7 +85,7 @@ export default Ember.Service.extend({
     findZoneByAlias(partialName) {
         const ws = this.get('websocket');
 
-        return new Ember.RSVP.Promise(function (resolve, reject) {
+        return new Promise(function (resolve, reject) {
             ws.sendJson('search.zone_alias',
                 {
                     'partial_name': partialName
@@ -101,7 +102,7 @@ export default Ember.Service.extend({
     findCredentialByAlias(partialName) {
         const ws = this.get('websocket');
 
-        return new Ember.RSVP.Promise(function (resolve, reject) {
+        return new Promise(function (resolve, reject) {
             ws.sendJson('search.credential_alias',
                 {
                     'partial_name': partialName
@@ -119,7 +120,7 @@ export default Ember.Service.extend({
     findDeviceByAlias(partialName) {
         const ws = this.get('websocket');
 
-        return new Ember.RSVP.Promise(function (resolve, reject) {
+        return new Promise(function (resolve, reject) {
             ws.sendJson('search.hardware_name',
                 {
                     'partial_name': partialName
@@ -149,8 +150,8 @@ export default Ember.Service.extend({
         let promiseCredential = this.findCredentialByAlias(partialName);
         let promiseDevice = this.findDeviceByAlias(partialName);
 
-        return new Ember.RSVP.Promise(function (resolve) {
-            Ember.RSVP.all([promiseZone,
+        return new Promise(function (resolve) {
+            all([promiseZone,
                 promiseDoor,
                 promiseGroup,
                 promiseSchedule,
@@ -251,7 +252,7 @@ export default Ember.Service.extend({
     {
         const ws = this.get('websocket');
 
-        return new Ember.RSVP.Promise(function (resolve, reject) {
+        return new Promise(function (resolve, reject) {
             console.log('searching for ' + partialName);
             ws.sendJson('search.access_point_alias',
                 {

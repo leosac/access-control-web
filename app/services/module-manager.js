@@ -1,4 +1,5 @@
-import Ember from 'ember';
+import { getOwner } from '@ember/application';
+import Service, { inject as service } from '@ember/service';
 
 /**
  * This function will help us manage every module that are in our application,
@@ -50,10 +51,10 @@ function formatModuleName(str) {
     return str.replace(/-/g, ' ').toUpperCase();
 }
 
-export default Ember.Service.extend({
-    ws: Ember.inject.service('websocket'),
-    info: Ember.inject.service('leosac-info'),
-    store: Ember.inject.service('store'),
+export default Service.extend({
+    ws: service('websocket'),
+    info: service('leosac-info'),
+    store: service('store'),
     serverModules: [],
     clientModules: [],
     wizards: [],
@@ -99,7 +100,7 @@ export default Ember.Service.extend({
      * and tell if they are loaded in the server, the client, or both.
      */
     fetchModule() {
-        let container = Ember.getOwner(this).lookup('application:main').engines;
+        let container = getOwner(this).lookup('application:main').engines;
         const ws = this.get('ws');
         const self = this;
 

@@ -1,8 +1,8 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-    numericId: Ember.computed('id', function ()
+    numericId: computed('id', function ()
     {
         "use strict";
         return Number(this.get('id'));

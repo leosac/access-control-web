@@ -1,4 +1,5 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import Route from '@ember/routing/route';
 import ENV from 'web/config/environment';
 //import config from 'web/config/environement';
 
@@ -26,11 +27,11 @@ import ENV from 'web/config/environment';
  *       base route will be useless.
  */
 
-export default Ember.Route.extend({
-    i18n: Ember.inject.service(),
-    globalInfo: Ember.inject.service('leosac-info'),
-    authSrv: Ember.inject.service('authentication'),
-    flashMessages: Ember.inject.service(),
+export default Route.extend({
+    i18n: service(),
+    globalInfo: service('leosac-info'),
+    authSrv: service('authentication'),
+    flashMessages: service(),
     // A translation key for the title of the page.
     _title: '',
     _requireAuth: false,

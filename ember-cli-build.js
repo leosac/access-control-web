@@ -13,7 +13,7 @@ module.exports = function (defaults)
       // see https://stackoverflow.com/questions/34549838/ember-2-2-0-getting-regeneratorruntime-is-not-defined
 	'ember-cli-babel': {
             includePolyfill: true
-        },
+    },
 
 	'ember-power-select': {
             theme: 'bootstrap'

@@ -1,10 +1,10 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
-    authSrv: Ember.inject.service('authentication'),
-    systemOverview: Ember.inject.service('system-overview'),
-    store: Ember.inject.service(),
+    authSrv: service('authentication'),
+    systemOverview: service('system-overview'),
+    store: service(),
     _title: 'system-overview.title',
     _requireAuth: true,
 

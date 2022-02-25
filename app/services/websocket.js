@@ -1,14 +1,16 @@
-import Ember from 'ember';
+import { later, run } from '@ember/runloop';
+import { defer, Promise } from 'rsvp';
+import Service, { inject as service } from '@ember/service';
 import DS from 'ember-data';
 import ENV from 'web/config/environment';
 
-export default Ember.Service.extend({
-    flashMessages: Ember.inject.service(),
-    authSrv: Ember.inject.service('authentication'),
+export default Service.extend({
+    flashMessages: service(),
+    authSrv: service('authentication'),
     ws: null,
     callback: [],
     beforeOpen: [],
-    store: Ember.inject.service(),
+    store: service(),
     isConnected: false,
 
     init() {
@@ -23,7 +25,7 @@ export default Ember.Service.extend({
 
     attemptToReconnect() {
         const self = this;
-        let deferred = Ember.RSVP.defer();
+        let deferred = defer();
 
         deferred.promise.then(function () {
             let token = self.get('authSrv').fetchLocalAuthToken();
@@ -183,11 +185,11 @@ export default Ember.Service.extend({
                     });
                 }
             }
-            Ember.run.later(timeout_request, 5000);
+            later(timeout_request, 5000);
         };
 
         // Setup timer to check for timeout
-        Ember.run.later(function () {
+        later(function () {
             timeout_request();
         }, 5000);
 
@@ -228,12 +230,12 @@ export default Ember.Service.extend({
             queue.push(request);
         }
 
-        return new Ember.RSVP.Promise(function (resolve, reject) {
+        return new Promise(function (resolve, reject) {
             let on_success = function (data) {
-                Ember.run(null, resolve, data);
+                run(null, resolve, data);
             };
             let on_error = function (why) {
-                Ember.run(null, reject, why);
+                run(null, reject, why);
             };
             let cb = {
                 timestamp: new Date(),

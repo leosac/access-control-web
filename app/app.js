@@ -1,3 +1,4 @@
+import Application from '@ember/application';
 import Ember from 'ember';
 import Resolver from './resolver';
 import loadInitializers from 'ember-load-initializers';
@@ -7,7 +8,9 @@ let App;
 
 // Engine name must be camelcased while the repo name and the route must be dasherized
 
-App = Ember.Application.extend({
+Ember.MODEL_FACTORY_INJECTIONS = true;
+
+App = Application.extend({
     engines: {
         smtp: {
             leosacProperty: {

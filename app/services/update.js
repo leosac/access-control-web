@@ -1,5 +1,5 @@
-import Ember from 'ember';
-import {UpdateStatus} from 'web/leosac-constant';
+import Service, { inject as service } from '@ember/service';
+import { UpdateStatus } from 'web/leosac-constant';
 
 /**
  * A service to interact with Leosac's Update subsystem.
@@ -14,9 +14,9 @@ import {UpdateStatus} from 'web/leosac-constant';
  * @note Most of the service will need to be fixed because its now geared
  * to EvoXS directly due to some broken behavior in emberjs.
  */
-export default Ember.Service.extend({
-    store: Ember.inject.service(),
-    websocket: Ember.inject.service('websocket'),
+export default Service.extend({
+    store: service(),
+    websocket: service('websocket'),
     checkUpdate()
     {
         return this.get('websocket').sendJson('check_update', {}).then((resp) =>

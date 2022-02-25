@@ -1,7 +1,7 @@
+import { computed } from '@ember/object';
 import Model from 'ember-data/model';
-import Ember from 'ember';
 import DS from 'ember-data';
-import {validator, buildValidations} from 'ember-cp-validations';
+import { validator, buildValidations } from 'ember-cp-validations';
 
 const UserValidations = buildValidations(
     {
@@ -16,7 +16,7 @@ const UserValidations = buildValidations(
 );
 
 export default Model.extend(UserValidations, {
-    numericId: Ember.computed('id', function ()
+    numericId: computed('id', function ()
     {
         "use strict";
         return Number(this.get('id'));

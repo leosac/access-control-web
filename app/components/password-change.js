@@ -1,5 +1,6 @@
-import Ember from 'ember';
-import {validator, buildValidations} from 'ember-cp-validations';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
+import { validator, buildValidations } from 'ember-cp-validations';
 
 // Validation for password change
 const Validations = buildValidations({
@@ -17,9 +18,9 @@ const Validations = buildValidations({
     })
 });
 
-export default Ember.Component.extend(Validations, {
-    i18n: Ember.inject.service(),
-    passwordChange: Ember.inject.service('password-change'),
+export default Component.extend(Validations, {
+    i18n: service(),
+    passwordChange: service('password-change'),
     // Shall be injected when invoking the component.
     user_id: null,
     current_password: null,

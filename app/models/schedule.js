@@ -1,6 +1,6 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
 import DS from 'ember-data';
-import {buildValidations, validator} from 'ember-cp-validations';
+import { buildValidations, validator } from 'ember-cp-validations';
 import DependentRelationships from '../mixins/dependent-relationships';
 
 const ScheduleValidations = buildValidations(
@@ -17,7 +17,7 @@ const ScheduleValidations = buildValidations(
 );
 
 export default DS.Model.extend(ScheduleValidations, DependentRelationships, {
-    numericId: Ember.computed('id', function ()
+    numericId: computed('id', function ()
     {
         "use strict";
         return Number(this.get('id'));

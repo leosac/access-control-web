@@ -1,12 +1,13 @@
-import Ember from 'ember';
+import { Promise } from 'rsvp';
+import Service, { inject as service } from '@ember/service';
 import config from '../config/environment';
 /**
  * This service store global information about the
  * Leosac we are connecting too.
  */
-export default Ember.Service.extend({
-    websocket: Ember.inject.service('websocket'),
-    modules: Ember.inject.service('module-manager'),
+export default Service.extend({
+    websocket: service('websocket'),
+    modules: service('module-manager'),
     /**
      * The version number of the Leosac server.
      */
@@ -54,7 +55,7 @@ export default Ember.Service.extend({
     restart()
     {
         let ws = this.get('websocket');
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             console.log('Restarting the server... ');
             ws.sendJson('restart', {}).then(

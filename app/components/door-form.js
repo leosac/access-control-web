@@ -1,8 +1,9 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
-    search: Ember.inject.service('search'),
-    store: Ember.inject.service(),
+export default Component.extend({
+    search: service('search'),
+    store: service(),
 
     // `action` and `door` must be set.
     actions: {

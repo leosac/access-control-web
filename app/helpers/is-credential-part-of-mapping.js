@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { helper as buildHelper } from '@ember/component/helper';
 
 // This will return true or false depending if a user is part of a group
 export function isUserPartOfMapping(params/*, hash*/) {
@@ -9,4 +9,4 @@ export function isUserPartOfMapping(params/*, hash*/) {
 
 }
 
-export default Ember.Helper.helper(isUserPartOfMapping);
+export default buildHelper(isUserPartOfMapping);

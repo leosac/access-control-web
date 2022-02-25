@@ -1,12 +1,14 @@
-import Ember from 'ember';
+import { next } from '@ember/runloop';
+import { defer } from 'rsvp';
+import Service, { inject as service } from '@ember/service';
 
 /**
  * A service that provide a few function to retrieve
  * audit log entries.
  */
-export default Ember.Service.extend({
-    store: Ember.inject.service(),
-    ws: Ember.inject.service('websocket'),
+export default Service.extend({
+    store: service(),
+    ws: service('websocket'),
 
     /**
      *
@@ -18,7 +20,7 @@ export default Ember.Service.extend({
      */
     findAllByTypes(enabled_types, page, pageSize, progressSetter)
     {
-        const promise = Ember.RSVP.defer();
+        const promise = defer();
         const self = this;
 
         progressSetter(10);
@@ -47,12 +49,12 @@ export default Ember.Service.extend({
             // });
 
             progressSetter(40);
-            Ember.run.next(function () {
+            next(function () {
 
                 progressSetter(80);
                 self.get('store').pushPayload(obj);
 
-                Ember.run.next(function () {
+                next(function () {
                     let tmpArray = [];
 
                     if (enabled_types.indexOf('Leosac::Audit::UserEvent') !== -1 ||
@@ -92,7 +94,7 @@ export default Ember.Service.extend({
                         tmpArray = tmpArray.concat(self.get('store').peekAll('audit-zone-event').toArray());
 
                     progressSetter(100);
-                    Ember.run.next(function () {
+                    next(function () {
                         tmpArray.sort(function (a, b) {
                             return b.get('numericId') - a.get('numericId');
                         });

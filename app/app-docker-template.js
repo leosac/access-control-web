@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import Application from '@ember/application';
 import Resolver from './resolver';
 import loadInitializers from 'ember-load-initializers';
 import config from './config/environment';
@@ -13,7 +13,7 @@ let App;
 // The build process will replace __REPLACE__ME with a proper json configuration
 // for the selected engines.
 
-App = Ember.Application.extend({
+App = Application.extend({
 __REPLACE_ME__
     ,
     modulePrefix: config.modulePrefix,

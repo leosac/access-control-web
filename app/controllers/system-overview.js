@@ -1,17 +1,18 @@
-import Ember from 'ember';
+import { observer, computed } from '@ember/object';
+import Controller from '@ember/controller';
 
-export default Ember.Controller.extend({
+export default Controller.extend({
     logPerPage: 25,
     currentLogPage: 0,
     totalLogs: 0,
     lastLogPage: 0,
-    _obs: Ember.observer('logPerPage', function ()
+    _obs: observer('logPerPage', function ()
     {
         "use strict";
         // Reset the page number.
         this.set('currentLogPage', 0);
     }),
-    lastLogs: Ember.computed('logPerPage', 'currentLogPage', function ()
+    lastLogs: computed('logPerPage', 'currentLogPage', function ()
     {
         "use strict";
         const self = this;

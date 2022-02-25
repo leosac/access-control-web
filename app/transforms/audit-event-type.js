@@ -1,5 +1,5 @@
 import DS from 'ember-data';
-import {AuditEventType} from 'web/leosac-constant';
+import { AuditEventType } from 'web/leosac-constant';
 
 export default DS.Transform.extend({
     /**

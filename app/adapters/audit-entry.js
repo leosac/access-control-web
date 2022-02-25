@@ -1,13 +1,14 @@
+import { Promise } from 'rsvp';
+import { inject as service } from '@ember/service';
 import ApplicationAdapter from './application';
-import Ember from 'ember';
 
 export default ApplicationAdapter.extend({
-    ws: Ember.inject.service('websocket'),
+    ws: service('websocket'),
 
     findAll: function ()
     {
         const ws = this.get('ws');
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('audit.get', {}).then(
                 (data) => resolve(data),

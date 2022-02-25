@@ -3,6 +3,7 @@
   "dependencies": {
     "startbootstrap-sb-admin-2-blackrockdigital": "1.0.8",
     "ember": "2.14.0",
+	"ember-cli-shims": "0.1.3",
     "jstree": "^3.3.4"
   }
 }
