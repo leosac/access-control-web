@@ -1,4 +1,5 @@
 {
+  "repository": "",
   "engines": {
     "node": ">= 0.12.0"
   },
@@ -48,6 +49,7 @@
     "moment-timezone": "^0.5.14",
     "nightwatch": "^0.9.19"
   },
+  "description": "Small description for web goes here",
   "private": true,
   "directories": {
     "doc": "doc",
@@ -63,17 +65,15 @@
       "lib/wiegand-reader-wizard"
     ]
   },
-  "repository": "",
-  "license": "MIT",
-  "name": "web",
   "scripts": {
     "postinstall": "bower install",
     "build": "ember build",
     "start": "ember server",
     "test": "ember test"
   },
+  "license": "MIT",
+  "name": "web",
   "version": "0.0.0",
-  "description": "Small description for web goes here",
   "devDependencies": {
     "ember-cli-jshint": "^1.0.4",
     "ember-cli-release": "^0.2.9",
