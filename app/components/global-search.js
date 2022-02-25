@@ -6,7 +6,7 @@ export default Component.extend({
     routeHelper: service('module-route-helper'),
     search: service('search'),
     flashMessages: service(),
-    i18n: service(),
+    intl: service(),
     store: service(),
 
     dataToObject: {},

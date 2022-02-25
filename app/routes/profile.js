@@ -43,7 +43,7 @@ export default LeosacRoute.extend({
         {
             let user = this.controller.get('model').user;
             const fm = this.get('flashMessages');
-            const i18n = this.get('i18n');
+            const intl = this.get('intl');
 
             user.save().then(() =>
             {

@@ -2,7 +2,7 @@ import { inject as service } from '@ember/service';
 import Component from '@ember/component';
 
 export default Component.extend({
-    i18n: service(),
+    intl: service(),
     authSrv: service('authentication'),
     store: service(),
     // The user whose membership we display.
@@ -16,13 +16,13 @@ export default Component.extend({
         this._super(...arguments);
         if (this.get('user').get('numericId') === this.get('authSrv').get('user_id'))
         {
-            this.set('kickOrLeave', this.get('i18n').t('leave'));
-            this.set('kickOrLeaveMessage', this.get('i18n').t('leave_group_confirmation'));
+            this.set('kickOrLeave', this.get('intl').t('leave'));
+            this.set('kickOrLeaveMessage', this.get('intl').t('leave_group_confirmation'));
         }
         else if (this.get('authSrv').get('isAdministrator'))
         {
-            this.set('kickOrLeave', this.get('i18n').t('kick'));
-            this.set('kickOrLeaveMessage', this.get('i18n').t('kick_group_confirmation'));
+            this.set('kickOrLeave', this.get('intl').t('kick'));
+            this.set('kickOrLeaveMessage', this.get('intl').t('kick_group_confirmation'));
         }
     },
     actions:

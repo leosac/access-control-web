@@ -4,7 +4,7 @@ import Controller from '@ember/controller';
 export default Controller.extend({
     updater: service('update'),
     fm: service('flash-messages'),
-    i18n: service(),
+    intl: service(),
 
     updateHistory: [],
     pendingUpdates: [],
@@ -39,7 +39,7 @@ export default Controller.extend({
             this.get('updater').checkUpdate().then((updateDescriptors) =>
             {
                 if (updateDescriptors.length === 0)
-                    this.get('fm').info(this.get('i18n').t('update.everything_up_to_date'));
+                    this.get('fm').info(this.get('intl').t('update.everything_up_to_date'));
                 this.set('updateDescriptors', updateDescriptors);
                 this.set('pendingCheckUpdate', false);
             });
@@ -62,22 +62,22 @@ export default Controller.extend({
         {
             this.get('updater').acknowledgeUpdate(update).then(() =>
             {
-                this.get('fm').success(this.get('i18n').t('update.update_acked'));
+                this.get('fm').success(this.get('intl').t('update.update_acked'));
                 this.refresh();
             }).catch(() =>
             {
-                this.get('fm').danger(this.get('i18n').t('update.update_acked_failed'));
+                this.get('fm').danger(this.get('intl').t('update.update_acked_failed'));
             });
         },
         cancelUpdate(update)
         {
             this.get('updater').cancelUpdate(update).then(() =>
             {
-                this.get('fm').success(this.get('i18n').t('update.update_cancelled'));
+                this.get('fm').success(this.get('intl').t('update.update_cancelled'));
                 this.refresh();
             }).catch(() =>
             {
-                this.get('fm').danger(this.get('i18n').t('update.update_cancel_failed'));
+                this.get('fm').danger(this.get('intl').t('update.update_cancel_failed'));
             });
         },
         showDetails(update) {

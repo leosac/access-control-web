@@ -28,7 +28,7 @@ import ENV from 'web/config/environment';
  */
 
 export default Route.extend({
-    i18n: service(),
+    intl: service(),
     globalInfo: service('leosac-info'),
     authSrv: service('authentication'),
     flashMessages: service(),
@@ -76,7 +76,7 @@ export default Route.extend({
         "use strict";
         this.set('i18n.locale', this.get('globalInfo').getLocale());
 
-        const i18n = this.get('i18n');
+        const intl = this.get('intl');
         const title = i18n.t(this.get('_title'));
 
         this.get('globalInfo').set('current_view_title', title);

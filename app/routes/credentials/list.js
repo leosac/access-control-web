@@ -1,5 +1,8 @@
 import LeosacRoute from 'web/leosac-route';
-import { findAllCredentials, deleteCredential } from 'web/leosac-credential-helper';
+import {
+  findAllCredentials,
+  deleteCredential
+} from 'web/leosac-credential-helper';
 
 export default LeosacRoute.extend({
     _title: 'credentials.list.title',

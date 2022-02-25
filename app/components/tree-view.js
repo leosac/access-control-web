@@ -78,7 +78,7 @@ function zoneFromId(nodeId, zones) {
 }
 
 export default Component.extend({
-    i18n: service(),
+    intl: service(),
     search: service('search'),
     store: service(),
     selectedZone: '',
@@ -112,13 +112,13 @@ export default Component.extend({
             'id': 'physicalRoot',
             'state' : {'opened' : true},
             'type': 'physical',
-            'text': this.get('i18n').t('physicalRoot'),
+            'text': this.get('intl').t('physicalRoot'),
             'children': [] };
         let logicalZoneNode = {
             'id': 'logicalRoot',
             'state' : {'opened' : true},
             "type": "logical",
-            'text': this.get('i18n').t('logicalRoot'),
+            'text': this.get('intl').t('logicalRoot'),
             'children': [] };
         let nodeCache = {};
 
@@ -190,10 +190,10 @@ export default Component.extend({
                 this.get('store').findRecord('door', this.get('newDoor.id')).then((door) => {
                     let selectedZone = zoneFromSelectedZone(this.get('selectedZone'), this.get('model'));
                     let saveOk = () => {
-                        this.get('flashMessages').success(this.get('i18n').t('zone.error.successfully_added'));
+                        this.get('flashMessages').success(this.get('intl').t('zone.error.successfully_added'));
                     };
                     let saveFail = () => {
-                        this.get('flashMessages').danger(this.get('i18n').t('zone.error.error_added'));
+                        this.get('flashMessages').danger(this.get('intl').t('zone.error.error_added'));
                     };
 
                     selectedZone.get('doors').addObject(door);
@@ -206,10 +206,10 @@ export default Component.extend({
             removeDoor(door) {
                 let selectedZone = zoneFromSelectedZone(this.get('selectedZone'), this.get('model'));
                 let saveOk = () => {
-                    this.get('flashMessages').success(this.get('i18n').t('zone.error.successfully_removed'));
+                    this.get('flashMessages').success(this.get('intl').t('zone.error.successfully_removed'));
                 };
                 let saveFail = () => {
-                    this.get('flashMessages').danger(this.get('i18n').t('zone.error.error_removed'));
+                    this.get('flashMessages').danger(this.get('intl').t('zone.error.error_removed'));
                 };
 
                 selectedZone.get('doors').removeObject(door);
@@ -232,10 +232,10 @@ export default Component.extend({
                 let newParent = zoneFromId(node.parent, this.get('model'));
                 let currentZone = zoneFromId(node.node.id, this.get('model'));
                 let saveOk = () => {
-                    this.get('flashMessages').success(this.get('i18n').t('zone.error.edited_success'));
+                    this.get('flashMessages').success(this.get('intl').t('zone.error.edited_success'));
                 };
                 let saveFail = () => {
-                    this.get('flashMessages').danger(this.get('i18n').t('zone.error.edited_error'));
+                    this.get('flashMessages').danger(this.get('intl').t('zone.error.edited_error'));
                 };
 
                 if (oldParent && newParent) {

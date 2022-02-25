@@ -5,16 +5,15 @@
     "ember-engine"
   ],
   "dependencies": {
+	"@ember-intl/cp-validations": "*",
     "ember-bootstrap": "*",
     "ember-bootstrap-cp-validations": "*",
     "ember-cli-babel": "*",
     "ember-cli-htmlbars": "*",
-    "ember-cli-htmlbars-inline-precompile": "*",
     "ember-cli-flash": "*",
     "ember-cp-validations": "*",
     "ember-data": "*",
-    "ember-i18n": "*",
-    "ember-i18n-cp-validations": "*",
+    "ember-intl": "*",
     "ember-power-select": "*",
     "ember-route-action-helper": "*",
     "ember-toggle": "*",

@@ -19,7 +19,7 @@ const Validations = buildValidations({
 });
 
 export default Component.extend(Validations, {
-    i18n: service(),
+    intl: service(),
     passwordChange: service('password-change'),
     // Shall be injected when invoking the component.
     user_id: null,
@@ -37,7 +37,7 @@ export default Component.extend(Validations, {
                 this.get('current_password'),
                 this.get('new_password')).then(() =>
             {
-                fm.success(this.get('i18n').t('password-change.successfully_changed'));
+                fm.success(this.get('intl').t('password-change.successfully_changed'));
             });
         },
     }

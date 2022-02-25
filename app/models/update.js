@@ -3,7 +3,7 @@ import { inject as service } from '@ember/service';
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-    i18n: service(),
+    intl: service(),
 
     numericId: computed('id', function ()
     {
@@ -13,7 +13,7 @@ export default DS.Model.extend({
 
     statusString: computed('status', function()
     {
-        const i18n = this.get('i18n');
+        const intl = this.get('intl');
         const st = this.get('status');
         if (st === 0)
             return i18n.t('pending');

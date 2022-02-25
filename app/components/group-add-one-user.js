@@ -4,7 +4,7 @@ import Component from '@ember/component';
 export default Component.extend({
     globalInfo: service('leosac-info'),
     flashMessages: service(),
-    i18n: service(),
+    intl: service(),
     store: service(),
     search: service(),
 
@@ -22,7 +22,7 @@ export default Component.extend({
             this.get('store').findRecord('user', this.get('selectedUser.id')).then((user) => {
                 if (!user)
                 {
-                    fm.danger(this.get('i18n').t('users.error.find_error'));
+                    fm.danger(this.get('intl').t('users.error.find_error'));
                     return;
                 }
 
@@ -33,11 +33,11 @@ export default Component.extend({
 
                 membership.save().then(() =>
                     {
-                        fm.success(this.get('i18n').t('users.error.add_success'));
+                        fm.success(this.get('intl').t('users.error.add_success'));
                     },
                     () =>
                     {
-                        fm.danger(this.get('i18n').t('users.error.add_error'));
+                        fm.danger(this.get('intl').t('users.error.add_error'));
                         membership.deleteRecord();
                     });
             });

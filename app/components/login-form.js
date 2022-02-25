@@ -2,7 +2,7 @@ import { inject as service } from '@ember/service';
 import Component from '@ember/component';
 
 export default Component.extend({
-    i18n: service(),
+    intl: service(),
     authSrv: service('authentication'),
     pending: false,
     inputUsername: '',
@@ -19,7 +19,7 @@ export default Component.extend({
 
             if (username.length === 0 || password.length === 0)
             {
-                this.set('errorMessage', this.get('i18n').t('login-form.username_password_required'));
+                this.set('errorMessage', this.get('intl').t('login-form.username_password_required'));
                 return;
             }
 

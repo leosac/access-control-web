@@ -5,13 +5,18 @@ module.exports = {
         ecmaVersion: 2017,
         sourceType: 'module'
     },
-    extends: 'eslint:recommended',
+	plugins: ['ember'],
+    extends: [
+		'eslint:recommended',
+		'plugin:ember/recommended'
+	],
     env: {
-        "es6": true,
-        "jquery": true,
+        'es6': true,
+        'jquery': true,
         browser: true
     },
     rules: {
-        "no-console": "off"
+        'no-console': 'off',
+		'ember/no-jquery': 'error'
     },
 };

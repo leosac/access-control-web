@@ -3,7 +3,7 @@ import Component from '@ember/component';
 
 export default Component.extend({
     // `action` and `pin` must be set.
-    i18n: service(),
+    intl: service(),
     store: service(),
     search: service(),
     flashMessages: service(),
@@ -20,7 +20,7 @@ export default Component.extend({
             this.set('selectedUser', user);
             this.get('store').findRecord('user', this.get('selectedUser.id')).then((user) => {
                 if (!user) {
-                    fm.danger(this.get('i18n').t('users.error.find_error'));
+                    fm.danger(this.get('intl').t('users.error.find_error'));
                     return;
                 }
                 this.get('pin').set('owner', user);

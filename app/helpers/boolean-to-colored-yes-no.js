@@ -3,14 +3,14 @@ import { inject as service } from '@ember/service';
 import Helper from '@ember/component/helper';
 // This helper will set the color of the cells in the access overview
 export default Helper.extend({
-  i18n: service('i18n'),
+  intl: service('intl'),
 
   compute(params/*, hash*/) {
       const value = params[0];
 
-      const no = this.get('i18n').t('no');
-      const yes = this.get('i18n').t('yes');
-      const not_available = this.get('i18n').t('not_available');
+      const no = this.get('intl').t('no');
+      const yes = this.get('intl').t('yes');
+      const not_available = this.get('intl').t('not_available');
 
       let str = '';
       if (value === undefined)
