@@ -13,10 +13,11 @@ function addNode(root, child) {
 function nodeFromZone(zone) {
     let type;
 
-    if (zone.get('type') === 'zone.type.logical')
+    if (zone.get('type') === 'zone.type.logical') {
         type = 'logicalZone';
-    else
+    } else {
         type = 'physicalZone';
+    }
     return {
         id: zone.get('id'),
         text: zone.get('alias'),
@@ -60,8 +61,9 @@ function zoneFromSelectedZone(selectedZone, zones) {
     let value = null;
 
     zones.forEach(function (zone) {
-        if (zone.get('id') === selectedZone.get('id'))
+        if (zone.get('id') === selectedZone.get('id')) {
             value = zone;
+        }
     });
     return value;
 }
@@ -71,8 +73,9 @@ function zoneFromId(nodeId, zones) {
     let value = null;
 
     zones.forEach(function (zone) {
-        if (zone.get('id') === nodeId)
+        if (zone.get('id') === nodeId) {
             value = zone;
+        }
     });
     return value;
 }
@@ -130,10 +133,11 @@ export default Component.extend({
 
             if (zone.get('parent.length') === 0)
             {
-                if (zone.get('type') === 'zone.type.logical')
+                if (zone.get('type') === 'zone.type.logical') {
                     addNode(logicalZoneNode, n);
-                else
+                } else {
                     addNode(physicalZoneNode, n);
+                }
             }
             else
             {
@@ -167,8 +171,9 @@ export default Component.extend({
                 // the logical zone "admin_group" can only be located in logical zone like "users"
                 if (node.type === 'logicalZone') {
                     if (node_parent.type === 'logicalZone' ||
-                        node_parent.type === 'logical')
+                        node_parent.type === 'logical') {
                         return true;
+                    }
                 }
                 // but if a zone is of type physical, she can either go in the physical or logical zone
                 //  For example, the "server_room" can be part of the "admin_right" logical zone
@@ -176,8 +181,9 @@ export default Component.extend({
                 else {
                     if (node_parent.type === 'physicalZone' ||
                         node_parent.type === 'physical' ||
-                        node_parent.type === 'logicalZone')
+                        node_parent.type === 'logicalZone') {
                         return true;
+                    }
                 }
             }
             return false;

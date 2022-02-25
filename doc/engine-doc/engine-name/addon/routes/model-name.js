@@ -15,7 +15,7 @@ export default LeosacRoute.extend({
     model(params)
     {
         "use strict";
-        return this.get('store').findRecord('model-name', params.model_name_id);
+        return this.get('store').findRecord('model-name', params.id);
     },
     resetController(controller, isExiting/*, transition*/)
     {

@@ -8,7 +8,7 @@
 *
 * displayName: used by the module manager in the side-menu.
 * needServer: set it to true if there is a back-end module in relation to this.
-* entryPoint: this is the route that will be used to define the link-to in the side-menu,
+* entryPoint: this is the route that will be used to define the LinkTo in the side-menu,
 * here, when you access the engine, you will be redirected to the list route.
 * isWizard (optional): if this is a wizard, put  it to true, otherwise this is not needed.
 * modelToRoute: this is a list of the model initiated in this engine.

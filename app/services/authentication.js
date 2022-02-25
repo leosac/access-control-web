@@ -85,15 +85,17 @@ export default Service.extend({
                     self.set('username', username);
                     self.get('current_auth').resolve();
                     flashMessages.success('Welcome ' + username + '.');
-                    if (onSuccess)
+                    if (onSuccess) {
                         onSuccess();
+                    }
                 });
             }
             else
             {
                 self._clearAuthentication(false);
-                if (onFailure)
+                if (onFailure) {
                     onFailure(data.status, data.message);
+                }
             }
         }, function (failure)
         {
@@ -171,8 +173,9 @@ export default Service.extend({
     isLoggedIn()
     {
         "use strict";
-        if (!this.get('pending'))
+        if (!this.get('pending')) {
             return !!this.get('user_id');
+        }
         return this.get('current_auth').promise;
     },
     _isLoggedIn: computed('user_id', function ()
@@ -212,8 +215,9 @@ export default Service.extend({
         this.get('store').unloadAll();
         this.set('user_id', false);
         this.set('username', '');
-        if (deleteAuthToken)
+        if (deleteAuthToken) {
             this.setLocalAuthToken(false);
+        }
         this.set('pending', false);
         this.set('current_user', false);
         this.get('current_auth').reject();

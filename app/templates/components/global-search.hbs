@@ -8,10 +8,12 @@
       allowClear=true
       onchange=(action (mut selected))
     as |result|}}
-      {{#link-to result.type result.id tagName='div'}}
-        {{result.name}}
-        <span class="pull-right global-search-model-style" >{{t result.tradKey}}</span>
-      {{/link-to}}
+      <LinkTo @route=result.type @query={{hash id=result.id}}>
+        <div>
+          {{result.name}}
+          <span class="pull-right global-search-model-style" >{{t result.tradKey}}</span>
+        </div>
+      </LinkTo>
     {{/power-select-typeahead}}
   </div>
 </div>

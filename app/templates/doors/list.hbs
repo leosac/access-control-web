@@ -1,6 +1,6 @@
-{{#link-to 'doors.create' class='btn btn-primary'}}
-    {{t 'door.create_door'}}
-{{/link-to}}
+<LinkTo @route='doors.create'>
+    <span class='btn btn-primary'>{{t 'door.create_door'}}</span>
+</LinkTo>
 <hr>
 
 <div class="table-responsive">
@@ -13,7 +13,8 @@
         </thead>
         <tbody>
         {{#each model as |door|}}
-            {{#link-to 'door' door.id tagName = "tr"}}
+            <LinkTo @route='door' @query={{hash id=door.id}}>
+              <tr>
                 <td>{{door.id}}</td>
                 <td>{{door.alias}}</td>
                 <td>{{door.description}}</td>
@@ -26,7 +27,8 @@
                             message=(t 'door.delete_confirm')
                             onConfirm=(route-action 'deleteDoor' door)}}
                 </td>
-            {{/link-to}}
+              </tr>
+            </LinkTo>
         {{/each}}
         </tbody>
     </table>

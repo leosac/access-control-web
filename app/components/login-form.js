@@ -33,10 +33,11 @@ export default Component.extend({
                 function (status, msg)
                 {
                     self.set('pending', false);
-                    if (msg)
+                    if (msg) {
                         self.set('errorMessage', 'Auth failure [' + status + ']: ' + msg);
-                    else
+                    } else {
                         self.set('errorMessage', 'Auth failure [' + status + ']');
+                    }
                 });
         }
     }

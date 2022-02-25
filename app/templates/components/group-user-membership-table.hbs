@@ -14,7 +14,8 @@
     </thead>
     <tbody>
     {{#each group.memberships as |membership|}}
-        {{#link-to 'profile' membership.user.id tagName="tr"}}
+        <LinkTo @route='profile' @query={{hash user_id=membership.user.id}}>
+          <tr>
             <td>{{membership.user.id}}</td>
             <td>{{membership.user.firstname}}</td>
             <td>{{membership.user.lastname}}</td>
@@ -34,7 +35,8 @@
                             onConfirm=(action 'deleteMembership' membership.id)
                     }}</td>
             {{/if}}
-        {{/link-to}}
+          </tr>
+        </LinkTo>
     {{/each}}
     </tbody>
 </table>

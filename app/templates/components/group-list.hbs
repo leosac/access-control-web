@@ -10,7 +10,8 @@
         </thead>
         <tbody>
         {{#each groups as |group|}}
-            {{#link-to "group" group.id tagName = "tr"}}
+            <LinkTo @route="group" @query={{hash id=group.id}}>
+              <tr>
                 <td>{{group.id}}</td>
                 <td>
                     {{group.name}}
@@ -28,7 +29,8 @@
                         }}
                     </td>
                 {{/if}}
-            {{/link-to}}
+              </tr>
+            </LinkTo>
         {{/each}}
         </tbody>
     </table>

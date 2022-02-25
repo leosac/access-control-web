@@ -11,8 +11,9 @@ export default Component.extend({
         const self = this;
         this.get('store').findAll('user', {reload: true}).then((users) =>
         {
-            if (!(self.get('isDestroyed')))
+            if (!(self.get('isDestroyed'))) {
                 self.set('allUsers', users);
+            }
         });
     },
 });

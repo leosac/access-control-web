@@ -205,18 +205,19 @@ export default Service.extend({
                 }
                 if (data[5]) {
                     data[5].forEach(function (credential) {
-                        if (credential.type === 'pincode')
+                        if (credential.type === 'pincode') {
                             resultSearch.push({
                                 type: 'pin-code',
                                 id: credential.id,
                                 nameOrAlias: credential.alias
                             });
-                        else
+                        } else {
                             resultSearch.push({
                                 type: 'rfid-card',
                                 id: credential.id,
                                 nameOrAlias: credential.alias
                             });
+                        }
                     });
                 }
                 if (data[6]) {

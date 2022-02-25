@@ -38,16 +38,18 @@
                 </thead>
                 <tbody>
                 {{#each selectedZone.doors as |door|}}
-                  {{#link-to 'door' door.id tagName="tr"}}
-                    <td>{{door.id}}</td>
-                    <td>{{door.alias}}</td>
-                    <td>
-                      <div class="pull-right">
-                        {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
-                                    defaultText=(t 'remove') onClick=(action 'removeDoor' door)}}
-                      </div>
-                    </td>
-                  {{/link-to}}
+                  <LinkTo @route='door' @query={{hash id=door.id}}>
+                    <tr>
+                      <td>{{door.id}}</td>
+                      <td>{{door.alias}}</td>
+                      <td>
+                        <div class="pull-right">
+                          {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
+                                      defaultText=(t 'remove') onClick=(action 'removeDoor' door)}}
+                        </div>
+                      </td>
+                    </tr>
+                  </LinkTo>
                 {{/each}}
                 </tbody>
               </table>
@@ -68,10 +70,12 @@
                   </thead>
                   <tbody>
                   {{#each arrayDoor as |entry|}}
-                    {{#link-to 'door' entry.doorId tagName="tr"}}
-                      <td>{{entry.zone}}</td>
-                      <td>{{entry.door}}</td>
-                    {{/link-to}}
+                    <LinkTo @route='door' @query={{hash id=entry.doorId}}>
+                      <tr>
+                        <td>{{entry.zone}}</td>
+                        <td>{{entry.door}}</td>
+                      </tr>
+                    </LinkTo>
                   {{/each}}
                   </tbody>
                 </table>

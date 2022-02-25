@@ -5,20 +5,27 @@ export function timeframeWeekdayList(params/*, hash*/) {
     const timeframe = params[0];
     const weekdays = [];
 
-    if (timeframe.enabledOnMonday)
+    if (timeframe.enabledOnMonday) {
         weekdays.push('Monday');
-    if (timeframe.enabledOnTuesday)
+    }
+    if (timeframe.enabledOnTuesday) {
         weekdays.push('Tuesday');
-    if (timeframe.enabledOnWednesday)
+    }
+    if (timeframe.enabledOnWednesday) {
         weekdays.push('Wednesday');
-    if (timeframe.enabledOnThursday)
+    }
+    if (timeframe.enabledOnThursday) {
         weekdays.push('Thursday');
-    if (timeframe.enabledOnFriday)
+    }
+    if (timeframe.enabledOnFriday) {
         weekdays.push('Friday');
-    if (timeframe.enabledOnSaturday)
+    }
+    if (timeframe.enabledOnSaturday) {
         weekdays.push('Saturday');
-    if (timeframe.enabledOnSunday)
+    }
+    if (timeframe.enabledOnSunday) {
         weekdays.push('Sunday');
+    }
 
     return weekdays.join(', ');
 }

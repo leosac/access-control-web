@@ -29,10 +29,11 @@ export default Component.extend({
             const picked = this.get('selectedMapping');
             this.set('selectedMapping', null);
 
-            if (picked)
+            if (picked) {
                 this.get('action')(picked);
-            else
+            } else {
                 console.log("PLS PICK SOMETHING");
+            }
         }
     }
 });

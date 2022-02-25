@@ -20,10 +20,11 @@ export default Component.extend({
         let loc = this.get('leosacInfo').getLocale();
 
         this.set('newName', this.get('leosacInfo').getNameApp());
-        if (loc === 'fr')
+        if (loc === 'fr') {
             this.set('language', 'Français');
-        else
+        } else {
             this.set('language', 'English');
+        }
     },
 
     actions: {
@@ -54,19 +55,21 @@ export default Component.extend({
             this.set('language', lang);
         },
         getLocale() {
-            if (this.get('leosacInfo').getLocale() === 'fr')
+            if (this.get('leosacInfo').getLocale() === 'fr') {
                 return 'Français';
-            else
+            } else {
                 return 'English';
+            }
         },
         // It help the ember-power-select component to change the value of the locale variable,
         // then refresh the page because we need to actualize the element of the page
         setLocale(loc)
         {
-            if (loc === 'Français')
+            if (loc === 'Français') {
                 this.get('leosacInfo').setLocale('fr');
-            else
+            } else {
                 this.get('leosacInfo').setLocale('en');
+            }
             location.reload();
         }
     }

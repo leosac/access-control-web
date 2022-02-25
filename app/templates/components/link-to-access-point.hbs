@@ -1,9 +1,9 @@
 {{#if (eq ap.controllerModule 'EVOXS')}}
-    {{#link-to 'modules.evoxs.access-point' ap.id}}
+    <LinkTo @route='modules.evoxs.access-point' @query={{hash id=ap.id}}>
         {{yield}}
-    {{/link-to}}
+    </LinkTo>
 {{else}}
-    {{#link-to 'access-point' ap.id}}
+    <LinkTo @route='access-point' @query={{hash id=ap.id}}>
         {{yield}}
-    {{/link-to}}
+    </LinkTo>
 {{/if}}

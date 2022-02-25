@@ -83,14 +83,14 @@
         </a>
         <ul class="dropdown-menu dropdown-user">
             <li>
-                {{#link-to 'profile' authSrv.user_id}}
+                <LinkTo @route='profile' @query={{hash user_id=authSrv.user_id}}>
                     <i class="fa fa-user fa-fw"></i>{{t 'profile.title'}}
-                {{/link-to}}
+                </LinkTo>
             </li>
             <li>
-                {{#link-to 'settings'}}
+                <LinkTo @route='settings'>
                     <i class="fa fa-gear fa-fw"></i> {{t 'settings'}}
-                {{/link-to}}
+                </LinkTo>
             </li>
             <li class="divider"></li>
             <li {{action 'logout'}}>

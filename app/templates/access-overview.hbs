@@ -88,18 +88,20 @@ This part will let you select which door and user the comparison should be made:
     </thead>
     <tbody>
     {{#each userDoorInfo as |userDoorInfo|}}
-      {{#link-to 'profile' userDoorInfo.user.id tagName="tr"}}
-        <td>{{userDoorInfo.user.username}}</td>
-        {{#each userDoorInfo.doors as |accessToDoor|}}
-          <td class="{{if accessToDoor 'success' 'danger'}}">
-            {{#if accessToDoor}}
-              {{t 'yes'}}
-            {{else}}
-              {{t 'no'}}
-            {{/if}}
-          </td>
-        {{/each}}
-      {{/link-to}}
+      <LinkTo @route='profile' @query={{hash user_id=userDoorInfo.user.id}}>
+        <tr>
+          <td>{{userDoorInfo.user.username}}</td>
+          {{#each userDoorInfo.doors as |accessToDoor|}}
+            <td class="{{if accessToDoor 'success' 'danger'}}">
+              {{#if accessToDoor}}
+                {{t 'yes'}}
+              {{else}}
+                {{t 'no'}}
+              {{/if}}
+            </td>
+          {{/each}}
+        </tr>
+      </LinkTo>
     {{/each}}
     </tbody>
   </table>

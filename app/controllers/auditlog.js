@@ -30,7 +30,7 @@ export default Controller.extend({
     // The audit object that is currently being shown
     // in the details modal.
     detailedAudit: null,
-    audits: ArrayProxy.create({content: A([])}),
+    audits: ArrayProxy.create({content: new A([])}),
     // Whenever one of those variable change,
     // thanks to Ember.observer, reload is called
     watch_: observer('wsapicallEnabled', 'userEventEnabled', 'doorEventEnabled',
@@ -67,32 +67,42 @@ export default Controller.extend({
         const self = this;
 
         const enabled_types = [];
-        if (this.get('wsapicallEnabled'))
+        if (this.get('wsapicallEnabled')) {
             enabled_types.push('Leosac::Audit::WSAPICall');
-        if (this.get('userEventEnabled'))
+        }
+        if (this.get('userEventEnabled')) {
             enabled_types.push('Leosac::Audit::UserEvent');
-        if (this.get('doorEventEnabled'))
+        }
+        if (this.get('doorEventEnabled')) {
             enabled_types.push('Leosac::Audit::DoorEvent');
-        if (this.get('credentialEventEnabled'))
+        }
+        if (this.get('credentialEventEnabled')) {
             enabled_types.push('Leosac::Audit::CredentialEvent');
-        if (this.get('scheduleEventEnabled'))
+        }
+        if (this.get('scheduleEventEnabled')) {
             enabled_types.push('Leosac::Audit::ScheduleEvent');
-        if (this.get('groupEventEnabled'))
+        }
+        if (this.get('groupEventEnabled')) {
             enabled_types.push('Leosac::Audit::GroupEvent');
-        if (this.get('userGroupMembershipEventEnabled'))
+        }
+        if (this.get('userGroupMembershipEventEnabled')) {
             enabled_types.push('Leosac::Audit::UserGroupMembershipEvent');
-        if (this.get('updateEventEnabled'))
+        }
+        if (this.get('updateEventEnabled')) {
             enabled_types.push('Leosac::Audit::UpdateEvent');
-        if (this.get('zoneEventEnabled'))
+        }
+        if (this.get('zoneEventEnabled')) {
             enabled_types.push('Leosac::Audit::ZoneEvent');
+        }
 
         // small hack because we can't put the value of currentPage to a negative value,
         // otherwise, we have to restart the server. This is currently being fixed,
         // but in the mean time,that will fix it
 
         let currentPage = Number.parseInt(this.get('currentPage')) || 1;
-        if (currentPage <= 0 || typeof currentPage !== 'number')
+        if (currentPage <= 0 || typeof currentPage !== 'number') {
             currentPage = 1;
+        }
         const pageSize = Number.parseInt(this.get('pageSize')) || 25;
 
         const progressSetter = function (v) {

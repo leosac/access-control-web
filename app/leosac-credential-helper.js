@@ -13,10 +13,11 @@ function findCredential(store, id)
         pinCode: store.find('pin-code', id),
     }).then(function (hash)
     {
-        if (hash.rfidCard)
+        if (hash.rfidCard) {
             promise.resolve(hash.rfidCard);
-        else if (hash.pinCode)
+        } else if (hash.pinCode) {
             promise.resolve(hash.pinCode);
+        }
         promise.reject(null);
     });
 
@@ -58,10 +59,10 @@ function findAllCredentials(store)
 function deleteCredential(store, credentialId, resolve)
 {
     let cred = store.peekRecord('rfid-card', credentialId);
-    if (!cred)
+    if (!cred) {
         cred = store.peekRecord('pin-code', credentialId);
-    if (cred)
-    {
+    }
+    if (cred) {
         return cred.destroyRecord({}).then((ok) => resolve(ok));
     }
 }

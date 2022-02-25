@@ -69,8 +69,9 @@ export default Service.extend({
         localStorage.app_name = newName;
         // this is necessary if we ant to automatically change the name,
         // but since we don't want an infinite loop, we have to check if we are in init() or not
-        if (i !== 1)
+        if (i !== 1) {
             location.reload();
+        }
     },
     getNameApp() {
         return this.get('appNameLocale');

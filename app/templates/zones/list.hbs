@@ -1,6 +1,6 @@
-{{#link-to 'zones.create' class='btn btn-primary'}}
-    {{t 'zone.create_zone'}}
-{{/link-to}}
+<LinkTo @route='zones.create'>
+    <span class='btn btn-primary'>{{t 'zone.create_zone'}}</span>
+</LinkTo>
 <hr>
 
 <div class="table-responsive">
@@ -14,7 +14,8 @@
         </thead>
         <tbody>
         {{#each model as |zone|}}
-            {{#link-to 'zone' zone.id tagName = "tr"}}
+            <LinkTo @route='zone' @query={{hash id=zone.id}}>
+              <tr>
                 <td>{{zone.id}}</td>
                 <td>{{zone.alias}}</td>
                 <td>{{zone.description}}</td>
@@ -29,7 +30,8 @@
                                              message=(t 'door.delete_confirm')
                                              onConfirm=(route-action 'deleteZone' zone)}}
                 </td>
-            {{/link-to}}
+              </tr>
+            </LinkTo>
         {{/each}}
         </tbody>
     </table>

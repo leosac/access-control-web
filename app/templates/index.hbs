@@ -4,36 +4,36 @@
 <div class="row center-image">
     <div class="col-lg-3"></div>
     <div class="col-lg-2">
-        {{#link-to 'credentials.list'}}
+        <LinkTo @route='credentials.list'>
           {{inline-svg "/assets/images/dashboard-access.svg" class="summary-icon"}}
-        {{/link-to}}
+        </LinkTo>
         <br /><br />
         <p>
-            {{#link-to 'credentials.list' class='btn btn-primary'}}
-                {{t 'index.manage_access'}}
-            {{/link-to}}
+            <LinkTo @route='credentials.list'>
+                <span  class='btn btn-primary'>{{t 'index.manage_access'}}</span>
+            </LinkTo>
         </p>
     </div>
     <div class="col-lg-2">
-        {{#link-to 'updates'}}
+        <LinkTo @route='updates'>
           {{inline-svg "/assets/images/dashboard-updates.svg" class="summary-icon"}}
-        {{/link-to}}
+        </LinkTo>
         <br /><br />
         <p>
-            {{#link-to 'updates' class='btn btn-primary'}}
-                {{t 'index.apply_update'}}
-            {{/link-to}}
+            <LinkTo @route='updates'>
+                <span class='btn btn-primary'>{{t 'index.apply_update'}}</span>
+            </LinkTo>
         </p>
     </div>
     <div class="col-lg-2">
-        {{#link-to 'auditlog'}}
+        <LinkTo @route='auditlog'>
           {{inline-svg "/assets/images/dashboard-events.svg" class="summary-icon"}}
-        {{/link-to}}
+        </LinkTo>
         <br /><br />
         <p>
-            {{#link-to 'auditlog' class='btn btn-primary'}}
-                {{t 'index.event'}}
-            {{/link-to}}
+            <LinkTo @route='auditlog'>
+                <span class='btn btn-primary'>{{t 'index.event'}}</span>
+            </LinkTo>
         </p>
     </div>
     <div class="col-lg-3"></div>

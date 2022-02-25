@@ -45,8 +45,9 @@ export default Component.extend({
             let device = this.get('newDevice');
 
                 // if there is no device, this will do nothing
-            if (!device)
+            if (!device) {
                 return;
+            }
 
             this.get('store').find(device.type, device.id).then((device) => {
                 this.get('ap').get('authSourcesDevice').addObject(device);
@@ -93,8 +94,9 @@ export default Component.extend({
             let schedule = this.get('newSchedule');
 
             // if there is no schedule, this will do nothing
-            if (!schedule)
+            if (!schedule) {
                 return;
+            }
 
             this.get('selectedSchedules').addObject(schedule);
             this.get('store').find('schedule', schedule.id).then((newSchedule) => {
@@ -109,8 +111,9 @@ export default Component.extend({
             const self = this;
             let schedule = this.get('newSchedule');
 
-            if (!schedule)
+            if (!schedule) {
                 return;
+            }
 
             this.get('selectedSchedules').addObject(schedule);
             this.get('store').find('schedule', schedule.id).then((newSchedule) => {

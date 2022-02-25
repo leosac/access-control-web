@@ -11,7 +11,7 @@ export default LeosacRoute.extend({
     model(params)
     {
         "use strict";
-        return this.get('store').findRecord('credential', params.credential_id);
+        return this.get('store').findRecord('credential', params.id);
     },
     actions: {
         deleteCredential ()

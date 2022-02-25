@@ -15,9 +15,9 @@ export default Controller.extend({
     displayedDoors: computed("allDoors", "selectedDoors.length", function () {
         if (!this.get('selectedDoors.length')) {
             return this.get('allDoors');
-        }
-        else
+        } else {
             return this.get('selectedDoors');
+        }
     }),
     allDoors: computed('rawData', "selectedDoors.length", function ()
     {
@@ -25,8 +25,9 @@ export default Controller.extend({
         let selectedDoorsId = [];
         let result = [];
 
-        if (!this.get('rawData'))
+        if (!this.get('rawData')) {
             return doors;
+        }
 
         this.get('rawData').forEach((doorInfo) => {
             doors.push(this.get('store').peekRecord('door', doorInfo.door_id));
@@ -39,8 +40,9 @@ export default Controller.extend({
         }
 
         doors.forEach((door) => {
-            if (!selectedDoorsId.includes(parseInt(door.get('id'))))
+            if (!selectedDoorsId.includes(parseInt(door.get('id')))) {
                 result.push(door);
+            }
         });
         return result;
     }),
@@ -50,8 +52,9 @@ export default Controller.extend({
         let users = [];
         let result = [];
 
-        if (!this.get('rawData'))
+        if (!this.get('rawData')) {
             return userIds;
+        }
 
         this.get('rawData').forEach((doorInfo) => {
             doorInfo.user_ids.forEach((uid) => {
@@ -72,8 +75,9 @@ export default Controller.extend({
         }
 
         users.forEach((user) => {
-            if (!selectedUsersId.includes(parseInt(user.get('id'))))
+            if (!selectedUsersId.includes(parseInt(user.get('id')))) {
                 result.push(user);
+            }
         });
         return result;
     }),
@@ -82,8 +86,9 @@ export default Controller.extend({
         let selectedDoors = [];
         let userInfos = [];
 
-        if (!this.get('rawData'))
+        if (!this.get('rawData')) {
             return [];
+        }
 
         const userCanAccessDoor = function (userId, door) {
             return door.user_ids.indexOf(parseInt(userId)) !== -1;
@@ -99,10 +104,11 @@ export default Controller.extend({
                 this.get('selectedUsers').forEach((user) => {
                     const userData = {user: user, doors: []};
                     selectedDoors.forEach((doorInfo) => {
-                        if (userCanAccessDoor(parseInt(user.get('id')), doorInfo))
+                        if (userCanAccessDoor(parseInt(user.get('id')), doorInfo)) {
                             userData['doors'].push(true);
-                        else
+                        } else {
                             userData['doors'].push(false);
+                        }
                     });
                     userInfos.push(userData);
                 });
@@ -127,10 +133,11 @@ export default Controller.extend({
                     const userData = {user: this.get('store').peekRecord('user', uid), doors: []};
 
                     selectedDoors.forEach((doorInfo) => {
-                        if (userCanAccessDoor(uid, doorInfo))
+                        if (userCanAccessDoor(uid, doorInfo)) {
                             userData['doors'].push(true);
-                        else
+                        } else {
                             userData['doors'].push(false);
+                        }
                     });
                     userInfos.push(userData);
                 });
@@ -139,18 +146,20 @@ export default Controller.extend({
             else {
                 this.get('rawData').forEach((doorInfo) => {
                     this.get('selectedDoors').forEach((door) => {
-                        if (parseInt(door.get('id')) === doorInfo.door_id)
+                        if (parseInt(door.get('id')) === doorInfo.door_id) {
                             selectedDoors.push(doorInfo);
+                        }
                     });
                 });
 
                 this.get('selectedUsers').forEach((user) => {
                     const userData = {user: user, doors: []};
                     selectedDoors.forEach((doorInfo) => {
-                        if (userCanAccessDoor(parseInt(user.get('id')), doorInfo))
+                        if (userCanAccessDoor(parseInt(user.get('id')), doorInfo)) {
                             userData['doors'].push(true);
-                        else
+                        } else {
                             userData['doors'].push(false);
+                        }
                     });
                     userInfos.push(userData);
                 });
@@ -173,10 +182,11 @@ export default Controller.extend({
                 const userData = {user: this.get('store').peekRecord('user', uid), doors: []};
 
                 selectedDoors.forEach((doorInfo) => {
-                    if (userCanAccessDoor(uid, doorInfo))
+                    if (userCanAccessDoor(uid, doorInfo)) {
                         userData['doors'].push(true);
-                    else
+                    } else {
                         userData['doors'].push(false);
+                    }
                 });
                 userInfos.push(userData);
             });

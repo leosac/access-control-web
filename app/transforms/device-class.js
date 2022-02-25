@@ -9,8 +9,9 @@ export default DS.Transform.extend({
         {
             if (DeviceClass.hasOwnProperty(key))
             {
-                if (DeviceClass[key] && serialized)
+                if (DeviceClass[key] && serialized) {
                     types.push(key);
+                }
             }
         }
         return types.join(',');

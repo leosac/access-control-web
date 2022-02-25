@@ -14,12 +14,16 @@
     <tbody>
     {{#each model as |model-name|}}
       <tr>
-        {{#link-to 'model-name' model-name.id tagName = "td"}}
-          {{model-name.id}}
-        {{/link-to}}
-        {{#link-to 'model-name' model-name.id tagName = "td"}}
-          {{model-name.name}}
-        {{/link-to}}
+        <LinkTo @route='model-name' @query={{hash id=model-name.id}}>
+          <td>
+            {{model-name.id}}
+          </td>
+        </LinkTo>
+        <LinkTo @route='model-name' @query={{hash id=model-name.id}}>
+          <td>
+            {{model-name.name}}
+          </td>
+        </LinkTo>
         <td>
           <div class="pull-left">
             {{device-toggle-enabled device=model-name saveIt=true}}

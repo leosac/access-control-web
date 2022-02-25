@@ -21,8 +21,9 @@ export default LeosacRoute.extend({
         if (isExiting)
         {
             const mod = this.controller.get('model');
-            if (mod)
+            if (mod) {
                 mod.rollbackAttributes();
+            }
         }
     },
     actions: {

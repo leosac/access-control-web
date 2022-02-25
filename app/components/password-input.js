@@ -26,16 +26,15 @@ export default Component.extend(Validations, {
     }),
     tryUpdatePasswordValue ()
     {
-        if (this.attrs.optional)
+        if (this.attrs.optional) {
             this.attrs.passwordOut.update(this.get('password'));
-        else
-        {
+        } else {
             const {validations} = this.validateSync();
-            if (validations.get('isValid'))
+            if (validations.get('isValid')) {
                 this.attrs.passwordOut.update(this.get('password'));
-            else
+            } else {
                 this.attrs.passwordOut.update(false);
-
+            }
         }
     },
     init()

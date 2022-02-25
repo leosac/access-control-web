@@ -47,10 +47,11 @@ export default Route.extend({
              * The hack is quite simple, it check if the route name match the current route.
              * if not, then this is an engine.
              */
-            if (self.fullRouteName === self.routeName)
+            if (self.fullRouteName === self.routeName) {
                 self.transitionTo('login');
-            else
+            } else {
                 self.transitionToExternal('login');
+            }
         },
         /**
          * An error was raised by a custom component.
@@ -77,7 +78,7 @@ export default Route.extend({
         this.set('i18n.locale', this.get('globalInfo').getLocale());
 
         const intl = this.get('intl');
-        const title = i18n.t(this.get('_title'));
+        const title = intl.t(this.get('_title'));
 
         this.get('globalInfo').set('current_view_title', title);
         document.title = ENV.APP.appname + ' - ' + title;
@@ -107,10 +108,11 @@ function redirectIfNotAuth(route)
          * The hack is quite simple, it check if the route name match the current route.
          * if not, then this is an engine.
          */
-        if (self.fullRouteName === self.routeName)
+        if (self.fullRouteName === self.routeName) {
             self.transitionTo('login');
-        else
+        } else {
             self.transitionToExternal('login');
+        }
         return ;
 
     }
@@ -124,10 +126,11 @@ function redirectIfNotAuth(route)
         // success, do nothing and let user reach page
     }, function ()
     {
-        if (self.fullRouteName === self.routeName)
+        if (self.fullRouteName === self.routeName) {
             self.transitionTo('login');
-        else
+        } else {
             self.transitionToExternal('login');
+        }
 
     });
     return promise_or_ret;

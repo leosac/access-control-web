@@ -11,10 +11,11 @@ export default ApplicationAdapter.extend({
         const ws = this.get('ws');
 
         // Find owner, if any.
-        if (data.data.relationships && data.data.relationships.owner && data.data.relationships.owner.data)
+        if (data.data.relationships && data.data.relationships.owner && data.data.relationships.owner.data) {
             data.data.attributes.owner_id = Number.parseInt(data.data.relationships.owner.data.id);
-        else
+        } else {
             data.data.attributes.owner_id = 0;
+        }
         return new Promise(function (resolve, reject)
         {
             ws.sendJson('credential.create', {
@@ -57,10 +58,11 @@ export default ApplicationAdapter.extend({
         const data = this.serialize(snapshot);
         const ws = this.get('ws');
 
-        if (data.data.relationships && data.data.relationships.owner && data.data.relationships.owner.data)
+        if (data.data.relationships && data.data.relationships.owner && data.data.relationships.owner.data) {
             data.data.attributes.owner_id = Number.parseInt(data.data.relationships.owner.data.id);
-        else
+        } else {
             data.data.attributes.owner_id = 0;
+        }
 
         const params = {
             credential_id: Number.parseInt(snapshot.id),

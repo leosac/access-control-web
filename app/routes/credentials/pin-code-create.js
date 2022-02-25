@@ -19,8 +19,9 @@ export default LeosacRoute.extend({
         if (isExiting)
         {
             const mod = this.controller.get('model');
-            if (mod.get('isNew'))
+            if (mod.get('isNew')) {
                 mod.unloadRecord();
+            }
         }
     },
     actions:

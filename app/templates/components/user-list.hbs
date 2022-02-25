@@ -11,14 +11,16 @@
         <tbody>
         {{#each users as |user|}}
             {{#if user.id}}
-                {{#link-to "profile" user.id tagName = "tr"}}
+                <LinkTo @route="profile" @query={{hash user_id=user.id}}>
+                  <tr>
                     <td>{{user.id}}</td>
                     <td>{{user.firstname}}</td>
                     <td>{{user.lastname}}</td>
                     <td>{{user.email}}</td>
                     <td>{{t user.rank}}</td>
                     <td>{{user.username}}</td>
-                {{/link-to}}
+                  </tr>
+                </LinkTo>
             {{/if}}
         {{/each}}
         </tbody>

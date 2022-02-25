@@ -14,9 +14,11 @@ to render if there is no active session.
           <span class="icon-bar"></span>
         </button>
         <img src="{{getenv 'logoUrl'}}" class="navbar-logo" alt="Logo"/>
-        {{#link-to "index" id='title-app-name' class="navbar-brand"}}
-          {{getlocale 'app_name'}}
-        {{/link-to}}
+        <LinkTo @route="index">
+          <div id='title-app-name' class="navbar-brand">
+            {{getlocale 'app_name'}}
+          </div>
+        </LinkTo>
       </div>
       <!-- /.navbar-header -->
       {{top-menu}}

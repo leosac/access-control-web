@@ -1,6 +1,6 @@
-{{#link-to 'groups.create' class='btn btn-primary'}}
-    {{t 'users.create_new_group'}}
-{{/link-to}}
+<LinkTo @route='groups.create'>
+    <span class='btn btn-primary'>{{t 'users.create_new_group'}}</span>
+</LinkTo>
 <hr>
 
 {{t 'users.list_groups_notice'}}

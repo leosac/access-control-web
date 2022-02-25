@@ -42,9 +42,9 @@ export default ApplicationAdapter.extend({
             data.data.relationships.doors.data.forEach(function (door) {
                 data.data.attributes.doors.push(Number.parseInt(door.id));
             });
-        }
-        else
+        } else {
             data.data.attributes.doors = [];
+        }
 
         // search for each zone child, if none set id to null
         if (data.data.relationships && data.data.relationships['children'] &&
@@ -54,9 +54,9 @@ export default ApplicationAdapter.extend({
             data.data.relationships.children.data.forEach(function (zones) {
                 data.data.attributes.children.push(Number.parseInt(zones.id));
             });
-        }
-        else
+        } else {
             data.data.attributes.children = [];
+        }
 
         return new Promise(function (resolve, reject)
         {
@@ -79,9 +79,9 @@ export default ApplicationAdapter.extend({
             data.data.relationships.doors.data.forEach(function (door) {
                 data.data.attributes.doors.push(Number.parseInt(door.id));
             });
-        }
-        else
+        } else {
             data.data.attributes.doors = [];
+        }
 
         // search for each child, if none set id to null
         if (data.data.relationships && data.data.relationships['children'] &&
@@ -91,9 +91,9 @@ export default ApplicationAdapter.extend({
             data.data.relationships.children.data.forEach(function (zones) {
                 data.data.attributes.children.push(Number.parseInt(zones.id));
             });
-        }
-        else
+        } else {
             data.data.attributes.children = [];
+        }
 
         const params = {
             zone_id: Number.parseInt(snapshot.id),

@@ -26,7 +26,8 @@
                 </thead>
                 <tbody>
                 {{#each mapping.users as |user|}}
-                    {{#link-to 'profile' user.id tagName="tr"}}
+                    <LinkTo @route='profile' @query={{hash user_id=user.id}}>
+                      <tr>
                         <td class="col-md-1">
                             {{user.id}}
                         </td>
@@ -39,7 +40,8 @@
                                             defaultText=(t 'remove') onClick=(action 'removeUser' user)}}
                             </div>
                         </td>
-                    {{/link-to}}
+                      </tr>
+                    </LinkTo>
                 {{/each}}
                 </tbody>
             </table>
@@ -77,7 +79,8 @@
                 </thead>
                 <tbody>
                 {{#each mapping.groups as |group|}}
-                    {{#link-to 'group' group.id tagName="tr"}}
+                    <LinkTo @route='group' @query={{hash id=group.id}}>
+                      <tr>
                         <td class="col-md-1">
                             {{group.id}}
                         </td>
@@ -90,7 +93,8 @@
                                             defaultText=(t 'remove') onClick=(action 'removeGroup' group)}}
                             </div>
                         </td>
-                    {{/link-to}}
+                      </tr>
+                    </LinkTo>
                 {{/each}}
                 </tbody>
             </table>
@@ -181,7 +185,8 @@
                 </thead>
                 <tbody>
                 {{#each mapping.doors as |door|}}
-                    {{#link-to 'door' door.id tagName="tr"}}
+                    <LinkTo @route='door' @query={{hash id=door.id}}>
+                      <tr>
                         <td class="col-md-1">
                             {{door.id}}
                         </td>
@@ -194,7 +199,8 @@
                                             defaultText=(t 'remove') onClick=(action 'removeDoor' door)}}
                             </div>
                         </td>
-                    {{/link-to}}
+                      </tr>
+                    </LinkTo>
                 {{/each}}
                 </tbody>
             </table>

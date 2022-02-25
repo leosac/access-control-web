@@ -27,8 +27,9 @@ function formatName(object) {
  */
 
 function removeLastDot(path) {
-    if (path.substring(path.length - 1) === ".")
+    if (path.substring(path.length - 1) === ".") {
         path = path.substring(0, path.length - 1);
+    }
     return path;
 }
 
@@ -172,12 +173,13 @@ export default Service.extend({
                  * This will sort the modules by name, ASC
                  */
                 modulesInfo.sort(function (a, b) {
-                    if (a.routeName >= b.routeName)
+                    if (a.routeName >= b.routeName) {
                         return 1;
-                    else if (a.routeName < b.routeName)
+                    } else if (a.routeName < b.routeName) {
                         return -1;
-                    else
+                    } else {
                         return 0;
+                    }
                 });
 
                 /**
@@ -228,8 +230,9 @@ export default Service.extend({
 
                 for (i = 0; wizardsInfo[i]; i++) {
                     for (let j = 0; wizardsInfo[i].neededModule[j]; j++) {
-                        if (modulesNeededByWizard.includes(wizardsInfo[i].neededModule[j]) === false)
+                        if (modulesNeededByWizard.includes(wizardsInfo[i].neededModule[j]) === false) {
                             modulesNeededByWizard.push(wizardsInfo[i].neededModule[j]);
+                        }
                     }
                 }
 
@@ -242,9 +245,9 @@ export default Service.extend({
                         if (modulesNotLoadedByTheClient[j] === modulesShouldBeLoadedOnBothClient[i]) {
                             if (modulesNotLoadedByTheClient[j] === modulesLoadedByBoth[checkOccurrence]) {
                                 checkOccurrence++;
-                            }
-                            else
+                            } else {
                                 modulesLoadedByBoth.push(modulesNotLoadedByTheClient[j]);
+                            }
                             modulesNotLoadedByTheClient.splice(j, 1);
                         }
                         j++;

@@ -34,8 +34,9 @@ export default LeosacRoute.extend({
         if (isExiting)
         {
             const user = this.controller.get('model').user;
-            if (user)
+            if (user) {
                 user.rollbackAttributes();
+            }
         }
     },
     actions: {
@@ -47,10 +48,10 @@ export default LeosacRoute.extend({
 
             user.save().then(() =>
             {
-                fm.success(i18n.t('profile.profile_updated') + '.');
+                fm.success(intl.t('profile.profile_updated') + '.');
             }, (why) =>
             {
-                fm.danger(i18n.t('profile_fail_update') + ': ' + why.status_string);
+                fm.danger(intl.t('profile_fail_update') + ': ' + why.status_string);
             });
         },
     }

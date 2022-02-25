@@ -16,8 +16,9 @@ export default Component.extend({
 
     greyedDisabledIfSyncing: computed('syncing', function ()
     {
-        if (this.get('syncing'))
+        if (this.get('syncing')) {
             return 'disabled-greyed';
+        }
         return '';
     }),
 

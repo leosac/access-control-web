@@ -16,10 +16,11 @@ export default LeosacRoute.extend({
     },
     actions: {
         findType(zone) {
-            if (zone.type === "Logical")
+            if (zone.type === "Logical") {
                 return 1;
-            else
+            } else {
                 return 0;
+            }
         },
         deleteZone(zone)
         {

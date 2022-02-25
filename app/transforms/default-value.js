@@ -2,16 +2,18 @@ import DS from 'ember-data';
 
 export default DS.Transform.extend({
     deserialize(serialized) {
-        if (serialized === false)
+        if (serialized === false) {
             return 'false';
-        else if (serialized === true)
+        } else if (serialized === true) {
             return 'true';
+        }
     },
 
     serialize(deserialized) {
-        if (deserialized === 'true')
+        if (deserialized === 'true') {
             return true;
-        else if (deserialized === 'false')
+        } else if (deserialized === 'false') {
             return false;
+        }
     }
 });

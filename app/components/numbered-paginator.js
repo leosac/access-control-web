@@ -25,8 +25,9 @@ export default Component.extend({
 
         const safeAdd = (n) =>
         {
-            if (pages.indexOf(n) === -1)
+            if (pages.indexOf(n) === -1) {
                 pages.push(n);
+            }
         };
 
         // If we have more than 10 pages, we will not display

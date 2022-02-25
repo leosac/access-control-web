@@ -13,10 +13,11 @@ function findAccessPoint(store, id)
         base: store.find('access-point', id),
     }).then(function (hash)
     {
-        if (hash.evoxs)
+        if (hash.evoxs) {
             promise.resolve(hash.evoxs);
-        else if (hash.base)
+        } else if (hash.base) {
             promise.resolve(hash.base);
+        }
         promise.reject(null);
     });
 
@@ -55,10 +56,10 @@ function findAllAccessPoints(store)
 function deleteAccessPoint(store, apId, resolve)
 {
     let ap = store.peekRecord('evoxs-access-point', apId);
-    if (!ap)
+    if (!ap) {
         ap = store.peekRecord('access-point', apId);
-    if (ap)
-    {
+    }
+    if (ap) {
         return ap.destroyRecord({}).then((ok) => resolve(ok));
     }
 }

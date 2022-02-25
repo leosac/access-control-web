@@ -3,13 +3,15 @@ import DS from 'ember-data';
 
 function clone(obj)
 {
-    if (obj === null || "object" !== typeof obj)
+    if (obj === null || "object" !== typeof obj) {
         return obj;
+    }
     let copy = obj.constructor();
     for (let attr in obj)
     {
-        if (obj.hasOwnProperty(attr))
+        if (obj.hasOwnProperty(attr)) {
             copy[attr] = clone(obj[attr]);
+        }
     }
     return copy;
 }
@@ -55,28 +57,36 @@ export default DS.Transform.extend({
                 }
 
                 // Mark the current tf (`tf`)'s day as an enabled day.
-                if (tf.day === 0)
+                if (tf.day === 0) {
                     editedTimeframe.enabledOnMonday = true;
-                if (tf.day === 1)
+                }
+                if (tf.day === 1) {
                     editedTimeframe.enabledOnTuesday = true;
-                if (tf.day === 2)
+                }
+                if (tf.day === 2) {
                     editedTimeframe.enabledOnWednesday = true;
-                if (tf.day === 3)
+                }
+                if (tf.day === 3) {
                     editedTimeframe.enabledOnThursday = true;
-                if (tf.day === 4)
+                }
+                if (tf.day === 4) {
                     editedTimeframe.enabledOnFriday = true;
-                if (tf.day === 5)
+                }
+                if (tf.day === 5) {
                     editedTimeframe.enabledOnSaturday = true;
-                if (tf.day === 6)
+                }
+                if (tf.day === 6) {
                     editedTimeframe.enabledOnSunday = true;
+                }
             });
         }
         return output;
     },
 
     serialize(deserialized) {
-        if (!deserialized || deserialized.length === 0)
+        if (!deserialized || deserialized.length === 0) {
             return null;
+        }
 
         // We need to add create a JSON object that looks like a
         // Leosac's SingleTimeFrame.
@@ -86,15 +96,17 @@ export default DS.Transform.extend({
         {
             const leosacTimeFrame = {};
 
-            if (typeof tf.startTime !== 'string')
+            if (typeof tf.startTime !== 'string') {
                 leosacTimeFrame['start-time'] = tf.startTime.format('H:mm');
-            else
+            } else {
                 leosacTimeFrame['start-time'] = tf.startTime;
+            }
 
-            if (typeof tf.endTime !== 'string')
+            if (typeof tf.endTime !== 'string') {
                 leosacTimeFrame['end-time'] = tf.endTime.format('H:mm');
-            else
+            } else {
                 leosacTimeFrame['end-time'] = tf.endTime;
+            }
 
             if (tf.enabledOnMonday)
             {

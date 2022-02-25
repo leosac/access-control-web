@@ -11,7 +11,7 @@ export default Service.extend({
 
     changePassword(target_user_id, current_password, new_password)
     {
-        const defer = defer();
+        const vdefer = defer();
         const flashMessages = this.get('flashMessages');
         const ws = this.get('websocket');
         target_user_id = parseInt(target_user_id);
@@ -23,11 +23,11 @@ export default Service.extend({
                 new_password: new_password
             }).then(function ()
         {
-            defer.resolve();
+            vdefer.resolve();
         }, (failure)=>
         {
             flashMessages.danger('Failed to change password. ' + failure.status_string);
         });
-        return defer.promise;
+        return vdefer.promise;
     }
 });

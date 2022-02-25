@@ -20,7 +20,7 @@ export default LeosacRoute.extend({
         // fixme FIX ME PLS
         return this.get('store').findAll('access-point').then(() =>
         {
-            return this.get('store').findRecord('door', params.door_id);
+            return this.get('store').findRecord('door', params.id);
         });
     },
     resetController(controller, isExiting/*, transition*/)
@@ -29,8 +29,9 @@ export default LeosacRoute.extend({
         if (isExiting)
         {
             const mod = this.controller.get('model');
-            if (mod)
+            if (mod) {
                 mod.rollbackAttributes();
+            }
         }
     },
     actions: {

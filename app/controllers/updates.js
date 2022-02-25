@@ -38,8 +38,9 @@ export default Controller.extend({
             this.set('pendingCheckUpdate', true);
             this.get('updater').checkUpdate().then((updateDescriptors) =>
             {
-                if (updateDescriptors.length === 0)
+                if (updateDescriptors.length === 0) {
                     this.get('fm').info(this.get('intl').t('update.everything_up_to_date'));
+                }
                 this.set('updateDescriptors', updateDescriptors);
                 this.set('pendingCheckUpdate', false);
             });

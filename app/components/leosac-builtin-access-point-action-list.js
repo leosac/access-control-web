@@ -85,8 +85,9 @@ export default Component.extend({
         addSuccessAction() {
             let selectedDevice = this.get('selectedDevice');
             let selectedCommand = this.get('selectedCommand');
-            if (!selectedDevice || !selectedCommand)
+            if (!selectedDevice || !selectedCommand) {
                 return;
+            }
 
             let newAction = this.get('store').createRecord('leosac-builtin-access-point-action', {
                 id: v4(),
@@ -108,8 +109,9 @@ export default Component.extend({
         addErrorAction() {
             let selectedDevice = this.get('selectedDevice');
             let selectedCommand = this.get('selectedCommand');
-            if (!selectedDevice || !selectedCommand)
+            if (!selectedDevice || !selectedCommand) {
                 return;
+            }
 
             let newAction = this.get('store').createRecord('leosac-builtin-access-point-action', {
                 id: v4(),

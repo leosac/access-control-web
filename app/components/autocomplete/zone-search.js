@@ -31,13 +31,15 @@ export default Component.extend({
 
                     if (res) {
                         res.forEach(function (obj) {
-                            if (obj.id === id)
+                            if (obj.id === id) {
                                 currentZoneIndex = count;
+                            }
                             count += 1;
                         });
                     }
-                    if (currentZoneIndex !== -1)
+                    if (currentZoneIndex !== -1) {
                         res.splice(currentZoneIndex, 1);
+                    }
                 });
                 return data;
             }

@@ -12,8 +12,9 @@ export default DS.Transform.extend({
         {
             if (AuditEventType.hasOwnProperty(key))
             {
-                if (AuditEventType[key] & serialized)
+                if (AuditEventType[key] & serialized) {
                     types.push(key);
+                }
             }
         }
         return types.join(',');

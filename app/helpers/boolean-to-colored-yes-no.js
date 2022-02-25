@@ -13,12 +13,15 @@ export default Helper.extend({
       const not_available = this.get('intl').t('not_available');
 
       let str = '';
-      if (value === undefined)
+      if (value === undefined) {
           str = not_available;
-      if (value === false)
+      }
+      if (value === false) {
           str = '<strong><span class="boolean-to-colored-no">' + no + '</span></strong>';
-      if (value === true)
+      }
+      if (value === true) {
           str = '<strong><span class="boolean-to-colored-yes">' + yes + '</span></strong>';
+      }
 
       return htmlSafe(str);
   }

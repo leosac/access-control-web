@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 import Application from '@ember/application';
 import Resolver from './resolver';
 import loadInitializers from 'ember-load-initializers';
@@ -12,7 +13,6 @@ let App;
 
 // The build process will replace __REPLACE__ME with a proper json configuration
 // for the selected engines.
-
 App = Application.extend({
 __REPLACE_ME__
     ,
@@ -24,3 +24,4 @@ __REPLACE_ME__
 loadInitializers(App, config.modulePrefix);
 
 export default App;
+/* jshint ignore:end */

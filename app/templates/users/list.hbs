@@ -1,6 +1,6 @@
-{{#link-to 'users.create' class='btn btn-primary'}}
-    {{t 'users.create_new_user'}}
-{{/link-to}}
+<LinkTo @route='users.create'>
+    <span class='btn btn-primary'>{{t 'users.create_new_user'}}</span>
+</LinkTo>
 <hr>
 
 {{user-list users=model}}

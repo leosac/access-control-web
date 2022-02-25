@@ -18,8 +18,9 @@ export default Service.extend({
 
         // Override server address if set in local storage.
         // Used when browsing from centralized web ui.
-        if (localStorage.leosacAddr)
+        if (localStorage.leosacAddr) {
             ENV.APP.leosacAddr = localStorage.leosacAddr;
+        }
         this.initWebsocket(ENV.APP.leosacAddr + '/websocket', null);
     },
 
@@ -29,8 +30,9 @@ export default Service.extend({
 
         deferred.promise.then(function () {
             let token = self.get('authSrv').fetchLocalAuthToken();
-            if (!!token && token !== 'false')
+            if (!!token && token !== 'false') {
                 self.get('authSrv').authenticateWithToken(token);
+            }
         });
 
         this.initWebsocket(ENV.APP.leosacAddr + '/websocket', deferred);
@@ -108,10 +110,11 @@ export default Service.extend({
                     let pointer = obj.content.errors[0].source.pointer;
                     // let error_code = obj.content.errors[0].error_code;
 
-                    if (pointer === '')
+                    if (pointer === '') {
                         self.get('flashMessages').danger(string, {
                             sticky: true
                         });
+                    }
                     cb.error(new DS.InvalidError(obj.content.errors));
                 }
                 else if (obj.status_code !== 0) {
@@ -119,9 +122,9 @@ export default Service.extend({
                         sticky: true
                     });
                     cb.error(obj);
-                }
-                else
+                } else {
                     cb.success(obj.content);
+                }
                 delete self.get('callback')[obj.uuid];
             }
         };
@@ -131,8 +134,9 @@ export default Service.extend({
             const pending_callbacks = self.get('callback');
 
             for (let key in pending_callbacks) {
-                if (!pending_callbacks.hasOwnProperty(key))
+                if (!pending_callbacks.hasOwnProperty(key)) {
                     continue;
+                }
                 let c = pending_callbacks[key];
                 c.error({
                     status_code: 6,
@@ -167,8 +171,9 @@ export default Service.extend({
             const pending_callbacks = self.get('callback');
 
             for (let key in pending_callbacks) {
-                if (!pending_callbacks.hasOwnProperty(key))
+                if (!pending_callbacks.hasOwnProperty(key)) {
                     continue;
+                }
                 let c = pending_callbacks[key];
                 let time_diff = new Date() - c.timestamp;
                 if (time_diff > 10000) {

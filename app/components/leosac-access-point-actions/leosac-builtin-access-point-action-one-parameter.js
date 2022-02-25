@@ -11,8 +11,9 @@ export default Component.extend({
     init() {
         let duration = this.get('customAction.params');
 
-        if (!duration)
+        if (!duration) {
             this.set('customAction.params', 3000);
+        }
         this._super(arguments);
     }
 });

@@ -1,6 +1,6 @@
-{{#link-to 'schedules.create' class='btn btn-primary'}}
-    {{t 'schedule.create_schedule'}}
-{{/link-to}}
+<LinkTo @route='schedules.create'>
+    <span class='btn btn-primary'>{{t 'schedule.create_schedule'}}</span>
+</LinkTo>
 <hr>
 
 <div class="table-responsive">
@@ -13,7 +13,8 @@
         </thead>
         <tbody>
         {{#each model as |sched|}}
-            {{#link-to 'schedule' sched.id tagName="tr"}}
+            <LinkTo @route='schedule' @query={{hash id=sched.id}}>
+              <tr>
                 <td>
                     {{sched.id}}
                 </td>
@@ -28,7 +29,8 @@
                             message=(t 'schedule.delete_confirm')
                             onConfirm=(route-action 'deleteSchedule' sched.id)}}
                 </td>
-            {{/link-to}}
+              </tr>
+            </LinkTo>
         {{/each}}
         </tbody>
     </table>

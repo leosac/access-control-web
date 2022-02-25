@@ -73,7 +73,7 @@ Router.map(function () {
     this.route('leosac-builtin-access-point', {path: '/leosac-builtin-access-point/:access_point_id'});
     this.route('leosac-builtin-access-point-list');
 
-    __REPLACE_ME__
+    __REPLACE_ME__ // jshint ignore:line
 });
 
 export default Router;

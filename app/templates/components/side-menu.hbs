@@ -6,35 +6,35 @@
         <!-- /input-group -->
       </li>
       <li>
-        {{#link-to 'index'}}
+        <LinkTo @route='index'>
           <i class="fa fa-dashboard fa-fw"></i> {{t 'index.title'}}
-        {{/link-to}}
+        </LinkTo>
       </li>
       <li>
-        {{#link-to 'system-overview'}}
+        <LinkTo @route='system-overview'>
           <i class="fa fa-cog fa-fw"></i> {{t 'w.overview'}}
-        {{/link-to}}
+        </LinkTo>
       </li>
       <li>
         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> {{t 'access'}}<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
           <li>
-            {{#link-to 'access-overview'}}{{t 'access-overview.title'}}{{/link-to}}
+            <LinkTo @route='access-overview'>{{t 'access-overview.title'}}</LinkTo>
           </li>
           <li>
-            {{#link-to 'zone-overview'}}{{t 'tree-view.title'}}{{/link-to}}
+            <LinkTo @route='zone-overview'>{{t 'tree-view.title'}}</LinkTo>
           </li>
           <li>
-            {{#link-to 'users.list'}}{{t 'users.title'}}{{/link-to}}
+            <LinkTo @route='users.list'>{{t 'users.title'}}</LinkTo>
           </li>
           <li>
-            {{#link-to 'groups.list'}}{{t 'groups'}}{{/link-to}}
+            <LinkTo @route='groups.list'>{{t 'groups'}}</LinkTo>
           </li>
           <li>
-            {{#link-to 'credentials.list'}}{{t 'credentials.title'}}{{/link-to}}
+            <LinkTo @route='credentials.list'>{{t 'credentials.title'}}</LinkTo>
           </li>
           <li>
-            {{#link-to 'schedules.list'}}{{t 'schedules'}}{{/link-to}}
+            <LinkTo @route='schedules.list'>{{t 'schedules'}}</LinkTo>
           </li>
 
         </ul>
@@ -44,16 +44,16 @@
         <a href="#"><i class="fa fa-cogs"></i> {{t 'hardware'}}<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
           <li>
-            {{#link-to 'zones.list'}}{{t 'zones'}}{{/link-to}}
+            <LinkTo @route='zones.list'>{{t 'zones'}}</LinkTo>
           </li>
           <li>
-            {{#link-to 'doors.list'}}{{t 'doors'}}{{/link-to}}
+            <LinkTo @route='doors.list'>{{t 'doors'}}</LinkTo>
           </li>
           <li>
-            {{#link-to 'access-points.list'}}{{t 'access_points'}}{{/link-to}}
+            <LinkTo @route='access-points.list'>{{t 'access_points'}}</LinkTo>
           </li>
           <li>
-            {{#link-to 'updates'}}{{t 'hardware_update'}}{{/link-to}}
+            <LinkTo @route='updates'>{{t 'hardware_update'}}</LinkTo>
           </li>
         </ul>
       </li>
@@ -62,7 +62,7 @@
         <ul class="nav nav-second-level">
           {{#each moduleManager.modulesInfo as |module|}}
             <li>
-              {{link-to module.displayName module.routeName}}
+              <LinkTo @route=module.routeName>{{ module.displayName }}</LinkTo>
             </li>
           {{/each}}
           <li class="dropdown-submenu">
@@ -70,13 +70,13 @@
             <ul class="nav nav-second-level">
               {{#each moduleManager.wizardsInfo as | wizard |}}
                 <li>
-                  {{link-to wizard.displayName wizard.routeName}}
+                  <LinkTo @route=wizard.routeName>{{ wizard.displayName }}</LinkTo>
                 </li>
               {{/each}}
             </ul>
           </li>
           <!--<li>-->
-           {{!--#link-to 'updates'}}{{t 'hardware_update'}}{{/link-to--}}
+           <!--<LinkTo @route='updates'>{{t 'hardware_update'}}</LinkTo>
           <!--</li>-->
         </ul>
       </li>
@@ -84,7 +84,7 @@
         <a href="#"><i class="fa fa-table fa-fw"></i> Log<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
           <li>
-            {{#link-to 'auditlog'}}{{t 'audit_log'}}{{/link-to}}
+            <LinkTo @route='auditlog'>{{t 'audit_log'}}</LinkTo>
           </li>
         </ul>
       </li>
