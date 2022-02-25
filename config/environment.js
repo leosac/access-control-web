@@ -65,25 +65,17 @@ module.exports = function (environment) {
         // Testem prefers this...
         ENV.locationType = 'none';
 
-<<<<<<< HEAD
         // keep test console output quieter
         ENV.APP.LOG_ACTIVE_GENERATION = false;
         ENV.APP.LOG_VIEW_LOOKUPS = false;
 
         ENV.APP.rootElement = '#ember-testing';
     }
-=======
-    ENV.APP.rootElement = '#ember-testing';
   }
 
   if (environment === 'production') {
 
   }
->>>>>>> 24b5310 (v2.18.2...v3.28.5)
 
-    if (environment === 'production') {
-
-    }
-
-    return ENV;
+  return ENV;
 };
