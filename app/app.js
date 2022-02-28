@@ -31,7 +31,7 @@ App = Application.extend({
                     'store',
                     'module-manager',
                     'search',
-                    'i18n'
+                    'intl'
                 ]
             }
         },
@@ -56,7 +56,7 @@ App = Application.extend({
                     'store',
                     'module-manager',
                     'search',
-                    'i18n'
+                    'intl'
                 ]
             }
         },
@@ -82,7 +82,7 @@ App = Application.extend({
                     'store',
                     'module-manager',
                     'search',
-                    'i18n'
+                    'intl'
                 ]
             }
         },
@@ -107,7 +107,7 @@ App = Application.extend({
                     'store',
                     'module-manager',
                     'search',
-                    'i18n'
+                    'intl'
                 ]
             }
         },
@@ -138,7 +138,7 @@ App = Application.extend({
                     'store',
                     'module-manager',
                     'search',
-                    'i18n'
+                    'intl'
                 ]
             }
         }

@@ -112,7 +112,7 @@ for data in addons_name:
                 'leosac-info',
                 'flashMessages',
                 'store',
-                'i18n',
+                'intl',
                 'module-manager',
                 'search']
         }
@@ -175,7 +175,7 @@ if os.path.isfile(config_data['styles']):
 #
 os.chdir("/leosac/leosac-web/")
 
-# During the build of the docker image, npm instal was already called.
+# During the build of the docker image, npm install was already called.
 # This time, this is just to install our out-repo addon
 
 returnValue = os.system("npm install")

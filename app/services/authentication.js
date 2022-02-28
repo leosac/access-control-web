@@ -41,6 +41,7 @@ export default Service.extend({
     init()
     {
         "use strict";
+        this._super(...arguments);
         console.log("INIT AUTH SERVICE");
         // Attempt to automatically authenticate if we can find an auth
         // token

@@ -1,4 +1,3 @@
-/*jshint node:true*/
 /* global require, module */
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
@@ -11,22 +10,22 @@ module.exports = function (defaults)
       // This fix a JS error that happened when installing
       // ember-power-select-typeahead.
       // see https://stackoverflow.com/questions/34549838/ember-2-2-0-getting-regeneratorruntime-is-not-defined
-	'ember-cli-babel': {
-            includePolyfill: true
-    },
+    	'ember-cli-babel': {
+        includePolyfill: true
+      },
 
-	'ember-power-select': {
-            theme: 'bootstrap'
-	},
+    	'ember-power-select': {
+        theme: 'bootstrap'
+    	},
 
-	'ember-bootstrap': {
-            'bootstrapVersion': 3,
-            'importBootstrapFont': true,
-            'importBootstrapCSS': true
-	},
-        fingerprint: {
-            enabled: false
-        }
+    	'ember-bootstrap': {
+        'bootstrapVersion': 4,
+        'importBootstrapCSS': true
+    	},
+
+      fingerprint: {
+        enabled: false
+      }
     });
 
     // Use `app.import` to add additional libraries to the generated

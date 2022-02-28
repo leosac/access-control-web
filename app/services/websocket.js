@@ -15,6 +15,7 @@ export default Service.extend({
 
     init() {
         "use strict";
+        this._super(...arguments);
 
         // Override server address if set in local storage.
         // Used when browsing from centralized web ui.

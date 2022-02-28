@@ -24,6 +24,7 @@ export default Service.extend({
     init()
     {
         "use strict";
+        this._super(...arguments);
         //this will set the locale variable
         this.setLocale(localStorage.user_locale || 'en');
         this.setNameApp((localStorage.app_name || config.APP.appname), 1);

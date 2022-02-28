@@ -22,20 +22,20 @@ You will need the following things properly installed on your computer.
 
 ## Running / Development
 
-* You should have a Leosac server(docker) running. 
+* You should have a Leosac server(docker) running.
 * There is an address provided by docker. It should putted in your ENV, with the prefix **ws** or **wss**(websocket).
- (eg "export LEOSAC_ADDR=ws://10.10.10.25:8888/) 
+ (eg "export LEOSAC_ADDR=ws://10.10.10.25:8888/)
 * `ember serve`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
 ### Add new module
 
 * If you want to add a new module, you must be sure that there will be no conflict with the application. If you want
- that your module communicate with the back-end, please be sure that Leosac will "understand" the message that your 
+ that your module communicate with the back-end, please be sure that Leosac will "understand" the message that your
  module will send.
- 
+
 * If **docker base build** is specified, the information is optional. It is only necessary for deploy purpose
- 
+
 #### Generate the module
 
 * To generate a new module, we will use [ember-engines](http://ember-engines.com):
@@ -52,7 +52,7 @@ You will need the following things properly installed on your computer.
   │   └── environment.js  
   ├── index.js  
   └── package.json  
-  
+
 #### Configure the newly created engine
 
 1. Go to the app repository of the host application(/app/).
@@ -66,8 +66,8 @@ You will need the following things properly installed on your computer.
                       entryPoint: '/',                    // when you click on your module in the side-mmenu,
                                                                // this is the route that will be used in the module
                       modelToRoute: {                // if you have a model, this will be used to redirect
-                                                                // to the model page of your module in the global-search 
-                          myModel: 'my-model' 
+                                                                // to the model page of your module in the global-search
+                          myModel: 'my-model'
                       },
                       isWizard: false, // if this is a wizard
                       neededModule: [
@@ -86,48 +86,47 @@ You will need the following things properly installed on your computer.
                           'store',
                           'module-manager',
                           'search',
-                          'i18n'
+                          'intl'
                       ]
                   }
               },
          ```
        2. In leosacProperty, this will be used by the `module-manager` service.
        3. the `dependencies` value is necessary, and should be copy pasted as presented above
-   2. In the router.js, make sure that there is a newly created line: 
+   2. In the router.js, make sure that there is a newly created line:
       `this.mount('my-module');`, it should be added automatically when generating the engine.
 2. Create a `module-config.json` at the root of the engines(*/lib/my-module*) (**docker base build!**)
    1. It should respect this syntax:
-   
+
           {
                needServer: true,     
                displayName: 'Cool name',
                entryPoint: '/',         
                isWizard: true                        
                modelToRoute: {
-                    myModel: 'my-model' 
+                    myModel: 'my-model'
                },
                neededModule: [
                // list of needed module, if this is a wizard.
                ]
           }
-      NOTE: This content should match exactly the `leosacProperty` dict in `app.js`. 
-          
+      NOTE: This content should match exactly the `leosacProperty` dict in `app.js`.
+
 3. Still at the root of the engine, there certain file that need to be changed.
    1. In the *package.json*, you must provide the necessary addon for your module. A good base should be adding:
    Note that when referencing a dependency that is provided by the application, you must use `*`
    for the version.   
    ```
    "dependencies": {
-       "ember-bootstrap": "*", //the application respect a bootstrap theme 
+       "ember-bootstrap": "*", //the application respect a bootstrap theme
        "ember-bootstrap-cp-validations": "*", // bootstrap theme for the validation
        "ember-cli-babel": "*", // necessary
        "ember-cli-htmlbars": "*", // necessary
-       "ember-cli-htmlbars-inline-precompile": "*", // necessary
        "ember-cli-flash": "*", // allow the flash messages
        "ember-cp-validations": "*", // special validation
        "ember-data": "*", // necessary if you want to create a model or manipulate data
-       "ember-i18n": "*", // tranlation addons
-       "ember-power-select": "*", // allow the user to select something among a list 
+       "ember-intl": "*", // tranlation addons
+       "ember-power-select": "*", // allow the user to select something among a list
        "ember-route-action-helper": "*", // this permit to call actions defined in the route from the template
        "ember-toggle": "*", // this is a toggle switch
        "ember-truth-helpers": "*" // allow simple condition in hbs template (==, !=, >, ...)
@@ -137,14 +136,14 @@ You will need the following things properly installed on your computer.
        # to shared addons / component / ...
        "paths": [
          "../shared-tools" // this is an addon that allow the application
-                           // and the module to share components (button-with-confirmation) 
+                           // and the module to share components (button-with-confirmation)
        ]
      }
      ```
-     
+
      (The addons may needs some updates)
-     
-   2. In the *addon/engine.js*, you must provide the same `dependencies` than in the *app.js*, 
+
+   2. In the *addon/engine.js*, you must provide the same `dependencies` than in the *app.js*,
       it must be placed under the `modulePrefix`:
    ```
    dependencies: {
@@ -155,15 +154,15 @@ You will need the following things properly installed on your computer.
             'flashMessages',
             'store',
             'module-manager',
-            'i18n'
+            'intl'
           ],
           externalRoutes: [
             'login'
           ]
     }
-   ``` 
+   ```
 
-* At this point, your in-repo-engines is configured to work with the application. 
+* At this point, your in-repo-engines is configured to work with the application.
 
 ### Tips
 

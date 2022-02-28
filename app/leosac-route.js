@@ -75,7 +75,7 @@ export default Route.extend({
     beforeModel()
     {
         "use strict";
-        this.set('i18n.locale', this.get('globalInfo').getLocale());
+        this.set('intl.locale', this.get('globalInfo').getLocale());
 
         const intl = this.get('intl');
         const title = intl.t(this.get('_title'));
@@ -90,7 +90,7 @@ export default Route.extend({
     },
     afterModel()
     {
-        this.set('i18n.locale', this.get('globalInfo').getLocale());
+        this.set('intl.locale', this.get('globalInfo').getLocale());
     }
 });
 

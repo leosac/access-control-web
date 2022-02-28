@@ -1,11 +1,11 @@
 <footer class="navbar-fixed-bottom">
   <div class="container">
     <p class="text-muted text-center">
-      {{getenv 'appname'}} version: {{globalInfo.version}}
+      {{getenv 'appname'}} version: {{this.globalInfo.version}}
       --
       <a href="http://www.{{getenv 'siteUrl'}}">Leosac</a>
       --
-      {{#if ws.isConnected}}
+      {{#if this.ws.isConnected}}
         <i class="fa fa-check footer-check-color"></i> {{t 'connected'}}
       {{else}}
         <i class="fa fa-refresh fa-spin footer-spinner-color"></i> {{t 'disconnected'}}

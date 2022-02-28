@@ -7,6 +7,5 @@ you will have access to the models from the application, because they are in the
 This is useful if you need to set a relationships.
 
 An other important point is the translations specific to the engines. In order to use the translations from the
-application, and to avoid duplicate, you have to share the i18n service from the application,
+application, and to avoid duplicate, you have to share the intl service from the application,
 and then add the translation in an instance-initializer like in the blueprint.
-

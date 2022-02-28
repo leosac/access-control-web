@@ -1,4 +1,3 @@
-/* jshint ignore:start */
 import Application from '@ember/application';
 import Resolver from './resolver';
 import loadInitializers from 'ember-load-initializers';
@@ -24,4 +23,3 @@ __REPLACE_ME__
 loadInitializers(App, config.modulePrefix);
 
 export default App;
-/* jshint ignore:end */

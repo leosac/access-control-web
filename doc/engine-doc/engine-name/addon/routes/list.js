@@ -3,7 +3,7 @@ import Ember from 'ember';
 
 export default LeosacRoute.extend({
     store: Ember.inject.service(),
-    i18n: Ember.inject.service(),
+    intl: Ember.inject.service(),
     _title: 'model-name.list.title',
     _requireAuth: true,
 
@@ -28,12 +28,12 @@ export default LeosacRoute.extend({
             config.destroyRecord({}).then(() =>
                 {
                     // correctly deleted
-                    this.get('flashMessages').success(this.get('i18n').t('translation.key'));
+                    this.get('flashMessages').success(this.get('intl').t('translation.key'));
                     self.transitionTo('list');
                 },
                 () => {
                     // error while deleting the record
-                    this.get('flashMessages').danger(this.get('i18n').t('translation.key'));
+                    this.get('flashMessages').danger(this.get('intl').t('translation.key'));
                 });
         }
     }

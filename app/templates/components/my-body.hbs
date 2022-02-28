@@ -2,7 +2,7 @@
 Due to EmberJS bug #10780, we have to hack to prevent component
 to render if there is no active session.
 }}
-{{#if authSrv._isLoggedIn}}
+{{#if this.authSrv._isLoggedIn}}
   <div id="wrapper">
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-static-top navbar-hack" role="navigation">
@@ -27,7 +27,7 @@ to render if there is no active session.
       <!-- /.navbar-static-side -->
     </nav>
     <div id="page-wrapper" class="page-wrapper-whole-page">
-      {{#each flashMessages.queue as |flash|}}
+      {{#each this.flashMessages.queue as |flash|}}
         {{#flash-message flash=flash as |component flash|}}
           <p>{{flash.message}}</p>
         {{/flash-message}}
@@ -51,7 +51,7 @@ to render if there is no active session.
     <!-- /#page-wrapper -->
   </div>
 {{else}}
-  {{#each flashMessages.queue as |flash|}}
+  {{#each this.flashMessages.queue as |flash|}}
     {{#flash-message flash=flash as |component flash|}}
       <p>{{flash.message}}</p>
     {{/flash-message}}

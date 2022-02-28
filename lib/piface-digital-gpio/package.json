@@ -6,8 +6,6 @@
   ],
   "dependencies": {
 	"@ember-intl/cp-validations": "*",
-    "ember-bootstrap": "*",
-    "ember-bootstrap-cp-validations": "*",
     "ember-cli-babel": "*",
     "ember-cli-htmlbars": "*",
     "ember-cli-flash": "*",

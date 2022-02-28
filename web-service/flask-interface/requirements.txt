@@ -8,7 +8,7 @@ cffi==1.11.2
 click==6.6
 dominate==2.3.1
 extras==0.0.3
--e git+git@pontos.islog.private:xaqq/leosac-web.git@e2795013c51604fb25c4e7c23f9cf04d52109a0e#egg=Falsk_Interface&subdirectory=web-service/flask-interface
+-e git+git@github.com:leosac/leosac-web.git@e2795013c51604fb25c4e7c23f9cf04d52109a0e#egg=Falsk_Interface&subdirectory=web-service/flask-interface
 fixtures==2.0.0
 Flask==0.11.1
 Flask-Admin==1.5.0

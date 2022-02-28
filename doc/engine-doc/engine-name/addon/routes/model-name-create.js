@@ -7,7 +7,7 @@ import Ember from 'ember';
 export default LeosacRoute.extend({
     _title: 'model-name.create',
     store: Ember.inject.service('store'),
-    i18n: Ember.inject.service(),
+    intl: Ember.inject.service(),
     _requireAuth: true,
 
     init() {

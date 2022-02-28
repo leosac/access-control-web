@@ -3,7 +3,6 @@
 
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
-**/.jshintrc
 .idea/
 *.pyc
 web-service/flask-interface/venv/
@@ -18,7 +17,7 @@ web-service/flask-interface/.idea
 .idea/jsLibraryMappings.xml
 .idea/leosac-web.iml
 .idea/modules.xml
-app/.idea/inspectionProfiles/Project_Default.xml 
+app/.idea/inspectionProfiles/Project_Default.xml
 
 app/.idea/**/workspace.xml
 app/..idea/**/tasks.xml

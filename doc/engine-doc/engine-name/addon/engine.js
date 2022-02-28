@@ -13,7 +13,7 @@ const { modulePrefix } = config;
  * - leosac-info: there is some important information within the service, go check if you need it
  * - module-manager: needed to properly load the module
  * - search: if your engine has a model, it will allow you to search it from the global search on the side menu, but there is some things needed , like a backend search
- * - i18n: Allow the engines to use the translations from the app
+ * - intl: Allow the engines to use the translations from the app
  *
  * Remember that this must be present in the app.js too, following this format:
  *  engineName: {
@@ -29,7 +29,7 @@ const { modulePrefix } = config;
                     'store',
                     'module-manager',
                     'search',
-                    'i18n'
+                    'intl'
                 ],
                 externalRoutes: {
                     login: 'login',
@@ -52,7 +52,7 @@ const Eng = Engine.extend({
             'store',
             'module-manager',
             'search',
-            'i18n'
+            'intl'
         ],
         externalRoutes: [
             'login'

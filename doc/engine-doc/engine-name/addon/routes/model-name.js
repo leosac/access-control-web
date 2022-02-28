@@ -5,7 +5,7 @@ export default LeosacRoute.extend({
     _title: 'model-name.title', // this is an example of a translation key, up to you
     _requireAuth: true,
     store: Ember.inject.service('store'),
-    i18n: Ember.inject.service(),
+    intl: Ember.inject.service(),
 
     beforeModel()
     {
@@ -35,11 +35,11 @@ export default LeosacRoute.extend({
             led.save().then(() =>
             {
                 // correctly saved
-                this.get('flashMessages').success(this.get('i18n').t('translation.key'));
+                this.get('flashMessages').success(this.get('intl').t('translation.key'));
             }, () =>
             {
                 // error while saving the model
-                this.get('flashMessages').danger(this.get('i18n').t('translation.key'));
+                this.get('flashMessages').danger(this.get('intl').t('translation.key'));
             });
         },
         deleteModelName()

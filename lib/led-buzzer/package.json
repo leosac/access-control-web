@@ -5,9 +5,8 @@
     "ember-engine"
   ],
   "dependencies": {
-	"@ember-intl/cp-validations": "*",
-    "ember-bootstrap": "*",
-    "ember-bootstrap-cp-validations": "*",
+	  "@ember-intl/cp-validations": "*",
+    "@embroider/macros": "*",
     "ember-cli-babel": "*",
     "ember-cli-htmlbars": "*",
     "ember-cli-flash": "*",

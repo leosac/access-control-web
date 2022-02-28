@@ -1,5 +1,3 @@
-/* jshint node: true */
-
 module.exports = function (environment) {
     let ENV = {
         modulePrefix: 'web',
@@ -17,7 +15,7 @@ module.exports = function (environment) {
             }
         },
 
-        i18n: {
+        intl: {
             defaultLocale: 'fr'
         },
 
@@ -60,8 +58,8 @@ module.exports = function (environment) {
     }
 
     if (environment === 'test') {
-        ENV.i18n = ENV.i18n || {};
-        ENV.i18n.suppressWarnings = true;
+        ENV.intl = ENV.intl || {};
+        ENV.intl.suppressWarnings = true;
         // Testem prefers this...
         ENV.locationType = 'none';
 
