@@ -1,6 +1,10 @@
+import { inject as service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
+    store: service(),
+    router: service(),
+    flashMessages: service(),
     _title: 'schedule.list.title',
     _requireAuth: true,
     beforeModel()
@@ -11,20 +15,19 @@ export default LeosacRoute.extend({
     model()
     {
         "use strict";
-        return this.get('store').findAll('schedule', {reload:true});
+        return this.store.findAll('schedule', {reload:true});
     },
     actions:
     {
         deleteSchedule(scheduleId)
         {
-            const self = this;
-            const model = this.get('store').peekRecord('schedule', scheduleId);
+            const model = this.store.peekRecord('schedule', scheduleId);
             if (model)
             {
                 model.destroyRecord({}).then(() =>
                 {
-                    self.get('flashMessages').success('Schedule has been deleted.');
-                    self.transitionTo('schedules.list');
+                    this.flashMessages.success('Schedule has been deleted.');
+                    this.router.transitionTo('schedules.list');
                 });
             }
         }

@@ -16,34 +16,31 @@ export default Component.extend({
     actions: {
         addToGroup()
         {
-            const store = this.get('store');
-            const fm = this.get('flashMessages');
-
-            this.get('store').findRecord('user', this.get('selectedUser.id')).then((user) => {
+            this.store.findRecord('user', this.get('selectedUser.id')).then((user) => {
                 if (!user)
                 {
-                    fm.danger(this.get('intl').t('users.error.find_error'));
+                    this.flashMessages.danger(this.intl.t('users.error.find_error'));
                     return;
                 }
 
-                const membership = store.createRecord('user-group-membership');
+                const membership = this.store.createRecord('user-group-membership');
                 membership.set('group', this.get('group'));
                 membership.set('rank', this.get('selectedRank'));
                 membership.set('user', user);
 
                 membership.save().then(() =>
                     {
-                        fm.success(this.get('intl').t('users.error.add_success'));
+                        this.flashMessages.success(this.intl.t('users.error.add_success'));
                     },
                     () =>
                     {
-                        fm.danger(this.get('intl').t('users.error.add_error'));
+                        this.flashMessages.danger(this.intl.t('users.error.add_error'));
                         membership.deleteRecord();
                     });
             });
         },
         searchUser(partialName) {
-            return this.get('search').findUserByUsername(partialName);
+            return this.search.findUserByUsername(partialName);
         },
         setUser(user) {
             this.set('selectedUser', user);

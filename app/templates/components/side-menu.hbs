@@ -1,113 +1,139 @@
-<div class="navbar-default sidebar" role="navigation">
-  <div class="sidebar-nav navbar-collapse">
-    <ul class="nav" id="side-menu">
-      <li>
-        {{global-search label=(t 'search')}}
-        <!-- /input-group -->
-      </li>
-      <li>
-        <LinkTo @route='index'>
-          <i class="fa fa-dashboard fa-fw"></i> {{t 'index.title'}}
-        </LinkTo>
-      </li>
-      <li>
-        <LinkTo @route='system-overview'>
-          <i class="fa fa-cog fa-fw"></i> {{t 'w.overview'}}
-        </LinkTo>
-      </li>
-      <li>
-        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> {{t 'access'}}<span class="fa arrow"></span></a>
-        <ul class="nav nav-second-level">
-          <li>
-            <LinkTo @route='access-overview'>{{t 'access-overview.title'}}</LinkTo>
-          </li>
-          <li>
-            <LinkTo @route='zone-overview'>{{t 'tree-view.title'}}</LinkTo>
-          </li>
-          <li>
-            <LinkTo @route='users.list'>{{t 'users.title'}}</LinkTo>
-          </li>
-          <li>
-            <LinkTo @route='groups.list'>{{t 'groups'}}</LinkTo>
-          </li>
-          <li>
-            <LinkTo @route='credentials.list'>{{t 'credentials.title'}}</LinkTo>
-          </li>
-          <li>
-            <LinkTo @route='schedules.list'>{{t 'schedules'}}</LinkTo>
-          </li>
+<div class="collapse navbar-collapse collapse show" id="navbarToggler">
+  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" data-parent="#wrapper">
+    <!-- Sidebar - Brand -->
+    <LinkTo class="sidebar-brand d-flex align-items-center justify-content-center" @route="index">
+      <img src="{{getenv 'logoUrl'}}" class="sidebar-brand-icon" alt="Logo"/>
+      <div class="sidebar-brand-text mx-3">{{getlocale 'app_name'}}</div>
+    </LinkTo>
 
-        </ul>
-        <!-- /.nav-second-level -->
-      </li>
-      <li>
-        <a href="#"><i class="fa fa-cogs"></i> {{t 'hardware'}}<span class="fa arrow"></span></a>
-        <ul class="nav nav-second-level">
-          <li>
-            <LinkTo @route='zones.list'>{{t 'zones'}}</LinkTo>
-          </li>
-          <li>
-            <LinkTo @route='doors.list'>{{t 'doors'}}</LinkTo>
-          </li>
-          <li>
-            <LinkTo @route='access-points.list'>{{t 'access_points'}}</LinkTo>
-          </li>
-          <li>
-            <LinkTo @route='updates'>{{t 'hardware_update'}}</LinkTo>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href="#"><i class="fa fa-table fa-plus-square"></i> {{t 'modules'}}<span class="fa arrow"></span></a>
-        <ul class="nav nav-second-level">
-          {{#each moduleManager.modulesInfo as |module|}}
-            <li>
-              <LinkTo @route=module.routeName>{{ module.displayName }}</LinkTo>
-            </li>
+    <hr class="sidebar-divider my-0">
+
+    <li class="nav-item">
+      <LinkTo class="nav-link" @route='index'>
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>{{t 'index.title'}}</span>
+      </LinkTo>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOverview" aria-expanded="true" aria-controls="collapseOverview">
+        <i class="fa fa-fw fa-chart-bar"></i>
+        <span>{{t 'w.overview'}}</span>
+      </a>
+      <div id="collapseOverview" class="collapse" aria-labelledby="{{t 'modules'}}" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">{{t 'w.overview'}}:</h6>
+          <LinkTo class="collapse-item" @route='system-overview'>{{t 'system-overview.title'}}</LinkTo>
+          <LinkTo class="collapse-item" @route='access-overview'>{{t 'access-overview.title'}}</LinkTo>
+          <LinkTo class="collapse-item" @route='zone-overview'>{{t 'tree-view.title'}}</LinkTo>
+        </div>
+      </div>
+    </li>
+
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-heading">
+      {{t 'access'}}
+    </div>
+
+    <li class="nav-item">
+      <LinkTo class="nav-link" @route='users.list'>
+        <i class="fas fa-fw fa-user"></i>
+        <span>{{t 'users.title'}}</span>
+      </LinkTo>
+    </li>
+    <li class="nav-item">
+      <LinkTo class="nav-link" @route='groups.list'>
+        <i class="fas fa-fw fa-users"></i>
+        <span>{{t 'groups'}}</span>
+      </LinkTo>
+    </li>
+    <li class="nav-item">
+      <LinkTo class="nav-link" @route='credentials.list'>
+        <i class="fas fa-fw fa-id-badge"></i>
+        <span>{{t 'credentials.title'}}</span>
+      </LinkTo>
+    </li>
+    <li class="nav-item">
+      <LinkTo class="nav-link" @route='schedules.list'>
+        <i class="fas fa-fw fa-calendar"></i>
+        <span>{{t 'schedules'}}</span>
+      </LinkTo>
+    </li>
+
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-heading">
+      {{t 'hardware'}}
+    </div>
+
+    <li class="nav-item">
+      <LinkTo class="nav-link" @route='zones.list'>
+        <i class="fas fa-fw fa-building"></i>
+        <span>{{t 'zones'}}</span>
+      </LinkTo>
+    </li>
+    <li class="nav-item">
+      <LinkTo class="nav-link" @route='doors.list'>
+        <i class="fas fa-fw fa-door-open"></i>
+        <span>{{t 'doors'}}</span>
+      </LinkTo>
+    </li>
+    <li class="nav-item">
+      <LinkTo class="nav-link" @route='access-points.list'>
+        <i class="fas fa-fw fa-dungeon"></i>
+        <span>{{t 'access_points'}}</span>
+      </LinkTo>
+    </li>
+    <li class="nav-item">
+      <LinkTo class="nav-link" @route='updates'>
+        <i class="fas fa-fw fa-cubes"></i>
+        <span>{{t 'hardware_update'}}</span>
+      </LinkTo>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseModules" aria-expanded="true" aria-controls="collapseModules">
+        <i class="fa fa-cogs"></i>
+        <span>{{t 'modules'}}</span>
+      </a>
+      <div id="collapseModules" class="collapse" aria-labelledby="{{t 'modules'}}" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">{{t 'modules'}}:</h6>
+          {{#each this.moduleManager.modulesInfo as |module|}}
+            <a class="collapse-item" href="#" {{action 'handleRoute' module.routeName}}>{{ module.displayName }}</a>
           {{/each}}
-          <li class="dropdown-submenu">
-            <a href="#"><i class="fa fa-magic"></i> Wizard<span class="fa arrow"></span></a>
-            <ul class="nav nav-second-level">
-              {{#each moduleManager.wizardsInfo as | wizard |}}
-                <li>
-                  <LinkTo @route=wizard.routeName>{{ wizard.displayName }}</LinkTo>
-                </li>
-              {{/each}}
-            </ul>
-          </li>
-          <!--<li>-->
-           <!--<LinkTo @route='updates'>{{t 'hardware_update'}}</LinkTo>
-          <!--</li>-->
-        </ul>
-      </li>
-      <li>
-        <a href="#"><i class="fa fa-table fa-fw"></i> Log<span class="fa arrow"></span></a>
-        <ul class="nav nav-second-level">
-          <li>
-            <LinkTo @route='auditlog'>{{t 'audit_log'}}</LinkTo>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-  <!-- /.sidebar-collapse -->
+        </div>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseWizards" aria-expanded="true" aria-controls="collapseWizards">
+        <i class="fa fa-magic"></i>
+        <span>{{t 'modules_wizard'}}</span>
+      </a>
+      <div id="collapseWizards" class="collapse" aria-labelledby="{{t 'modules_wizard'}}" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">{{t 'modules_wizard'}}:</h6>
+          {{#each this.moduleManager.wizardsInfo as | wizard |}}
+            <a class="collapse-item" href="#" {{action 'handleRoute' wizard.routeName}}>{{ wizard.displayName }}</a>
+          {{/each}}
+        </div>
+      </div>
+    </li>
+
+    <hr class="sidebar-divider">
+
+    <li class="nav-item">
+      <LinkTo class="nav-link" @route='auditlog'>
+        <i class="fas fa-fw fa-bell"></i>
+        <span>{{t 'alarm.title'}}</span>
+      </LinkTo>
+    </li>
+    <li class="nav-item">
+      <LinkTo class="nav-link" @route='auditlog'>
+        <i class="fas fa-fw fa-table"></i>
+        <span>{{t 'audit_log'}}</span>
+      </LinkTo>
+    </li>
+  </ul>
 </div>
-<script>
-  /**
-   * This jquery function is needed because there is a strange behaviour with the drop-down arrow of the side-menu.
-   * Not very interesting...
-   */
-  $(".nav li").on("click", function (e) {
-    if ($(this).hasClass('active')) {
-      $(this).removeClass('active');
-    }
-    else {
-      if ($(this).parent().parent().hasClass('active')) {
-      }
-      else
-        $('.nav li.active').removeClass('active');
-      $(this).addClass("active");
-    }
-    e.preventDefault();
-  });
-</script>

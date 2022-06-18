@@ -1,5 +1,5 @@
 <ul class="pagination">
-    {{#each pages as |page|}}
+    {{#each this.pages as |page|}}
         {{#if (eq current page)}}
             <li class="active">
                 {{! Clicking on the current page cause refresh because

@@ -16,18 +16,17 @@ export default Component.extend({
     },
     actions: {
         setOwner(user) {
-            const fm = this.get('flashMessages');
             this.set('selectedUser', user);
-            this.get('store').findRecord('user', this.get('selectedUser.id')).then((user) => {
+            this.store.findRecord('user', this.get('selectedUser.id')).then((user) => {
                 if (!user) {
-                    fm.danger(this.get('intl').t('users.error.find_error'));
+                    this.flashMessages.danger(this.intl.t('users.error.find_error'));
                     return;
                 }
                 this.get('pin').set('owner', user);
             });
         },
         searchUser(partialName) {
-            return this.get('search').findUserByUsername(partialName);
+            return this.search.findUserByUsername(partialName);
         }
     }
 });

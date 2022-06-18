@@ -4,6 +4,7 @@ import Component from '@ember/component';
 export default Component.extend({
     authSrv: service('authentication'),
     store: service(),
+    router: service(),
 
     group: false,
     canRemoveUserFromGroup: false,
@@ -12,7 +13,7 @@ export default Component.extend({
         this._super(...arguments);
         const self = this;
 
-        const currentUser = this.get('authSrv').get('current_user');
+        const currentUser = this.authSrv.get('current_user');
         currentUser.get('memberships').then((memberships) =>
         {
             memberships.forEach((m) =>
@@ -33,8 +34,12 @@ export default Component.extend({
     actions: {
         deleteMembership(membershipId)
         {
-            const membership = this.get('store').peekRecord('user-group-membership', membershipId);
+            const membership = this.store.peekRecord('user-group-membership', membershipId);
             membership.destroyRecord({});
+        },
+        gotoItem(id)
+        {
+            this.router.transitionTo('profile', id);
         }
     }
 });

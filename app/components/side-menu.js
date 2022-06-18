@@ -3,14 +3,17 @@ import Component from '@ember/component';
 
 export default Component.extend({
     moduleManager: service('module-manager'),
+    router: service(),
+
     init()
     {
       this._super(...arguments);
     },
-    didRender()
+    actions:
     {
-        "use strict";
-        // Trigger JS code for side-menu.
-        $('#side-menu').metisMenu();
+        handleRoute(route)
+        {
+            this.router.transitionTo(route);
+        }
     }
 });

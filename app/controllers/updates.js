@@ -3,7 +3,7 @@ import Controller from '@ember/controller';
 
 export default Controller.extend({
     updater: service('update'),
-    fm: service('flash-messages'),
+    flashMessages: service(),
     intl: service(),
 
     updateHistory: [],
@@ -30,6 +30,7 @@ export default Controller.extend({
 
     init()
     {
+        this._super(...arguments);
     },
 
     actions: {
@@ -39,7 +40,7 @@ export default Controller.extend({
             this.get('updater').checkUpdate().then((updateDescriptors) =>
             {
                 if (updateDescriptors.length === 0) {
-                    this.get('fm').info(this.get('intl').t('update.everything_up_to_date'));
+                    this.flashMessages.info(this.intl.t('update.everything_up_to_date'));
                 }
                 this.set('updateDescriptors', updateDescriptors);
                 this.set('pendingCheckUpdate', false);
@@ -49,7 +50,7 @@ export default Controller.extend({
         {
             this.get('updater').createUpdate(updateDescriptor.uuid).then(() =>
             {
-                this.get('fm').success('Update created.');
+                this.flashMessages.success('Update created.');
                 this.set('updateDescriptors',
                     this.get('updateDescriptors').filter(i => i !== updateDescriptor));
 
@@ -63,22 +64,22 @@ export default Controller.extend({
         {
             this.get('updater').acknowledgeUpdate(update).then(() =>
             {
-                this.get('fm').success(this.get('intl').t('update.update_acked'));
+                this.flashMessages.success(this.intl.t('update.update_acked'));
                 this.refresh();
             }).catch(() =>
             {
-                this.get('fm').danger(this.get('intl').t('update.update_acked_failed'));
+                this.flashMessages.danger(this.intl.t('update.update_acked_failed'));
             });
         },
         cancelUpdate(update)
         {
             this.get('updater').cancelUpdate(update).then(() =>
             {
-                this.get('fm').success(this.get('intl').t('update.update_cancelled'));
+                this.flashMessages.success(this.intl.t('update.update_cancelled'));
                 this.refresh();
             }).catch(() =>
             {
-                this.get('fm').danger(this.get('intl').t('update.update_cancel_failed'));
+                this.flashMessages.danger(this.intl.t('update.update_cancel_failed'));
             });
         },
         showDetails(update) {

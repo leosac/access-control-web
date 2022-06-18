@@ -24,7 +24,7 @@ body {
 
 .table-striped>tbody>tr:nth-child(odd)>td,
 .table-striped>tbody>tr:nth-child(odd)>th {
-  background-color: #F7F7FF; // Choose your own color here
+  background-color: #F7F7FF; /* Choose your own color here */
 }
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
@@ -97,7 +97,7 @@ a:hover {
 }
 
 .navbar-fixed-bottom {
-    background-color: #CCCCCC;
+    background-color: rgba(204,204,204,0.7);
     padding-top: 5px;
 }
 
@@ -151,17 +151,15 @@ a:hover {
     padding: 15px 15px 0;
 }
 
-.page-wrapper {
-  border: 1px;
-  height: 100%;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
 .jstree-node {
     font-size: 12pt;
 }
 
 .form-horizontal .has-feedback .form-control-feedback {
   right: 25px;
+}
+
+.sidebar-brand-icon {
+  height: 40px;
+  margin: 5px;
 }

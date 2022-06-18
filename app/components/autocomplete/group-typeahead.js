@@ -10,7 +10,7 @@ export default Component.extend({
 
     onChange: undefined,
     selected: '',
-    search: service('search'),
+    search: service(),
 
     actions:
     {
@@ -27,7 +27,7 @@ export default Component.extend({
         },
         searchGroup(partialName)
         {
-            return this.get('search').findGroupByName(partialName);
+            return this.search.findGroupByName(partialName);
         }
     }
 });

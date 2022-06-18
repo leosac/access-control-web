@@ -1,31 +1,31 @@
 <div>
-    <h2>{{t 'username_'}} {{model.user.username}}</h2>
+    <h2>{{t 'username_'}} {{this.model.user.username}}</h2>
 </div>
 
 <div>
   {{#bs-tab as |tab|}}
     {{#tab.pane title=(t 'information')}}
-      {{#bs-form formLayout="vertical" model=model.user onSubmit=(route-action "editProfile") as |form|}}
+      {{#bs-form formLayout="vertical" model=this.model.user onSubmit=(route-action "editProfile") as |form|}}
         <div class="col-md-6 space-top">
           <fieldset>
             <legend>{{t 'profile.title'}}</legend>
-            {{form.element disabled=isProfileLocked
+            {{form.element disabled=this.isProfileLocked
                            controlType="text" label=(t 'firstname')
                            placeholder="John" property="firstname"}}
 
-            {{form.element disabled=isProfileLocked
+            {{form.element disabled=this.isProfileLocked
                            controlType="text" label=(t 'lastname')
                            placeholder="Doe" property="lastname"}}
 
-            {{form.element disabled=isProfileLocked
+            {{form.element disabled=this.isProfileLocked
                            controlType="email" label=(t 'email')
                            placeholder="john@doe.com" property="email"}}
             {{#form.element label=(t 'rank')}}
               {{#power-select
-                disabled=isRankEditLocked
-                selected=model.user.rank
-                options=model.possibleRanks
-                onchange=(action (mut model.user.rank))
+                disabled=this.isRankEditLocked
+                selected=this.model.user.rank
+                options=this.model.possibleRanks
+                onChange=(action (mut this.model.user.rank))
               as |rank|}}
                 {{t rank}}
               {{/power-select}}
@@ -33,15 +33,15 @@
 
           {{validity-control
             form=form
-            disabled=isRankEditLocked
+            disabled=this.isRankEditLocked
             enabledProperty="validityEnabled"
-            startDate=(mut model.user.validityStart)
-            endDate=(mut model.user.validityEnd)}}
+            startDate=(mut this.model.user.validityStart)
+            endDate=(mut this.model.user.validityEnd)}}
 
 
             <div class="row">
             <div class="col-md-6">
-            {{bs-button disabled=isProfileLocked
+            {{bs-button disabled=this.isProfileLocked
                         defaultText=(t 'submit') type="success" onClick=(route-action 'editProfile') buttonType="submit"}}
             </div>
             </div>
@@ -49,22 +49,22 @@
           <p></p>
         </div>
         <div class="col-md-6 space-top">
-          {{password-change disabled=isProfileLocked user_id=model.user.id}}
+          {{password-change disabled=this.isProfileLocked user_id=this.model.user.id}}
         </div>
       {{/bs-form}}
 
     {{/tab.pane}}
 
     {{#tab.pane title=(t 'groups')}}
-      {{user-group-membership-table user=model.user}}
+      {{user-group-membership-table user=this.model.user}}
     {{/tab.pane}}
 
     {{#tab.pane title=(t 'w.credentials')}}
-      {{user-credential-table user=model.user}}
+      {{user-credential-table user=this.model.user}}
     {{/tab.pane}}
 
     {{#tab.pane title=(t 'schedules')}}
-      {{user-schedules user=model.user}}
+      {{user-schedules user=this.model.user}}
     {{/tab.pane}}
   {{/bs-tab}}
 </div>

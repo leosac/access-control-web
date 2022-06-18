@@ -17,7 +17,7 @@ export default Component.extend({
             }
             else
             {
-                this.get('store').find('access-point', param.id).then((ap) =>
+                this.store.find('access-point', param.id).then((ap) =>
                 {
                     door.set('accessPoint', ap);
                 });

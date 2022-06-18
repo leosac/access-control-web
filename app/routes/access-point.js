@@ -1,6 +1,10 @@
+import { inject as service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
+    router: service(),
+    store: service(),
+    flashMessages: service(),
     _title: 'access-point.title',
     _requireAuth: true,
     beforeModel()
@@ -11,7 +15,7 @@ export default LeosacRoute.extend({
     model(params)
     {
         "use strict";
-        return this.get('store').findRecord('access-point', params.id);
+        return this.store.findRecord('access-point', params.id);
     },
     resetController(controller, isExiting)
     {
@@ -29,12 +33,12 @@ export default LeosacRoute.extend({
         {
             this.controller.get('model').save().then(() =>
                 {
-                    this.get('flashMessages').success('Access Point successfully edited.');
-                    this.transitionTo('access-point', this.controller.get('model').get('id'));
+                    this.flashMessages.success('Access Point successfully edited.');
+                    this.router.transitionTo('access-point', this.controller.get('model').get('id'));
                 },
                 () =>
                 {
-                    this.get('flashMessages').danger('An error occurred while editing Access Point.');
+                    this.flashMessages.danger('An error occurred while editing Access Point.');
                 });
         },
         deleteAP ()
@@ -43,8 +47,8 @@ export default LeosacRoute.extend({
             const model = this.controller.get('model');
             model.destroyRecord({}).then(() =>
             {
-                self.get('flashMessages').success('Access Point has been deleted.');
-                self.transitionTo('access-points.list');
+                self.flashMessages.success('Access Point has been deleted.');
+                self.router.transitionTo('access-points.list');
             });
         }
     }

@@ -30,7 +30,7 @@ export default Controller.extend({
     // The audit object that is currently being shown
     // in the details modal.
     detailedAudit: null,
-    audits: ArrayProxy.create({content: new A([])}),
+    audits: ArrayProxy.create({content: A([])}),
     // Whenever one of those variable change,
     // thanks to Ember.observer, reload is called
     watch_: observer('wsapicallEnabled', 'userEventEnabled', 'doorEventEnabled',

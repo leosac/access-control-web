@@ -13,8 +13,8 @@
         <th class="col-md-offset-10 col-md-2">{{t 'delete'}}</th>
         </thead>
         <tbody>
-        {{#each model as |zone|}}
-            <LinkTo @route='zone' @query={{hash id=zone.id}}>
+        {{#each this.model as |zone|}}
+            <LinkTo @route='zone' @model={{zone.id}}>
               <tr>
                 <td>{{zone.id}}</td>
                 <td>{{zone.alias}}</td>

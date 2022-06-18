@@ -42,15 +42,12 @@ module.exports = function (defaults)
     // along with the exports of each module as its value.
 
     //app.import('bower_components/bootstrap/dist/css/bootstrap.min.css');
-    //app.import('bower_components/metisMenu/dist/metisMenu.min.css');
 
-    app.import('bower_components/startbootstrap-sb-admin-2-blackrockdigital/css/sb-admin-2.css');
+    app.import('bower_components/startbootstrap-sb-admin-2-blackrockdigital/css/sb-admin-2.min.css');
 
-    //app.import('bower_components/jquery/dist/jquery.min.js');
-    //app.import('bower_components/metisMenu/dist/metisMenu.min.js');
-    //app.import('bower_components/bootstrap/dist/js/bootstrap.min.js');
-    //app.import('bower_components/raphael/raphael-min.js');
-    app.import('bower_components/startbootstrap-sb-admin-2-blackrockdigital/js/sb-admin-2.js');
+    app.import('bower_components/bootstrap/dist/js/bootstrap.bundle.min.js');
+    app.import('bower_components/jquery/dist/jquery.min.js');
+    //app.import('bower_components/startbootstrap-sb-admin-2-blackrockdigital/js/sb-admin-2.js');
 
     return app.toTree();
 };

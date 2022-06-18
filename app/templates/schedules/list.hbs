@@ -12,25 +12,25 @@
         <th class="col-md-offset-10 col-md-2">{{t 'delete'}}</th>
         </thead>
         <tbody>
-        {{#each model as |sched|}}
-            <LinkTo @route='schedule' @query={{hash id=sched.id}}>
-              <tr>
-                <td>
-                    {{sched.id}}
-                </td>
-                <td>{{sched.name}}</td>
-                <td>{{sched.description}}</td>
-                <td>
-                    {{button-with-confirmation
-                            type='danger'
-                            icon='glyphicon glyphicon-remove'
-                            size='xs'
-                            text=(t 'delete')
-                            message=(t 'schedule.delete_confirm')
-                            onConfirm=(route-action 'deleteSchedule' sched.id)}}
-                </td>
-              </tr>
-            </LinkTo>
+        {{#each this.model as |sched|}}
+            <tr>
+            <td>
+                <LinkTo @route='schedule' @model={{sched.id}}>{{sched.id}}</LinkTo>
+            </td>
+            <td>
+                <LinkTo @route='schedule' @model={{sched.id}}>{{sched.name}}</LinkTo>
+            </td>
+            <td>{{sched.description}}</td>
+            <td>
+                {{button-with-confirmation
+                        type='danger'
+                        icon='glyphicon glyphicon-remove'
+                        size='xs'
+                        text=(t 'delete')
+                        message=(t 'schedule.delete_confirm')
+                        onConfirm=(route-action 'deleteSchedule' sched.id)}}
+            </td>
+            </tr>
         {{/each}}
         </tbody>
     </table>

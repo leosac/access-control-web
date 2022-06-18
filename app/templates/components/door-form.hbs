@@ -1,5 +1,5 @@
 <div class="col-md-12">
-  {{#bs-form formLayout="vertical" model=door onSubmit=action as |form|}}
+  {{#bs-form formLayout="vertical" model=this.door onSubmit=this.action as |form|}}
     <div class="col-md-6">
       <fieldset>
         <legend>{{t 'configuration'}}</legend>
@@ -12,19 +12,19 @@
         {{autocomplete/access-point label=(t 'access_point')
                                     form=form
                                     onChange=(action 'changeAP')
-                                    selected=door.accessPoint.alias}}
+                                    selected=this.door.accessPoint.alias}}
         <div class="row">
           <div class="col-md-6">
-            {{bs-button defaultText=(t 'submit') type="success" size="md" onClick=action buttonType="submit"}}
+            {{bs-button defaultText=(t 'submit') type="success" size="md" onClick=this.action buttonType="submit"}}
           </div>
-          {{#if delete}}
+          {{#if this.delete}}
             <div class="pull-right form-button-delete">
               {{button-with-confirmation type='danger'
                                          icon='glyphicon glyphicon-remove'
                                          size='md'
                                          text=(t 'delete')
                                          message=(t 'door.delete_confirm')
-                                         onConfirm=delete
+                                         onConfirm=this.delete
               }}
             </div>
           {{/if}}

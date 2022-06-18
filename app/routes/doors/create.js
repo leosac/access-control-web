@@ -1,9 +1,13 @@
+import { inject as service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 
 /**
  * Create a new door.
  */
 export default LeosacRoute.extend({
+    router: service(),
+    store: service(),
+    flashMessages: service(),
     _title: 'door.create.title',
     _requireAuth: true,
     beforeModel()
@@ -14,7 +18,7 @@ export default LeosacRoute.extend({
     model()
     {
         "use strict";
-        return this.get('store').createRecord('door');
+        return this.store.createRecord('door');
     },
     resetController(controller, isExiting/*, transition*/)
     {
@@ -29,12 +33,12 @@ export default LeosacRoute.extend({
         {
             this.modelFor('doors.create').save().then((d) =>
                 {
-                    this.get('flashMessages').success('Door created.');
-                    this.transitionTo('door', d.get('id'));
+                    this.flashMessages.success('Door created.');
+                    this.router.transitionTo('door', d.get('id'));
                 },
                 () =>
                 {
-                    this.get('flashMessages').danger('Failed to create door.');
+                    this.flashMessages.danger('Failed to create door.');
                 });
         }
     }

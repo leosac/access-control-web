@@ -2,6 +2,8 @@ import { inject as service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
+    router: service(),
+    store: service(),
     flashMessage: service('flash-messages'),
     _title: 'schedule.title',
     _requireAuth: true,
@@ -13,7 +15,7 @@ export default LeosacRoute.extend({
     model(params)
     {
         "use strict";
-        return this.get('store').findRecord('schedule', params.schedule_id);
+        return this.store.findRecord('schedule', params.schedule_id);
     },
     resetController(controller, isExiting/*, transition*/)
     {
@@ -29,19 +31,18 @@ export default LeosacRoute.extend({
     actions: {
         editSchedule ()
         {
-            const self = this;
-            self.controller.get('model').save().then(() =>
+            this.controller.get('model').save().then(() =>
                 {
-                    this.get('flashMessages').success('Schedule successfully edited.');
+                    this.flashMessages.success('Schedule successfully edited.');
                 },
                 () =>
                 {
-                    this.get('flashMessages').danger('An error occurred while editing schedule.');
+                    this.flashMessages.danger('An error occurred while editing schedule.');
                 });
         },
         addMapping ()
         {
-            const newMapping = this.get('store').createRecord('schedule-mapping');
+            const newMapping = this.store.createRecord('schedule-mapping');
             newMapping.set('alias', 'Unnamed mapping');
             this.controller.get('model').get('mapping').addObject(newMapping);
         },
@@ -51,12 +52,11 @@ export default LeosacRoute.extend({
         },
         deleteSchedule()
         {
-            const self = this;
             const model = this.controller.get('model');
             model.destroyRecord({}).then(() =>
             {
-                self.get('flashMessages').success('Schedule has been deleted.');
-                self.transitionTo('schedules.list');
+                this.flashMessages.success('Schedule has been deleted.');
+                this.router.transitionTo('schedules.list');
             });
         }
     }

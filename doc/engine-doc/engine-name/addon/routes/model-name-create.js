@@ -1,13 +1,14 @@
+import { inject as service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
-import Ember from 'ember';
 
 /**
  * Create a new record of the model.
  */
 export default LeosacRoute.extend({
+    router: service(),
+    store: service(),
+    intl: service(),
     _title: 'model-name.create',
-    store: Ember.inject.service('store'),
-    intl: Ember.inject.service(),
     _requireAuth: true,
 
     init() {
@@ -21,7 +22,7 @@ export default LeosacRoute.extend({
     model()
     {
         "use strict";
-        return this.get('store').createRecord('model-name');
+        return this.store.createRecord('model-name');
     },
     resetController(controller, isExiting/*, transition*/)
     {
@@ -37,7 +38,7 @@ export default LeosacRoute.extend({
             this.controller.get('model').save().then((d) =>
                 {
                     // you can put a flash message indicating that the model was correctly saved
-                    this.transitionTo('model-name', d.get('id'));
+                    this.router.transitionTo('model-name', d.get('id'));
                 },
                 () =>
                 {

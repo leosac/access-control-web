@@ -13,14 +13,13 @@ export default DS.Model.extend({
 
     statusString: computed('status', function()
     {
-        const intl = this.get('intl');
         const st = this.get('status');
         if (st === 0) {
-            return intl.t('pending');
+            return this.intl.t('pending');
         } else if (st === 1) {
-            return intl.t('acknowledged');
+            return this.intl.t('acknowledged');
         } else if (st === 2) {
-            return intl.t('cancelled');
+            return this.intl.t('cancelled');
         }
     }),
     status: DS.attr('number'),

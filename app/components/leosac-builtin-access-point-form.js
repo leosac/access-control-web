@@ -19,8 +19,8 @@ function removeSchedule(selectedSchedules, schedule) {
  */
 
 export default Component.extend({
-    store: service('store'),
-    search: service('search'),
+    store: service(),
+    search: service(),
     ap: null,
     arrayOfDeviceClassWiegandReader: [DeviceClass.reader],
     newDevice: null,
@@ -31,10 +31,10 @@ export default Component.extend({
         this._super(...arguments);
 
         this.set('selectedSchedules', []);
-        this.get('ap.alwaysOpenSchedules').forEach((openSchedules) => {
+        this.get('ap').get('alwaysOpenSchedules').forEach((openSchedules) => {
             this.get('selectedSchedules').addObject(openSchedules);
         });
-        this.get('ap.alwaysCloseSchedules').forEach((closeSchedules) => {
+        this.get('ap').get('alwaysCloseSchedules').forEach((closeSchedules) => {
             this.get('selectedSchedules').addObject(closeSchedules);
         });
     },
@@ -49,7 +49,7 @@ export default Component.extend({
                 return;
             }
 
-            this.get('store').find(device.type, device.id).then((device) => {
+            this.store.find(device.type, device.id).then((device) => {
                 this.get('ap').get('authSourcesDevice').addObject(device);
                 this.set('newDevice', null);
             });
@@ -68,7 +68,7 @@ export default Component.extend({
          * @returns {*|PromiseLike<T>|Promise<T>}
          */
         searchSchedule(partialName) {
-            return this.get('search').findScheduleByName(partialName).then((allSchedules) => {
+            return this.search.findScheduleByName(partialName).then((allSchedules) => {
                 // allSchedules: A list of array with this parameter: ['id', 'name']
                 let result = [];
                 let selectedSchedules = this.get('selectedSchedules');
@@ -99,7 +99,7 @@ export default Component.extend({
             }
 
             this.get('selectedSchedules').addObject(schedule);
-            this.get('store').find('schedule', schedule.id).then((newSchedule) => {
+            this.store.find('schedule', schedule.id).then((newSchedule) => {
                 self.get('ap').get('alwaysCloseSchedules').addObject(newSchedule);
                 self.set('newSchedule', null);
             });
@@ -116,7 +116,7 @@ export default Component.extend({
             }
 
             this.get('selectedSchedules').addObject(schedule);
-            this.get('store').find('schedule', schedule.id).then((newSchedule) => {
+            this.store.find('schedule', schedule.id).then((newSchedule) => {
                 self.get('ap').get('alwaysOpenSchedules').addObject(newSchedule);
                 self.set('newSchedule', null);
             });

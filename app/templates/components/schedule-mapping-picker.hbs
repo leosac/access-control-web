@@ -3,20 +3,20 @@
     <div class="col-md-4 col-sm-4">
       {{#form.element label=(t 'schedule.title')}}
         {{#power-select-typeahead search=(action 'searchSchedule')
-                                  selected=selectedSchedule.name
+                                  selected=this.selectedSchedule.name
                                   placeholder=(t 'schedule.type')
-                                  onchange=(action 'scheduleChanged') as |schedInfo|}}
+                                  onChange=(action 'scheduleChanged') as |schedInfo|}}
           {{schedInfo.name}}
         {{/power-select-typeahead}}
       {{/form.element}}
     </div>
     <div class="col-sm-4 col-md-4">
       {{#form.element label=(t 'mapping')}}
-        {{#power-select-typeahead selected=selectedMapping
+        {{#power-select-typeahead selected=this.selectedMapping
                                   form=form
                                   searchField="alias"
-                                  options=selectedSchedule.mapping
-                                  onchange=(action (mut selectedMapping))
+                                  options=this.selectedSchedule.mapping
+                                  onChange=(action (mut this.selectedMapping))
                                   placeholder='...' as |mapping|}}
           {{mapping.alias}}
         {{else}}

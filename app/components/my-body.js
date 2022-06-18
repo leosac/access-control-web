@@ -4,6 +4,7 @@ import Component from '@ember/component';
 export default Component.extend({
     authSrv: service('authentication'),
     globalInfo: service('leosac-info'),
+    flashMessages: service(),
     onLogout: 'onLogout',
     actions:
     {

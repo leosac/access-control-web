@@ -1,9 +1,12 @@
+import { inject as service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 import Ember from 'ember';
 
 export default LeosacRoute.extend({
-    store: Ember.inject.service(),
-    intl: Ember.inject.service(),
+    store: service(),
+    router: service(),
+    intl: service(),
+    flashMessages: service(),
     _title: 'model-name.list.title',
     _requireAuth: true,
 
@@ -18,7 +21,7 @@ export default LeosacRoute.extend({
     model()
     {
         "use strict";
-        return this.get('store').findAll('model-name', {reload: true});
+        return this.store.findAll('model-name', {reload: true});
     },
 
     actions: {
@@ -28,12 +31,12 @@ export default LeosacRoute.extend({
             config.destroyRecord({}).then(() =>
                 {
                     // correctly deleted
-                    this.get('flashMessages').success(this.get('intl').t('translation.key'));
-                    self.transitionTo('list');
+                    this.flashMessages.success(this.intl.t('translation.key'));
+                    this.router.transitionTo('list');
                 },
                 () => {
                     // error while deleting the record
-                    this.get('flashMessages').danger(this.get('intl').t('translation.key'));
+                    this.flashMessages.danger(this.intl.t('translation.key'));
                 });
         }
     }

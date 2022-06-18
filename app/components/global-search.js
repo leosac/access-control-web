@@ -4,10 +4,11 @@ import Component from '@ember/component';
 export default Component.extend({
     globalInfo: service('leosac-info'),
     routeHelper: service('module-route-helper'),
-    search: service('search'),
+    search: service(),
     flashMessages: service(),
     intl: service(),
     store: service(),
+    router: service(),
 
     dataToObject: {},
     allObjects: [],
@@ -41,7 +42,7 @@ export default Component.extend({
             findAll(partialAlias)
             {
                 const self = this;
-                return this.get('search').findAllByAlias(partialAlias).then((data) => {
+                return this.search.findAllByAlias(partialAlias).then((data) => {
                     let resultObject = [];
                     data.forEach(function(objects) {
                         let typeObject = {};
@@ -133,6 +134,11 @@ export default Component.extend({
                     });
                     return resultObject;
                 });
+            },
+            handleRoute(result)
+            {
+                this.selected = result;
+                this.router.transitionTo(result.type, result.id);
             }
         }
 });

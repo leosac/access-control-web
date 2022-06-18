@@ -1,3 +1,4 @@
+import { inject as service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 import { v4 } from 'ember-uuid';
 
@@ -5,6 +6,8 @@ import { v4 } from 'ember-uuid';
  * Create a new door.
  */
 export default LeosacRoute.extend({
+    router: service(),
+    store: service(),
     _title: 'access-point.create.title',
     _requireAuth: true,
     beforeModel()
@@ -15,7 +18,7 @@ export default LeosacRoute.extend({
     model()
     {
         "use strict";
-        // const ap = this.get('store').createRecord('access-point');
+        // const ap = this.store.createRecord('access-point');
         //
         // // This is kind of a hack to set the LEOSAC-BUILTIN-ACCESS-POINT as default.
         // ap.set('id', v4());
@@ -34,16 +37,16 @@ export default LeosacRoute.extend({
     actions: {
         createAP()
         {
-            const ap = this.get('store').createRecord('leosac-builtin-access-point', {
+            const ap = this.store.createRecord('leosac-builtin-access-point', {
                 id: v4(),
                 controllerModule: 'LEOSAC-BUILTIN-ACCESS-POINT',
                 alias: 'AP-name'
             });
 
-            this.transitionTo('leosac-builtin-access-point', ap.get('id'));
+            this.router.transitionTo('leosac-builtin-access-point', ap.get('id'));
             // this.modelFor('access-points.create').save().then((ap) =>
             //     {
-            //         this.get('flashMessages').success('Access Point created.');
+            //         this.flashMessages.success('Access Point created.');
             //
             //         // We create an object of type access point in the browser's memory.
             //         // However, server-side the object will have a concrete subtype.
@@ -51,11 +54,11 @@ export default LeosacRoute.extend({
             //         // with the correct underlying type when et reach the /access-point page.
             //         const id = ap.get('id');
             //         ap.unloadRecord();
-            //         this.transitionTo('access-point', ap.get('id'));
+            //         this.router.transitionTo('access-point', ap.get('id'));
             //     },
             //     () =>
             //     {
-            //         this.get('flashMessages').danger('Failed to create Access Point.');
+            //         this.flashMessages.danger('Failed to create Access Point.');
             //     });
         }
     }

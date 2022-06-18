@@ -6,14 +6,14 @@
         <th>{{t 'rank'}}</th>
         <th>{{t 'table.join_date'}}</th>
         <th>{{t 'table.total_member'}}</th>
-        {{#if kickOrLeave}}
+        {{#if this.kickOrLeave}}
             <th>{{t 'action'}}</th>
         {{/if}}
     </tr>
     </thead>
     <tbody>
-    {{#each user.memberships as |membership|}}
-        <LinkTo @query='group' @query={{hash id=membership.group.id}}>
+    {{#each this.user.memberships as |membership|}}
+        <LinkTo @query='group' @model={{membership.group.id}}>
           <tr>
             <td>
                 {{membership.group.id}}
@@ -24,14 +24,14 @@
             <td>{{t membership.rank}}</td>
             <td>{{membership.timestamp}}</td>
             <td>{{membership.group.memberCount}}</td>
-            {{#if kickOrLeave}}
+            {{#if this.kickOrLeave}}
                 <td>
                     {{button-with-confirmation
                             type='danger'
                             icon='glyphicon glyphicon-ban-circle'
                             size='xs'
-                            text=kickOrLeave
-                            message=kickOrLeaveMessage
+                            text=this.kickOrLeave
+                            message=this.kickOrLeaveMessage
                             onConfirm=(action 'deleteMembership' membership.id)
                     }}</td>
             {{/if}}

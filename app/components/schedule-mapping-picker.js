@@ -3,7 +3,7 @@ import Component from '@ember/component';
 
 export default Component.extend({
     store: service(),
-    search: service('search'),
+    search: service(),
     // `action`
 
     selectedSchedule: null,
@@ -13,13 +13,13 @@ export default Component.extend({
     {
         searchSchedule(partialName)
         {
-            return this.get('search').findScheduleByName(partialName);
+            return this.search.findScheduleByName(partialName);
         },
         scheduleChanged(newSchedule)
         {
             const self = this;
             this.set('selectedMapping', null);
-            this.get('store').find('schedule', newSchedule.id).then((sched) =>
+            this.store.find('schedule', newSchedule.id).then((sched) =>
             {
                 self.set('selectedSchedule', sched);
             });

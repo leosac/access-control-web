@@ -1,4 +1,4 @@
-{{#bs-form formLayout="vertical" model=ap onSubmit=action as | form|}}
+{{#bs-form formLayout="vertical" model=this.ap onSubmit=this.action as | form|}}
   <div class="col-md-6">
     <fieldset>
       <legend>{{t 'configuration'}}</legend>
@@ -10,12 +10,12 @@
                      placeholder=(t 'notes_placeholder')
                      property="description"}}
 
-      {{#if isCreating}}
+      {{#if this.isCreating}}
         {{#form.element label=(t 'controller_module')}}
           {{#power-select
-            selected=ap.controllerModule
-            options=availableAccessPointModules
-            onchange=(action (mut ap.controllerModule))
+            selected=this.ap.controllerModule
+            options=this.availableAccessPointModules
+            onChange=(action (mut this.ap.controllerModule))
             allowClear=true
           as |module|
           }}
@@ -31,14 +31,14 @@
         <div class="col-md-6">
           {{bs-button defaultText=(t 'submit') type="success" buttonType="submit"}}
         </div>
-        {{#if delete}}
+        {{#if this.delete}}
           <div class="pull-right form-button-delete">
             {{button-with-confirmation type='danger'
                                        icon='glyphicon glyphicon-remove'
                                        size='md'
                                        text=(t 'delete')
                                        message=(t 'accesspoint.delete_confirm')
-                                       onConfirm=delete
+                                       onConfirm=this.delete
             }}
           </div>
         {{/if}}

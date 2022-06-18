@@ -4,14 +4,14 @@
 
 {{bs-button action='refresh' defaultText=(t 'refresh')}}
 
-<div class="user-schedule-info space-top" class="{{greyedDisabledIfSyncing}}">
-  {{#each group.schedules as |schedule|}}
+<div class="user-schedule-info space-top" class="{{this.greyedDisabledIfSyncing}}">
+  {{#each this.group.schedules as |schedule|}}
     <div class="panel panel-default">
       <div class="panel-heading">
         {{t 'schedule.asfield'}} {{schedule.name}}
       </div>
       <div class="panel-body">
-        <div id="content">
+        <div>
           <!-- Recap of the schedule -->
           {{#if schedule.timeframes.length}}
             {{t 'timeframes_'}}
@@ -46,13 +46,13 @@
                   </div>
                 </div>
                 <div class="panel-body">
-                  <div id="content">
+                  <div>
                     {{#if mapping.doors.length}}
                       {{t 'schedule.grant_to_doors'}}
                       <ul>
                         {{#each mapping.doors as |door|}}
                           <li>
-                            <LinkTo @route='door' @query={{hash id=door.id}}>{{door.alias}}</LinkTo>
+                            <LinkTo @route='door' @model={{door.id}}>{{door.alias}}</LinkTo>
                           </li>
                         {{/each}}
                       </ul>

@@ -4,20 +4,17 @@
         <th>#Id</th>
         <th class="col-md-2">{{t 'name'}}</th>
         <th>{{t 'users.members'}}</th>
-        {{#if deleteLink}}
+        {{#if this.deleteLink}}
             <th class="col-md-offset-10 col-md-2">{{t 'delete'}}</th>
         {{/if}}
         </thead>
         <tbody>
-        {{#each groups as |group|}}
-            <LinkTo @route="group" @query={{hash id=group.id}}>
-              <tr>
+        {{#each this.groups as |group|}}
+              <tr {{action 'gotoItem' group.id}}>
                 <td>{{group.id}}</td>
-                <td>
-                    {{group.name}}
-                </td>
+                <td>{{group.name}}</td>
                 <td>{{group.memberCount}}</td>
-                {{#if deleteLink}}
+                {{#if this.deleteLink}}
                     <td>
                         {{button-with-confirmation
                                 type='danger'
@@ -30,7 +27,6 @@
                     </td>
                 {{/if}}
               </tr>
-            </LinkTo>
         {{/each}}
         </tbody>
     </table>

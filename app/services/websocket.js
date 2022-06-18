@@ -85,7 +85,7 @@ export default Service.extend({
             if (!cb) {
                 if (obj.type === 'session_closed') {
                     // todo UI becomes broken after this.
-                    self.get('flashMessages').danger('Your session has been terminated: ' +
+                    self.flashMessages.danger('Your session has been terminated: ' +
                         obj.content.reason,
                         {
                             sticky: true,
@@ -112,14 +112,14 @@ export default Service.extend({
                     // let error_code = obj.content.errors[0].error_code;
 
                     if (pointer === '') {
-                        self.get('flashMessages').danger(string, {
+                        self.flashMessages.danger(string, {
                             sticky: true
                         });
                     }
                     cb.error(new DS.InvalidError(obj.content.errors));
                 }
                 else if (obj.status_code !== 0) {
-                    self.get('flashMessages').danger('Error: ' + obj.status_string, {
+                    self.flashMessages.danger('Error: ' + obj.status_string, {
                         sticky: true
                     });
                     cb.error(obj);

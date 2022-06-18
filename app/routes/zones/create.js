@@ -1,9 +1,13 @@
+import { inject as service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 
 /**
  * Create a new zone.
  */
 export default LeosacRoute.extend({
+    router: service(),
+    store: service(),
+    flashMessages: service(),
     _title: 'zone.create.title',
     _requireAuth: true,
     beforeModel()
@@ -14,7 +18,7 @@ export default LeosacRoute.extend({
     model()
     {
         "use strict";
-        return this.get('store').createRecord('zone');
+        return this.store.createRecord('zone');
     },
     resetController(controller, isExiting/*, transition*/)
     {
@@ -29,12 +33,12 @@ export default LeosacRoute.extend({
         {
             this.modelFor('zones.create').save().then((d) =>
                 {
-                    this.get('flashMessages').success('Zone created.');
-                    this.transitionTo('zone', d.get('id'));
+                    this.flashMessages.success('Zone created.');
+                    this.router.transitionTo('zone', d.get('id'));
                 },
                 () =>
                 {
-                    this.get('flashMessages').danger('Failed to create zone.');
+                    this.flashMessages.danger('Failed to create zone.');
                 });
         }
     }

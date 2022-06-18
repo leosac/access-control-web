@@ -1,10 +1,10 @@
 <div>
-  <h2>Alias: {{model.name}}</h2>
+  <h2>Alias: {{this.model.name}}</h2>
 </div>
 <div>
   {{#bs-tab  as |tab|}}
     {{#tab.pane title=(t 'timeframes')}}
-      {{schedule-form schedule=model
+      {{schedule-form schedule=this.model
                       delete=(route-action 'deleteSchedule')
                       action=(route-action "editSchedule")}}
     {{/tab.pane}}
@@ -34,7 +34,7 @@
 
 
         {{#bs-accordion as |acc|}}
-          {{#each model.mapping as |mapping|}}
+          {{#each this.model.mapping as |mapping|}}
             {{#acc.item title=(t 'schedule.mapping' alias=mapping.alias)}}
               {{schedule-mapping mapping=mapping}}
             {{/acc.item}}

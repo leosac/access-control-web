@@ -5,11 +5,12 @@ import DS from 'ember-data';
 
 export default Controller.extend({
     authSrv: service('authentication'),
+    store: service(),
     targetUserId: {},
 
     canEditProfile: computed('model.user.version', function ()
     {
-        const p = this.get('store').findRecord('user', this.get('authSrv').get('user_id')).then((u) =>
+        const p = this.store.findRecord('user', this.authSrv.get('user_id')).then((u) =>
         {
             return u.get('rank') === 'administrator' || u.get('rank') === 'supervisor' || u.get('rank') === 'manager' ||
                 this.get('targetUserId') === u.get('id');
@@ -25,7 +26,7 @@ export default Controller.extend({
     }),
     canEditRank: computed('model.user.version', function ()
     {
-        const p = this.get('store').findRecord('user', this.get('authSrv').get('user_id')).then((u) =>
+        const p = this.store.findRecord('user', this.authSrv.get('user_id')).then((u) =>
         {
             return u.get('rank') === 'administrator' || u.get('rank') === 'supervisor' || u.get('rank') === 'manager';
         });

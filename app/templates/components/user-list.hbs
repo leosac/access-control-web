@@ -9,18 +9,16 @@
         <th class="col-md-offset-10">{{t 'username'}}</th>
         </thead>
         <tbody>
-        {{#each users as |user|}}
+        {{#each this.users as |user|}}
             {{#if user.id}}
-                <LinkTo @route="profile" @query={{hash user_id=user.id}}>
-                  <tr>
-                    <td>{{user.id}}</td>
-                    <td>{{user.firstname}}</td>
-                    <td>{{user.lastname}}</td>
-                    <td>{{user.email}}</td>
-                    <td>{{t user.rank}}</td>
-                    <td>{{user.username}}</td>
-                  </tr>
-                </LinkTo>
+                <tr {{action 'gotoItem' user.id}}>
+                  <td>{{user.id}}</td>
+                  <td>{{user.firstname}}</td>
+                  <td>{{user.lastname}}</td>
+                  <td>{{user.email}}</td>
+                  <td>{{t user.rank}}</td>
+                  <td>{{user.username}}</td>
+                </tr>
             {{/if}}
         {{/each}}
         </tbody>

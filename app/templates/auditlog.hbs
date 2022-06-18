@@ -20,7 +20,7 @@
                      label=(t 'page_size') property="pageSize" }}
     </div>
     <div class="col-md-4 button-next-to-power-select">
-      {{t 'total_page'}}: {{totalPage}}  | {{t 'count'}}: {{resultCount}}
+      {{t 'total_page'}}: {{this.totalPage}}  | {{t 'count'}}: {{this.resultCount}}
     </div>
   </div>
 
@@ -95,11 +95,11 @@
   </div>
 {{/bs-form}}
 
-{{#if progressValue}}
+{{#if this.progressValue}}
   {{t 'wait'}}
 
   {{#bs-progress as |p|}}
-    {{p.bar value=progressValue minValue=0 maxValue=100 type="primary"}}
+    {{p.bar value=this.progressValue minValue=0 maxValue=100 type="primary"}}
   {{/bs-progress}}
 {{/if}}
 
@@ -116,7 +116,7 @@
     <th>{{t 'details'}}</th>
     </thead>
     <tbody>
-    {{#each audits as |audit|}}
+    {{#each this.audits as |audit|}}
       <tr>
         <td>{{audit.id}}</td>
         <td>{{audit.type}}</td>
@@ -132,7 +132,7 @@
   </table>
 </div>
 
-{{#bs-modal open=openDetailsModal title=(t 'details') as |modal|}}
+{{#bs-modal open=this.openDetailsModal title=(t 'details') as |modal|}}
   <div class="row">
     <div class="col-md-12">
       <div class="space-left">
@@ -146,7 +146,7 @@
   <div class="row">
     <div class="col-md-12">
       <i class="space-left">{{t 'audit.before'}}</i>
-      <code class="space-top space-left">{{detailedAudit.before}}</code>
+      <code class="space-top space-left">{{this.detailedAudit.before}}</code>
     </div>
   </div>
 
@@ -155,7 +155,7 @@
   <div class="row space-bottom">
     <div class="col-md-12">
       <i class="space-left">{{t 'audit.after'}}</i>
-      <code class="space-top space-left">{{detailedAudit.after}}</code>
+      <code class="space-top space-left">{{this.detailedAudit.after}}</code>
     </div>
   </div>
 {{/bs-modal}}

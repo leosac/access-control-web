@@ -29,6 +29,7 @@ import ENV from 'web/config/environment';
 
 export default Route.extend({
     intl: service(),
+    router: service(),
     globalInfo: service('leosac-info'),
     authSrv: service('authentication'),
     flashMessages: service(),
@@ -48,9 +49,9 @@ export default Route.extend({
              * if not, then this is an engine.
              */
             if (self.fullRouteName === self.routeName) {
-                self.transitionTo('login');
+                self.router.transitionTo('login');
             } else {
-                self.transitionToExternal('login');
+                self.router.transitionToExternal('login');
             }
         },
         /**
@@ -59,7 +60,8 @@ export default Route.extend({
          */
         myError(err)
         {
-            this.intermediateTransitionTo('error', err);
+            console.error("Global Leosac myError catch", err);
+            this.intermediateTransitionTo('ws-error', err);
             return false;
         },
         /**
@@ -68,7 +70,8 @@ export default Route.extend({
          */
         error(err)
         {
-            this.intermediateTransitionTo('error', err);
+            console.error("Global Leosac error catch", err);
+            this.intermediateTransitionTo('ws-error', err);
             return false;
         }
     },
@@ -77,8 +80,7 @@ export default Route.extend({
         "use strict";
         this.set('intl.locale', this.get('globalInfo').getLocale());
 
-        const intl = this.get('intl');
-        const title = intl.t(this.get('_title'));
+        const title = this.intl.t(this.get('_title'));
 
         this.get('globalInfo').set('current_view_title', title);
         document.title = ENV.APP.appname + ' - ' + title;
@@ -109,9 +111,9 @@ function redirectIfNotAuth(route)
          * if not, then this is an engine.
          */
         if (self.fullRouteName === self.routeName) {
-            self.transitionTo('login');
+            self.router.transitionTo('login');
         } else {
-            self.transitionToExternal('login');
+            self.router.transitionToExternal('login');
         }
         return ;
 
@@ -127,9 +129,9 @@ function redirectIfNotAuth(route)
     }, function ()
     {
         if (self.fullRouteName === self.routeName) {
-            self.transitionTo('login');
+            self.router.transitionTo('login');
         } else {
-            self.transitionToExternal('login');
+            self.router.transitionToExternal('login');
         }
 
     });

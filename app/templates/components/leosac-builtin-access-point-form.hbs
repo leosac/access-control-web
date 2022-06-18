@@ -1,4 +1,4 @@
-{{#bs-form formLayout="vertical" model=ap onSubmit=action as | form|}}
+{{#bs-form formLayout="vertical" model=this.ap onSubmit=action as | form|}}
   <div class="col-md-6">
     <fieldset>
       <legend>{{t 'configuration'}}</legend>
@@ -22,7 +22,7 @@
               <th class="text-center">{{t 'remove'}}</th>
               </thead>
               <tbody>
-              {{#each ap.authSourcesDevice as |device|}}
+              {{#each this.ap.authSourcesDevice as |device|}}
                 <tr>
                   <td>
                     {{device.id}}
@@ -47,7 +47,7 @@
           <div class="col-md-12">
             {{#form.element label=(t 'leosac_builtin_ap.device_picker')}}
               {{device-list-picker arrayOfDeviceClass=arrayOfDeviceClassWiegandReader
-                                   newDevice=newDevice
+                                   newDevice=this.newDevice
                                    placeholder=(t 'leosac_builtin_ap.device_placeholder')
               }}
             {{/form.element}}
@@ -74,7 +74,7 @@
               <th class="text-center">{{t 'remove'}}</th>
               </thead>
               <tbody>
-              {{#each ap.alwaysCloseSchedules as |schedule|}}
+              {{#each this.ap.alwaysCloseSchedules as |schedule|}}
                 <tr>
                   <td>
                     {{schedule.id}}
@@ -106,7 +106,7 @@
               <th class="text-center">{{t 'remove'}}</th>
               </thead>
               <tbody>
-              {{#each ap.alwaysOpenSchedules as |schedule|}}
+              {{#each this.ap.alwaysOpenSchedules as |schedule|}}
                 <tr>
                   <td>
                     {{schedule.id}}
@@ -134,9 +134,9 @@
           <div class="col-md-12">
             {{#form.element label=(t 'leosac_builtin_ap.schedule_picker')}}
               {{#power-select-typeahead search=(action 'searchSchedule')
-                                        selected=newSchedule.name
+                                        selected=this.newSchedule.name
                                         placeholder=(t 'leosac_builtin_ap.schedules_placeholder')
-                                        onchange=(action (mut newSchedule)) as |schedule|}}
+                                        onChange=(action (mut this.newSchedule)) as |schedule|}}
                 {{schedule.name}}
               {{/power-select-typeahead}}
             {{/form.element}}
@@ -156,14 +156,14 @@
         <div class="col-md-12">
           {{bs-button defaultText=(t 'submit') type="success" size="md" onClick=action buttonType="submit"}}
         </div>
-        {{#if delete}}
+        {{#if this.delete}}
           <div class="pull-right form-button-delete">
             {{button-with-confirmation type='danger'
                                        icon='glyphicon glyphicon-remove'
                                        size='md'
                                        text=(t 'delete')
                                        message=(t 'door.delete_confirm')
-                                       onConfirm=delete
+                                       onConfirm=this.delete
             }}
           </div>
         {{/if}}

@@ -3,11 +3,12 @@ import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
     authSrv: service('authentication'),
+    router: service(),
     _title: 'login',
     actions: {
         onLoginSuccess: function ()
         {
-            this.transitionTo('index');
+            this.router.transitionTo('index');
         }
     },
     beforeModel()
@@ -15,7 +16,7 @@ export default LeosacRoute.extend({
         this._super();
         if (this.get('authSrv').isLoggedIn())
         {
-            this.transitionTo('index');
+            this.router.transitionTo('index');
         }
     }
 });

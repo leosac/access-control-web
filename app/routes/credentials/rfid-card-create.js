@@ -1,6 +1,10 @@
+import { inject as service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
+    router: service(),
+    store: service(),
+    flashMessages: service(),
     _title: 'credentials.rfid_card_create.title',
     _requireAuth: true,
     beforeModel()
@@ -11,7 +15,7 @@ export default LeosacRoute.extend({
     model()
     {
         "use strict";
-        return this.get('store').createRecord('rfid-card');
+        return this.store.createRecord('rfid-card');
     },
     resetController(controller, isExiting/*, transition*/)
     {
@@ -36,12 +40,12 @@ export default LeosacRoute.extend({
         {
             this.controller.get('model').save().then((card) =>
                 {
-                    this.get('flashMessages').success('Card successfully created.');
-                    this.transitionTo('credentials.rfid-card', card.get('id'));
+                    this.flashMessages.success('Card successfully created.');
+                    this.router.transitionTo('credentials.rfid-card', card.get('id'));
                 },
                 () =>
                 {
-                    this.get('flashMessages').danger('An error occurred while creating the card');
+                    this.flashMessages.danger('An error occurred while creating the card');
                 });
         }
     }

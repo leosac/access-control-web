@@ -4,6 +4,7 @@ import Controller from '@ember/controller';
 
 export default Controller.extend({
     ws: service('websocket'),
+    store: service(),
 
     // JSON as returned by the `access_overview` Leosac WS call.
 
@@ -30,7 +31,7 @@ export default Controller.extend({
         }
 
         this.get('rawData').forEach((doorInfo) => {
-            doors.push(this.get('store').peekRecord('door', doorInfo.door_id));
+            doors.push(this.store.peekRecord('door', doorInfo.door_id));
         });
 
         if (this.get('selectedDoors.length')) {
@@ -65,7 +66,7 @@ export default Controller.extend({
         userIds = Array.from(new Set(userIds));
 
         userIds.forEach((id) => {
-            users.push(this.get('store').peekRecord('user', id));
+            users.push(this.store.peekRecord('user', id));
         });
 
         if (this.get('selectedUsers.length')) {
@@ -130,7 +131,7 @@ export default Controller.extend({
                 userIds = [...new Set(userIds)];
 
                 userIds.forEach((uid) => {
-                    const userData = {user: this.get('store').peekRecord('user', uid), doors: []};
+                    const userData = {user: this.store.peekRecord('user', uid), doors: []};
 
                     selectedDoors.forEach((doorInfo) => {
                         if (userCanAccessDoor(uid, doorInfo)) {
@@ -179,7 +180,7 @@ export default Controller.extend({
             userIds = [...new Set(userIds)];
 
             userIds.forEach((uid) => {
-                const userData = {user: this.get('store').peekRecord('user', uid), doors: []};
+                const userData = {user: this.store.peekRecord('user', uid), doors: []};
 
                 selectedDoors.forEach((doorInfo) => {
                     if (userCanAccessDoor(uid, doorInfo)) {
@@ -195,8 +196,8 @@ export default Controller.extend({
     }),
     //this will load and fetch all the user and door
     reload() {
-        this.get('store').findAll('user', {reload: true}).then(() => {
-            this.get('store').findAll('door', {reload: true}).then(() => {
+        this.store.findAll('user', {reload: true}).then(() => {
+            this.store.findAll('door', {reload: true}).then(() => {
                 this.get('ws').sendJson('access_overview', {}).then((data) => {
                     this.set('rawData', data);
                 });

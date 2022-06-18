@@ -1,4 +1,4 @@
-{{#bs-form formLayout="vertical" model=wiegand-reader onSubmit=action as |form|}}
+{{#bs-form formLayout="vertical" model=this.wiegand-reader onSubmit=this.action as |form|}}
   <div class="col-md-6">
     <fieldset>
       <legend>{{t 'configuration'}}</legend>
@@ -14,10 +14,10 @@
       {{#form.element property="mode" label=(t 'mode')}}
         <div id="Tooltip-mode">
           {{#power-select
-            selected=wiegand-reader.mode
+            selected=this.wiegand-reader.mode
             searchEnabled=false
-            options=allMode
-            onchange=(action (mut wiegand-reader.mode))
+            options=this.allMode
+            onChange=(action (mut this.wiegand-reader.mode))
             placeholder=(t 'type_mode')
           as |mode|}}
             {{t mode}}
@@ -28,47 +28,47 @@
 
       {{#form.element label=(t 'gpio_high')}}
         <div id="Tooltip-high">
-          {{device-picker arrayOfDeviceClass=arrayOfDeviceClassGpio
+          {{device-picker arrayOfDeviceClass=this.arrayOfDeviceClassGpio
                           placeholder='GPIO'
                           relationshipsName='gpioHigh'
-                          device=wiegand-reader}}
+                          device=this.wiegand-reader}}
           {{#bs-tooltip placement="right" triggerElement="#Tooltip-high"}}{{t 'wiegand_information.gpio_high'}}{{/bs-tooltip}}
         </div>
       {{/form.element}}
 
       {{#form.element label=(t 'gpio_low')}}
         <div id="Tooltip-low">
-          {{device-picker arrayOfDeviceClass=arrayOfDeviceClassGpio
+          {{device-picker arrayOfDeviceClass=this.arrayOfDeviceClassGpio
                           placeholder='GPIO'
                           relationshipsName='gpioLow'
-                          device=wiegand-reader}}
+                          device=this.wiegand-reader}}
           {{#bs-tooltip placement="right" triggerElement="#Tooltip-low"}}{{t 'wiegand_information.gpio_low'}}{{/bs-tooltip}}
         </div>
       {{/form.element}}
 
       {{#form.element label=(t 'buzzer')}}
         <div id="Tooltip-buzzer">
-          {{device-picker arrayOfDeviceClass=arrayOfDeviceClassBuzzer
+          {{device-picker arrayOfDeviceClass=this.arrayOfDeviceClassBuzzer
                           placeholder='Buzzer'
                           relationshipsName='buzzer'
-                          device=wiegand-reader}}
+                          device=this.wiegand-reader}}
           {{#bs-tooltip placement="right" triggerElement="#Tooltip-buzzer"}}{{t 'wiegand_information.buzzer'}}{{/bs-tooltip}}
         </div>
       {{/form.element}}
 
       {{#form.element label=(t 'led')}}
         <div id="Tooltip-led">
-          {{device-picker arrayOfDeviceClass=arrayOfDeviceClassLed
+          {{device-picker arrayOfDeviceClass=this.arrayOfDeviceClassLed
                           placeholder='LED'
                           relationshipsName='greenLed'
-                          device=wiegand-reader}}
+                          device=this.wiegand-reader}}
           {{#bs-tooltip placement="right" triggerElement="#Tooltip-led"}}{{t 'wiegand_information.led'}}{{/bs-tooltip}}
         </div>
       {{/form.element}}
 
       {{#form.element label=(t 'enable')}}
         <div class="pull-right" id="Tooltip-enable">
-          {{device-toggle-enabled device=wiegand-reader saveIt=false}}
+          {{device-toggle-enabled device=this.wiegand-reader saveIt=false}}
           {{#bs-tooltip placement="right" triggerElement="#Tooltip-enable"}}{{t 'information.enable'}}{{/bs-tooltip}}
         </div>
       {{/form.element}}
@@ -81,14 +81,14 @@
                       onClick=action
                       buttonType="submit"}}
         </div>
-        {{#if delete}}
+        {{#if this.delete}}
           <div class="pull-right form-button-delete">
             {{button-with-confirmation type='danger'
                                        icon='glyphicon glyphicon-remove'
                                        size='md'
                                        text=(t 'delete')
                                        message=(t 'wiegand-reader.delete_confirm')
-                                       onConfirm=delete
+                                       onConfirm=this.delete
             }}
           </div>
         {{/if}}

@@ -1,9 +1,13 @@
+import { inject as service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 
 /**
  * Create a new group.
  */
 export default LeosacRoute.extend({
+    router: service(),
+    store: service(),
+    flashMessages: service(),
     _title: 'group.create.title',
     _requireAuth: true,
     beforeModel()
@@ -14,7 +18,7 @@ export default LeosacRoute.extend({
     model()
     {
         "use strict";
-        const newGroup = this.get('store').createRecord('group');
+        const newGroup = this.store.createRecord('group');
         newGroup.set('description', '');
         return newGroup;
     },
@@ -31,12 +35,12 @@ export default LeosacRoute.extend({
         {
             this.modelFor('groups.create').save().then((g) =>
                 {
-                    this.get('flashMessages').success('Group created.');
-                    this.transitionTo('group', g.get('id'));
+                    this.flashMessages.success('Group created.');
+                    this.router.transitionTo('group', g.get('id'));
                 },
                 () =>
                 {
-                    this.get('flashMessages').danger('Failed to create group.');
+                    this.flashMessages.danger('Failed to create group.');
                 });
         }
     }

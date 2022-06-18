@@ -1,8 +1,8 @@
 {{#power-select-typeahead search=(action 'searchDevice')
-                selected=newDevice.name
-                placeholder=placeholder
+                selected=this.newDevice.name
+                placeholder=this.placeholder
                 allowClear=true
-                onchange=(action (mut newDevice)) as |device|}}
+                onChange=(action (mut this.newDevice)) as |device|}}
   {{device.name}}
   <span style="color: #9b9aa5;font-style: italic;margin-right:20px;" class="pull-right">
     {{device.type}}

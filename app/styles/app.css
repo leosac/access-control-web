@@ -10,52 +10,35 @@ body {
 /**
  * Style for the login form
  */
+ .form-signin-container {
+  height: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  position: relative;
+  min-height: 90vh
+ }
+
+ .form-signin-caption {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+ }
+
 .form-signin {
-    max-width: 440px;
-    padding: 15px;
-    margin: 0 auto;
-}
-
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
-    margin-bottom: 15px;
-}
-
-.form-signin .checkbox {
-    font-weight: normal;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,0.3);
+  border-radius: 10px;
 }
 
 .table-striped>tbody>tr:nth-child(odd)>td,
 .table-striped>tbody>tr:nth-child(odd)>th {
-  background-color: #F7F7FF; // Choose your own color here
+  background-color: #F7F7FF; /* Choose your own color here */
 }
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
   background-color: #F7F7FF;
-}
-
-.form-signin .form-control {
-    position: relative;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 5px 5px 5px 15px;
-    font-size: 16px;
-}
-
-.form-signin .form-control:focus {
-    z-index: 2;
-}
-
-.form-signin input[type="text"] {
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-}
-
-.form-signin input[type="password"] {
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
 }
 
 /* centered columns styles */
@@ -95,11 +78,6 @@ Navbar
     width: auto;
 }
 
-/* https://stackoverflow.com/questions/15071306/mysterious-whitespace-in-between-bootstrap2-navbar-and-row-underneath */
-.navbar-hack {
-  margin-bottom: 0;
-}
-
 .table-responsive table thead th {
     padding: 5px;
 }
@@ -112,13 +90,6 @@ Navbar
 .panel-body {
     margin-top: 0;
     padding: 15px 15px 0;
-}
-
-.page-wrapper {
-  border: 1px;
-  height: 100%;
-  margin: 0 auto;
-  overflow: hidden;
 }
 
 .jstree-node {
@@ -169,14 +140,6 @@ This will set the style for the model name in the global search
 }
 
 /*
-This is mandatory, so that our page-wrapper take the whole page instead of a half of the page most of the time
- */
-#page-wrapper {
-  height: auto;
-  min-height: 100vh
-}
-
-/*
 Error default color
  */
 
@@ -196,4 +159,9 @@ Disable the click when hovering the wizard
 .wiegand-reader-wizard-lesser-text {
   margin-top: -5px;
   font-size: 12px;
+}
+
+.sidebar-brand-icon {
+  height: 40px;
+  margin: 5px;
 }

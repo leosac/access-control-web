@@ -1,6 +1,10 @@
+import { inject as service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
+    store: service(),
+    router: service(),
+    flashMessages: service(),
     _title: 'door.list.title',
     _requireAuth: true,
     beforeModel()
@@ -11,16 +15,15 @@ export default LeosacRoute.extend({
     model()
     {
         "use strict";
-        return this.get('store').findAll('door', {reload: true});
+        return this.store.findAll('door', {reload: true});
     },
     actions: {
         deleteDoor(door)
         {
-            const self = this;
             door.destroyRecord({}).then(() =>
             {
-                self.get('flashMessages').success('Door has been deleted.');
-                self.transitionTo('doors.list');
+                this.flashMessages.success('Door has been deleted.');
+                this.router.transitionTo('doors.list');
             });
         }
     }

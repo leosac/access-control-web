@@ -2,18 +2,18 @@ This part will let you select which door and user the comparison should be made:
 
 <div class="row">
   <div class="col-md-6">
-    {{#power-select-typeahead options=allUsers
+    {{#power-select-typeahead options=this.allUsers
                               placeholder=(t 'user')
                               searchField='username'
-                              onchange=(action "addUser") as |user|}}
+                              onChange=(action "addUser") as |user|}}
       {{user.username}}
     {{/power-select-typeahead}}
   </div>
   <div class="col-md-6">
-    {{#power-select-typeahead options=allDoors
+    {{#power-select-typeahead options=this.allDoors
                               placeholder=(t 'doors')
                               searchField='alias'
-                              onchange=(action "addDoor") as |door|}}
+                              onChange=(action "addDoor") as |door|}}
       {{door.alias}}
     {{/power-select-typeahead}}
   </div>
@@ -29,7 +29,7 @@ This part will let you select which door and user the comparison should be made:
         <th class="text-center">{{t 'remove'}}</th>
         </thead>
         <tbody>
-        {{#each selectedUsers as |user|}}
+        {{#each this.selectedUsers as |user|}}
           <tr>
             <td>
               {{user.id}}
@@ -57,7 +57,7 @@ This part will let you select which door and user the comparison should be made:
         <th class="text-center">{{t 'remove'}}</th>
         </thead>
         <tbody>
-        {{#each selectedDoors as |door|}}
+        {{#each this.selectedDoors as |door|}}
           <tr>
             <td>
               {{door.id}}
@@ -82,13 +82,13 @@ This part will let you select which door and user the comparison should be made:
   <table class="table table-hover table-bordered">
     <thead>
     <th>{{t 'username'}} / {{t 'w.door'}}</th>
-    {{#each displayedDoors as |door|}}
+    {{#each this.displayedDoors as |door|}}
       <th>{{door.alias}}</th>
     {{/each}}
     </thead>
     <tbody>
-    {{#each userDoorInfo as |userDoorInfo|}}
-      <LinkTo @route='profile' @query={{hash user_id=userDoorInfo.user.id}}>
+    {{#each this.userDoorInfo as |userDoorInfo|}}
+      <LinkTo @route='profile' @model={{userDoorInfo.user.id}}>
         <tr>
           <td>{{userDoorInfo.user.username}}</td>
           {{#each userDoorInfo.doors as |accessToDoor|}}

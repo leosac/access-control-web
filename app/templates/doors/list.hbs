@@ -12,23 +12,21 @@
         <th class="col-md-offset-10 col-md-2">{{t 'delete'}}</th>
         </thead>
         <tbody>
-        {{#each model as |door|}}
-            <LinkTo @route='door' @query={{hash id=door.id}}>
-              <tr>
-                <td>{{door.id}}</td>
-                <td>{{door.alias}}</td>
-                <td>{{door.description}}</td>
-                <td>
-                    {{button-with-confirmation
-                            type='danger'
-                            icon='glyphicon glyphicon-remove'
-                            size='xs'
-                            text=(t 'delete')
-                            message=(t 'door.delete_confirm')
-                            onConfirm=(route-action 'deleteDoor' door)}}
-                </td>
-              </tr>
-            </LinkTo>
+        {{#each this.model as |door|}}
+            <tr>
+            <td><LinkTo @route='door' @model={{door.id}}>{{door.id}}</LinkTo></td>
+            <td><LinkTo @route='door' @model={{door.id}}>{{door.alias}}</LinkTo></td>
+            <td>{{door.description}}</td>
+            <td>
+                {{button-with-confirmation
+                        type='danger'
+                        icon='glyphicon glyphicon-remove'
+                        size='xs'
+                        text=(t 'delete')
+                        message=(t 'door.delete_confirm')
+                        onConfirm=(route-action 'deleteDoor' door)}}
+            </td>
+            </tr>
         {{/each}}
         </tbody>
     </table>

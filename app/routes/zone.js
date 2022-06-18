@@ -1,6 +1,10 @@
+import { inject as service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
+    router: service(),
+    store: service(),
+    flashMessages: service(),
     _title: 'zone.title',
     _requireAuth: true,
     beforeModel()
@@ -11,7 +15,7 @@ export default LeosacRoute.extend({
     model(params)
     {
         "use strict";
-        return this.get('store').findRecord('zone', params.zone_id);
+        return this.store.findRecord('zone', params.zone_id);
     },
     resetController(controller, isExiting/*, transition*/)
     {
@@ -29,22 +33,21 @@ export default LeosacRoute.extend({
         {
             this.controller.get('model').save().then(() =>
                 {
-                    this.get('flashMessages').success('Zone successfully edited.');
-                    this.transitionTo('zone', this.controller.get('model').get('id'));
+                    this.flashMessages.success('Zone successfully edited.');
+                    this.router.transitionTo('zone', this.controller.get('model').get('id'));
                 },
                 () =>
                 {
-                    this.get('flashMessages').danger('An error occurred while editing zone');
+                    this.flashMessages.danger('An error occurred while editing zone');
                 });
         },
         deleteZone ()
         {
-            const self = this;
             const model = this.controller.get('model');
             model.destroyRecord({}).then(() =>
             {
-                self.get('flashMessages').success('Zone has been deleted.');
-                self.transitionTo('zones.list');
+                this.flashMessages.success('Zone has been deleted.');
+                this.router.transitionTo('zones.list');
             });
         }
     }

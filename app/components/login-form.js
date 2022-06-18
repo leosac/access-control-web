@@ -19,12 +19,12 @@ export default Component.extend({
 
             if (username.length === 0 || password.length === 0)
             {
-                this.set('errorMessage', this.get('intl').t('login-form.username_password_required'));
+                this.set('errorMessage', this.intl.t('login-form.username_password_required'));
                 return;
             }
 
             this.set('pending', true);
-            this.get('authSrv').authenticate(username, password,
+            this.authSrv.authenticate(username, password,
                 function ()
                 {
                     self.set('pending', false);

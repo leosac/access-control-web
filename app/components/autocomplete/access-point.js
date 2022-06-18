@@ -9,7 +9,7 @@ export default Component.extend({
     // The output of (when something is selected)
     // is a dict {id: ID, alias: "alias"};
 
-    search: service('search'),
+    search: service(),
 
     actions:
         {
@@ -26,7 +26,7 @@ export default Component.extend({
             },
             searchAP(partialAlias)
             {
-                return this.get('search').findAccessPointByAlias(partialAlias);
+                return this.search.findAccessPointByAlias(partialAlias);
             }
         }
 });

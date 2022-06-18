@@ -1,8 +1,12 @@
+import { inject as service } from '@ember/service';
 import { hash } from 'rsvp';
 import LeosacRoute from 'web/leosac-route';
 import { UserRank } from 'web/leosac-constant';
 
 export default LeosacRoute.extend({
+    router: service(),
+    store: service(),
+    flashMessages: service(),
     _title: 'users.create.title',
     _requireAuth: true,
     beforeModel()
@@ -13,7 +17,7 @@ export default LeosacRoute.extend({
     model()
     {
         "use strict";
-        const newUser = this.get('store').createRecord('user');
+        const newUser = this.store.createRecord('user');
         newUser.set('rank', 'user');
         return hash({
             user: newUser,
@@ -28,18 +32,17 @@ export default LeosacRoute.extend({
         createUser()
         {
             const u = this.modelFor(this.routeName).user;
-            const fm = this.get('flashMessages');
             const {validations} = u.validateSync();
             if (validations.get('isValid') && u.get('password') !== false)
             {
                 u.save().then(() =>
                     {
-                        fm.success('User successfully created.');
-                        this.transitionTo('users.list');
+                        this.flashMessages.success('User successfully created.');
+                        this.router.transitionTo('users.list');
                     },
                     () =>
                     {
-                        fm.danger('Failed to create user.');
+                        this.flashMessages.danger('Failed to create user.');
                     });
             }
         }

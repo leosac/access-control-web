@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-md-3">
     <h4>{{t 'leosac_builtin_ap.action.success_actions'}}</h4>
-    {{#each sortedSuccessAction as |success|}}
+    {{#each this.sortedSuccessAction as |success|}}
       {{#bs-accordion as |acc|}}
         {{#acc.item title=(t "leosac_builtin_ap.action.action_number"
           command=success.command device=success.target.name)}}
@@ -39,7 +39,7 @@
   </div>
   <div class="col-md-3">
     <h4>{{t 'leosac_builtin_ap.action.error_actions'}}</h4>
-    {{#each sortedErrorAction as |error|}}
+    {{#each this.sortedErrorAction as |error|}}
       {{#bs-accordion as |acc|}}
         {{#acc.item title=(t "leosac_builtin_ap.action.action_number"
           command=error.command device=error.target.name)}}
@@ -81,20 +81,20 @@
     <div class="col-md-6">
       <legend>{{t 'leosac_builtin_ap.action.create_action'}}</legend>
       {{#form.element label=(t 'leosac_builtin_ap.device_picker')}}
-        {{device-list-picker arrayOfDeviceClass=arrayOfValidDevice
+        {{device-list-picker arrayOfDeviceClass=this.arrayOfValidDevice
                              placeholder=(t 'leosac_builtin_ap.device_placeholder')
-                             newDevice=selectedDevice}}
+                             newDevice=this.selectedDevice}}
       {{/form.element}}
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
       {{#form.element label=(t 'leosac_builtin_ap.action.command_picker')}}
-        {{#power-select options=availableCommand
+        {{#power-select options=this.availableCommand
                         searchEnabled=false
                         placeholder=(t 'leosac_builtin_ap.action.command_placeholder')
-                        onchange=(action (mut selectedCommand))
-                        selected=selectedCommand
+                        onchange=(action (mut this.selectedCommand))
+                        selected=this.selectedCommand
         as |command|}}
           {{command}}
         {{/power-select}}

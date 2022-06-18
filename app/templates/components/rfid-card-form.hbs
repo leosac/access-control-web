@@ -1,4 +1,4 @@
-{{#bs-form formLayout="vertical" model=card onSubmit=action as |form|}}
+{{#bs-form formLayout="vertical" model=this.card onSubmit=this.action as |form|}}
   <div class="col-md-6 space-top">
     <fieldset>
       <legend>{{t 'configuration'}}</legend>
@@ -25,26 +25,26 @@
       {{user-picker form=form
                     searchCredential=(action 'searchUser')
                     label=(t 'owner')
-                    selected=selectedUser
+                    selected=this.selectedUser
                     onChange=(action 'setOwner')}}
 
       {{validity-control form=form
                          enabledProperty="validityEnabled"
-                         startDate=(mut card.validityStart)
-                         endDate=(mut card.validityEnd)}}
+                         startDate=(mut this.card.validityStart)
+                         endDate=(mut this.card.validityEnd)}}
 
       <div class="row">
         <div class="col-md-1">
           {{bs-button defaultText=(t 'submit') type="success" buttonType="submit"}}
         </div>
-        {{#if delete}}
+        {{#if this.delete}}
           <div class="pull-right form-button-delete">
             {{button-with-confirmation type='danger'
                                        icon='glyphicon glyphicon-remove'
                                        size='md'
                                        text=(t 'delete')
                                        message=(t 'credentials.delete_confirm')
-                                       onConfirm=delete
+                                       onConfirm=this.delete
             }}
           </div>
         {{/if}}

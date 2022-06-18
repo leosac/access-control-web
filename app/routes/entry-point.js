@@ -17,6 +17,7 @@ import Route from '@ember/routing/route';
 
 export default Route.extend({
     websocket: service('websocket'),
+    router: service(),
     model(params) {
         "use strict";
         localStorage.leosacAddr = params.entry_point_address;
@@ -33,7 +34,7 @@ export default Route.extend({
                 window.location.replace("http://127.0.0.1:5000/browse");
             }
         };
-        this.transitionTo('login');
+        this.router.transitionTo('login');
     },
     beforeModel() {
         "use strict";

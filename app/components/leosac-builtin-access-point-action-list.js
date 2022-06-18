@@ -10,7 +10,7 @@ import { v4 } from "ember-uuid";
  * This page is here to help us CRUD the actions of the leosac-builtin-access-points.
  */
 export default Component.extend({
-    store: service('store'),
+    store: service(),
     ap: null,
     newAction: null,
     selectedDevice: null,
@@ -89,13 +89,13 @@ export default Component.extend({
                 return;
             }
 
-            let newAction = this.get('store').createRecord('leosac-builtin-access-point-action', {
+            let newAction = this.store.createRecord('leosac-builtin-access-point-action', {
                 id: v4(),
                 command: selectedCommand,
                 index: this.get('indexSuccessAction')
             });
 
-            this.get('store').find(selectedDevice.type, selectedDevice.id).then((device) => {
+            this.store.find(selectedDevice.type, selectedDevice.id).then((device) => {
                 newAction.set('target', device);
                 this.get('ap').get('actionOnSuccess').addObject(newAction);
             });
@@ -113,13 +113,13 @@ export default Component.extend({
                 return;
             }
 
-            let newAction = this.get('store').createRecord('leosac-builtin-access-point-action', {
+            let newAction = this.store.createRecord('leosac-builtin-access-point-action', {
                 id: v4(),
                 command: selectedCommand,
                 index: this.get('indexErrorAction')
             });
 
-            this.get('store').find(selectedDevice.type, selectedDevice.id).then((device) => {
+            this.store.find(selectedDevice.type, selectedDevice.id).then((device) => {
                 newAction.set('target', device);
                 this.get('ap').get('actionOnError').addObject(newAction);
             });
@@ -131,14 +131,14 @@ export default Component.extend({
          * This will remove the given successAction from the ap
          */
         removeSuccessAction(successAction) {
-            let actionToRemove = this.get('store').peekRecord('leosac-builtin-access-point-action', successAction.id);
+            let actionToRemove = this.store.peekRecord('leosac-builtin-access-point-action', successAction.id);
             actionToRemove.deleteRecord();
         },
         /**
          * This will remove the given removeAction from the ap
          */
         removeErrorAction(errorAction) {
-            let actionToRemove = this.get('store').peekRecord('leosac-builtin-access-point-action', errorAction.id);
+            let actionToRemove = this.store.peekRecord('leosac-builtin-access-point-action', errorAction.id);
             actionToRemove.deleteRecord();
         }
     }

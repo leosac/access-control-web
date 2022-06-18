@@ -3,8 +3,8 @@ import Component from '@ember/component';
 import { findCredential } from 'web/leosac-credential-helper';
 
 export default Component.extend({
-    search: service('search'),
-    store: service('store'),
+    search: service(),
+    store: service(),
 
     // Set the following properties:
     //    + mapping
@@ -15,26 +15,26 @@ export default Component.extend({
     newGroup: null,
     actions: {
         addUser() {
-            this.get('store').findRecord('user', this.get('newUser.id')).then((user) => {
+            this.store.findRecord('user', this.get('newUser.id')).then((user) => {
                 this.get('mapping').get('users').addObject(user);
             });
         },
         addGroup() {
-            this.get('store').findRecord('group', this.get('newGroup.id')).then((grp) => {
+            this.store.findRecord('group', this.get('newGroup.id')).then((grp) => {
                 this.get('mapping').get('groups').addObject(grp);
             });
         },
         addCredential() {
-            findCredential(this.get('store'), this.get('newCredential')).then((cred) => {
+            findCredential(this.store, this.get('newCredential')).then((cred) => {
                 this.get('mapping').get('credentials').addObject(cred);
             });
-            /*            this.get('store').findRecord('credential', this.get('newCredential')).then((cred) =>
+            /*            this.store.findRecord('credential', this.get('newCredential')).then((cred) =>
             {
                 this.get('mapping').get('credentials').addObject(cred);
             });*/
         },
         addDoor() {
-            this.get('store').findRecord('door', this.get('newDoor.id')).then((door) => {
+            this.store.findRecord('door', this.get('newDoor.id')).then((door) => {
                 this.get('mapping').get('doors').addObject(door);
             });
         },
@@ -51,13 +51,13 @@ export default Component.extend({
             this.get('mapping').get('doors').removeObject(door);
         },
         searchGroup(partialName) {
-            return this.get('search').findGroupByName(partialName);
+            return this.search.findGroupByName(partialName);
         },
         searchUser(partialName) {
-            return this.get('search').findUserByUsername(partialName);
+            return this.search.findUserByUsername(partialName);
         },
         searchDoor(partialName) {
-            return this.get('search').findDoorByAlias(partialName);
+            return this.search.findDoorByAlias(partialName);
         }
     }
 });

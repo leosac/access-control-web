@@ -4,6 +4,7 @@ import Component from '@ember/component';
 export default Component.extend({
     leosacInfo: service('leosac-info'),
     authSrv: service('authentication'),
+    flashMessages: service(),
 
     /**
      * onLogout action name.
@@ -15,14 +16,14 @@ export default Component.extend({
         {
             "use strict";
             let self = this;
-            this.get('authSrv').logout().then(() =>
+            this.authSrv.logout().then(() =>
             {
                 self.sendAction('onLogout');
             });
         },
         setLocale(loc)
         {
-            this.get('leosacInfo').setLocale(loc);
+            this.leosacInfo.setLocale(loc);
         }
     }
 });

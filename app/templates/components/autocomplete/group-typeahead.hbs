@@ -1,8 +1,8 @@
-{{#form.element label=label}}
+{{#form.element label=this.label}}
     {{#power-select-typeahead search=(action 'searchGroup')
-                              selected=selected
+                              selected=this.selected
                               placeholder=(t 'autocomplete.search_group')
-                              onchange=(action 'changed')
+                              onChange=(action 'changed')
     as |accessPointInfo|}}
         {{accessPointInfo.alias}}
     {{/power-select-typeahead}}

@@ -1,8 +1,8 @@
-{{#form.element label=label}}
+{{#form.element label=this.label}}
     {{#power-select-typeahead search=(action 'searchZone')
-                              selected=selected.alias
+                              selected=this.selected.alias
                               placeholder=(t 'zone.type_zone')
-                              onchange=(action (mut selected))
+                              onChange=(action (mut this.selected))
     as |childrenInfo|}}
         {{childrenInfo.alias}}
     {{/power-select-typeahead}}

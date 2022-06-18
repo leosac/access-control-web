@@ -31,6 +31,9 @@
   "add": "Add",
   "add_time_zone": "Add Time Frame",
   "administrator": "Administrator",
+  "alarm": {
+    "title": "Alarms"
+  },
   "alias": "Alias",
   "alias_": "Alias:",
   "alias_placeholder": "A friendly name to remember me by",
@@ -244,7 +247,7 @@
     "event": "Events",
     "manage_access": "Manage Access",
     "title": "Dashboard",
-    "welcome": "Welcome <strong>{username}</strong>.<br />Manage your EvoXS cylinders and user permissions.<br />Register, setup, deploy. All from a web-based interface.<br />"
+    "welcome": "Welcome <strong>{username}</strong>.<br />Manage your Leosac physical acccess control system here."
   },
   "information": "Information",
   "informations": {

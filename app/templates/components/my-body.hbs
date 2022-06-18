@@ -4,51 +4,27 @@ to render if there is no active session.
 }}
 {{#if this.authSrv._isLoggedIn}}
   <div id="wrapper">
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-static-top navbar-hack" role="navigation">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <img src="{{getenv 'logoUrl'}}" class="navbar-logo" alt="Logo"/>
-        <LinkTo @route="index">
-          <div id='title-app-name' class="navbar-brand">
-            {{getlocale 'app_name'}}
-          </div>
-        </LinkTo>
-      </div>
-      <!-- /.navbar-header -->
-      {{top-menu}}
-      <!-- /.navbar-top-links -->
-      {{side-menu}}
-      <!-- /.navbar-static-side -->
-    </nav>
-    <div id="page-wrapper" class="page-wrapper-whole-page">
+    {{side-menu}}
+    <div id="content-wrapper" class="d-flex flex-column page-wrapper-whole-page">
       {{#each this.flashMessages.queue as |flash|}}
         {{#flash-message flash=flash as |component flash|}}
           <p>{{flash.message}}</p>
         {{/flash-message}}
       {{/each}}
 
-      <div class="row">
-        <div class="col-lg-12">
-          <h1 class="page-header">
-            <img class="rectangle"/>
-            {{globalInfo.current_view_title}}
-          </h1>
+      {{top-menu}}
+
+      <div id="content" class="container-fluid">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+          <h1 class="h3 mb-0 text-gray-800">{{this.globalInfo.current_view_title}}</h1>
         </div>
-        <!-- /.col-lg-12 -->
+        <div id="content">
+          {{outlet}}
+        </div>
       </div>
-      <!-- /.row -->
-      <div class="row">
-        {{outlet}}
-      </div>
-      <!-- /.row -->
+      
     </div>
-    <!-- /#page-wrapper -->
   </div>
 {{else}}
   {{#each this.flashMessages.queue as |flash|}}

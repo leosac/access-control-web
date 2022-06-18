@@ -14,12 +14,12 @@
     <tbody>
     {{#each model as |model-name|}}
       <tr>
-        <LinkTo @route='model-name' @query={{hash id=model-name.id}}>
+        <LinkTo @route='model-name' @model={{model-name.id}}>
           <td>
             {{model-name.id}}
           </td>
         </LinkTo>
-        <LinkTo @route='model-name' @query={{hash id=model-name.id}}>
+        <LinkTo @route='model-name' @model={{model-name.id}}>
           <td>
             {{model-name.name}}
           </td>

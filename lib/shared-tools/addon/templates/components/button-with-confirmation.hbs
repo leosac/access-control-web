@@ -1,12 +1,12 @@
-{{#bs-button type=type icon=icon
-             size=size
+{{#bs-button type=this.type icon=this.icon
+             size=this.size
              onClick=(action 'spawnModal') as | button |}}
-  {{text}}
+  {{this.text}}
 {{/bs-button}}
 
-{{#bs-modal body=false footer=false open=modalOpen title=(t 'confirmation') as | modal |}}
+{{#bs-modal body=false footer=false open=this.modalOpen title=(t 'confirmation') as | modal |}}
   {{#modal.body}}
-    {{message}} <br>
+    {{this.message}} <br>
   {{/modal.body}}
 
   {{#modal.footer as | footer |}}

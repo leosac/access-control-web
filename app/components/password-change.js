@@ -21,6 +21,7 @@ const Validations = buildValidations({
 export default Component.extend(Validations, {
     intl: service(),
     passwordChange: service('password-change'),
+    flashMessages: service(),
     // Shall be injected when invoking the component.
     user_id: null,
     current_password: null,
@@ -31,13 +32,11 @@ export default Component.extend(Validations, {
     actions: {
         changePassword: function ()
         {
-            const fm = this.get('flashMessages');
-
             this.get('passwordChange').changePassword(this.get('user_id'),
                 this.get('current_password'),
                 this.get('new_password')).then(() =>
             {
-                fm.success(this.get('intl').t('password-change.successfully_changed'));
+                this.flashMessages.success(this.intl.t('password-change.successfully_changed'));
             });
         },
     }

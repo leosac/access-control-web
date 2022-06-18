@@ -23,12 +23,11 @@ const RFIDCardValidations = buildValidations(
                 validator('ds-error'),
                 validator('presence', true),
                 validator('length', {
-                    is: computed('model.nbBits', function()
-                    {
+                    get is() {
                         let sizeCode = parseInt(get(this, 'model.nbBits'));
                         return (Math.ceil((sizeCode / 8)) * 3 - 1);
 
-                    }).volatile()
+                    }
                 }),
                 validator('format', {
                     // language=JSRegexp

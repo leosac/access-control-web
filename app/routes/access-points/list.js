@@ -1,7 +1,11 @@
+import { inject as service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 // import { findAllAccessPoints } from 'web/leosac-access-point-helper';
 
 export default LeosacRoute.extend({
+    router: service(),
+    store: service(),
+    flashMessages: service(),
     _title: 'access-point.list.title',
     _requireAuth: true,
     beforeModel()
@@ -12,18 +16,17 @@ export default LeosacRoute.extend({
     model()
     {
         "use strict";
-//        return findAllAccessPoints(this.get('store'));
-        return this.get('store').peekAll('access-point');
+//        return findAllAccessPoints(this.store);
+        return this.store.peekAll('access-point');
     },
     actions: {
         deleteAP(ap)
         {
-            const self = this;
             ap.destroyRecord({}).then(() =>
             {
-                self.get('flashMessages').success('Access Point has been deleted.');
-                self.refresh();
-                self.transitionTo('access-point.list');
+                this.flashMessages.success('Access Point has been deleted.');
+                this.refresh();
+                this.router.transitionTo('access-point.list');
             });
         }
     }

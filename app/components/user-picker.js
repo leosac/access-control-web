@@ -9,7 +9,7 @@ export default Component.extend({
     {
         this._super(...arguments);
         const self = this;
-        this.get('store').findAll('user', {reload: true}).then((users) =>
+        this.store.findAll('user', {reload: true}).then((users) =>
         {
             if (!(self.get('isDestroyed'))) {
                 self.set('allUsers', users);

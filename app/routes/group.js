@@ -1,6 +1,10 @@
+import { inject as service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
+    router: service(),
+    store: service(),
+    flashMessages: service(),
     _title: 'group.title',
     _requireAuth: true,
     beforeModel()
@@ -11,7 +15,7 @@ export default LeosacRoute.extend({
     model(params)
     {
         "use strict";
-        return this.get('store').findRecord('group', params.id);
+        return this.store.findRecord('group', params.group_id);
     },
     resetController(controller, isExiting/*, transition*/)
     {
@@ -29,11 +33,11 @@ export default LeosacRoute.extend({
         {
             this.controller.get('model').save().then(() =>
                 {
-                    this.get('flashMessages').success('Group successfully edited.');
+                    this.flashMessages.success('Group successfully edited.');
                 },
                 () =>
                 {
-                    this.get('flashMessages').danger('An error occurred while editing group');
+                    this.flashMessages.danger('An error occurred while editing group');
                 });
         },
         deleteGroup ()
@@ -42,8 +46,8 @@ export default LeosacRoute.extend({
             const model = this.controller.get('model');
             model.destroyRecord({}).then(() =>
             {
-                self.get('flashMessages').success('Group has been deleted.');
-                self.transitionTo('groups.list');
+                self.flashMessages.success('Group has been deleted.');
+                self.router.transitionTo('groups.list');
             });
         }
     }

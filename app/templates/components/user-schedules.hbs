@@ -9,14 +9,14 @@
 </div>
 <div class="row">
   <div class="col-md-12">
-    <div class="user-schedule-info" class="{{greyedDisabledIfSyncing}}">
-      {{#each user.schedules as |schedule|}}
+    <div class="user-schedule-info" class="{{this.greyedDisabledIfSyncing}}">
+      {{#each this.user.schedules as |schedule|}}
         <div class="panel panel-default">
           <div class="panel-heading">
             Schedule: {{schedule.name}}
           </div>
           <div class="panel-body">
-            <div id="content">
+            <div>
               <!-- Recap of the schedule -->
               {{#if schedule.timeframes.length}}
                 Timeframes:
@@ -35,7 +35,7 @@
               {{/if}}
 
               {{#each schedule.mapping as |mapping|}}
-                {{#if (is-user-part-of-mapping mapping user.id)}}
+                {{#if (is-user-part-of-mapping mapping this.user.id)}}
                   <div class="panel panel-default">
                     <div class="panel-heading">
                       Mapping: {{mapping.alias}}
@@ -51,13 +51,13 @@
                       </div>
                     </div>
                     <div class="panel-body">
-                      <div id="content">
+                      <div>
                         {{#if mapping.doors.length}}
                           {{t 'schedule.grant_to_doors'}}
                           <ul>
                             {{#each mapping.doors as |door|}}
                               <li>
-                                <LinkTo @route='door' @query={{hash id=door.id}}>{{door.alias}}</LinkTo>
+                                <LinkTo @route='door' @model={{door.id}}>{{door.alias}}</LinkTo>
                               </li>
                             {{/each}}
                           </ul>

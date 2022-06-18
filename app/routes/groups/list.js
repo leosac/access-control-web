@@ -1,6 +1,10 @@
+import { inject as service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
+    store: service(),
+    router: service(),
+    flashMessages: service(),
     _title: 'group.list.title',
     _requireAuth: true,
     beforeModel()
@@ -12,20 +16,19 @@ export default LeosacRoute.extend({
     {
         "use strict";
         // Since we'are about to reload all group, clear all before.
-        return this.get('store').findAll('group', {reload: true});
+        return this.store.findAll('group', {reload: true});
     },
     actions:
     {
         deleteGroup(groupId)
         {
-            const self = this;
-            const model = this.get('store').peekRecord('group', groupId);
+            const model = this.store.peekRecord('group', groupId);
             if (model)
             {
                 model.destroyRecord({}).then(() =>
                 {
-                    self.get('flashMessages').success('Group has been deleted.');
-                    self.transitionTo('groups.list');
+                    this.flashMessages.success('Group has been deleted.');
+                    this.router.transitionTo('groups.list');
                 }).catch(() => model.rollbackAttributes());
             }
         }

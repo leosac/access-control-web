@@ -16,18 +16,18 @@ export default Component.extend({
 
     actions: {
         addDoor() {
-            this.get('store').findRecord('door', this.get('newDoor.id')).then((door) => {
+            this.store.findRecord('door', this.get('newDoor.id')).then((door) => {
                 this.get('zone').get('doors').addObject(door);
             });
         },
         searchDoor(partialName) {
-            return this.get('search').findDoorByAlias(partialName);
+            return this.search.findDoorByAlias(partialName);
         },
         removeDoor(door) {
             this.get('zone').get('doors').removeObject(door);
         },
         addChildren() {
-            this.get('store').findRecord('zone', this.get('newChildren.id')).then((children) => {
+            this.store.findRecord('zone', this.get('newChildren.id')).then((children) => {
                 this.get('zone').get('children').addObject(children);
             });
         },

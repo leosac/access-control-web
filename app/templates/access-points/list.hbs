@@ -12,7 +12,7 @@
         <th>{{t 'delete'}}</th>
         </thead>
         <tbody>
-        {{#each model as |ap|}}
+        {{#each this.model as |ap|}}
           {{#link-to-access-point ap=ap tagName='tr'}}
             {{#if ap.id}}
                 <td>

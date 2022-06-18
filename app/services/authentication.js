@@ -60,13 +60,11 @@ export default Service.extend({
     {
         "use strict";
         let self = this;
-        let ws = this.get('websocket');
 
         this.set('pending', true);
         this.set('current_auth', defer());
-        const flashMessages = this.get('flashMessages');
 
-        return ws.sendJson('create_auth_token',
+        return this.websocket.sendJson('create_auth_token',
             {
                 username: username,
                 password: password
@@ -77,7 +75,7 @@ export default Service.extend({
             self.set('pending', false);
             if (data.status === 0) // success
             {
-                self.get('store').findRecord('user', data.user_id).then((u) =>
+                self.store.findRecord('user', data.user_id).then((u) =>
                 {
                     self.set('current_user', u);
                     // Store auth token in local storage
@@ -85,7 +83,7 @@ export default Service.extend({
                     self.set('user_id', data.user_id);
                     self.set('username', username);
                     self.get('current_auth').resolve();
-                    flashMessages.success('Welcome ' + username + '.');
+                    self.flashMessages.success('Welcome ' + username + '.');
                     if (onSuccess) {
                         onSuccess();
                     }
@@ -112,12 +110,11 @@ export default Service.extend({
     {
         "use strict";
         let self = this;
-        let ws = this.get('websocket');
 
         this.set('pending', true);
         this.set('current_auth', defer());
 
-        return ws.sendJson('authenticate_with_token',
+        return this.websocket.sendJson('authenticate_with_token',
             {
                 token: token
             }).then(function (data)
@@ -125,7 +122,7 @@ export default Service.extend({
                 self.set('pending', false);
                 if (data.status === 0)
                 {
-                    self.get('store').findRecord('user', data.user_id).then((u) =>
+                    self.store.findRecord('user', data.user_id).then((u) =>
                     {
                         self.set('current_user', u);
                         self.set('user_id', data.user_id);
@@ -185,7 +182,7 @@ export default Service.extend({
     }),
     isAdministrator: computed('user_id', function ()
     {
-        return this.get('store').peekRecord('user', this.get('user_id')).get('rank') === 'Administrator';
+        return this.store.peekRecord('user', this.get('user_id')).get('rank') === 'Administrator';
     }),
     /**
      * Log an user out.
@@ -203,7 +200,7 @@ export default Service.extend({
         console.log("AUTH SERVICE LOGOUT");
         let self = this;
         localStorage.auth_token = false;
-        return this.get('websocket').sendJson('logout', {}).then(
+        return this.websocket.sendJson('logout', {}).then(
             () =>
             {
                 self._clearAuthentication(true);
@@ -213,7 +210,7 @@ export default Service.extend({
     _clearAuthentication(deleteAuthToken)
     {
         // Clear the store from model that were loaded.
-        this.get('store').unloadAll();
+        this.store.unloadAll();
         this.set('user_id', false);
         this.set('username', '');
         if (deleteAuthToken) {

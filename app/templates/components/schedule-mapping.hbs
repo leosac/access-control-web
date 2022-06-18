@@ -1,8 +1,8 @@
-{{#bs-form formLayout="horizontal" model=mapping as |form|}}
+{{#bs-form formLayout="horizontal" model=this.mapping as |form|}}
     <div class="col-md-12 row">
         <div class="pull-left">
             {{#form.element label=(t 'alias')}}
-                {{input type='text' value=(mut mapping.alias) class='form-control'}}
+                {{input type='text' value=(mut this.mapping.alias) class='form-control'}}
             {{/form.element}}
         </div>
         <div class="pull-right">
@@ -25,8 +25,8 @@
                 <th>{{t 'schedule.remove_from_mapping'}}</th>
                 </thead>
                 <tbody>
-                {{#each mapping.users as |user|}}
-                    <LinkTo @route='profile' @query={{hash user_id=user.id}}>
+                {{#each this.mapping.users as |user|}}
+                    <LinkTo @route='profile' @model={{user.id}}>
                       <tr>
                         <td class="col-md-1">
                             {{user.id}}
@@ -50,9 +50,9 @@
             <div class="pull-left col-md-4">
                 {{#form.element label=(t 'table.group_name')}}
                     {{#power-select-typeahead search=(action 'searchUser')
-                                              selected=newUser.username
+                                              selected=this.newUser.username
                                               placeholder=(t 'users.type_group')
-                                              onchange=(action (mut newUser)) as |userInfo|}}
+                                              onchange=(action (mut this.newUser)) as |userInfo|}}
                         {{userInfo.username}}
                     {{/power-select-typeahead}}
                 {{/form.element}}
@@ -78,8 +78,8 @@
                 <th>{{t 'schedule.remove_from_mapping'}}</th>
                 </thead>
                 <tbody>
-                {{#each mapping.groups as |group|}}
-                    <LinkTo @route='group' @query={{hash id=group.id}}>
+                {{#each this.mapping.groups as |group|}}
+                    <LinkTo @route='group' @model={{group.id}}>
                       <tr>
                         <td class="col-md-1">
                             {{group.id}}
@@ -105,9 +105,9 @@
                 <div class="pull-left col-md-4">
                     {{#form.element label=(t 'table.group_name')}}
                         {{#power-select-typeahead search=(action 'searchGroup')
-                                                  selected=newGroup.name
+                                                  selected=this.newGroup.name
                                                   placeholder=(t 'users.type_group')
-                                                  onchange=(action (mut newGroup)) as |groupInfo|}}
+                                                  onchange=(action (mut this.newGroup)) as |groupInfo|}}
                             {{groupInfo.name}}
                         {{/power-select-typeahead}}
                     {{/form.element}}
@@ -135,7 +135,7 @@
                 <th>{{t 'schedule.remove_from_mapping'}}</th>
                 </thead>
                 <tbody>
-                {{#each mapping.credentials as |cred|}}
+                {{#each this.mapping.credentials as |cred|}}
                     <tr>
                         <td class="col-md-1">
                             {{link-to-credential credential=cred text=cred.id}}
@@ -160,7 +160,7 @@
         <div class="row">
             <div class="pull-left col-md-4">
                 {{#form.element label="Id"}}
-                    {{input type='number' value=(mut newCredential) class='form_control'}}
+                    {{input type='number' value=(mut this.newCredential) class='form_control'}}
                 {{/form.element}}
             </div>
             <div class="col-md-2">
@@ -184,8 +184,8 @@
                 <th>{{t 'schedule.remove_from_mapping'}}</th>
                 </thead>
                 <tbody>
-                {{#each mapping.doors as |door|}}
-                    <LinkTo @route='door' @query={{hash id=door.id}}>
+                {{#each this.mapping.doors as |door|}}
+                    <LinkTo @route='door' @model={{door.id}}>
                       <tr>
                         <td class="col-md-1">
                             {{door.id}}
@@ -211,9 +211,9 @@
                 <div class="pull-left col-md-4">
                     {{#form.element label='Door alias'}}
                         {{#power-select-typeahead search=(action 'searchDoor')
-                                                  selected=newDoor.alias
+                                                  selected=this.newDoor.alias
                                                   placeholder=(t 'schedule.type_door')
-                                                  onchange=(action (mut newDoor)) as |doorInfo|}}
+                                                  onchange=(action (mut this.newDoor)) as |doorInfo|}}
                             {{doorInfo.alias}}
                         {{/power-select-typeahead}}
                     {{/form.element}}

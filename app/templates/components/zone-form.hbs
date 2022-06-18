@@ -1,5 +1,5 @@
 <div class="col-md-6">
-  {{#bs-form formLayout="vertical" model=zone onSubmit=action as |form|}}
+  {{#bs-form formLayout="vertical" model=this.zone onSubmit=this.action as |form|}}
     <fieldset>
       <legend>{{t 'configuration'}}</legend>
 
@@ -13,10 +13,10 @@
 
       {{#form.element property="type" label=(t 'type')}}
         {{#power-select
-          selected=zone.type
+          selected=this.zone.type
           searchEnabled=false
-          options=allType
-          onchange=(action (mut zone.type))
+          options=this.allType
+          onChange=(action (mut this.zone.type))
           placeholder=(t 'type_zone')
         as |type|}}
           {{t type}}
@@ -33,7 +33,7 @@
           <th class="text-center">{{t 'zone.remove_from_zone'}}</th>
           </thead>
           <tbody>
-          {{#each zone.doors as |door|}}
+          {{#each this.zone.doors as |door|}}
             <tr>
               <td>
                 {{door.id}}
@@ -57,9 +57,9 @@
           <div class="col-md-12">
             {{#form.element label=(t 'doors')}}
               {{#power-select-typeahead search=(action 'searchDoor')
-                                        selected=newDoor.alias
+                                        selected=this.newDoor.alias
                                         placeholder=(t 'schedule.type_door')
-                                        onchange=(action (mut newDoor)) as |doorInfo|}}
+                                        onChange=(action (mut this.newDoor)) as |doorInfo|}}
                 {{doorInfo.alias}}
               {{/power-select-typeahead}}
             {{/form.element}}
@@ -83,7 +83,7 @@
           <th class="text-center">{{t 'zone.remove_from_zone'}}</th>
           </thead>
           <tbody>
-          {{#each zone.children as |children|}}
+          {{#each this.zone.children as |children|}}
             <tr>
               <td>
                 {{children.id}}
@@ -109,8 +109,8 @@
         <div class="col-md-12">
           {{autocomplete/zone-search label=(t 'zone.child')
                                      form=form
-                                     ignoreZone=zone
-                                     selected=newChildren
+                                     ignoreZone=this.zone
+                                     selected=this.newChildren
           }}
         </div>
       </div>
@@ -127,14 +127,14 @@
         <div class="col-md-6">
           {{bs-button defaultText=(t 'submit') type="success" size="md" buttonType="submit"}}
         </div>
-        {{#if delete}}
+        {{#if this.delete}}
           <div class="pull-right form-button-delete">
             {{button-with-confirmation type='danger'
                                        icon='glyphicon glyphicon-remove'
                                        size='md'
                                        text=(t 'delete')
                                        message=(t 'zone.delete_confirm')
-                                       onConfirm=delete
+                                       onConfirm=this.delete
             }}
           </div>
         {{/if}}

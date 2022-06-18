@@ -7,52 +7,35 @@ body {
 /**
  * Style for the login form
  */
+.form-signin-container {
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    position: relative;
+    min-height: 90vh
+}
+
+.form-signin-caption {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
 .form-signin {
-    max-width: 440px;
-    padding: 15px;
-    margin: 0 auto;
-}
-
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
-    margin-bottom: 15px;
-}
-
-.form-signin .checkbox {
-    font-weight: normal;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 10px;
 }
 
 .table-striped>tbody>tr:nth-child(odd)>td,
 .table-striped>tbody>tr:nth-child(odd)>th {
-  background-color: #F7F7FF; // Choose your own color here
+  background-color: #F7F7FF; /* Choose your own color here */
 }
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
   background-color: #F7F7FF;
-}
-
-.form-signin .form-control {
-    position: relative;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 5px 5px 5px 15px;
-    font-size: 16px;
-}
-
-.form-signin .form-control:focus {
-    z-index: 2;
-}
-
-.form-signin input[type="text"] {
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-}
-
-.form-signin input[type="password"] {
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
 }
 
 /* centered columns styles */
@@ -97,7 +80,7 @@ a:hover {
 }
 
 .navbar-fixed-bottom {
-    background-color: #CCCCCC;
+    background-color: rgba(204,204,204,0.7);
     padding-top: 5px;
 }
 
@@ -151,13 +134,6 @@ a:hover {
     padding: 15px 15px 0;
 }
 
-.page-wrapper {
-  border: 1px;
-  height: 100%;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
 .jstree-node {
     font-size: 12pt;
 }
@@ -165,4 +141,8 @@ a:hover {
 .form-horizontal .has-feedback .form-control-feedback {
   right: 25px;
 }
-HAHHAHAHAHHA
+
+.sidebar-brand-icon {
+  height: 40px;
+  margin: 5px;
+}

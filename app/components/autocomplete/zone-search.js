@@ -10,7 +10,7 @@ export default Component.extend({
     // The output of (when something is selected)
     // is a dict {id: ID, alias: "alias"};
 
-    search: service('search'),
+    search: service(),
 
     actions:
         {
@@ -23,7 +23,7 @@ export default Component.extend({
             searchZone(partialAlias)
             {
                 let id = parseInt(this.get('ignoreZone').id);
-                let data = this.get('search').findZoneByAlias(partialAlias);
+                let data = this.search.findZoneByAlias(partialAlias);
 
                 data.then(function(res) {
                     let currentZoneIndex = -1;

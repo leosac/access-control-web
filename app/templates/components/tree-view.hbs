@@ -10,7 +10,7 @@
                 checkCallback=checkCallback}}
     </div>
 
-    {{#if selectedZone}}
+    {{#if this.selectedZone}}
       <div class="col-md-6">
         <div class="row">
           <div class="col-sm-8">
@@ -37,8 +37,8 @@
                 <th>{{t 'zone.remove_from_zone'}}</th>
                 </thead>
                 <tbody>
-                {{#each selectedZone.doors as |door|}}
-                  <LinkTo @route='door' @query={{hash id=door.id}}>
+                {{#each this.selectedZone.doors as |door|}}
+                  <LinkTo @route='door' @model={{door.id}}>
                     <tr>
                       <td>{{door.id}}</td>
                       <td>{{door.alias}}</td>
@@ -70,7 +70,7 @@
                   </thead>
                   <tbody>
                   {{#each arrayDoor as |entry|}}
-                    <LinkTo @route='door' @query={{hash id=entry.doorId}}>
+                    <LinkTo @route='door' @model={{entry.doorId}}>
                       <tr>
                         <td>{{entry.zone}}</td>
                         <td>{{entry.door}}</td>

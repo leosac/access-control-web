@@ -1,6 +1,10 @@
+import { inject as service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
+    router: service(),
+    store: service(),
+    flashMessages: service(),
     _title: 'credentials.pin_code.title',
     _requireAuth: true,
     beforeModel()
@@ -11,7 +15,7 @@ export default LeosacRoute.extend({
     model(params)
     {
         "use strict";
-        return this.get('store').find('pin-code', params.credential_id);
+        return this.store.find('pin-code', params.credential_id);
     },
     resetController(controller, isExiting/*, transition*/)
     {
@@ -29,23 +33,23 @@ export default LeosacRoute.extend({
         {
             this.controller.get('model').save().then(() =>
                 {
-                    this.get('flashMessages').success('Credential successfully edited.');
+                    this.flashMessages.success('Credential successfully edited.');
                 },
                 () =>
                 {
-                    this.get('flashMessages').danger('An error occurred while editing credential');
+                    this.flashMessages.danger('An error occurred while editing credential');
                 });
         },
         deleteCredential()
         {
             this.controller.get('model').destroyRecord().then(() =>
                 {
-                    this.get('flashMessages').success('Credential has been deleted.');
-                    this.transitionTo('credentials.list');
+                    this.flashMessages.success('Credential has been deleted.');
+                    this.router.transitionTo('credentials.list');
                 },
                 () =>
                 {
-                    this.get('flashMessages').danger('Failed to delete credential.');
+                    this.flashMessages.danger('Failed to delete credential.');
                 });
         }
     }

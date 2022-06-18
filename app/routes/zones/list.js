@@ -1,6 +1,10 @@
+import { inject as service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
+    store: service(),
+    router: service(),
+    flashMessages: service(),
     _title: 'zone.list.title',
     _requireAuth: true,
 
@@ -12,7 +16,7 @@ export default LeosacRoute.extend({
     model()
     {
         "use strict";
-        return this.get('store').findAll('zone', {reload: true});
+        return this.store.findAll('zone', {reload: true});
     },
     actions: {
         findType(zone) {
@@ -24,11 +28,10 @@ export default LeosacRoute.extend({
         },
         deleteZone(zone)
         {
-            const self = this;
             zone.destroyRecord({}).then(() =>
             {
-                self.get('flashMessages').success('Zone has been deleted.');
-                self.transitionTo('zones.list');
+                this.flashMessages.success('Zone has been deleted.');
+                this.router.transitionTo('zones.list');
             });
         }
     }

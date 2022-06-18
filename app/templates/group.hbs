@@ -1,7 +1,7 @@
 {{#bs-tab as |tab|}}
   {{#tab.pane title=(t 'information')}}
     <div class="col-md-6 button-space">
-      {{#bs-form formLayout="vertical" model=model onSubmit=(route-action "editGroup") as  | form |}}
+      {{#bs-form formLayout="vertical" model=this.model onSubmit=(route-action "editGroup") as  | form |}}
         <fieldset>
           <legend>{{t 'configuration'}}</legend>
           {{form.element controlType="text" label=(t 'name')
@@ -10,12 +10,12 @@
           {{form.element controlType='textarea' label=(t 'description')
                          property='description' placeholder='Description'}}
 
-          <div class="row">
-            <div class="col-md-1">
+          <div class="d-flex justify-content-between">
+            <div>
               {{bs-button defaultText=(t 'submit') type="success" buttonType="submit"
                           size='md'}}
             </div>
-            <div class="pull-right form-button-delete">
+            <div class="form-button-delete">
               {{button-with-confirmation type='danger'
                                          icon='glyphicon glyphicon-remove'
                                          size='md'
@@ -32,11 +32,11 @@
   {{/tab.pane}}
 
   {{#tab.pane title=(t 'members')}}
-    {{group-user-membership-table group=model}}
-    {{group-add-one-user group=model}}
+    {{group-user-membership-table group=this.model}}
+    {{group-add-one-user group=this.model}}
   {{/tab.pane}}
 
   {{#tab.pane title=(t 'access')}}
-    {{group-schedules group=model}}
+    {{group-schedules group=this.model}}
   {{/tab.pane}}
 {{/bs-tab}}

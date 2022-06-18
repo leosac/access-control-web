@@ -1,11 +1,14 @@
+import { inject as service } from '@ember/service';
 import Ember from 'ember';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
     _title: 'model-name.title', // this is an example of a translation key, up to you
     _requireAuth: true,
-    store: Ember.inject.service('store'),
-    intl: Ember.inject.service(),
+    store: service(),
+    router: service(),
+    intl: service(),
+    flashMessages: service(),
 
     beforeModel()
     {
@@ -15,7 +18,7 @@ export default LeosacRoute.extend({
     model(params)
     {
         "use strict";
-        return this.get('store').findRecord('model-name', params.id);
+        return this.store.findRecord('model-name', params.id);
     },
     resetController(controller, isExiting/*, transition*/)
     {
@@ -35,22 +38,21 @@ export default LeosacRoute.extend({
             led.save().then(() =>
             {
                 // correctly saved
-                this.get('flashMessages').success(this.get('intl').t('translation.key'));
+                this.flashMessages.success(this.intl.t('translation.key'));
             }, () =>
             {
                 // error while saving the model
-                this.get('flashMessages').danger(this.get('intl').t('translation.key'));
+                this.flashMessages.danger(this.intl.t('translation.key'));
             });
         },
         deleteModelName()
         {
-            const self = this;
             const model = this.controller.get('model');
             model.destroyRecord({}).then(() =>
             {
                 // the message is up to you, but remember that you can put a translation key, if you want.
-                self.get('flashMessages').success('Model Name has been deleted.');
-                self.transitionTo('list');
+                this.flashMessages.success('Model Name has been deleted.');
+                this.router.transitionTo('list');
             });
         }
     }

@@ -1,7 +1,9 @@
 import { observer, computed } from '@ember/object';
+import { inject as service } from '@ember/service';
 import Controller from '@ember/controller';
 
 export default Controller.extend({
+    store: service(),
     logPerPage: 25,
     currentLogPage: 0,
     totalLogs: 0,
@@ -16,7 +18,7 @@ export default Controller.extend({
     {
         "use strict";
         const self = this;
-        const p = this.get('store').query('log-message',
+        const p = this.store.query('log-message',
             {
                 p: parseInt(this.get('currentLogPage')),
                 ps: parseInt(this.get('logPerPage')) || 1,

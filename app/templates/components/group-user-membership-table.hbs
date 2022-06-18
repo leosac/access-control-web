@@ -7,36 +7,34 @@
         <th>{{t 'username'}}</th>
         <th>{{t 'table.join_date'}}</th>
         <th>{{t 'rank'}}</th>
-        {{#if canRemoveUserFromGroup}}
+        {{#if this.canRemoveUserFromGroup}}
             <th>{{t 'remove'}}</th>
         {{/if}}
     </tr>
     </thead>
     <tbody>
-    {{#each group.memberships as |membership|}}
-        <LinkTo @route='profile' @query={{hash user_id=membership.user.id}}>
-          <tr>
-            <td>{{membership.user.id}}</td>
-            <td>{{membership.user.firstname}}</td>
-            <td>{{membership.user.lastname}}</td>
+    {{#each this.group.memberships as |membership|}}
+        <tr {{action 'gotoItem' membership.user.id}}>
+        <td>{{membership.user.id}}</td>
+        <td>{{membership.user.firstname}}</td>
+        <td>{{membership.user.lastname}}</td>
+        <td>
+            {{membership.user.username}}
+        </td>
+        <td>{{membership.timestamp}}</td>
+        <td>{{t membership.rank}}</td>
+        {{#if this.canRemoveUserFromGroup}}
             <td>
-                {{membership.user.username}}
-            </td>
-            <td>{{membership.timestamp}}</td>
-            <td>{{t membership.rank}}</td>
-            {{#if canRemoveUserFromGroup}}
-                <td>
-                    {{button-with-confirmation
-                            type='danger'
-                            icon='glyphicon glyphicon-ban-circle'
-                            size='xs'
-                            text=(t 'remove')
-                            message=(t 'users.remove_from_group' username=membership.user.username)
-                            onConfirm=(action 'deleteMembership' membership.id)
-                    }}</td>
-            {{/if}}
-          </tr>
-        </LinkTo>
+                {{button-with-confirmation
+                        type='danger'
+                        icon='glyphicon glyphicon-ban-circle'
+                        size='xs'
+                        text=(t 'remove')
+                        message=(t 'users.remove_from_group' username=membership.user.username)
+                        onConfirm=(action 'deleteMembership' membership.id)
+                }}</td>
+        {{/if}}
+        </tr>
     {{/each}}
     </tbody>
 </table>

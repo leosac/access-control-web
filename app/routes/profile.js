@@ -5,6 +5,9 @@ import { UserRank } from 'web/leosac-constant';
 
 export default LeosacRoute.extend({
     passwordChange: service('password-change'),
+    store: service(),
+    intl: service(),
+    flashMessages: service(),
     _title: 'profile.title',
     _requireAuth: true,
     passwordInfo: null,
@@ -18,9 +21,9 @@ export default LeosacRoute.extend({
     {
         "use strict";
         return hash({
-            user: this.get('store').findRecord('user', params.user_id),
+            user: this.store.findRecord('user', params.user_id),
             possibleRanks: UserRank,
-            currentUser: this.get('store').findRecord('user', this.get('authSrv').user_id),
+            currentUser: this.store.findRecord('user', this.get('authSrv').user_id),
         });
     },
     setupController(controller, model)
@@ -43,15 +46,13 @@ export default LeosacRoute.extend({
         editProfile: function ()
         {
             let user = this.controller.get('model').user;
-            const fm = this.get('flashMessages');
-            const intl = this.get('intl');
 
             user.save().then(() =>
             {
-                fm.success(intl.t('profile.profile_updated') + '.');
+                this.flashMessages.success(this.intl.t('profile.profile_updated') + '.');
             }, (why) =>
             {
-                fm.danger(intl.t('profile_fail_update') + ': ' + why.status_string);
+                this.flashMessages.danger(this.intl.t('profile_fail_update') + ': ' + why.status_string);
             });
         },
     }

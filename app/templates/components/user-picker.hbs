@@ -1,7 +1,7 @@
 {{#form.element label=label}}
   {{#power-select-typeahead
-    selected=selected.username
-    onchange=onChange
+    selected=this.selected.username
+    onChange=onChange
     allowClear=true
     search=searchCredential
     placeholder=(t 'username')

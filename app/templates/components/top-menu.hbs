@@ -1,106 +1,50 @@
-<ul class="nav navbar-top-links navbar-right">
-    <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
-        </a>
-        <ul class="dropdown-menu dropdown-alerts">
-            <!--
-          {{#each flashMessages.queue as |flash|}}
-                {{#if (eq flash.componentName 'flashmessage-as-alert')}}
-                    {{component flash.componentName flash=flash}}
-                {{/if}}
-            {{/each}}-->
+<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+    <!-- Sidebar Toggle (Topbar) -->
+    <button class="navbar-toggler" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-            <li>
-                <a href="#">
-                    <div>
-                        <i class="fa fa-comment fa-fw"></i> Great success.
-                        <span class="pull-right text-muted small">12 minutes ago</span>
-                    </div>
-                </a>
-            </li>
-            <li class="divider"></li>
+    <button class="btn btn-link rounded-circle mr-3" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle Sidebar navigation">
+        <i class="fa fa-bars"></i>
+    </button>
 
+    {{global-search label=(t 'search')}}
 
-            <li>
-                <a href="#">
-                    <div>
-                        <i class="fa fa-comment fa-fw"></i> New Comment
-                        <span class="pull-right text-muted small">4 minutes ago</span>
-                    </div>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="#">
-                    <div>
-                        <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                        <span class="pull-right text-muted small">12 minutes ago</span>
-                    </div>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="#">
-                    <div>
-                        <i class="fa fa-envelope fa-fw"></i> Message Sent
-                        <span class="pull-right text-muted small">4 minutes ago</span>
-                    </div>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="#">
-                    <div>
-                        <i class="fa fa-tasks fa-fw"></i> New Task
-                        <span class="pull-right text-muted small">4 minutes ago</span>
-                    </div>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="#">
-                    <div>
-                        <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                        <span class="pull-right text-muted small">4 minutes ago</span>
-                    </div>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a class="text-center" href="#">
-                    <strong>See All Alerts</strong>
-                    <i class="fa fa-angle-right"></i>
-                </a>
-            </li>
-        </ul>
-        <!-- /.dropdown-alerts -->
-    </li>
-    <!-- /.dropdown -->
-    <li class="dropdown">
-        <a class="dropdown-toggle" id="dropdown-toggle" data-toggle="dropdown" href="#">
-            <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-        </a>
-        <ul class="dropdown-menu dropdown-user">
-            <li>
-                <LinkTo @route='profile' @query={{hash user_id=authSrv.user_id}}>
+    <ul class="navbar-nav ml-auto navbar-top-links navbar-right">
+        <li class="nav-item dropdown no-arrow mx-1">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="alertsDropdown" role="button" href="#"
+               aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-bell fa-fw"></i>
+                <span class="badge badge-danger badge-counter">{{ this.flashMessages.queue.length }}</span>
+            </a>
+            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header">
+                    {{t 'alarm.title'}}
+                </h6>
+                {{#each this.flashMessages.queue as |flash|}}
+                    {{#if (eq flash.componentName 'flashmessage-as-alert')}}
+                        {{component flash.componentName flash=flash}}
+                    {{/if}}
+                {{/each}}
+            </div>
+        </li>
+        <li class="nav-item dropdown no-arrow mx-1">
+            <a class="nav-link dropdown-toggle" id="profileDropdown" data-toggle="dropdown" role="button" href="#"
+               aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="profileDropdown">
+                <LinkTo class="dropdown-item" @route='profile' @model={{this.authSrv.user_id}}>
                     <i class="fa fa-user fa-fw"></i>{{t 'profile.title'}}
                 </LinkTo>
-            </li>
-            <li>
-                <LinkTo @route='settings'>
+                <LinkTo class="dropdown-item" @route='settings'>
                     <i class="fa fa-gear fa-fw"></i> {{t 'settings'}}
                 </LinkTo>
-            </li>
-            <li class="divider"></li>
-            <li {{action 'logout'}}>
-                <a id="logout-button" href="#">
-                    <i class="fa fa-sign-out fa-fw"></i>
-                    {{t 'logout'}}
+                <div class="dropdown-divider"></div>
+                <a {{action 'logout'}}>
+                    <i class="fa fa-sign-out fa-fw"></i> {{t 'logout'}}
                 </a>
-            </li>
-        </ul>
-        <!-- /.dropdown-user -->
-    </li>
-    <!-- /.dropdown -->
-</ul>
+            </div>
+        </li>
+    </ul>
+</nav>

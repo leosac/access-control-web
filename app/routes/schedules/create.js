@@ -1,6 +1,10 @@
+import { inject as service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
+    router: service(),
+    store: service(),
+    flashMessages: service(),
     _title: 'schedule.create.title',
     _requireAuth: true,
     beforeModel()
@@ -11,7 +15,7 @@ export default LeosacRoute.extend({
     model()
     {
         "use strict";
-        const sched = this.get('store').createRecord('schedule');
+        const sched = this.store.createRecord('schedule');
         return sched;
     },
     resetController(controller, isExiting/*, transition*/)
@@ -29,8 +33,8 @@ export default LeosacRoute.extend({
         createSchedule(){
             this.controller.model.save().then(()=>
             {
-                this.get('flashMessages').success('Schedule created !');
-                this.transitionTo('schedule', this.controller.model.get('id'));
+                this.flashMessages.success('Schedule created !');
+                this.router.transitionTo('schedule', this.controller.model.get('id'));
             });
         }
     }

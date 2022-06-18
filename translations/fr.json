@@ -31,6 +31,9 @@
   "add": "Ajouter",
   "add_time_zone": "Ajouter plage horaire",
   "administrator": "Administrateur",
+  "alarm": {
+    "title": "Alarmes"
+  },
   "alias": "Alias",
   "alias_": "Alias:",
   "alias_placeholder": "Un nom mémorisable",
@@ -244,7 +247,7 @@
     "event": "Evènements",
     "manage_access": "Gérer les accès",
     "title": "Index",
-    "welcome": "Bienvenue <strong>{username}</strong> <br> Gerez vos cylindres EvoXS et les permissions utilisateurs. <br> Installez, configurez et deployez depuis l'interface web."
+    "welcome": "Bienvenue <strong>{username}</strong>.<br />Gérez votre système de contrôle d'accès Leosac ici."
   },
   "information": "Information",
   "informations": {

@@ -3,9 +3,9 @@
         <div class="col-md-2 col-sm-4">
             {{#form.element label=(t 'username')}}
                 {{#power-select-typeahead
-                        selected=selectedUser.username
+                        selected=this.selectedUser.username
                         search=(action 'searchUser')
-                        onchange=(action 'setUser')
+                        onChange=(action 'setUser')
                         allowClear=true
                         placeholder=(t 'username')
                 as |user|
@@ -17,9 +17,9 @@
         <div class="col-md-2 col-sm-4">
             {{#form.element label=(t 'rank')}}
                 {{#power-select
-                        selected=selectedRank
-                        options=allRank
-                        onchange=(action (mut selectedRank))
+                        selected=this.selectedRank
+                        options=this.allRank
+                        onChange=(action (mut this.selectedRank))
                         placeholder=(t 'rank_group')
                 as |rank|
                 }}

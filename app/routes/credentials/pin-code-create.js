@@ -1,6 +1,10 @@
+import { inject as service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({
+    router: service(),
+    store: service(),
+    flashMessages: service(),
     _title: 'credentials.pin_code_create.title',
     _requireAuth: true,
     beforeModel()
@@ -11,7 +15,7 @@ export default LeosacRoute.extend({
     model()
     {
         "use strict";
-        return this.get('store').createRecord('pin-code');
+        return this.store.createRecord('pin-code');
     },
     resetController(controller, isExiting)
     {
@@ -28,11 +32,11 @@ export default LeosacRoute.extend({
     {
         createPin() {
             this.controller.get('model').save().then((pin) => {
-                    this.get('flashMessages').success('Pin successfully created.');
-                    this.transitionTo('credentials.pin-code', pin.get('id'));
+                    this.flashMessages.success('Pin successfully created.');
+                    this.router.transitionTo('credentials.pin-code', pin.get('id'));
                 },
                 () => {
-                    this.get('flashMessages').danger('An error occurred while creating the PIN');
+                    this.flashMessages.danger('An error occurred while creating the PIN');
                 });
         }
     }

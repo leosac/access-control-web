@@ -2,44 +2,44 @@
   <div class="row">
     <div class="col-md-3">
       {{form.element controlType='checkbox' label=(t 'schedule.monday')
-                     value=(mut timeframe.enabledOnMonday)
-                     onChange=(action (mut timeframe.enabledOnMonday))}}
+                     value=(mut this.timeframe.enabledOnMonday)
+                     onChange=(action (mut this.timeframe.enabledOnMonday))}}
     </div>
 
     <div class="col-md-3">
       {{form.element controlType='checkbox' label=(t 'schedule.tuesday')
-                     value=(mut timeframe.enabledOnTuesday)
-                     onChange=(action (mut timeframe.enabledOnTuesday))}}
+                     value=(mut this.timeframe.enabledOnTuesday)
+                     onChange=(action (mut this.timeframe.enabledOnTuesday))}}
     </div>
 
     <div class="col-md-3">
       {{form.element controlType='checkbox' label=(t 'schedule.wednesday')
-                     value=(mut timeframe.enabledOnWednesday)
-                     onChange=(action (mut timeframe.enabledOnWednesday))}}
+                     value=(mut this.timeframe.enabledOnWednesday)
+                     onChange=(action (mut this.timeframe.enabledOnWednesday))}}
     </div>
     <div class="col-md-3">
       {{form.element controlType='checkbox' label=(t 'schedule.thursday')
-                     value=(mut timeframe.enabledOnThursday)
-                     onChange=(action (mut timeframe.enabledOnThursday))}}
+                     value=(mut this.timeframe.enabledOnThursday)
+                     onChange=(action (mut this.timeframe.enabledOnThursday))}}
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-3">
       {{form.element controlType='checkbox' label=(t 'schedule.friday')
-                     value=(mut timeframe.enabledOnFriday)
-                     onChange=(action (mut timeframe.enabledOnFriday))}}
+                     value=(mut this.timeframe.enabledOnFriday)
+                     onChange=(action (mut this.timeframe.enabledOnFriday))}}
     </div>
     <div class="col-md-3">
       {{form.element controlType='checkbox' label=(t 'schedule.saturday')
-                     value=(mut timeframe.enabledOnSaturday)
-                     onChange=(action (mut timeframe.enabledOnSaturday))}}
+                     value=(mut this.timeframe.enabledOnSaturday)
+                     onChange=(action (mut this.timeframe.enabledOnSaturday))}}
     </div>
 
     <div class="col-md-3">
       {{form.element controlType='checkbox' label=(t 'schedule.sunday')
-                     value=(mut timeframe.enabledOnSunday)
-                     onChange=(action (mut timeframe.enabledOnSunday))}}
+                     value=(mut this.timeframe.enabledOnSunday)
+                     onChange=(action (mut this.timeframe.enabledOnSunday))}}
     </div>
   </div>
   <div class="row">
@@ -50,18 +50,18 @@
   <div class="row">
     <div class="col-md-5 datetime-picker-margin">
       {{#form.element label=(t 'schedule.start_time')}}
-        {{bs-datetimepicker disabled=disabled
-                            date=timeframe.startTime format='H:mm'
-                            updateDate=(action (mut timeframe.startTime))}}
+        {{bs-datetimepicker disabled=this.disabled
+                            date=this.timeframe.startTime format='H:mm'
+                            updateDate=(action (mut this.timeframe.startTime))}}
       {{/form.element}}
 
     </div>
 
     <div class="col-md-5 datetime-picker-margin">
       {{#form.element label=(t 'schedule.end_time')}}
-        {{bs-datetimepicker disabled=disabled
-                            date=timeframe.endTime format='H:mm'
-                            updateDate=(action (mut timeframe.endTime))}}
+        {{bs-datetimepicker disabled=this.disabled
+                            date=this.timeframe.endTime format='H:mm'
+                            updateDate=(action (mut this.timeframe.endTime))}}
       {{/form.element}}
     </div>
   </div>
@@ -70,7 +70,7 @@
       {{bs-button defaultText=(t 'remove_timeframe')
                   size='sm'
                   type='danger'
-                  onClick=delete}}
+                  onClick=this.delete}}
     </div>
   </div>
 {{/if}}

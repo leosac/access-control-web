@@ -23,6 +23,7 @@ module.exports = function (environment) {
             //leosacAddr: '10.2.1.5:8888',
             appname: '__APP_NAME__',
             logoUrl: '/assets/images/logo.png',
+            projectLogoUrl: '/assets/images/project-logo.png',
             siteUrl: 'leosac.com',
         }
     };
