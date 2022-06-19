@@ -12,7 +12,7 @@ module('Integration | Component | numbered paginator', function(hooks) {
 
     await render(hbs`{{numbered-paginator}}`);
 
-    assert.equal(this.$().text().trim(), '');
+    assert.equal(this.element.innerText.trim(), '');
 
     // Template block usage:
     await render(hbs`
@@ -21,6 +21,6 @@ module('Integration | Component | numbered paginator', function(hooks) {
       {{/numbered-paginator}}
     `);
 
-    assert.equal(this.$().text().trim(), 'template block text');
+    assert.equal(this.element.innerText.trim(), 'template block text');
   });
 });

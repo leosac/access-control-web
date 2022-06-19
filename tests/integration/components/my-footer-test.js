@@ -13,7 +13,7 @@ module('Integration | Component | my footer', function(hooks) {
 
     await render(hbs`{{my-footer}}`);
 
-    assert.equal(this.$().text().trim(), '');
+    assert.equal(this.element.innerText.trim(), '');
 
     // Template block usage:" + EOL +
     await render(hbs`
@@ -22,6 +22,6 @@ module('Integration | Component | my footer', function(hooks) {
       {{/my-footer}}
     `);
 
-    assert.equal(this.$().text().trim(), 'template block text');
+    assert.equal(this.element.innerText.trim(), 'template block text');
   });
 });

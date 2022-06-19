@@ -12,7 +12,7 @@ module('Integration | Component | simple number picker', function(hooks) {
 
     await render(hbs`{{simple-number-picker}}`);
 
-    assert.equal(this.$().text().trim(), '');
+    assert.equal(this.element.innerText.trim(), '');
 
     // Template block usage:"
     await render(hbs`
@@ -21,6 +21,6 @@ module('Integration | Component | simple number picker', function(hooks) {
       {{/simple-number-picker}}
     `);
 
-    assert.equal(this.$().text().trim(), 'template block text');
+    assert.equal(this.element.innerText.trim(), 'template block text');
   });
 });

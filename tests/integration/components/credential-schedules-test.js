@@ -12,7 +12,7 @@ module('Integration | Component | credential schedules', function(hooks) {
 
     await render(hbs`{{credential-schedules}}`);
 
-    assert.equal(this.$().text().trim(), '');
+    assert.equal(this.element.innerText.trim(), '');
 
     // Template block usage:
     await render(hbs`
@@ -21,6 +21,6 @@ module('Integration | Component | credential schedules', function(hooks) {
       {{/credential-schedules}}
     `);
 
-    assert.equal(this.$().text().trim(), 'template block text');
+    assert.equal(this.element.innerText.trim(), 'template block text');
   });
 });

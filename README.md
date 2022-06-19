@@ -7,11 +7,11 @@ This application is a Graphical User Interface for [Leosac](http://www.leosac.co
 
 You will need the following things properly installed on your computer.
 
-* [Git](http://git-scm.com/)
-* [Node.js](http://nodejs.org/) (with NPM)
-* [Bower](http://bower.io/)
-* [Ember CLI](http://ember-cli.com/)
-* [PhantomJS](http://phantomjs.org/)
+* [Git](https://git-scm.com/)
+* [Node.js](https://nodejs.org/) (with NPM)
+* [Bower](https://bower.io/)
+* [Ember CLI](https://ember-cli.com/)
+* [Puppeteer](https://pptr.dev/)
 
 ## Installation
 

@@ -1,37 +1,25 @@
 # The Dockerfile that will create the leosac-web image
 
-# Download base image ubuntu 16.04
-FROM ubuntu:16.04
+# Download base image
+FROM debian:bullseye
 
 # Update Software repository
 RUN apt-get update
 
-# Install sudo
-RUN apt-get install wget -y
-
-# Install git
-RUN apt-get install -y git
+# Install sudo & git
+RUN apt-get install wget git curl -y
 
 # Set the username and the email adress of the git profil
 RUN git config --global user.name myname
 RUN git config --global user.email myadress@mydomain.com
 
-# Install curl to later install node
-RUN apt-get install -y curl
-
 # Install node
-RUN (curl -sL https://deb.nodesource.com/setup_7.x | bash -)
+RUN (curl -sL https://deb.nodesource.com/setup_16.x | bash -)
 RUN apt-get update
 RUN apt-get install -y nodejs
 
-# Update the npm package
-RUN npm cache clear
-
-# Install bower
-RUN npm install bower -g
-
-# Install the latest vesion of ember-cli
-RUN npm install -g ember-cli@latest
+# Install yarn, bower and ember-cli
+RUN npm install yarn bower ember-cli@3.28.5 -g
 
 # Create a Leosac repository
 RUN mkdir -p /leosac
@@ -43,8 +31,7 @@ ADD ../../leosac/ /leosac/.
 # Run npm install and bower install. This will help us gain a lot of time in our container
 
 RUN (cd /leosac/leosac-web && \
-    npm install phantomjs-prebuilt@2.1.13 --ignore-scripts && \
-    npm install && bower install --allow-root)
+    yarn install && bower install --allow-root)
 
 # Add the scrypt.py to the images
 COPY leosac/leosac-web/web-service/script.py script.py

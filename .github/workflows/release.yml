@@ -71,7 +71,7 @@ jobs:
       - name: Build Docker Leosac Web Main
         if: success() && github.event_name != 'pull_request'
         run: |
-          docker buildx build --push ${{ steps.prepare.outputs.buildx_args }} --file ./Dockerfile
+          docker buildx build --push ${{ steps.prepare.outputs.buildx_args }} --file ./Dockerfile .
       - name: Inspect image
         if: always() && github.event_name != 'pull_request'
         run: |
