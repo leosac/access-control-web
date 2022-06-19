@@ -35,14 +35,17 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="profileDropdown">
                 <LinkTo class="dropdown-item" @route='profile' @model={{this.authSrv.user_id}}>
-                    <i class="fa fa-user fa-fw"></i>{{t 'profile.title'}}
+                    <i class="fa fa-user fa-fw fa-sm mr-2 text-gray-400"></i>
+                    {{t 'profile.title'}}
                 </LinkTo>
                 <LinkTo class="dropdown-item" @route='settings'>
-                    <i class="fa fa-gear fa-fw"></i> {{t 'settings'}}
+                    <i class="fa fa-cog fa-fw fa-sm mr-2 text-gray-400"></i>
+                    {{t 'settings'}}
                 </LinkTo>
                 <div class="dropdown-divider"></div>
-                <a {{action 'logout'}}>
-                    <i class="fa fa-sign-out fa-fw"></i> {{t 'logout'}}
+                <a href="#" class="dropdown-item" {{action 'logout'}}>
+                    <i class="fa fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    {{t 'logout'}}
                 </a>
             </div>
         </li>

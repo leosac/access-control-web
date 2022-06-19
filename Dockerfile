@@ -1,5 +1,7 @@
 FROM debian:bullseye
 
+ENV PUPPETEER_SKIP_DOWNLOAD=1
+
 RUN apt-get update && apt-get install vim wget curl git -y
 RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt-get update && apt-get install nodejs -y

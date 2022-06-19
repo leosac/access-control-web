@@ -59,7 +59,7 @@ Custom panel-header for the timeframe, the default one is far too big
 Added a space between two <a> (used in schedule->timeframe)
  */
 
-a + a {
+.panel-timeframe a + a {
   margin-left: 10px;
 }
 
