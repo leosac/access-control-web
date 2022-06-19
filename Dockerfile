@@ -19,7 +19,7 @@ ADD package.json /leosac-web/
 ADD ember-cli-build.js /leosac-web/
 ADD run.sh /
 
-RUN cd /leosac-web && yarn install --network-timeout 36000
+RUN cd /leosac-web && yarn install --network-timeout 100000
 RUN cd /leosac-web && bower install --allow-root
 
 ## EmberJS port
