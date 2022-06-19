@@ -25,13 +25,13 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm config set spin false
-    - run: npm install -g yarn bower
+    - run: npm install -g yarn bower ember-cli@3.28.5
     - run: yarn install
     - run: bower install
     - run: ember build --environment=production
     - uses: actions/upload-artifact@v3
       if: success()
       with:
-        name: leosac-web-dist
+        name: leosac-web node${{ matrix.node-version }} dist
         path: dist/
 #    - run: yarn test
