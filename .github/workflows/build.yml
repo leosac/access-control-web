@@ -28,6 +28,5 @@ jobs:
     - run: npm install -g yarn
     - run: npm install phantomjs-prebuilt
     - run: yarn install
-    - run: bower install
     - run: npm run build --if-present
     - run: npm test
