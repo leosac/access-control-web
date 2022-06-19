@@ -1,12 +1,12 @@
-import { moduleForModel, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupModelTest } from 'ember-qunit';
 
-moduleForModel('user-group-membership', 'Unit | Model | user group membership', {
-  // Specify the other units that are required for this test.
-  needs: []
-});
+module('Unit | Model | user group membership', function(hooks) {
+  setupModelTest(hooks);
 
-test('it exists', function(assert) {
-  let model = this.subject();
-  // let store = this.store();
-  assert.ok(!!model);
+  // Replace this with your real tests.
+  test('it exists', function(assert) {
+    let model = this.owner.lookup('user-group-membership');
+    assert.ok(!!model);
+  });
 });

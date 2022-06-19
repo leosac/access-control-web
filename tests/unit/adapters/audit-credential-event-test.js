@@ -1,12 +1,12 @@
-import { moduleFor, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleFor('adapter:audit-credential-event', 'Unit | Adapter | audit credential event', {
-  // Specify the other units that are required for this test.
-  // needs: ['serializer:foo']
-});
+module('Unit | Adapter | audit credential event', function(hooks) {
+  setupTest(hooks);
 
-// Replace this with your real tests.
-test('it exists', function(assert) {
-  let adapter = this.subject();
-  assert.ok(adapter);
+  // Replace this with your real tests.
+  test('it exists', function(assert) {
+    let adapter = this.owner.lookup('adapter:audit-credential-event');
+    assert.ok(adapter);
+  });
 });

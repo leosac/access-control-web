@@ -1,25 +1,27 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('my-footer', 'Integration | Component | my footer', {
-  integration: true
-});
+module('Integration | Component | my footer', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
+  test('it renders', async function(assert) {
+    
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
 
-  this.render(hbs`{{my-footer}}`);
+    await render(hbs`{{my-footer}}`);
 
-  assert.equal(this.$().text().trim(), '');
+    assert.equal(this.$().text().trim(), '');
 
-  // Template block usage:" + EOL +
-  this.render(hbs`
-    {{#my-footer}}
-      template block text
-    {{/my-footer}}
-  `);
+    // Template block usage:" + EOL +
+    await render(hbs`
+      {{#my-footer}}
+        template block text
+      {{/my-footer}}
+    `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+    assert.equal(this.$().text().trim(), 'template block text');
+  });
 });

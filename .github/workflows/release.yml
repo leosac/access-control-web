@@ -43,7 +43,7 @@ jobs:
 
   docker:
     runs-on: ubuntu-latest
-    needs: [ prepare, build ]
+    needs: [ prepare ]
     steps:
       - name: Prepare
         id: prepare

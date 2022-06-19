@@ -1,9 +1,12 @@
 {
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leosac/leosac-web.git"
+  },
   "engines": {
     "node": ">=12.20.0"
   },
-  "author": "",
+  "author": "Leosac",
   "dependencies": {
     "@ember-intl/cp-validations": "^4.0.1",
     "@ember/jquery": "^2.0.0",
