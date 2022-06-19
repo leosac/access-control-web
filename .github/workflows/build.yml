@@ -30,8 +30,8 @@ jobs:
     - run: bower install
     - run: ember build --environment=production
     - uses: actions/upload-artifact@v3
-        if: success()
-        with:
-          name: leosac-web-dist
-          path: dist/
+      if: success()
+      with:
+        name: leosac-web-dist
+        path: dist/
 #    - run: yarn test
