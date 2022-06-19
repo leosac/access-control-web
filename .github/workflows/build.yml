@@ -25,7 +25,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm config set spin false
-    - run: npm install -g yarn bower puppeteer
+    - run: npm install -g yarn bower
     - run: yarn install
     - run: bower install
     - run: yarn run build

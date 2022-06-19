@@ -1,7 +1,7 @@
 FROM debian:bullseye
 
 RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
-RUN apt-get update && apt-get install emacs24-nox vim wget curl git nodejs -y
+RUN apt-get update && apt-get install vim wget curl git nodejs -y
 
 RUN npm install -g yarn
 RUN npm install -g bower
