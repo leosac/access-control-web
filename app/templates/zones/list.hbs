@@ -14,24 +14,22 @@
         </thead>
         <tbody>
         {{#each this.model as |zone|}}
-            <LinkTo @route='zone' @model={{zone.id}}>
-              <tr>
-                <td>{{zone.id}}</td>
-                <td>{{zone.alias}}</td>
-                <td>{{zone.description}}</td>
-                <td>
-                    {{t zone.type}}
-                </td>
-                <td>
-                  {{button-with-confirmation type='danger'
-                                             icon='glyphicon glyphicon-remove'
-                                             size='xs'
-                                             text=(t 'delete')
-                                             message=(t 'door.delete_confirm')
-                                             onConfirm=(route-action 'deleteZone' zone)}}
-                </td>
-              </tr>
-            </LinkTo>
+            <tr>
+              <td><LinkTo @route='zone' @model={{zone.id}}>{{zone.id}}</LinkTo></td>
+              <td><LinkTo @route='zone' @model={{zone.id}}>{{zone.alias}}</LinkTo></td>
+              <td>{{zone.description}}</td>
+              <td>
+                  {{t zone.type}}
+              </td>
+              <td>
+                {{button-with-confirmation type='danger'
+                                            icon='glyphicon glyphicon-remove'
+                                            size='xs'
+                                            text=(t 'delete')
+                                            message=(t 'door.delete_confirm')
+                                            onConfirm=(route-action 'deleteZone' zone)}}
+              </td>
+            </tr>
         {{/each}}
         </tbody>
     </table>

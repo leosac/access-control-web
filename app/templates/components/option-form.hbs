@@ -20,11 +20,11 @@
     <div class="col-md-3 col-xs-10 col-sm-8">
       {{#form.element label=(t 'language')}}
         {{#power-select
-          selected=language
-          options=languageOption
+          selected=this.language
+          options=this.languageOption
           searchEnabled=false
-          onchange=(action 'changeLanguage')
-          placeholder=language
+          onChange=(action 'changeLanguage')
+          placeholder=this.language
         as |lang|}}
           {{lang}}
         {{/power-select}}
@@ -33,7 +33,7 @@
   </div>
   <div class="row">
     <div class="col-md-3 col-xs-8 col-sm-4">
-      {{bs-button size='sm' defaultText=(t 'switch') type="primary" onClick=(action 'setLocale' language)}}
+      {{bs-button size='sm' defaultText=(t 'switch') type="primary" onClick=(action 'setLocale' this.language)}}
     </div>
   </div>
 {{/bs-form}}
