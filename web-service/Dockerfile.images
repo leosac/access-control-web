@@ -16,7 +16,7 @@ RUN git config --global user.email myadress@mydomain.com
 # Install node
 RUN (curl -sL https://deb.nodesource.com/setup_16.x | bash -)
 RUN apt-get update
-RUN apt-get install -y nodejs
+RUN apt-get install -y nodejs npm
 
 # Install yarn, bower and ember-cli
 RUN npm install yarn bower ember-cli@3.28.5 -g
