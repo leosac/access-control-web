@@ -1,59 +1,53 @@
-{{#bs-form formLayout="vertical" model=model-name onSubmit=action as |form|}}
+<BsForm @formLayout="vertical" @model=model-name onSubmit=action as |form|>
   <div class="col-md-6">
     <fieldset>
       <legend>{{t 'configuration'}}</legend>
 
-      {{#form.element controlType="text" label=(t 'name')
-                      placeholder=(t 'name')
-                      property="name" as |el|}}
+      <form.element @controlType="text" @label={{t 'name'}} @placeholder={{t 'name'}} @property="name" as |el|>
         {{el.control id="Tooltip-name"}}
-        {{#bs-tooltip placement="right" triggerElement="#Tooltip-name" triggerEvents='hover'}}
+        <BsTooltip @placement="right" @triggerElement="#Tooltip-name" @triggerEvents='hover'>
           {{t 'information.translation.key'}}
-        {{/bs-tooltip}}
-      {{/form.element}}
+        </BsTooltip>
+      </form.element>
 
-      {{#form.element label=(t 'gpio')}}
+      <form.element @label={{t 'gpio'}}>
         <div id="Tooltip-gpio">
-          {{device-picker arrayOfDeviceClass=arrayOfDeviceClass
-                          placeholder='GPIO'
-                          relationshipsName='gpio'
-                          device=ledBuzzer}}
-          {{#bs-tooltip triggerElement="#Tooltip-gpio" placement="right"}}
+          <DevicePicker @arrayOfDeviceClass=arrayOfDeviceClass
+                        @placeholder='GPIO'
+                        @relationshipsName='gpio'
+                        @device=ledBuzzer />
+          <BsTooltip @triggerElement="#Tooltip-gpio" @placement="right">
             {{t 'information.translation.key.gpio'}}
-          {{/bs-tooltip}}
+          </BsTooltip>
         </div>
-      {{/form.element}}
+      </form.element>
 
-      {{#form.element property="enabled" label=(t 'enable')}}
+      <form.element @property="enabled" @label={{t 'enable'}}>
         <div class="pull-right" id="Tooltip-enable">
-          {{device-toggle-enabled device=piface-digital-gpio saveIt=false}}
-          {{#bs-tooltip placement="right" triggerElement="#Tooltip-enable" triggerEvent='hover'}}
+          <DeviceToggleEnabled device=piface-digital-gpio saveIt=false />
+          <BsTooltip @placement="right" @triggerElement="#Tooltip-enable" @triggerEvent='hover'>
             {{t 'information.translation.key.enabled'}}
-          {{/bs-tooltip}}
+          </BsTooltip>
         </div>
-      {{/form.element}}
+      </form.element>
 
       <div class="row">
         <div class="col-md-6">
-          {{bs-button defaultText=(t 'submit')
-                      type="success"
-                      size="md"
-                      buttonType="submit"}}
+          <BsButton @defaultText={{t 'submit'}} @type="success" @size="md" @buttonType="submit" />
         </div>
         {{#id this.delete}}
           <div class="pull-right form-button-delete">
-            {{button-with-confirmation type='danger'
-                                       icon='glyphicon glyphicon-remove'
-                                       size='md'
-                                       text=(t 'delete')
-                                       message=(t 'piface-digital-gpios.delete_confirm')
-                                       onConfirm=this.delete
-            }}
+            <ButtonWithConfirmation @type='danger'
+                                    @icon='glyphicon glyphicon-remove'
+                                    @size='md'
+                                    @text={{t 'delete'}}
+                                    @message={{t 'piface-digital-gpios.delete_confirm'}}
+                                    @onConfirm={{this.delete}} />
           </div>
         {{/id}}
       </div>
     </fieldset>
   </div>
-{{/bs-form}}
+</BsForm>
 
 

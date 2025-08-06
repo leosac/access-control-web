@@ -7,9 +7,9 @@ to render if there is no active session.
     {{side-menu}}
     <div id="content-wrapper" class="d-flex flex-column page-wrapper-whole-page">
       {{#each this.flashMessages.queue as |flash|}}
-        {{#flash-message flash=flash as |component flash|}}
+        <FlashMessage @flash={{flash}} as |component flash|>
           <p>{{flash.message}}</p>
-        {{/flash-message}}
+        </FlashMessage>
       {{/each}}
 
       {{top-menu}}
@@ -28,9 +28,9 @@ to render if there is no active session.
   </div>
 {{else}}
   {{#each this.flashMessages.queue as |flash|}}
-    {{#flash-message flash=flash as |component flash|}}
+    <FlashMessage @flash={{flash}} as |component flash|>
       <p>{{flash.message}}</p>
-    {{/flash-message}}
+    </FlashMessage>
   {{/each}}
 
   {{outlet}}

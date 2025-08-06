@@ -1,5 +1,5 @@
-{{#bs-form formLayout='vertical' model=this as |form|}}
-  {{form.element property="duration" controlType='number' label='Duration'}}
-  {{form.element property="speed" controlType='number' label='Speed'}}
-{{/bs-form}}
+<BsForm @formLayout='vertical' @model=this as |form|>
+  <form.element @property="duration" @controlType="number" @label="Duration" />
+  <form.element @property="speed" @controlType="number" @label="Speed" />
+</BsForm>
 {{params}}

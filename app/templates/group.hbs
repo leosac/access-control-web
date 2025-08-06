@@ -1,42 +1,32 @@
-{{#bs-tab as |tab|}}
-  {{#tab.pane title=(t 'information')}}
+<BsTab as |tab|>
+  <tab.pane @title={{t "information"}}>
     <div class="col-md-6 button-space">
-      {{#bs-form formLayout="vertical" model=this.model onSubmit=(route-action "editGroup") as  | form |}}
+      <BsForm @formLayout="vertical" @model={{this.model}} @onSubmit={{route-action "editGroup"}}  as  | form |>
         <fieldset>
           <legend>{{t 'configuration'}}</legend>
-          {{form.element controlType="text" label=(t 'name')
-                         placeholder="MySuperGroup"
-                         property="name"}}
-          {{form.element controlType='textarea' label=(t 'description')
-                         property='description' placeholder='Description'}}
+          <form.element @controlType="text" @label={{t "name"}} @placeholder="MySuperGroup" @property="name" />
+          <form.element @controlType="textarea" @label={{t "description"}} @property="description" @placeholder="Description" />
 
           <div class="d-flex justify-content-between">
             <div>
-              {{bs-button defaultText=(t 'submit') type="success" buttonType="submit"
-                          size='md'}}
+              <BsButton @defaultText={{t 'submit'}} @type="success" @buttonType="submit" @size='md' />
             </div>
             <div class="form-button-delete">
-              {{button-with-confirmation type='danger'
-                                         icon='glyphicon glyphicon-remove'
-                                         size='md'
-                                         text=(t 'delete')
-                                         message=(t 'delete_group_confirmation')
-                                         onConfirm=(route-action 'deleteGroup')
-              }}
+              <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "delete_group_confirmation"}} @onConfirm={{route-action "deleteGroup"}} />
             </div>
           </div>
         </fieldset>
-      {{/bs-form}}
+      </BsForm>
 
     </div>
-  {{/tab.pane}}
+  </tab.pane>
 
-  {{#tab.pane title=(t 'members')}}
-    {{group-user-membership-table group=this.model}}
-    {{group-add-one-user group=this.model}}
-  {{/tab.pane}}
+  <tab.pane @title={{t "members"}}>
+    <GroupUserMembershipTable @group={{this.model}} />
+    <GroupAddOneUser @group={{this.model}} />
+  </tab.pane>
 
-  {{#tab.pane title=(t 'access')}}
-    {{group-schedules group=this.model}}
-  {{/tab.pane}}
-{{/bs-tab}}
+  <tab.pane @title={{t "access"}}>
+    <GroupSchedules @group={{this.model}} />
+  </tab.pane>
+</BsTab>

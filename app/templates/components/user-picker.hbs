@@ -1,11 +1,5 @@
-{{#form.element label=label}}
-  {{#power-select-typeahead
-    selected=this.selected.username
-    onChange=onChange
-    allowClear=true
-    search=searchCredential
-    placeholder=(t 'username')
-  as |user|}}
+<BsFormElement @label={{label}}>
+  <PowerSelectTypeahead @selected={{this.selected.username}} @onChange={{onChange}} @allowClear={{true}} @search={{searchCredential}} @placeholder={{t "username"}} as |user|>
     {{user.username}}
-  {{/power-select-typeahead}}
-{{/form.element}}
+  </PowerSelectTypeahead>
+</BsFormElement>

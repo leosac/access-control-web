@@ -18,13 +18,7 @@
             <td><LinkTo @route='door' @model={{door.id}}>{{door.alias}}</LinkTo></td>
             <td>{{door.description}}</td>
             <td>
-                {{button-with-confirmation
-                        type='danger'
-                        icon='glyphicon glyphicon-remove'
-                        size='xs'
-                        text=(t 'delete')
-                        message=(t 'door.delete_confirm')
-                        onConfirm=(route-action 'deleteDoor' door)}}
+                <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="xs" @text={{t "delete"}} @message={{t "door.delete_confirm"}} @onConfirm={{route-action "deleteDoor" door}} />
             </td>
             </tr>
         {{/each}}

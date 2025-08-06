@@ -1,22 +1,17 @@
-{{#bs-form formLayout='vertical' model=this.model
-           onSubmit=(route-action "createGroup") as | form |}}
+<BsForm @formLayout='vertical' @model={{this.model}} @onSubmit={{route-action "createGroup"}} as | form |>
   <div class="col-md-6 space-top">
     <fieldset>
       <legend>{{t 'configuration'}}</legend>
-      {{form.element controlType='text' label=(t 'users.group_name')
-                     placeholder="MySuperGroup"
-                     property='name'}}
-      {{form.element controlType='textarea' label=(t 'description')
-                     placeholder="Description"
-                     property='description'}}
+      <form.element @controlType="text" @label={{t "users.group_name"}} @placeholder="MySuperGroup" @property="name" />
+      <form.element @controlType="textarea" @label={{t "description"}} @placeholder="Description" @property="description" />
 
       <div class="row">
         <div class="col-md-4">
-          {{#bs-button type="success" buttonType="submit"}}
+          <BsButton @type="success" @buttonType="submit">
             {{t 'users.create_group'}}
-          {{/bs-button}}
+          </BsButton>
         </div>
       </div>
     </fieldset>
   </div>
-{{/bs-form}}
+</BsForm>

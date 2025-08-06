@@ -1,21 +1,19 @@
-{{#bs-button type=this.type icon=this.icon
-             size=this.size
-             onClick=(action 'spawnModal') as | button |}}
+<BsButton @type={{this.type}} @icon={{this.icon}} @size={{this.size}} @onClick={{action "spawnModal"}} as |button|>
   {{this.text}}
-{{/bs-button}}
+</BsButton>
 
-{{#bs-modal body=false footer=false open=this.modalOpen title=(t 'confirmation') as | modal |}}
-  {{#modal.body}}
+<BsModal @body={{false}} @footer={{false}} @open={{this.modalOpen}} @title={{t "confirmation"}} as |modal|>
+  <modal.body>
     {{this.message}} <br>
-  {{/modal.body}}
+  </modal.body>
 
-  {{#modal.footer as | footer |}}
-    {{#bs-button type='primary' onClick=(action 'onCancel')}}
+  <modal.footer as |footer|>
+    <BsButton @type="primary" @onClick={{action "onCancel"}}>
       {{t 'cancel'}}
-    {{/bs-button}}
+    </BsButton>
 
-    {{#bs-button type='danger' onClick=(action 'onConfirm')}}
+    <BsButton @type="danger" @onClick={{action "onConfirm"}}>
       {{t 'confirm'}}
-    {{/bs-button}}
-  {{/modal.footer}}
-{{/bs-modal}}
+    </BsButton>
+  </modal.footer>
+</BsModal>

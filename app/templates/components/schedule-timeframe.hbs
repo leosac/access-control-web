@@ -1,45 +1,31 @@
 {{#if timeframe}}
   <div class="row">
     <div class="col-md-3">
-      {{form.element controlType='checkbox' label=(t 'schedule.monday')
-                     value=(mut this.timeframe.enabledOnMonday)
-                     onChange=(action (mut this.timeframe.enabledOnMonday))}}
+      <BsFormElement @controlType="checkbox" @label={{t "schedule.monday"}} @value={{mut this.timeframe.enabledOnMonday}} @onChange={{action (mut this.timeframe.enabledOnMonday)}} />
     </div>
 
     <div class="col-md-3">
-      {{form.element controlType='checkbox' label=(t 'schedule.tuesday')
-                     value=(mut this.timeframe.enabledOnTuesday)
-                     onChange=(action (mut this.timeframe.enabledOnTuesday))}}
+      <BsFormElement @controlType="checkbox" @label={{t "schedule.tuesday"}} @value={{mut this.timeframe.enabledOnTuesday}} @onChange={{action (mut this.timeframe.enabledOnTuesday)}} />
     </div>
 
     <div class="col-md-3">
-      {{form.element controlType='checkbox' label=(t 'schedule.wednesday')
-                     value=(mut this.timeframe.enabledOnWednesday)
-                     onChange=(action (mut this.timeframe.enabledOnWednesday))}}
+      <BsFormElement @controlType="checkbox" @label={{t "schedule.wednesday"}} @value={{mut this.timeframe.enabledOnWednesday}} @onChange={{action (mut this.timeframe.enabledOnWednesday)}} />
     </div>
     <div class="col-md-3">
-      {{form.element controlType='checkbox' label=(t 'schedule.thursday')
-                     value=(mut this.timeframe.enabledOnThursday)
-                     onChange=(action (mut this.timeframe.enabledOnThursday))}}
+      <BsFormElement @controlType="checkbox" @label={{t "schedule.thursday"}} @value={{mut this.timeframe.enabledOnThursday}} @onChange={{action (mut this.timeframe.enabledOnThursday)}} />
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-3">
-      {{form.element controlType='checkbox' label=(t 'schedule.friday')
-                     value=(mut this.timeframe.enabledOnFriday)
-                     onChange=(action (mut this.timeframe.enabledOnFriday))}}
+      <BsFormElement @controlType="checkbox" @label={{t "schedule.friday"}} @value={{mut this.timeframe.enabledOnFriday}} @onChange={{action (mut this.timeframe.enabledOnFriday)}} />
     </div>
     <div class="col-md-3">
-      {{form.element controlType='checkbox' label=(t 'schedule.saturday')
-                     value=(mut this.timeframe.enabledOnSaturday)
-                     onChange=(action (mut this.timeframe.enabledOnSaturday))}}
+      <BsFormElement @controlType="checkbox" @label={{t "schedule.saturday"}} @value={{mut this.timeframe.enabledOnSaturday}} @onChange={{action (mut this.timeframe.enabledOnSaturday)}} />
     </div>
 
     <div class="col-md-3">
-      {{form.element controlType='checkbox' label=(t 'schedule.sunday')
-                     value=(mut this.timeframe.enabledOnSunday)
-                     onChange=(action (mut this.timeframe.enabledOnSunday))}}
+      <BsFormElement @controlType="checkbox" @label={{t "schedule.sunday"}} @value={{mut this.timeframe.enabledOnSunday}} @onChange={{action (mut this.timeframe.enabledOnSunday)}} />
     </div>
   </div>
   <div class="row">
@@ -49,27 +35,16 @@
   </div>
   <div class="row">
     <div class="col-md-5 datetime-picker-margin">
-      {{form.element controlType="text" label=(t 'schedule.start_time')
-                     placeholder="H:mm"
-                     disabled=this.disabled
-                     value=(mut this.timeframe.startTime)
-                     onChange=(action (mut this.timeframe.startTime))}}
+      <BsFormElement @controlType="text" @label={{t "schedule.start_time"}} @placeholder="H:mm" @disabled={{this.disabled}} @value={{mut this.timeframe.startTime}} @onChange={{action (mut this.timeframe.startTime)}} />
     </div>
 
     <div class="col-md-5 datetime-picker-margin">
-      {{form.element controlType="text" label=(t 'schedule.end_time')
-                     placeholder="H:mm"
-                     disabled=this.disabled
-                     value=(mut this.timeframe.endTime)
-                     onChange=(action (mut this.timeframe.endTime))}}
+      <BsFormElement @controlType="text" @label={{t "schedule.end_time"}} @placeholder="H:mm" @disabled={{this.disabled}} @value={{mut this.timeframe.endTime}} @onChange={{action (mut this.timeframe.endTime)}} />
     </div>
   </div>
   <div class="row">
     <div class="col-md-6 space-bottom">
-      {{bs-button defaultText=(t 'remove_timeframe')
-                  size='sm'
-                  type='danger'
-                  onClick=this.delete}}
+      <BsButton @defaultText{{t 'remove_timeframe'}} @size='sm' @type='danger' @onClick={{this.delete}} />
     </div>
   </div>
 {{/if}}

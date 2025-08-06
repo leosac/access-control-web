@@ -4,7 +4,7 @@
 
 <div class="row">
   <div class="col-md-2 space-bottom">
-    {{bs-button onCLick=(action 'refresh') defaultText='Refresh'}}
+    <BsButton @onCLick={{action 'refresh'}} @defaultText='Refresh' />
   </div>
 </div>
 <div class="row">
@@ -40,14 +40,7 @@
                     <div class="panel-heading">
                       Mapping: {{mapping.alias}}
                       <div class="pull-right">
-                        {{button-with-confirmation
-                          type='danger'
-                          icon='glyphicon glyphicon-remove'
-                          size='xs'
-                          text=(t 'schedule.remove_from_mapping')
-                          message=(t 'schedule.remove_from_mapping_confirm')
-                          onConfirm=(action 'leaveMapping' mapping)
-                        }}
+                        <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="xs" @text={{t "schedule.remove_from_mapping"}} @message={{t "schedule.remove_from_mapping_confirm"}} @onConfirm={{action "leaveMapping" mapping}} />
                       </div>
                     </div>
                     <div class="panel-body">
@@ -80,7 +73,7 @@
         <div class="col-md-6">
           <div class="panel panel-default">
             <div class="panel-body space-bottom">
-              {{schedule-mapping-picker action=(action 'addScheduleMapping')}}
+              <ScheduleMappingPicker @action={{action "addScheduleMapping"}} />
             </div>
           </div>
         </div>

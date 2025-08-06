@@ -1,4 +1,4 @@
 <div class="col-md-12">
-    {{schedule-form schedule=this.model action=(route-action 'createSchedule')}}
+    <ScheduleForm @schedule={{this.model}} @action={{route-action "createSchedule"}} />
 </div>
 

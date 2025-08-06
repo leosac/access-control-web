@@ -1,33 +1,30 @@
-{{#bs-form formLayout='inline' onSubmit=(action 'scheduleMappingPicked') as |form|}}
+<BsForm @formLayout='inline' @onSubmit={{action 'scheduleMappingPicked'}} as |form|>
   <fieldset>
     <div class="col-md-4 col-sm-4">
-      {{#form.element label=(t 'schedule.title')}}
-        {{#power-select-typeahead search=(action 'searchSchedule')
-                                  selected=this.selectedSchedule.name
-                                  placeholder=(t 'schedule.type')
-                                  onChange=(action 'scheduleChanged') as |schedInfo|}}
+      <form.element @label={{t "schedule.title"}}>
+        <PowerSelectTypeahead @search={{action "searchSchedule"}} @selected={{this.selectedSchedule.name}} @placeholder={{t "schedule.type"}} @onChange={{action "scheduleChanged"}} as |schedInfo|>
           {{schedInfo.name}}
-        {{/power-select-typeahead}}
-      {{/form.element}}
+        </PowerSelectTypeahead>
+      </form.element>
     </div>
     <div class="col-sm-4 col-md-4">
-      {{#form.element label=(t 'mapping')}}
+      <form.element @label={{t "mapping"}}>
         {{#power-select-typeahead selected=this.selectedMapping
                                   form=form
                                   searchField="alias"
                                   options=this.selectedSchedule.mapping
                                   onChange=(action (mut this.selectedMapping))
-                                  placeholder='...' as |mapping|}}
+                                  placeholder='...' as |mapping| }}
           {{mapping.alias}}
         {{else}}
           <div class="text-center">
             <p>{{t 'schedule.no_mapping'}}</p>
           </div>
         {{/power-select-typeahead}}
-      {{/form.element}}
+      </form.element>
     </div>
     <div class="pull-right button-next-to-power-select">
-      {{bs-button size='sm' defaultText=(t 'schedule.join_mapping') type="primary" buttonType="submit"}}
+      <BsButton @size='sm' @defaultText={{t 'schedule.join_mapping'}} @type="primary" @buttonType="submit" />
     </div>
   </fieldset>
-{{/bs-form}}
+</BsForm>

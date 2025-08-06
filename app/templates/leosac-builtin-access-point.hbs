@@ -1,8 +1,8 @@
-{{#bs-tab as | tab |}}
-  {{#tab.pane title=(t 'information')}}
-    {{leosac-builtin-access-point-form ap=this.model}}
-  {{/tab.pane}}
-  {{#tab.pane title=(t 'action')}}
-    {{leosac-builtin-access-point-action-list ap=this.model}}
-  {{/tab.pane}}
-{{/bs-tab}}
+<BsTab as |tab|>
+  <tab.pane @title={{t "information"}}>
+    <LeosacBuiltinAccessPointForm @ap={{this.model}} />
+  </tab.pane>
+  <tab.pane @title={{t "action"}}>
+    <LeosacBuiltinAccessPointActionList @ap={{this.model}} />
+  </tab.pane>
+</BsTab>

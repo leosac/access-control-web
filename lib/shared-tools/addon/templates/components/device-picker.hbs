@@ -1,9 +1,6 @@
-{{#power-select search=(action 'searchDevice')
-                selected=(get device relationshipsName)
-                placeholder=placeholder
-                onChange=(action 'setRelationships') as |device|}}
+<PowerSelect @search={{action "searchDevice"}} @selected={{get device relationshipsName}} @placeholder={{placeholder}} @onChange={{action "setRelationships"}} as |device|>
   {{device.name}}
   <span style="color: #9b9aa5;font-style: italic;" class="pull-right">
     {{device.type}}
   </span>
-{{/power-select}}
+</PowerSelect>

@@ -1,29 +1,18 @@
 <div class="row">
     <div class="col-md-6">
-        {{ember-jstree
-                actionReceiver=jsTreeActionReceiver
-                eventDidMoveNode='handleJstreeEventDidMoveNode'
-                eventDidSelectNode='handleJstreeEventDidSelectNode'
-                data=zoneDataTree
-                plugins=plugins
-                typesOptions=typesOptions
-                checkCallback=checkCallback}}
+        <EmberJstree @actionReceiver={{jsTreeActionReceiver}} @eventDidMoveNode="handleJstreeEventDidMoveNode" @eventDidSelectNode="handleJstreeEventDidSelectNode" @data={{zoneDataTree}} @plugins={{plugins}} @typesOptions={{typesOptions}} @checkCallback={{checkCallback}} />
     </div>
 
     {{#if this.selectedZone}}
       <div class="col-md-6">
         <div class="row">
           <div class="col-sm-8">
-            {{#power-select-typeahead search=(action 'searchDoor')
-                                      selected=newDoor.alias
-                                      placeholder=(t 'schedule.type_door')
-                                      onchange=(action (mut newDoor)) as |doorInfo|}}
+            <PowerSelectTypeahead @search={{action "searchDoor"}} @selected={{newDoor.alias}} @placeholder={{t "schedule.type_door"}} @onchange={{action (mut newDoor)}} as |doorInfo|>
               {{doorInfo.alias}}
-            {{/power-select-typeahead}}
+            </PowerSelectTypeahead>
           </div>
           <div class="col-sm-4">
-            {{bs-button size='sm' type="primary" onClick=(action 'addDoor')
-                        defaultText=(t 'schedule.add_door')}}
+            <BsButton @size='sm' @type="primary" @onClick={{action 'addDoor'}} @defaultText={{t 'schedule.add_door'}} />
           </div>
         </div>
 
@@ -44,8 +33,8 @@
                       <td>{{door.alias}}</td>
                       <td>
                         <div class="pull-right">
-                          {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
-                                      defaultText=(t 'remove') onClick=(action 'removeDoor' door)}}
+                          <BsButton @size='xs' @icon='glyphicon glyphicon-remove' @type='danger'
+                                      @defaultText={{t 'remove'}} @onClick={{action 'removeDoor' door}} />
                         </div>
                       </td>
                     </tr>

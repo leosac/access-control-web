@@ -1,98 +1,68 @@
-{{#bs-form formLayout="vertical" model=this.wiegand-reader onSubmit=this.action as |form|}}
+<BsForm @formLayout="vertical" @model={{this.wiegand-reader}} @onSubmit={{this.action}} as |form|>
   <div class="col-md-6">
     <fieldset>
       <legend>{{t 'configuration'}}</legend>
 
-      {{#form.element controlType="text" label=(t 'name')
-                      placeholder=(t 'name')
-                      property="name" as |el|}}
-        {{el.control id="Tooltip-name"}}
-        {{#bs-tooltip placement="right" triggerElement="#Tooltip-name" triggerEvents='hover'}}{{t
-          'wiegand_information.wiegand_name'}}{{/bs-tooltip}}
-      {{/form.element}}
+      <form.element @controlType="text" @label={{t "name"}} @placeholder={{t "name"}} @property="name" as |el|>
+        <el.control @id="Tooltip-name" />
+        <BsTooltip @placement="right" @triggerElement="#Tooltip-name" @triggerEvents="hover">{{t
+          'wiegand_information.wiegand_name'}}</BsTooltip>
+      </form.element>
 
-      {{#form.element property="mode" label=(t 'mode')}}
+      <form.element @property="mode" @label={{t "mode"}}>
         <div id="Tooltip-mode">
-          {{#power-select
-            selected=this.wiegand-reader.mode
-            searchEnabled=false
-            options=this.allMode
-            onChange=(action (mut this.wiegand-reader.mode))
-            placeholder=(t 'type_mode')
-          as |mode|}}
+          <PowerSelect @selected={{this.wiegand-reader.mode}} @searchEnabled={{false}} @options={{this.allMode}} @onChange={{action (mut this.wiegand-reader.mode)}} @placeholder={{t "type_mode"}} as |mode|>
             {{t mode}}
-          {{/power-select}}
-          {{#bs-tooltip placement="right" triggerElement="#Tooltip-mode"}}{{t 'wiegand_information.mode'}}{{/bs-tooltip}}
+          </PowerSelect>
+          <BsTooltip @placement="right" @triggerElement="#Tooltip-mode">{{t 'wiegand_information.mode'}}</BsTooltip>
         </div>
-      {{/form.element}}
+      </form.element>
 
-      {{#form.element label=(t 'gpio_high')}}
+      <form.element @label={{t "gpio_high"}}>
         <div id="Tooltip-high">
-          {{device-picker arrayOfDeviceClass=this.arrayOfDeviceClassGpio
-                          placeholder='GPIO'
-                          relationshipsName='gpioHigh'
-                          device=this.wiegand-reader}}
-          {{#bs-tooltip placement="right" triggerElement="#Tooltip-high"}}{{t 'wiegand_information.gpio_high'}}{{/bs-tooltip}}
+          <DevicePicker @arrayOfDeviceClass={{this.arrayOfDeviceClassGpio}} @placeholder="GPIO" @relationshipsName="gpioHigh" @device={{this.wiegand-reader}} />
+          <BsTooltip @placement="right" @triggerElement="#Tooltip-high">{{t 'wiegand_information.gpio_high'}}</BsTooltip>
         </div>
-      {{/form.element}}
+      </form.element>
 
-      {{#form.element label=(t 'gpio_low')}}
+      <form.element @label={{t "gpio_low"}}>
         <div id="Tooltip-low">
-          {{device-picker arrayOfDeviceClass=this.arrayOfDeviceClassGpio
-                          placeholder='GPIO'
-                          relationshipsName='gpioLow'
-                          device=this.wiegand-reader}}
-          {{#bs-tooltip placement="right" triggerElement="#Tooltip-low"}}{{t 'wiegand_information.gpio_low'}}{{/bs-tooltip}}
+          <DevicePicker @arrayOfDeviceClass={{this.arrayOfDeviceClassGpio}} @placeholder="GPIO" @relationshipsName="gpioLow" @device={{this.wiegand-reader}} />
+          <BsTooltip @placement="right" @triggerElement="#Tooltip-low">{{t 'wiegand_information.gpio_low'}}</BsTooltip>
         </div>
-      {{/form.element}}
+      </form.element>
 
-      {{#form.element label=(t 'buzzer')}}
+      <form.element @label={{t "buzzer"}}>
         <div id="Tooltip-buzzer">
-          {{device-picker arrayOfDeviceClass=this.arrayOfDeviceClassBuzzer
-                          placeholder='Buzzer'
-                          relationshipsName='buzzer'
-                          device=this.wiegand-reader}}
-          {{#bs-tooltip placement="right" triggerElement="#Tooltip-buzzer"}}{{t 'wiegand_information.buzzer'}}{{/bs-tooltip}}
+          <DevicePicker @arrayOfDeviceClass={{this.arrayOfDeviceClassBuzzer}} @placeholder="Buzzer" @relationshipsName="buzzer" @device={{this.wiegand-reader}} />
+          <BsTooltip @placement="right" @triggerElement="#Tooltip-buzzer">{{t 'wiegand_information.buzzer'}}</BsTooltip>
         </div>
-      {{/form.element}}
+      </form.element>
 
-      {{#form.element label=(t 'led')}}
+      <form.element @label={{t "led"}}>
         <div id="Tooltip-led">
-          {{device-picker arrayOfDeviceClass=this.arrayOfDeviceClassLed
-                          placeholder='LED'
-                          relationshipsName='greenLed'
-                          device=this.wiegand-reader}}
-          {{#bs-tooltip placement="right" triggerElement="#Tooltip-led"}}{{t 'wiegand_information.led'}}{{/bs-tooltip}}
+          <DevicePicker @arrayOfDeviceClass={{this.arrayOfDeviceClassLed}} @placeholder="LED" @relationshipsName="greenLed" @device={{this.wiegand-reader}} />
+          <BsTooltip @placement="right" @triggerElement="#Tooltip-led">{{t 'wiegand_information.led'}}</BsTooltip>
         </div>
-      {{/form.element}}
+      </form.element>
 
-      {{#form.element label=(t 'enable')}}
+      <form.element @label={{t "enable"}}>
         <div class="pull-right" id="Tooltip-enable">
-          {{device-toggle-enabled device=this.wiegand-reader saveIt=false}}
-          {{#bs-tooltip placement="right" triggerElement="#Tooltip-enable"}}{{t 'information.enable'}}{{/bs-tooltip}}
+          <DeviceToggleEnabled @device={{this.wiegand-reader}} @saveIt={{false}} />
+          <BsTooltip @placement="right" @triggerElement="#Tooltip-enable">{{t 'information.enable'}}</BsTooltip>
         </div>
-      {{/form.element}}
+      </form.element>
 
       <div class="row">
         <div class="col-md-6">
-          {{bs-button defaultText=(t 'submit')
-                      type="success"
-                      size="md"
-                      onClick=action
-                      buttonType="submit"}}
+          <BsButton @defaultText={{t "submit"}} @type="success" @size="md" @onClick={{action}} @buttonType="submit" />
         </div>
         {{#if this.delete}}
           <div class="pull-right form-button-delete">
-            {{button-with-confirmation type='danger'
-                                       icon='glyphicon glyphicon-remove'
-                                       size='md'
-                                       text=(t 'delete')
-                                       message=(t 'wiegand-reader.delete_confirm')
-                                       onConfirm=this.delete
-            }}
+            <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "wiegand-reader.delete_confirm"}} @onConfirm={{this.delete}} />
           </div>
         {{/if}}
       </div>
     </fieldset>
   </div>
-{{/bs-form}}
+</BsForm>

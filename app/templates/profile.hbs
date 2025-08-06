@@ -3,68 +3,54 @@
 </div>
 
 <div>
-  {{#bs-tab as |tab|}}
-    {{#tab.pane title=(t 'information')}}
-      {{#bs-form formLayout="vertical" model=this.model.user onSubmit=(route-action "editProfile") as |form|}}
+  <BsTab as |tab|>
+    <tab.pane @title={{t "information"}}>
+      <BsForm @formLayout="vertical" @model={{this.model.user}} @onSubmit={{route-action "editProfile"}} as |form|>
         <div class="col-md-6 space-top">
           <fieldset>
             <legend>{{t 'profile.title'}}</legend>
-            {{form.element disabled=this.isProfileLocked
-                           controlType="text" label=(t 'firstname')
-                           placeholder="John" property="firstname"}}
+            <form.element @disabled={{this.isProfileLocked}} @controlType="text" @label={{t "firstname"}} @placeholder="John" @property="firstname" />
 
-            {{form.element disabled=this.isProfileLocked
-                           controlType="text" label=(t 'lastname')
-                           placeholder="Doe" property="lastname"}}
+            <form.element @disabled={{this.isProfileLocked}} @controlType="text" @label={{t "lastname"}} @placeholder="Doe" @property="lastname" />
 
-            {{form.element disabled=this.isProfileLocked
-                           controlType="email" label=(t 'email')
-                           placeholder="john@doe.com" property="email"}}
-            {{#form.element label=(t 'rank')}}
-              {{#power-select
-                disabled=this.isRankEditLocked
-                selected=this.model.user.rank
-                options=this.model.possibleRanks
-                onChange=(action (mut this.model.user.rank))
-              as |rank|}}
+            <form.element @disabled={{this.isProfileLocked}} @controlType="email" @label={{t "email"}} @placeholder="john@doe.com" @property="email" />
+            <form.element @label={{t "rank"}}>
+              <PowerSelect @disabled={{this.isRankEditLocked}}
+                           @selected={{this.model.user.rank}}
+                           @options={{this.model.possibleRanks}}
+                           @onChange={{action (mut this.model.user.rank)}} as |rank|>
                 {{t rank}}
-              {{/power-select}}
-            {{/form.element}}
+              </PowerSelect>
+            </form.element>
 
-          {{validity-control
-            form=form
-            disabled=this.isRankEditLocked
-            enabledProperty="validityEnabled"
-            startDate=(mut this.model.user.validityStart)
-            endDate=(mut this.model.user.validityEnd)}}
+          <ValidityControl @form={{form}} @disabled={{this.isRankEditLocked}} @enabledProperty="validityEnabled" @startDate={{mut this.model.user.validityStart}} @endDate={{mut this.model.user.validityEnd}} />
 
 
             <div class="row">
-            <div class="col-md-6">
-            {{bs-button disabled=this.isProfileLocked
-                        defaultText=(t 'submit') type="success" onClick=(route-action 'editProfile') buttonType="submit"}}
-            </div>
+              <div class="col-md-6">
+                <BsButton @disabled={{this.isProfileLocked}} @defaultText={{t 'submit'}} @type="success" @onClick={{route-action 'editProfile'}} @buttonType="submit" />
+              </div>
             </div>
           </fieldset>
           <p></p>
         </div>
         <div class="col-md-6 space-top">
-          {{password-change disabled=this.isProfileLocked user_id=this.model.user.id}}
+          <PasswordChange @disabled={{this.isProfileLocked}} @user_id={{this.model.user.id}} />
         </div>
-      {{/bs-form}}
+      </BsForm>
 
-    {{/tab.pane}}
+    </tab.pane>
 
-    {{#tab.pane title=(t 'groups')}}
-      {{user-group-membership-table user=this.model.user}}
-    {{/tab.pane}}
+    <tab.pane @title={{t "groups"}}>
+      <UserGroupMembershipTable @user={{this.model.user}} />
+    </tab.pane>
 
-    {{#tab.pane title=(t 'w.credentials')}}
-      {{user-credential-table user=this.model.user}}
-    {{/tab.pane}}
+    <tab.pane @title={{t "w.credentials"}}>
+      <UserCredentialTable @user={{this.model.user}} />
+    </tab.pane>
 
-    {{#tab.pane title=(t 'schedules')}}
-      {{user-schedules user=this.model.user}}
-    {{/tab.pane}}
-  {{/bs-tab}}
+    <tab.pane @title={{t "schedules"}}>
+      <UserSchedules @user={{this.model.user}} />
+    </tab.pane>
+  </BsTab>
 </div>

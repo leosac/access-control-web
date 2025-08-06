@@ -1,5 +1,5 @@
 <div class="col-md-12">
-  {{#step-manager did-transition=(action 'afterTransition') as |w|}}
+  <StepManager @did-transition={{action "afterTransition"}} as |w|>
     <div class="container">
       <ul class="nav nav-pills nav-justified thumbnail">
         {{#each steps as |step|}}
@@ -22,19 +22,16 @@
       </ul>
     </div>
 
-    {{#w.step name='general'}}
+    <w.step @name="general">
       <fieldset>
         <legend>{{t 'configuration'}}</legend>
         <div class="col-md-12">
-          {{#bs-form model=this formLayout="vertical" as |form|}}
+          <BsForm @model={{this}} @formLayout="vertical" as |form|>
             <div class="row">
               <div class="col-md-6">
-                {{#form.element controlType="text" label=(t 'name')
-                                placeholder=(t 'name')
-                                property='configName'
-                                as |el|}}
+                <form.element @controlType="text" @label={{t "name"}} @placeholder={{t "name"}} @property="configName" as |el|>
                   {{el.control}}
-                {{/form.element}}
+                </form.element>
               </div>
               <div class="col-md-6 text-next-to-power-select">
                 <p><b>{{t 'name'}}</b>{{t 'wiegand_wizard_information.wizard_name'}}</p>
@@ -43,16 +40,11 @@
             </div>
             <div class="row">
               <div class="col-md-6">
-                {{#form.element label=(t 'gpio')}}
-                  {{#power-select
-                    selected=gpioType
-                    searchEnabled=false
-                    options=listOfGpio
-                    onchange=(action (mut gpioType))
-                  as |gpio|}}
+                <form.element @label={{t "gpio"}}>
+                  <PowerSelect @selected={{gpioType}} @searchEnabled={{false}} @options={{listOfGpio}} @onchange={{action (mut gpioType)}} as |gpio|>
                     {{t gpio}}
-                  {{/power-select}}
-                {{/form.element}}
+                  </PowerSelect>
+                </form.element>
               </div>
               <div class="col-md-6 text-next-to-power-select">
                 <p>
@@ -63,16 +55,11 @@
             {{#if (eq gpioType 'piface-digital-gpio')}}
               <div class="row">
                 <div class="col-md-6">
-                  {{#form.element label=(t 'hardware_address')}}
-                    {{#power-select
-                      selected=hardwareAddress
-                      searchEnabled=false
-                      options=hardwareAddressList
-                      onchange=(action (mut hardwareAddress))
-                    as |address|}}
+                  <form.element @label={{t "hardware_address"}}>
+                    <PowerSelect @selected={{hardwareAddress}} @searchEnabled={{false}} @options={{hardwareAddressList}} @onchange={{action (mut hardwareAddress)}} as |address|>
                       {{address}}
-                    {{/power-select}}
-                  {{/form.element}}
+                    </PowerSelect>
+                  </form.element>
                 </div>
                 <div class="col-md-6 text-next-to-power-select">
                   <p>
@@ -82,14 +69,12 @@
               </div>
             {{/if}}
 
-          {{/bs-form}}
+          </BsForm>
 
-          {{#bs-form formLayout='vertical' model=this as |form|}}
+          <BsForm @formLayout="vertical" @model={{this}} as |form|>
             <div class="row">
               <div class="col-md-6">
-                {{form.element label=(t 'led')
-                               controlType='checkbox'
-                               property='ledEnabled'}}
+                <form.element @label={{t "led"}} @controlType="checkbox" @property="ledEnabled" />
               </div>
               <div class="col-md-6 text-next-to-checkbox">
                 <p>
@@ -99,9 +84,7 @@
             </div>
             <div class="row">
               <div class="col-md-6">
-                {{form.element label=(t 'buzzer')
-                               controlType='checkbox'
-                               property='buzzerEnabled'}}
+                <form.element @label={{t "buzzer"}} @controlType="checkbox" @property="buzzerEnabled" />
               </div>
               <div class="col-md-6 text-next-to-checkbox">
                 <p>
@@ -109,24 +92,21 @@
                 </p>
               </div>
             </div>
-          {{/bs-form}}
+          </BsForm>
 
-          {{bs-button type='success' text='Next'
-                      onClick=(action 'transitionFromGeneralToGpio' (action w.transition-to 'gpio'))}}
+          <BsButton @type="success" @text="Next" @onClick={{action "transitionFromGeneralToGpio" (action w.transition-to "gpio")}} />
         </div>
       </fieldset>
-    {{/w.step}}
+    </w.step>
 
-    {{#w.step name='gpio'}}
+    <w.step @name="gpio">
       <div class="row">
         <div class="col-md-6">
-          {{#bs-form formLayout="vertical" model=pifaceDigitalGpioHigh as |form|}}
-            {{#form.element controlType="number" label=(t 'number_high')
-                            placeholder='0 - 7'
-                            property="number" as |el|}}
+          <BsForm @formLayout="vertical" @model={{pifaceDigitalGpioHigh}} as |form|>
+            <form.element @controlType="number" @label={{t "number_high"}} @placeholder="0 - 7" @property="number" as |el|>
               {{el.control}}
-            {{/form.element}}
-          {{/bs-form}}
+            </form.element>
+          </BsForm>
         </div>
         <div class="col-md-6 text-next-to-power-select">
           <p>
@@ -136,13 +116,11 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-          {{#bs-form formLayout="vertical" model=pifaceDigitalGpioLow as |form|}}
-            {{#form.element controlType="number" label=(t 'number_low')
-                            placeholder='0 - 7'
-                            property="number" as |el|}}
+          <BsForm @formLayout="vertical" @model={{pifaceDigitalGpioLow}} as |form|>
+            <form.element @controlType="number" @label={{t "number_low"}} @placeholder="0 - 7" @property="number" as |el|>
               {{el.control}}
-            {{/form.element}}
-          {{/bs-form}}
+            </form.element>
+          </BsForm>
         </div>
         <div class="col-md-6 text-next-to-power-select">
           <p>
@@ -153,13 +131,11 @@
       {{#if ledEnabled}}
         <div class="row">
           <div class="col-md-6">
-            {{#bs-form formLayout="vertical" model=pifaceDigitalGpioLed as |form|}}
-              {{#form.element controlType="number" label=(t 'number_led')
-                              placeholder='0 - 7'
-                              property="number" as |el|}}
+            <BsForm @formLayout="vertical" @model={{pifaceDigitalGpioLed}} as |form|>
+              <form.element @controlType="number" @label={{t "number_led"}} @placeholder="0 - 7" @property="number" as |el|>
                 {{el.control}}
-              {{/form.element}}
-            {{/bs-form}}
+              </form.element>
+            </BsForm>
           </div>
           <div class="col-md-6 text-next-to-power-select">
             <p>
@@ -171,14 +147,12 @@
       {{#if buzzerEnabled}}
         <div class="row">
           <div class="col-md-6">
-            {{#bs-form formLayout="vertical" model=pifaceDigitalGpioBuzzer as |form|}}
+            <BsForm @formLayout="vertical" @model={{pifaceDigitalGpioBuzzer}} as |form|>
 
-              {{#form.element controlType="number" label=(t 'number_buzzer')
-                              placeholder='0 - 7'
-                              property="number" as |el|}}
+              <form.element @controlType="number" @label={{t "number_buzzer"}} @placeholder="0 - 7" @property="number" as |el|>
                 {{el.control}}
-              {{/form.element}}
-            {{/bs-form}}
+              </form.element>
+            </BsForm>
           </div>
           <div class="col-md-6  text-next-to-power-select">
             <p>
@@ -187,20 +161,19 @@
           </div>
         </div>
       {{/if}}
-      {{bs-button type='success' text='Next'
-                  onClick=(action 'transitionFromGpioToFinish' (action w.transition-to 'finish'))}}
-    {{/w.step}}
+      <BsButton @type="success" @text="Next" @onClick={{action "transitionFromGpioToFinish" (action w.transition-to "finish")}} />
+    </w.step>
 
-    {{#w.step name='finish'}}
+    <w.step @name="finish">
       <div class="row">
         <div class="col-md-6">
           {{t 'finish'}}
           {{#link-to-external 'index'}}
-            {{bs-button type='success' text='Home'}}
+            <BsButton @type="success" @text="Home" />
           {{/link-to-external}}
 
         </div>
       </div>
-    {{/w.step}}
-  {{/step-manager}}
+    </w.step>
+  </StepManager>
 </div>

@@ -1,36 +1,23 @@
 <div class="col-md-12">
-  {{#bs-form formLayout="vertical" model=this.door onSubmit=this.action as |form|}}
+  <BsForm @formLayout="vertical" @model={{this.door}} onSubmit={{this.action}} as |form|>
     <div class="col-md-6">
       <fieldset>
         <legend>{{t 'configuration'}}</legend>
-        {{form.element controlType="text" label=(t 'alias')
-                       placeholder=(t 'door.placeholder')
-                       property="alias"}}
-        {{form.element controlType="textarea" label=(t 'notes')
-                       placeholder=(t 'notes_placeholder')
-                       property="description"}}
-        {{autocomplete/access-point label=(t 'access_point')
-                                    form=form
-                                    onChange=(action 'changeAP')
-                                    selected=this.door.accessPoint.alias}}
+        <form.element @controlType="text" @label={{t "alias"}} @placeholder={{t "door.placeholder"}} @property="alias" />
+        <form.element @controlType="textarea" @label={{t "notes"}} @placeholder={{t "notes_placeholder"}} @property="description" />
+        <Autocomplete::AccessPoint @label={{t "access_point"}} @form={{form}} @onChange={{action "changeAP"}} @selected={{this.door.accessPoint.alias}} />
         <div class="row">
           <div class="col-md-6">
-            {{bs-button defaultText=(t 'submit') type="success" size="md" onClick=this.action buttonType="submit"}}
+            <BsButton @defaultText={{t 'submit'}} @type="success" @size="md" @onClick={{this.action}} @buttonType="submit" />
           </div>
           {{#if this.delete}}
             <div class="pull-right form-button-delete">
-              {{button-with-confirmation type='danger'
-                                         icon='glyphicon glyphicon-remove'
-                                         size='md'
-                                         text=(t 'delete')
-                                         message=(t 'door.delete_confirm')
-                                         onConfirm=this.delete
-              }}
+              <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "door.delete_confirm"}} @onConfirm={{this.delete}} />
             </div>
           {{/if}}
         </div>
 
       </fieldset>
     </div>
-  {{/bs-form}}
+  </BsForm>
 </div>

@@ -1,14 +1,10 @@
-{{#bs-form formLayout="vertical" model=this.ap onSubmit=action as | form|}}
+<BsForm @formLayout="vertical" @model={{this.ap}} onSubmit={{this.action}} as | form|>
   <div class="col-md-6">
     <fieldset>
       <legend>{{t 'configuration'}}</legend>
 
-      {{form.element controlType="text" label=(t 'alias')
-                     placeholder=(t 'access_point_placeholder')
-                     property="alias"}}
-      {{form.element controlType="textarea" label=(t 'notes')
-                     placeholder=(t 'notes_placeholder')
-                     property="description"}}
+      <form.element @controlType="text" @label={{t "alias"}} @placeholder={{t "access_point_placeholder"}} @property="alias" />
+      <form.element @controlType="textarea" @label={{t "notes"}} @placeholder={{t "notes_placeholder"}} @property="description" />
 
       <hr>
       <h3>{{t 'leosac_builtin_ap.authentication_sources_device'}}</h3>
@@ -31,8 +27,8 @@
                     {{device.name}}</td>
                   <td>
                     <div class="text-center">
-                      {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
-                                  defaultText=(t 'remove') onClick=(action 'removeAuthSources' device)}}
+                      <BsButton @size='xs' @icon='glyphicon glyphicon-remove' @type='danger'
+                                @defaultText={{t 'remove'}} @onClick={{action 'removeAuthSources' device}} />
                     </div>
                   </td>
                 </tr>
@@ -45,18 +41,15 @@
       <div>
         <div class="row">
           <div class="col-md-12">
-            {{#form.element label=(t 'leosac_builtin_ap.device_picker')}}
-              {{device-list-picker arrayOfDeviceClass=arrayOfDeviceClassWiegandReader
-                                   newDevice=this.newDevice
-                                   placeholder=(t 'leosac_builtin_ap.device_placeholder')
-              }}
-            {{/form.element}}
+            <form.element @label={{t "leosac_builtin_ap.device_picker"}}>
+              <DeviceListPicker @arrayOfDeviceClass={{arrayOfDeviceClassWiegandReader}} @newDevice={{this.newDevice}} @placeholder={{t "leosac_builtin_ap.device_placeholder"}} />
+            </form.element>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
-            {{bs-button size='sm' type="primary" onClick=(action 'addAuthSources')
-                        defaultText=(t 'leosac_builtin_ap.add_device')}}
+            <BsButton @size='sm' @type="primary" @onClick={{action 'addAuthSources'}}
+                      @defaultText={{t 'leosac_builtin_ap.add_device'}} />
           </div>
         </div>
       </div>
@@ -83,11 +76,11 @@
                     {{schedule.name}}</td>
                   <td>
                     <div class="text-center">
-                      {{bs-button size='xs'
-                                  icon='glyphicon glyphicon-remove'
-                                  type='danger'
-                                  defaultText=(t 'remove')
-                                  onClick=(action 'removeCloseSchedule' schedule)}}
+                      <BsButton @size='xs'
+                                @icon='glyphicon glyphicon-remove'
+                                @type='danger'
+                                @defaultText={{t 'remove'}}
+                                @onClick={{action 'removeCloseSchedule' schedule}} />
                     </div>
                   </td>
                 </tr>
@@ -115,11 +108,11 @@
                     {{schedule.name}}</td>
                   <td>
                     <div class="text-center">
-                      {{bs-button size='xs'
-                                  icon='glyphicon glyphicon-remove'
-                                  type='danger'
-                                  defaultText=(t 'remove')
-                                  onClick=(action 'removeOpenSchedule' schedule)}}
+                      <BsButton @size='xs'
+                                @icon='glyphicon glyphicon-remove'
+                                @type='danger'
+                                @defaultText={{t 'remove'}}
+                                @onClick={{action 'removeOpenSchedule' schedule}} />
                     </div>
                   </td>
                 </tr>
@@ -132,43 +125,34 @@
       <div>
         <div class="row">
           <div class="col-md-12">
-            {{#form.element label=(t 'leosac_builtin_ap.schedule_picker')}}
-              {{#power-select-typeahead search=(action 'searchSchedule')
-                                        selected=this.newSchedule.name
-                                        placeholder=(t 'leosac_builtin_ap.schedules_placeholder')
-                                        onChange=(action (mut this.newSchedule)) as |schedule|}}
+            <form.element @label={{t "leosac_builtin_ap.schedule_picker"}}>
+              <PowerSelectTypeahead @search={{action "searchSchedule"}} @selected={{this.newSchedule.name}} @placeholder={{t "leosac_builtin_ap.schedules_placeholder"}} @onChange={{action (mut this.newSchedule)}} as |schedule|>
                 {{schedule.name}}
-              {{/power-select-typeahead}}
-            {{/form.element}}
+              </PowerSelectTypeahead>
+            </form.element>
           </div>
         </div>
-            {{bs-button size='sm'
-                        type="warning"
-                        onClick=(action 'addCloseSchedule')
-                        defaultText=(t 'leosac_builtin_ap.add_close_schedule')}}
-            {{bs-button size='sm'
-                        type="warning"
-                        onClick=(action 'addOpenSchedule')
-                        defaultText=(t 'leosac_builtin_ap.add_open_schedule')}}
+            <BsButton @size='sm'
+                      @type="warning"
+                      @onClick={{action 'addCloseSchedule'}}
+                      @defaultText={{t 'leosac_builtin_ap.add_close_schedule'}} />
+            <BsButton @size='sm'
+                      @type="warning"
+                      @onClick={{action 'addOpenSchedule'}}
+                      @defaultText={{t 'leosac_builtin_ap.add_open_schedule'}} />
       </div>
 
       <div class="row space-top">
         <div class="col-md-12">
-          {{bs-button defaultText=(t 'submit') type="success" size="md" onClick=action buttonType="submit"}}
+          <BsButton @defaultText={{t 'submit'}} @type="success" @size="md" @onClick=action buttonType="submit" />
         </div>
         {{#if this.delete}}
           <div class="pull-right form-button-delete">
-            {{button-with-confirmation type='danger'
-                                       icon='glyphicon glyphicon-remove'
-                                       size='md'
-                                       text=(t 'delete')
-                                       message=(t 'door.delete_confirm')
-                                       onConfirm=this.delete
-            }}
+            <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "door.delete_confirm"}} @onConfirm={{this.delete}} />
           </div>
         {{/if}}
       </div>
 
     </fieldset>
   </div>
-{{/bs-form}}
+</BsForm>

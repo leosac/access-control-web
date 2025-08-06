@@ -1,27 +1,21 @@
 <div class="col-md-6">
-  {{#bs-form formLayout="vertical" model=this.zone onSubmit=this.action as |form|}}
+  <BsForm @formLayout="vertical" @model={{this.zone}} @onSubmit={{this.action}} as |form|>
     <fieldset>
       <legend>{{t 'configuration'}}</legend>
 
-      {{form.element controlType="text" label=(t 'alias')
-                     placeholder=(t 'zone.placeholder')
-                     property="alias"}}
+      <form.element @controlType="text" @label={{t "alias"}} @placeholder={{t "zone.placeholder"}} @property="alias" />
 
-      {{form.element controlType="textarea" label=(t 'notes')
-                     placeholder=(t 'notes_placeholder')
-                     property="description"}}
+      <form.element @controlType="textarea" @label={{t "notes"}} @placeholder={{t "notes_placeholder"}} @property="description" />
 
-      {{#form.element property="type" label=(t 'type')}}
-        {{#power-select
-          selected=this.zone.type
-          searchEnabled=false
-          options=this.allType
-          onChange=(action (mut this.zone.type))
-          placeholder=(t 'type_zone')
-        as |type|}}
+      <form.element @property="type" @label={{t "type"}}>
+        <PowerSelect @selected={{this.zone.type}}
+                     @searchEnabled=false
+                     @options={{this.allType}}
+                     @onChange={{action (mut this.zone.type)}}
+                     @placeholder={{t 'type_zone'}} as |type|>
           {{t type}}
-        {{/power-select}}
-      {{/form.element}}
+        </PowerSelect>
+      </form.element>
 
       <hr>
       <h4>{{t 'doors'}}</h4>
@@ -42,8 +36,8 @@
                 {{door.alias}}</td>
               <td>
                 <div class="text-center">
-                  {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
-                              defaultText=(t 'remove') onClick=(action 'removeDoor' door)}}
+                  <BsButton @size='xs' @icon='glyphicon glyphicon-remove' @type='danger'
+                            @defaultText={{t 'remove'}} @onClick={{action 'removeDoor' door}} />
                 </div>
               </td>
             </tr>
@@ -55,19 +49,16 @@
       <div>
         <div class="row">
           <div class="col-md-12">
-            {{#form.element label=(t 'doors')}}
-              {{#power-select-typeahead search=(action 'searchDoor')
-                                        selected=this.newDoor.alias
-                                        placeholder=(t 'schedule.type_door')
-                                        onChange=(action (mut this.newDoor)) as |doorInfo|}}
+            <form.element @label={{t "doors"}}>
+              <PowerSelectTypeahead @search={{action "searchDoor"}} @selected={{this.newDoor.alias}} @placeholder={{t "schedule.type_door"}} @onChange={{action (mut this.newDoor)}} as |doorInfo|>
                 {{doorInfo.alias}}
-              {{/power-select-typeahead}}
-            {{/form.element}}
+              </PowerSelectTypeahead>
+            </form.element>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
-            {{bs-button size='sm' type="primary" onClick=(action 'addDoor') defaultText=(t 'schedule.add_door')}}
+            <BsButton @size='sm' @type="primary" @onClick={{action 'addDoor'}} @defaultText={{t 'schedule.add_door'}} />
           </div>
         </div>
       </div>
@@ -93,11 +84,11 @@
               </td>
               <td class="text-center">
                 <div class="pull-right">
-                  {{bs-button size='xs'
-                              icon='glyphicon glyphicon-remove'
-                              type='danger'
-                              defaultText=(t 'remove')
-                              onClick=(action 'removeChildren' children)}}
+                  <BsButton @size='xs'
+                            @icon='glyphicon glyphicon-remove'
+                            @type='danger'
+                            @defaultText={{t 'remove'}}
+                            @onClick={{action 'removeChildren' children}} />
                 </div>
               </td>
             </tr>
@@ -107,38 +98,25 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          {{autocomplete/zone-search label=(t 'zone.child')
-                                     form=form
-                                     ignoreZone=this.zone
-                                     selected=this.newChildren
-          }}
+          <Autocomplete::ZoneSearch @label={{t "zone.child"}} @form={{form}} @ignoreZone={{this.zone}} @selected={{this.newChildren}} />
         </div>
       </div>
       <div class="row">
         <div class="col-md-6">
-          {{bs-button size='sm'
-                      type="primary"
-                      onClick=(action 'addChildren')
-                      defaultText=(t 'zone.add_children')}}
+          <BsButton @size='sm' @type="primary" @onClick={{action 'addChildren'}} @defaultText={{t 'zone.add_children'}} />
         </div>
       </div>
       <hr>
       <div class="row">
         <div class="col-md-6">
-          {{bs-button defaultText=(t 'submit') type="success" size="md" buttonType="submit"}}
+          <BsButton @defaultText={{t 'submit'}} @type="success" @size="md" @buttonType="submit" />
         </div>
         {{#if this.delete}}
           <div class="pull-right form-button-delete">
-            {{button-with-confirmation type='danger'
-                                       icon='glyphicon glyphicon-remove'
-                                       size='md'
-                                       text=(t 'delete')
-                                       message=(t 'zone.delete_confirm')
-                                       onConfirm=this.delete
-            }}
+            <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "zone.delete_confirm"}} @onConfirm={{this.delete}} />
           </div>
         {{/if}}
       </div>
     </fieldset>
-  {{/bs-form}}
+  </BsForm>
 </div>

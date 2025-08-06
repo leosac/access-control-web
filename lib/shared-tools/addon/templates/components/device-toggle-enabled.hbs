@@ -1,3 +1,1 @@
-{{x-toggle theme='material' size='medium'
-           value=this.device.enabled
-           onToggle=(action 'enableDevice' this.device)}}
+<XToggle @theme="material" @size="medium" @value={{this.device.enabled}} @onToggle={{action "enableDevice" this.device}} />

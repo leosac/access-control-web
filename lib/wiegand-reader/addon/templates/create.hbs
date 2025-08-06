@@ -1,3 +1,3 @@
 <div>
-  {{wiegand-reader-form wiegand-reader=model action=(route-action 'createWiegandReader')}}
+  <WiegandReaderForm @wiegand-reader={{model}} @action={{route-action "createWiegandReader"}} />
 </div>

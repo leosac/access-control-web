@@ -1,11 +1,11 @@
-{{#bs-button disabled=pendingCheckUpdate onClick=(action 'checkUpdate')}}
+<BsButton @disabled=pendingCheckUpdate @onClick={{action 'checkUpdate'}}>
     {{#if pendingCheckUpdate}}
         {{t 'update.pending_check_update'}}
         <i class="fa fa-spinner fa-spin update-spinner-color"></i>
     {{else}}
         {{t 'update.check_update'}}
     {{/if}}
-{{/bs-button}}
+</BsButton>
 
 
 <h3>{{t 'update.potential_update'}}</h3>
@@ -27,7 +27,7 @@
                 <td>{{severity-to-string u.severity}}</td>
                 <td>{{u.uuid}}</td>
                 <td>
-                    {{bs-button defaultText='Create Update !' onClick=(action 'createUpdate' u)}}
+                    <BsButton @defaultText='Create Update !' @onClick={{action 'createUpdate' u}} />
                 </td>
             </tr>
         {{/each}}
@@ -57,16 +57,16 @@
                 <td>{{update.generatedAt}}</td>
                 <td>{{update.checkpoint}}</td>
                 <td>
-                    {{#bs-button type='success' onClick=(action 'acknowledgeUpdate' update)}}
+                    <BsButton @type='success' @onClick={{action 'acknowledgeUpdate' update}}>
                         {{t 'acknowledge'}}
-                    {{/bs-button}}
+                    </BsButton>
 
-                    {{#bs-button type='danger' onClick=(action 'cancelUpdate' update)}}
+                    <BsButton @type='danger' @onClick={{action 'cancelUpdate' update}}>
                         {{t 'cancel'}}
-                    {{/bs-button}}
+                    </BsButton>
                 </td>
                 <td>
-                    {{bs-button onClick=(action 'showDetails' update) defaultText=(t 'details')}}<
+                    <BsButton @onClick={{action 'showDetails' update}} @defaultText={{t 'details'}} />
                 </td>
             </tr>
         {{/each}}
@@ -105,10 +105,10 @@
 </div>
 
 
-{{#bs-modal open=openDetailsModal title=(t 'details')}}
+<BsModal @open=openDetailsModal @title={{t 'details'}}>
     <hr>
 
     <i>Content</i> <br>
     <code class="space-top">{{detailedUpdate.content}}</code>
-{{/bs-modal}}
+</BsModal>
 

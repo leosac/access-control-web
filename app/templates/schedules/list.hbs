@@ -22,13 +22,7 @@
             </td>
             <td>{{sched.description}}</td>
             <td>
-                {{button-with-confirmation
-                        type='danger'
-                        icon='glyphicon glyphicon-remove'
-                        size='xs'
-                        text=(t 'delete')
-                        message=(t 'schedule.delete_confirm')
-                        onConfirm=(route-action 'deleteSchedule' sched.id)}}
+                <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="xs" @text={{t "delete"}} @message={{t "schedule.delete_confirm"}} @onConfirm={{route-action "deleteSchedule" sched.id}} />
             </td>
             </tr>
         {{/each}}

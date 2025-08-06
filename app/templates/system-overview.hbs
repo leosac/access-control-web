@@ -22,17 +22,13 @@
 
     <div class="row">
         <div class="col-md-3">
-          {{#bs-form as |form|}}
-            {{form.element controlType='number' property=logPerPage label=(t 'page_size') onChange=(action (mut logPerPage))}}
-          {{/bs-form}}
+          <BsForm as |form|>
+            <form.element @controlType="number" @property={{logPerPage}} @label={{t "page_size"}} @onChange={{action (mut logPerPage)}} />
+          </BsForm>
       </div>
 
       <div class="col-md-5 text-center">
-        {{numbered-paginator first=0
-                             last=lastLogPage
-                             current=currentLogPage
-                             onPageChange=(action "updateLogPageNumber")
-        }}
+        <NumberedPaginator @first={{0}} @last={{lastLogPage}} @current={{currentLogPage}} @onPageChange={{action "updateLogPageNumber"}} />
       </div>
 
       <div class="col-md-4 text-center button-next-to-power-select">
@@ -46,7 +42,7 @@
     </div>
 
     <div class="panel-body">
-      {{logs-view logs=lastLogs}}
+      <LogsView @logs={{lastLogs}} />
         </div>
     </div>
 </div>

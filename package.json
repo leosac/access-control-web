@@ -59,6 +59,9 @@
     "doc": "doc",
     "test": "tests"
   },
+  "ember": {
+    "edition": "octane"
+  },
   "ember-addon": {
     "paths": [
       "lib/led-buzzer",

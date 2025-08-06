@@ -1,5 +1,5 @@
 <div>
     <div class="col-md-12">
-        {{zone-form zone=this.model delete=(route-action 'deleteZone') action=(route-action 'editZone')}}
+        <ZoneForm @zone={{this.model}} @delete={{route-action "deleteZone"}} @action={{route-action "editZone"}} />
     </div>
 </div>

@@ -1,42 +1,41 @@
 <div>
-  {{#bs-form model=this onSubmit=(action "setNameApp") as |form|}}
+  <BsForm @model=this @onSubmit={{action "setNameApp"}} as |form|>
     <div class="row">
       <div class="col-md-3 col-xs-10 col-sm-8">
-        {{#form.element label=(t 'name_app') placeholder=(t 'name') property="newName" as |el|}}
+        <form.element @label={{t "name_app"}} @placeholder={{t "name"}} @property="newName" as |el|>
           {{el.control}}
-        {{/form.element}}
+        </form.element>
       </div>
     </div>
     <div class="row">
       <div class="col-md-2 col-xs-10 col-sm-4">
-        {{bs-button defaultText=(t "save") type="primary" buttonType="submit" size='sm'}}
+        <BsButton @defaultText={{t "save"}} @type="primary" @buttonType="submit" @size='sm' />
       </div>
     </div>
-  {{/bs-form}}
+  </BsForm>
 </div>
 
-{{#bs-form formLayout='vertical' as |form|}}
+<BsForm @formLayout='vertical' as |form|>
   <div class="row space-top">
     <div class="col-md-3 col-xs-10 col-sm-8">
-      {{#form.element label=(t 'language')}}
-        {{#power-select
-          selected=this.language
-          options=this.languageOption
-          searchEnabled=false
-          onChange=(action 'changeLanguage')
-          placeholder=this.language
-        as |lang|}}
+      <form.element @label={{t "language"}}>
+        <PowerSelect
+          @selected={{this.language}}
+          @options={{this.languageOption}}
+          @searchEnabled=false
+          @onChange={{action 'changeLanguage'}}
+          @placeholder={{this.language}} as |lang|>
           {{lang}}
-        {{/power-select}}
-      {{/form.element}}
+        </PowerSelect>
+      </form.element>
     </div>
   </div>
   <div class="row">
     <div class="col-md-3 col-xs-8 col-sm-4">
-      {{bs-button size='sm' defaultText=(t 'switch') type="primary" onClick=(action 'setLocale' this.language)}}
+      <BsButton @size='sm' @defaultText={{t 'switch'}} @type="primary" @onClick={{action 'setLocale' this.language}} />
     </div>
   </div>
-{{/bs-form}}
+</BsForm>
 
 <div class="row space-top">
   <div class="col-md-6">
@@ -45,10 +44,6 @@
 </div>
 <div class="row">
   <div class="col-md-4">
-    {{button-with-confirmation size='sm'
-                               text=(t 'restart')
-                               icon='glyphicon glyphicon-refresh'
-                               type="warning"
-                               onConfirm=(action 'restart')}}
+    <ButtonWithConfirmation @size="sm" @text={{t "restart"}} @icon="glyphicon glyphicon-refresh" @type="warning" @onConfirm={{action "restart"}} />
   </div>
 </div>

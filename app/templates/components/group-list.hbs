@@ -16,14 +16,7 @@
                 <td>{{group.memberCount}}</td>
                 {{#if this.deleteLink}}
                     <td>
-                        {{button-with-confirmation
-                                type='danger'
-                                icon='glyphicon glyphicon-remove'
-                                size='xs'
-                                text=(t 'delete')
-                                message=(t 'users.delete_group_confirm')
-                                onConfirm=(route-action 'deleteGroup' group.id)
-                        }}
+                        <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="xs" @text={{t "delete"}} @message={{t "users.delete_group_confirm"}} @onConfirm={{route-action "deleteGroup" group.id}} />
                     </td>
                 {{/if}}
               </tr>

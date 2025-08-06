@@ -1,37 +1,30 @@
 <div class="col-md-12">
-    {{#bs-form formLayout="vertical" model=this.model.user onSubmit=(route-action 'createUser') as |form|}}
+    <BsForm @formLayout="vertical" @model={{this.model.user}} @onSubmit={{route-action 'createUser'}} as |form|>
         <div class="row">
             <div class="col-md-6">
                 <fieldset>
                     <legend>{{t 'users.create.account_info'}}</legend>
-                  {{form.element controlType="text" label=(t 'firstname')
-                                 placeholder="John" property="firstname"}}
+                  <form.element @controlType="text" @label={{t "firstname"}} @placeholder="John" @property="firstname" />
 
-                  {{form.element controlType="text" label=(t 'lastname')
-                                 placeholder="Doe" property="lastname"}}
+                  <form.element @controlType="text" @label={{t "lastname"}} @placeholder="Doe" @property="lastname" />
 
-                  {{form.element controlType="email" label=(t 'email')
-                                 placeholder="john@doe.com" property="email"}}
-                    {{form.element controlType="text" label=(t 'username')
-                                   placeholder="john_d" property="username"}}
-                  {{password-input optional=true passwordOut=(mut this.model.user.password)}}
+                  <form.element @controlType="email" @label={{t "email"}} @placeholder="john@doe.com" @property="email" />
+                    <form.element @controlType="text" @label={{t "username"}} @placeholder="john_d" @property="username" />
+                  <PasswordInput @optional={{true}} @passwordOut={{mut this.model.user.password}} />
 
-                    {{#form.element label=(t 'rank')}}
-                        {{#power-select
-                                selected=this.model.user.rank
-                                searchEnabled=false
-                                options=this.model.possibleRanks
-                                onChange=(action (mut this.model.user.rank))
-                                placeholder=(t 'rank')
-                        as |rank|}}
+                    <form.element @label={{t "rank"}}>
+                        <PowerSelect @selected={{this.model.user.rank}}
+                                     @searchEnabled=false
+                                     @options={{this.model.possibleRanks}}
+                                     @onChange={{action (mut this.model.user.rank)}}
+                                     @placeholder={{t 'rank'}} as |rank|>
                             {{t rank}}
-                        {{/power-select}}
-                    {{/form.element}}
+                        </PowerSelect>
+                    </form.element>
                 </fieldset>
             </div>
         </div>
-            {{bs-button defaultText=(t 'users.create.title') type="success"
-                        buttonType="submit"}}
+            <BsButton @defaultText={{t 'users.create.title'}} @type="success" @buttonType="submit" />
 
-    {{/bs-form}}
+    </BsForm>
 </div>

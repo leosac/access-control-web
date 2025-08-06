@@ -30,13 +30,12 @@
           </div>
         </td>
         <td>
-          {{button-with-confirmation
-            type='danger'
-            icon='glyphicon glyphicon-remove'
-            size='xs'
-            text=(t 'delete')
-            message=(t 'model-name.delete_confirm')
-            onConfirm=(route-action 'deleteModelName' model-name)}}
+          <ButtonWithConfirmation @type='danger'
+                                  @icon='glyphicon glyphicon-remove'
+                                  @size='xs'
+                                  @text={{t 'delete'}}
+                                  @message={{t 'model-name.delete_confirm'}}
+                                  @onConfirm={{route-action 'deleteModelName' model-name}} />
         </td>
       </tr>
     {{/each}}

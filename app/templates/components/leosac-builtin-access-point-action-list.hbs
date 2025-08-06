@@ -3,9 +3,9 @@
   <div class="col-md-3">
     <h4>{{t 'leosac_builtin_ap.action.success_actions'}}</h4>
     {{#each this.sortedSuccessAction as |success|}}
-      {{#bs-accordion as |acc|}}
-        {{#acc.item title=(t "leosac_builtin_ap.action.action_number"
-          command=success.command device=success.target.name)}}
+      <BsAccordion as |acc|>
+        <acc.item @title={{t "leosac_builtin_ap.action.action_number"
+          command=success.command device=success.target.name}}>
           <div class="row">
             <div class="col-md-6">
               {{t 'leosac_builtin_ap.action.targeted_device'}}:
@@ -24,25 +24,22 @@
           </div>
           <div class="row">
             <div class="col-md-12">
-              {{leosac-builtin-access-point-action-params customAction=success}}
+              <LeosacBuiltinAccessPointActionParams @customAction={{success}} />
             </div>
           </div>
           <div class="space-bottom">
-            {{bs-button defaultText=(t 'remove')
-                        type='danger'
-                        size='xs'
-                        onClick=(action 'removeSuccessAction' success)}}
+            <BsButton @defaultText={{t 'remove'}} @type='danger' @size='xs' @onClick={{action 'removeSuccessAction' success}} />
           </div>
-        {{/acc.item}}
-      {{/bs-accordion}}
+        </acc.item>
+      </BsAccordion>
     {{/each}}
   </div>
   <div class="col-md-3">
     <h4>{{t 'leosac_builtin_ap.action.error_actions'}}</h4>
     {{#each this.sortedErrorAction as |error|}}
-      {{#bs-accordion as |acc|}}
-        {{#acc.item title=(t "leosac_builtin_ap.action.action_number"
-          command=error.command device=error.target.name)}}
+      <BsAccordion as |acc|>
+        <acc.item @title={{t "leosac_builtin_ap.action.action_number"
+          command=error.command device=error.target.name}}>
           <div class="row">
             <div class="col-md-6">
               {{t 'leosac_builtin_ap.action.targeted_device'}}:
@@ -61,56 +58,44 @@
           </div>
           <div class="row">
             <div class="col-md-12">
-              {{leosac-builtin-access-point-action-params customAction=error}}
+              <LeosacBuiltinAccessPointActionParams @customAction={{error}} />
             </div>
           </div>
           <div class="space-bottom">
-            {{bs-button defaultText=(t 'remove')
-                        type='danger'
-                        size='xs'
-                        onClick=(action 'removeErrorAction' error)}}
+            <BsButton @defaultText={{t 'remove'}} @type='danger' @size='xs' @onClick={{action 'removeErrorAction' error}} />
           </div>
-        {{/acc.item}}
-      {{/bs-accordion}}
+        </acc.item>
+      </BsAccordion>
     {{/each}}
   </div>
 </div>
 
-{{#bs-form formLayout='vertical' as |form|}}
+<BsForm @formLayout='vertical' as |form|>
   <div class="row">
     <div class="col-md-6">
       <legend>{{t 'leosac_builtin_ap.action.create_action'}}</legend>
-      {{#form.element label=(t 'leosac_builtin_ap.device_picker')}}
-        {{device-list-picker arrayOfDeviceClass=this.arrayOfValidDevice
-                             placeholder=(t 'leosac_builtin_ap.device_placeholder')
-                             newDevice=this.selectedDevice}}
-      {{/form.element}}
+      <form.element @label={{t "leosac_builtin_ap.device_picker"}}>
+        <DeviceListPicker @arrayOfDeviceClass={{this.arrayOfValidDevice}} @placeholder={{t "leosac_builtin_ap.device_placeholder"}} @newDevice={{this.selectedDevice}} />
+      </form.element>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
-      {{#form.element label=(t 'leosac_builtin_ap.action.command_picker')}}
-        {{#power-select options=this.availableCommand
-                        searchEnabled=false
-                        placeholder=(t 'leosac_builtin_ap.action.command_placeholder')
-                        onchange=(action (mut this.selectedCommand))
-                        selected=this.selectedCommand
-        as |command|}}
+      <form.element @label={{t "leosac_builtin_ap.action.command_picker"}}>
+        <PowerSelect @options={{this.availableCommand}}
+                     @searchEnabled=false
+                     @placeholder={{t 'leosac_builtin_ap.action.command_placeholder'}}
+                     @onchange={{action (mut this.selectedCommand)}}
+                     @selected={{this.selectedCommand}} as |command|>
           {{command}}
-        {{/power-select}}
-      {{/form.element}}
+        </PowerSelect>
+      </form.element>
     </div>
   </div>
-{{/bs-form}}
+</BsForm>
 <div class="row">
   <div class="col-md-12">
-  {{bs-button size='sm'
-              type="warning"
-              onClick=(action 'addSuccessAction')
-              defaultText=(t 'leosac_builtin_ap.action.add_success')}}
-  {{bs-button size='sm'
-              type="warning"
-              onClick=(action 'addErrorAction')
-              defaultText=(t 'leosac_builtin_ap.action.add_error')}}
+    <BsButton @size='sm' @type="warning" @onClick={{action 'addSuccessAction'}} @defaultText={{t 'leosac_builtin_ap.action.add_success'}} />
+    <BsButton @size='sm' @type="warning" @onClick={{action 'addErrorAction'}} @defaultText={{t 'leosac_builtin_ap.action.add_error'}} />
   </div>
 </div>

@@ -2,20 +2,14 @@ This part will let you select which door and user the comparison should be made:
 
 <div class="row">
   <div class="col-md-6">
-    {{#power-select-typeahead options=this.allUsers
-                              placeholder=(t 'user')
-                              searchField='username'
-                              onChange=(action "addUser") as |user|}}
+    <PowerSelectTypeahead @options={{this.allUsers}} @placeholder={{t "user"}} @searchField="username" @onChange={{action "addUser"}} as |user|>
       {{user.username}}
-    {{/power-select-typeahead}}
+    </PowerSelectTypeahead>
   </div>
   <div class="col-md-6">
-    {{#power-select-typeahead options=this.allDoors
-                              placeholder=(t 'doors')
-                              searchField='alias'
-                              onChange=(action "addDoor") as |door|}}
+    <PowerSelectTypeahead @options={{this.allDoors}} @placeholder={{t "doors"}} @searchField="alias" @onChange={{action "addDoor"}} as |door|>
       {{door.alias}}
-    {{/power-select-typeahead}}
+    </PowerSelectTypeahead>
   </div>
 </div>
 
@@ -38,8 +32,8 @@ This part will let you select which door and user the comparison should be made:
               {{user.username}}</td>
             <td>
               <div class="text-center">
-                {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
-                            defaultText=(t 'remove') onClick=(action 'removeUser' user)}}
+                <BsButton @size='xs' @icon='glyphicon glyphicon-remove' @type='danger'
+                          @defaultText={{t 'remove'}} @onClick={{action 'removeUser' user}} />
               </div>
             </td>
           </tr>
@@ -66,8 +60,8 @@ This part will let you select which door and user the comparison should be made:
               {{door.alias}}</td>
             <td>
               <div class="text-center">
-                {{bs-button size='xs' icon='glyphicon glyphicon-remove' type='danger'
-                            defaultText=(t 'remove') onClick=(action 'removeDoor' door)}}
+                <BsButton @size='xs' @icon='glyphicon glyphicon-remove' @type='danger'
+                            @defaultText={{t 'remove'}} @onClick={{action 'removeDoor' door}} />
               </div>
             </td>
           </tr>

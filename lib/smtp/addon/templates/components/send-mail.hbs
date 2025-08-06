@@ -1,16 +1,11 @@
 <div class="col-md-6" style="margin-top: 1%">
-{{#bs-form model=this as |form|}}
-  {{form.element controlType="email" label="Recipient"
-                 placeholder="me@me.com"
-                 property='recipient'}}
+<BsForm @model={{this}} as |form|>
+  <form.element @controlType="email" @label="Recipient" @placeholder="me@me.com" @property="recipient" />
 
-  {{form.element controlType="text" label=(t 'smtp.subject')
-                 property='subject'}}
+  <form.element @controlType="text" @label={{t "smtp.subject"}} @property="subject" />
 
-  {{form.element controlType='textarea' label=(t 'smtp.body')
-                 property='body'}}
+  <form.element @controlType="textarea" @label={{t "smtp.body"}} @property="body" />
 
-  {{bs-button disabled=isButtonDisabled defaultText=(t 'smtp.send') type="primary"
-              buttonType="submit" onClick=(action 'sendTestMail')}}
-{{/bs-form}}
+  <BsButton @disabled={{isButtonDisabled}} @defaultText={{t "smtp.send"}} @type="primary" @buttonType="submit" @onClick={{action "sendTestMail"}} />
+</BsForm>
 </div>

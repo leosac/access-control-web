@@ -1,9 +1,5 @@
-{{#form.element label=this.label}}
-    {{#power-select-typeahead search=(action 'searchZone')
-                              selected=this.selected.alias
-                              placeholder=(t 'zone.type_zone')
-                              onChange=(action (mut this.selected))
-    as |childrenInfo|}}
+<BsFormElement @label={{this.label}}>
+    <PowerSelectTypeahead @search={{action "searchZone"}} @selected={{this.selected.alias}} @placeholder={{t "zone.type_zone"}} @onChange={{action (mut this.selected)}} as |childrenInfo|>
         {{childrenInfo.alias}}
-    {{/power-select-typeahead}}
-{{/form.element}}
+    </PowerSelectTypeahead>
+</BsFormElement>

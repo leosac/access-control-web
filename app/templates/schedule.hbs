@@ -2,14 +2,12 @@
   <h2>Alias: {{this.model.name}}</h2>
 </div>
 <div>
-  {{#bs-tab  as |tab|}}
-    {{#tab.pane title=(t 'timeframes')}}
-      {{schedule-form schedule=this.model
-                      delete=(route-action 'deleteSchedule')
-                      action=(route-action "editSchedule")}}
-    {{/tab.pane}}
+  <BsTab as |tab|>
+    <tab.pane @title={{t "timeframes"}}>
+      <ScheduleForm @schedule={{this.model}} @delete={{route-action "deleteSchedule"}} @action={{route-action "editSchedule"}} />
+    </tab.pane>
 
-    {{#tab.pane title=(t 'mapping')}}
+    <tab.pane @title={{t "mapping"}}>
       <div class="col-md-12">
         <div class="row">
           <div class="col-md-12 space-bottom space-top">
@@ -19,13 +17,10 @@
         <div class="row">
           <div class="col-md-12">
             <div class="pull-left">
-              {{bs-button type='primary'
-                          defaultText=(t 'schedule.add_mapping')
-                          onClick=(route-action 'addMapping')}}
+              <BsButton @type='primary' @defaultText={{t 'schedule.add_mapping'}} @onClick={{route-action 'addMapping'}} />
             </div>
             <div class="pull-right">
-              {{bs-button defaultText=(t 'save') type="success"
-                          onClick=(route-action 'editSchedule')}}
+              <BsButton @defaultText={{t 'save'}} @type="success" @onClick={{route-action 'editSchedule'}} />
             </div>
           </div>
         </div>
@@ -33,16 +28,16 @@
         <hr>
 
 
-        {{#bs-accordion as |acc|}}
+        <BsAccordion as |acc|>
           {{#each this.model.mapping as |mapping|}}
-            {{#acc.item title=(t 'schedule.mapping' alias=mapping.alias)}}
-              {{schedule-mapping mapping=mapping}}
-            {{/acc.item}}
+            <acc.item @title={{t 'schedule.mapping' alias=mapping.alias}}>
+              <ScheduleMapping @mapping={{mapping}} />
+            </acc.item>
             <hr>
           {{/each}}
-        {{/bs-accordion}}
+        </BsAccordion>
 
       </div>
-    {{/tab.pane}}
-  {{/bs-tab}}
+    </tab.pane>
+  </BsTab>
 </div>

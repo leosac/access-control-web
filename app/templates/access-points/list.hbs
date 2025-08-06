@@ -13,7 +13,7 @@
         </thead>
         <tbody>
         {{#each this.model as |ap|}}
-          {{#link-to-access-point ap=ap tagName='tr'}}
+          <LinkToAccessPoint @ap={{ap}} @tagName="tr">
             {{#if ap.id}}
                 <td>
                     {{ap.id}}
@@ -21,17 +21,10 @@
                 <td>{{ap.alias}}</td>
                 <td>{{ap.controllerModule}}</td>
                 <td>
-                  {{button-with-confirmation
-                    type='danger'
-                    icon='glyphicon glyphicon-remove'
-                    size='xs'
-                    text=(t 'delete')
-                    message=(t 'accesspoint.delete_confirm')
-                    onConfirm=(route-action 'deleteAP' ap)
-                  }}
+                  <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="xs" @text={{t "delete"}} @message={{t "accesspoint.delete_confirm"}} @onConfirm={{route-action "deleteAP" ap}} />
                 </td>
             {{/if}}
-          {{/link-to-access-point}}
+          </LinkToAccessPoint>
         {{/each}}
         </tbody>
     </table>

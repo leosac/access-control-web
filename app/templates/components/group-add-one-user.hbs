@@ -1,38 +1,26 @@
-{{#bs-form as |form|}}
+<BsForm as |form|>
     <div class="row">
         <div class="col-md-2 col-sm-4">
-            {{#form.element label=(t 'username')}}
-                {{#power-select-typeahead
-                        selected=this.selectedUser.username
-                        search=(action 'searchUser')
-                        onChange=(action 'setUser')
-                        allowClear=true
-                        placeholder=(t 'username')
-                as |user|
-                }}
+            <form.element @label={{t "username"}}>
+                <PowerSelectTypeahead @selected={{this.selectedUser.username}} @search={{action "searchUser"}} @onChange={{action "setUser"}} @allowClear={{true}} @placeholder={{t "username"}} as |user|>
                     {{user.username}}
-                {{/power-select-typeahead}}
-            {{/form.element}}
+                </PowerSelectTypeahead>
+            </form.element>
         </div>
         <div class="col-md-2 col-sm-4">
-            {{#form.element label=(t 'rank')}}
-                {{#power-select
-                        selected=this.selectedRank
-                        options=this.allRank
-                        onChange=(action (mut this.selectedRank))
-                        placeholder=(t 'rank_group')
-                as |rank|
-                }}
+            <form.element @label={{t "rank"}}>
+                <PowerSelect @selected={{this.selectedRank}}
+                             @options={{this.allRank}}
+                             @onChange={{action (mut this.selectedRank)}}
+                             @placeholder={{t 'rank_group'}} as |rank|>
                     {{t rank}}
-                {{/power-select}}
-            {{/form.element}}
+                </PowerSelect>
+            </form.element>
         </div>
         <div class="col-md-2 col-sm-4 button-next-to-power-select">
-            {{#bs-button type="primary" icon="glyphicon glyphicon-plus"
-                         size="sm"
-                         onClick=(action 'addToGroup')}}
+            <BsButton @type="primary" @icon="glyphicon glyphicon-plus" @size="sm" @onClick={{action 'addToGroup'}}>
                 {{t 'users.add_to_group'}}
-            {{/bs-button}}
+            </BsButton>
         </div>
     </div>
-{{/bs-form}}
+</BsForm>

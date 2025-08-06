@@ -1,20 +1,16 @@
-{{#bs-form formLayout="vertical" model=this.schedule as |form|}}
+<BsForm @formLayout="vertical" @model={{this.schedule}} as |form|>
   <div class="col-md-6">
     <fieldset>
       <legend>{{t 'configuration'}}</legend>
-      {{form.element controlType="text" label=(t 'name')
-                     placeholder=(t 'schedule.placeholder')
-                     property="name"}}
+      <form.element @controlType="text" @label={{t "name"}} @placeholder={{t "schedule.placeholder"}} @property="name" />
 
-      {{form.element controlType="textarea" label=(t 'notes')
-                     placeholder=(t 'notes_placeholder')
-                     property="description"}}
+      <form.element @controlType="textarea" @label={{t "notes"}} @placeholder={{t "notes_placeholder"}} @property="description" />
     </fieldset>
     <fieldset>
       <legend>{{t 'timeframes'}}</legend>
       <div class="row">
         <div class="col-md-6 space-bottom">
-          {{bs-button defaultText=(t 'add_time_zone') type='primary' onClick=(action 'addTimeframe')}}
+          <BsButton @defaultText={{t 'add_time_zone'}} @type='primary' @onClick={{action 'addTimeframe'}} />
         </div>
       </div>
       {{#each this.schedule.timeframes as |tf|}}
@@ -22,26 +18,20 @@
           <div class="panel-heading panel-timeframe">{{t 'timeframe'}}
           </div>
           <div class="panel-body">
-            {{schedule-timeframe form=form delete=(action 'removeTimeframe' tf) timeframe=tf}}
+            <ScheduleTimeframe @form={{form}} @delete={{action "removeTimeframe" tf}} @timeframe={{tf}} />
           </div>
         </div>
       {{/each}}
       <div class="row space-top space-bottom">
         <div class="col-md-6">
-          {{bs-button defaultText=(t 'submit') type="success" onClick=this.action buttonType="submit"}}
+          <BsButton @defaultText={{t 'submit'}} @type="success" @onClick={{this.action}} @buttonType="submit" />
         </div>
           {{#if this.delete}}
             <div class="pull-right form-button-delete">
-              {{button-with-confirmation type='danger'
-                                         icon='glyphicon glyphicon-remove'
-                                         size='md'
-                                         text=(t 'delete')
-                                         message=(t 'schedule.delete_confirm')
-                                         onConfirm=this.delete
-              }}
+              <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "schedule.delete_confirm"}} @onConfirm={{this.delete}} />
             </div>
           {{/if}}
       </div>
     </fieldset>
   </div>
-{{/bs-form}}
+</BsForm>

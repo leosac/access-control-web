@@ -1,3 +1,3 @@
-{{#bs-form formLayout='vertical' model=this.customAction as |form|}}
-  {{form.element property="params" label='Duration'}}
-{{/bs-form}}
+<BsForm @formLayout='vertical' @model={{this.customAction}} as |form|>
+  <form.element @property="params" @label="Duration" />
+</BsForm>
