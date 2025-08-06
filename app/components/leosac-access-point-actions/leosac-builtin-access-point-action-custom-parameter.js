@@ -1,4 +1,5 @@
-import { computed } from '@ember/object';
+import classic from 'ember-classic-decorator';
+import { action, computed } from '@ember/object';
 import Component from '@ember/component';
 
 /**
@@ -7,10 +8,10 @@ import Component from '@ember/component';
  *
  */
 
-export default Component.extend({
-    customAction: null,
-    command: '',
-    properties: [],
+@classic
+export default class LeosacBuiltinAccessPointActionCustomParameter extends Component {
+    customAction = null;
+    command = '';
 
     init() {
         let params = this.get('customAction.params');
@@ -30,37 +31,42 @@ export default Component.extend({
             }
             this.set('properties', arrayOfProperty);
         }
-        this._super(...arguments);
-    },
+        super.init(...arguments);
+
+        this.properties = this.properties || [];
+    }
 
     /**
      * This is a bit hackish, but to update the customAction.params,
      * we use a Computed property that his only purpose is to refresh the customAction.params,
      * given the command and properties
      */
-    params: computed('{command,properties}', function () {
+    @computed('{command,properties}')
+    get params() {
         let command = this.get('command');
         let arrayOfProperties = this.get('properties');
 
         this.set('customAction.params', [command, arrayOfProperties]);
-    }),
-    actions: {
-        /**
-         * This will add an empty string to the properties.
-         * Thanks to that, you can enumerate on a new parameter
-         */
-        addProperty() {
-            this.get('properties').pushObject('');
-        },
-        /**
-         * This will set the property at the {{index}} with the new {{value}}
-         * @param index
-         * @param value
-         */
-        setValue(index, value) {
-            let properties = this.get('properties');
-            properties[index] = value;
-            this.set('properties', properties);
-        }
     }
-});
+
+    /**
+     * This will add an empty string to the properties.
+     * Thanks to that, you can enumerate on a new parameter
+     */
+    @action
+    addProperty() {
+        this.get('properties').pushObject('');
+    }
+
+    /**
+     * This will set the property at the {{index}} with the new {{value}}
+     * @param index
+     * @param value
+     */
+    @action
+    setValue(index, value) {
+        let properties = this.get('properties');
+        properties[index] = value;
+        this.set('properties', properties);
+    }
+}

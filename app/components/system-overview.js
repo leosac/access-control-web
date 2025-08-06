@@ -1,16 +1,21 @@
+import classic from 'ember-classic-decorator';
 import { inject as service } from '@ember/service';
 import Component from '@ember/component';
 
-export default Component.extend({
-    systemOverview: service('system-overview'),
-    moduleManager: service('module-manager'),
-    onSessionLost: 'onSessionLost',
-    myError: 'myError',
+@classic
+export default class SystemOverview extends Component {
+    @service('system-overview')
+    systemOverview;
 
-    init()
-    {
+    @service('module-manager')
+    moduleManager;
+
+    onSessionLost = 'onSessionLost';
+    myError = 'myError';
+
+    init() {
         "use strict";
-        this._super();
+        super.init();
         const self = this;
         this.get('moduleManager').init();
         this.get('systemOverview').update().catch((failure) =>
@@ -18,4 +23,4 @@ export default Component.extend({
             self.sendAction('myError', failure);
         });
     }
-});
+}

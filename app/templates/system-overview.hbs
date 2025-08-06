@@ -23,16 +23,16 @@
     <div class="row">
         <div class="col-md-3">
           <BsForm as |form|>
-            <form.element @controlType="number" @property={{logPerPage}} @label={{t "page_size"}} @onChange={{action (mut logPerPage)}} />
+            <form.element @controlType="number" @property={{this.logPerPage}} @label={{t "page_size"}} @onChange={{action (mut this.logPerPage)}} />
           </BsForm>
       </div>
 
       <div class="col-md-5 text-center">
-        <NumberedPaginator @first={{0}} @last={{lastLogPage}} @current={{currentLogPage}} @onPageChange={{action "updateLogPageNumber"}} />
+        <NumberedPaginator @first={{0}} @last={{this.lastLogPage}} @current={{this.currentLogPage}} @onPageChange={{action "updateLogPageNumber"}} />
       </div>
 
       <div class="col-md-4 text-center button-next-to-power-select">
-        {{t 'overview.total_logs' totalLogs=totalLogs}}
+        {{t 'overview.total_logs' totalLogs=this.totalLogs}}
       </div>
     </div>
 

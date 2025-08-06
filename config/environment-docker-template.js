@@ -36,7 +36,7 @@ module.exports = function (environment) {
 
     if (ENV.APP.leosacAddr === null) {
         ENV.APP.leosacAddr = process.env.LEOSAC_ADDR;
-        if (ENV.APP.leosacAddr === null) {
+        if (!ENV.APP.leosacAddr) {
             ENV.APP.leosacAddr = "ws://127.0.0.1:8888";
         }
     }

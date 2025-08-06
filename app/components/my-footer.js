@@ -1,12 +1,16 @@
+import classic from 'ember-classic-decorator';
 import { inject as service } from '@ember/service';
 import Component from '@ember/component';
 
-export default Component.extend({
-    globalInfo: service('leosac-info'),
-    ws: service('websocket'),
+@classic
+export default class MyFooter extends Component {
+    @service('leosac-info')
+    globalInfo;
+
+    @service('websocket')
+    ws;
 
     init() {
-        this._super(...arguments);
-    },
-
-});
+        super.init(...arguments);
+    }
+}

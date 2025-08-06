@@ -1,20 +1,24 @@
+import classic from 'ember-classic-decorator';
+import { action } from '@ember/object';
 import Component from '@ember/component';
 
-export default Component.extend({
-    first: 0,
-    last: 0,
-    current: 0,
-    pages: [],
+@classic
+export default class NumberedPaginator extends Component {
+    first = 0;
+    last = 0;
+    current = 0;
+
     // The action that is triggered when a user change page by clicking.
-    onPageChange: () => {
-    },
+    onPageChange = () => {
+    };
+
     didUpdateAttrs() {
         "use strict";
-        this._super();
+        super.didUpdateAttrs();
         this.compute();
-    },
-    compute()
-    {
+    }
+
+    compute() {
         "use strict";
 
         const first = this.get('first') || 0;
@@ -60,18 +64,18 @@ export default Component.extend({
         {
             return a - b;
         });
-    },
-    init()
-    {
-        "use strict";
-        this._super();
-        this.compute();
-    },
-    actions: {
-        changePage(n)
-        {
-            "use strict";
-            this.get('onPageChange')(Number(n));
-        }
     }
-});
+
+    init() {
+        "use strict";
+        super.init();
+        this.compute();
+        this.pages = this.pages || [];
+    }
+
+    @action
+    changePage(n) {
+        "use strict";
+        this.get('onPageChange')(Number(n));
+    }
+}

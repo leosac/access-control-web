@@ -1,14 +1,21 @@
+import classic from 'ember-classic-decorator';
 import { inject as service } from '@ember/service';
 import Component from '@ember/component';
 
-export default Component.extend({
-    search: service(),
-    availableAccessPointModules: [],
+@classic
+export default class AccessPointForm extends Component {
+    @service
+    search;
+
+    init() {
+        super.init(...arguments);
+        this.availableAccessPointModules = this.availableAccessPointModules || [];
+    }
 
     didReceiveAttrs() {
         "use strict";
-        this._super(...arguments);
+        super.didReceiveAttrs(...arguments);
         this.set('availableAccessPointModules',
             this.search.listAccessPointModuleNames());
-    },
-});
+    }
+}

@@ -1,3 +1,4 @@
+import classic from 'ember-classic-decorator';
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Component from '@ember/component';
@@ -80,37 +81,48 @@ function zoneFromId(nodeId, zones) {
     return value;
 }
 
-export default Component.extend({
-    intl: service(),
-    search: service(),
-    store: service(),
-    flashMessages: service(),
-    selectedZone: '',
-    newDoor: null,
-    arrayDoor: [],
+export default class TreeView extends Component {
+    @service
+    intl;
 
+    @service
+    search;
+
+    @service
+    store;
+
+    @service
+    flashMessages;
+
+    selectedZone = '';
+    newDoor = null;
     // This is a list of plugin useful for the jstree
-    "plugins": "types, dnd, sort, states",
+    plugins = "types, dnd, sort, states";
+    jsTreeActionReceiver = true;
 
-    // This is a list of the type options. There is a different icon for each of them
-    typesOptions: {
-        "physical": {
-            "icon": "fa fa-building"
-        },
-        "logical": {
-            "icon": "assets/images/logical.jpg"
-        },
-        "physicalZone": {
-            "icon": "fa fa-building-o"
-        },
-        "logicalZone": {
-            "icon": "fa fa-user"
-        }
-    },
-    'jsTreeActionReceiver': true,
+    init() {
+        super.init(...arguments);
+        this.arrayDoor = this.arrayDoor || [];
+        // This is a list of the type options. There is a different icon for each of them
+        this.typesOptions = {
+            "physical": {
+                "icon": "fa fa-building"
+            },
+            "logical": {
+                "icon": "assets/images/logical.jpg"
+            },
+            "physicalZone": {
+                "icon": "fa fa-building-o"
+            },
+            "logicalZone": {
+                "icon": "fa fa-user"
+            }
+        };
+    }
 
     // This ember computed will set the data necessary for the jstree to work. This is a node tree
-    zoneDataTree: computed('model', function () {
+    @computed('model')
+    zoneDataTree() {
         // Blueprint for the physical and logical zone
         let physicalZoneNode = {
             'id': 'physicalRoot',
@@ -150,7 +162,8 @@ export default Component.extend({
             }
         });
         return [physicalZoneNode, logicalZoneNode];
-    }),
+    }
+
     /**
      * This is a native function that we override.
      *
@@ -160,7 +173,6 @@ export default Component.extend({
      * @returns {boolean}
      */
     checkCallback(operation, node, node_parent) {
-
         //check if we try to move a node
         if (operation === 'move_node') {
             // check if the node is a node that we created otherwise it can't be moved
@@ -190,77 +202,84 @@ export default Component.extend({
             return false;
         }
         return true;
-    },
-    actions:
-        {
-            addDoor() {
-                this.store.findRecord('door', this.get('newDoor.id')).then((door) => {
-                    let selectedZone = zoneFromSelectedZone(this.get('selectedZone'), this.get('model'));
-                    let saveOk = () => {
-                        this.flashMessages.success(this.intl.t('zone.error.successfully_added'));
-                    };
-                    let saveFail = () => {
-                        this.flashMessages.danger(this.intl.t('zone.error.error_added'));
-                    };
+    }
+    
+    @action
+    addDoor() {
+        this.store.findRecord('door', this.get('newDoor.id')).then((door) => {
+            let selectedZone = zoneFromSelectedZone(this.get('selectedZone'), this.get('model'));
+            let saveOk = () => {
+                this.flashMessages.success(this.intl.t('zone.error.successfully_added'));
+            };
+            let saveFail = () => {
+                this.flashMessages.danger(this.intl.t('zone.error.error_added'));
+            };
 
-                    selectedZone.get('doors').addObject(door);
-                    selectedZone.save().then(saveOk, saveFail);
-                });
-            },
-            searchDoor(partialName) {
-                return this.search.findDoorByAlias(partialName);
-            },
-            removeDoor(door) {
-                let selectedZone = zoneFromSelectedZone(this.get('selectedZone'), this.get('model'));
-                let saveOk = () => {
-                    this.flashMessages.success(this.intl.t('zone.error.successfully_removed'));
-                };
-                let saveFail = () => {
-                    this.flashMessages.danger(this.intl.t('zone.error.error_removed'));
-                };
+            selectedZone.get('doors').addObject(door);
+            selectedZone.save().then(saveOk, saveFail);
+        });
+    }
 
-                selectedZone.get('doors').removeObject(door);
-                selectedZone.save().then(saveOk, saveFail);
-            },
-            handleJstreeEventDidSelectNode(node) {
-                let selectedNode = zoneFromId(node.id, this.get('model'));
-                this.set('selectedZone', selectedNode);
-                if (selectedNode) {
-                    let arrayOfDoor = recursiveDoor(selectedNode);
-                    arrayOfDoor.sort(function (a, b) {
-                        return a.zone - b.zone;
-                    });
-                    this.set('arrayDoor', arrayOfDoor);
-                }
-            },
-            // Mange the dragAndDrop
-            handleJstreeEventDidMoveNode(node) {
-                let oldParent = zoneFromId(node.old_parent, this.get('model'));
-                let newParent = zoneFromId(node.parent, this.get('model'));
-                let currentZone = zoneFromId(node.node.id, this.get('model'));
-                let saveOk = () => {
-                    this.flashMessages.success(this.intl.t('zone.error.edited_success'));
-                };
-                let saveFail = () => {
-                    this.flashMessages.danger(this.intl.t('zone.error.edited_error'));
-                };
+    @action
+    searchDoor(partialName) {
+        return this.search.findDoorByAlias(partialName);
+    }
 
-                if (oldParent && newParent) {
-                    currentZone.get('parent').pushObject(newParent);
-                    currentZone.get('parent').removeObject(oldParent);
-                    oldParent.save().then(() => {
-                        newParent.save().then(saveOk, saveFail);
-                    }, saveFail);
-                }
-                else if (oldParent) {
-                    currentZone.get('parent').removeObject(oldParent);
-                    oldParent.save().then(saveOk, saveFail);
-                }
-                else if (newParent) {
-                    currentZone.get('parent').pushObject(newParent);
-                    newParent.save().then(saveOk, saveFail);
-                }
-                this.get('jsTreeActionReceiver').send('moveNode');
-            }
+    @action
+    removeDoor(door) {
+        let selectedZone = zoneFromSelectedZone(this.get('selectedZone'), this.get('model'));
+        let saveOk = () => {
+            this.flashMessages.success(this.intl.t('zone.error.successfully_removed'));
+        };
+        let saveFail = () => {
+            this.flashMessages.danger(this.intl.t('zone.error.error_removed'));
+        };
+
+        selectedZone.get('doors').removeObject(door);
+        selectedZone.save().then(saveOk, saveFail);
+    }
+
+    @action
+    handleJstreeEventDidSelectNode(node) {
+        let selectedNode = zoneFromId(node.id, this.get('model'));
+        this.set('selectedZone', selectedNode);
+        if (selectedNode) {
+            let arrayOfDoor = recursiveDoor(selectedNode);
+            arrayOfDoor.sort(function (a, b) {
+                return a.zone - b.zone;
+            });
+            this.set('arrayDoor', arrayOfDoor);
         }
-});
+    }
+            
+    // Mange the dragAndDrop
+    @action
+    handleJstreeEventDidMoveNode(node) {
+        let oldParent = zoneFromId(node.old_parent, this.get('model'));
+        let newParent = zoneFromId(node.parent, this.get('model'));
+        let currentZone = zoneFromId(node.node.id, this.get('model'));
+        let saveOk = () => {
+            this.flashMessages.success(this.intl.t('zone.error.edited_success'));
+        };
+        let saveFail = () => {
+            this.flashMessages.danger(this.intl.t('zone.error.edited_error'));
+        };
+
+        if (oldParent && newParent) {
+            currentZone.get('parent').pushObject(newParent);
+            currentZone.get('parent').removeObject(oldParent);
+            oldParent.save().then(() => {
+                newParent.save().then(saveOk, saveFail);
+            }, saveFail);
+        }
+        else if (oldParent) {
+            currentZone.get('parent').removeObject(oldParent);
+            oldParent.save().then(saveOk, saveFail);
+        }
+        else if (newParent) {
+            currentZone.get('parent').pushObject(newParent);
+            newParent.save().then(saveOk, saveFail);
+        }
+        this.get('jsTreeActionReceiver').send('moveNode');
+    }
+}

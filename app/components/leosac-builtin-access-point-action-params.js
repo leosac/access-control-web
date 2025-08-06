@@ -1,3 +1,4 @@
+import classic from 'ember-classic-decorator';
 import { computed } from '@ember/object';
 import Component from '@ember/component';
 
@@ -9,10 +10,12 @@ import Component from '@ember/component';
  *
  * You need to pass customAction to the component, so that it can fetch the command name.
  */
-export default Component.extend({
-    customAction: null,
-    
-    getComponentName: computed(function () {
+@classic
+export default class LeosacBuiltinAccessPointActionParams extends Component {
+    customAction = null;
+
+    @computed
+    get getComponentName() {
         let command = this.get('customAction.command');
 
 
@@ -35,5 +38,5 @@ export default Component.extend({
         else if (command === ('CUSTOM')) {
             return 'leosac-access-point-actions/leosac-builtin-access-point-action-custom-parameter';
         }
-    })
-});
+    }
+}

@@ -1,6 +1,8 @@
+import classic from 'ember-classic-decorator';
+import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
-import Component from '@ember/component';
 import { validator, buildValidations } from 'ember-cp-validations';
+import Component from '@ember/component';
 
 // Validation for password change
 const Validations = buildValidations({
@@ -18,26 +20,35 @@ const Validations = buildValidations({
     })
 });
 
-export default Component.extend(Validations, {
-    intl: service(),
-    passwordChange: service('password-change'),
-    flashMessages: service(),
-    // Shall be injected when invoking the component.
-    user_id: null,
-    current_password: null,
-    new_password: null,
-    new_password2: null,
-    disabled: false,
+@classic
+export default class PasswordChange extends Component.extend(Validations) {
+    @service
+    intl;
 
-    actions: {
-        changePassword: function ()
-        {
-            this.get('passwordChange').changePassword(this.get('user_id'),
-                this.get('current_password'),
-                this.get('new_password')).then(() =>
-            {
-                this.flashMessages.success(this.intl.t('password-change.successfully_changed'));
-            });
-        },
+    @service('password-change')
+    passwordChange;
+
+    @service
+    flashMessages;
+
+    disabled = false;
+    // Shall be injected when invoking the component.
+    user_id = null;
+    current_password = null;
+    new_password = null;
+    new_password2 = null;
+
+    init() {
+        super.init(...arguments);
     }
-});
+
+    @action
+    changePassword() {
+        this.get('passwordChange').changePassword(this.get('user_id'),
+            this.get('current_password'),
+            this.get('new_password')).then(() =>
+        {
+            this.flashMessages.success(this.intl.t('password-change.successfully_changed'));
+        });
+    }
+}

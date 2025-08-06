@@ -1,7 +1,5 @@
+import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
 
-export default Component.extend({
-    // Specify:
-    //    + `credential`: The credential object to link to.
-    //    + `text`: Link text.
-});
+@classic
+export default class LinkToCredential extends Component {}

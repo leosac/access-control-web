@@ -1,7 +1,10 @@
+import classic from 'ember-classic-decorator';
+import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Component from '@ember/component';
 
-export default Component.extend({
+@classic
+export default class AccessPoint extends Component {
     // Needs the `onChange` and `selected` property set.
     // Also needs the `label` property
     //form property can be detected with form
@@ -9,24 +12,24 @@ export default Component.extend({
     // The output of (when something is selected)
     // is a dict {id: ID, alias: "alias"};
 
-    search: service(),
+    @service
+    search;
 
-    actions:
-        {
-            changed(input)
-            {
-                this.get('onChange')(input);
-            },
-            // This is a workaround because allowClear from
-            // ember-power-select-typeahead doesn't seems to work.
-            clear()
-            {
-                this.set('selected', null);
-                this.get('onChange')(null);
-            },
-            searchAP(partialAlias)
-            {
-                return this.search.findAccessPointByAlias(partialAlias);
-            }
-        }
-});
+    @action
+    changed(input) {
+        this.get('onChange')(input);
+    }
+
+    // This is a workaround because allowClear from
+    // ember-power-select-typeahead doesn't seems to work.
+    @action
+    clear() {
+        this.set('selected', null);
+        this.get('onChange')(null);
+    }
+
+    @action
+    searchAP(partialAlias) {
+        return this.search.findAccessPointByAlias(partialAlias);
+    }
+}

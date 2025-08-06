@@ -1,22 +1,35 @@
+import classic from 'ember-classic-decorator';
+import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Component from '@ember/component';
 
-export default Component.extend({
-    authSrv: service('authentication'),
-    leosacInfo: service('leosac-info'),
-    websocket: service('websocket'),
-    store: service(),
-    _title: 'settings',
+@classic
+export default class OptionForm extends Component {
+    @service('authentication')
+    authSrv;
+
+    @service('leosac-info')
+    leosacInfo;
+
+    @service('websocket')
+    websocket;
+
+    @service
+    store;
+
+    _title = 'settings';
+
     /**
      * onLogout action name.
      */
-    onLogout: 'onLogout',
-    languageOption: ['Français', 'English'],
-    language: '',
-    newName: '',
+    onLogout = 'onLogout';
+
+    language = '';
+    newName = '';
 
     init() {
-        this._super(...arguments);
+        super.init(...arguments);
+        this.languageOption = this.languageOption || ['Français', 'English'];
         let loc = this.get('leosacInfo').getLocale();
 
         this.set('newName', this.get('leosacInfo').getNameApp());
@@ -25,52 +38,56 @@ export default Component.extend({
         } else {
             this.set('language', 'English');
         }
-    },
+    }
 
-    actions: {
-        restart() {
-            this.get('leosacInfo').restart();
-        },
-        logout()
-        {
-            "use strict";
-            let self = this;
-            this.get('authSrv').logout().then(() =>
-            {
-                self.sendAction('onLogout');
-            });
-        },
+    @action
+    restart() {
+        this.get('leosacInfo').restart();
+    }
 
-        getNameApp()
+    @action
+    logout() {
+        "use strict";
+        let self = this;
+        this.get('authSrv').logout().then(() =>
         {
-            console.log(this.get('leosacInfo').getNameApp());
-        },
-        setNameApp()
-        {
-            this.get('leosacInfo').setNameApp(this.get('newName'));
-        },
+            self.sendAction('onLogout');
+        });
+    }
 
-        changeLanguage(lang)
-        {
-            this.set('language', lang);
-        },
-        getLocale() {
-            if (this.get('leosacInfo').getLocale() === 'fr') {
-                return 'Français';
-            } else {
-                return 'English';
-            }
-        },
-        // It help the ember-power-select component to change the value of the locale variable,
-        // then refresh the page because we need to actualize the element of the page
-        setLocale(loc)
-        {
-            if (loc === 'Français') {
-                this.get('leosacInfo').setLocale('fr');
-            } else {
-                this.get('leosacInfo').setLocale('en');
-            }
-            location.reload();
+    @action
+    getNameApp() {
+        console.log(this.get('leosacInfo').getNameApp());
+    }
+
+    @action
+    setNameApp() {
+        this.get('leosacInfo').setNameApp(this.get('newName'));
+    }
+
+    @action
+    changeLanguage(lang) {
+        this.set('language', lang);
+    }
+
+    @action
+    getLocale() {
+        if (this.get('leosacInfo').getLocale() === 'fr') {
+            return 'Français';
+        } else {
+            return 'English';
         }
     }
-});
+
+    // It help the ember-power-select component to change the value of the locale variable,
+    // then refresh the page because we need to actualize the element of the page
+    @action
+    setLocale(loc) {
+        if (loc === 'Français') {
+            this.get('leosacInfo').setLocale('fr');
+        } else {
+            this.get('leosacInfo').setLocale('en');
+        }
+        location.reload();
+    }
+}

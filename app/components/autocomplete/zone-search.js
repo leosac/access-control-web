@@ -1,8 +1,12 @@
+import classic from 'ember-classic-decorator';
+import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Component from '@ember/component';
 
-export default Component.extend({
-    ignoreZone: null,
+@classic
+export default class ZoneSearch extends Component {
+    ignoreZone = null;
+
     // Needs the `onChange` and `selected` property set.
     // Also needs the `label` property
     //form property can be detected with form
@@ -10,38 +14,37 @@ export default Component.extend({
     // The output of (when something is selected)
     // is a dict {id: ID, alias: "alias"};
 
-    search: service(),
+    @service
+    search;
 
-    actions:
-        {
-            // This is a workaround because allowClear from
-            // ember-power-select-typeahead doesn't seems to work.
-            clear()
-            {
-                this.set('selected', null);
-            },
-            searchZone(partialAlias)
-            {
-                let id = parseInt(this.get('ignoreZone').id);
-                let data = this.search.findZoneByAlias(partialAlias);
+    // This is a workaround because allowClear from
+    // ember-power-select-typeahead doesn't seems to work.
+    @action
+    clear() {
+        this.set('selected', null);
+    }
 
-                data.then(function(res) {
-                    let currentZoneIndex = -1;
-                    let count = 0;
+    @action
+    searchZone(partialAlias) {
+        let id = parseInt(this.get('ignoreZone').id);
+        let data = this.search.findZoneByAlias(partialAlias);
 
-                    if (res) {
-                        res.forEach(function (obj) {
-                            if (obj.id === id) {
-                                currentZoneIndex = count;
-                            }
-                            count += 1;
-                        });
+        data.then(function(res) {
+            let currentZoneIndex = -1;
+            let count = 0;
+
+            if (res) {
+                res.forEach(function (obj) {
+                    if (obj.id === id) {
+                        currentZoneIndex = count;
                     }
-                    if (currentZoneIndex !== -1) {
-                        res.splice(currentZoneIndex, 1);
-                    }
+                    count += 1;
                 });
-                return data;
             }
-        }
-});
+            if (currentZoneIndex !== -1) {
+                res.splice(currentZoneIndex, 1);
+            }
+        });
+        return data;
+    }
+}

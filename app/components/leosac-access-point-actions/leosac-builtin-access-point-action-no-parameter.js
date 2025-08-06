@@ -1,3 +1,4 @@
+import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
 
 /**
@@ -5,5 +6,5 @@ import Component from '@ember/component';
  * customAction is normally autoprovided by the leosac-builtin-access-point-action-params
  *
  */
-export default Component.extend({
-});
+@classic
+export default class LeosacBuiltinAccessPointActionNoParameter extends Component {}

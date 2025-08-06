@@ -1,29 +1,36 @@
+import classic from 'ember-classic-decorator';
+import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Component from '@ember/component';
 
-export default Component.extend({
-    leosacInfo: service('leosac-info'),
-    authSrv: service('authentication'),
-    flashMessages: service(),
+@classic
+export default class TopMenu extends Component {
+    @service('leosac-info')
+    leosacInfo;
+
+    @service('authentication')
+    authSrv;
+
+    @service
+    flashMessages;
 
     /**
      * onLogout action name.
      */
-    onLogout: 'onLogout',
+    onLogout = 'onLogout';
 
-    actions: {
-        logout()
+    @action
+    logout() {
+        "use strict";
+        let self = this;
+        this.authSrv.logout().then(() =>
         {
-            "use strict";
-            let self = this;
-            this.authSrv.logout().then(() =>
-            {
-                self.sendAction('onLogout');
-            });
-        },
-        setLocale(loc)
-        {
-            this.leosacInfo.setLocale(loc);
-        }
+            self.sendAction('onLogout');
+        });
     }
-});
+
+    @action
+    setLocale(loc) {
+        this.leosacInfo.setLocale(loc);
+    }
+}

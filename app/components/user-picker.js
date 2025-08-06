@@ -1,13 +1,15 @@
+import classic from 'ember-classic-decorator';
 import { inject as service } from '@ember/service';
 import Component from '@ember/component';
 
-export default Component.extend({
-    store: service(),
+@classic
+export default class UserPicker extends Component {
+    @service
+    store;
 
-    allUsers: [],
-    init()
-    {
-        this._super(...arguments);
+    init() {
+        super.init(...arguments);
+        this.allUsers = this.allUsers || [];
         const self = this;
         this.store.findAll('user', {reload: true}).then((users) =>
         {
@@ -15,5 +17,5 @@ export default Component.extend({
                 self.set('allUsers', users);
             }
         });
-    },
-});
+    }
+}

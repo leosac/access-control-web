@@ -1,5 +1,6 @@
+import classic from 'ember-classic-decorator';
+import { observes } from '@ember-decorators/object';
 import { once } from '@ember/runloop';
-import { observer } from '@ember/object';
 import Component from '@ember/component';
 import { validator, buildValidations } from 'ember-cp-validations';
 
@@ -17,15 +18,17 @@ const Validations = buildValidations({
  * Attributes: passwordOut
  *             optional (do we allow empty pw)
  */
-export default Component.extend(Validations, {
-    password: '',
-    password2: '',
-    _observerPassword: observer('password', 'password2', function ()
-    {
+@classic
+export default class PasswordInput extends Component.extend(Validations) {
+    password = '';
+    password2 = '';
+
+    @observes('password', 'password2')
+    _observerPassword() {
         once(this, 'tryUpdatePasswordValue');
-    }),
-    tryUpdatePasswordValue ()
-    {
+    }
+
+    tryUpdatePasswordValue() {
         if (this.attrs.optional) {
             this.attrs.passwordOut.update(this.get('password'));
         } else {
@@ -36,9 +39,9 @@ export default Component.extend(Validations, {
                 this.attrs.passwordOut.update(false);
             }
         }
-    },
-    init()
-    {
-        this._super(...arguments);
-    },
-});
+    }
+
+    init() {
+        super.init(...arguments);
+    }
+}

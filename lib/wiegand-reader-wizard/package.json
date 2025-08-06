@@ -5,7 +5,7 @@
     "ember-engine"
   ],
   "dependencies": {
-	"@ember-intl/cp-validations": "*",
+	  "@ember-intl/cp-validations": "*",
     "ember-cli-babel": "*",
     "ember-cli-htmlbars": "*",
     "ember-cli-flash": "*",

@@ -1,19 +1,29 @@
+import classic from 'ember-classic-decorator';
+import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Component from '@ember/component';
 
-export default Component.extend({
-    intl: service(),
-    authSrv: service('authentication'),
-    store: service(),
-    // The user whose membership we display.
-    user: false,
-    // Should we display the "kick" or "leave" button.
-    kickOrLeave: false,
-    kickOrLeaveMessage: false,
+@classic
+export default class UserGroupMembershipTable extends Component {
+    @service
+    intl;
 
-    didReceiveAttrs()
-    {
-        this._super(...arguments);
+    @service('authentication')
+    authSrv;
+
+    @service
+    store;
+
+    // The user whose membership we display.
+    user = false;
+
+    // Should we display the "kick" or "leave" button.
+    kickOrLeave = false;
+
+    kickOrLeaveMessage = false;
+
+    didReceiveAttrs() {
+        super.didReceiveAttrs(...arguments);
         if (this.get('user').get('numericId') === this.authSrv.get('user_id'))
         {
             this.set('kickOrLeave', this.intl.t('leave'));
@@ -24,13 +34,11 @@ export default Component.extend({
             this.set('kickOrLeave', this.intl.t('kick'));
             this.set('kickOrLeaveMessage', this.intl.t('kick_group_confirmation'));
         }
-    },
-    actions:
-    {
-        deleteMembership(membershipId)
-        {
-            const membership = this.store.peekRecord('user-group-membership', membershipId);
-            membership.destroyRecord({});
-        }
     }
-});
+
+    @action
+    deleteMembership(membershipId) {
+        const membership = this.store.peekRecord('user-group-membership', membershipId);
+        membership.destroyRecord({});
+    }
+}

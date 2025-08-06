@@ -35,7 +35,7 @@ App = Application.extend({
                 ]
             }
         },
-        pifaceDigitalGpio: {
+        'piface-digital-gpio': {
             leosacProperty: {
                 needServer: true,
                 displayName: 'Piface Digital GPIO',
@@ -60,7 +60,7 @@ App = Application.extend({
                 ]
             }
         },
-        ledBuzzer: {
+        'led-buzzer': {
             leosacProperty: {
                 needServer: true,
                 displayName: 'LED Buzzer',
@@ -86,7 +86,7 @@ App = Application.extend({
                 ]
             }
         },
-        wiegandReader: {
+        'wiegand-reader': {
             leosacProperty: {
                 needServer: true,
                 displayName: 'Wiegand Reader',
@@ -111,7 +111,7 @@ App = Application.extend({
                 ]
             }
         },
-        wiegandReaderWizard: {
+        'wiegand-reader-wizard': {
             leosacProperty: {
                 needServer: false,
                 displayName: 'Wiegand Reader Wizard',

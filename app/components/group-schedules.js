@@ -1,4 +1,5 @@
-import { computed } from '@ember/object';
+import classic from 'ember-classic-decorator';
+import { action, computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Component from '@ember/component';
 
@@ -9,18 +10,20 @@ import Component from '@ember/component';
  *     + group-schedules
  *     + credential-schedules
  */
-export default Component.extend({
-    authSrv: service('authentication'),
+@classic
+export default class GroupSchedules extends Component {
+    @service('authentication')
+    authSrv;
 
-    syncing: 0,
+    syncing = 0;
 
-    greyedDisabledIfSyncing: computed('syncing', function ()
-    {
+    @computed('syncing')
+    get greyedDisabledIfSyncing() {
         if (this.get('syncing')) {
             return 'disabled-greyed';
         }
         return '';
-    }),
+    }
 
     // `group` is a property set by the caller.
 
@@ -29,8 +32,7 @@ export default Component.extend({
      * and will reload the user object so that the UI stays consistent.
      * @param mapping
      */
-    saveMappingAndReloadUser(mapping)
-    {
+    saveMappingAndReloadUser(mapping) {
         const self = this;
         mapping.get('schedule').then((sched) =>
         {
@@ -42,19 +44,17 @@ export default Component.extend({
                 });
             });
         });
-    },
+    }
 
-    incrSyncing()
-    {
+    incrSyncing() {
         this.set('syncing', this.get('syncing') + 1);
-    },
-    decrSyncing()
-    {
-        this.set('syncing', this.get('syncing') - 1);
-    },
+    }
 
-    refreshImpl()
-    {
+    decrSyncing() {
+        this.set('syncing', this.get('syncing') - 1);
+    }
+
+    refreshImpl() {
         const self = this;
         this.incrSyncing();
         self.get('group').reload().then(() =>
@@ -71,30 +71,30 @@ export default Component.extend({
             });
             this.decrSyncing();
         });
-    },
-
-    didReceiveAttrs(){
-        this.refreshImpl();
-    },
-
-    actions: {
-        addScheduleMapping(mapping)
-        {
-            this.incrSyncing();
-            mapping.get('groups').addObject(this.get('group'));
-            this.saveMappingAndReloadUser(mapping);
-        },
-        leaveMapping(mapping)
-        {
-            const self = this;
-
-            self.incrSyncing();
-            mapping.get('groups').removeObject(self.get('group'));
-            self.saveMappingAndReloadUser(mapping);
-        },
-        refresh()
-        {
-            this.refreshImpl();
-        }
     }
-});
+
+    didReceiveAttrs() {
+        this.refreshImpl();
+    }
+
+    @action
+    addScheduleMapping(mapping) {
+        this.incrSyncing();
+        mapping.get('groups').addObject(this.get('group'));
+        this.saveMappingAndReloadUser(mapping);
+    }
+
+    @action
+    leaveMapping(mapping) {
+        const self = this;
+
+        self.incrSyncing();
+        mapping.get('groups').removeObject(self.get('group'));
+        self.saveMappingAndReloadUser(mapping);
+    }
+
+    @action
+    refresh() {
+        this.refreshImpl();
+    }
+}
