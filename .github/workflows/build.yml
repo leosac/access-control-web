@@ -24,7 +24,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm config set spin false
     - run: npm install -g yarn bower ember-cli@3.28.5
     - run: yarn install
     - run: bower install
