@@ -82,7 +82,6 @@
     "@babel/core": "^7.18.5",
     "@ember/test-helpers": "^2.8.1",
     "@fortawesome/fontawesome-free": "^5.15.4",
-    "ember-cli-bootstrap-datetimepicker": "https://github.com/btecu/ember-cli-bootstrap-datetimepicker",
     "ember-cli-release": "^0.2.9",
     "ember-cli-test-loader": "^3.0.0",
     "ember-fontawesome-css": "^1.2.0",

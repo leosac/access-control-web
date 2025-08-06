@@ -4331,11 +4331,6 @@ bser@2.1.1:
   dependencies:
     node-int64 "^0.4.0"
 
-btecu-eonasdan-bootstrap-datetimepicker@4.17.50:
-  version "4.17.50"
-  resolved "https://registry.yarnpkg.com/btecu-eonasdan-bootstrap-datetimepicker/-/btecu-eonasdan-bootstrap-datetimepicker-4.17.50.tgz#11e2e9da200638d2634857303d5f1653abe794e3"
-  integrity sha512-/5Cp+sAYCRpxs6ExmYH5DkGOfvZ7uSDWRazQ8DzIezUE5YTNdg98rpQdYhh2lpnS9SuBYs9xpGXwAAw3GZj/kw==
-
 buffer-crc32@~0.2.3:
   version "0.2.13"
   resolved "https://registry.yarnpkg.com/buffer-crc32/-/buffer-crc32-0.2.13.tgz#0d333e3f00eac50aa1454abd30ef8c2a5d9a7242"
@@ -5735,14 +5730,6 @@ ember-cli-babel@^6.16.0, ember-cli-babel@^6.3.0, ember-cli-babel@^6.6.0, ember-c
     ember-cli-version-checker "^2.1.2"
     semver "^5.5.0"
 
-"ember-cli-bootstrap-datetimepicker@https://github.com/btecu/ember-cli-bootstrap-datetimepicker":
-  version "0.9.3"
-  resolved "https://github.com/btecu/ember-cli-bootstrap-datetimepicker#39f3beca20a2c36191f263a4f7bf17fdcbd2bac1"
-  dependencies:
-    btecu-eonasdan-bootstrap-datetimepicker "4.17.50"
-    ember-cli-babel "^7.13.0"
-    ember-cli-htmlbars "^4.0.8"
-
 ember-cli-build-config-editor@0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/ember-cli-build-config-editor/-/ember-cli-build-config-editor-0.5.1.tgz#0847d07b6cb6c80bc64d47c2b9dbe0d484707395"
@@ -5797,7 +5784,7 @@ ember-cli-htmlbars@6.0.1, ember-cli-htmlbars@^6.0.0, ember-cli-htmlbars@^6.0.1:
     strip-bom "^4.0.0"
     walk-sync "^2.2.0"
 
-ember-cli-htmlbars@^4.0.0, ember-cli-htmlbars@^4.0.8, ember-cli-htmlbars@^4.3.1:
+ember-cli-htmlbars@^4.0.0, ember-cli-htmlbars@^4.3.1:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/ember-cli-htmlbars/-/ember-cli-htmlbars-4.5.0.tgz#d299e4f7eba6f30dc723ee086906cc550beb252e"
   integrity sha512-bYJpK1pqFu9AadDAGTw05g2LMNzY8xTCIqQm7dMJmKEoUpLRFbPf4SfHXrktzDh7Q5iggl6Skzf1M0bPlIxARw==

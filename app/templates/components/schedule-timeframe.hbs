@@ -49,20 +49,19 @@
   </div>
   <div class="row">
     <div class="col-md-5 datetime-picker-margin">
-      {{#form.element label=(t 'schedule.start_time')}}
-        {{bs-datetimepicker disabled=this.disabled
-                            date=this.timeframe.startTime format='H:mm'
-                            updateDate=(action (mut this.timeframe.startTime))}}
-      {{/form.element}}
-
+      {{form.element controlType="text" label=(t 'schedule.start_time')
+                     placeholder="H:mm"
+                     disabled=this.disabled
+                     value=(mut this.timeframe.startTime)
+                     onChange=(action (mut this.timeframe.startTime))}}
     </div>
 
     <div class="col-md-5 datetime-picker-margin">
-      {{#form.element label=(t 'schedule.end_time')}}
-        {{bs-datetimepicker disabled=this.disabled
-                            date=this.timeframe.endTime format='H:mm'
-                            updateDate=(action (mut this.timeframe.endTime))}}
-      {{/form.element}}
+      {{form.element controlType="text" label=(t 'schedule.end_time')
+                     placeholder="H:mm"
+                     disabled=this.disabled
+                     value=(mut this.timeframe.endTime)
+                     onChange=(action (mut this.timeframe.endTime))}}
     </div>
   </div>
   <div class="row">

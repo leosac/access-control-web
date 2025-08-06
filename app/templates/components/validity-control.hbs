@@ -1,20 +1,15 @@
 <legend>{{t 'validity'}}</legend>
-{{#form.element label=(t 'start_date')}}
-  {{bs-datetimepicker disabled=this.disabled
-                      date=this.startDate format='YYYY-MM-DD HH:mm'
-                      updateDate=(action (mut this.startDate))
-                      minDate=this.minDate
-                      maxDate=this.maxDate}}
-{{/form.element}}
+{{form.element controlType="text" label=(t 'start_date')
+               placeholder="YYYY-MM-DD HH:mm"
+               disabled=this.disabled
+               value=(mut this.startDate)
+               onChange=(action (mut this.startDate))}}
 
-{{#form.element label=(t 'end_date')}}
-  {{bs-datetimepicker  disabled=this.disabled
-                       date=this.endDate format='YYYY-MM-DD HH:mm'
-                       updateDate=(action (mut this.endDate))
-                       minDate=this.minDate
-                       maxDate=this.maxDate}}
-{{/form.element}}
-
+{{form.element controlType="text" label=(t 'start_date.end_date')
+               placeholder="YYYY-MM-DD HH:mm"
+               disabled=this.disabled
+               value=(mut this.endDate)
+               onChange=(action (mut this.endDate))}}
 
 {{form.element label=(t 'enabled') disabled=this.disabled
                controlType='checkbox' property=this.enabledProperty}}
