@@ -1,5 +1,4 @@
-import { alias } from '@ember/object/computed';
-import { computed, get } from '@ember/object';
+import { alias, readOnly } from '@ember/object/computed';
 import Credential from 'web/models/credential';
 import DS from 'ember-data';
 import { validator, buildValidations } from 'ember-cp-validations';
@@ -24,9 +23,8 @@ const RFIDCardValidations = buildValidations(
                 validator('presence', true),
                 validator('length', {
                     get is() {
-                        let sizeCode = parseInt(get(this, 'model.nbBits'));
+                        let sizeCode = parseInt(readOnly('model.nbBits'));
                         return (Math.ceil((sizeCode / 8)) * 3 - 1);
-
                     }
                 }),
                 validator('format', {

@@ -6,6 +6,7 @@ import Component from '@ember/component';
 @classic
 export default class ZoneSearch extends Component {
     ignoreZone = null;
+    form = null;
 
     // Needs the `onChange` and `selected` property set.
     // Also needs the `label` property

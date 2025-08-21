@@ -1,5 +1,5 @@
-<BsFormElement @label={{this.label}}>
+<this.form.element @label={{this.label}}>
     <PowerSelectTypeahead @search={{action "searchZone"}} @selected={{this.selected.alias}} @placeholder={{t "zone.type_zone"}} @onChange={{action (mut this.selected)}} as |childrenInfo|>
         {{childrenInfo.alias}}
     </PowerSelectTypeahead>
-</BsFormElement>
+</this.form.element>

@@ -11,13 +11,13 @@ RUN npm install -g bower
 RUN npm install -g ember-cli@3.28.5
 
 RUN mkdir /leosac-web/
-ADD app /leosac-web/app
-ADD config /leosac-web/config
-ADD public /leosac-web/public
-ADD bower.json /leosac-web/
-ADD package.json /leosac-web/
-ADD ember-cli-build.js /leosac-web/
-ADD run.sh /
+COPY app /leosac-web/app
+COPY config /leosac-web/config
+COPY public /leosac-web/public
+COPY bower.json /leosac-web/
+COPY package.json /leosac-web/
+COPY ember-cli-build.js /leosac-web/
+COPY run.sh /
 
 RUN cd /leosac-web && yarn install --network-timeout 100000
 RUN cd /leosac-web && bower install --allow-root

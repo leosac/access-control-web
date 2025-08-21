@@ -4,6 +4,7 @@ import moment from 'moment';
 
 @classic
 export default class ValidityControl extends Component {
+    form = null;
     init() {
         super.init(...arguments);
         // Must set 3 attributes.

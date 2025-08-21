@@ -1,6 +1,6 @@
-<BsFormElement @label={{this.label}}>
+<this.form.element @label={{this.label}}>
   <PowerSelectTypeahead @search={{action "searchAP"}} @selected={{this.selected}} @placeholder={{t "autocomplete.search_access_point"}} @onChange={{action "changed"}} as |accessPointInfo|>
     {{accessPointInfo.alias}}
   </PowerSelectTypeahead>
   <a href="#" {{action 'clear'}}>{{t 'clear_selection'}}</a>
-</BsFormElement>
+</this.form.element>

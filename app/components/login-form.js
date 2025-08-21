@@ -8,6 +8,9 @@ export default class LoginForm extends Component {
     @service
     intl;
 
+    @service
+    router;
+
     @service('authentication')
     authSrv;
 
@@ -15,7 +18,6 @@ export default class LoginForm extends Component {
     inputUsername = '';
     inputPassword = '';
     errorMessage = '';
-    onLoginSuccess = 'onLoginSuccess';
 
     @action
     login() {
@@ -35,7 +37,7 @@ export default class LoginForm extends Component {
             function ()
             {
                 self.set('pending', false);
-                self.sendAction('onLoginSuccess');
+                self.router.transitionTo('index');
             },
             function (status, msg)
             {

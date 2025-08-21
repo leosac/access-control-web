@@ -14,6 +14,7 @@ export default class GroupTypeahead extends Component {
     onChange;
 
     selected = '';
+    form = null;
 
     @service
     search;

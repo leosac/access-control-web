@@ -15,14 +15,14 @@
                 </BsButton>
 
                 <br>
-                {{#if pending}}
+                {{#if this.pending}}
                     <!--suppress XmlDefaultAttributeValue -->
                     <span class="fa fa-refresh fa-spin login-spinner-style" aria-hidden="true"></span>
                 {{/if}}
 
-                {{#if errorMessage}}
+                {{#if this.errorMessage}}
                     <div class="alert alert-danger">
-                        {{errorMessage}}
+                        {{this.errorMessage}}
                     </div>
                 {{/if}}
             </BsForm>

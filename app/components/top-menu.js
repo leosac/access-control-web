@@ -14,11 +14,6 @@ export default class TopMenu extends Component {
     @service
     flashMessages;
 
-    /**
-     * onLogout action name.
-     */
-    onLogout = 'onLogout';
-
     @action
     logout() {
         "use strict";

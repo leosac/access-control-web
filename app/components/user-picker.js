@@ -7,6 +7,8 @@ export default class UserPicker extends Component {
     @service
     store;
 
+    form = null;
+
     init() {
         super.init(...arguments);
         this.allUsers = this.allUsers || [];

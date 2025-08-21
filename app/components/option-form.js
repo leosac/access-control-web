@@ -19,11 +19,6 @@ export default class OptionForm extends Component {
 
     _title = 'settings';
 
-    /**
-     * onLogout action name.
-     */
-    onLogout = 'onLogout';
-
     language = '';
     newName = '';
 

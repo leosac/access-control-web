@@ -4,6 +4,8 @@ import Component from '@ember/component';
 
 @classic
 export default class ScheduleTimeframe extends Component {
+    form = null;
+    
     init() {
         super.init(...arguments);
         this.timeframe = {

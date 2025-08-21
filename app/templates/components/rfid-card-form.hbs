@@ -6,12 +6,12 @@
 
       <form.element @controlType="text" @label={{t "credentials.rfid_card.hex_id"}} @placeholder="11:aa:bb:cc" @property="cardId" as |el|>
         <el.control @id="Tooltip-id" />
-        <BsTooltip @triggerElement="#Tooltip-id" @placement="right">{{t 'informations.card_id'}}</BsTooltip>
+        <BsTooltip @triggerElement="#Tooltip-id" @placement="right">{{t "informations.card_id"}}</BsTooltip>
       </form.element>
 
       <form.element @controlType="number" @label={{t "credentials.rfid_card.number_bits"}} @placeholder="32" @property="nbBits" as |el|>
         <el.control @id="Tooltip-bits" />
-        <BsTooltip @triggerElement="#Tooltip-bits" @placement="right">{{t 'informations.number_of_bit'}}</BsTooltip>
+        <BsTooltip @triggerElement="#Tooltip-bits" @placement="right">{{t "informations.number_of_bit"}}</BsTooltip>
       </form.element>
 
       <form.element @controlType="textarea" @label={{t "notes"}} @placeholder={{t "notes_placeholder"}} @property="description" />

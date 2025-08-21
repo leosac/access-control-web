@@ -15,6 +15,8 @@ export default class AccessPoint extends Component {
     @service
     search;
 
+    form = null;
+
     @action
     changed(input) {
         this.get('onChange')(input);

@@ -1,27 +1,27 @@
-<BsFormElement @controlType="text" @label={{t "name"}} @placeholder={{t "name"}} @property="name" as |el|>
+<this.form.element @controlType="text" @label={{t "name"}} @placeholder={{t "name"}} @property="name" as |el|>
   {{el.control}}
-</BsFormElement>
+</this.form.element>
 
-<BsFormElement @property="defaultBlinkDuration" @label={{t "blink_duration"}} @controlType="number" as |el|>
+<this.form.element @property="defaultBlinkDuration" @label={{t "blink_duration"}} @controlType="number" as |el|>
   <el.control @id="Tooltip-duration" />
   <BsTooltip @triggerElement="#Tooltip-duration" @placement="right">{{t 'led_buzzer_information.duration'}}</BsTooltip>
-</BsFormElement>
+</this.form.element>
 
-<BsFormElement @property="defaultBlinkSpeed" @label={{t "blink_speed"}} @controlType="number" as |el|>
+<this.form.element @property="defaultBlinkSpeed" @label={{t "blink_speed"}} @controlType="number" as |el|>
   <el.control @id="Tooltip-speed" />
   <BsTooltip @triggerElement="#Tooltip-speed" @placement="right">{{t 'led_buzzer_information.speed'}}</BsTooltip>
-</BsFormElement>
+</this.form.element>
 
-<BsFormElement @label={{t "gpio"}}>
+<this.form.element @label={{t "gpio"}}>
   <div id="Tooltip-gpio">
     <DevicePicker @arrayOfDeviceClass={{arrayOfDeviceClass}} @placeholder="GPIO" @relationshipsName="gpio" @device={{ledBuzzer}} />
     <BsTooltip @triggerElement="#Tooltip-gpio" @placement="right">{{t 'led_buzzer_information.gpio'}}</BsTooltip>
   </div>
-</BsFormElement>
+</this.form.element>
 
-<BsFormElement @label={{t "enable"}}>
+<this.form.element @label={{t "enable"}}>
   <div class="pull-right" id="Tooltip-enable">
     <DeviceToggleEnabled @device={{ledBuzzer}} @saveIt={{false}} />
     <BsTooltip @triggerElement="#Tooltip-enable" @placement="right">{{t 'led_buzzer_informations.enable'}}</BsTooltip>
   </div>
-</BsFormElement>
+</this.form.element>
