@@ -7,9 +7,9 @@
       <div class="col-md-6">
         <div class="row">
           <div class="col-sm-8">
-            <PowerSelectTypeahead @search={{action "searchDoor"}} @selected={{newDoor.alias}} @placeholder={{t "schedule.type_door"}} @onchange={{action (mut newDoor)}} as |doorInfo|>
+            <PowerSelect @searchEnabled={{true}} @search={{action "searchDoor"}} @selected={{newDoor.alias}} @placeholder={{t "schedule.type_door"}} @onchange={{action (mut newDoor)}} as |doorInfo|>
               {{doorInfo.alias}}
-            </PowerSelectTypeahead>
+            </PowerSelect>
           </div>
           <div class="col-sm-4">
             <BsButton @size='sm' @type="primary" @onClick={{action 'addDoor'}} @defaultText={{t 'schedule.add_door'}} />

@@ -1,8 +1,6 @@
-import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 
-@classic
 export default class ScheduleForm extends Component {
     // `action` and `schedule` must be set.
 

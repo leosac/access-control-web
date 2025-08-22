@@ -1,10 +1,8 @@
-import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 import { findCredential } from 'web/leosac-credential-helper';
 
-@classic
 export default class ScheduleMapping extends Component {
     @service
     search;

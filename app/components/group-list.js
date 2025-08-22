@@ -1,15 +1,13 @@
-import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 
-@classic
 export default class GroupList extends Component {
     @service
     router;
 
-    init() {
-      super.init(...arguments);
+    constructor(owner, args) {
+        super(owner, args);
     }
 
     @action

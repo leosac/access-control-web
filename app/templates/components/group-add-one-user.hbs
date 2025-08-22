@@ -2,9 +2,9 @@
     <div class="row">
         <div class="col-md-2 col-sm-4">
             <form.element @label={{t "username"}}>
-                <PowerSelectTypeahead @selected={{this.selectedUser.username}} @search={{action "searchUser"}} @onChange={{action "setUser"}} @allowClear={{true}} @placeholder={{t "username"}} as |user|>
+                <PowerSelect @searchEnabled={{true}} @selected={{this.selectedUser.username}} @search={{action "searchUser"}} @onChange={{action "setUser"}} @allowClear={{true}} @placeholder={{t "username"}} as |user|>
                     {{user.username}}
-                </PowerSelectTypeahead>
+                </PowerSelect>
             </form.element>
         </div>
         <div class="col-md-2 col-sm-4">

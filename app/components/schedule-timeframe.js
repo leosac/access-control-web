@@ -1,13 +1,11 @@
-import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 
-@classic
 export default class ScheduleTimeframe extends Component {
     form = null;
     
-    init() {
-        super.init(...arguments);
+    constructor(owner, args) {
+        super(owner, args);
         this.timeframe = {
             enabledOnMonday: false,
             enabledOnTuesday: false,

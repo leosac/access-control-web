@@ -1,19 +1,17 @@
-import classic from 'ember-classic-decorator';
 import { action, computed } from '@ember/object';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 
 /**
  * You need to provide customAction to that component.
  * customAction is normally autoprovided by the leosac-builtin-access-point-action-params
  *
  */
-
-@classic
 export default class LeosacBuiltinAccessPointActionCustomParameter extends Component {
     customAction = null;
     command = '';
 
-    init() {
+    constructor(owner, args) {
+        super(owner, args);
         let params = this.get('customAction.params');
 
         /**
@@ -31,7 +29,6 @@ export default class LeosacBuiltinAccessPointActionCustomParameter extends Compo
             }
             this.set('properties', arrayOfProperty);
         }
-        super.init(...arguments);
 
         this.properties = this.properties || [];
     }

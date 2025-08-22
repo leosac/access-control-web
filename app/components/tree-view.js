@@ -1,7 +1,6 @@
-import classic from 'ember-classic-decorator';
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 
 // We needed some function for the tree
 
@@ -100,8 +99,8 @@ export default class TreeView extends Component {
     plugins = "types, dnd, sort, states";
     jsTreeActionReceiver = true;
 
-    init() {
-        super.init(...arguments);
+    constructor(owner, args) {
+        super(owner, args);
         this.arrayDoor = this.arrayDoor || [];
         // This is a list of the type options. There is a different icon for each of them
         this.typesOptions = {

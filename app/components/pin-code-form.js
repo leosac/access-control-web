@@ -1,9 +1,7 @@
-import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 
-@classic
 export default class PinCodeForm extends Component {
     // `action` and `pin` must be set.
     @service
@@ -21,8 +19,8 @@ export default class PinCodeForm extends Component {
     selectedUser = false;
     pin = false;
 
-    init() {
-        super.init(...arguments);
+    constructor(owner, args) {
+        super(owner, args);
         this.set('selectedUser', this.get('pin.owner'));
     }
 

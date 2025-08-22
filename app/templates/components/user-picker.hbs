@@ -1,5 +1,5 @@
-<this.form.element @label={{label}}>
-  <PowerSelectTypeahead @selected={{this.selected.username}} @onChange={{onChange}} @allowClear={{true}} @search={{searchCredential}} @placeholder={{t "username"}} as |user|>
+<this.form.element @label={{this.label}}>
+  <PowerSelect @searchEnabled={{true}} @selected={{this.selected.username}} @onChange={{this.onChange}} @allowClear={{true}} @search={{this.searchCredential}} @placeholder={{t "username"}} as |user|>
     {{user.username}}
-  </PowerSelectTypeahead>
+  </PowerSelect>
 </this.form.element>

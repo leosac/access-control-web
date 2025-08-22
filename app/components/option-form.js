@@ -1,9 +1,7 @@
-import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 
-@classic
 export default class OptionForm extends Component {
     @service('authentication')
     authSrv;
@@ -22,8 +20,8 @@ export default class OptionForm extends Component {
     language = '';
     newName = '';
 
-    init() {
-        super.init(...arguments);
+    constructor(owner, args) {
+        super(owner, args);
         this.languageOption = this.languageOption || ['Français', 'English'];
         let loc = this.get('leosacInfo').getLocale();
 

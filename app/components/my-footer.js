@@ -1,8 +1,6 @@
-import classic from 'ember-classic-decorator';
 import { inject as service } from '@ember/service';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 
-@classic
 export default class MyFooter extends Component {
     @service('leosac-info')
     globalInfo;
@@ -10,7 +8,7 @@ export default class MyFooter extends Component {
     @service('websocket')
     ws;
 
-    init() {
-        super.init(...arguments);
+    constructor(owner, args) {
+        super(owner, args);
     }
 }

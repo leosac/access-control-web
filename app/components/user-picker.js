@@ -1,16 +1,14 @@
-import classic from 'ember-classic-decorator';
 import { inject as service } from '@ember/service';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 
-@classic
 export default class UserPicker extends Component {
     @service
     store;
 
     form = null;
 
-    init() {
-        super.init(...arguments);
+    constructor(owner, args) {
+        super(owner, args);
         this.allUsers = this.allUsers || [];
         const self = this;
         this.store.findAll('user', {reload: true}).then((users) =>

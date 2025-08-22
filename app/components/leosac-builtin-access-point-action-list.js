@@ -1,7 +1,6 @@
-import classic from 'ember-classic-decorator';
 import { action, computed } from '@ember/object';
 import { inject as service } from '@ember/service';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 import { DeviceClass } from "web/leosac-constant";
 import { v4 } from "ember-uuid";
 
@@ -10,7 +9,6 @@ import { v4 } from "ember-uuid";
  *
  * This page is here to help us CRUD the actions of the leosac-builtin-access-points.
  */
-@classic
 export default class LeosacBuiltinAccessPointActionList extends Component {
     @service
     store;
@@ -36,7 +34,8 @@ export default class LeosacBuiltinAccessPointActionList extends Component {
 
     // This will help us setting the index, this only purpose for now is the sorting process,
     // but we can also think of a drag and drop in the future
-    init() {
+    constructor(owner, args) {
+        super(owner, args);
         let i = 0;
 
         this.get('ap.actionOnSuccess').forEach(() => {
@@ -47,7 +46,6 @@ export default class LeosacBuiltinAccessPointActionList extends Component {
             i++;
         });
         this.set('indexErrorAction', i);
-        super.init(...arguments);
         // This is an array of device that can be associated to the access-points action
         this.arrayOfValidDevice = [
             DeviceClass.gpio,

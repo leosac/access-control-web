@@ -1,12 +1,10 @@
-import classic from 'ember-classic-decorator';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 import moment from 'moment';
 
-@classic
 export default class ValidityControl extends Component {
     form = null;
-    init() {
-        super.init(...arguments);
+    constructor(owner, args) {
+        super(owner, args);
         // Must set 3 attributes.
         //   + enabledProperty: string
         //   + startDate

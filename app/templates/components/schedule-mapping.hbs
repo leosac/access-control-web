@@ -49,9 +49,9 @@
         <div class="row">
             <div class="pull-left col-md-4">
                 <form.element @label={{t "table.group_name"}}>
-                    <PowerSelectTypeahead @search={{action "searchUser"}} @selected={{this.newUser.username}} @placeholder={{t "users.type_group"}} @onchange={{action (mut this.newUser)}} as |userInfo|>
+                    <PowerSelect @searchEnabled={{true}} @search={{action "searchUser"}} @selected={{this.newUser.username}} @placeholder={{t "users.type_group"}} @onchange={{action (mut this.newUser)}} as |userInfo|>
                         {{userInfo.username}}
-                    </PowerSelectTypeahead>
+                    </PowerSelect>
                 </form.element>
             </div>
             <div class="col-md-2">
@@ -100,9 +100,9 @@
             <div class="row">
                 <div class="pull-left col-md-4">
                     <form.element @label={{t "table.group_name"}}>
-                        <PowerSelectTypeahead @search={{action "searchGroup"}} @selected={{this.newGroup.name}} @placeholder={{t "users.type_group"}} @onchange={{action (mut this.newGroup)}} as |groupInfo|>
+                        <PowerSelect @searchEnabled={{true}} @search={{action "searchGroup"}} @selected={{this.newGroup.name}} @placeholder={{t "users.type_group"}} @onchange={{action (mut this.newGroup)}} as |groupInfo|>
                             {{groupInfo.name}}
-                        </PowerSelectTypeahead>
+                        </PowerSelect>
                     </form.element>
                 </div>
                 <div class="col-md-2">
@@ -203,9 +203,9 @@
             <div class="row">
                 <div class="pull-left col-md-4">
                     <form.element @label="Door alias">
-                        <PowerSelectTypeahead @search={{action "searchDoor"}} @selected={{this.newDoor.alias}} @placeholder={{t "schedule.type_door"}} @onchange={{action (mut this.newDoor)}} as |doorInfo|>
+                        <PowerSelect @searchEnabled={{true}} @search={{action "searchDoor"}} @selected={{this.newDoor.alias}} @placeholder={{t "schedule.type_door"}} @onchange={{action (mut this.newDoor)}} as |doorInfo|>
                             {{doorInfo.alias}}
-                        </PowerSelectTypeahead>
+                        </PowerSelect>
                     </form.element>
                 </div>
                 <div class="col-md-2">

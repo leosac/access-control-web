@@ -1,4 +1,5 @@
 import { alias, readOnly } from '@ember/object/computed';
+import { computed } from '@ember/object';
 import Credential from 'web/models/credential';
 import DS from 'ember-data';
 import { validator, buildValidations } from 'ember-cp-validations';
@@ -22,10 +23,7 @@ const RFIDCardValidations = buildValidations(
                 validator('ds-error'),
                 validator('presence', true),
                 validator('length', {
-                    get is() {
-                        let sizeCode = parseInt(readOnly('model.nbBits'));
-                        return (Math.ceil((sizeCode / 8)) * 3 - 1);
-                    }
+                    is: readOnly('model.cardIdExpectedLength')
                 }),
                 validator('format', {
                     // language=JSRegexp
@@ -45,6 +43,12 @@ export default Credential.extend(RFIDCardValidations, {
     type: 'RFIDCard',
     cardId: DS.attr('string'),
     nbBits: DS.attr('number'),
+    cardIdExpectedLength: computed('nbBits', {
+        get() {
+            const sizeCode = parseInt(this.nbBits);
+            return (Math.ceil((sizeCode / 8)) * 3 - 1);
+        }
+    }).readOnly(),
 
     displayIdentifier: alias('cardId'),
 });

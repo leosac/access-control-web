@@ -1,6 +1,6 @@
-<PowerSelectTypeahead @search={{action "searchDevice"}} @selected={{this.newDevice.name}} @placeholder={{this.placeholder}} @allowClear={{true}} @onChange={{action (mut this.newDevice)}} as |device|>
+<PowerSelect @searchEnabled={{true}} @search={{action "searchDevice"}} @selected={{this.newDevice.name}} @placeholder={{this.placeholder}} @allowClear={{true}} @onChange={{action (mut this.newDevice)}} as |device|>
   {{device.name}}
   <span style="color: #9b9aa5;font-style: italic;margin-right:20px;" class="pull-right">
     {{device.type}}
   </span>
-</PowerSelectTypeahead>
+</PowerSelect>

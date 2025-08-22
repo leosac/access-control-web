@@ -6,6 +6,7 @@
   ],
   "dependencies": {
 	  "@ember-intl/cp-validations": "*",
+    "ember-auto-import": "*",
     "ember-cli-babel": "*",
     "ember-cli-htmlbars": "*",
     "ember-cli-flash": "*",
@@ -17,6 +18,8 @@
     "ember-steps": "*",
     "ember-toggle": "*",
     "ember-truth-helpers": "*"
+  },
+  "devDependencies": {
   },
   "ember-addon": {
     "paths": [

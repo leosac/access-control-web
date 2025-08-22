@@ -1,8 +1,6 @@
-import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 
-@classic
 export default class NumberedPaginator extends Component {
     first = 0;
     last = 0;
@@ -66,9 +64,9 @@ export default class NumberedPaginator extends Component {
         });
     }
 
-    init() {
+    constructor(owner, args) {
         "use strict";
-        super.init();
+        super(owner, args);
         this.compute();
         this.pages = this.pages || [];
     }

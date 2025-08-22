@@ -1,6 +1,5 @@
-import classic from 'ember-classic-decorator';
 import { computed } from '@ember/object';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 
 /**
  * This component is here to get the correct component name,
@@ -10,7 +9,6 @@ import Component from '@ember/component';
  *
  * You need to pass customAction to the component, so that it can fetch the command name.
  */
-@classic
 export default class LeosacBuiltinAccessPointActionParams extends Component {
     customAction = null;
 

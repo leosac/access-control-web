@@ -1,9 +1,7 @@
-import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 
-@classic
 export default class GroupAddOneUser extends Component {
     @service('leosac-info')
     globalInfo;
@@ -24,8 +22,8 @@ export default class GroupAddOneUser extends Component {
     selectedRank = 'member';
     group = false;
 
-    init() {
-        super.init(...arguments);
+    constructor(owner, args) {
+        super(owner, args);
         this.allRank = this.allRank || ['member', 'operator', 'administrator'];
     }
 

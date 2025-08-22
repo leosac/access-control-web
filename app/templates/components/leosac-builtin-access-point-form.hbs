@@ -126,9 +126,9 @@
         <div class="row">
           <div class="col-md-12">
             <form.element @label={{t "leosac_builtin_ap.schedule_picker"}}>
-              <PowerSelectTypeahead @search={{action "searchSchedule"}} @selected={{this.newSchedule.name}} @placeholder={{t "leosac_builtin_ap.schedules_placeholder"}} @onChange={{action (mut this.newSchedule)}} as |schedule|>
+              <PowerSelect @searchEnabled={{true}} @search={{action "searchSchedule"}} @selected={{this.newSchedule.name}} @placeholder={{t "leosac_builtin_ap.schedules_placeholder"}} @onChange={{action (mut this.newSchedule)}} as |schedule|>
                 {{schedule.name}}
-              </PowerSelectTypeahead>
+              </PowerSelect>
             </form.element>
           </div>
         </div>

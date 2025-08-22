@@ -1,9 +1,7 @@
-import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 
-@classic
 export default class AccessPoint extends Component {
     // Needs the `onChange` and `selected` property set.
     // Also needs the `label` property

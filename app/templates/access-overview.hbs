@@ -2,14 +2,14 @@ This part will let you select which door and user the comparison should be made:
 
 <div class="row">
   <div class="col-md-6">
-    <PowerSelectTypeahead @options={{this.allUsers}} @placeholder={{t "user"}} @searchField="username" @onChange={{action "addUser"}} as |user|>
+    <PowerSelect @options={{this.allUsers}} @placeholder={{t "user"}} @searchEnabled={{true}} @searchField="username" @onChange={{action "addUser"}} as |user|>
       {{user.username}}
-    </PowerSelectTypeahead>
+    </PowerSelect>
   </div>
   <div class="col-md-6">
-    <PowerSelectTypeahead @options={{this.allDoors}} @placeholder={{t "doors"}} @searchField="alias" @onChange={{action "addDoor"}} as |door|>
+    <PowerSelect @options={{this.allDoors}} @placeholder={{t "doors"}} @searchEnabled={{true}} @searchField="alias" @onChange={{action "addDoor"}} as |door|>
       {{door.alias}}
-    </PowerSelectTypeahead>
+    </PowerSelect>
   </div>
 </div>
 

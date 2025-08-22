@@ -1,9 +1,7 @@
-import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
-import Component from '@ember/component';
+import Component from '@emglimmerber/component';
 
-@classic
 export default class ScheduleMappingPicker extends Component {
     @service
     store;

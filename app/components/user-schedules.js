@@ -1,7 +1,6 @@
-import classic from 'ember-classic-decorator';
 import { action, computed } from '@ember/object';
 import { inject as service } from '@ember/service';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 
 /**
  * For now the following 3 components are almost copy-pasted.
@@ -10,7 +9,6 @@ import Component from '@ember/component';
  *     + group-schedules
  *     + credential-schedules
  */
-@classic
 export default class UserSchedules extends Component {
     @service('authentication')
     authSrv;

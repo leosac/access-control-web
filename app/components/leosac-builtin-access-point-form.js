@@ -1,7 +1,6 @@
-import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 import { DeviceClass } from 'web/leosac-constant';
 
 function removeSchedule(selectedSchedules, schedule) {
@@ -20,7 +19,6 @@ function removeSchedule(selectedSchedules, schedule) {
  * Thanks to the already created access-point(ap), the component will help make the ap useful.
  */
 
-@classic
 export default class LeosacBuiltinAccessPointForm extends Component {
     @service
     store;
@@ -31,8 +29,8 @@ export default class LeosacBuiltinAccessPointForm extends Component {
     ap = null;
     newDevice = null;
 
-    init() {
-        super.init(...arguments);
+    constructor(owner, args) {
+        super(owner, args);
         this.arrayOfDeviceClassWiegandReader = this.arrayOfDeviceClassWiegandReader || [DeviceClass.reader];
         this.selectedSchedules = this.selectedSchedules || [];
 

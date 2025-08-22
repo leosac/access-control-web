@@ -1,8 +1,7 @@
-import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { validator, buildValidations } from 'ember-cp-validations';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 
 // Validation for password change
 const Validations = buildValidations({
@@ -20,7 +19,6 @@ const Validations = buildValidations({
     })
 });
 
-@classic
 export default class PasswordChange extends Component.extend(Validations) {
     @service
     intl;
@@ -38,8 +36,8 @@ export default class PasswordChange extends Component.extend(Validations) {
     new_password = null;
     new_password2 = null;
 
-    init() {
-        super.init(...arguments);
+    constructor(owner, args) {
+        super(owner, args);
     }
 
     @action

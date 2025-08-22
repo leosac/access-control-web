@@ -1,8 +1,6 @@
-import classic from 'ember-classic-decorator';
 import { inject as service } from '@ember/service';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 
-@classic
 export default class SystemOverview extends Component {
     @service('system-overview')
     systemOverview;
@@ -13,9 +11,9 @@ export default class SystemOverview extends Component {
     onSessionLost = 'onSessionLost';
     myError = 'myError';
 
-    init() {
+    constructor(owner, args) {
         "use strict";
-        super.init();
+        super(owner, args);
         const self = this;
         this.get('moduleManager').init();
         this.get('systemOverview').update().catch((failure) =>
