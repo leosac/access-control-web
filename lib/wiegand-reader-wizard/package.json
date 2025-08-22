@@ -19,8 +19,6 @@
     "ember-toggle": "*",
     "ember-truth-helpers": "*"
   },
-  "devDependencies": {
-  },
   "ember-addon": {
     "paths": [
       "../shared-tools"

@@ -57,7 +57,7 @@ or if you use yarn:
 
     yarn
 
-This should install all the needed dependencies from the packages.json and the bower.json.
+This should install all the needed dependencies from the packages.json.
 It is necessary for the application to run.
 
 ## Launch the application

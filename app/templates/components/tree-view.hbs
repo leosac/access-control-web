@@ -1,13 +1,13 @@
 <div class="row">
     <div class="col-md-6">
-        <EmberJstree @actionReceiver={{jsTreeActionReceiver}} @eventDidMoveNode="handleJstreeEventDidMoveNode" @eventDidSelectNode="handleJstreeEventDidSelectNode" @data={{zoneDataTree}} @plugins={{plugins}} @typesOptions={{typesOptions}} @checkCallback={{checkCallback}} />
+        <EmberJstree @actionReceiver={{this.jsTreeActionReceiver}} @eventDidMoveNode="handleJstreeEventDidMoveNode" @eventDidSelectNode="handleJstreeEventDidSelectNode" @data={{this.zoneDataTree}} @plugins={{this.plugins}} @typesOptions={{this.typesOptions}} @checkCallback={{this.checkCallback}} />
     </div>
 
     {{#if this.selectedZone}}
       <div class="col-md-6">
         <div class="row">
           <div class="col-sm-8">
-            <PowerSelect @searchEnabled={{true}} @search={{action "searchDoor"}} @selected={{newDoor.alias}} @placeholder={{t "schedule.type_door"}} @onchange={{action (mut newDoor)}} as |doorInfo|>
+            <PowerSelect @searchEnabled={{true}} @search={{action "searchDoor"}} @selected={{this.newDoor.alias}} @placeholder={{t "schedule.type_door"}} @onchange={{action (mut newDoor)}} as |doorInfo|>
               {{doorInfo.alias}}
             </PowerSelect>
           </div>
@@ -45,7 +45,7 @@
             </div>
           </div>
         </div>
-        {{#if arrayDoor}}
+        {{#if this.arrayDoor}}
           <p class="summary-zone-tree">
             {{t 'summary'}}:
           </p>
@@ -58,7 +58,7 @@
                   <th>{{t 'door.title'}}</th>
                   </thead>
                   <tbody>
-                  {{#each arrayDoor as |entry|}}
+                  {{#each this.arrayDoor as |entry|}}
                     <LinkTo @route='door' @model={{entry.doorId}}>
                       <tr>
                         <td>{{entry.zone}}</td>

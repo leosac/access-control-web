@@ -6,6 +6,6 @@
 
   <form.element @controlType="textarea" @label={{t "smtp.body"}} @property="body" />
 
-  <BsButton @disabled={{isButtonDisabled}} @defaultText={{t "smtp.send"}} @type="primary" @buttonType="submit" @onClick={{action "sendTestMail"}} />
+  <BsButton @disabled={{this.isButtonDisabled}} @defaultText={{t "smtp.send"}} @type="primary" @buttonType="submit" @onClick={{action "sendTestMail"}} />
 </BsForm>
 </div>

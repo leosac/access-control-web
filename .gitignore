@@ -79,7 +79,6 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-/bower_components
 /dist
 /node_modules
 package-lock.json
@@ -87,7 +86,6 @@ package-lock.json
 
 /lib/**/node_modules
 /lib/**/package-lock.json
-/lib/**/bower_components/
 package-lock.json
 
 tests/

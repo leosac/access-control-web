@@ -9,7 +9,6 @@ You will need the following things properly installed on your computer.
 
 * [Git](https://git-scm.com/)
 * [Node.js](https://nodejs.org/) (with NPM)
-* [Bower](https://bower.io/)
 * [Ember CLI](https://ember-cli.com/)
 * [Puppeteer](https://pptr.dev/)
 
@@ -18,7 +17,6 @@ You will need the following things properly installed on your computer.
 * `git clone <repository-url>` this repository
 * cd into the new directory
 * `yarn install`
-* `bower install`
 
 ## Running / Development
 

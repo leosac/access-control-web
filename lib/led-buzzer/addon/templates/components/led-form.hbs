@@ -1,7 +1,7 @@
 <BsForm @formLayout="vertical" @model={{this.led}} @onSubmit={{action}} as |form|>
   <fieldset>
     <div class="col-md-6">
-      <LedBuzzerForm @model={{model}} @ledBuzzer={{this.led}} @form={{form}} />
+      <LedBuzzerForm @model={{this.model}} @ledBuzzer={{this.led}} @form={{form}} />
       <div class="row">
         <div class="col-md-6">
           <BsButton @defaultText={{t "submit"}} @type="success" @size="md" @buttonType="submit" />

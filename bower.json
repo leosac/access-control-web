@@ -1,8 +1,0 @@
-{
-  "name": "web",
-  "dependencies": {
-	"bootstrap": "4.6.2",
-    "startbootstrap-sb-admin-2-blackrockdigital": "4.1.4",
-    "jstree": "^3.3.17"
-  }
-}

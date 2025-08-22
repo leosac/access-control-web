@@ -41,7 +41,7 @@
             <div class="row">
               <div class="col-md-6">
                 <form.element @label={{t "gpio"}}>
-                  <PowerSelect @selected={{gpioType}} @searchEnabled={{false}} @options={{listOfGpio}} @onchange={{action (mut gpioType)}} as |gpio|>
+                  <PowerSelect @selected={{this.gpioType}} @searchEnabled={{false}} @options={{this.listOfGpio}} @onchange={{action (mut gpioType)}} as |gpio|>
                     {{t gpio}}
                   </PowerSelect>
                 </form.element>
@@ -56,7 +56,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <form.element @label={{t "hardware_address"}}>
-                    <PowerSelect @selected={{hardwareAddress}} @searchEnabled={{false}} @options={{hardwareAddressList}} @onchange={{action (mut hardwareAddress)}} as |address|>
+                    <PowerSelect @selected={{this.hardwareAddress}} @searchEnabled={{false}} @options={{this.hardwareAddressList}} @onchange={{action (mut hardwareAddress)}} as |address|>
                       {{address}}
                     </PowerSelect>
                   </form.element>
@@ -102,7 +102,7 @@
     <w.step @name="gpio">
       <div class="row">
         <div class="col-md-6">
-          <BsForm @formLayout="vertical" @model={{pifaceDigitalGpioHigh}} as |form|>
+          <BsForm @formLayout="vertical" @model={{this.pifaceDigitalGpioHigh}} as |form|>
             <form.element @controlType="number" @label={{t "number_high"}} @placeholder="0 - 7" @property="number" as |el|>
               {{el.control}}
             </form.element>
@@ -116,7 +116,7 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-          <BsForm @formLayout="vertical" @model={{pifaceDigitalGpioLow}} as |form|>
+          <BsForm @formLayout="vertical" @model={{this.pifaceDigitalGpioLow}} as |form|>
             <form.element @controlType="number" @label={{t "number_low"}} @placeholder="0 - 7" @property="number" as |el|>
               {{el.control}}
             </form.element>
@@ -131,7 +131,7 @@
       {{#if ledEnabled}}
         <div class="row">
           <div class="col-md-6">
-            <BsForm @formLayout="vertical" @model={{pifaceDigitalGpioLed}} as |form|>
+            <BsForm @formLayout="vertical" @model={{this.pifaceDigitalGpioLed}} as |form|>
               <form.element @controlType="number" @label={{t "number_led"}} @placeholder="0 - 7" @property="number" as |el|>
                 {{el.control}}
               </form.element>
@@ -147,7 +147,7 @@
       {{#if buzzerEnabled}}
         <div class="row">
           <div class="col-md-6">
-            <BsForm @formLayout="vertical" @model={{pifaceDigitalGpioBuzzer}} as |form|>
+            <BsForm @formLayout="vertical" @model={{this.pifaceDigitalGpioBuzzer}} as |form|>
 
               <form.element @controlType="number" @label={{t "number_buzzer"}} @placeholder="0 - 7" @property="number" as |el|>
                 {{el.control}}

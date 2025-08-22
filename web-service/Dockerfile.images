@@ -18,8 +18,8 @@ RUN (curl -sL https://deb.nodesource.com/setup_16.x | bash -)
 RUN apt-get update
 RUN apt-get install -y nodejs
 
-# Install yarn, bower and ember-cli
-RUN npm install yarn bower ember-cli@3.28.5 -g
+# Install yarn and ember-cli
+RUN npm install yarn ember-cli -g
 
 # Create a Leosac repository
 RUN mkdir -p /leosac
@@ -28,10 +28,9 @@ RUN mkdir -p /leosac
 # Leosac-web and leosac-web-addons should have been cloned and placed in a file name leosac.
 ADD ../../leosac/ /leosac/.
 
-# Run npm install and bower install. This will help us gain a lot of time in our container
+# Run npm install. This will help us gain a lot of time in our container
 
-RUN (cd /leosac/leosac-web && \
-    yarn install && bower install --allow-root)
+RUN (cd /leosac/leosac-web && yarn install)
 
 # Add the scrypt.py to the images
 COPY leosac/leosac-web/web-service/script.py script.py

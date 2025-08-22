@@ -4,14 +4,11 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function (defaults)
 {
     var app = new EmberApp(defaults, {
-      //	babel: {     sourceMaps: 'inline'   },
-      // Add options here
+      babel: {
+        plugins: [require.resolve('ember-auto-import/babel-plugin')],
+      },
 
-      // This fix a JS error that happened when installing
-      // ember-power-select-typeahead.
-      // see https://stackoverflow.com/questions/34549838/ember-2-2-0-getting-regeneratorruntime-is-not-defined
-    	'ember-cli-babel': {
-        includePolyfill: true
+      autoImport: {
       },
 
     	'ember-power-select': {
@@ -20,7 +17,8 @@ module.exports = function (defaults)
 
     	'ember-bootstrap': {
         'bootstrapVersion': 4,
-        'importBootstrapCSS': true
+        'importBootstrapCSS': false,
+        'insertEmberWormholeElementToDom': false
     	},
 
       fingerprint: {
@@ -41,13 +39,11 @@ module.exports = function (defaults)
     // please specify an object with the list of modules as keys
     // along with the exports of each module as its value.
 
-    //app.import('bower_components/bootstrap/dist/css/bootstrap.min.css');
-
-    app.import('bower_components/startbootstrap-sb-admin-2-blackrockdigital/css/sb-admin-2.min.css');
-
-    app.import('bower_components/bootstrap/dist/js/bootstrap.bundle.min.js');
-    app.import('bower_components/jquery/dist/jquery.min.js');
-    //app.import('bower_components/startbootstrap-sb-admin-2-blackrockdigital/js/sb-admin-2.js');
+    app.import('node_modules/bootstrap/dist/css/bootstrap.min.css');
+    app.import('node_modules/startbootstrap-sb-admin-2/css/sb-admin-2.min.css');
+    app.import('node_modules/bootstrap/dist/js/bootstrap.bundle.min.js');
+    app.import('node_modules/jquery/dist/jquery.min.js');
+    //app.import('node_modules/startbootstrap-sb-admin-2-blackrockdigital/js/sb-admin-2.js');
 
     return app.toTree();
 };

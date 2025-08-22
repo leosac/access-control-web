@@ -19,7 +19,7 @@
     <th class="col-md-offset-10 col-md-2">{{t 'delete'}}</th>
     </thead>
     <tbody>
-    {{#each model as |ledBuzzer|}}
+    {{#each this.model as |ledBuzzer|}}
       {{#if ledBuzzer.id}}
         {{#if (eq ledBuzzer.deviceClass 'buzzer')}}
           <tr>

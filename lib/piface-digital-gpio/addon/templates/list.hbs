@@ -16,7 +16,7 @@
     <th class="col-md-offset-10 col-md-2">{{t 'delete'}}</th>
     </thead>
     <tbody>
-    {{#each model as |piface-digital-gpio|}}
+    {{#each this.model as |piface-digital-gpio|}}
     {{#if piface-digital-gpio.id}}
       <tr>
         <LinkTo @route="piface-digital-gpio" @model={{piface-digital-gpio.id}} @tagName="td">

@@ -14,14 +14,14 @@
 
 <this.form.element @label={{t "gpio"}}>
   <div id="Tooltip-gpio">
-    <DevicePicker @arrayOfDeviceClass={{arrayOfDeviceClass}} @placeholder="GPIO" @relationshipsName="gpio" @device={{ledBuzzer}} />
+    <DevicePicker @arrayOfDeviceClass={{this.arrayOfDeviceClass}} @placeholder="GPIO" @relationshipsName="gpio" @device={{this.ledBuzzer}} />
     <BsTooltip @triggerElement="#Tooltip-gpio" @placement="right">{{t 'led_buzzer_information.gpio'}}</BsTooltip>
   </div>
 </this.form.element>
 
 <this.form.element @label={{t "enable"}}>
   <div class="pull-right" id="Tooltip-enable">
-    <DeviceToggleEnabled @device={{ledBuzzer}} @saveIt={{false}} />
+    <DeviceToggleEnabled @device={{this.ledBuzzer}} @saveIt={{false}} />
     <BsTooltip @triggerElement="#Tooltip-enable" @placement="right">{{t 'led_buzzer_informations.enable'}}</BsTooltip>
   </div>
 </this.form.element>
