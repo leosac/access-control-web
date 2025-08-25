@@ -1,11 +1,17 @@
-import DS from 'ember-data';
+import { attr, hasMany } from '@ember-data/model';
 import AccessPoint from 'web/models/access-point';
 
-export default AccessPoint.extend({
-    alwaysCloseSchedules: DS.hasMany('schedule'),
-    alwaysOpenSchedules: DS.hasMany('schedule'),
-    authenticationBackend: DS.attr('string'),
-    authSourcesDevice: DS.hasMany('device'),
-    actionOnSuccess: DS.hasMany('leosac-builtin-access-point-action'),
-    actionOnError: DS.hasMany('leosac-builtin-access-point-action'),
-});
+export default class LeosacBuiltinAccessPointModel extends AccessPoint {
+    @hasMany('schedule')
+    alwaysCloseSchedules;
+    @hasMany('schedule')
+    alwaysOpenSchedules;
+    @attr('string')
+    authenticationBackend;
+    @hasMany('device')
+    authSourcesDevice;
+    @hasMany('leosac-builtin-access-point-action')
+    actionOnSuccess;
+    @hasMany('leosac-builtin-access-point-action')
+    actionOnError;
+}

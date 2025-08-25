@@ -1,7 +1,8 @@
 import AuditEntry from 'web/models/audit-entry';
-import DS from 'ember-data';
+import { belongsTo } from '@ember-data/model';
 
-export default AuditEntry.extend({
-    type: 'UpdateEvent',
-    target: DS.belongsTo('update'),
-});
+export default class AuditUpdateEvent extends AuditEntry {
+    type = 'UpdateEvent';
+    @belongsTo('update')
+    target;
+}

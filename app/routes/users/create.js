@@ -1,4 +1,4 @@
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 import { hash } from 'rsvp';
 import LeosacRoute from 'web/leosac-route';
 import { UserRank } from 'web/leosac-constant';

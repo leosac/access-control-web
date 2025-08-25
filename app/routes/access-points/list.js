@@ -1,4 +1,4 @@
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 // import { findAllAccessPoints } from 'web/leosac-access-point-helper';
 

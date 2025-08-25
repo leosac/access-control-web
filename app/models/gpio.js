@@ -1,4 +1,4 @@
-import DS from 'ember-data';
+import { attr } from '@ember-data/model';
 import Device from 'web/models/device';
 import { validator , buildValidations } from 'ember-cp-validations';
 
@@ -22,8 +22,11 @@ const Validations = buildValidations(
     }
 );
 
-export default Device.extend(Validations, {
-    number: DS.attr('number'),
-    direction: DS.attr('direction', {defaultValue: 'in'}),
-    defaultValue: DS.attr('boolean')
-});
+export default class GpioModel extends Device.extend(Validations) {
+    @attr('number')
+    number;
+    @attr('direction', {defaultValue: 'in'})
+    direction;
+    @attr('boolean')
+    defaultValue;
+}

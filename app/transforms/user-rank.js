@@ -1,7 +1,5 @@
-import DS from 'ember-data';
-
-export default DS.Transform.extend({
-    deserialize(serialized) {
+export default class UserRankTransform {
+    deserialize(serialized, options) {
         if (serialized === 4) {
             return 'administrator';
         } else if (serialized === 3) {
@@ -13,9 +11,9 @@ export default DS.Transform.extend({
         } else if (serialized === 0) {
             return 'user';
         }
-    },
+    }
 
-    serialize(deserialized) {
+    serialize(deserialized, options) {
         if (deserialized === 'administrator') {
             return 4;
         } else if (deserialized === 'supervisor') {
@@ -28,4 +26,8 @@ export default DS.Transform.extend({
             return 0;
         }
     }
-});
+
+    static create() {
+        return new this();
+    }
+}

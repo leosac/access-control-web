@@ -1,15 +1,10 @@
 import Application from '@ember/application';
-import Ember from 'ember';
 import Resolver from './resolver';
 import loadInitializers from 'ember-load-initializers';
 import config from './config/environment';
 import 'ember-power-select/styles';
 
 let App;
-
-// Engine name must be camelcased while the repo name and the route must be dasherized
-
-Ember.MODEL_FACTORY_INJECTIONS = true;
 
 App = Application.extend({
     engines: {

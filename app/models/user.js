@@ -1,6 +1,5 @@
 import { computed } from '@ember/object';
-import Model from 'ember-data/model';
-import DS from 'ember-data';
+import Model, { attr, hasMany } from '@ember-data/model';
 import { validator, buildValidations } from 'ember-cp-validations';
 
 const UserValidations = buildValidations(
@@ -15,34 +14,43 @@ const UserValidations = buildValidations(
     }
 );
 
-export default Model.extend(UserValidations, {
-    numericId: computed('id', function ()
-    {
+export default class UserModel extends Model.extend(UserValidations) {
+    @computed('id')
+    numericId() {
         "use strict";
         return Number(this.get('id'));
-    }),
-    username: DS.attr('string'),
-    firstname: DS.attr('string'),
-    lastname: DS.attr('string'),
-    email: DS.attr('string'),
-    password: DS.attr('string'),
-    rank: DS.attr('user-rank'),
-    memberships: DS.hasMany('user-group-membership', {
-        inverse: 'user'
-    }),
-    credentials: DS.hasMany('credential', {
-        inverse: 'owner',
-        polymorphic: true,
-    }),
+    }
+
+    @attr('string')
+    username;
+    @attr('string')
+    firstname;
+    @attr('string')
+    lastname;
+    @attr('string')
+    email;
+    @attr('string')
+    password;
+    @attr('user-rank')
+    rank;
+    @hasMany('user-group-membership', { inverse: 'user' })
+    memberships;
+    @hasMany('credential', { inverse: 'owner', polymorphic: true, })
+    credentials;
 
     // This is a fake relationship, because server side it
     // does'nt exist directly.
-    schedules: DS.hasMany('schedules'),
+    @hasMany('schedules')
+    schedules;
     // Validity information
-    validityEnabled: DS.attr('boolean'),
-    validityStart: DS.attr('utc'),
-    validityEnd: DS.attr('utc'),
+    @attr('boolean')
+    validityEnabled;
+    @attr('utc')
+    validityStart;
+    @attr('utc')
+    validityEnd;
 
     // The ODB version.
-    version: DS.attr('number')
-});
+    @attr('number')
+    version;
+}

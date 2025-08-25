@@ -1,4 +1,4 @@
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 import { later } from '@ember/runloop';
 import LeosacRoute from 'web/leosac-route';
 

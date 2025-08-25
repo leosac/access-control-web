@@ -1,5 +1,5 @@
 import { Promise, all } from 'rsvp';
-import Service, { inject as service } from '@ember/service';
+import Service, { service } from '@ember/service';
 
 /**
  * This service provides the ability to query the

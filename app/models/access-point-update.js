@@ -1,8 +1,7 @@
 import Update from 'web/models/update';
-import DS from 'ember-data';
+import { belongsTo } from '@ember-data/model';
 
-export default Update.extend({
-    accessPoint: DS.belongsTo('access-point', {
-        polymorphic: true
-    }),
-});
+export default class AccessPointUpdateModel extends Update {
+    @belongsTo('access-point', { polymorphic: true })
+    accessPoint;
+}

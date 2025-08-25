@@ -1,6 +1,6 @@
 import { alias } from '@ember/object/computed';
 import Credential from 'web/models/credential';
-import DS from 'ember-data';
+import { attr } from '@ember-data/model';
 import { validator, buildValidations } from 'ember-cp-validations';
 
 const PinCodeValidations = buildValidations(
@@ -26,10 +26,12 @@ const PinCodeValidations = buildValidations(
     }
 );
 
-export default Credential.extend(PinCodeValidations, {
+export default class PinCodeModel extends Credential.extend(PinCodeValidations) {
     // Hardcoded to true to distinguish between credential type.
-    isPinCode: true,
-    type: 'PinCode',
-    code: DS.attr('string'),
-    displayIdentifier: alias('code')
-});
+    isPinCode = true;
+    type = 'PinCode';
+    @attr('string')
+    code;
+    @alias('code')
+    displayIdentifier;
+}

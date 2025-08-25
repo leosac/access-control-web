@@ -1,4 +1,4 @@
-import DS from 'ember-data';
+import { belongsTo } from '@ember-data/model';
 import Device from 'web/models/device';
 import { validator , buildValidations } from 'ember-cp-validations';
 
@@ -15,6 +15,7 @@ const Validations = buildValidations({
  * Here, I set a relationships to the Gpio model, also defined in the application.
  */
 
-export default Device.extend(Validations, {
-    gpio: DS.belongsTo('gpio',  { polymorphic: true })
-});
+export default class ModelNameModel extends Device.extend(Validations) {
+    @belongsTo('gpio',  { polymorphic: true })
+    gpio;
+}

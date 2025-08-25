@@ -1,5 +1,5 @@
 import { getOwner } from '@ember/application';
-import Service, { inject as service } from '@ember/service';
+import Service, { service } from '@ember/service';
 
 /**
  * This function will help us manage every module that are in our application,

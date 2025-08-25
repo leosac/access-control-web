@@ -1,18 +1,20 @@
 import { computed } from '@ember/object';
-import { inject as service } from '@ember/service';
-import DS from 'ember-data';
+import { service } from '@ember/service';
+import Model, { attr } from '@ember-data/model';
 
-export default DS.Model.extend({
-    intl: service(),
 
-    numericId: computed('id', function ()
-    {
+export default class UpdateModel extends Model {
+    @service
+    intl;
+
+    @computed('id')
+    numericId() {
         "use strict";
         return Number(this.get('id'));
-    }),
+    }
 
-    statusString: computed('status', function()
-    {
+    @computed('status')
+    statusString() {
         const st = this.get('status');
         if (st === 0) {
             return this.intl.t('pending');
@@ -21,12 +23,19 @@ export default DS.Model.extend({
         } else if (st === 2) {
             return this.intl.t('cancelled');
         }
-    }),
-    status: DS.attr('number'),
-    checkpoint: DS.attr('number'),
+    }
 
-    generatedAt: DS.attr('utc'),
-    statusUpdatedAt: DS.attr('utc'),
-    sourceModule: DS.attr('string'),
-    description: DS.attr('string'),
-});
+    @attr('number')
+    status;
+    @attr('number')
+    checkpoint;
+
+    @attr('utc')
+    generatedAt;
+    @attr('utc')
+    statusUpdatedAt;
+    @attr('string')
+    sourceModule;
+    @attr('string')
+    description;
+}

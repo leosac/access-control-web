@@ -1,9 +1,12 @@
 import AuditEntry from 'web/models/audit-entry';
-import DS from 'ember-data';
+import { attr } from '@ember-data/model';
 
-export default AuditEntry.extend({
-    type: 'WSAPICall',
-    uuid: DS.attr('string'),
-    method: DS.attr('string'),
-    description: DS.attr('string'),
-});
+export default class AuditWSAPICallModel extends AuditEntry {
+    type = 'WSAPICall';
+    @attr('string')
+    uuid;
+    @attr('string')
+    method;
+    @attr('string')
+    description;
+}

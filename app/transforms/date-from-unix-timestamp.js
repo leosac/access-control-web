@@ -1,16 +1,18 @@
-import DS from 'ember-data';
-
-export default DS.Transform.extend({
-    deserialize(serialized) {
+export default class DataFromUnixTimestampTransform {
+    deserialize(serialized, options) {
         return new Date(serialized * 1000);
-    },
+    }
 
     /**
      * We must not get there other than the group membership
      * @param deserialized
      * @returns {*}
      */
-    serialize(deserialized) {
+    serialize(deserialized, options) {
         return deserialized;
     }
-});
+
+    static create() {
+        return new this();
+    }
+}

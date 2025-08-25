@@ -1,6 +1,5 @@
 import { computed } from '@ember/object';
-import Model from 'ember-data/model';
-import DS from 'ember-data';
+import Model, { attr, belongsTo } from '@ember-data/model';
 import { validator, buildValidations } from 'ember-cp-validations';
 
 const DoorValidations = buildValidations({
@@ -8,14 +7,17 @@ const DoorValidations = buildValidations({
 });
 
 
-export default Model.extend(DoorValidations, {
-    numericId: computed('id', function ()
-    {
+export default class DoorModel extends Model.extend(DoorValidations) {
+    @computed('id')
+    numericId() {
         "use strict";
         return Number(this.get('id'));
-    }),
+    }
 
-    alias: DS.attr('string'),
-    description: DS.attr('string'),
-    accessPoint: DS.belongsTo('access-point', {inverse: 'door'})
-});
+    @attr('string')
+    alias;
+    @attr('string')
+    description;
+    @belongsTo('access-point', {inverse: 'door'})
+    accessPoint;
+}

@@ -49,7 +49,7 @@ export default class LeosacBuiltinAccessPointActionTwoParameter extends Componen
 
     // The sole purpose of this computed property is to catch when a value is modified so that you can update the mode.
     // Not very beautiful hack
-    @computed('{speed,duration}')
+    @computed('speed','duration')
     get params() {
         let speed = this.get('speed');
         let duration = this.get('duration');

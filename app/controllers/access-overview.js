@@ -1,5 +1,5 @@
 import { computed, action } from '@ember/object';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 import Controller from '@ember/controller';
 
 export default class extends Controller {
@@ -14,7 +14,7 @@ export default class extends Controller {
     selectedUsers = [];
     selectedDoors = [];
 
-    @computed('{allDoors,selectedDoors.length}')
+    @computed('allDoors','selectedDoors.length')
     displayedDoors() {
         if (!this.get('selectedDoors.length')) {
             return this.get('allDoors');
@@ -23,7 +23,7 @@ export default class extends Controller {
         }
     }
 
-    @computed('{rawData,selectedDoors.length}')
+    @computed('rawData','selectedDoors.length')
     allDoors() {
         const doors = [];
         let selectedDoorsId = [];
@@ -51,7 +51,7 @@ export default class extends Controller {
         return result;
     }
 
-    @computed('{rawData,selectedUsers.length}')
+    @computed('rawData','selectedUsers.length')
     allUsers() {
         let userIds = [];
         let selectedUsersId = [];
@@ -89,7 +89,7 @@ export default class extends Controller {
     }
 
     // will set the user door information
-    @computed('{allDoors,allUsers,selectedDoors.length,selectedUsers.length}')
+    @computed('allDoors','allUsers','selectedDoors.length','selectedUsers.length')
     userDoorInfo() {
         let selectedDoors = [];
         let userInfos = [];

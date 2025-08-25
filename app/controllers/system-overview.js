@@ -1,5 +1,5 @@
 import { action, observer, computed } from '@ember/object';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 import Controller from '@ember/controller';
 
 export default class extends Controller {
@@ -18,7 +18,7 @@ export default class extends Controller {
         this.set('currentLogPage', 0);
     }
 
-    @computed('{logPerPage,currentLogPage}')
+    @computed('logPerPage','currentLogPage')
     lastLogs() {
         "use strict";
         const self = this;

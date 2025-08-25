@@ -1,8 +1,7 @@
-import DS from 'ember-data';
 import { DeviceClass } from 'web/leosac-constant';
 
-export default DS.Transform.extend({
-    deserialize(serialized) {
+export default class DeviceClassTransform {
+    deserialize(serialized, options) {
         const types = [];
 
         for (let key in DeviceClass)
@@ -15,9 +14,13 @@ export default DS.Transform.extend({
             }
         }
         return types.join(',');
-    },
+    }
 
-    serialize(deserialized) {
+    serialize(deserialized, options) {
         return deserialized;
     }
-});
+
+    static create() {
+        return new this();
+    }
+}

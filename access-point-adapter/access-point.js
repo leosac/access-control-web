@@ -1,14 +1,15 @@
 import ApplicationAdapter from '../app/adapters/application';
-import Ember from 'ember';
+import { service } from '@ember/service';
+import { Promise } from 'rsvp';
 
 export default ApplicationAdapter.extend({
-    ws: Ember.inject.service('websocket'),
+    ws: service('websocket'),
 
     findRecord: function (store, type, id)
     {
         const ws = this.get('ws');
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('access_point.read', {access_point_id: Number.parseInt(id)}).then(
                 (data) => resolve(data),
@@ -20,7 +21,7 @@ export default ApplicationAdapter.extend({
     {
         const ws = this.get('ws');
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('access_point.read', {access_point_id: 0}).then(
                 (data) => resolve(data),
@@ -33,7 +34,7 @@ export default ApplicationAdapter.extend({
         const data = this.serialize(snapshot);
         const ws = this.get('ws');
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('access_point.create', {
                 attributes: data.data.attributes
@@ -51,7 +52,7 @@ export default ApplicationAdapter.extend({
             access_point_id: Number.parseInt(snapshot.id),
             attributes: data.data.attributes
         };
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('access_point.update', params).then((data) => resolve(data),
                 (failure) => reject(failure));
@@ -62,7 +63,7 @@ export default ApplicationAdapter.extend({
         const access_point_id = Number.parseInt(snapshot.id);
         const ws = this.get('ws');
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('access_point.delete', {access_point_id: access_point_id}).then(
                 (data) => resolve(data),

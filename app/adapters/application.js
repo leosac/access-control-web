@@ -1,12 +1,12 @@
 import { defer } from 'rsvp';
-import { inject as service } from '@ember/service';
-import DS from 'ember-data';
+import { service } from '@ember/service';
+import Adapter from '@ember-data/adapter';
 
-export default DS.Adapter.extend({
-    ws: service('websocket'),
+export default class ApplicationAdapter extends Adapter {
+    @service('websocket')
+    ws;
 
-    findAll: function (store, type)
-    {
+    findAll(store, type) {
         let def = defer();
 
         let ws = this.get('ws');
@@ -25,9 +25,9 @@ export default DS.Adapter.extend({
             });
 
         return def.promise;
-    },
-    query: function (store, type, query)
-    {
+    }
+
+    query(store, type, query) {
         "use strict";
         let def = defer();
 
@@ -46,6 +46,5 @@ export default DS.Adapter.extend({
             });
 
         return def.promise;
-    },
-
-});
+    }
+}

@@ -1,11 +1,13 @@
-import DS from 'ember-data';
-
-export default DS.Transform.extend({
-  deserialize(serialized) {
+export default class ActionCommandTransform {
+  deserialize(serialized, options) {
     return serialized;
-  },
+  }
 
-  serialize(deserialized) {
+  serialize(deserialized, options) {
     return deserialized;
   }
-});
+
+  static create() {
+    return new this();
+  }
+}

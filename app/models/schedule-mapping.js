@@ -1,23 +1,30 @@
 import { computed } from '@ember/object';
-import DS from 'ember-data';
+import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 import { validator, buildValidations } from 'ember-cp-validations';
 
 const MappingValidations = buildValidations({
     alias: validator('presence', true),
 });
 
-export default DS.Model.extend(MappingValidations, {
-    numericId: computed('id', function ()
-    {
+export default class ScheduleMappingModel extends Model.extend(MappingValidations) {
+    @computed('id')
+    numericId() {
         "use strict";
         return Number(this.get('id'));
-    }),
+    }
 
-    alias: DS.attr('string'),
-    users: DS.hasMany('user'),
-    groups: DS.hasMany('group'),
-    doors: DS.hasMany('door'),
-    credentials: DS.hasMany('credential', {polymorphic: true}),
-    schedule: DS.belongsTo('schedule', {inverse: 'mapping'}),
-    version: DS.attr('number')
-});
+    @attr('string')
+    alias;
+    @hasMany('user')
+    users;
+    @hasMany('group')
+    groups;
+    @hasMany('door')
+    doors;
+    @hasMany('credential', {polymorphic: true})
+    credentials;
+    @belongsTo('schedule', {inverse: 'mapping'})
+    schedule;
+    @attr('number')
+    version;
+}

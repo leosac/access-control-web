@@ -6,6 +6,7 @@
   ],
   "dependencies": {
 	  "@ember-intl/cp-validations": "*",
+    "@ember/string": "*",
     "@embroider/macros": "*",
     "ember-auto-import": "*",
     "ember-cli-babel": "*",

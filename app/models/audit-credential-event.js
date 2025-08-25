@@ -1,9 +1,12 @@
 import AuditEntry from 'web/models/audit-entry';
-import DS from 'ember-data';
+import { attr, belongsTo } from '@ember-data/model';
 
-export default AuditEntry.extend({
-    type: 'CredentialEvent',
-    target: DS.belongsTo('credential'),
-    before: DS.attr('string'),
-    after: DS.attr('string'),
-});
+export default class AuditCredentialEventModel extends AuditEntry {
+    type = 'CredentialEvent';
+    @belongsTo('credential')
+    target;
+    @attr('string')
+    before;
+    @attr('string')
+    after;
+}

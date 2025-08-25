@@ -1,4 +1,5 @@
-import { inject as service } from '@ember/service';
+import { action } from '@ember/object';
+import { service } from '@ember/service';
 import Route from '@ember/routing/route';
 import ENV from 'web/config/environment';
 //import config from 'web/config/environement';
@@ -27,74 +28,82 @@ import ENV from 'web/config/environment';
  *       base route will be useless.
  */
 
-export default Route.extend({
-    intl: service(),
-    router: service(),
-    globalInfo: service('leosac-info'),
-    authSrv: service('authentication'),
-    flashMessages: service(),
+export default class LeosacRoute extends Route {
+    @service
+    intl;
+    @service
+    router;
+    @service('leosac-info')
+    globalInfo;
+    @service('authentication')
+    authSrv;
+    @service
+    flashMessages;
     // A translation key for the title of the page.
-    _title: '',
-    _requireAuth: false,
-    actions: {
-        onLogout()
-        {
-            "use strict";
+    _title = '';
+    _requireAuth = false;
+    @action
+    onLogout() {
+        "use strict";
 
-            const  self = this;
-            /**
-             * This is a small hack that allow us to navigate to login
-             *
-             * The hack is quite simple, it check if the route name match the current route.
-             * if not, then this is an engine.
-             */
-            if (self.fullRouteName === self.routeName) {
-                self.router.transitionTo('login');
-            } else {
-                self.router.transitionToExternal('login');
-            }
-        },
+        const  self = this;
         /**
-         * An error was raised by a custom component.
-         * @param err
+         * This is a small hack that allow us to navigate to login
+         *
+         * The hack is quite simple, it check if the route name match the current route.
+         * if not, then this is an engine.
          */
-        myError(err)
-        {
-            console.error("Global Leosac myError catch", err);
-            this.intermediateTransitionTo('ws-error', err);
-            return false;
-        },
-        /**
-         * An error was raised from a route model() method (or similar).
-         * @param err
-         */
-        error(err)
-        {
-            console.error("Global Leosac error catch", err);
-            this.intermediateTransitionTo('ws-error', err);
-            return false;
+        if (self.fullRouteName === self.routeName) {
+            self.router.transitionTo('login');
+        } else {
+            self.router.transitionToExternal('login');
         }
-    },
-    beforeModel()
-    {
+    }
+
+    /**
+     * An error was raised by a custom component.
+     * @param err
+     */
+    @action
+    myError(err) {
+        console.error("Global Leosac myError catch", err);
+        this.intermediateTransitionTo('ws-error', err);
+        return false;
+    }
+    
+    /**
+     * An error was raised from a route model() method (or similar).
+     * @param err
+     */
+    @action
+    error(err) {
+        console.error("Global Leosac error catch", err);
+        this.intermediateTransitionTo('ws-error', err);
+        return false;
+    }
+    
+    beforeModel() {
         "use strict";
         this.set('intl.locale', this.get('globalInfo').getLocale());
 
-        const title = this.intl.t(this.get('_title'));
-
-        this.get('globalInfo').set('current_view_title', title);
-        document.title = ENV.APP.appname + ' - ' + title;
+        const title_key = this.get('_title');
+        if (title_key)
+        {
+            const title = this.intl.t(title_key);
+            this.get('globalInfo').set('current_view_title', title);
+            document.title = ENV.APP.appname + ' - ' + title;
+        }
 
         if (this._requireAuth)
         {
             return redirectIfNotAuth(this);
         }
-    },
-    afterModel()
-    {
+    }
+
+    afterModel() {
         this.set('intl.locale', this.get('globalInfo').getLocale());
     }
-});
+}
 
 function redirectIfNotAuth(route)
 {

@@ -1,12 +1,11 @@
 import { typeOf } from '@ember/utils';
-import DS from 'ember-data';
 
-export default DS.Transform.extend({
-    deserialize: function (serialized) {
+export default class ActionParamsTransform {
+    deserialize(serialized, options) {
         return (typeOf(serialized) === "array") ? serialized : [];
-    },
+    }
 
-    serialize: function (deserialized) {
+    serialize(deserialized, options) {
         let type = typeOf(deserialized);
         if (type === 'array') {
             return deserialized;
@@ -18,4 +17,8 @@ export default DS.Transform.extend({
             return [];
         }
     }
-});
+
+    static create() {
+        return new this();
+    }
+}

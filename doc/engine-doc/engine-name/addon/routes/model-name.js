@@ -1,5 +1,4 @@
-import { inject as service } from '@ember/service';
-import Ember from 'ember';
+import { service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({

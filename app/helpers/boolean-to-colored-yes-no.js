@@ -1,5 +1,5 @@
 import { htmlSafe } from '@ember/template';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 import Helper from '@ember/component/helper';
 // This helper will set the color of the cells in the access overview
 export default Helper.extend({

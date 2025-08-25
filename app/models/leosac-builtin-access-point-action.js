@@ -1,4 +1,4 @@
-import DS from 'ember-data';
+import Model, { attr, belongsTo } from '@ember-data/model';
 import { validator, buildValidations } from 'ember-cp-validations';
 
 const ActionValidation = buildValidations({
@@ -10,9 +10,13 @@ const ActionValidation = buildValidations({
     ]
 });
 
-export default DS.Model.extend(ActionValidation, {
-    target: DS.belongsTo('device'),
-    command: DS.attr('string'),
-    params: DS.attr('action-params'),
-    index: DS.attr('number')
-});
+export default class LeosacBuiltinAccessPointActionModel extends Model.extend(ActionValidation) {
+    @belongsTo('device')
+    target;
+    @attr('string')
+    command;
+    @attr('action-params')
+    params;
+    @attr('number')
+    index;
+}

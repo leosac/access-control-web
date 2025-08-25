@@ -1,13 +1,19 @@
 import { computed } from '@ember/object';
-import DS from 'ember-data';
+import Model, { attr, belongsTo } from '@ember-data/model';
 
-export default DS.Model.extend({
-    numericId: computed('id', function () {
+export default class UserGroupMembershipModel extends Model {
+    @computed('id')
+    numericId() {
         "use strict";
         return Number(this.get('id'));
-    }),
-    rank: DS.attr('group-rank'),
-    timestamp: DS.attr('date-from-unix-timestamp'),
-    group: DS.belongsTo('group'),
-    user: DS.belongsTo('user'),
-});
+    }
+
+    @attr('group-rank')
+    rank;
+    @attr('date-from-unix-timestamp')
+    timestamp;
+    @belongsTo('group')
+    group;
+    @belongsTo('user')
+    user;
+}

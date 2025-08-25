@@ -1,18 +1,17 @@
-import DS from 'ember-data';
 import moment from 'moment';
 
-export default DS.Transform.extend({
-    serialize: function (value)
+export default class UtcTransform {
+    serialize(serialized, options)
     {
-        if (value) {
-            return moment(value).utc().format();
+        if (serialized) {
+            return moment(serialized).utc().format();
         }
         return null;
-    },
+    }
 
-    deserialize: function (value)
+    deserialize(deserialized, options)
     {
-        let tmp = moment.utc(value);
+        let tmp = moment.utc(deserialized);
         if (tmp < moment.utc('1800-01-01')) {
             tmp = moment.utc('1800-01-01');
         }
@@ -21,4 +20,8 @@ export default DS.Transform.extend({
         }
         return moment.utc(tmp).local();
     }
-});
+
+    static create() {
+        return new this();
+    }
+}

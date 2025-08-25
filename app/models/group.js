@@ -1,6 +1,5 @@
 import { computed } from '@ember/object';
-import Model from 'ember-data/model';
-import DS from 'ember-data';
+import Model, { attr, hasMany } from '@ember-data/model';
 import { validator, buildValidations } from 'ember-cp-validations';
 
 const GroupValidations = buildValidations(
@@ -18,22 +17,26 @@ const GroupValidations = buildValidations(
     }
 );
 
-export default Model.extend(GroupValidations, {
-    numericId: computed('id', function ()
-    {
+export default class GroupModel extends Model.extend(GroupValidations) {
+    @computed('id')
+    numericId() {
         "use strict";
         return Number(this.get('id'));
-    }),
-    memberCount: computed('memberships', function ()
-    {
+    }
+
+    @computed('memberships')
+    memberCount() {
         return this.get('memberships.length');
-    }),
-    name: DS.attr('string'),
-    description: DS.attr('string'),
-    memberships: DS.hasMany('user-group-membership', {
-        inverse: 'group'
-    }),
+    }
+
+    @attr('string')
+    name;
+    @attr('string')
+    description;
+    @hasMany('user-group-membership', { inverse: 'group' })
+    memberships;
     // This is a fake relationship, because server side it
     // does'nt exist directly.
-    schedules: DS.hasMany('schedules'),
-});
+    @hasMany('schedules')
+    schedules;
+}

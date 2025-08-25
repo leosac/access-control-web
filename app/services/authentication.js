@@ -1,6 +1,6 @@
 import { computed } from '@ember/object';
 import { defer } from 'rsvp';
-import Service, { inject as service } from '@ember/service';
+import Service, { service } from '@ember/service';
 
 /**
  * This service provide support for authentication.

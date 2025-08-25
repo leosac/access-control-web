@@ -1,36 +1,36 @@
-import ApplicationAdapter from './application';
-import DS from 'ember-data';
-import Ember from 'ember';
+import Adapter from '@ember-data/adapter';
+import { service } from '@ember/service';
+import { Promise } from 'rsvp';
 
-export default DS.Adapter.extend({
-    ws: Ember.inject.service('websocket'),
+export default class LedAdapter extends Adapter {
+    @service('websocket')
+    ws;
 
-    findRecord: function (store, type, id, snapshot)
-    {
+    findRecord(store, type, id, snapshot) {
         const ws = this.get('ws');
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('model_name.read', {model_name_id: id}).then(
                 (data) => resolve(data),
                 (failure) => reject(failure)
             );
         });
-    },
-    findAll: function (store, type, sinceToken, snapshotRecordArray)
-    {
+    }
+
+    findAll(store, type, sinceToken, snapshotRecordArray) {
         const ws = this.get('ws');
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('model_name.read', {model_name_id: 0}).then(
                 (data) => resolve(data),
                 (failure) => reject(failure)
             );
         });
-    },
-    createRecord: function (store, type, snapshot)
-    {
+    }
+
+    createRecord(store, type, snapshot) {
         const data = this.serialize(snapshot);
         const ws = this.get('ws');
 
@@ -41,16 +41,16 @@ export default DS.Adapter.extend({
         else
             data.data.attributes.gpio_id = 0;
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('model_name.create', {
                 attributes: data.data.attributes
             }).then((data) => resolve(data),
                 (failure) => reject(failure));
         });
-    },
-    updateRecord: function (store, type, snapshot)
-    {
+    }
+
+    updateRecord(store, type, snapshot) {
         const data = this.serialize(snapshot);
         const ws = this.get('ws');
 
@@ -65,22 +65,22 @@ export default DS.Adapter.extend({
             model_name_id: snapshot.id,
             attributes: data.data.attributes
         };
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('model_name.update', params).then((data) => resolve(data),
                 (failure) => reject(failure));
         });
-    },
-    deleteRecord: function (store, type, snapshot)
-    {
+    }
+
+    deleteRecord(store, type, snapshot) {
         const model_name_id = snapshot.id;
         const ws = this.get('ws');
 
-        return new Ember.RSVP.Promise(function (resolve, reject)
+        return new Promise(function (resolve, reject)
         {
             ws.sendJson('model_name.delete', {model_name_id: model_name_id}).then(
                 (data) => resolve(data),
                 (failure) => reject(failure));
         });
     }
-});
+}

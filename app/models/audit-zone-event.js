@@ -1,7 +1,8 @@
 import AuditEntry from 'web/models/audit-entry';
-import DS from 'ember-data';
+import { belongsTo } from '@ember-data/model';
 
-export default AuditEntry.extend({
-    type: 'ZoneEvent',
-    target: DS.belongsTo('zone'),
-});
+export default class AuditZoneEvent extends AuditEntry {
+    type = 'ZoneEvent';
+    @belongsTo('zone')
+    target;
+}

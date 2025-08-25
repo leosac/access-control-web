@@ -6,6 +6,7 @@
   ],
   "dependencies": {
     "@ember-intl/cp-validations": "7.0.2",
+    "@ember/string": "4.0.1",
     "ember-cli-babel": "8.2.0",
     "ember-cli-htmlbars": "6.3.0",
     "ember-cp-validations": "6.0.1",

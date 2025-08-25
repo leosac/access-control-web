@@ -1,5 +1,5 @@
 import { computed } from '@ember/object';
-import DS from 'ember-data';
+import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 import { buildValidations, validator } from 'ember-cp-validations';
 import moment from 'moment';
 
@@ -18,35 +18,44 @@ const CredentialValidations = buildValidations({
         }
 });
 
-export default DS.Model.extend(CredentialValidations, {
-    numericId: computed('id', function ()
-    {
+export default class CredentialModel extends Model.extend(CredentialValidations) {
+    @computed('id')
+    numericId() {
         "use strict";
         return Number(this.get('id'));
-    }),
-    isEnabled: computed('validityEnabled', 'validityStart', 'validityEnd', function ()
-    {
+    }
+
+    @computed('validityEnabled', 'validityStart', 'validityEnd')
+    isEnabled() {
         const now = moment.utc();
         return this.get('validityEnabled') && now.isAfter(this.get('validityStart')) &&
                 now.isBefore(this.get('validityEnd'));
-    }),
+    }
 
-    alias: DS.attr('string'),
-    description: DS.attr('string'),
-    owner: DS.belongsTo('user'),
+    @attr('string')
+    alias;
+    @attr('string')
+    description;
+    @belongsTo('user')
+    owner;
 
     // Validity information
-    validityEnabled: DS.attr('boolean'),
-    validityStart: DS.attr('utc'),
-    validityEnd: DS.attr('utc'),
+    @attr('boolean')
+    validityEnabled;
+    @attr('utc')
+    validityStart;
+    @attr('utc')
+    validityEnd;
 
     // The ODB version.
-    version: DS.attr('number'),
+    @attr('number')
+    version;
 
     // Quick info about a credential. For a card this would be the card
     // id. This doesn't come from the server.
-    displayIdentifier: 'N/A',
+    displayIdentifier = 'N/A';
     // This is a fake relationship, because server side it
     // does'nt exist directly.
-    schedules: DS.hasMany('schedules'),
-});
+    @hasMany('schedules')
+    schedules;
+}

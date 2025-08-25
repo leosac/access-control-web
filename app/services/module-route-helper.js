@@ -1,4 +1,4 @@
-import Service, { inject as service } from '@ember/service';
+import Service, { service } from '@ember/service';
 
 /**
  * This function will remove the ".list" at the end of a route name

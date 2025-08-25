@@ -1,7 +1,7 @@
 import { later, run } from '@ember/runloop';
 import { defer, Promise } from 'rsvp';
-import Service, { inject as service } from '@ember/service';
-import DS from 'ember-data';
+import Service, { service } from '@ember/service';
+import { InvalidError } from '@ember-data/adapter/error';
 import ENV from 'web/config/environment';
 
 export default Service.extend({
@@ -116,7 +116,7 @@ export default Service.extend({
                             sticky: true
                         });
                     }
-                    cb.error(new DS.InvalidError(obj.content.errors));
+                    cb.error(new InvalidError(obj.content.errors));
                 }
                 else if (obj.status_code !== 0) {
                     self.flashMessages.danger('Error: ' + obj.status_string, {

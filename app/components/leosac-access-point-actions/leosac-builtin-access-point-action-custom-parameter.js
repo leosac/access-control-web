@@ -38,7 +38,7 @@ export default class LeosacBuiltinAccessPointActionCustomParameter extends Compo
      * we use a Computed property that his only purpose is to refresh the customAction.params,
      * given the command and properties
      */
-    @computed('{command,properties}')
+    @computed('command','properties')
     get params() {
         let command = this.get('command');
         let arrayOfProperties = this.get('properties');

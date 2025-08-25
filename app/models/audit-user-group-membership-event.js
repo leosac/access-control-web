@@ -1,8 +1,10 @@
 import AuditEntry from 'web/models/audit-entry';
-import DS from 'ember-data';
+import { belongsTo } from '@ember-data/model';
 
-export default AuditEntry.extend({
-    type: 'UserGroupEvent',
-    targetUser: DS.belongsTo('user'),
-    targetGroup: DS.belongsTo('group'),
-});
+export default class AuditUserGroupMembershipEvent extends AuditEntry {
+    type = 'UserGroupEvent';
+    @belongsTo('user')
+    targetUser;
+    @belongsTo('group')
+    targetGroup;
+}

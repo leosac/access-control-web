@@ -5,6 +5,7 @@
     "ember-engine"
   ],
   "dependencies": {
+    "@ember/string": "*",
     "ember-auto-import": "*",
     "ember-cli-babel": "*",
     "ember-cli-htmlbars": "*",

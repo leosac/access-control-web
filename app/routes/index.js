@@ -1,5 +1,5 @@
 import { Promise } from 'rsvp';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 
 export default LeosacRoute.extend({

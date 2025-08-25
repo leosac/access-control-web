@@ -1,6 +1,5 @@
 import { computed } from '@ember/object';
-import DS from 'ember-data';
-
+import Model, { attr, hasMany } from '@ember-data/model';
 import { validator, buildValidations } from 'ember-cp-validations';
 
 const ZoneValidations = buildValidations(
@@ -17,16 +16,22 @@ const ZoneValidations = buildValidations(
     }
 );
 
-export default DS.Model.extend(ZoneValidations, {
-    numericId: computed('id', function ()
-    {
+export default class ZoneModel extends Model.extend(ZoneValidations) {
+    @computed('id')
+    numericId() {
         "use strict";
         return Number(this.get('id'));
-    }),
-    alias: DS.attr('string'),
-    description: DS.attr('string'),
-    type: DS.attr('zone-type'),
-    doors: DS.hasMany('door'),
-    children: DS.hasMany('zones'),
-    parent: DS.hasMany('zones', {inverse: 'children'})
-});
+    }
+    @attr('string')
+    alias;
+    @attr('string')
+    description;
+    @attr('zone-type')
+    type;
+    @hasMany('door')
+    doors;
+    @hasMany('zones')
+    children;
+    @hasMany('zones', {inverse: 'children'})
+    parent;
+}

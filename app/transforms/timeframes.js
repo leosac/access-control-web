@@ -1,6 +1,3 @@
-import DS from 'ember-data';
-
-
 function clone(obj)
 {
     if (obj === null || "object" !== typeof obj) {
@@ -21,8 +18,8 @@ function clone(obj)
  *
  * SingleTimeFrame are a Leosac C++ structure.
  */
-export default DS.Transform.extend({
-    deserialize(serialized) {
+export default class TimeframesTransform {
+    deserialize(serialized, options) {
         // Remember, a single timeframe from the server can only be bound to 1 day.
         // We need to merge timeframe together.
         const output = [];
@@ -81,9 +78,9 @@ export default DS.Transform.extend({
             });
         }
         return output;
-    },
+    }
 
-    serialize(deserialized) {
+    serialize(deserialized, options) {
         if (!deserialized || deserialized.length === 0) {
             return null;
         }
@@ -147,4 +144,8 @@ export default DS.Transform.extend({
 
         return output.length ? output : null;
     }
-});
+
+    static create() {
+        return new this();
+    }
+}

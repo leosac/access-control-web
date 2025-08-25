@@ -1,5 +1,5 @@
 import { Promise } from 'rsvp';
-import Service, { inject as service } from '@ember/service';
+import Service, { service } from '@ember/service';
 import config from '../config/environment';
 /**
  * This service store global information about the
