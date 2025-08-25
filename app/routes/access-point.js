@@ -27,29 +27,5 @@ export default LeosacRoute.extend({
                 mod.rollbackAttributes();
             }
         }
-    },
-    actions: {
-        editAP ()
-        {
-            this.controller.get('model').save().then(() =>
-                {
-                    this.flashMessages.success('Access Point successfully edited.');
-                    this.router.transitionTo('access-point', this.controller.get('model').get('id'));
-                },
-                () =>
-                {
-                    this.flashMessages.danger('An error occurred while editing Access Point.');
-                });
-        },
-        deleteAP ()
-        {
-            const self = this;
-            const model = this.controller.get('model');
-            model.destroyRecord({}).then(() =>
-            {
-                self.flashMessages.success('Access Point has been deleted.');
-                self.router.transitionTo('access-points.list');
-            });
-        }
     }
 });

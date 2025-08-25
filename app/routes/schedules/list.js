@@ -16,20 +16,5 @@ export default LeosacRoute.extend({
     {
         "use strict";
         return this.store.findAll('schedule', {reload:true});
-    },
-    actions:
-    {
-        deleteSchedule(scheduleId)
-        {
-            const model = this.store.peekRecord('schedule', scheduleId);
-            if (model)
-            {
-                model.destroyRecord({}).then(() =>
-                {
-                    this.flashMessages.success('Schedule has been deleted.');
-                    this.router.transitionTo('schedules.list');
-                });
-            }
-        }
     }
 });

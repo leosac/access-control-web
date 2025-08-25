@@ -1,4 +1,4 @@
-<BsForm @formLayout="vertical" @model=this.pin @onSubmit=this.action as |form|>
+<BsForm @formLayout="vertical" @model={{this.pin}} @onSubmit={{this.action}} as |form|>
   <div class="col-md-6 space-top">
     <fieldset>
       <legend>{{ t 'configuration'}}</legend>
@@ -7,7 +7,7 @@
 
       <form.element @controlType="textarea" @label={{t "notes"}} @placeholder={{t "notes_placeholder"}} @property="description" />
 
-      <UserPicker @form={{form}} @searchCredential={{action "searchUser"}} @label={{t "owner"}} @selected={{this.selectedUser}} @onChange={{action "setOwner"}} />
+      <UserPicker @form={{form}} @searchCredential={{this.searchUser}} @label={{t "owner"}} @selected={{this.selectedUser}} @onChange={{this.setOwner}} />
 
       <ValidityControl @form={{form}} @enabledProperty="validityEnabled" @startDate={{mut this.pin.validityStart}} @endDate={{mut this.pin.validityEnd}} />
 

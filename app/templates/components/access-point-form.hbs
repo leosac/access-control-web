@@ -10,15 +10,15 @@
         <form.element @label={{t "controller_module"}}>
           <PowerSelect @selected={{this.ap.controllerModule}}
                        @options={{this.availableAccessPointModules}}
-                       @onChange={{action (mut this.ap.controllerModule)}}
-                       @allowClear=true as |module|>
+                       @onChange={{fn (mut this.ap.controllerModule)}}
+                       @allowClear="true" as |module|>
             {{module}}
           </PowerSelect>
         </form.element>
       {{/if}}
 
 
-      <!-- Include module specific stuff -->
+      {{!-- Include module specific stuff --}}
       {{yield}}
       <div class="row">
         <div class="col-md-6">

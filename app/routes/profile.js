@@ -41,19 +41,5 @@ export default LeosacRoute.extend({
                 user.rollbackAttributes();
             }
         }
-    },
-    actions: {
-        editProfile: function ()
-        {
-            let user = this.controller.get('model').user;
-
-            user.save().then(() =>
-            {
-                this.flashMessages.success(this.intl.t('profile.profile_updated') + '.');
-            }, (why) =>
-            {
-                this.flashMessages.danger(this.intl.t('profile_fail_update') + ': ' + why.status_string);
-            });
-        },
     }
 });

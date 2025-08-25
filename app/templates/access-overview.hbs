@@ -2,12 +2,12 @@ This part will let you select which door and user the comparison should be made:
 
 <div class="row">
   <div class="col-md-6">
-    <PowerSelect @options={{this.allUsers}} @placeholder={{t "user"}} @searchEnabled={{true}} @searchField="username" @onChange={{action "addUser"}} as |user|>
+    <PowerSelect @options={{this.allUsers}} @placeholder={{t "user"}} @searchEnabled={{true}} @searchField="username" @onChange={{this.addUser}} as |user|>
       {{user.username}}
     </PowerSelect>
   </div>
   <div class="col-md-6">
-    <PowerSelect @options={{this.allDoors}} @placeholder={{t "doors"}} @searchEnabled={{true}} @searchField="alias" @onChange={{action "addDoor"}} as |door|>
+    <PowerSelect @options={{this.allDoors}} @placeholder={{t "doors"}} @searchEnabled={{true}} @searchField="alias" @onChange={{this.addDoor}} as |door|>
       {{door.alias}}
     </PowerSelect>
   </div>
@@ -33,7 +33,7 @@ This part will let you select which door and user the comparison should be made:
             <td>
               <div class="text-center">
                 <BsButton @size='xs' @icon='glyphicon glyphicon-remove' @type='danger'
-                          @defaultText={{t 'remove'}} @onClick={{action 'removeUser' user}} />
+                          @defaultText={{t 'remove'}} @onClick={{fn this.removeUser user}} />
               </div>
             </td>
           </tr>
@@ -61,7 +61,7 @@ This part will let you select which door and user the comparison should be made:
             <td>
               <div class="text-center">
                 <BsButton @size='xs' @icon='glyphicon glyphicon-remove' @type='danger'
-                            @defaultText={{t 'remove'}} @onClick={{action 'removeDoor' door}} />
+                            @defaultText={{t 'remove'}} @onClick={{fn this.removeDoor door}} />
               </div>
             </td>
           </tr>

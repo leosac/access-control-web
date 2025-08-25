@@ -27,19 +27,5 @@ export default LeosacRoute.extend({
         {
             mod.unloadRecord();
         }
-    },
-    actions: {
-        createDoor()
-        {
-            this.modelFor('doors.create').save().then((d) =>
-                {
-                    this.flashMessages.success('Door created.');
-                    this.router.transitionTo('door', d.get('id'));
-                },
-                () =>
-                {
-                    this.flashMessages.danger('Failed to create door.');
-                });
-        }
     }
 });

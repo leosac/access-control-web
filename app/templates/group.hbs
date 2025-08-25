@@ -1,7 +1,7 @@
 <BsTab as |tab|>
   <tab.pane @title={{t "information"}}>
     <div class="col-md-6 button-space">
-      <BsForm @formLayout="vertical" @model={{this.model}} @onSubmit={{route-action "editGroup"}}  as  | form |>
+      <BsForm @formLayout="vertical" @model={{this.model}} @onSubmit={{this.editGroup}}  as  | form |>
         <fieldset>
           <legend>{{t 'configuration'}}</legend>
           <form.element @controlType="text" @label={{t "name"}} @placeholder="MySuperGroup" @property="name" />
@@ -12,7 +12,7 @@
               <BsButton @defaultText={{t 'submit'}} @type="success" @buttonType="submit" @size='md' />
             </div>
             <div class="form-button-delete">
-              <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "delete_group_confirmation"}} @onConfirm={{route-action "deleteGroup"}} />
+              <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "delete_group_confirmation"}} @onConfirm={{this.deleteGroup}} />
             </div>
           </div>
         </fieldset>

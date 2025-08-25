@@ -37,29 +37,5 @@ export default LeosacRoute.extend({
                 mod.rollbackAttributes();
             }
         }
-    },
-    actions: {
-        editDoor ()
-        {
-            this.controller.get('model').save().then(() =>
-                {
-                    this.flashMessages.success('Door successfully edited.');
-                    this.router.transitionTo('door', this.controller.get('model').get('id'));
-                },
-                () =>
-                {
-                    this.flashMessages.danger('An error occurred while editing door');
-                });
-        },
-        deleteDoor ()
-        {
-            const self = this;
-            const model = this.controller.get('model');
-            model.destroyRecord({}).then(() =>
-            {
-                self.flashMessages.success('Door has been deleted.');
-                self.router.transitionTo('doors.list');
-            });
-        }
     }
 });

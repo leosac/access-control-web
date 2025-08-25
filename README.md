@@ -125,7 +125,6 @@ You will need the following things properly installed on your computer.
        "ember-data": "*", // necessary if you want to create a model or manipulate data
        "ember-intl": "*", // tranlation addons
        "ember-power-select": "*", // allow the user to select something among a list
-       "ember-route-action-helper": "*", // this permit to call actions defined in the route from the template
        "ember-toggle": "*", // this is a toggle switch
        "ember-truth-helpers": "*" // allow simple condition in hbs template (==, !=, >, ...)
      },

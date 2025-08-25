@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-    <!-- Sidebar Toggle (Topbar) -->
+    {{!-- Sidebar Toggle (Topbar) --}}
     <button class="navbar-toggler" type="button">
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <button class="btn btn-link rounded-circle mr-3" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle Sidebar navigation">
+    <button class="btn btn-link rounded-circle mr-3" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle Sidebar navigation" type="button">
         <i class="fa fa-bars"></i>
     </button>
 
@@ -14,7 +14,7 @@
         <li class="nav-item dropdown no-arrow mx-1">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="alertsDropdown" role="button" href="#"
                aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-bell fa-fw"></i>
+                <span class="fa fa-bell fa-fw"></span>
                 <span class="badge badge-danger badge-counter">{{ this.flashMessages.queue.length }}</span>
             </a>
             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
@@ -31,7 +31,7 @@
         <li class="nav-item dropdown no-arrow mx-1">
             <a class="nav-link dropdown-toggle" id="profileDropdown" data-toggle="dropdown" role="button" href="#"
                aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
+                <span class="fa fa-user fa-fw"></span><span class="fa fa-caret-down"></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="profileDropdown">
                 <LinkTo class="dropdown-item" @route='profile' @model={{this.authSrv.user_id}}>
@@ -43,10 +43,10 @@
                     {{t 'settings'}}
                 </LinkTo>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item" {{action 'logout'}}>
+                <button type="button" class="dropdown-item" {{on 'click' this.logout}}>
                     <i class="fa fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                     {{t 'logout'}}
-                </a>
+                </button>
             </div>
         </li>
     </ul>

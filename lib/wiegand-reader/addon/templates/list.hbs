@@ -15,22 +15,28 @@
     <tbody>
     {{#each this.model as |wiegand|}}
       <tr>
-        <LinkTo @route="wiegand-reader" @model={{wiegand.id}} @tagName="td">
-          {{wiegand.id}}
-        </LinkTo>
-        <LinkTo @route="wiegand-reader" @model={{wiegand.id}} @tagName="td">
-          {{wiegand.name}}
-        </LinkTo>
-        <LinkTo @route="wiegand-reader" @model={{wiegand.id}} @tagName="td">
-          {{t wiegand.mode}}
-        </LinkTo>
+        <td>
+          <LinkTo @route="wiegand-reader" @model={{wiegand.id}}>
+            {{wiegand.id}}
+          </LinkTo>
+        </td>
+        <td>
+          <LinkTo @route="wiegand-reader" @model={{wiegand.id}}>
+            {{wiegand.name}}
+          </LinkTo>
+        </td>
+        <td>
+          <LinkTo @route="wiegand-reader" @model={{wiegand.id}}>
+            {{t wiegand.mode}}
+          </LinkTo>
+        </td>
         <td>
           <div class="pull-left">
             <DeviceToggleEnabled @device={{wiegand}} @saveIt={{true}} />
           </div>
         </td>
         <td>
-          <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="xs" @text={{t "delete"}} @message={{t "wiegand-reader.delete_confirm"}} @onConfirm={{route-action "deleteWiegandReader" wiegand}} />
+          <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="xs" @text={{t "delete"}} @message={{t "wiegand-reader.delete_confirm"}} @onConfirm={{fn this.deleteWiegandReader wiegand}} />
         </td>
       </tr>
     {{/each}}

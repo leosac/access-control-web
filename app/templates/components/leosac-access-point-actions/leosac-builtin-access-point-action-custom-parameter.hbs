@@ -1,11 +1,11 @@
-<BsForm @formLayout='vertical' @model=this as | form |>
+<BsForm @formLayout='vertical' @model="this" as | form |>
   <form.element @property="command" @controleType="text" @label="Command" />
-  {{properties}}
-  {{#each properties as | parameter index |}}
-    <form.element @property={{parameter}} @onChange={{action "setValue" index}} @controlType="text" @label="Custom parameter" />
+  {{this.properties}}
+  {{#each this.properties as | parameter index |}}
+    <form.element @property={{parameter}} @onChange={{fn this.setValue index}} @controlType="text" @label="Custom parameter" />
   {{/each}}
   <div class="space-bottom">
-    <BsButton @defaultText='Add parameter' @onClick={{action 'addProperty'}} @size='sm' @type='primary' />
+    <BsButton @defaultText='Add parameter' @onClick={{this.addProperty}} @size='sm' @type='primary' />
   </div>
 </BsForm>
-{{params}}
+{{this.params}}

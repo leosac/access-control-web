@@ -1,4 +1,4 @@
-<BsButton @type={{this.type}} @icon={{this.icon}} @size={{this.size}} @onClick={{action "spawnModal"}} as |button|>
+<BsButton @type={{this.type}} @icon={{this.icon}} @size={{this.size}} @onClick={{this.spawnModal}}>
   {{this.text}}
 </BsButton>
 
@@ -7,12 +7,12 @@
     {{this.message}} <br>
   </modal.body>
 
-  <modal.footer as |footer|>
-    <BsButton @type="primary" @onClick={{action "onCancel"}}>
+  <modal.footer>
+    <BsButton @type="primary" @onClick={{this.onCancel}}>
       {{t 'cancel'}}
     </BsButton>
 
-    <BsButton @type="danger" @onClick={{action "onConfirm"}}>
+    <BsButton @type="danger" @onClick={{this.onConfirm}}>
       {{t 'confirm'}}
     </BsButton>
   </modal.footer>

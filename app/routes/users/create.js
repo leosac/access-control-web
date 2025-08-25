@@ -27,24 +27,5 @@ export default LeosacRoute.extend({
     setupController(controller, model)
     {
         this._super(controller, model);
-    },
-    actions: {
-        createUser()
-        {
-            const u = this.modelFor(this.routeName).user;
-            const {validations} = u.validateSync();
-            if (validations.get('isValid') && u.get('password') !== false)
-            {
-                u.save().then(() =>
-                    {
-                        this.flashMessages.success('User successfully created.');
-                        this.router.transitionTo('users.list');
-                    },
-                    () =>
-                    {
-                        this.flashMessages.danger('Failed to create user.');
-                    });
-            }
-        }
     }
 });

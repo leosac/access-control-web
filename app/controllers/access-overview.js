@@ -1,27 +1,30 @@
-import { computed } from '@ember/object';
+import { computed, action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Controller from '@ember/controller';
 
-export default Controller.extend({
-    ws: service('websocket'),
-    store: service(),
+export default class extends Controller {
+    @service('websocket')
+    ws;
+    @service
+    store;
 
     // JSON as returned by the `access_overview` Leosac WS call.
 
-    rawData: null,
+    rawData = null;
+    selectedUsers = [];
+    selectedDoors = [];
 
-    selectedUsers: [],
-    selectedDoors: [],
-
-    displayedDoors: computed("allDoors", "selectedDoors.length", function () {
+    @computed('{allDoors,selectedDoors.length}')
+    displayedDoors() {
         if (!this.get('selectedDoors.length')) {
             return this.get('allDoors');
         } else {
             return this.get('selectedDoors');
         }
-    }),
-    allDoors: computed('rawData', "selectedDoors.length", function ()
-    {
+    }
+
+    @computed('{rawData,selectedDoors.length}')
+    allDoors() {
         const doors = [];
         let selectedDoorsId = [];
         let result = [];
@@ -46,8 +49,10 @@ export default Controller.extend({
             }
         });
         return result;
-    }),
-    allUsers: computed('rawData', 'selectedUsers.length', function () {
+    }
+
+    @computed('{rawData,selectedUsers.length}')
+    allUsers() {
         let userIds = [];
         let selectedUsersId = [];
         let users = [];
@@ -81,9 +86,11 @@ export default Controller.extend({
             }
         });
         return result;
-    }),
+    }
+
     // will set the user door information
-    userDoorInfo: computed('allDoors', 'allUsers', "selectedDoors.length", "selectedUsers.length", function () {
+    @computed('{allDoors,allUsers,selectedDoors.length,selectedUsers.length}')
+    userDoorInfo() {
         let selectedDoors = [];
         let userInfos = [];
 
@@ -193,7 +200,8 @@ export default Controller.extend({
             });
         }
         return userInfos;
-    }),
+    }
+
     //this will load and fetch all the user and door
     reload() {
         this.store.findAll('user', {reload: true}).then(() => {
@@ -203,23 +211,29 @@ export default Controller.extend({
                 });
             });
         });
-    },
-    init()
-    {
-        this._super(...arguments);
-    },
-    actions: {
-        addUser(user) {
-            this.get('selectedUsers').addObject(user);
-        },
-        addDoor(door) {
-            this.get('selectedDoors').addObject(door);
-        },
-        removeUser(user) {
-            this.get('selectedUsers').removeObject(user);
-        },
-        removeDoor(door) {
-            this.get('selectedDoors').removeObject(door);
-        }
     }
-});
+    
+    constructor(owner, args) {
+        super(owner, args);
+    }
+
+    @action
+    addUser(user) {
+        this.get('selectedUsers').addObject(user);
+    }
+
+    @action
+    addDoor(door) {
+        this.get('selectedDoors').addObject(door);
+    }
+
+    @action
+    removeUser(user) {
+        this.get('selectedUsers').removeObject(user);
+    }
+
+    @action
+    removeDoor(door) {
+        this.get('selectedDoors').removeObject(door);
+    }
+}

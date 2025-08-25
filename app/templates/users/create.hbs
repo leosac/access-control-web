@@ -1,5 +1,5 @@
 <div class="col-md-12">
-    <BsForm @formLayout="vertical" @model={{this.model.user}} @onSubmit={{route-action 'createUser'}} as |form|>
+    <BsForm @formLayout="vertical" @model={{this.model.user}} @onSubmit={{this.createUser}} as |form|>
         <div class="row">
             <div class="col-md-6">
                 <fieldset>
@@ -14,9 +14,9 @@
 
                     <form.element @label={{t "rank"}}>
                         <PowerSelect @selected={{this.model.user.rank}}
-                                     @searchEnabled=false
+                                     @searchEnabled="false"
                                      @options={{this.model.possibleRanks}}
-                                     @onChange={{action (mut this.model.user.rank)}}
+                                     @onChange={{fn (mut this.model.user.rank)}}
                                      @placeholder={{t 'rank'}} as |rank|>
                             {{t rank}}
                         </PowerSelect>

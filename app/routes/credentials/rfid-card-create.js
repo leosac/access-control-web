@@ -33,20 +33,5 @@ export default LeosacRoute.extend({
         {
             mod.unloadRecord();
         }
-    },
-    actions:
-    {
-        createCard()
-        {
-            this.controller.get('model').save().then((card) =>
-                {
-                    this.flashMessages.success('Card successfully created.');
-                    this.router.transitionTo('credentials.rfid-card', card.get('id'));
-                },
-                () =>
-                {
-                    this.flashMessages.danger('An error occurred while creating the card');
-                });
-        }
     }
 });

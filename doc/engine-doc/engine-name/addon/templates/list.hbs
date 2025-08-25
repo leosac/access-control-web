@@ -1,6 +1,6 @@
-{{#link-to 'model-name-create' class='btn btn-primary'}}
+<LinkTo @route='model-name-create' class='btn btn-primary'>
   {{t 'translation.key.create'}}
-{{/link-to}}
+</LinkTo>
 <hr>
 
 <div class="table-responsive">
@@ -12,7 +12,7 @@
     <th class="col-md-offset-10 col-md-2">{{t 'delete'}}</th>
     </thead>
     <tbody>
-    {{#each model as |model-name|}}
+    {{#each this.model as |model-name|}}
       <tr>
         <LinkTo @route='model-name' @model={{model-name.id}}>
           <td>
@@ -26,7 +26,7 @@
         </LinkTo>
         <td>
           <div class="pull-left">
-            {{device-toggle-enabled device=model-name saveIt=true}}
+            <DeviceToggleEnabled @device='model-name' @saveIt={{true}} />
           </div>
         </td>
         <td>
@@ -35,7 +35,7 @@
                                   @size='xs'
                                   @text={{t 'delete'}}
                                   @message={{t 'model-name.delete_confirm'}}
-                                  @onConfirm={{route-action 'deleteModelName' model-name}} />
+                                  @onConfirm={{fn this.deleteModelName model-name}} />
         </td>
       </tr>
     {{/each}}

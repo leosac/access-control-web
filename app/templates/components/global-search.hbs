@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-offset-1 col-md-12 col-xs-offset-1 space-top space-bottom">
-    <PowerSelect @placeholder={{t "search"}} @searchEnabled={{true}} @search={{action "findAll"}} @selected={{this.selected.name}} @renderInPlace={{true}} @allowClear={{true}} @onChange={{action "handleRoute"}} as |result|>
+    <PowerSelect @placeholder={{t "search"}} @searchEnabled={{true}} @search={{this.findAll}} @selected={{this.selected.name}} @renderInPlace={{true}} @allowClear={{true}} @onChange={{this.handleRoute}} as |result|>
       <div>
         {{result.name}}
         <span class="pull-right global-search-model-style" >{{t result.tradKey}}</span>

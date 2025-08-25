@@ -5,11 +5,11 @@
 </div>
 <div class="row">
   <div class="col-md-6 space-bottom">
-    <BsButton @onClick={{action 'refresh'}} @type='primary'
+    <BsButton @onClick={{this.refresh}} @type='primary'
               @size='sm' @defaultText={{t 'refresh'}} />
   </div>
 </div>
-<BsForm @formLayout="vertical" @model=this as | form |>
+<BsForm @formLayout="vertical" @model="this" as | form |>
   <div class="row">
     <div class="col-md-4">
       <form.element @controlType="number" @label={{t "current_page"}} @property="currentPage" />
@@ -70,7 +70,7 @@
   </div>
   <div class="row space-bottom">
     <div class="col-md-2 cursor-link">
-      <a {{action 'toggleAll'}}>{{t 'toggle_all'}}</a>
+      <button type="button" {{on 'click' this.toggleAll}}>{{t 'toggle_all'}}</button>
     </div>
   </div>
 </BsForm>
@@ -105,14 +105,14 @@
         <td>{{audit.timestamp}}</td>
         <td>{{audit.eventMask}}</td>
         <td>{{boolean-to-colored-yes-no audit.finalized}}</td>
-        <td><BsButton @onClick={{action 'showDetails' audit}} @defaultText={{t 'details'}} /></td>
+        <td><BsButton @onClick={{fn this.showDetails audit}} @defaultText={{t 'details'}} /></td>
       </tr>
     {{/each}}
     </tbody>
   </table>
 </div>
 
-<BsModal @open={{this.openDetailsModal}} @title={{t 'details'}} as |modal|>
+<BsModal @open={{this.openDetailsModal}} @title={{t 'details'}}>
   <div class="row">
     <div class="col-md-12">
       <div class="space-left">

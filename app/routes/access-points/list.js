@@ -18,16 +18,5 @@ export default LeosacRoute.extend({
         "use strict";
 //        return findAllAccessPoints(this.store);
         return this.store.peekAll('access-point');
-    },
-    actions: {
-        deleteAP(ap)
-        {
-            ap.destroyRecord({}).then(() =>
-            {
-                this.flashMessages.success('Access Point has been deleted.');
-                this.refresh();
-                this.router.transitionTo('access-point.list');
-            });
-        }
     }
 });

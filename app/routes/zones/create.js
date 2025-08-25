@@ -27,19 +27,5 @@ export default LeosacRoute.extend({
         {
             mod.unloadRecord();
         }
-    },
-    actions: {
-        createZone()
-        {
-            this.modelFor('zones.create').save().then((d) =>
-                {
-                    this.flashMessages.success('Zone created.');
-                    this.router.transitionTo('zone', d.get('id'));
-                },
-                () =>
-                {
-                    this.flashMessages.danger('Failed to create zone.');
-                });
-        }
     }
 });

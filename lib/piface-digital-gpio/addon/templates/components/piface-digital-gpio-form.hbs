@@ -20,7 +20,7 @@
 
       <form.element @property="direction" @label={{t "direction"}}>
       <div id="Tooltip-direction">
-        <PowerSelect @selected={{this.piface-digital-gpio.direction}} @searchEnabled={{false}} @options={{this.allDirection}} @onChange={{action (mut this.piface-digital-gpio.direction)}} @placeholder={{t "type_direction"}} as |direction|>
+        <PowerSelect @selected={{this.piface-digital-gpio.direction}} @searchEnabled={{false}} @options={{this.allDirection}} @onChange={{fn (mut this.piface-digital-gpio.direction)}} @placeholder={{t "type_direction"}} as |direction|>
           {{t direction}}
         </PowerSelect>
         <BsTooltip @placement="right" @triggerElement="#Tooltip-direction">{{t 'piface_digital_gpio_information.direction'}}</BsTooltip>
@@ -30,7 +30,7 @@
       {{#if (eq this.piface-digital-gpio.direction 'out')}}
         <form.element @property="defaultValue" @label={{t "default_value"}}>
           <div id="Tooltip-value">
-          <PowerSelect @selected={{this.piface-digital-gpio.defaultValue}} @searchEnabled={{false}} @options={{this.allValue}} @onChange={{action (mut this.piface-digital-gpio.defaultValue)}} @placeholder={{t "type_value"}} as |newValue|>
+          <PowerSelect @selected={{this.piface-digital-gpio.defaultValue}} @searchEnabled={{false}} @options={{this.allValue}} @onChange={{fn (mut this.piface-digital-gpio.defaultValue)}} @placeholder={{t "type_value"}} as |newValue|>
             {{t newValue}}
           </PowerSelect>
           <BsTooltip @placement="right" @triggerElement="#Tooltip-value" @triggerEvent="hover">{{t 'piface_digital_gpio_information.value'}}</BsTooltip>

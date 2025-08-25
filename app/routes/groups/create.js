@@ -29,19 +29,5 @@ export default LeosacRoute.extend({
         {
             mod.unloadRecord();
         }
-    },
-    actions: {
-        createGroup()
-        {
-            this.modelFor('groups.create').save().then((g) =>
-                {
-                    this.flashMessages.success('Group created.');
-                    this.router.transitionTo('group', g.get('id'));
-                },
-                () =>
-                {
-                    this.flashMessages.danger('Failed to create group.');
-                });
-        }
     }
 });

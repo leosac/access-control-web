@@ -23,54 +23,74 @@
       {{#if ledBuzzer.id}}
         {{#if (eq ledBuzzer.deviceClass 'buzzer')}}
           <tr>
-            <LinkTo @route="buzzer" @model={{ledBuzzer.id}} @tagName="td">
-              {{ledBuzzer.id}}
-            </LinkTo>
-            <LinkTo @route="buzzer" @model={{ledBuzzer.id}} @tagName="td">
-              {{ledBuzzer.name}}
-            </LinkTo>
-            <LinkTo @route="buzzer" @model={{ledBuzzer.id}} @tagName="td">
-              {{t 'buzzer'}}
-            </LinkTo>
-            <LinkTo @route="buzzer" @model={{ledBuzzer.id}} @tagName="td">
-              {{ledBuzzer.defaultBlinkDuration}}
-            </LinkTo>
-            <LinkTo @route="buzzer" @model={{ledBuzzer.id}} @tagName="td">
-              {{ledBuzzer.defaultBlinkSpeed}}
-            </LinkTo>
+            <td>
+              <LinkTo @route="buzzer" @model={{ledBuzzer.id}}>
+                {{ledBuzzer.id}}
+              </LinkTo>
+            </td>
+            <td>
+              <LinkTo @route="buzzer" @model={{ledBuzzer.id}}>
+                {{ledBuzzer.name}}
+              </LinkTo>
+            </td>
+            <td>
+              <LinkTo @route="buzzer" @model={{ledBuzzer.id}}>
+                {{t 'buzzer'}}
+              </LinkTo>
+            </td>
+            <td>
+              <LinkTo @route="buzzer" @model={{ledBuzzer.id}}>
+                {{ledBuzzer.defaultBlinkDuration}}
+              </LinkTo>
+            </td>
+            <td>
+              <LinkTo @route="buzzer" @model={{ledBuzzer.id}}>
+                {{ledBuzzer.defaultBlinkSpeed}}
+              </LinkTo>
+            </td>
             <td>
               <div class="pull-left">
                 <DeviceToggleEnabled @device={{ledBuzzer}} @saveIt={{true}} />
               </div>
             </td>
             <td>
-              <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="xs" @text={{t "delete"}} @message={{t "led-buzzer.delete_confirm"}} @onConfirm={{route-action "deleteLedBuzzer" ledBuzzer}} />
+              <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="xs" @text={{t "delete"}} @message={{t "led-buzzer.delete_confirm"}} @onConfirm={{fn this.deleteLedBuzzer ledBuzzer}} />
             </td>
           </tr>
         {{else}}
           <tr>
-            <LinkTo @route="led" @model={{ledBuzzer.id}} @tagName="td">
-              {{ledBuzzer.id}}
-            </LinkTo>
-            <LinkTo @route="led" @model={{ledBuzzer.id}} @tagName="td">
-              {{ledBuzzer.name}}
-            </LinkTo>
-            <LinkTo @route="led" @model={{ledBuzzer.id}} @tagName="td">
-              {{t 'led'}}
-            </LinkTo>
-            <LinkTo @route="led" @model={{ledBuzzer.id}} @tagName="td">
-              {{ledBuzzer.defaultBlinkDuration}}
-            </LinkTo>
-            <LinkTo @route="led" @model={{ledBuzzer.id}} @tagName="td">
-              {{ledBuzzer.defaultBlinkSpeed}}
-            </LinkTo>
+            <td>
+              <LinkTo @route="led" @model={{ledBuzzer.id}}>
+                {{ledBuzzer.id}}
+              </LinkTo>
+            </td>
+            <td>
+              <LinkTo @route="led" @model={{ledBuzzer.id}}>
+                {{ledBuzzer.name}}
+              </LinkTo>
+            </td>
+            <td>
+              <LinkTo @route="led" @model={{ledBuzzer.id}}>
+                {{t 'led'}}
+              </LinkTo>
+            </td>
+            <td>
+              <LinkTo @route="led" @model={{ledBuzzer.id}}>
+                {{ledBuzzer.defaultBlinkDuration}}
+              </LinkTo>
+            </td>
+            <td>
+              <LinkTo @route="led" @model={{ledBuzzer.id}}>
+                {{ledBuzzer.defaultBlinkSpeed}}
+              </LinkTo>
+            </td>
             <td>
               <div class="pull-left">
                 <DeviceToggleEnabled @device={{ledBuzzer}} @saveIt={{true}} />
               </div>
             </td>
             <td>
-              <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="xs" @text={{t "delete"}} @message={{t "led-buzzer.delete_confirm"}} @onConfirm={{route-action "deleteLedBuzzer" ledBuzzer}} />
+              <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="xs" @text={{t "delete"}} @message={{t "led-buzzer.delete_confirm"}} @onConfirm={{fn this.deleteLedBuzzer ledBuzzer}} />
             </td>
           </tr>
         {{/if}}

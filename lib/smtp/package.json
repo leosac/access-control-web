@@ -9,7 +9,6 @@
     "ember-cli-babel": "*",
     "ember-cli-htmlbars": "*",
     "ember-intl": "*",
-    "ember-cli-flash": "*",
-    "ember-route-action-helper": "*"
+    "ember-cli-flash": "*"
   }
 }

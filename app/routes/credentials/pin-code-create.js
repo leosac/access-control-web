@@ -27,17 +27,5 @@ export default LeosacRoute.extend({
                 mod.unloadRecord();
             }
         }
-    },
-    actions:
-    {
-        createPin() {
-            this.controller.get('model').save().then((pin) => {
-                    this.flashMessages.success('Pin successfully created.');
-                    this.router.transitionTo('credentials.pin-code', pin.get('id'));
-                },
-                () => {
-                    this.flashMessages.danger('An error occurred while creating the PIN');
-                });
-        }
     }
 });

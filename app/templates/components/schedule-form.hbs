@@ -10,7 +10,7 @@
       <legend>{{t 'timeframes'}}</legend>
       <div class="row">
         <div class="col-md-6 space-bottom">
-          <BsButton @defaultText={{t 'add_time_zone'}} @type='primary' @onClick={{action 'addTimeframe'}} />
+          <BsButton @defaultText={{t 'add_time_zone'}} @type='primary' @onClick={{this.addTimeframe}} />
         </div>
       </div>
       {{#each this.schedule.timeframes as |tf|}}
@@ -18,7 +18,7 @@
           <div class="panel-heading panel-timeframe">{{t 'timeframe'}}
           </div>
           <div class="panel-body">
-            <ScheduleTimeframe @form={{form}} @delete={{action "removeTimeframe" tf}} @timeframe={{tf}} />
+            <ScheduleTimeframe @form={{form}} @delete={{fn this.removeTimeframe tf}} @timeframe={{tf}} />
           </div>
         </div>
       {{/each}}

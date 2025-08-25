@@ -1,4 +1,4 @@
-<BsForm @formLayout="vertical" @model={{this.buzzer}} @onSubmit={{action}} as |form|>
+<BsForm @formLayout="vertical" @model={{this.buzzer}} @onSubmit={{this.action}} as |form|>
   <fieldset>
     <div class="col-md-6">
       <LedBuzzerForm @model={{this.model}} @ledBuzzer={{this.buzzer}} @form={{form}} />

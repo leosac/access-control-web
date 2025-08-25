@@ -1,5 +1,5 @@
-<BsButton @disabled=pendingCheckUpdate @onClick={{action 'checkUpdate'}}>
-    {{#if pendingCheckUpdate}}
+<BsButton @disabled="pendingCheckUpdate" @onClick={{this.checkUpdate}}>
+    {{#if this.pendingCheckUpdate}}
         {{t 'update.pending_check_update'}}
         <i class="fa fa-spinner fa-spin update-spinner-color"></i>
     {{else}}
@@ -20,14 +20,14 @@
         </thead>
 
         <tbody>
-        {{#each updateDescriptors as |u|}}
+        {{#each this.updateDescriptors as |u|}}
             <tr>
                 <td>{{u.source_module}}</td>
                 <td>{{u.update_desc}}</td>
                 <td>{{severity-to-string u.severity}}</td>
                 <td>{{u.uuid}}</td>
                 <td>
-                    <BsButton @defaultText='Create Update !' @onClick={{action 'createUpdate' u}} />
+                    <BsButton @defaultText='Create Update !' @onClick={{fn this.createUpdate u}} />
                 </td>
             </tr>
         {{/each}}
@@ -49,7 +49,7 @@
         </thead>
 
         <tbody>
-        {{#each pendingUpdates as |update|}}
+        {{#each this.pendingUpdates as |update|}}
             <tr>
                 <td>{{update.id}}</td>
                 <td>{{update.sourceModule}}</td>
@@ -57,16 +57,16 @@
                 <td>{{update.generatedAt}}</td>
                 <td>{{update.checkpoint}}</td>
                 <td>
-                    <BsButton @type='success' @onClick={{action 'acknowledgeUpdate' update}}>
+                    <BsButton @type='success' @onClick={{fn this.acknowledgeUpdate update}}>
                         {{t 'acknowledge'}}
                     </BsButton>
 
-                    <BsButton @type='danger' @onClick={{action 'cancelUpdate' update}}>
+                    <BsButton @type='danger' @onClick={{fn this.cancelUpdate update}}>
                         {{t 'cancel'}}
                     </BsButton>
                 </td>
                 <td>
-                    <BsButton @onClick={{action 'showDetails' update}} @defaultText={{t 'details'}} />
+                    <BsButton @onClick={{fn this.showDetails update}} @defaultText={{t 'details'}} />
                 </td>
             </tr>
         {{/each}}
@@ -88,8 +88,8 @@
         </thead>
 
         <tbody>
-        {{#each updateHistory as |update|}}
-            <!-- 1 is hardcoded for ACKNOWLEDGED -->
+        {{#each this.updateHistory as |update|}}
+            {{!-- 1 is hardcoded for ACKNOWLEDGED --}}
             <tr class="{{if (eq update.status 1) 'success' 'danger'}}">
                 <td>{{update.id}}</td>
                 <td>{{update.sourceModule}}</td>
@@ -105,7 +105,7 @@
 </div>
 
 
-<BsModal @open=openDetailsModal @title={{t 'details'}}>
+<BsModal @open="openDetailsModal" @title={{t 'details'}}>
     <hr>
 
     <i>Content</i> <br>

@@ -22,7 +22,7 @@
                   {{t zone.type}}
               </td>
               <td>
-                <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="xs" @text={{t "delete"}} @message={{t "door.delete_confirm"}} @onConfirm={{route-action "deleteZone" zone}} />
+                <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="xs" @text={{t "delete"}} @message={{t "door.delete_confirm"}} @onConfirm={{fn this.deleteZone zone}} />
               </td>
             </tr>
         {{/each}}

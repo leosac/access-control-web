@@ -1,8 +1,8 @@
-<BsForm @formLayout='inline' @onSubmit={{action 'scheduleMappingPicked'}} as |form|>
+<BsForm @formLayout='inline' @onSubmit={{this.scheduleMappingPicked}} as |form|>
   <fieldset class="row">
     <div class="col-md-4">
       <form.element @label={{t "schedule.title"}}>
-        <PowerSelect @searchEnabled={{true}} @search={{action "searchSchedule"}} @selected={{this.selectedSchedule.name}} @placeholder={{t "schedule.type"}} @onChange={{action "scheduleChanged"}} as |schedInfo|>
+        <PowerSelect @searchEnabled={{true}} @search={{this.searchSchedule}} @selected={{this.selectedSchedule.name}} @placeholder={{t "schedule.type"}} @onChange={{this.scheduleChanged}} as |schedInfo|>
           {{schedInfo.name}}
         </PowerSelect>
       </form.element>
@@ -14,7 +14,7 @@
                         searchEnabled=true
                         searchField="alias"
                         options=this.selectedSchedule.mapping
-                        onChange=(action (mut this.selectedMapping))
+                        onChange=(fn (mut this.selectedMapping))
                         placeholder='...' as |mapping| }}
           {{mapping.alias}}
           {{else}}

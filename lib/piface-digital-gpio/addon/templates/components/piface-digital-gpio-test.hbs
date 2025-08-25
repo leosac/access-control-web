@@ -1,5 +1,5 @@
 <div id="Tooltip-test">
-<BsButton @text={{t "test"}} @onClick={{action "testPiface"}} @size="xs" @type="warning">
+<BsButton @text={{t "test"}} @onClick={{this.testPiface}} @size="xs" @type="warning">
   <BsTooltip @placement="right" @triggerElement="#Tooltip-test" @triggerEvent="hover">{{t 'piface_digital_gpio_information.test'}}</BsTooltip>
 </BsButton>
 </div>

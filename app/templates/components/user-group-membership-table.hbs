@@ -26,7 +26,7 @@
             <td>{{membership.group.memberCount}}</td>
             {{#if this.kickOrLeave}}
                 <td>
-                    <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-ban-circle" @size="xs" @text={{this.kickOrLeave}} @message={{this.kickOrLeaveMessage}} @onConfirm={{action "deleteMembership" membership.id}} /></td>
+                    <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-ban-circle" @size="xs" @text={{this.kickOrLeave}} @message={{this.kickOrLeaveMessage}} @onConfirm={{fn this.deleteMembership membership.id}} /></td>
             {{/if}}
           </tr>
         </LinkTo>

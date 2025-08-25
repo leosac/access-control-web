@@ -17,22 +17,5 @@ export default LeosacRoute.extend({
     {
         "use strict";
         return this.store.findAll('zone', {reload: true});
-    },
-    actions: {
-        findType(zone) {
-            if (zone.type === "Logical") {
-                return 1;
-            } else {
-                return 0;
-            }
-        },
-        deleteZone(zone)
-        {
-            zone.destroyRecord({}).then(() =>
-            {
-                this.flashMessages.success('Zone has been deleted.');
-                this.router.transitionTo('zones.list');
-            });
-        }
     }
 });

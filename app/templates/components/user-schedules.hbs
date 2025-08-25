@@ -4,12 +4,12 @@
 
 <div class="row">
   <div class="col-md-2 space-bottom">
-    <BsButton @onCLick={{action 'refresh'}} @defaultText='Refresh' />
+    <BsButton @onCLick={{this.refresh}} @defaultText='Refresh' />
   </div>
 </div>
 <div class="row">
   <div class="col-md-12">
-    <div class="user-schedule-info" class="{{this.greyedDisabledIfSyncing}}">
+    <div class="user-schedule-info">
       {{#each this.user.schedules as |schedule|}}
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -17,7 +17,7 @@
           </div>
           <div class="panel-body">
             <div>
-              <!-- Recap of the schedule -->
+              {{!-- Recap of the schedule --}}
               {{#if schedule.timeframes.length}}
                 Timeframes:
                 <ul>
@@ -40,7 +40,7 @@
                     <div class="panel-heading">
                       Mapping: {{mapping.alias}}
                       <div class="pull-right">
-                        <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="xs" @text={{t "schedule.remove_from_mapping"}} @message={{t "schedule.remove_from_mapping_confirm"}} @onConfirm={{action "leaveMapping" mapping}} />
+                        <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="xs" @text={{t "schedule.remove_from_mapping"}} @message={{t "schedule.remove_from_mapping_confirm"}} @onConfirm={{fn this.leaveMapping mapping}} />
                       </div>
                     </div>
                     <div class="panel-body">
@@ -72,7 +72,7 @@
       <div class="row">
         <div class="panel panel-default">
           <div class="panel-body space-bottom">
-            <ScheduleMappingPicker @action={{action "addScheduleMapping"}} />
+            <ScheduleMappingPicker @action={{this.addScheduleMapping}} />
           </div>
         </div>
       </div>

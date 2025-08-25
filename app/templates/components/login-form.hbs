@@ -1,14 +1,14 @@
 <div class="row text-white">
-    <!--suppress ALL -->
+    {{!--suppress ALL --}}
     <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form-signin p-4">
         <h1 class="display-4 py-2 text-truncate">
-            <img src="{{getenv 'projectLogoUrl'}}" class="navbar-logo" alt="Logo" />
+            <img src="{{getenv 'projectLogoUrl'}}" class="navbar-logo" alt="leosac project" />
         </h1>
         <div class="px-2">
-            <BsForm @formLayout="horizontal" @class="justify-content-center" @onSubmit={{action "login"}} as |form|>
+            <BsForm @formLayout="horizontal" @class="justify-content-center" @onSubmit={{this.login}} as |form|>
                 <h2 class="mb-4">{{t 'login-form.welcome'}}</h2>
-                <form.element @controlType="text" @id="username-input" @label={{t "form.username.label"}} @value={{this.inputUsername}} @required={{true}} @onChange={{action (mut this.inputUsername)}} @placeholder={{t "form.username.ph"}} />
-                <form.element @controlType="password" @id="password-input" @label={{t "form.password.label"}} @value={{this.inputPassword}} @required={{true}} @onChange={{action (mut this.inputPassword)}} @placeholder={{t "form.password.ph"}} />
+                <form.element @controlType="text" @id="username-input" @label={{t "form.username.label"}} @value={{this.inputUsername}} @required={{true}} @onChange={{fn (mut this.inputUsername)}} @placeholder={{t "form.username.ph"}} />
+                <form.element @controlType="password" @id="password-input" @label={{t "form.password.label"}} @value={{this.inputPassword}} @required={{true}} @onChange={{fn (mut this.inputPassword)}} @placeholder={{t "form.password.ph"}} />
 
                 <BsButton @class="btn-signin" @id='login-submit' @size="md" @type="primary" @buttonType="submit">
                     {{t 'login-form.submit'}}
@@ -16,7 +16,7 @@
 
                 <br>
                 {{#if this.pending}}
-                    <!--suppress XmlDefaultAttributeValue -->
+                    {{!--suppress XmlDefaultAttributeValue --}}
                     <span class="fa fa-refresh fa-spin login-spinner-style" aria-hidden="true"></span>
                 {{/if}}
 

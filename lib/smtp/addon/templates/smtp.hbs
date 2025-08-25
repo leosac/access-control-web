@@ -1,14 +1,12 @@
 
 <BsTab as |tab|>
   <tab.pane @title={{t "configuration"}}>
-    <!--<div class="col-md-12 row">-->
-      <!--<br>-->
-    <!--</div>-->
-<div class="button-space">
-    <BsButton @defaultText={{t "smtp.add_server"}} @type="primary" @buttonType="submit" @onClick={{route-action "addServer"}} />
-
-
-  </div>
+    {{!--<div class="col-md-12 row">--}}
+      {{!--<br>--}}
+    {{!--</div>--}}
+    <div class="button-space">
+      <BsButton @defaultText={{t "smtp.add_server"}} @type="primary" @buttonType="submit" @onClick={{this.addServer}} />
+    </div>
     <div class="row">
       <div class="col-md-12">
         {{#each this.model.servers as |server|}}
@@ -51,7 +49,7 @@
                   </div>
                 </div>
               <div class="button-space">
-                <BsButton @defaultText={{t "smtp.remove_server"}} @type="danger" @buttonType="submit" @onClick={{route-action "removeServer" server}} />
+                <BsButton @defaultText={{t "smtp.remove_server"}} @type="danger" @buttonType="submit" @onClick={{fn this.removeServer server}} />
               </div>
 
               </BsForm>
@@ -61,10 +59,10 @@
       </div>
     </div>
     <div>
-      <BsButton @defaultText={{t "smtp.save"}} @type="success" @buttonType="submit" @onClick={{route-action "updateConfig"}} />
+      <BsButton @defaultText={{t "smtp.save"}} @type="success" @buttonType="submit" @onClick={{this.updateConfig}} />
     </div>
   </tab.pane>
   <tab.pane @title={{t "email"}}>
-    {{send-mail}}
+    <SendMail />
   </tab.pane>
 </BsTab>

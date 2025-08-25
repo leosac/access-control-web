@@ -19,39 +19,51 @@
     {{#each this.model as |piface-digital-gpio|}}
     {{#if piface-digital-gpio.id}}
       <tr>
-        <LinkTo @route="piface-digital-gpio" @model={{piface-digital-gpio.id}} @tagName="td">
-          <piface-digital-gpio.id />
-        </LinkTo>
-        <LinkTo @route="piface-digital-gpio" @model={{piface-digital-gpio.id}} @tagName="td">
-          <piface-digital-gpio.name />
-        </LinkTo>
-        <LinkTo @route="piface-digital-gpio" @model={{piface-digital-gpio.id}} @tagName="td">
-          <piface-digital-gpio.number />
-        </LinkTo>
-        <LinkTo @route="piface-digital-gpio" @model={{piface-digital-gpio.id}} @tagName="td">
-          {{t piface-digital-gpio.direction}}
-        </LinkTo>
-        <LinkTo @route="piface-digital-gpio" @model={{piface-digital-gpio.id}} @tagName="td">
-          {{#if (eq piface-digital-gpio.direction 'out')}}
-            {{#if (eq piface-digital-gpio.defaultValue 'true')}}
-              {{t 'true'}}
-            {{else}}
-              {{t 'false'}}
+        <td>
+          <LinkTo @route="piface-digital-gpio" @model={{piface-digital-gpio.id}}>
+            <piface-digital-gpio.id />
+          </LinkTo>
+        </td>
+        <td>
+          <LinkTo @route="piface-digital-gpio" @model={{piface-digital-gpio.id}}>
+            <piface-digital-gpio.name />
+          </LinkTo>
+        </td>
+        <td>
+          <LinkTo @route="piface-digital-gpio" @model={{piface-digital-gpio.id}}>
+            <piface-digital-gpio.number />
+          </LinkTo>
+        </td>
+        <td>
+          <LinkTo @route="piface-digital-gpio" @model={{piface-digital-gpio.id}}>
+            {{t piface-digital-gpio.direction}}
+          </LinkTo>
+        </td>
+        <td>
+          <LinkTo @route="piface-digital-gpio" @model={{piface-digital-gpio.id}}>
+            {{#if (eq piface-digital-gpio.direction 'out')}}
+              {{#if (eq piface-digital-gpio.defaultValue 'true')}}
+                {{t 'true'}}
+              {{else}}
+                {{t 'false'}}
+              {{/if}}
             {{/if}}
-          {{/if}}
-        </LinkTo>
-        <LinkTo @route="piface-digital-gpio" @model={{piface-digital-gpio.id}} @tagName="td">
-          {{#if (eq piface-digital-gpio.direction 'out')}}
-            <PifaceDigitalGpioTest @gpioId={{piface-digital-gpio.id}} />
-          {{/if}}
-        </LinkTo>
+          </LinkTo>
+        </td>
+        <td>
+          <LinkTo @route="piface-digital-gpio" @model={{piface-digital-gpio.id}}>
+            {{#if (eq piface-digital-gpio.direction 'out')}}
+              <PifaceDigitalGpioTest @gpioId={{piface-digital-gpio.id}} />
+            {{/if}}
+          </LinkTo>
+        </td>
         <td>
           <div class="pull-left">
             <DeviceToggleEnabled @device={{piface-digital-gpio}} @saveIt={{true}} />
           </div>
         </td>
         <td>
-          <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="xs" @text={{t "delete"}} @message={{t "piface-digital-gpios.delete_confirm"}} @onConfirm={{route-action "deletePifaceDigitalGpio" piface-digital-gpio}} />
+          <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="xs" @text={{t "delete"}} @message={{t "piface-digital-gpios.delete_confirm"}} @onConfirm={{fn this.deletePifaceDigitalGpio piface-digital-gpio}} />
         </td>
       </tr>
     {{/if}}

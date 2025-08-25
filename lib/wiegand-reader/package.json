@@ -14,7 +14,6 @@
     "ember-data": "*",
     "ember-intl": "*",
     "ember-power-select": "*",
-    "ember-route-action-helper": "*",
     "ember-toggle": "*",
     "ember-truth-helpers": "*"
   },

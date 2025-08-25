@@ -1,8 +1,8 @@
 <div class="collapse navbar-collapse collapse show" id="navbarToggler">
   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" data-parent="#wrapper">
-    <!-- Sidebar - Brand -->
+    {{!-- Sidebar - Brand --}}
     <LinkTo class="sidebar-brand d-flex align-items-center justify-content-center" @route="index">
-      <img src="{{getenv 'logoUrl'}}" class="sidebar-brand-icon" alt="Logo"/>
+      <img src="{{getenv 'logoUrl'}}" class="sidebar-brand-icon" alt="leosac project"/>
       <div class="sidebar-brand-text mx-3">{{getlocale 'app_name'}}</div>
     </LinkTo>
 
@@ -15,7 +15,7 @@
       </LinkTo>
     </li>
     <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOverview" aria-expanded="true" aria-controls="collapseOverview">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOverview" aria-controls="collapseOverview">
         <i class="fa fa-fw fa-chart-bar"></i>
         <span>{{t 'w.overview'}}</span>
       </a>
@@ -92,7 +92,7 @@
     </li>
 
     <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseModules" aria-expanded="true" aria-controls="collapseModules">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseModules" aria-controls="collapseModules">
         <i class="fa fa-cogs"></i>
         <span>{{t 'modules'}}</span>
       </a>
@@ -100,14 +100,14 @@
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">{{t 'modules'}}:</h6>
           {{#each this.moduleManager.modulesInfo as |module|}}
-            <a class="collapse-item" href="#" {{action 'handleRoute' module.routeName}}>{{ module.displayName }}</a>
+            <button type="button" class="collapse-item" {{on 'click' (fn this.handleRoute module.routeName)}}>{{ module.displayName }}</button>
           {{/each}}
         </div>
       </div>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseWizards" aria-expanded="true" aria-controls="collapseWizards">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseWizards" aria-controls="collapseWizards">
         <i class="fa fa-magic"></i>
         <span>{{t 'modules_wizard'}}</span>
       </a>
@@ -115,7 +115,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">{{t 'modules_wizard'}}:</h6>
           {{#each this.moduleManager.wizardsInfo as | wizard |}}
-            <a class="collapse-item" href="#" {{action 'handleRoute' wizard.routeName}}>{{ wizard.displayName }}</a>
+            <button type="button" class="collapse-item" {{on 'click' (fn this.handleRoute wizard.routeName)}}>{{ wizard.displayName }}</button>
           {{/each}}
         </div>
       </div>

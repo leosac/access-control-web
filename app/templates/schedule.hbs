@@ -4,7 +4,7 @@
 <div>
   <BsTab as |tab|>
     <tab.pane @title={{t "timeframes"}}>
-      <ScheduleForm @schedule={{this.model}} @delete={{route-action "deleteSchedule"}} @action={{route-action "editSchedule"}} />
+      <ScheduleForm @schedule={{this.model}} @delete={{this.deleteSchedule}} @action={{this.editSchedule}} />
     </tab.pane>
 
     <tab.pane @title={{t "mapping"}}>
@@ -17,10 +17,10 @@
         <div class="row">
           <div class="col-md-12">
             <div class="pull-left">
-              <BsButton @type='primary' @defaultText={{t 'schedule.add_mapping'}} @onClick={{route-action 'addMapping'}} />
+              <BsButton @type='primary' @defaultText={{t 'schedule.add_mapping'}} @onClick={{this.addMapping}} />
             </div>
             <div class="pull-right">
-              <BsButton @defaultText={{t 'save'}} @type="success" @onClick={{route-action 'editSchedule'}} />
+              <BsButton @defaultText={{t 'save'}} @type="success" @onClick={{this.editSchedule}} />
             </div>
           </div>
         </div>

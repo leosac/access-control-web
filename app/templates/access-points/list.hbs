@@ -21,7 +21,7 @@
                 <td>{{ap.alias}}</td>
                 <td>{{ap.controllerModule}}</td>
                 <td>
-                  <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="xs" @text={{t "delete"}} @message={{t "accesspoint.delete_confirm"}} @onConfirm={{route-action "deleteAP" ap}} />
+                  <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="xs" @text={{t "delete"}} @message={{t "accesspoint.delete_confirm"}} @onConfirm={{fn this.deleteAP ap}} />
                 </td>
             {{/if}}
           </LinkToAccessPoint>

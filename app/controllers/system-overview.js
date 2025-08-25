@@ -1,21 +1,25 @@
-import { observer, computed } from '@ember/object';
+import { action, observer, computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Controller from '@ember/controller';
 
-export default Controller.extend({
-    store: service(),
-    logPerPage: 25,
-    currentLogPage: 0,
-    totalLogs: 0,
-    lastLogPage: 0,
-    _obs: observer('logPerPage', function ()
-    {
+export default class extends Controller {
+    @service
+    store;
+
+    logPerPage = 25;
+    currentLogPage = 0;
+    totalLogs = 0;
+    lastLogPage = 0;
+
+    @observer('logPerPage')
+    _obs() {
         "use strict";
         // Reset the page number.
         this.set('currentLogPage', 0);
-    }),
-    lastLogs: computed('logPerPage', 'currentLogPage', function ()
-    {
+    }
+
+    @computed('{logPerPage,currentLogPage}')
+    lastLogs() {
         "use strict";
         const self = this;
         const p = this.store.query('log-message',
@@ -33,16 +37,16 @@ export default Controller.extend({
             self.set('lastLogPage', msgs.get('meta').last);
         });
         return p;
-    }),
-    actions: {
-        updateLogPageNumber(n)
-        {
-            "use strict";
-            this.set('currentLogPage', parseInt(n));
-        },
-        TEST_ACTION()
-        {
-            alert('in test action controller');
-        }
     }
-});
+    
+    @action
+    updateLogPageNumber(n) {
+        "use strict";
+        this.set('currentLogPage', parseInt(n));
+    }
+
+    @action
+    TEST_ACTION() {
+        alert('in test action controller');
+    }
+}

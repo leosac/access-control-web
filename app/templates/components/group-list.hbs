@@ -10,13 +10,13 @@
         </thead>
         <tbody>
         {{#each this.groups as |group|}}
-              <tr {{action 'gotoItem' group.id}}>
-                <td>{{group.id}}</td>
-                <td>{{group.name}}</td>
+              <tr>
+                <td role="button" {{on 'click' (fn this.gotoItem group.id)}}>{{group.id}}</td>
+                <td role="button" {{on 'click' (fn this.gotoItem group.id)}}>{{group.name}}</td>
                 <td>{{group.memberCount}}</td>
                 {{#if this.deleteLink}}
                     <td>
-                        <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="xs" @text={{t "delete"}} @message={{t "users.delete_group_confirm"}} @onConfirm={{route-action "deleteGroup" group.id}} />
+                        <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="xs" @text={{t "delete"}} @message={{t "users.delete_group_confirm"}} @onConfirm={{fn this.deleteGroup group.id}} />
                     </td>
                 {{/if}}
               </tr>

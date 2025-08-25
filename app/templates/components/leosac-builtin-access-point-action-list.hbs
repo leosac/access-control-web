@@ -28,7 +28,7 @@
             </div>
           </div>
           <div class="space-bottom">
-            <BsButton @defaultText={{t 'remove'}} @type='danger' @size='xs' @onClick={{action 'removeSuccessAction' success}} />
+            <BsButton @defaultText={{t 'remove'}} @type='danger' @size='xs' @onClick={{fn this.removeSuccessAction success}} />
           </div>
         </acc.item>
       </BsAccordion>
@@ -62,7 +62,7 @@
             </div>
           </div>
           <div class="space-bottom">
-            <BsButton @defaultText={{t 'remove'}} @type='danger' @size='xs' @onClick={{action 'removeErrorAction' error}} />
+            <BsButton @defaultText={{t 'remove'}} @type='danger' @size='xs' @onClick={{fn this.removeErrorAction error}} />
           </div>
         </acc.item>
       </BsAccordion>
@@ -83,9 +83,9 @@
     <div class="col-md-6">
       <form.element @label={{t "leosac_builtin_ap.action.command_picker"}}>
         <PowerSelect @options={{this.availableCommand}}
-                     @searchEnabled=false
+                     @searchEnabled="false"
                      @placeholder={{t 'leosac_builtin_ap.action.command_placeholder'}}
-                     @onchange={{action (mut this.selectedCommand)}}
+                     @onchange={{fn (mut this.selectedCommand)}}
                      @selected={{this.selectedCommand}} as |command|>
           {{command}}
         </PowerSelect>
@@ -95,7 +95,7 @@
 </BsForm>
 <div class="row">
   <div class="col-md-12">
-    <BsButton @size='sm' @type="warning" @onClick={{action 'addSuccessAction'}} @defaultText={{t 'leosac_builtin_ap.action.add_success'}} />
-    <BsButton @size='sm' @type="warning" @onClick={{action 'addErrorAction'}} @defaultText={{t 'leosac_builtin_ap.action.add_error'}} />
+    <BsButton @size='sm' @type="warning" @onClick={{this.addSuccessAction}} @defaultText={{t 'leosac_builtin_ap.action.add_success'}} />
+    <BsButton @size='sm' @type="warning" @onClick={{this.addErrorAction}} @defaultText={{t 'leosac_builtin_ap.action.add_error'}} />
   </div>
 </div>

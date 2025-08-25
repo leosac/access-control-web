@@ -4,7 +4,7 @@ to render if there is no active session.
 }}
 {{#if this.authSrv._isLoggedIn}}
   <div id="wrapper">
-    {{side-menu}}
+    <SideMenu />
     <div id="content-wrapper" class="d-flex flex-column page-wrapper-whole-page">
       {{#each this.flashMessages.queue as |flash|}}
         <FlashMessage @flash={{flash}} as |component flash|>
@@ -12,14 +12,14 @@ to render if there is no active session.
         </FlashMessage>
       {{/each}}
 
-      {{top-menu}}
+      <TopMenu />
 
       <div id="content" class="container-fluid">
-        <!-- Page Heading -->
+        {{!-- Page Heading --}}
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
           <h1 class="h3 mb-0 text-gray-800">{{this.globalInfo.current_view_title}}</h1>
         </div>
-        <div id="content">
+        <div>
           {{outlet}}
         </div>
       </div>

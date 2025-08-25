@@ -1,8 +1,7 @@
 import { inject as service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 import {
-  findAllCredentials,
-  deleteCredential
+  findAllCredentials
 } from 'web/leosac-credential-helper';
 
 export default LeosacRoute.extend({
@@ -19,22 +18,5 @@ export default LeosacRoute.extend({
     model()
     {
         return findAllCredentials(this.store);
-    },
-    actions: {
-        deleteCredential(credential)
-        {
-            const self = this;
-
-            deleteCredential(this.store, credential.get('id'), () =>
-                {
-                    self.flashMessages.success('Credential has been deleted.');
-                    self.router.transitionTo('credentials.list');
-                    self.refresh();
-                }).catch(() =>
-                {
-                    self.flashMessages.danger('Failed to delete credential');
-                    credential.rollbackAttributes();
-                });
-        }
     }
 });

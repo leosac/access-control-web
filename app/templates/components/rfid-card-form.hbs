@@ -16,7 +16,7 @@
 
       <form.element @controlType="textarea" @label={{t "notes"}} @placeholder={{t "notes_placeholder"}} @property="description" />
 
-      <UserPicker @form={{form}} @searchCredential={{action "searchUser"}} @label={{t "owner"}} @selected={{this.selectedUser}} @onChange={{action "setOwner"}} />
+      <UserPicker @form={{form}} @searchCredential={{this.searchUser}} @label={{t "owner"}} @selected={{this.selectedUser}} @onChange={{this.setOwner}} />
 
       <ValidityControl @form={{form}} @enabledProperty="validityEnabled" @startDate={{mut this.card.validityStart}} @endDate={{mut this.card.validityEnd}} />
 

@@ -28,14 +28,5 @@ export default LeosacRoute.extend({
                 mod.rollbackAttributes();
             }
         }
-    },
-    actions: {
-        createSchedule(){
-            this.controller.model.save().then(()=>
-            {
-                this.flashMessages.success('Schedule created !');
-                this.router.transitionTo('schedule', this.controller.model.get('id'));
-            });
-        }
     }
 });

@@ -1,6 +1,6 @@
 <legend>{{t 'validity'}}</legend>
-<this.form.element @controlType="text" @label={{t "start_date"}} @placeholder="YYYY-MM-DD HH:mm" @disabled={{this.disabled}} @value={{mut this.startDate}} @onChange={{action (mut this.startDate)}} />
+<this.form.element @controlType="text" @label={{t "start_date"}} @placeholder="YYYY-MM-DD HH:mm" @disabled={{this.disabled}} @value={{this.startDate}} />
 
-<this.form.element @controlType="text" @label={{t "end_date"}} @placeholder="YYYY-MM-DD HH:mm" @disabled={{this.disabled}} @value={{mut this.endDate}} @onChange={{action (mut this.endDate)}} />
+<this.form.element @controlType="text" @label={{t "end_date"}} @placeholder="YYYY-MM-DD HH:mm" @disabled={{this.disabled}} @value={{this.endDate}} />
 
 <this.form.element @label={{t "enabled"}} @disabled={{this.disabled}} @controlType="checkbox" @property={{this.enabledProperty}} />

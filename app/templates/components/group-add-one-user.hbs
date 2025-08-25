@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-2 col-sm-4">
             <form.element @label={{t "username"}}>
-                <PowerSelect @searchEnabled={{true}} @selected={{this.selectedUser.username}} @search={{action "searchUser"}} @onChange={{action "setUser"}} @allowClear={{true}} @placeholder={{t "username"}} as |user|>
+                <PowerSelect @searchEnabled={{true}} @selected={{this.selectedUser.username}} @search={{this.searchUser}} @onChange={{this.setUser}} @allowClear={{true}} @placeholder={{t "username"}} as |user|>
                     {{user.username}}
                 </PowerSelect>
             </form.element>
@@ -11,14 +11,14 @@
             <form.element @label={{t "rank"}}>
                 <PowerSelect @selected={{this.selectedRank}}
                              @options={{this.allRank}}
-                             @onChange={{action (mut this.selectedRank)}}
+                             @onChange={{fn (mut this.selectedRank)}}
                              @placeholder={{t 'rank_group'}} as |rank|>
                     {{t rank}}
                 </PowerSelect>
             </form.element>
         </div>
         <div class="col-md-2 col-sm-4 button-next-to-power-select">
-            <BsButton @type="primary" @icon="glyphicon glyphicon-plus" @size="sm" @onClick={{action 'addToGroup'}}>
+            <BsButton @type="primary" @icon="glyphicon glyphicon-plus" @size="sm" @onClick={{this.addToGroup}}>
                 {{t 'users.add_to_group'}}
             </BsButton>
         </div>

@@ -16,15 +16,5 @@ export default LeosacRoute.extend({
     {
         "use strict";
         return this.store.findAll('door', {reload: true});
-    },
-    actions: {
-        deleteDoor(door)
-        {
-            door.destroyRecord({}).then(() =>
-            {
-                this.flashMessages.success('Door has been deleted.');
-                this.router.transitionTo('doors.list');
-            });
-        }
     }
 });

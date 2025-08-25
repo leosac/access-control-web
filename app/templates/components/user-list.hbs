@@ -11,7 +11,7 @@
         <tbody>
         {{#each this.users as |user|}}
             {{#if user.id}}
-                <tr {{action 'gotoItem' user.id}}>
+                <tr {{on 'click' (fn this.gotoItem user.id)}}>
                   <td>{{user.id}}</td>
                   <td>{{user.firstname}}</td>
                   <td>{{user.lastname}}</td>

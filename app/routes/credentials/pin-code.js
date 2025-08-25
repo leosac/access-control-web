@@ -27,30 +27,5 @@ export default LeosacRoute.extend({
                 mod.rollbackAttributes();
             }
         }
-    },
-    actions: {
-        updatePin()
-        {
-            this.controller.get('model').save().then(() =>
-                {
-                    this.flashMessages.success('Credential successfully edited.');
-                },
-                () =>
-                {
-                    this.flashMessages.danger('An error occurred while editing credential');
-                });
-        },
-        deleteCredential()
-        {
-            this.controller.get('model').destroyRecord().then(() =>
-                {
-                    this.flashMessages.success('Credential has been deleted.');
-                    this.router.transitionTo('credentials.list');
-                },
-                () =>
-                {
-                    this.flashMessages.danger('Failed to delete credential.');
-                });
-        }
     }
 });

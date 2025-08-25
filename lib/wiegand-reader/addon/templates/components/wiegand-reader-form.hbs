@@ -11,7 +11,7 @@
 
       <form.element @property="mode" @label={{t "mode"}}>
         <div id="Tooltip-mode">
-          <PowerSelect @selected={{this.wiegand-reader.mode}} @searchEnabled={{false}} @options={{this.allMode}} @onChange={{action (mut this.wiegand-reader.mode)}} @placeholder={{t "type_mode"}} as |mode|>
+          <PowerSelect @selected={{this.wiegand-reader.mode}} @searchEnabled={{false}} @options={{this.allMode}} @onChange={{fn (mut this.wiegand-reader.mode)}} @placeholder={{t "type_mode"}} as |mode|>
             {{t mode}}
           </PowerSelect>
           <BsTooltip @placement="right" @triggerElement="#Tooltip-mode">{{t 'wiegand_information.mode'}}</BsTooltip>
@@ -55,7 +55,7 @@
 
       <div class="row">
         <div class="col-md-6">
-          <BsButton @defaultText={{t "submit"}} @type="success" @size="md" @onClick={{action}} @buttonType="submit" />
+          <BsButton @defaultText={{t "submit"}} @type="success" @size="md" @onClick={{this.action}} @buttonType="submit" />
         </div>
         {{#if this.delete}}
           <div class="pull-right form-button-delete">

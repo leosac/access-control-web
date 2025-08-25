@@ -1,8 +1,8 @@
 <div class="col-md-12">
-  <StepManager @did-transition={{action "afterTransition"}} as |w|>
+  <StepManager @did-transition={{this.afterTransition}} as |w|>
     <div class="container">
       <ul class="nav nav-pills nav-justified thumbnail">
-        {{#each steps as |step|}}
+        {{#each this.steps as |step|}}
           {{#if (eq w.currentStep step.value)}}
             <li class="active inactiveLink">
               <a href="#">
@@ -41,7 +41,7 @@
             <div class="row">
               <div class="col-md-6">
                 <form.element @label={{t "gpio"}}>
-                  <PowerSelect @selected={{this.gpioType}} @searchEnabled={{false}} @options={{this.listOfGpio}} @onchange={{action (mut gpioType)}} as |gpio|>
+                  <PowerSelect @selected={{this.gpioType}} @searchEnabled={{false}} @options={{this.listOfGpio}} @onchange={{fn (mut this.gpioType)}} as |gpio|>
                     {{t gpio}}
                   </PowerSelect>
                 </form.element>
@@ -52,11 +52,11 @@
                 </p>
               </div>
             </div>
-            {{#if (eq gpioType 'piface-digital-gpio')}}
+            {{#if (eq this.gpioType 'piface-digital-gpio')}}
               <div class="row">
                 <div class="col-md-6">
                   <form.element @label={{t "hardware_address"}}>
-                    <PowerSelect @selected={{this.hardwareAddress}} @searchEnabled={{false}} @options={{this.hardwareAddressList}} @onchange={{action (mut hardwareAddress)}} as |address|>
+                    <PowerSelect @selected={{this.hardwareAddress}} @searchEnabled={{false}} @options={{this.hardwareAddressList}} @onchange={{fn (mut this.hardwareAddress)}} as |address|>
                       {{address}}
                     </PowerSelect>
                   </form.element>
@@ -94,7 +94,7 @@
             </div>
           </BsForm>
 
-          <BsButton @type="success" @text="Next" @onClick={{action "transitionFromGeneralToGpio" (action w.transition-to "gpio")}} />
+          <BsButton @type="success" @text="Next" @onClick={{fn this.transitionFromGeneralToGpio (fn w.transition-to "gpio")}} />
         </div>
       </fieldset>
     </w.step>
@@ -128,7 +128,7 @@
           </p>
         </div>
       </div>
-      {{#if ledEnabled}}
+      {{#if this.ledEnabled}}
         <div class="row">
           <div class="col-md-6">
             <BsForm @formLayout="vertical" @model={{this.pifaceDigitalGpioLed}} as |form|>
@@ -144,7 +144,7 @@
           </div>
         </div>
       {{/if}}
-      {{#if buzzerEnabled}}
+      {{#if this.buzzerEnabled}}
         <div class="row">
           <div class="col-md-6">
             <BsForm @formLayout="vertical" @model={{this.pifaceDigitalGpioBuzzer}} as |form|>
@@ -154,14 +154,14 @@
               </form.element>
             </BsForm>
           </div>
-          <div class="col-md-6  text-next-to-power-select">
+          <div class="col-md-6 text-next-to-power-select">
             <p>
               <b>{{t 'number_buzzer'}}</b>{{t 'wiegand_wizard_information.wizard_gpio_buzzer'}}
             </p>
           </div>
         </div>
       {{/if}}
-      <BsButton @type="success" @text="Next" @onClick={{action "transitionFromGpioToFinish" (action w.transition-to "finish")}} />
+      <BsButton @type="success" @text="Next" @onClick={{fn this.transitionFromGpioToFinish (fn w.transition-to "finish")}} />
     </w.step>
 
     <w.step @name="finish">

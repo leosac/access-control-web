@@ -27,28 +27,5 @@ export default LeosacRoute.extend({
                 mod.rollbackAttributes();
             }
         }
-    },
-    actions: {
-        editGroup ()
-        {
-            this.controller.get('model').save().then(() =>
-                {
-                    this.flashMessages.success('Group successfully edited.');
-                },
-                () =>
-                {
-                    this.flashMessages.danger('An error occurred while editing group');
-                });
-        },
-        deleteGroup ()
-        {
-            const self = this;
-            const model = this.controller.get('model');
-            model.destroyRecord({}).then(() =>
-            {
-                self.flashMessages.success('Group has been deleted.');
-                self.router.transitionTo('groups.list');
-            });
-        }
     }
 });

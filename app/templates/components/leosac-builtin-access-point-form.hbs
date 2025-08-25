@@ -28,7 +28,7 @@
                   <td>
                     <div class="text-center">
                       <BsButton @size='xs' @icon='glyphicon glyphicon-remove' @type='danger'
-                                @defaultText={{t 'remove'}} @onClick={{action 'removeAuthSources' device}} />
+                                @defaultText={{t 'remove'}} @onClick={{fn this.removeAuthSources device}} />
                     </div>
                   </td>
                 </tr>
@@ -48,7 +48,7 @@
         </div>
         <div class="row">
           <div class="col-md-6">
-            <BsButton @size='sm' @type="primary" @onClick={{action 'addAuthSources'}}
+            <BsButton @size='sm' @type="primary" @onClick={{this.addAuthSources}}
                       @defaultText={{t 'leosac_builtin_ap.add_device'}} />
           </div>
         </div>
@@ -80,7 +80,7 @@
                                 @icon='glyphicon glyphicon-remove'
                                 @type='danger'
                                 @defaultText={{t 'remove'}}
-                                @onClick={{action 'removeCloseSchedule' schedule}} />
+                                @onClick={{fn this.removeCloseSchedule schedule}} />
                     </div>
                   </td>
                 </tr>
@@ -112,7 +112,7 @@
                                 @icon='glyphicon glyphicon-remove'
                                 @type='danger'
                                 @defaultText={{t 'remove'}}
-                                @onClick={{action 'removeOpenSchedule' schedule}} />
+                                @onClick={{fn this.removeOpenSchedule schedule}} />
                     </div>
                   </td>
                 </tr>
@@ -126,7 +126,7 @@
         <div class="row">
           <div class="col-md-12">
             <form.element @label={{t "leosac_builtin_ap.schedule_picker"}}>
-              <PowerSelect @searchEnabled={{true}} @search={{action "searchSchedule"}} @selected={{this.newSchedule.name}} @placeholder={{t "leosac_builtin_ap.schedules_placeholder"}} @onChange={{action (mut this.newSchedule)}} as |schedule|>
+              <PowerSelect @searchEnabled={{true}} @search={{this.searchSchedule}} @selected={{this.newSchedule.name}} @placeholder={{t "leosac_builtin_ap.schedules_placeholder"}} @onChange={{fn (mut this.newSchedule)}} as |schedule|>
                 {{schedule.name}}
               </PowerSelect>
             </form.element>
@@ -134,17 +134,17 @@
         </div>
             <BsButton @size='sm'
                       @type="warning"
-                      @onClick={{action 'addCloseSchedule'}}
+                      @onClick={{this.addCloseSchedule}}
                       @defaultText={{t 'leosac_builtin_ap.add_close_schedule'}} />
             <BsButton @size='sm'
                       @type="warning"
-                      @onClick={{action 'addOpenSchedule'}}
+                      @onClick={{this.addOpenSchedule}}
                       @defaultText={{t 'leosac_builtin_ap.add_open_schedule'}} />
       </div>
 
       <div class="row space-top">
         <div class="col-md-12">
-          <BsButton @defaultText={{t 'submit'}} @type="success" @size="md" @onClick=action buttonType="submit" />
+          <BsButton @defaultText={{t 'submit'}} @type="success" @size="md" @onClick="action" buttonType="submit" />
         </div>
         {{#if this.delete}}
           <div class="pull-right form-button-delete">

@@ -5,7 +5,7 @@
 <div>
   <BsTab as |tab|>
     <tab.pane @title={{t "information"}}>
-      <BsForm @formLayout="vertical" @model={{this.model.user}} @onSubmit={{route-action "editProfile"}} as |form|>
+      <BsForm @formLayout="vertical" @model={{this.model.user}} @onSubmit={{this.editProfile}} as |form|>
         <div class="col-md-6 space-top">
           <fieldset>
             <legend>{{t 'profile.title'}}</legend>
@@ -18,7 +18,7 @@
               <PowerSelect @disabled={{this.isRankEditLocked}}
                            @selected={{this.model.user.rank}}
                            @options={{this.model.possibleRanks}}
-                           @onChange={{action (mut this.model.user.rank)}} as |rank|>
+                           @onChange={{fn (mut this.model.user.rank)}} as |rank|>
                 {{t rank}}
               </PowerSelect>
             </form.element>
@@ -28,7 +28,7 @@
 
             <div class="row">
               <div class="col-md-6">
-                <BsButton @disabled={{this.isProfileLocked}} @defaultText={{t 'submit'}} @type="success" @onClick={{route-action 'editProfile'}} @buttonType="submit" />
+                <BsButton @disabled={{this.isProfileLocked}} @defaultText={{t 'submit'}} @type="success" @onClick={{this.editProfile}} @buttonType="submit" />
               </div>
             </div>
           </fieldset>

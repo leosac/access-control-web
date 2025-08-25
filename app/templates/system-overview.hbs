@@ -14,7 +14,7 @@
                 </div>
 
                 <div class="panel-body">
-                    {{system-overview}}
+                  <SystemOverview />
                 </div>
             </div>
         </div>
@@ -23,12 +23,12 @@
     <div class="row">
         <div class="col-md-3">
           <BsForm as |form|>
-            <form.element @controlType="number" @property={{this.logPerPage}} @label={{t "page_size"}} @onChange={{action (mut this.logPerPage)}} />
+            <form.element @controlType="number" @value={{this.logPerPage}} @label={{t "page_size"}} />
           </BsForm>
       </div>
 
       <div class="col-md-5 text-center">
-        <NumberedPaginator @first={{0}} @last={{this.lastLogPage}} @current={{this.currentLogPage}} @onPageChange={{action "updateLogPageNumber"}} />
+        <NumberedPaginator @first={{0}} @last={{this.lastLogPage}} @current={{this.currentLogPage}} @onPageChange={{this.updateLogPageNumber}} />
       </div>
 
       <div class="col-md-4 text-center button-next-to-power-select">
