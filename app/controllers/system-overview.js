@@ -1,4 +1,4 @@
-import { action, observer, computed } from '@ember/object';
+import { action, observer } from '@ember/object';
 import { service } from '@ember/service';
 import Controller from '@ember/controller';
 
@@ -11,15 +11,14 @@ export default class extends Controller {
     totalLogs = 0;
     lastLogPage = 0;
 
-    @observer('logPerPage')
-    _obs() {
+    @observer('logPerPage', function () {
         "use strict";
         // Reset the page number.
         this.set('currentLogPage', 0);
-    }
+    })
+    _obs;
 
-    @computed('logPerPage','currentLogPage')
-    lastLogs() {
+    get lastLogs() {
         "use strict";
         const self = this;
         const p = this.store.query('log-message',

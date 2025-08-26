@@ -1,4 +1,3 @@
-import { computed } from '@ember/object';
 import Model, { attr, belongsTo } from '@ember-data/model';
 import { validator, buildValidations } from 'ember-cp-validations';
 
@@ -7,9 +6,7 @@ const AccesPointValidations = buildValidations({
 });
 
 export default class AccessPointModel extends Model.extend(AccesPointValidations) {
-    @computed('id')
-    numericId() {
-        "use strict";
+    get numericId() {
         return Number(this.get('id'));
     }
 
@@ -19,6 +16,6 @@ export default class AccessPointModel extends Model.extend(AccesPointValidations
     description;
     @attr('string')
     controllerModule;
-    @belongsTo('door')
+    @belongsTo('door', { async: true, inverse: null })
     door;
 }

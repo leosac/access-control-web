@@ -1,10 +1,7 @@
-import { computed } from '@ember/object';
 import Model, { attr, belongsTo } from '@ember-data/model';
 
 export default class UserGroupMembershipModel extends Model {
-    @computed('id')
-    numericId() {
-        "use strict";
+    get numericId() {
         return Number(this.get('id'));
     }
 
@@ -12,8 +9,8 @@ export default class UserGroupMembershipModel extends Model {
     rank;
     @attr('date-from-unix-timestamp')
     timestamp;
-    @belongsTo('group')
+    @belongsTo('group', { async: true, inverse: null })
     group;
-    @belongsTo('user')
+    @belongsTo('user', { async: true, inverse: null })
     user;
 }

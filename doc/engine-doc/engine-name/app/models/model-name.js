@@ -16,6 +16,6 @@ const Validations = buildValidations({
  */
 
 export default class ModelNameModel extends Device.extend(Validations) {
-    @belongsTo('gpio',  { polymorphic: true })
+    @belongsTo('gpio',  { async: true, inverse: null, polymorphic: true })
     gpio;
 }

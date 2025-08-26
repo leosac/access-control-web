@@ -11,7 +11,7 @@ const ActionValidation = buildValidations({
 });
 
 export default class LeosacBuiltinAccessPointActionModel extends Model.extend(ActionValidation) {
-    @belongsTo('device')
+    @belongsTo('device', { async: true, inverse: null })
     target;
     @attr('string')
     command;

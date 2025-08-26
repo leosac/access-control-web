@@ -1,5 +1,6 @@
-import { action, computed } from '@ember/object';
+import { action } from '@ember/object';
 import { service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
 import Component from '@glimmer/component';
 
 /**
@@ -13,11 +14,11 @@ export default class CredentialSchedules extends Component {
     @service('authentication')
     authSrv;
 
+    @tracked
     syncing = 0;
 
-    @computed('syncing')
     get greyedDisabledIfSyncing() {
-        if (this.get('syncing')) {
+        if (this.syncing) {
             return 'disabled-greyed';
         }
         return '';

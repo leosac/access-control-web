@@ -1,5 +1,5 @@
-import { computed } from '@ember/object';
 import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 import { validator, buildValidations } from 'ember-cp-validations';
 
 /**
@@ -32,7 +32,9 @@ const paramsValidation = buildValidations({
  *
  */
 export default class LeosacBuiltinAccessPointActionTwoParameter extends Component.extend(paramsValidation) {
+    @tracked
     duration = 3000;
+    @tracked
     speed = 1500;
     customAction = null;
 
@@ -49,7 +51,6 @@ export default class LeosacBuiltinAccessPointActionTwoParameter extends Componen
 
     // The sole purpose of this computed property is to catch when a value is modified so that you can update the mode.
     // Not very beautiful hack
-    @computed('speed','duration')
     get params() {
         let speed = this.get('speed');
         let duration = this.get('duration');

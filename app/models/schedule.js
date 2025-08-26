@@ -1,4 +1,3 @@
-import { computed } from '@ember/object';
 import Model, { attr, hasMany } from '@ember-data/model';
 import { buildValidations, validator } from 'ember-cp-validations';
 import DependentRelationships from '../mixins/dependent-relationships';
@@ -17,9 +16,7 @@ const ScheduleValidations = buildValidations(
 );
 
 export default class ScheduleModel extends Model.extend(ScheduleValidations, DependentRelationships) {
-    @computed('id')
-    numericId() {
-        "use strict";
+    get numericId() {
         return Number(this.get('id'));
     }
 
@@ -33,6 +30,6 @@ export default class ScheduleModel extends Model.extend(ScheduleValidations, Dep
     // while Leosac's SingleTimeFrame is for 1 day only.
     @attr('timeframes')
     timeframes;
-    @hasMany('schedule-mapping', { async: false })
+    @hasMany('schedule-mapping', { async: false, inverse: null })
     mapping;
 }

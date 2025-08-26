@@ -34,7 +34,7 @@ export default class AuthenticationService extends Service {
      */
     @tracked
     pending = false;
-    
+
     /**
      * This a deferred object that is created when authentication starts.
      * It is resolved when authentication is performed.

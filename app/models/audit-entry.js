@@ -1,14 +1,11 @@
-import { computed } from '@ember/object';
 import Model, { attr, belongsTo } from '@ember-data/model';
 
 export default class AuditEntryModel extends Model {
-    @computed('id')
-    numericId() {
-        "use strict";
+    get numericId() {
         return Number(this.get('id'));
     }
 
-    @belongsTo('user')
+    @belongsTo('user', { async: true, inverse: null })
     author;
     // todo mb convert to 'utc' and store as a std::timepoint
     // server side

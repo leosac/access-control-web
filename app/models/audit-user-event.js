@@ -3,7 +3,7 @@ import { attr, belongsTo } from '@ember-data/model';
 
 export default class AuditUserEvent extends AuditEntry {
     type = 'UserEvent';
-    @belongsTo('user')
+    @belongsTo('user', { async: true, inverse: null })
     target;
     @attr('string')
     before;

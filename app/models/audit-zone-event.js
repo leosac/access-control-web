@@ -3,6 +3,6 @@ import { belongsTo } from '@ember-data/model';
 
 export default class AuditZoneEvent extends AuditEntry {
     type = 'ZoneEvent';
-    @belongsTo('zone')
+    @belongsTo('zone', { async: true, inverse: null })
     target;
 }

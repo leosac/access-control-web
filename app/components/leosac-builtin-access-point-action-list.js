@@ -1,4 +1,4 @@
-import { action, computed } from '@ember/object';
+import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { DeviceClass } from "web/leosac-constant";
@@ -21,13 +21,11 @@ export default class LeosacBuiltinAccessPointActionList extends Component {
     indexSuccessAction = 0;
 
     // this will sort the SuccessActions by index. It will be displayed given this Computed property
-    @computed('ap.actionOnSuccess')
     get sortedSuccessAction() {
         return this.get('ap.actionOnSuccess').sortBy('index');
     }
 
     // this will sort the ErrorActions by index. It will be displayed given this Computed property
-    @computed('ap.actionOnError')
     get sortedErrorAction() {
         return this.get('ap.actionOnError').sortBy('index');
     }
@@ -58,7 +56,6 @@ export default class LeosacBuiltinAccessPointActionList extends Component {
     /**
      * This computed property will return the available command given the type of the previously selectedDevice
      */
-    @computed('selectedDevice.length')
     get availableCommand() {
         let deviceType = this.get('selectedDevice.type');
 

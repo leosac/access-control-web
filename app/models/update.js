@@ -1,4 +1,3 @@
-import { computed } from '@ember/object';
 import { service } from '@ember/service';
 import Model, { attr } from '@ember-data/model';
 
@@ -7,14 +6,11 @@ export default class UpdateModel extends Model {
     @service
     intl;
 
-    @computed('id')
-    numericId() {
-        "use strict";
+    get numericId() {
         return Number(this.get('id'));
     }
 
-    @computed('status')
-    statusString() {
+    get statusString() {
         const st = this.get('status');
         if (st === 0) {
             return this.intl.t('pending');

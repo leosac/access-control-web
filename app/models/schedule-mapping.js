@@ -1,4 +1,3 @@
-import { computed } from '@ember/object';
 import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 import { validator, buildValidations } from 'ember-cp-validations';
 
@@ -7,23 +6,21 @@ const MappingValidations = buildValidations({
 });
 
 export default class ScheduleMappingModel extends Model.extend(MappingValidations) {
-    @computed('id')
-    numericId() {
-        "use strict";
+    get numericId() {
         return Number(this.get('id'));
     }
 
     @attr('string')
     alias;
-    @hasMany('user')
+    @hasMany('user', { async: true, inverse: null })
     users;
-    @hasMany('group')
+    @hasMany('group', { async: true, inverse: null })
     groups;
-    @hasMany('door')
+    @hasMany('door', { async: true, inverse: null })
     doors;
-    @hasMany('credential', {polymorphic: true})
+    @hasMany('credential', { async: true, inverse: null, polymorphic: true })
     credentials;
-    @belongsTo('schedule', {inverse: 'mapping'})
+    @belongsTo('schedule', { async: true, inverse: 'mapping' })
     schedule;
     @attr('number')
     version;

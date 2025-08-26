@@ -3,8 +3,8 @@ import { belongsTo } from '@ember-data/model';
 
 export default class AuditUserGroupMembershipEvent extends AuditEntry {
     type = 'UserGroupEvent';
-    @belongsTo('user')
+    @belongsTo('user', { async: true, inverse: null })
     targetUser;
-    @belongsTo('group')
+    @belongsTo('group', { async: true, inverse: null })
     targetGroup;
 }

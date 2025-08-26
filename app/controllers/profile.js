@@ -1,4 +1,3 @@
-import { action, computed } from '@ember/object';
 import { service } from '@ember/service';
 import Controller from '@ember/controller';
 
@@ -12,8 +11,7 @@ export default class extends Controller {
 
     targetUserId = {};
 
-    @computed('model.user.version')
-    canEditProfile() {
+    get canEditProfile() {
         return this.store.findRecord('user', this.authSrv.get('user_id')).then((u) =>
         {
             return u.get('rank') === 'administrator' || u.get('rank') === 'supervisor' || u.get('rank') === 'manager' ||
@@ -21,26 +19,22 @@ export default class extends Controller {
         });
     }
 
-    @computed('canEditProfile.content')
-    isProfileLocked() {
+    get isProfileLocked() {
         return !this.get('canEditProfile.content');
     }
 
-    @computed('model.user.version')
-    canEditRank() {
+    get canEditRank() {
         return this.store.findRecord('user', this.authSrv.get('user_id')).then((u) =>
         {
             return u.get('rank') === 'administrator' || u.get('rank') === 'supervisor' || u.get('rank') === 'manager';
         });
     }
     
-    @computed('canEditRank.content')
-    isRankEditLocked() {
+    get isRankEditLocked() {
         return !this.get('canEditRank.content');
     }
 
-    @action
-    editProfile() {
+    get editProfile() {
         let user = this.get('model').user;
         user.save().then(() =>
         {

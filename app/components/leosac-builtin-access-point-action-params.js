@@ -1,4 +1,3 @@
-import { computed } from '@ember/object';
 import Component from '@glimmer/component';
 
 /**
@@ -12,7 +11,6 @@ import Component from '@glimmer/component';
 export default class LeosacBuiltinAccessPointActionParams extends Component {
     customAction = null;
 
-    @computed
     get getComponentName() {
         let command = this.get('customAction.command');
 

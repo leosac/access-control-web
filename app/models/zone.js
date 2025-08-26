@@ -1,4 +1,3 @@
-import { computed } from '@ember/object';
 import Model, { attr, hasMany } from '@ember-data/model';
 import { validator, buildValidations } from 'ember-cp-validations';
 
@@ -17,9 +16,7 @@ const ZoneValidations = buildValidations(
 );
 
 export default class ZoneModel extends Model.extend(ZoneValidations) {
-    @computed('id')
-    numericId() {
-        "use strict";
+    get numericId() {
         return Number(this.get('id'));
     }
     @attr('string')
@@ -28,10 +25,10 @@ export default class ZoneModel extends Model.extend(ZoneValidations) {
     description;
     @attr('zone-type')
     type;
-    @hasMany('door')
+    @hasMany('door', { async: true, inverse: null })
     doors;
-    @hasMany('zones')
+    @hasMany('zone', { async: true, inverse: null })
     children;
-    @hasMany('zones', {inverse: 'children'})
+    @hasMany('zone', { async: true, inverse: 'children' })
     parent;
 }

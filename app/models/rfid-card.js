@@ -1,5 +1,4 @@
 import { alias, readOnly } from '@ember/object/computed';
-import { computed } from '@ember/object';
 import Credential from 'web/models/credential';
 import { attr } from '@ember-data/model';
 import { validator, buildValidations } from 'ember-cp-validations';
@@ -45,7 +44,7 @@ export default class RfidCardModel extends Credential.extend(RFIDCardValidations
     cardId;
     @attr('number')
     nbBits;
-    @computed('nbBits')
+
     get cardIdExpectedLength() {
         const sizeCode = parseInt(this.nbBits);
         return (Math.ceil((sizeCode / 8)) * 3 - 1);

@@ -5,6 +5,7 @@
   ],
   "dependencies": {
 	  "@ember-intl/cp-validations": "7.0.2",
+    "@ember-data/legacy-compat": "5.3.13",
     "@ember/string": "4.0.1",
     "ember-auto-import": "2.10.0",
     "ember-cli-babel": "8.2.0",

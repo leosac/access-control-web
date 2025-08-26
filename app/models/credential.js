@@ -1,4 +1,3 @@
-import { computed } from '@ember/object';
 import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 import { buildValidations, validator } from 'ember-cp-validations';
 import moment from 'moment';
@@ -19,14 +18,11 @@ const CredentialValidations = buildValidations({
 });
 
 export default class CredentialModel extends Model.extend(CredentialValidations) {
-    @computed('id')
-    numericId() {
-        "use strict";
+    get numericId() {
         return Number(this.get('id'));
     }
 
-    @computed('validityEnabled', 'validityStart', 'validityEnd')
-    isEnabled() {
+    get isEnabled() {
         const now = moment.utc();
         return this.get('validityEnabled') && now.isAfter(this.get('validityStart')) &&
                 now.isBefore(this.get('validityEnd'));
@@ -36,7 +32,7 @@ export default class CredentialModel extends Model.extend(CredentialValidations)
     alias;
     @attr('string')
     description;
-    @belongsTo('user')
+    @belongsTo('user', { async: true, inverse: 'credentials', as: 'credential' })
     owner;
 
     // Validity information
@@ -56,6 +52,6 @@ export default class CredentialModel extends Model.extend(CredentialValidations)
     displayIdentifier = 'N/A';
     // This is a fake relationship, because server side it
     // does'nt exist directly.
-    @hasMany('schedules')
+    @hasMany('schedule', { async: true, inverse: null })
     schedules;
 }

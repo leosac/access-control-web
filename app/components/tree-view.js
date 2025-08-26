@@ -1,4 +1,3 @@
-import { computed } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 
@@ -120,8 +119,7 @@ export default class TreeView extends Component {
     }
 
     // This ember computed will set the data necessary for the jstree to work. This is a node tree
-    @computed('model')
-    zoneDataTree() {
+    get zoneDataTree() {
         // Blueprint for the physical and logical zone
         let physicalZoneNode = {
             'id': 'physicalRoot',

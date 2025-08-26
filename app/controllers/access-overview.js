@@ -14,8 +14,7 @@ export default class extends Controller {
     selectedUsers = [];
     selectedDoors = [];
 
-    @computed('allDoors','selectedDoors.length')
-    displayedDoors() {
+    get displayedDoors() {
         if (!this.selectedDoors.length) {
             return this.allDoors;
         } else {
@@ -23,8 +22,7 @@ export default class extends Controller {
         }
     }
 
-    @computed('rawData','selectedDoors.length')
-    allDoors() {
+    get allDoors() {
         const doors = [];
         let selectedDoorsId = [];
         let result = [];
@@ -51,8 +49,7 @@ export default class extends Controller {
         return result;
     }
 
-    @computed('rawData','selectedUsers.length')
-    allUsers() {
+    get allUsers() {
         let userIds = [];
         let selectedUsersId = [];
         let users = [];
@@ -89,8 +86,7 @@ export default class extends Controller {
     }
 
     // will set the user door information
-    @computed('allDoors','allUsers','selectedDoors.length','selectedUsers.length')
-    userDoorInfo() {
+    get userDoorInfo() {
         let selectedDoors = [];
         let userInfos = [];
 

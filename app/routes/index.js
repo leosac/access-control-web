@@ -14,10 +14,10 @@ export default class IndexRoute extends LeosacRoute {
     model() {
         "use strict";
         return new Promise((resolve) => {
-            this.get('authSrv').get('current_auth').promise.then(() => {
+            this.authSrv.current_auth.promise.then(() => {
                 resolve({
-                    user_id: this.get('authSrv').user_id,
-                    username: this.get('authSrv').username
+                    user_id: this.authSrv.user_id,
+                    username: this.authSrv.username
                 });
             });
         });

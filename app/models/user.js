@@ -1,4 +1,3 @@
-import { computed } from '@ember/object';
 import Model, { attr, hasMany } from '@ember-data/model';
 import { validator, buildValidations } from 'ember-cp-validations';
 
@@ -15,9 +14,7 @@ const UserValidations = buildValidations(
 );
 
 export default class UserModel extends Model.extend(UserValidations) {
-    @computed('id')
-    numericId() {
-        "use strict";
+    get numericId() {
         return Number(this.get('id'));
     }
 
@@ -33,14 +30,14 @@ export default class UserModel extends Model.extend(UserValidations) {
     password;
     @attr('user-rank')
     rank;
-    @hasMany('user-group-membership', { inverse: 'user' })
+    @hasMany('user-group-membership', { async: true, inverse: 'user' })
     memberships;
-    @hasMany('credential', { inverse: 'owner', polymorphic: true, })
+    @hasMany('credential', { async: true, inverse: 'owner', polymorphic: true, })
     credentials;
 
     // This is a fake relationship, because server side it
-    // does'nt exist directly.
-    @hasMany('schedules')
+    // doesn't exist directly.
+    @hasMany('schedule', { async: true, inverse: null })
     schedules;
     // Validity information
     @attr('boolean')
