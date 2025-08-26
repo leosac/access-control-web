@@ -5,26 +5,24 @@ import Component from '@glimmer/component';
 export default class UserGroupMembershipTable extends Component {
     @service
     intl;
-
     @service('authentication')
     authSrv;
-
     @service
     store;
 
     get kickOrLeave() {
-        if (this.args.user.numericId == this.authSrv.get('user_id'))
+        if (this.args.user.numericId == this.authSrv.user_id)
             return this.intl.t('leave');
-        else if (this.authSrv.get('isAdministrator'))
+        else if (this.authSrv.isAdministrator)
             this.intl.t('kick');
         else
             return undefined;
     }
 
     get kickOrLeaveMessage() {
-        if (this.args.user.numericId == this.authSrv.get('user_id'))
+        if (this.args.user.numericId == this.authSrv.user_id)
             return this.intl.t('leave_group_confirmation');
-        else if (this.authSrv.get('isAdministrator'))
+        else if (this.authSrv.isAdministrator)
             this.intl.t('kick_group_confirmation');
         else
             return undefined;

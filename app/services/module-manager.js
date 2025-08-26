@@ -160,7 +160,7 @@ export default class ModuleManagerService extends Service {
                 let wizardsInfo = [];
                 let modulesWizard = [];
 
-                modulesClient.forEach(function (module) {
+                modulesClient.forEach((module) => {
                     if (module[1].leosacProperty.needServer) {
                         modulesShouldBeLoadedOnBothClient.push(module[0]);
                         modulesInfo.push(this._pushModulesInfos(module[0], module[1].leosacProperty.displayName,

@@ -30,14 +30,14 @@ export default class GlobalSearch extends Component {
 
     constructor(owner, args) {
         super(owner, args);
-        this.set('selected', null);
+        this.selected = null;
 
         this.dataToObject = this.dataToObject || {};
         this.allObjects = this.allObjects || [];
     }
 
     didRender() {
-        this.set('selected', null);
+        this.selected = null;
     }
 
     /**
@@ -55,10 +55,9 @@ export default class GlobalSearch extends Component {
      */
     @action
     findAll(partialAlias) {
-        const self = this;
         return this.search.findAllByAlias(partialAlias).then((data) => {
             let resultObject = [];
-            data.forEach(function(objects) {
+            data.forEach((objects) => {
                 let typeObject = {};
                 if (objects.type === 'user')
                 {
@@ -128,7 +127,7 @@ export default class GlobalSearch extends Component {
                     typeObject = {
                         name: objects.nameOrAlias,
                         tradKey: 'device',
-                        type: self.get('routeHelper').setPath(objects.type),
+                        type: this.routeHelper.setPath(objects.type),
                         id: objects.id
                     };
                 }

@@ -31,7 +31,7 @@ const paramsValidation = buildValidations({
  * customAction is normally autoprovided by the leosac-builtin-access-point-action-params
  *
  */
-export default class LeosacBuiltinAccessPointActionTwoParameter extends Component.extend(paramsValidation) {
+export default class LeosacBuiltinAccessPointActionTwoParameter extends Component {
     @tracked
     duration = 3000;
     @tracked

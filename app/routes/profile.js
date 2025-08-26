@@ -18,24 +18,22 @@ export default class ProfileRoute extends LeosacRoute {
 
     beforeModel()
     {
-        "use strict";
         return this._super();
     }
 
     model(params)
     {
-        "use strict";
         return hash({
             user: this.store.findRecord('user', params.user_id),
             possibleRanks: UserRank,
-            currentUser: this.store.findRecord('user', this.get('authSrv').user_id),
+            currentUser: this.store.findRecord('user', this.authSrv.user_id),
         });
     }
 
     setupController(controller, model)
     {
         this._super(controller, model);
-        controller.set('targetUserId', this.paramsFor('profile').user_id);
+        controller.targetUserId = this.paramsFor('profile').user_id;
     }
 
     resetController(controller, isExiting/*, transition*/)
@@ -43,7 +41,7 @@ export default class ProfileRoute extends LeosacRoute {
         // Rollback change when leaving the page.
         if (isExiting)
         {
-            const user = this.controller.get('model').user;
+            const user = this.controller.model.user;
             if (user) {
                 user.rollbackAttributes();
             }

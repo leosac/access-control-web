@@ -46,26 +46,25 @@ export default class CredentialSchedules extends Component {
     }
 
     incrSyncing() {
-        this.set('syncing', this.get('syncing') + 1);
+        this.syncing++;
     }
 
     decrSyncing() {
-        this.set('syncing', this.get('syncing') - 1);
+        this.syncing--;
     }
 
     refreshImpl() {
-        const self = this;
         this.incrSyncing();
-        self.get('credential').reload().then(() =>
+        this.args.credential.reload().then(() =>
         {
-            self.get('credential').get('schedules').then((scheds) =>
+            this.args.credential.get('schedules').then((scheds) =>
             {
                 scheds.forEach((sched) =>
                 {
-                    self.incrSyncing();
+                    this.incrSyncing();
                     sched.reload().then(() =>
                     {
-                        self.decrSyncing();
+                        this.decrSyncing();
                     });
                 });
             });
@@ -81,17 +80,15 @@ export default class CredentialSchedules extends Component {
     @action
     addScheduleMapping(mapping) {
         this.incrSyncing();
-        mapping.get('credentials').addObject(this.get('credential'));
+        mapping.get('credentials').addObject(this.args.credential);
         this.saveMappingAndReloadUser(mapping);
     }
 
     @action
     leaveMapping(mapping) {
-        const self = this;
-
-        self.incrSyncing();
-        mapping.get('credentials').removeObject(self.get('credential'));
-        self.saveMappingAndReloadUser(mapping);
+        this.incrSyncing();
+        mapping.get('credentials').removeObject(this.args.credential);
+        this.saveMappingAndReloadUser(mapping);
     }
 
     @action

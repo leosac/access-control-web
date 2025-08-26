@@ -11,20 +11,11 @@ export default class extends Controller {
     totalLogs = 0;
     lastLogPage = 0;
 
-    @observer('logPerPage', function () {
-        "use strict";
-        // Reset the page number.
-        this.set('currentLogPage', 0);
-    })
-    _obs;
-
     get lastLogs() {
-        "use strict";
-        const self = this;
         const p = this.store.query('log-message',
             {
-                p: parseInt(this.get('currentLogPage')),
-                ps: parseInt(this.get('logPerPage')) || 1,
+                p: parseInt(this.currentLogPage),
+                ps: parseInt(this.logPerPage) || 1,
                 sort: 'desc'
             });
         p.then((msgs) =>
@@ -32,16 +23,15 @@ export default class extends Controller {
             p.forEach(function(msg) {
                 msg.data.message = msg.data.message.substring(43, 200);
             });
-            self.set('totalLogs', msgs.get('meta').total);
-            self.set('lastLogPage', msgs.get('meta').last);
+            this.totalLogs = msgs.get('meta').total;
+            this.lastLogPage = msgs.get('meta').last;
         });
         return p;
     }
     
     @action
     updateLogPageNumber(n) {
-        "use strict";
-        this.set('currentLogPage', parseInt(n));
+        this.currentLogPage = parseInt(n);
     }
 
     @action

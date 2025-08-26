@@ -17,7 +17,7 @@ const Validations = buildValidations({
  * Attributes: passwordOut
  *             optional (do we allow empty pw)
  */
-export default class PasswordInput extends Component.extend(Validations) {
+export default class PasswordInput extends Component {
     password = '';
     password2 = '';
 

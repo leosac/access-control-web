@@ -1,139 +1,141 @@
-<div class="collapse navbar-collapse collapse show" id="navbarToggler">
-  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" data-parent="#wrapper">
-    {{!-- Sidebar - Brand --}}
-    <LinkTo class="sidebar-brand d-flex align-items-center justify-content-center" @route="index">
-      <img src="{{getenv 'logoUrl'}}" class="sidebar-brand-icon" alt="leosac project"/>
-      <div class="sidebar-brand-text mx-3">{{getlocale 'app_name'}}</div>
-    </LinkTo>
-
-    <hr class="sidebar-divider my-0">
-
-    <li class="nav-item">
-      <LinkTo class="nav-link" @route='index'>
-        <FaIcon @icon="tachometer-alt" @fixedWidth={{true}} />
-        <span>{{t 'index.title'}}</span>
+<div class="navbar">
+  <div class="collapse navbar-collapse collapse show" id="navbarToggler">
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" data-parent="#wrapper">
+      {{!-- Sidebar - Brand --}}
+      <LinkTo class="sidebar-brand d-flex align-items-center justify-content-center" @route="index">
+        <img src="{{getenv 'logoUrl'}}" class="sidebar-brand-icon" alt="leosac project"/>
+        <div class="sidebar-brand-text mx-3">{{getlocale 'app_name'}}</div>
       </LinkTo>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOverview" aria-controls="collapseOverview">
-        <FaIcon @icon="chart-bar" @fixedWidth={{true}} />
-        <span>{{t 'w.overview'}}</span>
-      </a>
-      <div id="collapseOverview" class="collapse" aria-labelledby="{{t 'modules'}}" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">{{t 'w.overview'}}:</h6>
-          <LinkTo class="collapse-item" @route='system-overview'>{{t 'system-overview.title'}}</LinkTo>
-          <LinkTo class="collapse-item" @route='access-overview'>{{t 'access-overview.title'}}</LinkTo>
-          <LinkTo class="collapse-item" @route='zone-overview'>{{t 'tree-view.title'}}</LinkTo>
+
+      <hr class="sidebar-divider my-0">
+
+      <li class="nav-item">
+        <LinkTo class="nav-link" @route='index'>
+          <FaIcon @icon="tachometer-alt" @fixedWidth={{true}} />
+          <span>{{t 'index.title'}}</span>
+        </LinkTo>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOverview" aria-controls="collapseOverview">
+          <FaIcon @icon="chart-bar" @fixedWidth={{true}} />
+          <span>{{t 'w.overview'}}</span>
+        </a>
+        <div id="collapseOverview" class="collapse" aria-labelledby="{{t 'modules'}}" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">{{t 'w.overview'}}:</h6>
+            <LinkTo class="collapse-item" @route='system-overview'>{{t 'system-overview.title'}}</LinkTo>
+            <LinkTo class="collapse-item" @route='access-overview'>{{t 'access-overview.title'}}</LinkTo>
+            <LinkTo class="collapse-item" @route='zone-overview'>{{t 'tree-view.title'}}</LinkTo>
+          </div>
         </div>
+      </li>
+
+      <hr class="sidebar-divider">
+
+      <div class="sidebar-heading">
+        {{t 'access'}}
       </div>
-    </li>
 
-    <hr class="sidebar-divider">
+      <li class="nav-item">
+        <LinkTo class="nav-link" @route='users.list'>
+          <FaIcon @icon="user" @fixedWidth={{true}} />
+          <span>{{t 'users.title'}}</span>
+        </LinkTo>
+      </li>
+      <li class="nav-item">
+        <LinkTo class="nav-link" @route='groups.list'>
+          <FaIcon @icon="users" @fixedWidth={{true}} />
+          <span>{{t 'groups'}}</span>
+        </LinkTo>
+      </li>
+      <li class="nav-item">
+        <LinkTo class="nav-link" @route='credentials.list'>
+          <FaIcon @icon="id-badge" @fixedWidth={{true}} />
+          <span>{{t 'credentials.title'}}</span>
+        </LinkTo>
+      </li>
+      <li class="nav-item">
+        <LinkTo class="nav-link" @route='schedules.list'>
+          <FaIcon @icon="calendar" @fixedWidth={{true}} />
+          <span>{{t 'schedules'}}</span>
+        </LinkTo>
+      </li>
 
-    <div class="sidebar-heading">
-      {{t 'access'}}
-    </div>
+      <hr class="sidebar-divider">
 
-    <li class="nav-item">
-      <LinkTo class="nav-link" @route='users.list'>
-        <FaIcon @icon="user" @fixedWidth={{true}} />
-        <span>{{t 'users.title'}}</span>
-      </LinkTo>
-    </li>
-    <li class="nav-item">
-      <LinkTo class="nav-link" @route='groups.list'>
-        <FaIcon @icon="users" @fixedWidth={{true}} />
-        <span>{{t 'groups'}}</span>
-      </LinkTo>
-    </li>
-    <li class="nav-item">
-      <LinkTo class="nav-link" @route='credentials.list'>
-        <FaIcon @icon="id-badge" @fixedWidth={{true}} />
-        <span>{{t 'credentials.title'}}</span>
-      </LinkTo>
-    </li>
-    <li class="nav-item">
-      <LinkTo class="nav-link" @route='schedules.list'>
-        <FaIcon @icon="calendar" @fixedWidth={{true}} />
-        <span>{{t 'schedules'}}</span>
-      </LinkTo>
-    </li>
+      <div class="sidebar-heading">
+        {{t 'hardware'}}
+      </div>
 
-    <hr class="sidebar-divider">
+      <li class="nav-item">
+        <LinkTo class="nav-link" @route='zones.list'>
+          <FaIcon @icon="building" @fixedWidth={{true}} />
+          <span>{{t 'zones'}}</span>
+        </LinkTo>
+      </li>
+      <li class="nav-item">
+        <LinkTo class="nav-link" @route='doors.list'>
+          <FaIcon @icon="door-open" @fixedWidth={{true}} />
+          <span>{{t 'doors'}}</span>
+        </LinkTo>
+      </li>
+      <li class="nav-item">
+        <LinkTo class="nav-link" @route='access-points.list'>
+          <FaIcon @icon="dungeon" @fixedWidth={{true}} />
+          <span>{{t 'access_points'}}</span>
+        </LinkTo>
+      </li>
+      <li class="nav-item">
+        <LinkTo class="nav-link" @route='updates'>
+          <FaIcon @icon="cubes" @fixedWidth={{true}} />
+          <span>{{t 'hardware_update'}}</span>
+        </LinkTo>
+      </li>
 
-    <div class="sidebar-heading">
-      {{t 'hardware'}}
-    </div>
-
-    <li class="nav-item">
-      <LinkTo class="nav-link" @route='zones.list'>
-        <FaIcon @icon="building" @fixedWidth={{true}} />
-        <span>{{t 'zones'}}</span>
-      </LinkTo>
-    </li>
-    <li class="nav-item">
-      <LinkTo class="nav-link" @route='doors.list'>
-        <FaIcon @icon="door-open" @fixedWidth={{true}} />
-        <span>{{t 'doors'}}</span>
-      </LinkTo>
-    </li>
-    <li class="nav-item">
-      <LinkTo class="nav-link" @route='access-points.list'>
-        <FaIcon @icon="dungeon" @fixedWidth={{true}} />
-        <span>{{t 'access_points'}}</span>
-      </LinkTo>
-    </li>
-    <li class="nav-item">
-      <LinkTo class="nav-link" @route='updates'>
-        <FaIcon @icon="cubes" @fixedWidth={{true}} />
-        <span>{{t 'hardware_update'}}</span>
-      </LinkTo>
-    </li>
-
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseModules" aria-controls="collapseModules">
-        <FaIcon @icon="cogs" @fixedWidth={{true}} />
-        <span>{{t 'modules'}}</span>
-      </a>
-      <div id="collapseModules" class="collapse" aria-labelledby="{{t 'modules'}}" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">{{t 'modules'}}:</h6>
-          {{#each this.moduleManager.modulesInfo as |module|}}
-            <button type="button" class="collapse-item" {{on 'click' (fn this.handleRoute module.routeName)}}>{{ module.displayName }}</button>
-          {{/each}}
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseModules" aria-controls="collapseModules">
+          <FaIcon @icon="cogs" @fixedWidth={{true}} />
+          <span>{{t 'modules'}}</span>
+        </a>
+        <div id="collapseModules" class="collapse" aria-labelledby="{{t 'modules'}}" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">{{t 'modules'}}:</h6>
+            {{#each this.moduleManager.modulesInfo as |module|}}
+              <button type="button" class="collapse-item" {{on 'click' (fn this.handleRoute module.routeName)}}>{{ module.displayName }}</button>
+            {{/each}}
+          </div>
         </div>
-      </div>
-    </li>
+      </li>
 
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseWizards" aria-controls="collapseWizards">
-        <FaIcon @icon="magic" @fixedWidth={{true}} />
-        <span>{{t 'modules_wizard'}}</span>
-      </a>
-      <div id="collapseWizards" class="collapse" aria-labelledby="{{t 'modules_wizard'}}" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">{{t 'modules_wizard'}}:</h6>
-          {{#each this.moduleManager.wizardsInfo as | wizard |}}
-            <button type="button" class="collapse-item" {{on 'click' (fn this.handleRoute wizard.routeName)}}>{{ wizard.displayName }}</button>
-          {{/each}}
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseWizards" aria-controls="collapseWizards">
+          <FaIcon @icon="magic" @fixedWidth={{true}} />
+          <span>{{t 'modules_wizard'}}</span>
+        </a>
+        <div id="collapseWizards" class="collapse" aria-labelledby="{{t 'modules_wizard'}}" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">{{t 'modules_wizard'}}:</h6>
+            {{#each this.moduleManager.wizardsInfo as | wizard |}}
+              <button type="button" class="collapse-item" {{on 'click' (fn this.handleRoute wizard.routeName)}}>{{ wizard.displayName }}</button>
+            {{/each}}
+          </div>
         </div>
-      </div>
-    </li>
+      </li>
 
-    <hr class="sidebar-divider">
+      <hr class="sidebar-divider">
 
-    <li class="nav-item">
-      <LinkTo class="nav-link" @route='auditlog'>
-        <FaIcon @icon="bell" @fixedWidth={{true}} />
-        <span>{{t 'alarm.title'}}</span>
-      </LinkTo>
-    </li>
-    <li class="nav-item">
-      <LinkTo class="nav-link" @route='auditlog'>
-        <FaIcon @icon="table" @fixedWidth={{true}} />
-        <span>{{t 'audit_log'}}</span>
-      </LinkTo>
-    </li>
-  </ul>
+      <li class="nav-item">
+        <LinkTo class="nav-link" @route='auditlog'>
+          <FaIcon @icon="bell" @fixedWidth={{true}} />
+          <span>{{t 'alarm.title'}}</span>
+        </LinkTo>
+      </li>
+      <li class="nav-item">
+        <LinkTo class="nav-link" @route='auditlog'>
+          <FaIcon @icon="table" @fixedWidth={{true}} />
+          <span>{{t 'audit_log'}}</span>
+        </LinkTo>
+      </li>
+    </ul>
+  </div>
 </div>

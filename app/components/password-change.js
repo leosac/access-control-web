@@ -19,7 +19,7 @@ const Validations = buildValidations({
     })
 });
 
-export default class PasswordChange extends Component.extend(Validations) {
+export default class PasswordChange extends Component {
     @service
     intl;
 
@@ -29,18 +29,13 @@ export default class PasswordChange extends Component.extend(Validations) {
     @service
     flashMessages;
 
-    disabled = false;
-    // Shall be injected when invoking the component.
-    user_id = null;
     current_password = null;
     new_password = null;
     new_password2 = null;
 
     @action
     changePassword() {
-        this.get('passwordChange').changePassword(this.get('user_id'),
-            this.get('current_password'),
-            this.get('new_password')).then(() =>
+        this.passwordChange.changePassword(this.args.user_id, this.current_password, this.new_password).then(() =>
         {
             this.flashMessages.success(this.intl.t('password-change.successfully_changed'));
         });

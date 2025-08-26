@@ -9,7 +9,7 @@
         <th class="col-md-offset-10">{{t 'username'}}</th>
         </thead>
         <tbody>
-        {{#each this.users as |user|}}
+        {{#each this.args.users as |user|}}
             {{#if user.id}}
                 <tr {{on 'click' (fn this.gotoItem user.id)}}>
                   <td>{{user.id}}</td>

@@ -2,14 +2,14 @@
   <BsForm @model="this" @onSubmit={{this.setNameApp}} as |form|>
     <div class="row">
       <div class="col-md-3 col-xs-10 col-sm-8">
-        <form.element @label={{t "name_app"}} @placeholder={{t "name"}} @property="newName" as |el|>
+        <form.element @label={{t "name_app"}} @placeholder={{t "name"}} @value={{this.newName}} as |el|>
           {{el.control}}
         </form.element>
       </div>
     </div>
     <div class="row">
       <div class="col-md-2 col-xs-10 col-sm-4">
-        <BsButton @defaultText={{t "save"}} @type="primary" @buttonType="submit" @size='sm' />
+        <form.submitButton>{{t "save"}}</form.submitButton>
       </div>
     </div>
   </BsForm>
@@ -32,7 +32,7 @@
   </div>
   <div class="row">
     <div class="col-md-3 col-xs-8 col-sm-4">
-      <BsButton @size='sm' @defaultText={{t 'switch'}} @type="primary" @onClick={{fn this.setLocale this.language}} />
+      <form.submitButton @onClick={{fn this.setLocale this.language}}>{{t 'switch'}}</form.submitButton>
     </div>
   </div>
 </BsForm>

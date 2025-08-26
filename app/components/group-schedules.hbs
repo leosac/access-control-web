@@ -5,7 +5,7 @@
 <BsButton @action='refresh' @defaultText={{t 'refresh'}} />
 
 <div class="user-schedule-info space-top">
-  {{#each this.group.schedules as |schedule|}}
+  {{#each this.args.group.schedules as |schedule|}}
     <div class="panel panel-default">
       <div class="panel-heading">
         {{t 'schedule.asfield'}} {{schedule.name}}
@@ -30,7 +30,7 @@
           {{/if}}
 
           {{#each schedule.mapping as |mapping|}}
-            {{#if (is-group-part-of-mapping mapping this.group.id)}}
+            {{#if (is-group-part-of-mapping mapping this.args.group.id)}}
               <div class="panel panel-default">
                 <div class="panel-heading">
                   {{t 'schedule.mapping' alias=mapping.alias}}

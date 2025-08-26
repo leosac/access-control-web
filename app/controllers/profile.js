@@ -12,30 +12,30 @@ export default class extends Controller {
     targetUserId = {};
 
     get canEditProfile() {
-        return this.store.findRecord('user', this.authSrv.get('user_id')).then((u) =>
+        return this.store.findRecord('user', this.authSrv.user_id).then((u) =>
         {
             return u.get('rank') === 'administrator' || u.get('rank') === 'supervisor' || u.get('rank') === 'manager' ||
-                this.get('targetUserId') === u.get('id');
+                this.targetUserId === u.get('id');
         });
     }
 
     get isProfileLocked() {
-        return !this.get('canEditProfile.content');
+        return !this.canEditProfile.content;
     }
 
     get canEditRank() {
-        return this.store.findRecord('user', this.authSrv.get('user_id')).then((u) =>
+        return this.store.findRecord('user', this.authSrv.user_id).then((u) =>
         {
             return u.get('rank') === 'administrator' || u.get('rank') === 'supervisor' || u.get('rank') === 'manager';
         });
     }
     
     get isRankEditLocked() {
-        return !this.get('canEditRank.content');
+        return !this.canEditRank.content;
     }
 
     get editProfile() {
-        let user = this.get('model').user;
+        let user = this.model.user;
         user.save().then(() =>
         {
             this.flashMessages.success(this.intl.t('profile.profile_updated') + '.');

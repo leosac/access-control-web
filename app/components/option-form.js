@@ -23,49 +23,47 @@ export default class OptionForm extends Component {
     constructor(owner, args) {
         super(owner, args);
         this.languageOption = this.languageOption || ['Français', 'English'];
-        let loc = this.get('leosacInfo').getLocale();
+        let loc = this.leosacInfo.getLocale();
 
-        this.set('newName', this.get('leosacInfo').getNameApp());
+        this.newName = this.leosacInfo.getNameApp();
         if (loc === 'fr') {
-            this.set('language', 'Français');
+            this.language = 'Français';
         } else {
-            this.set('language', 'English');
+            this.language = 'English';
         }
     }
 
     @action
     restart() {
-        this.get('leosacInfo').restart();
+        this.leosacInfo.restart();
     }
 
     @action
     logout() {
-        "use strict";
-        let self = this;
-        this.get('authSrv').logout().then(() =>
+        this.authSrv.logout().then(() =>
         {
-            self.sendAction('onLogout');
+            this.sendAction('onLogout');
         });
     }
 
     @action
     getNameApp() {
-        console.log(this.get('leosacInfo').getNameApp());
+        console.log(this.leosacInfo.getNameApp());
     }
 
     @action
     setNameApp() {
-        this.get('leosacInfo').setNameApp(this.get('newName'));
+        this.leosacInfo.setNameApp(this.newName);
     }
 
     @action
     changeLanguage(lang) {
-        this.set('language', lang);
+        this.language = lang;
     }
 
     @action
     getLocale() {
-        if (this.get('leosacInfo').getLocale() === 'fr') {
+        if (this.leosacInfo.getLocale() === 'fr') {
             return 'Français';
         } else {
             return 'English';
@@ -77,9 +75,9 @@ export default class OptionForm extends Component {
     @action
     setLocale(loc) {
         if (loc === 'Français') {
-            this.get('leosacInfo').setLocale('fr');
+            this.leosacInfo.setLocale('fr');
         } else {
-            this.get('leosacInfo').setLocale('en');
+            this.leosacInfo.setLocale('en');
         }
         location.reload();
     }

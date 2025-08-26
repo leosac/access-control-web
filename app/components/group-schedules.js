@@ -32,39 +32,37 @@ export default class GroupSchedules extends Component {
      * @param mapping
      */
     saveMappingAndReloadUser(mapping) {
-        const self = this;
         mapping.get('schedule').then((sched) =>
         {
             sched.save().then(() =>
             {
-                self.get('group').reload().then(() =>
+                this.args.group.reload().then(() =>
                 {
-                    self.decrSyncing();
+                    this.decrSyncing();
                 });
             });
         });
     }
 
     incrSyncing() {
-        this.set('syncing', this.get('syncing') + 1);
+        this.syncing++;
     }
 
     decrSyncing() {
-        this.set('syncing', this.get('syncing') - 1);
+        this.syncing--;
     }
 
     refreshImpl() {
-        const self = this;
         this.incrSyncing();
-        self.get('group').reload().then(() =>
+        this.args.group.reload().then(() =>
         {
-            self.get('group').get('schedules').then((scheds) =>
+            this.args.group.get('schedules').then((scheds) =>
             {
                 scheds.forEach((sched) =>
                 {
-                    self.incrSyncing();
+                    this.incrSyncing();
                     sched.reload().then(() => {
-                        self.decrSyncing();
+                        this.decrSyncing();
                     });
                 });
             });
@@ -80,17 +78,15 @@ export default class GroupSchedules extends Component {
     @action
     addScheduleMapping(mapping) {
         this.incrSyncing();
-        mapping.get('groups').addObject(this.get('group'));
+        mapping.get('groups').addObject(this.args.group);
         this.saveMappingAndReloadUser(mapping);
     }
 
     @action
     leaveMapping(mapping) {
-        const self = this;
-
-        self.incrSyncing();
-        mapping.get('groups').removeObject(self.get('group'));
-        self.saveMappingAndReloadUser(mapping);
+        this.incrSyncing();
+        mapping.get('groups').removeObject(this.args.group);
+        this.saveMappingAndReloadUser(mapping);
     }
 
     @action

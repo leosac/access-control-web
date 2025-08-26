@@ -1,4 +1,4 @@
-import { observer } from '@ember/object';
+import { action, observer } from '@ember/object';
 import { A } from '@ember/array';
 import ArrayProxy from '@ember/array/proxy';
 import { service } from '@ember/service';
@@ -38,14 +38,14 @@ export default class AuditLogController extends Controller {
         'groupEventEnabled', `credentialEventEnabled`, 'scheduleEventEnabled',
         'userGroupMembershipEventEnabled', 'updateEventEnabled', 'zoneEventEnabled',
         'currentPage', 'pageSize', function () {
-            this.reload();
+            console.log('TODO: this.reload()');
         })
     watch_;
 
     @action
     showDetails(audit) {
-        this.set('openDetailsModal', true);
-        this.set('detailedAudit', audit);
+        this.openDetailsModal = true;
+        this.detailedAudit = audit;
     }
 
     @action
@@ -115,7 +115,7 @@ export default class AuditLogController extends Controller {
         };
 
         this.fetchingData = true;
-        this.get('auditLog').findAllByTypes(enabled_types,
+        this.auditLog.findAllByTypes(enabled_types,
             currentPage, pageSize, progressSetter).then((result) => {
             this.totalPage = result.meta.total_page;
             this.resultCount = result.meta.count;
