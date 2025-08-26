@@ -1,7 +1,7 @@
 <li>
     <a href="#">
         <div>
-            <i class="fa fa-comment fa-fw"></i> {{this.flash.message}}
+            <FaIcon @icon="comment" @fixedWidth={{true}} />  {{this.flash.message}}
             <span class="pull-right text-muted small">{{t 'minutes_ago' minutes=4}}</span>
         </div>
     </a>

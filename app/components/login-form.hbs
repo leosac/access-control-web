@@ -10,14 +10,12 @@
                 <form.element @controlType="text" @id="username-input" @label={{t "form.username.label"}} @value={{this.inputUsername}} @required={{true}} @onChange={{fn (mut this.inputUsername)}} @placeholder={{t "form.username.ph"}} />
                 <form.element @controlType="password" @id="password-input" @label={{t "form.password.label"}} @value={{this.inputPassword}} @required={{true}} @onChange={{fn (mut this.inputPassword)}} @placeholder={{t "form.password.ph"}} />
 
-                <BsButton @class="btn-signin" @id='login-submit' @size="md" @type="primary" @buttonType="submit">
-                    {{t 'login-form.submit'}}
-                </BsButton>
+                <form.submitButton>{{t 'login-form.submit'}}</form.submitButton>
 
-                <br>
+                <br />
                 {{#if this.pending}}
                     {{!--suppress XmlDefaultAttributeValue --}}
-                    <span class="fa fa-refresh fa-spin login-spinner-style" aria-hidden="true"></span>
+                    <FaIcon @icon="refresh" @spin={{true}} class="login-spinner-style" aria-hidden="true" />
                 {{/if}}
 
                 {{#if this.errorMessage}}

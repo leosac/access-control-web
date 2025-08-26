@@ -6,9 +6,11 @@ import Service, { service } from '@ember/service';
  * A service that provide a few function to retrieve
  * audit log entries.
  */
-export default Service.extend({
-    store: service(),
-    ws: service('websocket'),
+export default class AuditLogService extends Service {
+    @service
+    store;
+    @service('websocket')
+    ws;
 
     /**
      *
@@ -21,7 +23,6 @@ export default Service.extend({
     findAllByTypes(enabled_types, page, pageSize, progressSetter)
     {
         const promise = defer();
-        const self = this;
 
         progressSetter(10);
         this.ws.sendJson('audit.get', {
@@ -37,8 +38,8 @@ export default Service.extend({
             ['audit-user-event', 'audit-wsapicall-event', 'audit-door-event', 'audit-user-group-membership-event',
                 'audit-schedule-event', 'audit-credential-event', 'audit-group-event', 'audit-update-event',
                 'audit-zone-event'].forEach((type) => {
-                self.store.peekAll(type).forEach((audit) => {
-                    self.store.unloadRecord(audit);
+                this.store.peekAll(type).forEach((audit) => {
+                    this.store.unloadRecord(audit);
                 });
             });
 
@@ -49,61 +50,61 @@ export default Service.extend({
             // });
 
             progressSetter(40);
-            next(function () {
+            next(() => {
 
                 progressSetter(80);
-                self.store.pushPayload(obj);
+                this.store.pushPayload(obj);
 
-                next(function () {
+                next(() => {
                     let tmpArray = [];
 
                     if (enabled_types.indexOf('Leosac::Audit::UserEvent') !== -1 ||
                         enabled_types.length === 0) {
-                        tmpArray = tmpArray.concat(self.store.peekAll('audit-user-event').toArray());
+                        tmpArray = tmpArray.concat(this.store.peekAll('audit-user-event').toArray());
                     }
 
                     if (enabled_types.indexOf('Leosac::Audit::WSAPICall') !== -1 ||
                         enabled_types.length === 0) {
-                        tmpArray = tmpArray.concat(self.store.peekAll('audit-wsapicall-event').toArray());
+                        tmpArray = tmpArray.concat(this.store.peekAll('audit-wsapicall-event').toArray());
                     }
 
                     if (enabled_types.indexOf('Leosac::Audit::DoorEvent') !== -1 ||
                         enabled_types.length === 0) {
-                        tmpArray = tmpArray.concat(self.store.peekAll('audit-door-event').toArray());
+                        tmpArray = tmpArray.concat(this.store.peekAll('audit-door-event').toArray());
                     }
 
                     if (enabled_types.indexOf('Leosac::Audit::ScheduleEvent') !== -1 ||
                         enabled_types.length === 0) {
-                        tmpArray = tmpArray.concat(self.store.peekAll('audit-schedule-event').toArray());
+                        tmpArray = tmpArray.concat(this.store.peekAll('audit-schedule-event').toArray());
                     }
 
                     if (enabled_types.indexOf('Leosac::Audit::CredentialEvent') !== -1 ||
                         enabled_types.length === 0) {
-                        tmpArray = tmpArray.concat(self.store.peekAll('audit-credential-event').toArray());
+                        tmpArray = tmpArray.concat(this.store.peekAll('audit-credential-event').toArray());
                     }
 
                     if (enabled_types.indexOf('Leosac::Audit::GroupEvent') !== -1 ||
                         enabled_types.length === 0) {
-                        tmpArray = tmpArray.concat(self.store.peekAll('audit-group-event').toArray());
+                        tmpArray = tmpArray.concat(this.store.peekAll('audit-group-event').toArray());
                     }
 
                     if (enabled_types.indexOf('Leosac::Audit::UserGroupMembershipEvent') !== -1 ||
                         enabled_types.length === 0) {
-                        tmpArray = tmpArray.concat(self.store.peekAll('audit-user-group-membership-event').toArray());
+                        tmpArray = tmpArray.concat(this.store.peekAll('audit-user-group-membership-event').toArray());
                     }
 
                     if (enabled_types.indexOf('Leosac::Audit::UpdateEvent') !== -1 ||
                         enabled_types.length === 0) {
-                        tmpArray = tmpArray.concat(self.store.peekAll('audit-update-event').toArray());
+                        tmpArray = tmpArray.concat(this.store.peekAll('audit-update-event').toArray());
                     }
 
                     if (enabled_types.indexOf('Leosac::Audit::ZoneEvent') !== -1 ||
                         enabled_types.length === 0) {
-                        tmpArray = tmpArray.concat(self.store.peekAll('audit-zone-event').toArray());
+                        tmpArray = tmpArray.concat(this.store.peekAll('audit-zone-event').toArray());
                     }
 
                     progressSetter(100);
-                    next(function () {
+                    next(() => {
                         tmpArray.sort(function (a, b) {
                             return b.get('numericId') - a.get('numericId');
                         });
@@ -114,4 +115,4 @@ export default Service.extend({
         }, (fail) => promise.reject(fail));
         return promise.promise;
     }
-});
+}

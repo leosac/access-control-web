@@ -71,7 +71,8 @@ export default class GroupSchedules extends Component {
         });
     }
 
-    didReceiveAttrs() {
+    constructor(owner, args) {
+        super(owner, args);
         this.refreshImpl();
     }
 

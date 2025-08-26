@@ -7,11 +7,9 @@ export default class LedAdapter extends Adapter {
     ws;
 
     findRecord(store, type, id, snapshot) {
-        const ws = this.get('ws');
-
-        return new Promise(function (resolve, reject)
+        return new Promise((resolve, reject) =>
         {
-            ws.sendJson('model_name.read', {model_name_id: id}).then(
+            this.ws.sendJson('model_name.read', {model_name_id: id}).then(
                 (data) => resolve(data),
                 (failure) => reject(failure)
             );
@@ -19,11 +17,9 @@ export default class LedAdapter extends Adapter {
     }
 
     findAll(store, type, sinceToken, snapshotRecordArray) {
-        const ws = this.get('ws');
-
-        return new Promise(function (resolve, reject)
+        return new Promise((resolve, reject) =>
         {
-            ws.sendJson('model_name.read', {model_name_id: 0}).then(
+            this.ws.sendJson('model_name.read', {model_name_id: 0}).then(
                 (data) => resolve(data),
                 (failure) => reject(failure)
             );
@@ -32,7 +28,6 @@ export default class LedAdapter extends Adapter {
 
     createRecord(store, type, snapshot) {
         const data = this.serialize(snapshot);
-        const ws = this.get('ws');
 
         if (data.data.relationships && data.data.relationships['gpio'] &&
             data.data.relationships['gpio'].data) {
@@ -41,9 +36,9 @@ export default class LedAdapter extends Adapter {
         else
             data.data.attributes.gpio_id = 0;
 
-        return new Promise(function (resolve, reject)
+        return new Promise((resolve, reject) =>
         {
-            ws.sendJson('model_name.create', {
+            this.ws.sendJson('model_name.create', {
                 attributes: data.data.attributes
             }).then((data) => resolve(data),
                 (failure) => reject(failure));
@@ -52,7 +47,6 @@ export default class LedAdapter extends Adapter {
 
     updateRecord(store, type, snapshot) {
         const data = this.serialize(snapshot);
-        const ws = this.get('ws');
 
         if (data.data.relationships && data.data.relationships['gpio'] &&
             data.data.relationships['gpio'].data) {
@@ -65,20 +59,19 @@ export default class LedAdapter extends Adapter {
             model_name_id: snapshot.id,
             attributes: data.data.attributes
         };
-        return new Promise(function (resolve, reject)
+        return new Promise((resolve, reject) =>
         {
-            ws.sendJson('model_name.update', params).then((data) => resolve(data),
+            this.ws.sendJson('model_name.update', params).then((data) => resolve(data),
                 (failure) => reject(failure));
         });
     }
 
     deleteRecord(store, type, snapshot) {
         const model_name_id = snapshot.id;
-        const ws = this.get('ws');
 
-        return new Promise(function (resolve, reject)
+        return new Promise((resolve, reject) =>
         {
-            ws.sendJson('model_name.delete', {model_name_id: model_name_id}).then(
+            this.ws.sendJson('model_name.delete', {model_name_id: model_name_id}).then(
                 (data) => resolve(data),
                 (failure) => reject(failure));
         });

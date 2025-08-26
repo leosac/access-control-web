@@ -2,7 +2,7 @@
 {% import "bootstrap/utils.html" as util %} {% block content %} {{util.flashed_messages(dismissible=True)}}
 <div class="container">
     HELLO
-    <i class="fa fa-spinner"></i>
+    <FaIcon @icon="spinner" />
     <span class="sr-only">Building the application... Please wait for about 1 minute</span>
 </div>
 {% endblock %} {% block head %} {{super()}} {{fixes.ie8()}} {% endblock %}

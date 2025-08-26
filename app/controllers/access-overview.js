@@ -16,10 +16,10 @@ export default class extends Controller {
 
     @computed('allDoors','selectedDoors.length')
     displayedDoors() {
-        if (!this.get('selectedDoors.length')) {
-            return this.get('allDoors');
+        if (!this.selectedDoors.length) {
+            return this.allDoors;
         } else {
-            return this.get('selectedDoors');
+            return this.selectedDoors;
         }
     }
 
@@ -29,16 +29,16 @@ export default class extends Controller {
         let selectedDoorsId = [];
         let result = [];
 
-        if (!this.get('rawData')) {
+        if (!this.rawData) {
             return doors;
         }
 
-        this.get('rawData').forEach((doorInfo) => {
+        this.rawData.forEach((doorInfo) => {
             doors.push(this.store.peekRecord('door', doorInfo.door_id));
         });
 
-        if (this.get('selectedDoors.length')) {
-            this.get('selectedDoors').forEach((door) => {
+        if (this.selectedDoors.length) {
+            this.selectedDoors.forEach((door) => {
                 selectedDoorsId.push(parseInt(door.get('id')));
             });
         }
@@ -58,11 +58,11 @@ export default class extends Controller {
         let users = [];
         let result = [];
 
-        if (!this.get('rawData')) {
+        if (!this.rawData) {
             return userIds;
         }
 
-        this.get('rawData').forEach((doorInfo) => {
+        this.rawData.forEach((doorInfo) => {
             doorInfo.user_ids.forEach((uid) => {
                 userIds.push(uid);
             });
@@ -74,8 +74,8 @@ export default class extends Controller {
             users.push(this.store.peekRecord('user', id));
         });
 
-        if (this.get('selectedUsers.length')) {
-            this.get('selectedUsers').forEach((user) => {
+        if (this.selectedUsers.length) {
+            this.selectedUsers.forEach((user) => {
                 selectedUsersId.push(parseInt(user.get('id')));
             });
         }
@@ -94,7 +94,7 @@ export default class extends Controller {
         let selectedDoors = [];
         let userInfos = [];
 
-        if (!this.get('rawData')) {
+        if (!this.rawData) {
             return [];
         }
 
@@ -102,14 +102,14 @@ export default class extends Controller {
             return door.user_ids.indexOf(parseInt(userId)) !== -1;
         };
 
-        if (this.get('selectedDoors.length') || this.get('selectedUsers.length')) {
+        if (this.selectedDoors.length || this.selectedUsers.length) {
             // no doors selected, must display them all
-            if (this.get('selectedDoors.length') === 0) {
-                this.get('rawData').forEach((doorInfo) => {
+            if (this.selectedDoors.length === 0) {
+                this.rawData.forEach((doorInfo) => {
                     selectedDoors.push(doorInfo);
                 });
 
-                this.get('selectedUsers').forEach((user) => {
+                this.selectedUsers.forEach((user) => {
                     const userData = {user: user, doors: []};
                     selectedDoors.forEach((doorInfo) => {
                         if (userCanAccessDoor(parseInt(user.get('id')), doorInfo)) {
@@ -122,10 +122,10 @@ export default class extends Controller {
                 });
             }
             // no users selected, must display them all
-            else if (this.get('selectedUsers.length') === 0) {
+            else if (this.selectedUsers.length === 0) {
                 let userIds = [];
-                this.get('rawData').forEach((doorInfo) => {
-                    this.get('selectedDoors').forEach((door) => {
+                this.rawData.forEach((doorInfo) => {
+                    this.selectedDoors.forEach((door) => {
                         if (parseInt(door.get('id')) === doorInfo.door_id) {
                             selectedDoors.push(doorInfo);
                         }
@@ -152,7 +152,7 @@ export default class extends Controller {
             }
             // users and doors selected
             else {
-                this.get('rawData').forEach((doorInfo) => {
+                this.rawData.forEach((doorInfo) => {
                     this.get('selectedDoors').forEach((door) => {
                         if (parseInt(door.get('id')) === doorInfo.door_id) {
                             selectedDoors.push(doorInfo);
@@ -160,7 +160,7 @@ export default class extends Controller {
                     });
                 });
 
-                this.get('selectedUsers').forEach((user) => {
+                this.selectedUsers.forEach((user) => {
                     const userData = {user: user, doors: []};
                     selectedDoors.forEach((doorInfo) => {
                         if (userCanAccessDoor(parseInt(user.get('id')), doorInfo)) {
@@ -177,7 +177,7 @@ export default class extends Controller {
         else {
             let userIds = [];
 
-            this.get('rawData').forEach((doorInfo) => {
+            this.rawData.forEach((doorInfo) => {
                 doorInfo.user_ids.forEach((uid) => {
                     userIds.push(uid);
                 });
@@ -206,34 +206,30 @@ export default class extends Controller {
     reload() {
         this.store.findAll('user', {reload: true}).then(() => {
             this.store.findAll('door', {reload: true}).then(() => {
-                this.get('ws').sendJson('access_overview', {}).then((data) => {
-                    this.set('rawData', data);
+                this.ws.sendJson('access_overview', {}).then((data) => {
+                    this.rawData = data;
                 });
             });
         });
     }
-    
-    constructor(owner, args) {
-        super(owner, args);
-    }
 
     @action
     addUser(user) {
-        this.get('selectedUsers').addObject(user);
+        this.selectedUsers.addObject(user);
     }
 
     @action
     addDoor(door) {
-        this.get('selectedDoors').addObject(door);
+        this.selectedDoors.addObject(door);
     }
 
     @action
     removeUser(user) {
-        this.get('selectedUsers').removeObject(user);
+        this.selectedUsers.removeObject(user);
     }
 
     @action
     removeDoor(door) {
-        this.get('selectedDoors').removeObject(door);
+        this.selectedDoors.removeObject(door);
     }
 }

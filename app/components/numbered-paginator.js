@@ -10,65 +10,56 @@ export default class NumberedPaginator extends Component {
     onPageChange = () => {
     };
 
-    didUpdateAttrs() {
-        "use strict";
-        super.didUpdateAttrs();
+    constructor(owner, args) {
+        super(owner, args);
         this.compute();
     }
 
     compute() {
         "use strict";
 
-        const first = this.get('first') || 0;
-        const last = this.get('last') || 0;
-        const current = this.get('current') || 0;
-        this.set('pages', []);
-        const pages = this.get('pages');
+        this.first = this.args.first || 0;
+        this.last = this.args.last || 0;
+        this.current = this.args.current || 0;
+        this.pages = this.args.pages || [];
 
         const safeAdd = (n) =>
         {
-            if (pages.indexOf(n) === -1) {
-                pages.push(n);
+            if (this.pages.indexOf(n) === -1) {
+                this.pages.push(n);
             }
         };
 
         // If we have more than 10 pages, we will not display
         // all page number. Rather we propose something else.
-        if (last - first > 10)
+        if (this.last - this.first > 10)
         {
             let i = -1;
             while (++i < 5)
             {
-                const next = current + i > last ? last : current + i;
-                const prev = current - i < first ? first : current - i;
+                const next = this.current + i > this.last ? this.last : this.current + i;
+                const prev = this.current - i < this.first ? this.first : this.current - i;
 
-                safeAdd(first);
+                safeAdd(this.first);
                 safeAdd(prev);
-                safeAdd(current);
+                safeAdd(this.current);
                 safeAdd(next);
-                safeAdd(last);
+                safeAdd(this.last);
             }
         }
         else
         {
             // Just present all page number.
-            for (let i = first; i !== last; i++)
+            for (let i = this.first; i !== this.last; i++)
             {
                 safeAdd(i);
             }
-            safeAdd(last);
+            safeAdd(this.last);
         }
-        pages.sort(function (a, b)
+        this.pages.sort(function (a, b)
         {
             return a - b;
         });
-    }
-
-    constructor(owner, args) {
-        "use strict";
-        super(owner, args);
-        this.compute();
-        this.pages = this.pages || [];
     }
 
     @action

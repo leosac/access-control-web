@@ -15,9 +15,12 @@ import Route from '@ember/routing/route';
  *
  */
 
-export default Route.extend({
-    websocket: service('websocket'),
-    router: service(),
+export default class EntryPointRoute extends Route {
+    @service('websocket')
+    websocket;
+    @service
+    router;
+
     model(params) {
         "use strict";
         localStorage.leosacAddr = params.entry_point_address;
@@ -35,7 +38,8 @@ export default Route.extend({
             }
         };
         this.router.transitionTo('login');
-    },
+    }
+
     beforeModel() {
         "use strict";
         /**
@@ -44,4 +48,4 @@ export default Route.extend({
          */
         return this._super();
     }
-});
+}

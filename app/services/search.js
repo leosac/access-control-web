@@ -10,24 +10,23 @@ import Service, { service } from '@ember/service';
  *
  * The various method returns a promise.
  */
-export default Service.extend({
-    websocket: service('websocket'),
+export default class SearchService extends Service {
+    @service('websocket')
+    ws;
 
     /**
      * Returns a promise that resolves to an array of {id,name}
      * for each group that matched.
      */
     findGroupByName(partialName) {
-        const ws = this.get('websocket');
-
-        return new Promise(function (resolve, reject) {
-            ws.sendJson('search.group_name',
+        return new Promise((resolve, reject) => {
+            this.ws.sendJson('search.group_name',
                 {
                     'partial_name': partialName
                 }).then((data) => resolve(data),
                 (failure) => reject(failure));
         });
-    },
+    }
 
     /**
      * Returns a promise that resolves to an array of {id,name}
@@ -35,64 +34,56 @@ export default Service.extend({
      */
     findScheduleByName(partialName)
     {
-        const ws = this.get('websocket');
-
-        return new Promise(function (resolve, reject) {
-            ws.sendJson('search.schedule_name',
+        return new Promise((resolve, reject) => {
+            this.ws.sendJson('search.schedule_name',
                 {
                     'partial_name': partialName
                 }).then((data) => resolve(data),
                 (failure) => reject(failure));
         });
-    },
+    }
 
     /**
      * Returns a promise that resolves to an array of {id,alias}
      * for each door that matched.
      */
     findDoorByAlias(partialName) {
-        const ws = this.get('websocket');
-
-        return new Promise(function (resolve, reject) {
-            ws.sendJson('search.door_alias',
+        return new Promise((resolve, reject) => {
+            this.ws.sendJson('search.door_alias',
                 {
                     'partial_name': partialName
                 }).then((data) => resolve(data),
                 (failure) => reject(failure));
         });
-    },
+    }
 
     /**
      * Return a promise that resolve to an array of {id, name}
      * for each user that matched
      */
     findUserByUsername(partialName) {
-        const ws = this.get('websocket');
-
-        return new Promise(function (resolve, reject) {
-            ws.sendJson('search.user_username',
+        return new Promise((resolve, reject) => {
+            this.ws.sendJson('search.user_username',
                 {
                     'partial_name': partialName
                 }).then((data) => resolve(data),
                 (failure) => reject(failure));
         });
-    },
+    }
 
     /**
      * Return a promise that resolve to an array of {id, alias}
      * for each zone that matched
      */
     findZoneByAlias(partialName) {
-        const ws = this.get('websocket');
-
-        return new Promise(function (resolve, reject) {
-            ws.sendJson('search.zone_alias',
+        return new Promise((resolve, reject) => {
+            this.ws.sendJson('search.zone_alias',
                 {
                     'partial_name': partialName
                 }).then((data) => resolve(data),
                 (failure) => reject(failure));
         });
-    },
+    }
 
     /**
      * Return a promise that resolve to an array of {id, alias, type}
@@ -100,16 +91,14 @@ export default Service.extend({
      * for each credential that matched
      */
     findCredentialByAlias(partialName) {
-        const ws = this.get('websocket');
-
-        return new Promise(function (resolve, reject) {
-            ws.sendJson('search.credential_alias',
+        return new Promise((resolve, reject) => {
+            this.ws.sendJson('search.credential_alias',
                 {
                     'partial_name': partialName
                 }).then((data) => resolve(data),
                 (failure) => reject(failure));
         });
-    },
+    }
 
     /**
      * Return a promise that resolve to an array of {id, name, device-class, type}
@@ -118,16 +107,14 @@ export default Service.extend({
      * for each device that matched
      */
     findDeviceByAlias(partialName) {
-        const ws = this.get('websocket');
-
-        return new Promise(function (resolve, reject) {
-            ws.sendJson('search.hardware_name',
+        return new Promise((resolve, reject) => {
+            this.ws.sendJson('search.hardware_name',
                 {
                     'partial_name': partialName
                 }).then((data) => resolve(data),
                 (failure) => reject(failure));
         });
-    },
+    }
 
     /**
      * Return a promise that resolve to an array of {type, id, nameOrAlias}
@@ -150,7 +137,7 @@ export default Service.extend({
         let promiseCredential = this.findCredentialByAlias(partialName);
         let promiseDevice = this.findDeviceByAlias(partialName);
 
-        return new Promise(function (resolve) {
+        return new Promise((resolve) => {
             all([promiseZone,
                 promiseDoor,
                 promiseGroup,
@@ -159,7 +146,7 @@ export default Service.extend({
                 promiseCredential,
                 promiseDevice]).then((data) => {
                 if (data[0]) {
-                    data[0].forEach(function (zone) {
+                    data[0].forEach((zone) => {
                         resultSearch.push({
                             type: 'zone',
                             id: zone.id,
@@ -168,7 +155,7 @@ export default Service.extend({
                     });
                 }
                 if (data[1]) {
-                    data[1].forEach(function (door) {
+                    data[1].forEach((door) => {
                         resultSearch.push({
                             type: 'door',
                             id: door.id,
@@ -177,7 +164,7 @@ export default Service.extend({
                     });
                 }
                 if (data[2]) {
-                    data[2].forEach(function (group) {
+                    data[2].forEach((group) => {
                         resultSearch.push({
                             type: 'group',
                             id: group.id,
@@ -186,7 +173,7 @@ export default Service.extend({
                     });
                 }
                 if (data[3]) {
-                    data[3].forEach(function (schedule) {
+                    data[3].forEach((schedule) => {
                         resultSearch.push({
                             type: 'schedule',
                             id: schedule.id,
@@ -195,7 +182,7 @@ export default Service.extend({
                     });
                 }
                 if (data[4]) {
-                    data[4].forEach(function (user) {
+                    data[4].forEach((user) => {
                         resultSearch.push({
                             type: 'user',
                             id: user.id,
@@ -204,7 +191,7 @@ export default Service.extend({
                     });
                 }
                 if (data[5]) {
-                    data[5].forEach(function (credential) {
+                    data[5].forEach((credential) => {
                         if (credential.type === 'pincode') {
                             resultSearch.push({
                                 type: 'pin-code',
@@ -232,7 +219,7 @@ export default Service.extend({
                 resolve(resultSearch);
             });
         });
-    },
+    }
 
     /**
      * Returns a list of enabled AccessPoint modules.
@@ -244,23 +231,20 @@ export default Service.extend({
     listAccessPointModuleNames()
     {
         return ['EVOXS', 'LEOSAC-BUILTIN-ACCESS-POINT'];
-    },
+    }
 
     /**
      * @see findDoorByAlias.
      */
     findAccessPointByAlias(partialName)
     {
-        const ws = this.get('websocket');
-
-        return new Promise(function (resolve, reject) {
+        return new Promise((resolve, reject) => {
             console.log('searching for ' + partialName);
-            ws.sendJson('search.access_point_alias',
+            this.ws.sendJson('search.access_point_alias',
                 {
                     'partial_name': partialName
                 }).then((data) => resolve(data),
                 (failure) => reject(failure));
         });
-    },
-})
-;
+    }
+}

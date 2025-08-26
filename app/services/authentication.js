@@ -1,4 +1,4 @@
-import { computed } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 import { defer } from 'rsvp';
 import Service, { service } from '@ember/service';
 
@@ -10,38 +10,40 @@ import Service, { service } from '@ember/service';
  * authentication as well as manages authentication token
  * stored in the local storage.
  */
-export default Service.extend({
-    websocket: service('websocket'),
-    store: service(),
-    flashMessages: service(),
+export default class AuthenticationService extends Service {
+    @service('websocket')
+    websocket;
+    @service
+    store;
+    @service
+    flashMessages;
 
     /**
      * User Id of the currently logged in user.
      */
-    user_id: false,
+    @tracked
+    user_id = false;
 
     /**
      * Username of the currently logged in user.
      */
-    username: '',
-
+    @tracked
+    username = '';
     /**
      * Are we currently attempting to authenticate.
      */
-    pending: false,
-
+    @tracked
+    pending = false;
+    
     /**
      * This a deferred object that is created when authentication starts.
      * It is resolved when authentication is performed.
      */
-    current_auth: false,
+    current_auth = false;
+    current_user = false;
 
-    current_user: false,
-
-    init()
-    {
-        "use strict";
-        this._super(...arguments);
+    constructor(owner, args) {
+        super(owner, args);
         console.log("INIT AUTH SERVICE");
         // Attempt to automatically authenticate if we can find an auth
         // token
@@ -50,7 +52,8 @@ export default Service.extend({
         {
             this.authenticateWithToken(token);
         }
-    },
+    }
+
     /**
      * Authenticate with username/password credential
      * @param username
@@ -59,31 +62,29 @@ export default Service.extend({
     authenticate(username, password, onSuccess, onFailure)
     {
         "use strict";
-        let self = this;
-
-        this.set('pending', true);
-        this.set('current_auth', defer());
+        this.pending = true;
+        this.current_auth = defer();
 
         return this.websocket.sendJson('create_auth_token',
             {
                 username: username,
                 password: password
-            }).then(function (data)
+            }).then((data) =>
         {
             // Authentication was successfully processed (doesn't meant it
             // succeeded.
-            self.set('pending', false);
+            this.pending = false;
             if (data.status === 0) // success
             {
-                self.store.findRecord('user', data.user_id).then((u) =>
+                this.store.findRecord('user', data.user_id).then((u) =>
                 {
-                    self.set('current_user', u);
+                    this.current_user = u;
                     // Store auth token in local storage
-                    self.setLocalAuthToken(data.token);
-                    self.set('user_id', data.user_id);
-                    self.set('username', username);
-                    self.get('current_auth').resolve();
-                    self.flashMessages.success('Welcome ' + username + '.');
+                    this.setLocalAuthToken(data.token);
+                    this.user_id = data.user_id;
+                    this.username = username;
+                    this.current_auth.resolve();
+                    this.flashMessages.success('Welcome ' + username + '.');
                     if (onSuccess) {
                         onSuccess();
                     }
@@ -91,57 +92,57 @@ export default Service.extend({
             }
             else
             {
-                self._clearAuthentication(false);
+                this._clearAuthentication(false);
                 if (onFailure) {
                     onFailure(data.status, data.message);
                 }
             }
-        }, function (failure)
+        }, (failure) =>
         {
-            self._clearAuthentication(false);
+            this._clearAuthentication(false);
             if (onFailure)
             {
                 // we pass the global status here -- not too important.
                 onFailure(failure.status_code, failure.status_string);
             }
         });
-    },
+    }
+
     authenticateWithToken(token)
     {
         "use strict";
-        let self = this;
-
-        this.set('pending', true);
-        this.set('current_auth', defer());
+        this.pending = true;
+        this.current_auth = defer();
 
         return this.websocket.sendJson('authenticate_with_token',
             {
                 token: token
-            }).then(function (data)
+            }).then((data) =>
             {
-                self.set('pending', false);
+                this.pending = false;
                 if (data.status === 0)
                 {
-                    self.store.findRecord('user', data.user_id).then((u) =>
+                    this.store.findRecord('user', data.user_id).then((u) =>
                     {
-                        self.set('current_user', u);
-                        self.set('user_id', data.user_id);
-                        self.set('username', data.username);
-                        self.get('current_auth').resolve();
+                        this.current_user = u;
+                        this.user_id = data.user_id;
+                        this.username = data.username;
+                        this.current_auth.resolve();
                     });
                 }
                 else
                 {
                     console.log('Authentication token invalid');
-                    self._clearAuthentication(true);
+                    this._clearAuthentication(true);
                 }
             },
-            function (/*data*/)
+            (/*data*/) =>
             {
-                self._clearAuthentication(false);
+                this._clearAuthentication(false);
                 console.log('Authenticate with token failed!');
             });
-    },
+    }
+
     /**
      * Retrieve the authentication token stored in the local storage.
      */
@@ -153,12 +154,14 @@ export default Service.extend({
             return localStorage.auth_token;
         }
         return false;
-    },
+    }
+
     setLocalAuthToken(token)
     {
         "use strict";
         localStorage.auth_token = token;
-    },
+    }
+
     /**
      * Returns whether or not a user is currently logged in.
      *
@@ -171,19 +174,22 @@ export default Service.extend({
     isLoggedIn()
     {
         "use strict";
-        if (!this.get('pending')) {
-            return !!this.get('user_id');
+        if (!this.pending) {
+            return !!this.user_id;
         }
-        return this.get('current_auth').promise;
-    },
-    _isLoggedIn: computed('user_id', function ()
+        return this.current_auth.promise;
+    }
+
+    get _isLoggedIn()
     {
-        return !!this.get('user_id');
-    }),
-    isAdministrator: computed('user_id', function ()
+        return !!this.user_id;
+    }
+
+    get isAdministrator()
     {
-        return this.store.peekRecord('user', this.get('user_id')).get('rank') === 'Administrator';
-    }),
+        return this.store.peekRecord('user', this.user_id).get('rank') === 'Administrator';
+    }
+
     /**
      * Log an user out.
      *
@@ -206,18 +212,19 @@ export default Service.extend({
                 self._clearAuthentication(true);
             }
         );
-    },
+    }
+
     _clearAuthentication(deleteAuthToken)
     {
         // Clear the store from model that were loaded.
         this.store.unloadAll();
-        this.set('user_id', false);
-        this.set('username', '');
+        this.user_id = false;
+        this.username = '';
         if (deleteAuthToken) {
             this.setLocalAuthToken(false);
         }
-        this.set('pending', false);
-        this.set('current_user', false);
-        this.get('current_auth').reject();
+        this.pending = false;
+        this.current_user = false;
+        this.current_auth.reject();
     }
-});
+}

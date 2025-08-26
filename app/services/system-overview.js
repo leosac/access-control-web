@@ -1,3 +1,4 @@
+import { tracked } from '@glimmer/tracking';
 import Service, { service } from '@ember/service';
 
 /**
@@ -7,26 +8,28 @@ import Service, { service } from '@ember/service';
  * May need to be merged with leosac-info service. Not
  * sure what is best for now.
  */
-export default Service.extend({
-    websocket: service('websocket'),
-    flashMessages: service(),
-    instance_name: "",
-    config_version: false,
-    uptime: false,
+export default class SystemOverviewService extends Service {
+    @service('websocket')
+    ws;
+    @service
+    flashMessages;
+
+    @tracked
+    instance_name = "";
+    @tracked
+    config_version = false;
+    @tracked
+    uptime = false;
 
     update()
     {
-        "use strict";
-        let self = this;
-        let ws = self.get('websocket');
-
-        return ws.sendJson('system_overview', {}).then(
-            function (response)
+        return this.ws.sendJson('system_overview', {}).then(
+            (response) =>
             {
-                self.set('config_version', response.config_version);
-                self.set('instance_name', response.instance_name);
-                self.set('uptime', response.uptime);
+                this.config_version = response.config_version;
+                this.instance_name = response.instance_name;
+                this.uptime = response.uptime;
             }
         );
     }
-});
+}

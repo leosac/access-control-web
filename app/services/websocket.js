@@ -1,21 +1,27 @@
 import { later, run } from '@ember/runloop';
 import { defer, Promise } from 'rsvp';
+import { tracked } from '@glimmer/tracking';
 import Service, { service } from '@ember/service';
 import { InvalidError } from '@ember-data/adapter/error';
 import ENV from 'web/config/environment';
 
-export default Service.extend({
-    flashMessages: service(),
-    authSrv: service('authentication'),
-    ws: null,
-    callback: [],
-    beforeOpen: [],
-    store: service(),
-    isConnected: false,
+export default class WebSocketService extends Service {
+    @service
+    flashMessages;
+    @service('authentication')
+    authSrv;
+    @service
+    store;
+    
+    @tracked
+    isConnected = false;
 
-    init() {
-        "use strict";
-        this._super(...arguments);
+    ws = null;
+    callback = [];
+    beforeOpen = [];
+
+    constructor(owner, args) {
+        super(owner, args);
 
         // Override server address if set in local storage.
         // Used when browsing from centralized web ui.
@@ -23,47 +29,42 @@ export default Service.extend({
             ENV.APP.leosacAddr = localStorage.leosacAddr;
         }
         this.initWebsocket(ENV.APP.leosacAddr + '/websocket', null);
-    },
+    }
 
     attemptToReconnect() {
-        const self = this;
         let deferred = defer();
 
-        deferred.promise.then(function () {
-            let token = self.get('authSrv').fetchLocalAuthToken();
+        deferred.promise.then(() => {
+            let token = this.authSrv.fetchLocalAuthToken();
             if (!!token && token !== 'false') {
-                self.get('authSrv').authenticateWithToken(token);
+                this.authSrv.authenticateWithToken(token);
             }
         });
 
         this.initWebsocket(ENV.APP.leosacAddr + '/websocket', deferred);
-    },
+    }
 
-    initWebsocket: function (addr, deferred) {
+    initWebsocket(addr, deferred) {
         console.log('Service is initializing ...');
 
-        let ws = this.get('ws');
-        ws = new WebSocket(addr);
-
-        let self = this;
-
-        ws.onopen = function () {
+        const ws = new WebSocket(addr);
+        ws.onopen = () => {
             console.log('WS opened');
 
-            self.set('isConnected', true);
+            this.isConnected = true;
             if (deferred) {
                 deferred.resolve();
             }
             // Process item that were queued before the connection
             // was ready.
-            let queue = self.get('beforeOpen');
+            let queue = this.beforeOpen;
             if (queue.length > 0) {
-                queue.forEach(function (payload) {
-                    ws.send(JSON.stringify(payload));
+                queue.forEach((payload) => {
+                    this.ws.send(JSON.stringify(payload));
                 });
                 queue = [];
             }
-            self.set('beforeOpen', queue);
+            this.beforeOpen = queue;
         };
 
         /**
@@ -77,20 +78,20 @@ export default Service.extend({
          * (with `status_code` and `status_string` property) is passed
          * to the rejection handler.
          */
-        ws.onmessage = function (event) {
+        ws.onmessage = (event) => {
             let obj = JSON.parse(event.data);
-            let cb = self.get('callback')[obj.uuid];
+            let cb = this.callback[obj.uuid];
             // If we didn't find a callback, it means its opportunistic message
             // from server
             if (!cb) {
                 if (obj.type === 'session_closed') {
                     // todo UI becomes broken after this.
-                    self.flashMessages.danger('Your session has been terminated: ' +
+                    this.flashMessages.danger('Your session has been terminated: ' +
                         obj.content.reason,
                         {
                             sticky: true,
                         });
-                    self.get('authSrv')._clearAuthentication(true);
+                    this.authSrv._clearAuthentication(true);
                 }
             }
             else {
@@ -112,27 +113,27 @@ export default Service.extend({
                     // let error_code = obj.content.errors[0].error_code;
 
                     if (pointer === '') {
-                        self.flashMessages.danger(string, {
+                        this.flashMessages.danger(string, {
                             sticky: true
                         });
                     }
                     cb.error(new InvalidError(obj.content.errors));
                 }
                 else if (obj.status_code !== 0) {
-                    self.flashMessages.danger('Error: ' + obj.status_string, {
+                    this.flashMessages.danger('Error: ' + obj.status_string, {
                         sticky: true
                     });
                     cb.error(obj);
                 } else {
                     cb.success(obj.content);
                 }
-                delete self.get('callback')[obj.uuid];
+                delete this.callback[obj.uuid];
             }
         };
 
-        ws.onclose = function (/*event*/) {
+        ws.onclose = (/*event*/) => {
             // Flush all pending callback and mark them as error.
-            const pending_callbacks = self.get('callback');
+            const pending_callbacks = this.callback;
 
             for (let key in pending_callbacks) {
                 if (!pending_callbacks.hasOwnProperty(key)) {
@@ -160,16 +161,16 @@ export default Service.extend({
                 exponential += 0.1;
             }
 
-            self.set('isConnected', false);
+            this.isConnected = false;
 
-            setTimeout(function () {
-                self.attemptToReconnect();
+            setTimeout(() => {
+                this.attemptToReconnect();
             }, 5000);
         };
-        this.set('ws', ws);
+        this.ws = ws;
 
-        let timeout_request = function () {
-            const pending_callbacks = self.get('callback');
+        let timeout_request = () => {
+            const pending_callbacks = this.callback;
 
             for (let key in pending_callbacks) {
                 if (!pending_callbacks.hasOwnProperty(key)) {
@@ -180,7 +181,7 @@ export default Service.extend({
                 if (time_diff > 10000) {
                     console.log('Timeout for request ' + key);
                     console.log(c.request);
-                    delete self.get('callback')[key];
+                    delete this.callback[key];
 
                     // We emulate a server message (at least we respect
                     // the format's specifications.
@@ -195,11 +196,11 @@ export default Service.extend({
         };
 
         // Setup timer to check for timeout
-        later(function () {
+        later(() => {
             timeout_request();
         }, 5000);
 
-    },
+    }
 
     /**
      * Generate a GUID.
@@ -215,32 +216,31 @@ export default Service.extend({
 
         return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
             s4() + '-' + s4() + s4() + s4();
-    },
+    }
 
     sendJson(cmd, request_content) {
         "use strict";
 
-        let queue = this.get('beforeOpen');
-        let ws = this.get('ws');
-        let callback = this.get('callback');
+        let queue = this.beforeOpen;
+        let callback = this.callback;
         let request = {
             uuid: this.guid(),
             type: cmd,
             content: request_content
         };
 
-        if (ws.readyState === 1) {
-            ws.send(JSON.stringify(request));
+        if (this.ws.readyState === 1) {
+            this.ws.send(JSON.stringify(request));
         }
         else {
             queue.push(request);
         }
 
-        return new Promise(function (resolve, reject) {
-            let on_success = function (data) {
+        return new Promise((resolve, reject) => {
+            let on_success = (data) => {
                 run(null, resolve, data);
             };
-            let on_error = function (why) {
+            let on_error = (why) => {
                 run(null, reject, why);
             };
             let cb = {
@@ -253,4 +253,4 @@ export default Service.extend({
             callback[request.uuid] = cb;
         });
     }
-});
+}

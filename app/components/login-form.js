@@ -20,30 +20,28 @@ export default class LoginForm extends Component {
     @action
     login() {
         let self = this;
-        this.set('errorMessage', '');
-        let username = this.get('inputUsername');
-        let password = this.get('inputPassword');
+        this.errorMessage = '';
 
-        if (username.length === 0 || password.length === 0)
+        if (this.inputUsername.length === 0 || this.inputPassword.length === 0)
         {
-            this.set('errorMessage', this.intl.t('login-form.username_password_required'));
+            this.errorMessage = this.intl.t('login-form.username_password_required');
             return;
         }
 
-        this.set('pending', true);
-        this.authSrv.authenticate(username, password,
+        this.pending = true;
+        this.authSrv.authenticate(this.inputUsername, this.inputPassword,
             function ()
             {
-                self.set('pending', false);
+                self.pending = false;
                 self.router.transitionTo('index');
             },
             function (status, msg)
             {
-                self.set('pending', false);
+                self.pending = false;
                 if (msg) {
-                    self.set('errorMessage', 'Auth failure [' + status + ']: ' + msg);
+                    self.errorMessage = 'Auth failure [' + status + ']: ' + msg;
                 } else {
-                    self.set('errorMessage', 'Auth failure [' + status + ']');
+                    self.errorMessage = 'Auth failure [' + status + ']';
                 }
             });
     }

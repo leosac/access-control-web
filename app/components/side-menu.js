@@ -9,10 +9,6 @@ export default class SideMenu extends Component {
     @service
     router;
 
-    constructor(owner, args) {
-        super(owner, args);
-    }
-
     @action
     handleRoute(route) {
         this.router.transitionTo(route);

@@ -36,10 +36,6 @@ export default class PasswordChange extends Component.extend(Validations) {
     new_password = null;
     new_password2 = null;
 
-    constructor(owner, args) {
-        super(owner, args);
-    }
-
     @action
     changePassword() {
         this.get('passwordChange').changePassword(this.get('user_id'),

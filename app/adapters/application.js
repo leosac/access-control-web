@@ -8,10 +8,8 @@ export default class ApplicationAdapter extends Adapter {
 
     findAll(store, type) {
         let def = defer();
-
-        let ws = this.get('ws');
         console.log("Try to find all: " + type);
-        let p = ws.sendJson('get_logs', {});
+        let p = this.ws.sendJson('get_logs', {});
 
         p.then((data) => {
                 "use strict";
@@ -31,10 +29,9 @@ export default class ApplicationAdapter extends Adapter {
         "use strict";
         let def = defer();
 
-        let ws = this.get('ws');
         console.log("QUERY MODE" + type);
         console.log(query);
-        let p = ws.sendJson('get_logs', query);
+        let p = this.ws.sendJson('get_logs', query);
 
         p.then((data) => {
                 console.log("RESPONSE");

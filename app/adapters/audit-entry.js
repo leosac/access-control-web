@@ -2,18 +2,18 @@ import { Promise } from 'rsvp';
 import { service } from '@ember/service';
 import ApplicationAdapter from './application';
 
-export default ApplicationAdapter.extend({
-    ws: service('websocket'),
+export default class AuditEntryAdapter extends ApplicationAdapter {
+    @service('websocket')
+    ws;
 
-    findAll: function ()
+    findAll()
     {
-        const ws = this.get('ws');
-        return new Promise(function (resolve, reject)
+        return new Promise((resolve, reject) =>
         {
-            ws.sendJson('audit.get', {}).then(
+            this.ws.sendJson('audit.get', {}).then(
                 (data) => resolve(data),
                 (failure) => reject(failure)
             );
         });
     }
-});
+}

@@ -3,11 +3,10 @@ import Resolver from './resolver';
 import loadInitializers from 'ember-load-initializers';
 import config from './config/environment';
 import 'ember-power-select/styles';
+import './font-awesome';
 
-let App;
-
-App = Application.extend({
-    engines: {
+export default class App extends Application {
+    engines = {
         smtp: {
             leosacProperty: {
                 needServer: true,
@@ -138,12 +137,10 @@ App = Application.extend({
                 ]
             }
         }
-    },
-    modulePrefix: config.modulePrefix,
-    podModulePrefix: config.podModulePrefix,
-    Resolver
-});
+    }
+    modulePrefix = config.modulePrefix;
+    podModulePrefix = config.podModulePrefix;
+    Resolver = Resolver;
+}
 
 loadInitializers(App, config.modulePrefix);
-
-export default App;

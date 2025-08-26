@@ -2,37 +2,35 @@ import { Promise } from 'rsvp';
 import { service } from '@ember/service';
 import ApplicationAdapter from './application';
 
-export default ApplicationAdapter.extend({
-    ws: service('websocket'),
+export default class ZoneAdapter extends ApplicationAdapter {
+    @service('websocket')
+    ws;
 
-    findRecord: function (store, type, id)
+    findRecord(store, type, id)
     {
-        const ws = this.get('ws');
-
-        return new Promise(function (resolve, reject)
+        return new Promise((resolve, reject) =>
         {
-            ws.sendJson('zone.read', {zone_id: Number.parseInt(id)}).then(
+            this.ws.sendJson('zone.read', {zone_id: Number.parseInt(id)}).then(
                 (data) => resolve(data),
                 (failure) => reject(failure)
             );
         });
-    },
-    findAll: function ()
-    {
-        const ws = this.get('ws');
+    }
 
-        return new Promise(function (resolve, reject)
+    findAll()
+    {
+        return new Promise((resolve, reject) =>
         {
-            ws.sendJson('zone.read', {zone_id: 0}).then(
+            this.ws.sendJson('zone.read', {zone_id: 0}).then(
                 (data) => resolve(data),
                 (failure) => reject(failure)
             );
         });
-    },
-    createRecord: function (store, type, snapshot)
+    }
+
+    createRecord(store, type, snapshot)
     {
         const data = this.serialize(snapshot);
-        const ws = this.get('ws');
 
         // search for each door, if none set id to null
         if (data.data.relationships && data.data.relationships['doors'] &&
@@ -58,19 +56,19 @@ export default ApplicationAdapter.extend({
             data.data.attributes.children = [];
         }
 
-        return new Promise(function (resolve, reject)
+        return new Promise((resolve, reject) =>
         {
-            ws.sendJson('zone.create', {
+            this.ws.sendJson('zone.create', {
                 attributes: data.data.attributes
             }).then(
                 (data) => resolve(data),
                 (failure) => reject(failure));
         });
-    },
-    updateRecord: function (store, type, snapshot)
+    }
+
+    updateRecord(store, type, snapshot)
     {
         const data = this.serialize(snapshot);
-        const ws = this.get('ws');
 
         if (data.data.relationships && data.data.relationships['doors'] &&
             data.data.relationships['doors'].data)
@@ -99,22 +97,22 @@ export default ApplicationAdapter.extend({
             zone_id: Number.parseInt(snapshot.id),
             attributes: data.data.attributes
         };
-        return new Promise(function (resolve, reject)
+        return new Promise((resolve, reject) =>
         {
-            ws.sendJson('zone.update', params).then((data) => resolve(data),
+            this.ws.sendJson('zone.update', params).then((data) => resolve(data),
                 (failure) => reject(failure));
         });
-    },
-    deleteRecord: function (store, type, snapshot)
+    }
+
+    deleteRecord(store, type, snapshot)
     {
         const zone_id = Number.parseInt(snapshot.id);
-        const ws = this.get('ws');
 
-        return new Promise(function (resolve, reject)
+        return new Promise((resolve, reject) =>
         {
-            ws.sendJson('zone.delete', {zone_id: zone_id}).then(
+            this.ws.sendJson('zone.delete', {zone_id: zone_id}).then(
                 (data) => resolve(data),
                 (failure) => reject(failure));
         });
     }
-});
+}

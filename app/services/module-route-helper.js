@@ -9,14 +9,18 @@ function removeExcessString(routeName) {
     return routeName.replace('.list', '');
 }
 
-export default Service.extend({
-    ws: service('websocket'),
-    info: service('leosac-info'),
-    store: service('store'),
-    moduleManager: service('module-manager'),
+export default class ModuleRouteHelperService extends Service {
+    @service('websocket')
+    ws;
+    @service('leosac-info')
+    info;
+    @service
+    store;
+    @service('module-manager')
+    moduleManager;
 
     setPath(name) {
-        let modules = this.get('moduleManager').modulesInfo;
+        let modules = this.moduleManager.modulesInfo;
         let str = '';
         modules.forEach((module) => {
             let arrayOfKeys = Object.keys(module.modelToRoute);
@@ -30,4 +34,4 @@ export default Service.extend({
         });
         return str;
     }
-});
+}

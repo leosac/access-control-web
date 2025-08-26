@@ -2,15 +2,19 @@ import { service } from '@ember/service';
 import { later } from '@ember/runloop';
 import LeosacRoute from 'web/leosac-route';
 
-export default LeosacRoute.extend({
-    authSrv: service('authentication'),
-    router: service(),
-    _title: 'Error',
+export default class WsErrorRoute extends LeosacRoute {
+    @service('authentication')
+    authSrv;
+    @service
+    router;
+    _title = 'Error';
+
     beforeModel()
     {
         "use strict";
         return this._super();
-    },
+    }
+
     model(params)
     {
         if (params.status_code === 7) // SessionAborted
@@ -41,4 +45,4 @@ export default LeosacRoute.extend({
             this.replaceWith('ws-error.unknown-error', params);
         }
     }
-});
+}

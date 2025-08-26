@@ -7,8 +7,4 @@ export default class MyFooter extends Component {
 
     @service('websocket')
     ws;
-
-    constructor(owner, args) {
-        super(owner, args);
-    }
 }

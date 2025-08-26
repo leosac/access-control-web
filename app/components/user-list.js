@@ -9,10 +9,6 @@ export default class UserList extends Component {
     @service
     router;
 
-    constructor(owner, args) {
-        super(owner, args);
-    }
-
     @action
     gotoItem(id) {
         this.router.transitionTo('profile', id);

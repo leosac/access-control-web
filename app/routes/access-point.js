@@ -1,22 +1,28 @@
 import { service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 
-export default LeosacRoute.extend({
-    router: service(),
-    store: service(),
-    flashMessages: service(),
-    _title: 'access-point.title',
-    _requireAuth: true,
+export default class AccessPointRoute extends LeosacRoute {
+    @service
+    router;
+    @service
+    store;
+    @service
+    flashMessages;
+    _title = 'access-point.title';
+    _requireAuth = true;
+
     beforeModel()
     {
         "use strict";
         return this._super();
-    },
+    }
+
     model(params)
     {
         "use strict";
         return this.store.findRecord('access-point', params.id);
-    },
+    }
+
     resetController(controller, isExiting)
     {
         // Rollback change when leaving the page.
@@ -28,4 +34,4 @@ export default LeosacRoute.extend({
             }
         }
     }
-});
+}

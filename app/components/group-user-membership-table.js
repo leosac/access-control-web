@@ -15,8 +15,8 @@ export default class GroupUserMembershipTable extends Component {
     group = false;
     canRemoveUserFromGroup = false;
 
-    didReceiveAttrs() {
-        super.didReceiveAttrs(...arguments);
+    constructor(owner, args) {
+        super(owner, args);
         const self = this;
 
         const currentUser = this.authSrv.get('current_user');
@@ -27,14 +27,14 @@ export default class GroupUserMembershipTable extends Component {
                 if (m.get('group').get('id') === self.get('group').get('id'))
                 {
                     if (m.get('rank') === 'administrator') {
-                        this.set('canRemoveUserFromGroup', true);
+                        this.canRemoveUserFromGroup = true;
                     }
                 }
             });
         });
-        if (this.get('authSrv').get('isAdministrator'))
+        if (this.authSrv.get('isAdministrator'))
         {
-            this.set('canRemoveUserFromGroup', true);
+            this.canRemoveUserFromGroup = true;
         }
     }
 

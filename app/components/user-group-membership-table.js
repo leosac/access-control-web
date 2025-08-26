@@ -12,26 +12,22 @@ export default class UserGroupMembershipTable extends Component {
     @service
     store;
 
-    // The user whose membership we display.
-    user = false;
-
-    // Should we display the "kick" or "leave" button.
-    kickOrLeave = false;
-
-    kickOrLeaveMessage = false;
-
-    didReceiveAttrs() {
-        super.didReceiveAttrs(...arguments);
-        if (this.get('user').get('numericId') === this.authSrv.get('user_id'))
-        {
-            this.set('kickOrLeave', this.intl.t('leave'));
-            this.set('kickOrLeaveMessage', this.intl.t('leave_group_confirmation'));
-        }
+    get kickOrLeave() {
+        if (this.args.user.numericId == this.authSrv.get('user_id'))
+            return this.intl.t('leave');
         else if (this.authSrv.get('isAdministrator'))
-        {
-            this.set('kickOrLeave', this.intl.t('kick'));
-            this.set('kickOrLeaveMessage', this.intl.t('kick_group_confirmation'));
-        }
+            this.intl.t('kick');
+        else
+            return undefined;
+    }
+
+    get kickOrLeaveMessage() {
+        if (this.args.user.numericId == this.authSrv.get('user_id'))
+            return this.intl.t('leave_group_confirmation');
+        else if (this.authSrv.get('isAdministrator'))
+            this.intl.t('kick_group_confirmation');
+        else
+            return undefined;
     }
 
     @action

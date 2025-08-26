@@ -1,4 +1,5 @@
 import { getOwner } from '@ember/application';
+import { tracked } from '@glimmer/tracking';
 import Service, { service } from '@ember/service';
 
 /**
@@ -52,24 +53,35 @@ function formatModuleName(str) {
     return str.replace(/-/g, ' ').toUpperCase();
 }
 
-export default Service.extend({
-    ws: service('websocket'),
-    info: service('leosac-info'),
-    store: service('store'),
-    serverModules: [],
-    clientModules: [],
-    wizards: [],
-    shouldPresentBoth: [],
-    onlyPresentServer: [],
-    onlyPresentClient: [],
-    nameToBeDisplayed: [],
-    modulesInfo: [],
-    wizardsInfo: [],
+export default class ModuleManagerService extends Service {
+    @service('websocket')
+    ws;
+    @service('leosac-info')
+    info;
+    @service
+    store;
 
-    init() {
-        this._super(...arguments);
+    @tracked
+    serverModules = [];
+    @tracked
+    clientModules = [];
+    @tracked
+    wizards = [];
+    @tracked
+    shouldPresentBoth = [];
+    @tracked
+    onlyPresentServer = [];
+    @tracked
+    onlyPresentClient = [];
+    @tracked
+    modulesInfo = [];
+    @tracked
+    wizardsInfo = [];
+
+    constructor(owner, args) {
+        super(owner, args);
         this.fetchModule();
-    },
+    }
 
     _pushModulesInfos(routeName, displayName, needServer, entryPoint, modelToRoute) {
         routeName = formatRouteName(routeName, entryPoint);
@@ -80,7 +92,8 @@ export default Service.extend({
             modelToRoute: modelToRoute
         };
         return (moduleInfos);
-    },
+    }
+
     _pushWizardInfos(routeName, displayName, needServer, entryPoint, modelToRoute, neededModule) {
         routeName = formatRouteName(routeName, entryPoint);
         let formatedNeededModules = [];
@@ -95,18 +108,16 @@ export default Service.extend({
             neededModule: formatedNeededModules
         };
         return (wizardInfos);
-    },
+    }
+
     /**
      * This function is meant to catch every module,
      * and tell if they are loaded in the server, the client, or both.
      */
     fetchModule() {
         let container = getOwner(this).lookup('application:main').engines;
-        const ws = this.get('ws');
-        const self = this;
-
-        return ws.sendJson('system_overview', {}).then(
-            function (response) {
+        return this.ws.sendJson('system_overview', {}).then(
+            (response) => {
                 /**
                  * This will fill an array with every modules loaded by the server
                  * @type {Array}
@@ -152,18 +163,18 @@ export default Service.extend({
                 modulesClient.forEach(function (module) {
                     if (module[1].leosacProperty.needServer) {
                         modulesShouldBeLoadedOnBothClient.push(module[0]);
-                        modulesInfo.push(self._pushModulesInfos(module[0], module[1].leosacProperty.displayName,
+                        modulesInfo.push(this._pushModulesInfos(module[0], module[1].leosacProperty.displayName,
                             true, module[1].leosacProperty.entryPoint, module[1].leosacProperty.modelToRoute));
                     }
                     else {
                         if (module[1].leosacProperty.isWizard === true) {
                             modulesWizard.push(module[0]);
-                            wizardsInfo.push(self._pushWizardInfos(module[0], module[1].leosacProperty.displayName,
+                            wizardsInfo.push(this._pushWizardInfos(module[0], module[1].leosacProperty.displayName,
                                 false, module[1].leosacProperty.entryPoint, module[1].leosacProperty.modelToRoute, module[1].leosacProperty.neededModule));
                         }
                         else {
                             modulesShouldBeLoadedOnClient.push(module[0]);
-                            modulesInfo.push(self._pushModulesInfos(module[0], module[1].leosacProperty.displayName,
+                            modulesInfo.push(this._pushModulesInfos(module[0], module[1].leosacProperty.displayName,
                                 false, module[1].leosacProperty.entryPoint, module[1].leosacProperty.modelToRoute));
                         }
                     }
@@ -270,16 +281,15 @@ export default Service.extend({
                  * The last two should be displayed as error.
                  */
 
-                self.set('serverModules', modulesShouldBeLoadedOnServer);
-                self.set('clientModules', modulesShouldBeLoadedOnClient);
-                self.set('clientMatchServer', modulesShouldBeLoadedOnBothClient);
-                self.set('shouldPresentBoth', modulesLoadedByBoth);
-                self.set('onlyPresentClient', modulesNotLoadedByTheServer);
-                self.set('onlyPresentServer', modulesNotLoadedByTheClient);
-                self.set('wizardModules');
-                self.set('modulesNeededByWizard', modulesNeededByWizard);
-                self.set('modulesInfo', modulesInfo);
-                self.set('wizardsInfo', wizardsInfo);
+                this.serverModules = modulesShouldBeLoadedOnServer;
+                this.clientModules = modulesShouldBeLoadedOnClient;
+                this.clientMatchServer = modulesShouldBeLoadedOnBothClient;
+                this.shouldPresentBoth = modulesLoadedByBoth;
+                this.onlyPresentClient = modulesNotLoadedByTheServer;
+                this.onlyPresentServer = modulesNotLoadedByTheClient;
+                this.modulesNeededByWizard = modulesNeededByWizard;
+                this.modulesInfo = modulesInfo;
+                this.wizardsInfo = wizardsInfo;
             });
     }
-});
+}

@@ -7,13 +7,6 @@ export default class AccessPointForm extends Component {
 
     constructor(owner, args) {
         super(owner, args);
-        this.availableAccessPointModules = this.availableAccessPointModules || [];
-    }
-
-    didReceiveAttrs() {
-        "use strict";
-        super.didReceiveAttrs(...arguments);
-        this.set('availableAccessPointModules',
-            this.search.listAccessPointModuleNames());
+        this.availableAccessPointModules = this.availableAccessPointModules || this.search.listAccessPointModuleNames()
     }
 }

@@ -12,7 +12,7 @@
     </tr>
     </thead>
     <tbody>
-    {{#each this.user.memberships as |membership|}}
+    {{#each this.args.user.memberships as |membership|}}
         <LinkTo @query='group' @model={{membership.group.id}}>
           <tr>
             <td>

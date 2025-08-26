@@ -1,7 +1,7 @@
 <BsButton @disabled="pendingCheckUpdate" @onClick={{this.checkUpdate}}>
     {{#if this.pendingCheckUpdate}}
         {{t 'update.pending_check_update'}}
-        <i class="fa fa-spinner fa-spin update-spinner-color"></i>
+        <FaIcon @icon="spinner" @spin={{true}} class="update-spinner-color" />
     {{else}}
         {{t 'update.check_update'}}
     {{/if}}

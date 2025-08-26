@@ -14,26 +14,31 @@ import { UpdateStatus } from 'web/leosac-constant';
  * @note Most of the service will need to be fixed because its now geared
  * to EvoXS directly due to some broken behavior in emberjs.
  */
-export default Service.extend({
-    store: service(),
-    websocket: service('websocket'),
+export default class UpdateService extends Service {
+    @service
+    store;
+    @service('websocket')
+    ws;
+
     checkUpdate()
     {
-        return this.get('websocket').sendJson('check_update', {}).then((resp) =>
+        return this.ws.sendJson('check_update', {}).then((resp) =>
         {
             return resp;
         });
-    },
+    }
+
     createUpdate(updateDescriptorUuid)
     {
-        return this.websocket.sendJson('create_update', {descriptor_uuid: updateDescriptorUuid}).then((resp) => {
+        return this.ws.sendJson('create_update', {descriptor_uuid: updateDescriptorUuid}).then((resp) => {
             this.store.pushPayload(resp);
             return true;
         });
-    },
+    }
+
     getPending()
     {
-        return this.websocket.sendJson('get_pending_update', {}).then((resp) =>
+        return this.ws.sendJson('get_pending_update', {}).then((resp) =>
         {
             this.store.pushPayload(resp);
 
@@ -41,26 +46,29 @@ export default Service.extend({
             // polymorphic support
             return this.store.peekAll('evoxs-access-point-update').filter(e => e.get('status') === UpdateStatus.PENDING);
         });
-    },
+    }
+
     acknowledgeUpdate(update)
     {
-        return this.websocket.sendJson('ack_update',
+        return this.ws.sendJson('ack_update',
             {update_id: update.get('numericId')}).then(() =>
         {
             return true;
         });
-    },
+    }
+
     cancelUpdate(update)
     {
-        return this.websocket.sendJson('cancel_update',
+        return this.ws.sendJson('cancel_update',
             {update_id: update.get('numericId')}).then(() =>
         {
             return true;
         });
-    },
+    }
+
     getHistory()
     {
-        return this.websocket.sendJson('get_update_history', {}).then((resp) =>
+        return this.ws.sendJson('get_update_history', {}).then((resp) =>
         {
             this.store.pushPayload(resp);
 
@@ -68,10 +76,11 @@ export default Service.extend({
             // polymorphic support
             return this.store.peekAll('evoxs-access-point-update').filter(e => e.get('status') !== UpdateStatus.PENDING);
         });
-    },
+    }
+
     getUpdate(uid)
     {
-        return this.websocket.sendJson('get_update', {update_id: uid}).then((resp) =>
+        return this.ws.sendJson('get_update', {update_id: uid}).then((resp) =>
         {
             this.store.pushPayload(resp);
 
@@ -80,5 +89,4 @@ export default Service.extend({
             return this.store.peekRecord('evoxs-access-point-update', uid);
         });
     }
-
-});
+}

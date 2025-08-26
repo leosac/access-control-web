@@ -72,7 +72,8 @@ export default class UserSchedules extends Component {
         });
     }
 
-    didReceiveAttrs() {
+    constructor(owner, args) {
+        super(owner, args);
         this.refreshImpl();
     }
 

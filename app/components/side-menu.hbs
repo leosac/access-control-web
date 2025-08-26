@@ -10,13 +10,13 @@
 
     <li class="nav-item">
       <LinkTo class="nav-link" @route='index'>
-        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <FaIcon @icon="tachometer-alt" @fixedWidth={{true}} />
         <span>{{t 'index.title'}}</span>
       </LinkTo>
     </li>
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOverview" aria-controls="collapseOverview">
-        <i class="fa fa-fw fa-chart-bar"></i>
+        <FaIcon @icon="chart-bar" @fixedWidth={{true}} />
         <span>{{t 'w.overview'}}</span>
       </a>
       <div id="collapseOverview" class="collapse" aria-labelledby="{{t 'modules'}}" data-parent="#accordionSidebar">
@@ -37,25 +37,25 @@
 
     <li class="nav-item">
       <LinkTo class="nav-link" @route='users.list'>
-        <i class="fas fa-fw fa-user"></i>
+        <FaIcon @icon="user" @fixedWidth={{true}} />
         <span>{{t 'users.title'}}</span>
       </LinkTo>
     </li>
     <li class="nav-item">
       <LinkTo class="nav-link" @route='groups.list'>
-        <i class="fas fa-fw fa-users"></i>
+        <FaIcon @icon="users" @fixedWidth={{true}} />
         <span>{{t 'groups'}}</span>
       </LinkTo>
     </li>
     <li class="nav-item">
       <LinkTo class="nav-link" @route='credentials.list'>
-        <i class="fas fa-fw fa-id-badge"></i>
+        <FaIcon @icon="id-badge" @fixedWidth={{true}} />
         <span>{{t 'credentials.title'}}</span>
       </LinkTo>
     </li>
     <li class="nav-item">
       <LinkTo class="nav-link" @route='schedules.list'>
-        <i class="fas fa-fw fa-calendar"></i>
+        <FaIcon @icon="calendar" @fixedWidth={{true}} />
         <span>{{t 'schedules'}}</span>
       </LinkTo>
     </li>
@@ -68,32 +68,32 @@
 
     <li class="nav-item">
       <LinkTo class="nav-link" @route='zones.list'>
-        <i class="fas fa-fw fa-building"></i>
+        <FaIcon @icon="building" @fixedWidth={{true}} />
         <span>{{t 'zones'}}</span>
       </LinkTo>
     </li>
     <li class="nav-item">
       <LinkTo class="nav-link" @route='doors.list'>
-        <i class="fas fa-fw fa-door-open"></i>
+        <FaIcon @icon="door-open" @fixedWidth={{true}} />
         <span>{{t 'doors'}}</span>
       </LinkTo>
     </li>
     <li class="nav-item">
       <LinkTo class="nav-link" @route='access-points.list'>
-        <i class="fas fa-fw fa-dungeon"></i>
+        <FaIcon @icon="dungeon" @fixedWidth={{true}} />
         <span>{{t 'access_points'}}</span>
       </LinkTo>
     </li>
     <li class="nav-item">
       <LinkTo class="nav-link" @route='updates'>
-        <i class="fas fa-fw fa-cubes"></i>
+        <FaIcon @icon="cubes" @fixedWidth={{true}} />
         <span>{{t 'hardware_update'}}</span>
       </LinkTo>
     </li>
 
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseModules" aria-controls="collapseModules">
-        <i class="fa fa-cogs"></i>
+        <FaIcon @icon="cogs" @fixedWidth={{true}} />
         <span>{{t 'modules'}}</span>
       </a>
       <div id="collapseModules" class="collapse" aria-labelledby="{{t 'modules'}}" data-parent="#accordionSidebar">
@@ -108,7 +108,7 @@
 
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseWizards" aria-controls="collapseWizards">
-        <i class="fa fa-magic"></i>
+        <FaIcon @icon="magic" @fixedWidth={{true}} />
         <span>{{t 'modules_wizard'}}</span>
       </a>
       <div id="collapseWizards" class="collapse" aria-labelledby="{{t 'modules_wizard'}}" data-parent="#accordionSidebar">
@@ -125,13 +125,13 @@
 
     <li class="nav-item">
       <LinkTo class="nav-link" @route='auditlog'>
-        <i class="fas fa-fw fa-bell"></i>
+        <FaIcon @icon="bell" @fixedWidth={{true}} />
         <span>{{t 'alarm.title'}}</span>
       </LinkTo>
     </li>
     <li class="nav-item">
       <LinkTo class="nav-link" @route='auditlog'>
-        <i class="fas fa-fw fa-table"></i>
+        <FaIcon @icon="table" @fixedWidth={{true}} />
         <span>{{t 'audit_log'}}</span>
       </LinkTo>
     </li>

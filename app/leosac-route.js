@@ -42,6 +42,7 @@ export default class LeosacRoute extends Route {
     // A translation key for the title of the page.
     _title = '';
     _requireAuth = false;
+
     @action
     onLogout() {
         "use strict";
@@ -84,13 +85,12 @@ export default class LeosacRoute extends Route {
     
     beforeModel() {
         "use strict";
-        this.set('intl.locale', this.get('globalInfo').getLocale());
+        this.intl.setLocale(this.globalInfo.getLocale());
 
-        const title_key = this.get('_title');
-        if (title_key)
+        if (this._title)
         {
-            const title = this.intl.t(title_key);
-            this.get('globalInfo').set('current_view_title', title);
+            const title = this.intl.t(this._title);
+            this.globalInfo.set('current_view_title', title);
             document.title = ENV.APP.appname + ' - ' + title;
         }
 
@@ -101,7 +101,7 @@ export default class LeosacRoute extends Route {
     }
 
     afterModel() {
-        this.set('intl.locale', this.get('globalInfo').getLocale());
+        this.intl.setLocale(this.globalInfo.getLocale());
     }
 }
 
@@ -109,7 +109,7 @@ function redirectIfNotAuth(route)
 {
     "use strict";
     let self = route;
-    let promise_or_ret = self.get('authSrv').isLoggedIn();
+    let promise_or_ret = self.authSrv.isLoggedIn();
 
     if (promise_or_ret === false)
     {
