@@ -12,19 +12,17 @@ export default class GroupUserMembershipTable extends Component {
     @service
     router;
 
-    group = false;
     canRemoveUserFromGroup = false;
 
     constructor(owner, args) {
         super(owner, args);
-        const self = this;
 
-        const currentUser = this.authSrv.get('current_user');
+        const currentUser = this.authSrv.current_user;
         currentUser.get('memberships').then((memberships) =>
         {
             memberships.forEach((m) =>
             {
-                if (m.get('group').get('id') === self.get('group').get('id'))
+                if (m.get('group').get('id') === this.get('group').get('id'))
                 {
                     if (m.get('rank') === 'administrator') {
                         this.canRemoveUserFromGroup = true;
@@ -32,7 +30,7 @@ export default class GroupUserMembershipTable extends Component {
                 }
             });
         });
-        if (this.authSrv.get('isAdministrator'))
+        if (this.authSrv.isAdministrator)
         {
             this.canRemoveUserFromGroup = true;
         }

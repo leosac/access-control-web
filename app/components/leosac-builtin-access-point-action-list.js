@@ -2,7 +2,7 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { DeviceClass } from "web/leosac-constant";
-import { v4 } from "ember-uuid";
+import { v4 } from "uuid";
 
 /**
  * This component take an access-point(ap) as a parameter.
@@ -22,12 +22,12 @@ export default class LeosacBuiltinAccessPointActionList extends Component {
 
     // this will sort the SuccessActions by index. It will be displayed given this Computed property
     get sortedSuccessAction() {
-        return this.get('ap.actionOnSuccess').sortBy('index');
+        return this.args.ap.get('actionOnSuccess').sortBy('index');
     }
 
     // this will sort the ErrorActions by index. It will be displayed given this Computed property
     get sortedErrorAction() {
-        return this.get('ap.actionOnError').sortBy('index');
+        return this.args.ap.get('actionOnError').sortBy('index');
     }
 
     // This will help us setting the index, this only purpose for now is the sorting process,
@@ -36,14 +36,14 @@ export default class LeosacBuiltinAccessPointActionList extends Component {
         super(owner, args);
         let i = 0;
 
-        this.get('ap.actionOnSuccess').forEach(() => {
+        this.args.ap.get('actionOnSuccess').forEach(() => {
             i++;
         });
-        this.set('indexSuccessAction', i);
-        this.get('ap.actionOnError').forEach(() => {
+        this.indexSuccessAction = i;
+        this.args.ap.get('actionOnError').forEach(() => {
             i++;
         });
-        this.set('indexErrorAction', i);
+        this.indexErrorAction = i;
         // This is an array of device that can be associated to the access-points action
         this.arrayOfValidDevice = [
             DeviceClass.gpio,
@@ -57,7 +57,7 @@ export default class LeosacBuiltinAccessPointActionList extends Component {
      * This computed property will return the available command given the type of the previously selectedDevice
      */
     get availableCommand() {
-        let deviceType = this.get('selectedDevice.type');
+        let deviceType = this.selectedDevice.get('type');
 
         if (!deviceType) {
             return;
@@ -87,25 +87,23 @@ export default class LeosacBuiltinAccessPointActionList extends Component {
      */
     @action
     addSuccessAction() {
-        let selectedDevice = this.get('selectedDevice');
-        let selectedCommand = this.get('selectedCommand');
-        if (!selectedDevice || !selectedCommand) {
+        if (!this.selectedDevice || !this.selectedCommand) {
             return;
         }
 
         let newAction = this.store.createRecord('leosac-builtin-access-point-action', {
             id: v4(),
             command: selectedCommand,
-            index: this.get('indexSuccessAction')
+            index: this.indexSuccessAction
         });
 
-        this.store.find(selectedDevice.type, selectedDevice.id).then((device) => {
+        this.store.find(this.selectedDevice.type, this.selectedDevice.id).then((device) => {
             newAction.set('target', device);
-            this.get('ap').get('actionOnSuccess').addObject(newAction);
+            this.args.ap.get('actionOnSuccess').addObject(newAction);
         });
-        this.set('indexSuccessAction', this.get('indexSuccessAction') + 1);
-        this.set('selectedDevice', null);
-        this.set('selectedCommand', null);
+        this.indexSuccessAction++;
+        this.selectedDevice = null;
+        this.selectedCommand = null;
     }
 
     /**
@@ -113,25 +111,23 @@ export default class LeosacBuiltinAccessPointActionList extends Component {
      */
     @action
     addErrorAction() {
-        let selectedDevice = this.get('selectedDevice');
-        let selectedCommand = this.get('selectedCommand');
-        if (!selectedDevice || !selectedCommand) {
+        if (!this.selectedDevice || !this.selectedCommand) {
             return;
         }
 
         let newAction = this.store.createRecord('leosac-builtin-access-point-action', {
             id: v4(),
             command: selectedCommand,
-            index: this.get('indexErrorAction')
+            index: this.indexErrorAction
         });
 
         this.store.find(selectedDevice.type, selectedDevice.id).then((device) => {
             newAction.set('target', device);
-            this.get('ap').get('actionOnError').addObject(newAction);
+            this.args.ap.get('actionOnError').addObject(newAction);
         });
-        this.set('indexErrorAction', this.get('indexErrorAction') + 1);
-        this.set('selectedDevice', null);
-        this.set('selectedCommand', null);
+        this.indexErrorAction++;
+        this.selectedDevice = null;
+        this.selectedCommand = null;
     }
 
     /**

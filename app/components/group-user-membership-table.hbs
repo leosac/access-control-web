@@ -13,7 +13,7 @@
     </tr>
     </thead>
     <tbody>
-    {{#each this.group.memberships as |membership|}}
+    {{#each this.args.group.memberships as |membership|}}
         <tr>
             <td role="button" {{on 'click' (fn this.gotoItem membership.user.id)}}>{{membership.user.id}}</td>
             <td role="button" {{on 'click' (fn this.gotoItem membership.user.id)}}>{{membership.user.firstname}}</td>

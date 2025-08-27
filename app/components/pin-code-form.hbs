@@ -1,4 +1,4 @@
-<BsForm @formLayout="vertical" @model={{this.pin}} @onSubmit={{this.action}} as |form|>
+<BsForm @formLayout="vertical" @model={{this.args.pin}} @onSubmit={{this.args.action}} as |form|>
   <div class="col-md-6 space-top">
     <fieldset>
       <legend>{{ t 'configuration'}}</legend>
@@ -9,15 +9,15 @@
 
       <UserPicker @form={{form}} @searchCredential={{this.searchUser}} @label={{t "owner"}} @selected={{this.selectedUser}} @onChange={{this.setOwner}} />
 
-      <ValidityControl @form={{form}} @enabledProperty="validityEnabled" @startDate={{mut this.pin.validityStart}} @endDate={{mut this.pin.validityEnd}} />
+      <ValidityControl @form={{form}} @enabledProperty="validityEnabled" @startDate={{mut this.args.pin.validityStart}} @endDate={{mut this.args.pin.validityEnd}} />
 
       <div class="row">
         <div class="col-md-4">
-          <BsButton @defaultText={{t 'submit'}} @type="success" @buttonType="submit" />
+          <form.submitButton @type="success">{{t 'submit'}}</form.submitButton>
         </div>
-        {{#if this.delete}}
+        {{#if this.args.delete}}
           <div class="pull-right form-button-delete">
-            <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "credentials.delete_confirm"}} @onConfirm={{this.delete}} />
+            <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "credentials.delete_confirm"}} @onConfirm={{this.args.delete}} />
           </div>
         {{/if}}
       </div>

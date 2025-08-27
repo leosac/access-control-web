@@ -10,7 +10,7 @@ export default class extends Controller {
 
     @action
     editGroup() {
-        this.get('model').save().then(() =>
+        this.model.save().then(() =>
             {
                 this.flashMessages.success('Group successfully edited.');
             },
@@ -22,11 +22,10 @@ export default class extends Controller {
 
     @action
     deleteGroup() {
-        const self = this;
-        this.get('model').destroyRecord({}).then(() =>
+        this.model.destroyRecord({}).then(() =>
         {
-            self.flashMessages.success('Group has been deleted.');
-            self.router.transitionTo('groups.list');
+            this.flashMessages.success('Group has been deleted.');
+            this.router.transitionTo('groups.list');
         });
     }
 }

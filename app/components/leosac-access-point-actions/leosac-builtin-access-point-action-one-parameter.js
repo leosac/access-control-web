@@ -11,10 +11,10 @@ export default class LeosacBuiltinAccessPointActionOneParameter extends Componen
     // This will set the duration to 3000 if there is no duration
     constructor(owner, args) {
         super(owner, args);
-        let duration = this.get('customAction.params');
+        let duration = this.args.customAction.get('params');
 
         if (!duration) {
-            this.set('customAction.params', 3000);
+            this.args.customAction.set('params', 3000);
         }
     }
 }

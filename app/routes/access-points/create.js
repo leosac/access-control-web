@@ -1,6 +1,6 @@
 import { service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
-import { v4 } from 'ember-uuid';
+//import { v4 } from 'uuid';
 
 /**
  * Create a new door.

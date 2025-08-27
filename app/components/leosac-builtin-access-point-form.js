@@ -26,7 +26,6 @@ export default class LeosacBuiltinAccessPointForm extends Component {
     @service
     search;
 
-    ap = null;
     newDevice = null;
 
     constructor(owner, args) {
@@ -34,35 +33,33 @@ export default class LeosacBuiltinAccessPointForm extends Component {
         this.arrayOfDeviceClassWiegandReader = this.arrayOfDeviceClassWiegandReader || [DeviceClass.reader];
         this.selectedSchedules = this.selectedSchedules || [];
 
-        this.set('selectedSchedules', []);
-        this.get('ap').get('alwaysOpenSchedules').forEach((openSchedules) => {
-            this.get('selectedSchedules').addObject(openSchedules);
+        this.selectedSchedules = [];
+        this.args.ap.get('alwaysOpenSchedules').forEach((openSchedules) => {
+            this.selectedSchedules.addObject(openSchedules);
         });
-        this.get('ap').get('alwaysCloseSchedules').forEach((closeSchedules) => {
-            this.get('selectedSchedules').addObject(closeSchedules);
+        this.args.ap.get('alwaysCloseSchedules').forEach((closeSchedules) => {
+            this.selectedSchedules.addObject(closeSchedules);
         });
     }
 
     // This will add an authSource(device) to the access-point
     @action
     addAuthSources() {
-        let device = this.get('newDevice');
-
             // if there is no device, this will do nothing
-        if (!device) {
+        if (!this.newDevice) {
             return;
         }
 
-        this.store.find(device.type, device.id).then((device) => {
-            this.get('ap').get('authSourcesDevice').addObject(device);
-            this.set('newDevice', null);
+        this.store.find(this.newDevice.type, this.newDevice.id).then((device) => {
+            this.args.ap.get('authSourcesDevice').addObject(device);
+            this.newDevice = null;
         });
     }
 
     //This will remove a device from the authSources
     @action
     removeAuthSources(device) {
-        this.get('ap').get('authSourcesDevice').removeObject(device);
+        this.args.ap.get('authSourcesDevice').removeObject(device);
     }
 
     /**
@@ -79,10 +76,9 @@ export default class LeosacBuiltinAccessPointForm extends Component {
         return this.search.findScheduleByName(partialName).then((allSchedules) => {
             // allSchedules: A list of array with this parameter: ['id', 'name']
             let result = [];
-            let selectedSchedules = this.get('selectedSchedules');
             let arrayOfSelectedSchedulesId = [];
 
-            selectedSchedules.forEach((schedule) => {
+            this.selectedSchedules.forEach((schedule) => {
                 arrayOfSelectedSchedulesId.push(schedule.id);
             });
 
@@ -100,18 +96,15 @@ export default class LeosacBuiltinAccessPointForm extends Component {
      */
     @action
     addCloseSchedule() {
-        const self = this;
-        let schedule = this.get('newSchedule');
-
         // if there is no schedule, this will do nothing
-        if (!schedule) {
+        if (!this.newSchedule) {
             return;
         }
 
-        this.get('selectedSchedules').addObject(schedule);
-        this.store.find('schedule', schedule.id).then((newSchedule) => {
-            self.get('ap').get('alwaysCloseSchedules').addObject(newSchedule);
-            self.set('newSchedule', null);
+        this.selectedSchedules.addObject(this.newSchedule);
+        this.store.find('schedule', this.newSchedule.id).then((newSchedule) => {
+            this.args.ap.get('alwaysCloseSchedules').addObject(newSchedule);
+            this.newSchedule = null;
         });
     }
 
@@ -120,17 +113,14 @@ export default class LeosacBuiltinAccessPointForm extends Component {
      */
     @action
     addOpenSchedule() {
-        const self = this;
-        let schedule = this.get('newSchedule');
-
-        if (!schedule) {
+        if (!this.newSchedule) {
             return;
         }
 
-        this.get('selectedSchedules').addObject(schedule);
+        this.selectedSchedules.addObject(newSchedule);
         this.store.find('schedule', schedule.id).then((newSchedule) => {
-            self.get('ap').get('alwaysOpenSchedules').addObject(newSchedule);
-            self.set('newSchedule', null);
+            thps.args.ap.get('alwaysOpenSchedules').addObject(newSchedule);
+            this.newSchedule = null;
         });
     }
 
@@ -139,8 +129,8 @@ export default class LeosacBuiltinAccessPointForm extends Component {
      */
     @action
     removeCloseSchedule(schedule) {
-        this.set('selectedSchedules', removeSchedule(this.get('selectedSchedules'), schedule));
-        this.get('ap').get('alwaysCloseSchedules').removeObject(schedule);
+        this.selectedSchedules = removeSchedule(this.selectedSchedules, schedule);
+        this.args.ap.get('alwaysCloseSchedules').removeObject(schedule);
     }
 
     /**
@@ -148,7 +138,7 @@ export default class LeosacBuiltinAccessPointForm extends Component {
      */
     @action
     removeOpenSchedule(schedule) {
-        this.set('selectedSchedules', removeSchedule(this.get('selectedSchedules'), schedule));
-        this.get('ap').get('alwaysOpenSchedules').removeObject(schedule);
+        this.selectedSchedules = removeSchedule(this.get('selectedSchedules'), schedule);
+        this.args.ap.get('alwaysOpenSchedules').removeObject(schedule);
     }
 }

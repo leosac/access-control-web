@@ -11,7 +11,7 @@ export default class extends Controller {
     @action
     editAP()
     {
-        this.get('model').save().then(() =>
+        this.model.save().then(() =>
             {
                 this.flashMessages.success('Access Point successfully edited.');
                 this.router.transitionTo('access-point', this.get('model').get('id'));
@@ -25,11 +25,10 @@ export default class extends Controller {
     @action
     deleteAP()
     {
-        const self = this;
-        this.get('model').destroyRecord({}).then(() =>
+        this.model.destroyRecord({}).then(() =>
         {
-            self.flashMessages.success('Access Point has been deleted.');
-            self.router.transitionTo('access-points.list');
+            this.flashMessages.success('Access Point has been deleted.');
+            this.router.transitionTo('access-points.list');
         });
     }
 }

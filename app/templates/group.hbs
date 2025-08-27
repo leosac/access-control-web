@@ -9,7 +9,7 @@
 
           <div class="d-flex justify-content-between">
             <div>
-              <BsButton @defaultText={{t 'submit'}} @type="success" @buttonType="submit" @size='md' />
+              <form.submitButton @type="success">{{t 'submit'}}</form.submitButton>
             </div>
             <div class="form-button-delete">
               <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "delete_group_confirmation"}} @onConfirm={{this.deleteGroup}} />

@@ -37,9 +37,9 @@ export default class CredentialSchedules extends Component {
         {
             sched.save().then(() =>
             {
-                self.get('credential').reload().then(() =>
+                this.args.credential.reload().then(() =>
                 {
-                    self.decrSyncing();
+                    this.decrSyncing();
                 });
             });
         });

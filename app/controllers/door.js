@@ -10,7 +10,7 @@ export default class extends Controller {
 
     @action
     editDoor() {
-        this.get('model').save().then(() =>
+        this.model.save().then(() =>
             {
                 this.flashMessages.success('Door successfully edited.');
                 this.router.transitionTo('door', this.get('model').get('id'));
@@ -24,7 +24,7 @@ export default class extends Controller {
     @action
     deleteDoor(){
         const self = this;
-        this.get('model').destroyRecord({}).then(() =>
+        this.model.destroyRecord({}).then(() =>
         {
             self.flashMessages.success('Door has been deleted.');
             self.router.transitionTo('doors.list');

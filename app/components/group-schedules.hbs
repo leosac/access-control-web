@@ -2,7 +2,7 @@
   {{t 'schedule.group_schedule'}}
 </div>
 
-<BsButton @action='refresh' @defaultText={{t 'refresh'}} />
+<BsButton @action={{this.refresh}} @defaultText={{t 'refresh'}} />
 
 <div class="user-schedule-info space-top">
   {{#each this.args.group.schedules as |schedule|}}

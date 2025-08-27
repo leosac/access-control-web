@@ -15,7 +15,6 @@ export default class ZoneForm extends Component {
     newDoor = null;
     newChildren = null;
     selectedAlias = false;
-    zone = false;
 
     constructor(owner, args) {
         super(owner, args);
@@ -26,8 +25,8 @@ export default class ZoneForm extends Component {
 
     @action
     addDoor() {
-        this.store.findRecord('door', this.get('newDoor.id')).then((door) => {
-            this.get('zone').get('doors').addObject(door);
+        this.store.findRecord('door', this.newDoor.get('id')).then((door) => {
+            this.zone.get('doors').addObject(door);
         });
     }
 
@@ -38,18 +37,18 @@ export default class ZoneForm extends Component {
 
     @action
     removeDoor(door) {
-        this.get('zone').get('doors').removeObject(door);
+        this.zone.get('doors').removeObject(door);
     }
 
     @action
     addChildren() {
         this.store.findRecord('zone', this.get('newChildren.id')).then((children) => {
-            this.get('zone').get('children').addObject(children);
+            this.zone.get('children').addObject(children);
         });
     }
 
     @action
     removeChildren(children) {
-        this.get('zone').get('children').removeObject(children);
+        this.zone.get('children').removeObject(children);
     }
 }

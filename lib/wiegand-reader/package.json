@@ -8,6 +8,7 @@
 	  "@ember-intl/cp-validations": "*",
     "@ember-data/legacy-compat": "*",
     "@ember/string": "*",
+    "@glimmer/component": "*",
     "ember-auto-import": "*",
     "ember-cli-babel": "*",
     "ember-cli-htmlbars": "*",

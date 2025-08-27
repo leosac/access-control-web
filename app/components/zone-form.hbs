@@ -1,5 +1,5 @@
 <div class="col-md-6">
-  <BsForm @formLayout="vertical" @model={{this.zone}} @onSubmit={{this.action}} as |form|>
+  <BsForm @formLayout="vertical" @model={{this.args.zone}} @onSubmit={{this.args.action}} as |form|>
     <fieldset>
       <legend>{{t 'configuration'}}</legend>
 
@@ -8,10 +8,10 @@
       <form.element @controlType="textarea" @label={{t "notes"}} @placeholder={{t "notes_placeholder"}} @property="description" />
 
       <form.element @property="type" @label={{t "type"}}>
-        <PowerSelect @selected={{this.zone.type}}
+        <PowerSelect @selected={{this.args.zone.type}}
                      @searchEnabled="false"
                      @options={{this.allType}}
-                     @onChange={{fn (mut this.zone.type)}}
+                     @onChange={{fn (mut this.args.zone.type)}}
                      @placeholder={{t 'type_zone'}} as |type|>
           {{t type}}
         </PowerSelect>
@@ -27,7 +27,7 @@
           <th class="text-center">{{t 'zone.remove_from_zone'}}</th>
           </thead>
           <tbody>
-          {{#each this.zone.doors as |door|}}
+          {{#each this.args.zone.doors as |door|}}
             <tr>
               <td>
                 {{door.id}}
@@ -74,7 +74,7 @@
           <th class="text-center">{{t 'zone.remove_from_zone'}}</th>
           </thead>
           <tbody>
-          {{#each this.zone.children as |children|}}
+          {{#each this.args.zone.children as |children|}}
             <tr>
               <td>
                 {{children.id}}
@@ -98,7 +98,7 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <Autocomplete::ZoneSearch @label={{t "zone.child"}} @form={{form}} @ignoreZone={{this.zone}} @selected={{this.newChildren}} />
+          <Autocomplete::ZoneSearch @label={{t "zone.child"}} @form={{form}} @ignoreZone={{this.args.zone}} @selected={{this.newChildren}} />
         </div>
       </div>
       <div class="row">
@@ -109,11 +109,11 @@
       <hr>
       <div class="row">
         <div class="col-md-6">
-          <BsButton @defaultText={{t 'submit'}} @type="success" @size="md" @buttonType="submit" />
+          <form.submitButton @type="success">{{t 'submit'}}</form.submitButton>
         </div>
-        {{#if this.delete}}
+        {{#if this.args.delete}}
           <div class="pull-right form-button-delete">
-            <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "zone.delete_confirm"}} @onConfirm={{this.delete}} />
+            <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "zone.delete_confirm"}} @onConfirm={{this.args.delete}} />
           </div>
         {{/if}}
       </div>

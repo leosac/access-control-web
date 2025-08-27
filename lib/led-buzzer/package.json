@@ -7,14 +7,15 @@
   "dependencies": {
 	  "@ember-intl/cp-validations": "*",
     "@ember-data/legacy-compat": "*",
+    "@ember-data/model": "*",
     "@ember/string": "*",
     "@embroider/macros": "*",
+    "@glimmer/component": "*",
     "ember-auto-import": "*",
     "ember-cli-babel": "*",
     "ember-cli-htmlbars": "*",
     "ember-cli-flash": "*",
     "ember-cp-validations": "*",
-    "ember-data": "*",
     "ember-intl": "*",
     "ember-power-select": "*",
     "ember-truth-helpers": "*"

@@ -24,8 +24,6 @@
             </form.element>
 
           <ValidityControl @form={{form}} @disabled={{this.isRankEditLocked}} @enabledProperty="validityEnabled" @startDate={{mut this.model.user.validityStart}} @endDate={{mut this.model.user.validityEnd}} />
-
-
             <div class="row">
               <div class="col-md-6">
                 <BsButton @disabled={{this.isProfileLocked}} @defaultText={{t 'submit'}} @type="success" @onClick={{this.editProfile}} @buttonType="submit" />

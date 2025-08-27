@@ -10,7 +10,7 @@ export default class extends Controller {
 
     @action
     createDoor() {
-        this.get('model').save().then((d) =>
+        this.model.save().then((d) =>
             {
                 this.flashMessages.success('Door created.');
                 this.router.transitionTo('door', d.get('id'));

@@ -42,7 +42,7 @@ module.exports = async function (defaults)
       // and should be updated when that changes
       compatWith: '4.12',
       deprecations: {
-        // ... list individual deprecations that have been resolved here
+        DEPRECATE_TRACKING_PACKAGE: false,
       }
     });
 

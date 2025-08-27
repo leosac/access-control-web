@@ -12,7 +12,7 @@ export default class extends Controller {
 
     @action
     editSchedule() {
-        this.get('model').save().then(() =>
+        this.model.save().then(() =>
             {
                 this.flashMessages.success('Schedule successfully edited.');
             },
@@ -26,17 +26,17 @@ export default class extends Controller {
     addMapping() {
         const newMapping = this.store.createRecord('schedule-mapping');
         newMapping.set('alias', 'Unnamed mapping');
-        this.get('model').get('mapping').addObject(newMapping);
+        this.model.get('mapping').addObject(newMapping);
     }
 
     @action
     removeMapping(mapping) {
-        this.get('model').get('mapping').removeObject(mapping);
+        this.model.get('mapping').removeObject(mapping);
     }
 
     @action
     deleteSchedule() {
-        this.get('model').destroyRecord({}).then(() =>
+        this.model.destroyRecord({}).then(() =>
         {
             this.flashMessages.success('Schedule has been deleted.');
             this.router.transitionTo('schedules.list');

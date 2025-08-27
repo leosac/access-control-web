@@ -1,6 +1,7 @@
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Controller from '@ember/controller';
+import { v4 } from "uuid";
 
 export default class extends Controller {
     @service

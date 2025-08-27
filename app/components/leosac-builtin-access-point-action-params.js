@@ -12,7 +12,7 @@ export default class LeosacBuiltinAccessPointActionParams extends Component {
     customAction = null;
 
     get getComponentName() {
-        let command = this.get('customAction.command');
+        let command = this.args.customAction.get('command');
 
 
         // The following statement should never append

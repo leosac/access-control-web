@@ -20,7 +20,6 @@ export default class GroupAddOneUser extends Component {
 
     selectedUser = '';
     selectedRank = 'member';
-    group = false;
 
     constructor(owner, args) {
         super(owner, args);
@@ -29,7 +28,7 @@ export default class GroupAddOneUser extends Component {
 
     @action
     addToGroup() {
-        this.store.findRecord('user', this.get('selectedUser.id')).then((user) => {
+        this.store.findRecord('user', this.selectedUser.get('id')).then((user) => {
             if (!user)
             {
                 this.flashMessages.danger(this.intl.t('users.error.find_error'));
@@ -37,8 +36,8 @@ export default class GroupAddOneUser extends Component {
             }
 
             const membership = this.store.createRecord('user-group-membership');
-            membership.set('group', this.get('group'));
-            membership.set('rank', this.get('selectedRank'));
+            membership.set('group', this.args.group);
+            membership.set('rank', this.selectedRank);
             membership.set('user', user);
 
             membership.save().then(() =>
@@ -60,6 +59,6 @@ export default class GroupAddOneUser extends Component {
 
     @action
     setUser(user) {
-        this.set('selectedUser', user);
+        this.selectedUser = user;
     }
 }

@@ -1,4 +1,4 @@
-<BsForm @formLayout="vertical" @model={{this.ap}} @onSubmit={{this.action}} as | form|>
+<BsForm @formLayout="vertical" @model={{this.args.ap}} @onSubmit={{this.args.action}} as | form|>
   <div class="col-md-6">
     <fieldset>
       <legend>{{t 'configuration'}}</legend>
@@ -6,11 +6,11 @@
       <form.element @controlType="text" @label={{t "alias"}} @placeholder={{t "access_point_placeholder"}} @property="alias" />
       <form.element @controlType="textarea" @label={{t "notes"}} @placeholder={{t "notes_placeholder"}} @property="description" />
 
-      {{#if this.isCreating}}
+      {{#if this.args.isCreating}}
         <form.element @label={{t "controller_module"}}>
-          <PowerSelect @selected={{this.ap.controllerModule}}
+          <PowerSelect @selected={{this.args.ap.controllerModule}}
                        @options={{this.availableAccessPointModules}}
-                       @onChange={{fn (mut this.ap.controllerModule)}}
+                       @onChange={{fn (mut this.args.ap.controllerModule)}}
                        @allowClear="true" as |module|>
             {{module}}
           </PowerSelect>
@@ -24,9 +24,9 @@
         <div class="col-md-6">
           <form.submitButton @type="success">{{t 'submit'}}</form.submitButton>
         </div>
-        {{#if this.delete}}
+        {{#if this.args.delete}}
           <div class="pull-right form-button-delete">
-            <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "accesspoint.delete_confirm"}} @onConfirm={{this.delete}} />
+            <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "accesspoint.delete_confirm"}} @onConfirm={{this.args.delete}} />
           </div>
         {{/if}}
       </div>

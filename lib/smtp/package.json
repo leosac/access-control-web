@@ -6,6 +6,7 @@
   ],
   "dependencies": {
     "@ember/string": "*",
+    "@glimmer/component": "*",
     "ember-auto-import": "*",
     "ember-cli-babel": "*",
     "ember-cli-htmlbars": "*",

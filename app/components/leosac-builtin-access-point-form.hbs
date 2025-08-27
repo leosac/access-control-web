@@ -1,4 +1,4 @@
-<BsForm @formLayout="vertical" @model={{this.ap}} onSubmit={{this.action}} as | form|>
+<BsForm @formLayout="vertical" @model={{this.args.ap}} onSubmit={{this.args.action}} as | form|>
   <div class="col-md-6">
     <fieldset>
       <legend>{{t 'configuration'}}</legend>
@@ -18,7 +18,7 @@
               <th class="text-center">{{t 'remove'}}</th>
               </thead>
               <tbody>
-              {{#each this.ap.authSourcesDevice as |device|}}
+              {{#each this.args.ap.authSourcesDevice as |device|}}
                 <tr>
                   <td>
                     {{device.id}}
@@ -67,7 +67,7 @@
               <th class="text-center">{{t 'remove'}}</th>
               </thead>
               <tbody>
-              {{#each this.ap.alwaysCloseSchedules as |schedule|}}
+              {{#each this.args.ap.alwaysCloseSchedules as |schedule|}}
                 <tr>
                   <td>
                     {{schedule.id}}
@@ -144,11 +144,11 @@
 
       <div class="row space-top">
         <div class="col-md-12">
-          <form.submitButton @type="success" @onClick={{this.action}}>{{t 'submit'}}</form.submitButton>
+          <form.submitButton @type="success" @onClick={{this.args.action}}>{{t 'submit'}}</form.submitButton>
         </div>
-        {{#if this.delete}}
+        {{#if this.args.delete}}
           <div class="pull-right form-button-delete">
-            <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "door.delete_confirm"}} @onConfirm={{this.delete}} />
+            <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "door.delete_confirm"}} @onConfirm={{this.args.delete}} />
           </div>
         {{/if}}
       </div>

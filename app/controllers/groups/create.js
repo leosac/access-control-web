@@ -10,7 +10,7 @@ export default class extends Controller {
 
     @action
     createGroup() {
-        this.get('model').save().then((g) =>
+        this.model.save().then((g) =>
             {
                 this.flashMessages.success('Group created.');
                 this.router.transitionTo('group', g.get('id'));

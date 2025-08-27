@@ -5,14 +5,15 @@
   ],
   "dependencies": {
 	  "@ember-intl/cp-validations": "7.0.2",
-    "@ember-data/legacy-compat": "5.3.13",
+    "@ember-data/legacy-compat": "5.7.0",
+    "@ember-data/model": "5.7.0",
     "@ember/string": "4.0.1",
+    "@glimmer/component": "^2.0.0",
     "ember-auto-import": "2.10.0",
     "ember-cli-babel": "8.2.0",
     "ember-cli-htmlbars": "6.3.0",
     "ember-cli-flash": "6.0.0",
     "ember-cp-validations": "6.0.1",
-    "ember-data": "5.3.13",
     "ember-intl": "7.3.1",
     "ember-truth-helpers": "4.0.3"
   }
