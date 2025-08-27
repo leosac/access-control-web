@@ -1,6 +1,6 @@
-<this.form.element @label={{this.label}}>
+<this.arg.form.element @label={{this.label}}>
   <PowerSelect @searchEnabled={{true}} @search={{this.searchAP}} @selected={{this.selected}} @placeholder={{t "autocomplete.search_access_point"}} @onChange={{this.changed}} as |accessPointInfo|>
     {{accessPointInfo.alias}}
   </PowerSelect>
   <button type="button" {{on 'click' this.clear}}>{{t 'clear_selection'}}</button>
-</this.form.element>
+</this.arg.form.element>

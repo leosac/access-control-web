@@ -48,7 +48,7 @@
 
       <form.element @label={{t "enable"}}>
         <div class="pull-right" id="Tooltip-enable">
-          <DeviceToggleEnabled @device={{this.wiegand-reader}} @saveIt={{false}} />
+          <DeviceToggleEnabled @device={{this.wiegand-reader}} @saveIt={{false}} @form={{form}} />
           <BsTooltip @placement="right" @triggerElement="#Tooltip-enable">{{t 'information.enable'}}</BsTooltip>
         </div>
       </form.element>

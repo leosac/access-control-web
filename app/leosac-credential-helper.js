@@ -42,8 +42,8 @@ function findAllCredentials(store)
         pinCode: store.findAll('pin-code', {reload: true}),
     }).then(function (hash)
     {
-        tmpArray = tmpArray.concat(hash.rfidCard.toArray(),
-            hash.pinCode.toArray());
+        tmpArray = tmpArray.concat(hash.rfidCard.slice(),
+            hash.pinCode.slice());
         promise.resolve(tmpArray);
     });
 

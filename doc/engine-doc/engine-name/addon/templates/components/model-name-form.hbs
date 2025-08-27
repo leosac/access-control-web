@@ -24,7 +24,7 @@
 
       <form.element @property="enabled" @label={{t 'enable'}}>
         <div class="pull-right" id="Tooltip-enable">
-          <DeviceToggleEnabled device="piface-digital-gpio" saveIt="false" />
+          <DeviceToggleEnabled device="piface-digital-gpio" saveIt="false" @form={{form}} />
           <BsTooltip @placement="right" @triggerElement="#Tooltip-enable" @triggerEvent='hover'>
             {{t 'information.translation.key.enabled'}}
           </BsTooltip>

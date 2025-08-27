@@ -10,19 +10,19 @@ export default class ScheduleForm extends Component {
     @action
     removeTimeframe(timeframeToRemove) {
         const newArray = [];
-        this.get('schedule').get('timeframes').forEach((tf) =>
+        this.args.schedule.get('timeframes').forEach((tf) =>
         {
             if (tf !== timeframeToRemove)
             {
                 newArray.push(tf);
             }
         });
-        this.set('schedule.timeframes', newArray);
+        this.args.schedule.set('timeframes', newArray);
     }
 
     @action
     addTimeframe() {
-        const tfs = this.get('schedule').get('timeframes');
+        const tfs = this.args.schedule.get('timeframes');
         let newArray = [];
         if (Array.isArray(tfs))
         {
@@ -30,6 +30,6 @@ export default class ScheduleForm extends Component {
         }
         const newTimeframe = {id: newArray.length};
         newArray.push(newTimeframe);
-        this.set('schedule.timeframes', newArray);
+        this.args.schedule.set('timeframes', newArray);
     }
 }

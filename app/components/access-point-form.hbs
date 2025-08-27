@@ -22,7 +22,7 @@
       {{yield}}
       <div class="row">
         <div class="col-md-6">
-          <BsButton @defaultText={{t 'submit'}} @type="success" @buttonType="submit" />
+          <form.submitButton @type="success">{{t 'submit'}}</form.submitButton>
         </div>
         {{#if this.delete}}
           <div class="pull-right form-button-delete">

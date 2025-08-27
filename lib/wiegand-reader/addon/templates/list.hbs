@@ -32,7 +32,9 @@
         </td>
         <td>
           <div class="pull-left">
-            <DeviceToggleEnabled @device={{wiegand}} @saveIt={{true}} />
+            <BsForm as |form|>
+              <DeviceToggleEnabled @device={{wiegand}} @saveIt={{true}} @form={{form}} />
+            </BsForm>
           </div>
         </td>
         <td>

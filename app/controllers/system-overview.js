@@ -20,11 +20,13 @@ export default class extends Controller {
             });
         p.then((msgs) =>
         {
-            p.forEach(function(msg) {
+            msgs.forEach((msg) => {
                 msg.data.message = msg.data.message.substring(43, 200);
             });
-            this.totalLogs = msgs.get('meta').total;
-            this.lastLogPage = msgs.get('meta').last;
+            if (msgs.meta) {
+                this.totalLogs = msgs.meta.total;
+                this.lastLogPage = msgs.meta.last;
+            }
         });
         return p;
     }

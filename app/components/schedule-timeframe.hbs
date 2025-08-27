@@ -1,31 +1,31 @@
 {{#if this.timeframe}}
   <div class="row">
     <div class="col-md-3">
-      <this.form.element @controlType="checkbox" @label={{t "schedule.monday"}} @value={{this.timeframe.enabledOnMonday}} />
+      <this.arg.form.element @controlType="checkbox" @label={{t "schedule.monday"}} @value={{this.timeframe.enabledOnMonday}} />
     </div>
 
     <div class="col-md-3">
-      <this.form.element @controlType="checkbox" @label={{t "schedule.tuesday"}} @value={{this.timeframe.enabledOnTuesday}} />
+      <this.arg.form.element @controlType="checkbox" @label={{t "schedule.tuesday"}} @value={{this.timeframe.enabledOnTuesday}} />
     </div>
 
     <div class="col-md-3">
-      <this.form.element @controlType="checkbox" @label={{t "schedule.wednesday"}} @value={{this.timeframe.enabledOnWednesday}} />
+      <this.arg.form.element @controlType="checkbox" @label={{t "schedule.wednesday"}} @value={{this.timeframe.enabledOnWednesday}} />
     </div>
     <div class="col-md-3">
-      <this.form.element @controlType="checkbox" @label={{t "schedule.thursday"}} @value={{this.timeframe.enabledOnThursday}} />
+      <this.arg.form.element @controlType="checkbox" @label={{t "schedule.thursday"}} @value={{this.timeframe.enabledOnThursday}} />
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-3">
-      <this.form.element @controlType="checkbox" @label={{t "schedule.friday"}} @value={{this.timeframe.enabledOnFriday}} />
+      <this.arg.form.element @controlType="checkbox" @label={{t "schedule.friday"}} @value={{this.timeframe.enabledOnFriday}} />
     </div>
     <div class="col-md-3">
-      <this.form.element @controlType="checkbox" @label={{t "schedule.saturday"}} @value={{this.timeframe.enabledOnSaturday}} />
+      <this.arg.form.element @controlType="checkbox" @label={{t "schedule.saturday"}} @value={{this.timeframe.enabledOnSaturday}} />
     </div>
 
     <div class="col-md-3">
-      <this.form.element @controlType="checkbox" @label={{t "schedule.sunday"}} @value={{this.timeframe.enabledOnSunday}} />
+      <this.arg.form.element @controlType="checkbox" @label={{t "schedule.sunday"}} @value={{this.timeframe.enabledOnSunday}} />
     </div>
   </div>
   <div class="row">
@@ -35,11 +35,11 @@
   </div>
   <div class="row">
     <div class="col-md-5 datetime-picker-margin">
-      <this.form.element @controlType="text" @label={{t "schedule.start_time"}} @placeholder="H:mm" @disabled={{this.disabled}} @value={{this.timeframe.startTime}} />
+      <this.arg.form.element @controlType="text" @label={{t "schedule.start_time"}} @placeholder="H:mm" @disabled={{this.disabled}} @value={{this.timeframe.startTime}} />
     </div>
 
     <div class="col-md-5 datetime-picker-margin">
-      <this.form.element @controlType="text" @label={{t "schedule.end_time"}} @placeholder="H:mm" @disabled={{this.disabled}} @value={{this.timeframe.endTime}} />
+      <this.arg.form.element @controlType="text" @label={{t "schedule.end_time"}} @placeholder="H:mm" @disabled={{this.disabled}} @value={{this.timeframe.endTime}} />
     </div>
   </div>
   <div class="row">

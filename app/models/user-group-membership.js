@@ -9,8 +9,8 @@ export default class UserGroupMembershipModel extends Model {
     rank;
     @attr('date-from-unix-timestamp')
     timestamp;
-    @belongsTo('group', { async: true, inverse: null })
+    @belongsTo('group', { async: true, inverse: 'memberships' })
     group;
-    @belongsTo('user', { async: true, inverse: null })
+    @belongsTo('user', { async: true, inverse: 'memberships' })
     user;
 }

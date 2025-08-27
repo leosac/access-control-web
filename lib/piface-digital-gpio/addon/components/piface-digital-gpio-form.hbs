@@ -40,7 +40,7 @@
 
       <form.element @property="enabled" @label={{t "enable"}}>
         <div class="pull-right" id="Tooltip-enable">
-          <DeviceToggleEnabled @device={{this.piface-digital-gpio}} @saveIt={{false}} />
+          <DeviceToggleEnabled @device={{this.piface-digital-gpio}} @saveIt={{false}} @form={{form}} />
           <BsTooltip @placement="right" @triggerElement="#Tooltip-enable" @triggerEvent="hover">{{t 'piface_digital_gpio_information.enable'}}</BsTooltip>
         </div>
       </form.element>

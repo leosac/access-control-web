@@ -1,3 +1,4 @@
+import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 
@@ -40,10 +41,10 @@ function getNodeFromCache(zone, cache) {
 // This will get the door of the child zone recursively
 function recursiveDoor(selectedZone) {
     let doorArray = [];
-    selectedZone.get('children').forEach(function (zone) {
+    selectedZone.get('children').forEach((zone) => {
         doorArray = doorArray.concat(recursiveDoor(zone));
         if (zone.get('doors')) {
-            zone.get('doors').forEach(function (door) {
+            zone.get('doors').forEach((door) => {
                 doorArray.push({
                     zone: zone.get('alias'),
                     door: door.get('alias'),
@@ -82,13 +83,10 @@ function zoneFromId(nodeId, zones) {
 export default class TreeView extends Component {
     @service
     intl;
-
     @service
     search;
-
     @service
     store;
-
     @service
     flashMessages;
 
@@ -136,7 +134,7 @@ export default class TreeView extends Component {
         let nodeCache = {};
 
         // enumerate each zone
-        this.get('model').forEach(function (zone)
+        this.args.model.forEach((zone) =>
         {
             // check if the zone is in the cache
             const n = getNodeFromCache(zone, nodeCache);
@@ -203,8 +201,8 @@ export default class TreeView extends Component {
     
     @action
     addDoor() {
-        this.store.findRecord('door', this.get('newDoor.id')).then((door) => {
-            let selectedZone = zoneFromSelectedZone(this.get('selectedZone'), this.get('model'));
+        this.store.findRecord('door', this.newDoor.id).then((door) => {
+            let selectedZone = zoneFromSelectedZone(this.selectedZone, this.args.model);
             let saveOk = () => {
                 this.flashMessages.success(this.intl.t('zone.error.successfully_added'));
             };
@@ -224,7 +222,7 @@ export default class TreeView extends Component {
 
     @action
     removeDoor(door) {
-        let selectedZone = zoneFromSelectedZone(this.get('selectedZone'), this.get('model'));
+        let selectedZone = zoneFromSelectedZone(this.selectedZone, this.args.model);
         let saveOk = () => {
             this.flashMessages.success(this.intl.t('zone.error.successfully_removed'));
         };
@@ -238,23 +236,23 @@ export default class TreeView extends Component {
 
     @action
     handleJstreeEventDidSelectNode(node) {
-        let selectedNode = zoneFromId(node.id, this.get('model'));
-        this.set('selectedZone', selectedNode);
+        let selectedNode = zoneFromId(node.id, this.args.model);
+        this.selectedZone = selectedNode;
         if (selectedNode) {
             let arrayOfDoor = recursiveDoor(selectedNode);
             arrayOfDoor.sort(function (a, b) {
                 return a.zone - b.zone;
             });
-            this.set('arrayDoor', arrayOfDoor);
+            this.arrayDoor = arrayOfDoor;
         }
     }
             
     // Mange the dragAndDrop
     @action
     handleJstreeEventDidMoveNode(node) {
-        let oldParent = zoneFromId(node.old_parent, this.get('model'));
-        let newParent = zoneFromId(node.parent, this.get('model'));
-        let currentZone = zoneFromId(node.node.id, this.get('model'));
+        let oldParent = zoneFromId(node.old_parent, this.args.model);
+        let newParent = zoneFromId(node.parent, this.args.model);
+        let currentZone = zoneFromId(node.node.id, this.args.model);
         let saveOk = () => {
             this.flashMessages.success(this.intl.t('zone.error.edited_success'));
         };
@@ -277,6 +275,6 @@ export default class TreeView extends Component {
             currentZone.get('parent').pushObject(newParent);
             newParent.save().then(saveOk, saveFail);
         }
-        this.get('jsTreeActionReceiver').send('moveNode');
+        this.jsTreeActionReceiver.send('moveNode');
     }
 }

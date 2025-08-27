@@ -50,7 +50,9 @@
             </td>
             <td>
               <div class="pull-left">
-                <DeviceToggleEnabled @device={{ledBuzzer}} @saveIt={{true}} />
+                <BsForm as |form|>
+                  <DeviceToggleEnabled @device={{ledBuzzer}} @saveIt={{true}} @form={{form}} />
+                </BsForm>
               </div>
             </td>
             <td>
@@ -86,7 +88,9 @@
             </td>
             <td>
               <div class="pull-left">
-                <DeviceToggleEnabled @device={{ledBuzzer}} @saveIt={{true}} />
+                <BsForm as |form|>
+                  <DeviceToggleEnabled @device={{ledBuzzer}} @saveIt={{true}} @form={{form}} />
+                </BsForm>
               </div>
             </td>
             <td>

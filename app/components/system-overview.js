@@ -8,17 +8,12 @@ export default class SystemOverview extends Component {
     @service('module-manager')
     moduleManager;
 
-    onSessionLost = 'onSessionLost';
-    myError = 'myError';
-
     constructor(owner, args) {
-        "use strict";
         super(owner, args);
-        const self = this;
-        this.get('moduleManager').init();
-        this.get('systemOverview').update().catch((failure) =>
+        this.moduleManager.init();
+        this.systemOverview.update().catch((failure) =>
         {
-            self.sendAction('myError', failure);
+            this.sendAction('myError', failure);
         });
     }
 }

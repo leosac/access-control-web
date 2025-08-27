@@ -144,7 +144,7 @@
 
       <div class="row space-top">
         <div class="col-md-12">
-          <BsButton @defaultText={{t 'submit'}} @type="success" @size="md" @onClick="action" buttonType="submit" />
+          <form.submitButton @type="success" @onClick={{this.action}}>{{t 'submit'}}</form.submitButton>
         </div>
         {{#if this.delete}}
           <div class="pull-right form-button-delete">

@@ -8,7 +8,7 @@
         <Autocomplete::AccessPoint @label={{t "access_point"}} @form={{form}} @onChange={{this.changeAP}} @selected={{this.door.accessPoint.alias}} />
         <div class="row">
           <div class="col-md-6">
-            <BsButton @defaultText={{t 'submit'}} @type="success" @size="md" @onClick={{this.action}} @buttonType="submit" />
+            <form.submitButton @type="success" @onClick={{this.action}}>{{t 'submit'}}</form.submitButton>
           </div>
           {{#if this.delete}}
             <div class="pull-right form-button-delete">

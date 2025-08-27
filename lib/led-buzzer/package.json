@@ -17,7 +17,6 @@
     "ember-data": "*",
     "ember-intl": "*",
     "ember-power-select": "*",
-    "ember-toggle": "*",
     "ember-truth-helpers": "*"
   },
   "ember-addon": {

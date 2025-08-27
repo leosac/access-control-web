@@ -26,7 +26,9 @@
         </LinkTo>
         <td>
           <div class="pull-left">
-            <DeviceToggleEnabled @device='model-name' @saveIt={{true}} />
+            <BsForm as |form|>
+              <DeviceToggleEnabled @device='model-name' @saveIt={{true}} @form={{form}} />
+            </BsForm>
           </div>
         </td>
         <td>

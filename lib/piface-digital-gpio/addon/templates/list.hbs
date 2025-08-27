@@ -59,7 +59,9 @@
         </td>
         <td>
           <div class="pull-left">
-            <DeviceToggleEnabled @device={{piface-digital-gpio}} @saveIt={{true}} />
+            <BsForm as |form|>
+              <DeviceToggleEnabled @device={{piface-digital-gpio}} @saveIt={{true}} @form={{form}} />
+            </BsForm>
           </div>
         </td>
         <td>

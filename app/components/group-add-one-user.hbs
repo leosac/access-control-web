@@ -18,9 +18,7 @@
             </form.element>
         </div>
         <div class="col-md-2 col-sm-4 button-next-to-power-select">
-            <BsButton @type="primary" @icon="glyphicon glyphicon-plus" @size="sm" @onClick={{this.addToGroup}}>
-                {{t 'users.add_to_group'}}
-            </BsButton>
+            <form.submitButton @icon="glyphicon glyphicon-plus" @onClick={{this.action}}>{{t 'users.add_to_group'}}</form.submitButton>
         </div>
     </div>
 </BsForm>
