@@ -10,7 +10,7 @@ export default class extends Controller {
 
     @action
     updateCard() {
-        this.get('model').save().then(() =>
+        this.model.save().then(() =>
             {
                 this.flashMessages.success('Credential successfully edited.');
             },
@@ -22,7 +22,7 @@ export default class extends Controller {
 
     @action
     deleteCredential() {
-        this.get('model').destroyRecord().then(() =>
+        this.model.destroyRecord().then(() =>
             {
                 this.flashMessages.success('Credential has been deleted.');
                 this.router.transitionTo('credentials.list');

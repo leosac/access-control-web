@@ -1,6 +1,5 @@
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-import { tracked } from '@glimmer/tracking';
 import Component from '@glimmer/component';
 
 /**
@@ -14,17 +13,7 @@ export default class CredentialSchedules extends Component {
     @service('authentication')
     authSrv;
 
-    @tracked
     syncing = 0;
-
-    get greyedDisabledIfSyncing() {
-        if (this.syncing) {
-            return 'disabled-greyed';
-        }
-        return '';
-    }
-
-    // `group` is a property set by the caller.
 
     /**
      * An helper function that will save the current schedule / mapping
@@ -32,7 +21,6 @@ export default class CredentialSchedules extends Component {
      * @param mapping
      */
     saveMappingAndReloadUser(mapping) {
-        const self = this;
         mapping.get('schedule').then((sched) =>
         {
             sched.save().then(() =>

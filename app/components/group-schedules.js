@@ -1,6 +1,5 @@
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-import { tracked } from '@glimmer/tracking';
 import Component from '@glimmer/component';
 
 /**
@@ -14,17 +13,7 @@ export default class GroupSchedules extends Component {
     @service('authentication')
     authSrv;
 
-    @tracked
     syncing = 0;
-
-    get greyedDisabledIfSyncing() {
-        if (this.syncing) {
-            return 'disabled-greyed';
-        }
-        return '';
-    }
-
-    // `group` is a property set by the caller.
 
     /**
      * An helper function that will save the current schedule / mapping

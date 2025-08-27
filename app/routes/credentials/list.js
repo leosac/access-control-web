@@ -4,19 +4,19 @@ import {
   findAllCredentials
 } from 'web/leosac-credential-helper';
 
-export default LeosacRoute.extend({
-    router: service(),
-    store: service(),
-    flashMessages: service(),
-    _title: 'credentials.list.title',
-    _requireAuth: true,
-    beforeModel()
-    {
-        "use strict";
-        return this._super();
-    },
+export default class extends LeosacRoute {
+    @service
+    router;
+    @service
+    store;
+    @service
+    flashMessages;
+
+    _title = 'credentials.list.title';
+    _requireAuth = true;
+
     model()
     {
         return findAllCredentials(this.store);
     }
-});
+}

@@ -13,13 +13,16 @@
     </thead>
     <tbody>
     {{#each this.args.user.memberships as |membership|}}
-        <LinkTo @query='group' @model={{membership.group.id}}>
           <tr>
             <td>
-                {{membership.group.id}}
+                <LinkTo @route='group' @model={{membership.group.id}}>
+                    {{membership.group.id}}
+                </LinkTo>
             </td>
             <td>
-                {{membership.group.name}}
+                <LinkTo @route='group' @model={{membership.group.id}}>
+                    {{membership.group.name}}
+                </LinkTo>
             </td>
             <td>{{t membership.rank}}</td>
             <td>{{membership.timestamp}}</td>
@@ -29,7 +32,6 @@
                     <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-ban-circle" @size="xs" @text={{this.kickOrLeave}} @message={{this.kickOrLeaveMessage}} @onConfirm={{fn this.deleteMembership membership.id}} /></td>
             {{/if}}
           </tr>
-        </LinkTo>
     {{/each}}
     </tbody>
 </table>

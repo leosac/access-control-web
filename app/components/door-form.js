@@ -19,7 +19,7 @@ export default class DoorForm extends Component {
         }
         else
         {
-            this.store.find('access-point', param.id).then((ap) =>
+            this.store.findRecord('access-point', param.id).then((ap) =>
             {
                 door.set('accessPoint', ap);
             });

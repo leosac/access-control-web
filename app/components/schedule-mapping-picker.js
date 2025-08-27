@@ -1,6 +1,6 @@
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-import Component from '@emglimmerber/component';
+import Component from '@glimmer/component';
 
 export default class ScheduleMappingPicker extends Component {
     @service
@@ -12,7 +12,6 @@ export default class ScheduleMappingPicker extends Component {
     // `action`
 
     selectedSchedule = null;
-
     selectedMapping = null;
 
     @action
@@ -22,21 +21,20 @@ export default class ScheduleMappingPicker extends Component {
 
     @action
     scheduleChanged(newSchedule) {
-        const self = this;
-        this.set('selectedMapping', null);
-        this.store.find('schedule', newSchedule.id).then((sched) =>
+        this.selectedMapping = null;
+        this.store.findRecord('schedule', newSchedule.id).then((sched) =>
         {
-            self.set('selectedSchedule', sched);
+            this.selectedSchedule = sched;
         });
     }
 
     @action
     scheduleMappingPicked() {
-        const picked = this.get('selectedMapping');
-        this.set('selectedMapping', null);
+        const picked = thisselectedMapping;
+        this.selectedMapping = null;
 
         if (picked) {
-            this.get('action')(picked);
+            this.args.action(picked);
         } else {
             console.log("PLS PICK SOMETHING");
         }

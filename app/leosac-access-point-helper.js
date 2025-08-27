@@ -9,8 +9,8 @@ function findAccessPoint(store, id)
     const promise = defer();
 
     hash({
-        evoxs: store.find('evoxs-access-point', id),
-        base: store.find('access-point', id),
+        evoxs: store.findRecord('evoxs-access-point', id),
+        base: store.findRecord('access-point', id),
     }).then(function (hash)
     {
         if (hash.evoxs) {

@@ -10,7 +10,7 @@
 <div class="row">
   <div class="col-md-12">
     <div class="user-schedule-info">
-      {{#each this.user.schedules as |schedule|}}
+      {{#each this.args.user.schedules as |schedule|}}
         <div class="panel panel-default">
           <div class="panel-heading">
             Schedule: {{schedule.name}}
@@ -35,7 +35,7 @@
               {{/if}}
 
               {{#each schedule.mapping as |mapping|}}
-                {{#if (is-user-part-of-mapping mapping this.user.id)}}
+                {{#if (is-user-part-of-mapping mapping this.args.user.id)}}
                   <div class="panel panel-default">
                     <div class="panel-heading">
                       Mapping: {{mapping.alias}}

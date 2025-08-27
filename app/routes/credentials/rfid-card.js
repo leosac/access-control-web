@@ -13,7 +13,7 @@ export default LeosacRoute.extend({
     model(params)
     {
         "use strict";
-        return this.store.find('rfid-card', params.credential_id);
+        return this.store.findRecord('rfid-card', params.credential_id);
     },
     resetController(controller, isExiting)
     {

@@ -9,8 +9,8 @@ function findCredential(store, id)
     const promise = defer();
 
     hash({
-        rfidCard: store.find('rfid-card', id),
-        pinCode: store.find('pin-code', id),
+        rfidCard: store.findRecord('rfid-card', id),
+        pinCode: store.findRecord('pin-code', id),
     }).then(function (hash)
     {
         if (hash.rfidCard) {

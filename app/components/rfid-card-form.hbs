@@ -21,7 +21,7 @@
       <ValidityControl @form={{form}} @enabledProperty="validityEnabled" @startDate={{mut this.args.card.validityStart}} @endDate={{mut this.args.card.validityEnd}} />
 
       <div class="row">
-        <div class="col-md-1">
+        <div>
           <form.submitButton @type="success">{{t 'submit'}}</form.submitButton>
         </div>
         {{#if this.args.delete}}

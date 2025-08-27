@@ -13,7 +13,7 @@ export default LeosacRoute.extend({
     model(params)
     {
         "use strict";
-        return this.store.find('pin-code', params.credential_id);
+        return this.store.findRecord('pin-code', params.credential_id);
     },
     resetController(controller, isExiting/*, transition*/)
     {

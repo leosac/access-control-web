@@ -9,19 +9,20 @@ export default class extends Controller {
     @service
     flashMessages;
     @service
+    store;
+    @service
     router;
 
     @action
     deleteCredential(credential) {
-        const self = this;
         deleteCredential(this.store, credential.get('id'), () =>
             {
-                self.flashMessages.success('Credential has been deleted.');
-                self.router.transitionTo('credentials.list');
-                self.router.refresh();
+                this.flashMessages.success('Credential has been deleted.');
+                this.router.transitionTo('credentials.list');
+                this.router.refresh();
             }).catch(() =>
             {
-                self.flashMessages.danger('Failed to delete credential');
+                this.flashMessages.danger('Failed to delete credential');
                 credential.rollbackAttributes();
             });
     }

@@ -21,18 +21,18 @@ export default class PinCodeForm extends Component {
 
     constructor(owner, args) {
         super(owner, args);
-        this.set('selectedUser', this.get('pin.owner'));
+        this.selectedUser = this.args.pin.get('owner');
     }
 
     @action
     setOwner(user) {
-        this.set('selectedUser', user);
-        this.store.findRecord('user', this.get('selectedUser.id')).then((user) => {
+        this.selectedUser = user;
+        this.store.findRecord('user', this.selectedUser.get('id')).then((user) => {
             if (!user) {
                 this.flashMessages.danger(this.intl.t('users.error.find_error'));
                 return;
             }
-            this.get('pin').set('owner', user);
+            this.args.pin.set('owner', user);
         });
     }
 

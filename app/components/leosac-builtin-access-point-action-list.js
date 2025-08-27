@@ -97,7 +97,7 @@ export default class LeosacBuiltinAccessPointActionList extends Component {
             index: this.indexSuccessAction
         });
 
-        this.store.find(this.selectedDevice.type, this.selectedDevice.id).then((device) => {
+        this.store.findRecord(this.selectedDevice.type, this.selectedDevice.id).then((device) => {
             newAction.set('target', device);
             this.args.ap.get('actionOnSuccess').addObject(newAction);
         });
@@ -121,7 +121,7 @@ export default class LeosacBuiltinAccessPointActionList extends Component {
             index: this.indexErrorAction
         });
 
-        this.store.find(selectedDevice.type, selectedDevice.id).then((device) => {
+        this.store.findRecord(selectedDevice.type, selectedDevice.id).then((device) => {
             newAction.set('target', device);
             this.args.ap.get('actionOnError').addObject(newAction);
         });

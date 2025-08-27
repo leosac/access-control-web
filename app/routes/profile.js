@@ -33,6 +33,7 @@ export default class ProfileRoute extends LeosacRoute {
     setupController(controller, model)
     {
         this._super(controller, model);
+        controller.model = model;
         controller.targetUserId = this.paramsFor('profile').user_id;
     }
 

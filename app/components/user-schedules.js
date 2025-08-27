@@ -1,6 +1,5 @@
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-import { tracked } from '@glimmer/tracking';
 import Component from '@glimmer/component';
 
 /**
@@ -14,17 +13,7 @@ export default class UserSchedules extends Component {
     @service('authentication')
     authSrv;
 
-    @tracked
     syncing = 0;
-
-    get greyedDisabledIfSyncing() {
-        if (this.syncing) {
-            return 'disabled-greyed';
-        }
-        return '';
-    }
-
-    // `user` is a property set by the caller.
 
     /**
      * An helper function that will save the current schedule / mapping
@@ -36,7 +25,7 @@ export default class UserSchedules extends Component {
         {
             sched.save().then(() =>
             {
-                this.get('user').reload().then(() =>
+                this.args.user.reload().then(() =>
                 {
                     this.decrSyncing();
                 });
@@ -45,26 +34,25 @@ export default class UserSchedules extends Component {
     }
 
     incrSyncing() {
-        this.set('syncing', this.get('syncing') + 1);
+        this.syncing++;
     }
 
     decrSyncing() {
-        this.set('syncing', this.get('syncing') - 1);
+        this.syncing--;
     }
 
     refreshImpl() {
-        const self = this;
         this.incrSyncing();
-        self.get('user').reload().then(() =>
+        this.args.user.reload().then(() =>
         {
-            self.get('user').get('schedules').then((scheds) =>
+            this.args.user.get('schedules').then((scheds) =>
             {
                 scheds.forEach((sched) =>
                 {
-                    self.incrSyncing();
+                    this.incrSyncing();
                     sched.reload().then(() =>
                     {
-                        self.decrSyncing();
+                        this.decrSyncing();
                     });
                 });
             });
@@ -80,16 +68,14 @@ export default class UserSchedules extends Component {
     @action
     addScheduleMapping(mapping) {
         this.incrSyncing();
-        mapping.get('users').addObject(this.get('user'));
+        mapping.get('users').addObject(this.args.user);
         this.saveMappingAndReloadUser(mapping);
     }
 
     @action
     leaveMapping(mapping) {
-        const self = this;
-
-        self.incrSyncing();
-        mapping.get('users').removeObject(self.get('user'));
+        this.incrSyncing();
+        mapping.get('users').removeObject(this.args.user);
         self.saveMappingAndReloadUser(mapping);
     }
 

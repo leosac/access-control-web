@@ -50,7 +50,7 @@ export default class LeosacBuiltinAccessPointForm extends Component {
             return;
         }
 
-        this.store.find(this.newDevice.type, this.newDevice.id).then((device) => {
+        this.store.findRecord(this.newDevice.type, this.newDevice.id).then((device) => {
             this.args.ap.get('authSourcesDevice').addObject(device);
             this.newDevice = null;
         });
@@ -102,7 +102,7 @@ export default class LeosacBuiltinAccessPointForm extends Component {
         }
 
         this.selectedSchedules.addObject(this.newSchedule);
-        this.store.find('schedule', this.newSchedule.id).then((newSchedule) => {
+        this.store.findRecord('schedule', this.newSchedule.id).then((newSchedule) => {
             this.args.ap.get('alwaysCloseSchedules').addObject(newSchedule);
             this.newSchedule = null;
         });
@@ -118,7 +118,7 @@ export default class LeosacBuiltinAccessPointForm extends Component {
         }
 
         this.selectedSchedules.addObject(newSchedule);
-        this.store.find('schedule', schedule.id).then((newSchedule) => {
+        this.store.findRecord('schedule', schedule.id).then((newSchedule) => {
             thps.args.ap.get('alwaysOpenSchedules').addObject(newSchedule);
             this.newSchedule = null;
         });

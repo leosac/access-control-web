@@ -21,18 +21,18 @@ export default class RfidCardForm extends Component {
 
     constructor(owner, args) {
         super(owner, args);
-        this.set('selectedUser', this.get('card.owner'));
+        this.selectedUser = this.args.card.get('owner');
     }
 
     @action
     setOwner(user) {
-        this.set('selectedUser', user);
-        this.store.findRecord('user', this.get('selectedUser.id')).then((user) => {
+        this.selectedUser = user;
+        this.store.findRecord('user', this.selectedUser.get('id')).then((user) => {
             if (!user) {
                 this.flashMessages.danger(this.intl.t('users.error.find_error'));
                 return;
             }
-            this.get('card').set('owner', user);
+            this.args.card.set('owner', user);
         });
     }
 
