@@ -26,7 +26,9 @@ export default class ZoneForm extends Component {
     @action
     addDoor() {
         this.store.findRecord('door', this.newDoor.get('id')).then((door) => {
-            this.zone.get('doors').addObject(door);
+            if (!this.zone.get('doors').includes(door)) {
+                this.zone.get('doors').push(door);
+            }
         });
     }
 
@@ -37,18 +39,26 @@ export default class ZoneForm extends Component {
 
     @action
     removeDoor(door) {
-        this.zone.get('doors').removeObject(door);
+        const index = this.zone.get('doors').indexOf(door);
+        if (index !== -1) {
+            this.zone.get('doors').splice(index, 1);
+        }
     }
 
     @action
     addChildren() {
         this.store.findRecord('zone', this.get('newChildren.id')).then((children) => {
-            this.zone.get('children').addObject(children);
+            if (!this.zone.get('children').includes(children)) {
+                this.zone.get('children').push(children);
+            }
         });
     }
 
     @action
     removeChildren(children) {
-        this.zone.get('children').removeObject(children);
+        const index = this.zone.get('children').indexOf(children);
+        if (index !== -1) {
+            this.zone.get('children').splice(index, 1);
+        }
     }
 }

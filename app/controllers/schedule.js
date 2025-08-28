@@ -26,12 +26,17 @@ export default class extends Controller {
     addMapping() {
         const newMapping = this.store.createRecord('schedule-mapping');
         newMapping.set('alias', 'Unnamed mapping');
-        this.model.get('mapping').addObject(newMapping);
+        if (!this.model.get('mapping').includes(newMapping)) {
+            this.model.get('mapping').push(newMapping);
+        }
     }
 
     @action
     removeMapping(mapping) {
-        this.model.get('mapping').removeObject(mapping);
+        const index = this.model.get('mapping').indexOf(mapping);
+        if (index !== -1) {
+            this.model.get('mapping').splice(index, 1);
+        }
     }
 
     @action

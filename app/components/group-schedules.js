@@ -67,14 +67,19 @@ export default class GroupSchedules extends Component {
     @action
     addScheduleMapping(mapping) {
         this.incrSyncing();
-        mapping.get('groups').addObject(this.args.group);
+        if (!mapping.get('groups').includes(this.args.group)) {
+            mapping.get('groups').push(this.args.group);
+        }
         this.saveMappingAndReloadUser(mapping);
     }
 
     @action
     leaveMapping(mapping) {
         this.incrSyncing();
-        mapping.get('groups').removeObject(this.args.group);
+        const index = mapping.get('groups').indexOf(this.args.group);
+        if (index !== -1) {
+            mapping.get('groups').splice(index, 1);
+        }
         this.saveMappingAndReloadUser(mapping);
     }
 

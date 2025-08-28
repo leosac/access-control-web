@@ -22,53 +22,69 @@ export default class ScheduleMapping extends Component {
     @action
     addUser() {
         this.store.findRecord('user', this.get('newUser.id')).then((user) => {
-            this.get('mapping').get('users').addObject(user);
+            if (!this.get('mapping').get('users').includes(user)) {
+                this.get('mapping').get('users').push(user);
+            }
         });
     }
 
     @action
     addGroup() {
         this.store.findRecord('group', this.get('newGroup.id')).then((grp) => {
-            this.get('mapping').get('groups').addObject(grp);
+            if (!this.get('mapping').get('groups').includes(grp)) {
+                this.get('mapping').get('groups').push(grp);
+            }
         });
     }
 
     @action
     addCredential() {
         findCredential(this.store, this.get('newCredential')).then((cred) => {
-            this.get('mapping').get('credentials').addObject(cred);
+            if (!this.get('mapping').get('credentials').includes(cred)) {
+                this.get('mapping').get('credentials').push(cred);
+            }
         });
-        /*            this.store.findRecord('credential', this.get('newCredential')).then((cred) =>
-        {
-            this.get('mapping').get('credentials').addObject(cred);
-        });*/
     }
 
     @action
     addDoor() {
         this.store.findRecord('door', this.get('newDoor.id')).then((door) => {
-            this.get('mapping').get('doors').addObject(door);
+            if (!this.get('mapping').get('doors').includes(door)) {
+                this.get('mapping').get('doors').push(door);
+            }
         });
     }
 
     @action
     removeUser(user) {
-        this.get('mapping').get('users').removeObject(user);
+        const index = this.get('mapping').get('users').indexOf(user);
+        if (index !== -1) {
+            this.get('mapping').get('users').splice(index, 1);
+        }
     }
 
     @action
     removeGroup(group) {
-        this.get('mapping').get('groups').removeObject(group);
+        const index = this.get('mapping').get('groups').indexOf(group);
+        if (index !== -1) {
+            this.get('mapping').get('groups').splice(index, 1);
+        }
     }
 
     @action
     removeCredential(cred) {
-        this.get('mapping').get('credentials').removeObject(cred);
+        const index = this.get('mapping').get('credentials').indexOf(cred);
+        if (index !== -1) {
+            this.get('mapping').get('credentials').splice(index, 1);
+        }
     }
 
     @action
     removeDoor(door) {
-        this.get('mapping').get('doors').removeObject(door);
+        const index = this.get('mapping').get('doors').indexOf(door);
+        if (index !== -1) {
+            this.get('mapping').get('doors').splice(index, 1);
+        }
     }
 
     @action

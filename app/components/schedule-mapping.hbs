@@ -47,7 +47,7 @@
         <div class="row">
             <div class="pull-left col-md-4">
                 <form.element @label={{t "table.group_name"}}>
-                    <PowerSelect @searchEnabled={{true}} @search={{this.searchUser}} @selected={{this.newUser.username}} @placeholder={{t "users.type_group"}} @onchange={{fn (mut this.newUser)}} as |userInfo|>
+                    <PowerSelect @searchEnabled={{true}} @search={{this.searchUser}} @selected={{this.newUser.username}} @placeholder={{t "users.type_group"}} @onChange={{fn (mut this.newUser)}} as |userInfo|>
                         {{userInfo.username}}
                     </PowerSelect>
                 </form.element>
@@ -98,7 +98,7 @@
             <div class="row">
                 <div class="pull-left col-md-4">
                     <form.element @label={{t "table.group_name"}}>
-                        <PowerSelect @searchEnabled={{true}} @search={{this.searchGroup}} @selected={{this.newGroup.name}} @placeholder={{t "users.type_group"}} @onchange={{fn (mut this.newGroup)}} as |groupInfo|>
+                        <PowerSelect @searchEnabled={{true}} @search={{this.searchGroup}} @selected={{this.newGroup.name}} @placeholder={{t "users.type_group"}} @onChange={{fn (mut this.newGroup)}} as |groupInfo|>
                             {{groupInfo.name}}
                         </PowerSelect>
                     </form.element>
@@ -199,7 +199,7 @@
             <div class="row">
                 <div class="pull-left col-md-4">
                     <form.element @label="Door alias">
-                        <PowerSelect @searchEnabled={{true}} @search={{this.searchDoor}} @selected={{this.newDoor.alias}} @placeholder={{t "schedule.type_door"}} @onchange={{fn (mut this.newDoor)}} as |doorInfo|>
+                        <PowerSelect @searchEnabled={{true}} @search={{this.searchDoor}} @selected={{this.newDoor.alias}} @placeholder={{t "schedule.type_door"}} @onChange={{fn (mut this.newDoor)}} as |doorInfo|>
                             {{doorInfo.alias}}
                         </PowerSelect>
                     </form.element>

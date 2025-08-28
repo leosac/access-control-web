@@ -64,9 +64,9 @@ export default class GroupAdapter extends ApplicationAdapter {
         // on group deletion
         const model = store.peekRecord('group', group_id);
         const records = [];
-        model.memberships.then((memberships) =>
+        model.get('memberships').then((memberships) =>
         {
-            memberships.toArray().forEach((r) =>
+            memberships.slice().forEach((r) =>
             {
                 records.push(r);
             });

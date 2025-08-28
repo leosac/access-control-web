@@ -26,12 +26,10 @@ export default class CredentialRoute extends LeosacRoute {
     @action
     deleteCredential ()
     {
-        const self = this;
-        const model = this.controller.get('model');
-        model.destroyRecord({}).then(() =>
+        this.controller.model.destroyRecord({}).then(() =>
         {
-            self.flashMessages.success('Credential has been deleted.');
-            self.router.transitionTo('credentials.list');
-        }).catch(() => model.rollbackAttributes());
+            this.flashMessages.success('Credential has been deleted.');
+            this.router.transitionTo('credentials.list');
+        }).catch(() => this.controller.model.rollbackAttributes());
     }
 }

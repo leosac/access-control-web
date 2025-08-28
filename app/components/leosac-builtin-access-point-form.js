@@ -35,10 +35,14 @@ export default class LeosacBuiltinAccessPointForm extends Component {
 
         this.selectedSchedules = [];
         this.args.ap.get('alwaysOpenSchedules').forEach((openSchedules) => {
-            this.selectedSchedules.addObject(openSchedules);
+            if (!this.selectedSchedules.includes(openSchedules)) {
+                this.selectedSchedules.push(openSchedules);
+            }
         });
         this.args.ap.get('alwaysCloseSchedules').forEach((closeSchedules) => {
-            this.selectedSchedules.addObject(closeSchedules);
+            if (!this.selectedSchedules.includes(closeSchedules)) {
+                this.selectedSchedules.push(closeSchedules);
+            }
         });
     }
 
@@ -51,7 +55,9 @@ export default class LeosacBuiltinAccessPointForm extends Component {
         }
 
         this.store.findRecord(this.newDevice.type, this.newDevice.id).then((device) => {
-            this.args.ap.get('authSourcesDevice').addObject(device);
+            if (!this.args.ap.get('authSourcesDevice').includes(device)) {
+                this.args.ap.get('authSourcesDevice').push(device);
+            }
             this.newDevice = null;
         });
     }
@@ -59,7 +65,10 @@ export default class LeosacBuiltinAccessPointForm extends Component {
     //This will remove a device from the authSources
     @action
     removeAuthSources(device) {
-        this.args.ap.get('authSourcesDevice').removeObject(device);
+        const index = this.args.ap.get('authSourcesDevice').indexOf(device);
+        if (index !== -1) {
+            this.args.ap.get('authSourcesDevice').splice(index, 1);
+        }
     }
 
     /**
@@ -101,9 +110,13 @@ export default class LeosacBuiltinAccessPointForm extends Component {
             return;
         }
 
-        this.selectedSchedules.addObject(this.newSchedule);
+        if (!this.selectedSchedules.includes(this.newSchedule)) {
+            this.selectedSchedules.push(this.newSchedule);
+        }
         this.store.findRecord('schedule', this.newSchedule.id).then((newSchedule) => {
-            this.args.ap.get('alwaysCloseSchedules').addObject(newSchedule);
+            if (!this.args.ap.get('alwaysCloseSchedules').includes(newSchedule)) {
+                this.args.ap.get('alwaysCloseSchedules').push(newSchedule);
+            }
             this.newSchedule = null;
         });
     }
@@ -117,9 +130,13 @@ export default class LeosacBuiltinAccessPointForm extends Component {
             return;
         }
 
-        this.selectedSchedules.addObject(newSchedule);
+        if (!this.selectedSchedules.includes(this.newSchedule)) {
+            this.selectedSchedules.push(this.newSchedule);
+        }
         this.store.findRecord('schedule', schedule.id).then((newSchedule) => {
-            thps.args.ap.get('alwaysOpenSchedules').addObject(newSchedule);
+            if (!this.args.ap.get('alwaysOpenSchedules').includes(newSchedule)) {
+                this.args.ap.get('alwaysOpenSchedules').push(newSchedule);
+            }
             this.newSchedule = null;
         });
     }
@@ -130,7 +147,10 @@ export default class LeosacBuiltinAccessPointForm extends Component {
     @action
     removeCloseSchedule(schedule) {
         this.selectedSchedules = removeSchedule(this.selectedSchedules, schedule);
-        this.args.ap.get('alwaysCloseSchedules').removeObject(schedule);
+        const index = this.args.ap.get('alwaysCloseSchedules').indexOf(schedule);
+        if (index !== -1) {
+            this.args.ap.get('alwaysCloseSchedules').splice(index, 1);
+        }
     }
 
     /**
@@ -139,6 +159,9 @@ export default class LeosacBuiltinAccessPointForm extends Component {
     @action
     removeOpenSchedule(schedule) {
         this.selectedSchedules = removeSchedule(this.get('selectedSchedules'), schedule);
-        this.args.ap.get('alwaysOpenSchedules').removeObject(schedule);
+        const index = this.args.ap.get('alwaysOpenSchedules').indexOf(schedule);
+        if (index !== -1) {
+            this.args.ap.get('alwaysOpenSchedules').splice(index, 1);
+        }
     }
 }

@@ -19,7 +19,6 @@ export default class LoginForm extends Component {
 
     @action
     login() {
-        let self = this;
         this.errorMessage = '';
 
         if (this.inputUsername.length === 0 || this.inputPassword.length === 0)
@@ -30,18 +29,18 @@ export default class LoginForm extends Component {
 
         this.pending = true;
         this.authSrv.authenticate(this.inputUsername, this.inputPassword,
-            function ()
+            () =>
             {
-                self.pending = false;
-                self.router.transitionTo('index');
+                this.pending = false;
+                this.router.transitionTo('index');
             },
-            function (status, msg)
+            (status, msg) =>
             {
-                self.pending = false;
+                this.pending = false;
                 if (msg) {
-                    self.errorMessage = 'Auth failure [' + status + ']: ' + msg;
+                    this.errorMessage = 'Auth failure [' + status + ']: ' + msg;
                 } else {
-                    self.errorMessage = 'Auth failure [' + status + ']';
+                    this.errorMessage = 'Auth failure [' + status + ']';
                 }
             });
     }

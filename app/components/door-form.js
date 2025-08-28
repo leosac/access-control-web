@@ -11,7 +11,6 @@ export default class DoorForm extends Component {
 
     @action
     changeAP(param) {
-        const door = this.get('door');
         if (param === null)
         {
             // Clearing AP.
@@ -21,7 +20,7 @@ export default class DoorForm extends Component {
         {
             this.store.findRecord('access-point', param.id).then((ap) =>
             {
-                door.set('accessPoint', ap);
+                this.args.door.set('accessPoint', ap);
             });
         }
     }

@@ -10,11 +10,10 @@ export default class extends Controller {
 
     @action
     createUser() {
-        const u = this.get('model').user;
-        const {validations} = u.validateSync();
-        if (validations.get('isValid') && u.get('password') !== false)
+        const {validations} = this.model.user.validateSync();
+        if (validations.get('isValid') && this.model.user.get('password') !== false)
         {
-            u.save().then(() =>
+            this.model.user.save().then(() =>
                 {
                     this.flashMessages.success('User successfully created.');
                     this.router.transitionTo('users.list');
@@ -24,5 +23,10 @@ export default class extends Controller {
                     this.flashMessages.danger('Failed to create user.');
                 });
         }
+    }
+
+    @action
+    setPassword(password) {
+        this.model.user.password = password;
     }
 }

@@ -4,27 +4,26 @@
             <div class="col-md-6">
                 <fieldset>
                     <legend>{{t 'users.create.account_info'}}</legend>
-                  <form.element @controlType="text" @label={{t "firstname"}} @placeholder="John" @property="firstname" />
+                    <form.element @controlType="text" @label={{t "firstname"}} @placeholder="John" @property="firstname" />
 
-                  <form.element @controlType="text" @label={{t "lastname"}} @placeholder="Doe" @property="lastname" />
+                    <form.element @controlType="text" @label={{t "lastname"}} @placeholder="Doe" @property="lastname" />
 
-                  <form.element @controlType="email" @label={{t "email"}} @placeholder="john@doe.com" @property="email" />
+                    <form.element @controlType="email" @label={{t "email"}} @placeholder="john@doe.com" @property="email" />
                     <form.element @controlType="text" @label={{t "username"}} @placeholder="john_d" @property="username" />
-                  <PasswordInput @optional={{true}} @passwordOut={{mut this.model.user.password}} />
+                    <PasswordInput @optional={{true}} @passwordOut={{this.setPassword}} />
 
                     <form.element @label={{t "rank"}}>
                         <PowerSelect @selected={{this.model.user.rank}}
-                                     @searchEnabled="false"
-                                     @options={{this.model.possibleRanks}}
-                                     @onChange={{fn (mut this.model.user.rank)}}
-                                     @placeholder={{t 'rank'}} as |rank|>
+                                        @searchEnabled="false"
+                                        @options={{this.model.possibleRanks}}
+                                        @onChange={{fn (mut this.model.user.rank)}}
+                                        @placeholder={{t 'rank'}} as |rank|>
                             {{t rank}}
                         </PowerSelect>
                     </form.element>
                 </fieldset>
             </div>
         </div>
-            <BsButton @defaultText={{t 'users.create.title'}} @type="success" @buttonType="submit" />
-
+        <form.submitButton @type="success">{{t 'users.create.title'}}</form.submitButton>
     </BsForm>
 </div>

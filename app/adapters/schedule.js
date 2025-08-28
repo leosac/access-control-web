@@ -51,7 +51,7 @@ export default class ScheduleAdapter extends ApplicationAdapter {
 
         const item = store.peekRecord('schedule', snapshot.id);
         const mapping = [];
-        item.get('mapping').toArray().forEach((one_mapping) => {
+        item.get('mapping').slice().forEach((one_mapping) => {
             // Embed mapping in the schedule payload.
             mapping.push({
                 id: one_mapping.get('numericId'),

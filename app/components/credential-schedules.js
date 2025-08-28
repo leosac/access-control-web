@@ -68,14 +68,20 @@ export default class CredentialSchedules extends Component {
     @action
     addScheduleMapping(mapping) {
         this.incrSyncing();
-        mapping.get('credentials').addObject(this.args.credential);
+        if (!mapping.get('credentials').includes(this.args.credential)) {
+            mapping.get('credentials').push(this.args.credential);
+        }
         this.saveMappingAndReloadUser(mapping);
     }
 
     @action
     leaveMapping(mapping) {
         this.incrSyncing();
-        mapping.get('credentials').removeObject(this.args.credential);
+        console.log(mapping.get('credentials'));
+        const index = mapping.get('credentials').indexOf(this.args.credential);
+        if (index !== -1) {
+            mapping.get('credentials').splice(index, 1);
+        }
         this.saveMappingAndReloadUser(mapping);
     }
 

@@ -149,7 +149,7 @@ export default class extends Controller {
             // users and doors selected
             else {
                 this.rawData.forEach((doorInfo) => {
-                    this.get('selectedDoors').forEach((door) => {
+                    this.selectedDoors.forEach((door) => {
                         if (parseInt(door.get('id')) === doorInfo.door_id) {
                             selectedDoors.push(doorInfo);
                         }
@@ -211,21 +211,31 @@ export default class extends Controller {
 
     @action
     addUser(user) {
-        this.selectedUsers.addObject(user);
+        if (!this.selectedUsers.includes(user)) {
+            this.selectedUsers.push(user);
+        }
     }
 
     @action
     addDoor(door) {
-        this.selectedDoors.addObject(door);
+        if (!this.selectedDoors.includes(door)) {
+            this.selectedDoors.push(door);
+        }
     }
 
     @action
     removeUser(user) {
-        this.selectedUsers.removeObject(user);
+        const index = this.selectedUsers.indexOf(user);
+        if (index !== -1) {
+            this.selectedUsers.splice(index, 1);
+        }
     }
 
     @action
     removeDoor(door) {
-        this.selectedDoors.removeObject(door);
+        const index = this.selectedDoors.indexOf(door);
+        if (index !== -1) {
+            this.selectedDoors.splice(index, 1);
+        }
     }
 }

@@ -68,15 +68,20 @@ export default class UserSchedules extends Component {
     @action
     addScheduleMapping(mapping) {
         this.incrSyncing();
-        mapping.get('users').addObject(this.args.user);
+        if (!mapping.get('users').includes(this.args.user)) {
+            mapping.get('users').push(this.args.user);
+        }
         this.saveMappingAndReloadUser(mapping);
     }
 
     @action
     leaveMapping(mapping) {
         this.incrSyncing();
-        mapping.get('users').removeObject(this.args.user);
-        self.saveMappingAndReloadUser(mapping);
+        const index = mapping.get('users').indexOf(this.args.user);
+        if (index !== -1) {
+            mapping.get('users').splice(index, 1);
+        }
+        this.saveMappingAndReloadUser(mapping);
     }
 
     @action

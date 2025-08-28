@@ -210,7 +210,9 @@ export default class TreeView extends Component {
                 this.flashMessages.danger(this.intl.t('zone.error.error_added'));
             };
 
-            selectedZone.get('doors').addObject(door);
+            if (!selectedZone.get('doors').includes(door)) {
+                selectedZone.get('doors').push(door);
+            }
             selectedZone.save().then(saveOk, saveFail);
         });
     }
@@ -230,7 +232,10 @@ export default class TreeView extends Component {
             this.flashMessages.danger(this.intl.t('zone.error.error_removed'));
         };
 
-        selectedZone.get('doors').removeObject(door);
+        const index = selectedZone.get('doors').indexOf(door);
+        if (index !== -1) {
+            selectedZone.get('doors').splice(index, 1);
+        }
         selectedZone.save().then(saveOk, saveFail);
     }
 
@@ -261,18 +266,24 @@ export default class TreeView extends Component {
         };
 
         if (oldParent && newParent) {
-            currentZone.get('parent').pushObject(newParent);
-            currentZone.get('parent').removeObject(oldParent);
+            currentZone.get('parent').push(newParent);
+            const index = currentZone.get('parent').indexOf(oldParent);
+            if (index !== -1) {
+                currentZone.get('parent').splice(index, 1);
+            }
             oldParent.save().then(() => {
                 newParent.save().then(saveOk, saveFail);
             }, saveFail);
         }
         else if (oldParent) {
-            currentZone.get('parent').removeObject(oldParent);
+            const index = currentZone.get('parent').indexOf(oldParent);
+            if (index !== -1) {
+                currentZone.get('parent').splice(index, 1);
+            }
             oldParent.save().then(saveOk, saveFail);
         }
         else if (newParent) {
-            currentZone.get('parent').pushObject(newParent);
+            currentZone.get('parent').push(newParent);
             newParent.save().then(saveOk, saveFail);
         }
         this.jsTreeActionReceiver.send('moveNode');

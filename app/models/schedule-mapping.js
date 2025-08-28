@@ -12,13 +12,13 @@ export default class ScheduleMappingModel extends Model.extend(MappingValidation
 
     @attr('string')
     alias;
-    @hasMany('user', { async: true, inverse: null })
+    @hasMany('user', { async: false, inverse: null })
     users;
-    @hasMany('group', { async: true, inverse: null })
+    @hasMany('group', { async: false, inverse: null })
     groups;
-    @hasMany('door', { async: true, inverse: null })
+    @hasMany('door', { async: false, inverse: null })
     doors;
-    @hasMany('credential', { async: true, inverse: null, polymorphic: true })
+    @hasMany('credential', { async: false, inverse: null, polymorphic: true })
     credentials;
     @belongsTo('schedule', { async: true, inverse: 'mapping' })
     schedule;

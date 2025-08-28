@@ -51,7 +51,7 @@ export default class LeosacBuiltinAccessPointActionCustomParameter extends Compo
      */
     @action
     addProperty() {
-        this.properties.pushObject('');
+        this.properties.push('');
     }
 
     /**

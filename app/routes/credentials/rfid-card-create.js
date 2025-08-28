@@ -26,7 +26,7 @@ export default LeosacRoute.extend({
         // Our own helper, findAllCredentials may be causing trouble tho,
         // because it returns with toArray(), probably locking in some to-be-removed
         // objects.
-        const mod = this.controller.get('model');
+        const mod = this.controller.model;
         if (isExiting && mod.get('isNew'))
         {
             mod.unloadRecord();

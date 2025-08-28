@@ -30,6 +30,6 @@ export default class ScheduleModel extends Model.extend(ScheduleValidations, Dep
     // while Leosac's SingleTimeFrame is for 1 day only.
     @attr('timeframes')
     timeframes;
-    @hasMany('schedule-mapping', { async: false, inverse: null })
+    @hasMany('schedule-mapping', { async: false, inverse: 'schedule' })
     mapping;
 }
