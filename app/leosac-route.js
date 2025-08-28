@@ -1,3 +1,4 @@
+import { getOwner } from '@ember/application';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Route from '@ember/routing/route';
@@ -50,7 +51,7 @@ export default class LeosacRoute extends Route {
         if (this.fullRouteName === this.routeName) {
             this.router.transitionTo('login');
         } else {
-            this.router.transitionToExternal('login');
+            transitionToExternal(this, 'login');
         }
     }
 
@@ -97,6 +98,12 @@ export default class LeosacRoute extends Route {
     }
 }
 
+function transitionToExternal(route, routeName)
+{
+    let externalRoute = getOwner(route)._getExternalRoute(routeName);
+    route.router.transitionTo(externalRoute);
+}
+
 function redirectIfNotAuth(route)
 {
     let promise_or_ret = route.authSrv.isLoggedIn();
@@ -112,7 +119,7 @@ function redirectIfNotAuth(route)
         if (route.fullRouteName === route.routeName) {
             route.router.transitionTo('login');
         } else {
-            route.router.transitionToExternal('login');
+            transitionToExternal(route, 'login');
         }
         return ;
 
@@ -130,7 +137,7 @@ function redirectIfNotAuth(route)
         if (route.fullRouteName === route.routeName) {
             route.router.transitionTo('login');
         } else {
-            route.router.transitionToExternal('login');
+            transitionToExternal(route, 'login');
         }
 
     });
