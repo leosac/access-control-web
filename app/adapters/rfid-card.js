@@ -1,4 +1,4 @@
 import CredentialAdapter from './credential';
 
-export default CredentialAdapter.extend({
-});
+export default class extends CredentialAdapter {
+}

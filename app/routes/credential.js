@@ -11,15 +11,8 @@ export default class CredentialRoute extends LeosacRoute {
     _title = 'credential.title';
     _requireAuth = true;
 
-    beforeModel()
-    {
-        "use strict";
-        return this._super();
-    }
-
     model(params)
     {
-        "use strict";
         return this.store.findRecord('credential', params.id);
     }
 

@@ -11,15 +11,8 @@ export default class GroupRoute extends LeosacRoute {
     _title = 'group.title';
     _requireAuth = true;
 
-    beforeModel()
-    {
-        "use strict";
-        return this._super();
-    }
-
     model(params)
     {
-        "use strict";
         return this.store.findRecord('group', params.group_id);
     }
 

@@ -11,15 +11,8 @@ export default class ScheduleRoute extends LeosacRoute {
     _title = 'schedule.title';
     _requireAuth = true;
 
-    beforeModel()
-    {
-        "use strict";
-        return this._super();
-    }
-
     model(params)
     {
-        "use strict";
         return this.store.findRecord('schedule', params.schedule_id);
     }
 

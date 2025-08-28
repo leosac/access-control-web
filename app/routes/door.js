@@ -11,15 +11,8 @@ export default class DoorRoute extends LeosacRoute {
     _title = 'door.title';
     _requireAuth = true;
 
-    beforeModel()
-    {
-        "use strict";
-        return this._super();
-    }
-
     model(params)
     {
-        "use strict";
         // fixme: THIS IS AN HORRIBLE HACK !
         // The alias of the linked AP didn't show in the view for
         // some unknown reason, despite the relationship being fetched.
@@ -29,7 +22,7 @@ export default class DoorRoute extends LeosacRoute {
         // fixme FIX ME PLS
         return this.store.findAll('access-point').then(() =>
         {
-            return this.store.findRecord('door', params.id);
+            return this.store.findRecord('door', params.door_id);
         });
     }
 
@@ -38,7 +31,7 @@ export default class DoorRoute extends LeosacRoute {
         // Rollback change when leaving the page.
         if (isExiting)
         {
-            const mod = this.controller.get('model');
+            const mod = this.controller.model;
             if (mod) {
                 mod.rollbackAttributes();
             }

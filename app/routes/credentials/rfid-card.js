@@ -1,29 +1,28 @@
 import { service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 
-export default LeosacRoute.extend({
-    store: service(),
-    _title: 'credentials.rfid_card.title',
-    _requireAuth: true,
-    beforeModel()
-    {
-        "use strict";
-        return this._super();
-    },
+export default class extends LeosacRoute {
+    @service
+    store;
+
+    _title = 'credentials.rfid_card.title';
+    _requireAuth = true;
+    
+    
     model(params)
     {
-        "use strict";
         return this.store.findRecord('rfid-card', params.credential_id);
-    },
+    }
+
     resetController(controller, isExiting)
     {
         // Rollback change when leaving the page.
         if (isExiting)
         {
-            const mod = this.controller.get('model');
+            const mod = this.controller.model;
             if (mod) {
                 mod.rollbackAttributes();
             }
         }
     }
-});
+}

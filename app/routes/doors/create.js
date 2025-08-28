@@ -4,28 +4,24 @@ import LeosacRoute from 'web/leosac-route';
 /**
  * Create a new door.
  */
-export default LeosacRoute.extend({
-    router: service(),
-    store: service(),
-    flashMessages: service(),
-    _title: 'door.create.title',
-    _requireAuth: true,
-    beforeModel()
-    {
-        "use strict";
-        return this._super();
-    },
+export default class extends LeosacRoute {
+    @service
+    store;
+
+    _title = 'door.create.title';
+    _requireAuth = true;
+
     model()
     {
-        "use strict";
         return this.store.createRecord('door');
-    },
+    }
+
     resetController(controller, isExiting/*, transition*/)
     {
-        const mod = this.controller.get('model');
+        const mod = this.controller.model;
         if (isExiting && mod.get('isNew'))
         {
             mod.unloadRecord();
         }
     }
-});
+}

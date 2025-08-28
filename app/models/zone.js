@@ -27,7 +27,7 @@ export default class ZoneModel extends Model.extend(ZoneValidations) {
     type;
     @hasMany('door', { async: true, inverse: null })
     doors;
-    @hasMany('zone', { async: true, inverse: null })
+    @hasMany('zone', { async: true, inverse: 'parent' })
     children;
     @hasMany('zone', { async: true, inverse: 'children' })
     parent;

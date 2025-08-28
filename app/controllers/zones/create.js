@@ -10,14 +10,14 @@ export default class extends Controller {
 
     @action
     createZone() {
-        this.get('model').save().then((d) =>
+        this.model.save().then((d) =>
             {
                 this.flashMessages.success('Zone created.');
                 this.router.transitionTo('zone', d.get('id'));
             },
-            () =>
+            (error) =>
             {
-                this.flashMessages.danger('Failed to create zone.');
+                this.flashMessages.danger('Failed to create zone: ' + error);
             });
     }
 }

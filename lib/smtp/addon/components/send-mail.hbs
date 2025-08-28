@@ -1,6 +1,6 @@
 <div class="col-md-6" style="margin-top: 1%">
 <BsForm @model={{this}} as |form|>
-  <form.element @controlType="email" @label="Recipient" @placeholder="me@me.com" @property="recipient" />
+  <form.element @controlType="email" @label={{t "smtp.recipient"}} @placeholder="me@me.com" @property="recipient" />
 
   <form.element @controlType="text" @label={{t "smtp.subject"}} @property="subject" />
 

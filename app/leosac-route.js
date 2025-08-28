@@ -10,7 +10,7 @@ import ENV from 'web/config/environment';
  * To extend this base route, do the following:
  * ```
  *   import LeosacRoute from 'web/leosac-route';
- *   export default LeosacRoute.extend({...});
+ *   export default class extends LeosacRoute {...}
  * ```
  *
  * It provides various utilities that are shared
@@ -23,9 +23,6 @@ import ENV from 'web/config/environment';
  *     _requireAuth: If the user is not authenticated,
  *             a direction to the login page will happen.
  *
- * @note In case the subclass implements the beforeModel()
- *       method, it MUST call `this._super()` otherwise this
- *       base route will be useless.
  */
 
 export default class LeosacRoute extends Route {
@@ -37,27 +34,23 @@ export default class LeosacRoute extends Route {
     globalInfo;
     @service('authentication')
     authSrv;
-    @service
-    flashMessages;
+    
     // A translation key for the title of the page.
     _title = '';
     _requireAuth = false;
 
     @action
     onLogout() {
-        "use strict";
-
-        const  self = this;
         /**
          * This is a small hack that allow us to navigate to login
          *
          * The hack is quite simple, it check if the route name match the current route.
          * if not, then this is an engine.
          */
-        if (self.fullRouteName === self.routeName) {
-            self.router.transitionTo('login');
+        if (this.fullRouteName === this.routeName) {
+            this.router.transitionTo('login');
         } else {
-            self.router.transitionToExternal('login');
+            this.router.transitionToExternal('login');
         }
     }
 
@@ -84,7 +77,6 @@ export default class LeosacRoute extends Route {
     }
     
     beforeModel() {
-        "use strict";
         this.intl.setLocale(this.globalInfo.getLocale());
 
         if (this._title)
@@ -107,9 +99,7 @@ export default class LeosacRoute extends Route {
 
 function redirectIfNotAuth(route)
 {
-    "use strict";
-    let self = route;
-    let promise_or_ret = self.authSrv.isLoggedIn();
+    let promise_or_ret = route.authSrv.isLoggedIn();
 
     if (promise_or_ret === false)
     {
@@ -119,10 +109,10 @@ function redirectIfNotAuth(route)
          * The hack is quite simple, it check if the route name match the current route.
          * if not, then this is an engine.
          */
-        if (self.fullRouteName === self.routeName) {
-            self.router.transitionTo('login');
+        if (route.fullRouteName === route.routeName) {
+            route.router.transitionTo('login');
         } else {
-            self.router.transitionToExternal('login');
+            route.router.transitionToExternal('login');
         }
         return ;
 
@@ -132,15 +122,15 @@ function redirectIfNotAuth(route)
         return;
     }
 
-    promise_or_ret.then(function ()
+    promise_or_ret.then(() =>
     {
         // success, do nothing and let user reach page
-    }, function ()
+    }, () =>
     {
-        if (self.fullRouteName === self.routeName) {
-            self.router.transitionTo('login');
+        if (route.fullRouteName === route.routeName) {
+            route.router.transitionTo('login');
         } else {
-            self.router.transitionToExternal('login');
+            route.router.transitionToExternal('login');
         }
 
     });

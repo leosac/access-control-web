@@ -9,14 +9,7 @@ export default class SettingsRoute extends LeosacRoute {
     _title = 'settings';
     _requireAuth = true;
 
-    beforeModel()
-    {
-        "use strict";
-        return this._super();
-    }
-
     model()
     {
-        "use strict";
     }
 }

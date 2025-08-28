@@ -1,29 +1,26 @@
 import { service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 
-export default LeosacRoute.extend({
-    _title: 'model-name.title', // this is an example of a translation key, up to you
-    _requireAuth: true,
-    store: service(),
+export default class extends LeosacRoute {
+    @service
+    store;
 
-    beforeModel()
-    {
-        "use strict";
-        return this._super();
-    },
+    _title = 'model-name.title'; // this is an example of a translation key, up to you
+    _requireAuth = true;
+
     model(params)
     {
-        "use strict";
         return this.store.findRecord('model-name', params.id);
-    },
+    }
+
     resetController(controller, isExiting/*, transition*/)
     {
         // Rollback change when leaving the page.
         if (isExiting)
         {
-            const mod = this.controller.get('model');
+            const mod = this.controller.model;
             if (mod)
                 mod.rollbackAttributes();
         }
     }
-});
+}

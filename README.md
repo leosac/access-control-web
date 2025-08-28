@@ -77,6 +77,7 @@ You will need the following things properly installed on your computer.
                           login: 'login'
                       },
                       services: [
+                          'router',
                           'authentication',
                           'websocket',
                           'leosac-info',

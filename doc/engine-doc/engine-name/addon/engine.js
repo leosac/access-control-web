@@ -22,6 +22,7 @@ const { modulePrefix } = config;
             },
             dependencies: {
                 services: [
+                    'router',
                     'authentication',
                     'websocket',
                     'leosac-info',
@@ -45,6 +46,7 @@ const Eng = Engine.extend({
   Resolver,
     dependencies: {
         services: [
+            'router',
             'authentication',
             'websocket',
             'leosac-info',

@@ -15,7 +15,7 @@
   </BsForm>
 </div>
 
-<BsForm @formLayout='vertical' as |form|>
+<BsForm @formLayout='vertical' @onSubmit={{fn this.setLocale this.language}} as |form|>
   <div class="row space-top">
     <div class="col-md-3 col-xs-10 col-sm-8">
       <form.element @label={{t "language"}}>
@@ -32,7 +32,7 @@
   </div>
   <div class="row">
     <div class="col-md-3 col-xs-8 col-sm-4">
-      <form.submitButton @onClick={{fn this.setLocale this.language}}>{{t 'switch'}}</form.submitButton>
+      <form.submitButton>{{t 'switch'}}</form.submitButton>
     </div>
   </div>
 </BsForm>

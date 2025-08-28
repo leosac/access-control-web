@@ -11,15 +11,8 @@ export default class AccessPointRoute extends LeosacRoute {
     _title = 'access-point.title';
     _requireAuth = true;
 
-    beforeModel()
-    {
-        "use strict";
-        return this._super();
-    }
-
     model(params)
     {
-        "use strict";
         return this.store.findRecord('access-point', params.id);
     }
 

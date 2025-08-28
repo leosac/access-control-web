@@ -1,22 +1,15 @@
 import { service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 
-export default LeosacRoute.extend({
-    store: service(),
-    _title: 'model-name.list.title',
-    _requireAuth: true,
+export default class extends LeosacRoute {
+    @service
+    store;
 
-    init() {
-        this._super(...arguments);
-    },
-    beforeModel()
-    {
-        "use strict";
-        return this._super();
-    },
+    _title = 'model-name.list.title';
+    _requireAuth = true;
+
     model()
     {
-        "use strict";
         return this.store.findAll('model-name', {reload: true});
     }
-});
+}

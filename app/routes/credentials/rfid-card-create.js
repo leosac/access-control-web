@@ -1,20 +1,18 @@
 import { service } from '@ember/service';
 import LeosacRoute from 'web/leosac-route';
 
-export default LeosacRoute.extend({
-    store: service(),
-    _title: 'credentials.rfid_card_create.title',
-    _requireAuth: true,
-    beforeModel()
-    {
-        "use strict";
-        return this._super();
-    },
+export default class extends LeosacRoute {
+    @service
+    store;
+
+    _title = 'credentials.rfid_card_create.title';
+    _requireAuth = true;
+
     model()
     {
-        "use strict";
         return this.store.createRecord('rfid-card');
-    },
+    }
+
     resetController(controller, isExiting/*, transition*/)
     {
         // fixme Creating a credential and then hitting "back" will
@@ -32,4 +30,4 @@ export default LeosacRoute.extend({
             mod.unloadRecord();
         }
     }
-});
+}

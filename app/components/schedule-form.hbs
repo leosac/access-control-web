@@ -1,4 +1,4 @@
-<BsForm @formLayout="vertical" @model={{this.args.schedule}} as |form|>
+<BsForm @formLayout="vertical" @model={{this.args.schedule}} @onSubmit={{this.args.action}} as |form|>
   <div class="col-md-6">
     <fieldset>
       <legend>{{t 'configuration'}}</legend>
@@ -25,7 +25,7 @@
       {{/each}}
       <div class="row space-top space-bottom">
         <div class="col-md-6">
-          <form.submitButton @type="success" @onClick={{this.args.action}}>{{t 'submit'}}</form.submitButton>
+          <form.submitButton @type="success">{{t 'submit'}}</form.submitButton>
         </div>
           {{#if this.args.delete}}
             <div class="pull-right form-button-delete">

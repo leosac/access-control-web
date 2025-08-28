@@ -9,12 +9,6 @@ export default class WsErrorRoute extends LeosacRoute {
     router;
     _title = 'Error';
 
-    beforeModel()
-    {
-        "use strict";
-        return this._super();
-    }
-
     model(params)
     {
         if (params.status_code === 7) // SessionAborted

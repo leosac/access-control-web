@@ -1,4 +1,4 @@
 import AccessPointAdapter from './access-point';
 
-export default AccessPointAdapter.extend({
-});
+export default class extends AccessPointAdapter {
+}

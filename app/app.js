@@ -20,6 +20,7 @@ export default class App extends Application {
                     login: 'login'
                 },
                 services: [
+                    'router',
                     'authentication',
                     'websocket',
                     'leosac-info',
@@ -45,6 +46,7 @@ export default class App extends Application {
                     login: 'login'
                 },
                 services: [
+                    'router',
                     'authentication',
                     'websocket',
                     'leosac-info',
@@ -71,6 +73,7 @@ export default class App extends Application {
                     login: 'login'
                 },
                 services: [
+                    'router',
                     'authentication',
                     'websocket',
                     'leosac-info',
@@ -96,6 +99,7 @@ export default class App extends Application {
                     login: 'login'
                 },
                 services: [
+                    'router',
                     'authentication',
                     'websocket',
                     'leosac-info',
@@ -127,6 +131,7 @@ export default class App extends Application {
                     index: 'index'
                 },
                 services: [
+                    'router',
                     'authentication',
                     'websocket',
                     'leosac-info',

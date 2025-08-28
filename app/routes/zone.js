@@ -11,15 +11,8 @@ export default class ZoneOverviewRoute extends LeosacRoute {
     _title = 'zone.title';
     _requireAuth = true;
 
-    beforeModel()
-    {
-        "use strict";
-        return this._super();
-    }
-
     model(params)
     {
-        "use strict";
         return this.store.findRecord('zone', params.zone_id);
     }
 
@@ -28,7 +21,7 @@ export default class ZoneOverviewRoute extends LeosacRoute {
         // Rollback change when leaving the page.
         if (isExiting)
         {
-            const mod = this.controller.get('model');
+            const mod = this.controller.model;
             if (mod) {
                 mod.rollbackAttributes();
             }

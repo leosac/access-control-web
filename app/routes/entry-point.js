@@ -39,13 +39,4 @@ export default class EntryPointRoute extends Route {
         };
         this.router.transitionTo('login');
     }
-
-    beforeModel() {
-        "use strict";
-        /**
-         * This will retrieve the url, add the missing slash (/),
-         * and then set the leosac address with the new address.
-         */
-        return this._super();
-    }
 }

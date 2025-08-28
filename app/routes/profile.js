@@ -16,11 +16,6 @@ export default class ProfileRoute extends LeosacRoute {
     _requireAuth = true;
     passwordInfo = null;
 
-    beforeModel()
-    {
-        return this._super();
-    }
-
     model(params)
     {
         return hash({
