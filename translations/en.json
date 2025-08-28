@@ -196,24 +196,6 @@
     "wrongDateFormat": "{description} must be in the format of {format}",
     "wrongLength": "{description} is the wrong length (should be {is} characters)"
   },
-  "evoxs": {
-    "access-point": {
-      "title": "EvoXS Access Point"
-    },
-    "cylinder-events": {
-      "title": "Cylinder Events"
-    },
-    "lockid": "Lock Id",
-    "operations": {
-      "extract_event": "Extract events",
-      "set_time": "Configure cylinder's time",
-      "title": "Operations"
-    },
-    "title": "EvoXS",
-    "update": {
-      "title": "EvoXS Access Point Update"
-    }
-  },
   "finalized": "Finalized",
   "firstname": "First name",
   "form": {

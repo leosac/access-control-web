@@ -22,7 +22,7 @@ all_addon = [
     ModuleDescription('piface-digital-gpio', 'in'),
     ModuleDescription('wiegand-reader', 'in'),
     ModuleDescription('led-buzzer', 'in'),
-    ModuleDescription('evoxs', 'out')
+    #ModuleDescription('custom-addon', 'out')
 ]
 
 all_style = [

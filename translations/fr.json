@@ -196,24 +196,6 @@
     "wrongDateFormat": "{description} doit être au format {format}",
     "wrongLength": "{description} est de mauvaise longueur (doit être de {is} caractères)"
   },
-  "evoxs": {
-    "access-point": {
-      "title": "Point d'accès EvoXS"
-    },
-    "cylinder-events": {
-      "title": "Evenements cylindre"
-    },
-    "lockid": "Lock Id",
-    "operations": {
-      "extract_event": "Récupérer les évenements",
-      "set_time": "Configurer l'heure du cylindre",
-      "title": "Opérations"
-    },
-    "title": "EvoXS",
-    "update": {
-      "title": "Mise à jour d'un point d'accès EvoXS"
-    }
-  },
   "finalized": "Finalisé",
   "firstname": "Prénom",
   "form": {

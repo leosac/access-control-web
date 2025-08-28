@@ -9,10 +9,7 @@ import { UpdateStatus } from 'web/leosac-constant';
  * an update doesn't really make sense, etc.
  *
  * Therefore this service is use to communicates with the various
- * update-related WS call implemented by Leosac server.
- *
- * @note Most of the service will need to be fixed because its now geared
- * to EvoXS directly due to some broken behavior in emberjs.
+ * update-related WS call implemented by Leosac Access Control server.
  */
 export default class UpdateService extends Service {
     @service
@@ -41,10 +38,7 @@ export default class UpdateService extends Service {
         return this.ws.sendJson('get_pending_update', {}).then((resp) =>
         {
             this.store.pushPayload(resp);
-
-            // We have to hardcode for EvoXS due to emberjs broken
-            // polymorphic support
-            return this.store.peekAll('evoxs-access-point-update').filter(e => e.get('status') === UpdateStatus.PENDING);
+            return this.store.peekAll('access-point-update').filter(e => e.get('status') === UpdateStatus.PENDING);
         });
     }
 
@@ -71,10 +65,7 @@ export default class UpdateService extends Service {
         return this.ws.sendJson('get_update_history', {}).then((resp) =>
         {
             this.store.pushPayload(resp);
-
-            // We have to hardcode for EvoXS due to emberjs broken
-            // polymorphic support
-            return this.store.peekAll('evoxs-access-point-update').filter(e => e.get('status') !== UpdateStatus.PENDING);
+            return this.store.peekAll('access-point-update').filter(e => e.get('status') !== UpdateStatus.PENDING);
         });
     }
 
@@ -83,10 +74,7 @@ export default class UpdateService extends Service {
         return this.ws.sendJson('get_update', {update_id: uid}).then((resp) =>
         {
             this.store.pushPayload(resp);
-
-            // We have to hardcode for EvoXS due to emberjs broken
-            // polymorphic support
-            return this.store.peekRecord('evoxs-access-point-update', uid);
+            return this.store.peekRecord('access-point-update', uid);
         });
     }
 }

@@ -1,4 +1,4 @@
-import ApplicationAdapter from '../app/adapters/application';
+import ApplicationAdapter from './application';
 import { service } from '@ember/service';
 import { Promise } from 'rsvp';
 

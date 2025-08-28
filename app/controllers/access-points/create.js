@@ -13,28 +13,19 @@ export default class extends Controller {
 
     @action
     createAP() {
-        const ap = this.store.createRecord('leosac-builtin-access-point', {
-            id: v4(),
-            controllerModule: 'LEOSAC-BUILTIN-ACCESS-POINT',
-            alias: 'AP-name'
+        let apModel = 'leosac-builtin-access-point';
+        const newAp = this.store.createRecord(apModel, {
+            alias: this.model.get('alias'),
+            controllerModule: this.model.get('controllerModule')
         });
-
-        this.router.transitionTo('leosac-builtin-access-point', ap.get('id'));
-        // this.modelFor('access-points.create').save().then((ap) =>
-        //     {
-        //         this.flashMessages.success('Access Point created.');
-        //
-        //         // We create an object of type access point in the browser's memory.
-        //         // However, server-side the object will have a concrete subtype.
-        //         // So we just unload this temporary object, and we will get a fresh copy
-        //         // with the correct underlying type when et reach the /access-point page.
-        //         const id = ap.get('id');
-        //         ap.unloadRecord();
-        //         this.router.transitionTo('access-point', ap.get('id'));
-        //     },
-        //     () =>
-        //     {
-        //         this.flashMessages.danger('Failed to create Access Point.');
-        //     });
+        newAp.save().then((ap) =>
+            {
+                this.flashMessages.success('Access Point created.');
+                this.router.transitionTo(apModel, ap.get('id'));
+            },
+            (error) =>
+            {
+                this.flashMessages.danger('Failed to create Access Point: ' + error);
+            });
     }
 }
