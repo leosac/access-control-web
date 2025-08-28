@@ -12,6 +12,8 @@
     "@embroider/macros": "*",
     "@glimmer/component": "*",
     "ember-auto-import": "*",
+    "ember-basic-dropdown": "*",
+    "ember-bootstrap": "*",
     "ember-cli-babel": "*",
     "ember-cli-htmlbars": "*",
     "ember-cli-flash": "*",

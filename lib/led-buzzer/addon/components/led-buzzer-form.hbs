@@ -1,27 +1,27 @@
-<this.arg.form.element @controlType="text" @label={{t "name"}} @placeholder={{t "name"}} @property="name" as |el|>
+<this.args.form.element @controlType="text" @label={{t "name"}} @placeholder={{t "name"}} @property="name" as |el|>
   {{el.control}}
-</this.arg.form.element>
+</this.args.form.element>
 
-<this.arg.form.element @property="defaultBlinkDuration" @label={{t "blink_duration"}} @controlType="number" as |el|>
+<this.args.form.element @property="defaultBlinkDuration" @label={{t "blink_duration"}} @controlType="number" as |el|>
   <el.control @id="Tooltip-duration" />
   <BsTooltip @triggerElement="#Tooltip-duration" @placement="right">{{t 'led_buzzer_information.duration'}}</BsTooltip>
-</this.arg.form.element>
+</this.args.form.element>
 
-<this.arg.form.element @property="defaultBlinkSpeed" @label={{t "blink_speed"}} @controlType="number" as |el|>
+<this.args.form.element @property="defaultBlinkSpeed" @label={{t "blink_speed"}} @controlType="number" as |el|>
   <el.control @id="Tooltip-speed" />
   <BsTooltip @triggerElement="#Tooltip-speed" @placement="right">{{t 'led_buzzer_information.speed'}}</BsTooltip>
-</this.arg.form.element>
+</this.args.form.element>
 
-<this.arg.form.element @label={{t "gpio"}}>
+<this.args.form.element @label={{t "gpio"}}>
   <div id="Tooltip-gpio">
-    <DevicePicker @arrayOfDeviceClass={{this.arrayOfDeviceClass}} @placeholder="GPIO" @relationshipsName="gpio" @device={{this.ledBuzzer}} />
+    <DevicePicker @arrayOfDeviceClass={{this.arrayOfDeviceClass}} @placeholder="GPIO" @relationshipsName="gpio" @device={{this.args.ledBuzzer}} />
     <BsTooltip @triggerElement="#Tooltip-gpio" @placement="right">{{t 'led_buzzer_information.gpio'}}</BsTooltip>
   </div>
-</this.arg.form.element>
+</this.args.form.element>
 
-<this.arg.form.element @label={{t "enable"}}>
+<this.args.form.element @label={{t "enable"}}>
   <div class="pull-right" id="Tooltip-enable">
-    <DeviceToggleEnabled @device={{this.ledBuzzer}} @saveIt={{false}} @form={{this.arg.form}} />
+    <DeviceToggleEnabled @device={{this.args.ledBuzzer}} @saveIt={{false}} @form={{this.args.form}} />
     <BsTooltip @triggerElement="#Tooltip-enable" @placement="right">{{t 'led_buzzer_informations.enable'}}</BsTooltip>
   </div>
-</this.arg.form.element>
+</this.args.form.element>

@@ -1,4 +1,4 @@
-<BsForm @formLayout="vertical" @model={{this.piface-digital-gpio}} @onSubmit={{this.action}} as |form|>
+<BsForm @formLayout="vertical" @model={{this.args.piface-digital-gpio}} @onSubmit={{this.args.action}} as |form|>
   <div class="col-md-6">
     <fieldset>
       <legend>{{t 'configuration'}}</legend>
@@ -20,17 +20,17 @@
 
       <form.element @property="direction" @label={{t "direction"}}>
       <div id="Tooltip-direction">
-        <PowerSelect @selected={{this.piface-digital-gpio.direction}} @searchEnabled={{false}} @options={{this.allDirection}} @onChange={{fn (mut this.piface-digital-gpio.direction)}} @placeholder={{t "type_direction"}} as |direction|>
+        <PowerSelect @selected={{this.args.piface-digital-gpio.direction}} @searchEnabled={{false}} @options={{this.allDirection}} @onChange={{fn (mut this.args.piface-digital-gpio.direction)}} @placeholder={{t "type_direction"}} as |direction|>
           {{t direction}}
         </PowerSelect>
         <BsTooltip @placement="right" @triggerElement="#Tooltip-direction">{{t 'piface_digital_gpio_information.direction'}}</BsTooltip>
       </div>
       </form.element>
 
-      {{#if (eq this.piface-digital-gpio.direction 'out')}}
+      {{#if (eq this.args.piface-digital-gpio.direction 'out')}}
         <form.element @property="defaultValue" @label={{t "default_value"}}>
           <div id="Tooltip-value">
-          <PowerSelect @selected={{this.piface-digital-gpio.defaultValue}} @searchEnabled={{false}} @options={{this.allValue}} @onChange={{fn (mut this.piface-digital-gpio.defaultValue)}} @placeholder={{t "type_value"}} as |newValue|>
+          <PowerSelect @selected={{this.args.piface-digital-gpio.defaultValue}} @searchEnabled={{false}} @options={{this.allValue}} @onChange={{fn (mut this.args.piface-digital-gpio.defaultValue)}} @placeholder={{t "type_value"}} as |newValue|>
             {{t newValue}}
           </PowerSelect>
           <BsTooltip @placement="right" @triggerElement="#Tooltip-value" @triggerEvent="hover">{{t 'piface_digital_gpio_information.value'}}</BsTooltip>
@@ -40,18 +40,18 @@
 
       <form.element @property="enabled" @label={{t "enable"}}>
         <div class="pull-right" id="Tooltip-enable">
-          <DeviceToggleEnabled @device={{this.piface-digital-gpio}} @saveIt={{false}} @form={{form}} />
+          <DeviceToggleEnabled @device={{this.args.piface-digital-gpio}} @saveIt={{false}} @form={{form}} />
           <BsTooltip @placement="right" @triggerElement="#Tooltip-enable" @triggerEvent="hover">{{t 'piface_digital_gpio_information.enable'}}</BsTooltip>
         </div>
       </form.element>
 
     <div class="row">
       <div class="col-md-6">
-        <BsButton @defaultText={{t "submit"}} @type="success" @size="md" @buttonType="submit" />
+        <form.submitButton @type="success">{{t 'submit'}}</form.submitButton>
       </div>
-      {{#if this.delete}}
+      {{#if this.args.delete}}
         <div class="pull-right form-button-delete">
-          <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "piface-digital-gpios.delete_confirm"}} @onConfirm={{this.delete}} />
+          <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "piface-digital-gpios.delete_confirm"}} @onConfirm={{this.args.delete}} />
         </div>
       {{/if}}
     </div>

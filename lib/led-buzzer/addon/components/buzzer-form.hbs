@@ -1,14 +1,14 @@
-<BsForm @formLayout="vertical" @model={{this.buzzer}} @onSubmit={{this.action}} as |form|>
+<BsForm @formLayout="vertical" @model={{this.args.buzzer}} @onSubmit={{this.args.action}} as |form|>
   <fieldset>
     <div class="col-md-6">
-      <LedBuzzerForm @model={{this.model}} @ledBuzzer={{this.buzzer}} @form={{form}} />
+      <LedBuzzerForm @model={{this.model}} @ledBuzzer={{this.args.buzzer}} @form={{form}} />
       <div class="row">
         <div class="col-md-6">
-          <BsButton @defaultText={{t "submit"}} @type="success" @size="md" @buttonType="submit" />
+          <form.submitButton @type="success">{{t 'submit'}}</form.submitButton>
         </div>
-        {{#if this.delete}}
+        {{#if this.args.delete}}
           <div class="pull-right form-button-delete">
-            <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "led-buzzer.delete_confirm"}} @onConfirm={{this.delete}} />
+            <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "led-buzzer.delete_confirm"}} @onConfirm={{this.args.delete}} />
           </div>
         {{/if}}
       </div>

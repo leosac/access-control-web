@@ -1,5 +1,5 @@
-<this.arg.form.element @label={{this.label}}>
+<this.args.form.element @label={{this.label}}>
     <PowerSelect @searchEnabled={{true}} @search={{this.searchZone}} @selected={{this.selected.alias}} @placeholder={{t "zone.type_zone"}} @onChange={{fn (mut this.selected)}} as |childrenInfo|>
         {{childrenInfo.alias}}
     </PowerSelect>
-</this.arg.form.element>
+</this.args.form.element>
