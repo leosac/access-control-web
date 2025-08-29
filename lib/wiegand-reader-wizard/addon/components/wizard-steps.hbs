@@ -1,28 +1,6 @@
 <div class="col-md-12">
-  <!--<StepManager @did-transition={{this.afterTransition}} as |w|>
-    <div class="container">
-      <ul class="nav nav-pills nav-justified thumbnail">
-        {{#each this.steps as |step|}}
-          {{#if (eq w.currentStep step.value)}}
-            <li class="active inactiveLink">
-              <a href="#">
-                <div class="list-group-item-heading">{{step.name}}</div>
-                <p class="list-group-item-text">{{step.description}}</p>
-              </a>
-            </li>
-          {{else}}
-            <li class="inactiveLink">
-              <a href="#">
-                <div class="list-group-item-heading">{{step.name}}</div>
-                <p class="list-group-item-text">{{step.description}}</p>
-              </a>
-            </li>
-          {{/if}}
-        {{/each}}
-      </ul>
-    </div>
-
-    <w.step @name="general">
+  <BsTab @activeId={{this.currentTab}} as |tab|>
+    <tab.pane @title='General Configuration'>
       <fieldset>
         <legend>{{t 'configuration'}}</legend>
         <div class="col-md-12">
@@ -30,7 +8,7 @@
             <div class="row">
               <div class="col-md-6">
                 <form.element @controlType="text" @label={{t "name"}} @placeholder={{t "name"}} @property="configName" as |el|>
-                  {{el.control}}
+                  <el.control />
                 </form.element>
               </div>
               <div class="col-md-6 text-next-to-power-select">
@@ -41,7 +19,7 @@
             <div class="row">
               <div class="col-md-6">
                 <form.element @label={{t "gpio"}}>
-                  <PowerSelect @selected={{this.gpioType}} @searchEnabled={{false}} @options={{this.listOfGpio}} @onchange={{fn (mut this.gpioType)}} as |gpio|>
+                  <PowerSelect @selected={{this.gpioType}} @searchEnabled={{false}} @options={{this.listOfGpio}} @onChange={{fn (mut this.gpioType)}} as |gpio|>
                     {{t gpio}}
                   </PowerSelect>
                 </form.element>
@@ -56,7 +34,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <form.element @label={{t "hardware_address"}}>
-                    <PowerSelect @selected={{this.hardwareAddress}} @searchEnabled={{false}} @options={{this.hardwareAddressList}} @onchange={{fn (mut this.hardwareAddress)}} as |address|>
+                    <PowerSelect @selected={{this.hardwareAddress}} @searchEnabled={{false}} @options={{this.hardwareAddressList}} @onChange={{fn (mut this.hardwareAddress)}} as |address|>
                       {{address}}
                     </PowerSelect>
                   </form.element>
@@ -94,17 +72,19 @@
             </div>
           </BsForm>
 
-          <BsButton @type="success" @text="Next" @onClick={{fn this.transitionFromGeneralToGpio (fn w.transition-to "gpio")}} />
+          <BsButton @type="success" @onClick={{this.transitionFromGeneralToGpio}}>
+            Next
+          </BsButton>
         </div>
       </fieldset>
-    </w.step>
+    </tab.pane>
 
-    <w.step @name="gpio">
+    <tab.pane @title='GPIOs configuration'>
       <div class="row">
         <div class="col-md-6">
           <BsForm @formLayout="vertical" @model={{this.pifaceDigitalGpioHigh}} as |form|>
             <form.element @controlType="number" @label={{t "number_high"}} @placeholder="0 - 7" @property="number" as |el|>
-              {{el.control}}
+              <el.control />
             </form.element>
           </BsForm>
         </div>
@@ -118,7 +98,7 @@
         <div class="col-md-6">
           <BsForm @formLayout="vertical" @model={{this.pifaceDigitalGpioLow}} as |form|>
             <form.element @controlType="number" @label={{t "number_low"}} @placeholder="0 - 7" @property="number" as |el|>
-              {{el.control}}
+              <el.control />
             </form.element>
           </BsForm>
         </div>
@@ -133,7 +113,7 @@
           <div class="col-md-6">
             <BsForm @formLayout="vertical" @model={{this.pifaceDigitalGpioLed}} as |form|>
               <form.element @controlType="number" @label={{t "number_led"}} @placeholder="0 - 7" @property="number" as |el|>
-                {{el.control}}
+                <el.control />
               </form.element>
             </BsForm>
           </div>
@@ -150,7 +130,7 @@
             <BsForm @formLayout="vertical" @model={{this.pifaceDigitalGpioBuzzer}} as |form|>
 
               <form.element @controlType="number" @label={{t "number_buzzer"}} @placeholder="0 - 7" @property="number" as |el|>
-                {{el.control}}
+                <el.control />
               </form.element>
             </BsForm>
           </div>
@@ -161,19 +141,20 @@
           </div>
         </div>
       {{/if}}
-      <BsButton @type="success" @text="Next" @onClick={{fn this.transitionFromGpioToFinish (fn w.transition-to "finish")}} />
-    </w.step>
+      <BsButton @type="success" @onClick={{this.transitionFromGpioToFinish}}>
+        Next
+      </BsButton>
+    </tab.pane>
 
-    <w.step @name="finish">
+    <tab.pane @title='Finish Page'>
       <div class="row">
         <div class="col-md-6">
           {{t 'finish'}}
-          {{#link-to-external 'index'}}
-            <BsButton @type="success" @text="Home" />
-          {{/link-to-external}}
-
+          <BsButton @type="success" @onClick={{this.transitionToHome}}>
+            Home
+          </BsButton>
         </div>
       </div>
-    </w.step>
-  </StepManager>-->
+    </tab.pane>
+  </BsTab>
 </div>
