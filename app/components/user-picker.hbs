@@ -1,5 +1,5 @@
-<this.args.form.element @label={{this.label}}>
-  <PowerSelect @searchEnabled={{true}} @selected={{this.selected.username}} @onChange={{this.onChange}} @allowClear={{true}} @search={{this.searchCredential}} @placeholder={{t "username"}} as |user|>
+<this.args.form.element @label={{this.args.label}}>
+  <PowerSelect @searchEnabled={{true}} @selected={{this.args.selected.username}} @onChange={{this.args.onChange}} @allowClear={{true}} @search={{this.args.searchCredential}} @placeholder={{t "username"}} as |user|>
     {{user.username}}
   </PowerSelect>
 </this.args.form.element>

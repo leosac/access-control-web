@@ -4,9 +4,9 @@
   "entryPoint": "/",
   "isWizard": true,
   "neededModule": [
-    "wiegandreader",
-    "pifacedigitalgpio",
-    "ledbuzzer"
+    "wiegand-reader",
+    "piface-digital-gpio",
+    "led-buzzer"
   ],
   "modelToRoute": {
   }

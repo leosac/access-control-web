@@ -5,22 +5,16 @@ import Component from '@glimmer/component';
 export default class GlobalSearch extends Component {
     @service('leosac-info')
     globalInfo;
-
     @service('module-route-helper')
     routeHelper;
-
     @service
     search;
-
     @service
     flashMessages;
-
     @service
     intl;
-
     @service
     store;
-
     @service
     router;
 

@@ -5,10 +5,8 @@ import Component from '@glimmer/component';
 export default class GroupUserMembershipTable extends Component {
     @service('authentication')
     authSrv;
-
     @service
     store;
-
     @service
     router;
 
@@ -22,7 +20,7 @@ export default class GroupUserMembershipTable extends Component {
         {
             memberships.forEach((m) =>
             {
-                if (m.get('group').get('id') === this.get('group').get('id'))
+                if (m.get('group').get('id') === this.args.group.get('id'))
                 {
                     if (m.get('rank') === 'administrator') {
                         this.canRemoveUserFromGroup = true;

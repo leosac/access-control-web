@@ -11,7 +11,7 @@ function formatName(object) {
 
     while (object[i]) {
         object[i] = object[i].toUpperCase();
-        object[i] = object[i].replace(/_/g, '');
+        object[i] = object[i].replace(/_/g, '-');
         i++;
     }
     object.sort();
