@@ -1,26 +1,25 @@
-<BsForm @formLayout="vertical" @model={{this.args.pin}} @onSubmit={{this.args.action}} as |form|>
-  <div class="col-md-6 space-top">
-    <fieldset>
-      <legend>{{ t 'configuration'}}</legend>
-      <form.element @controlType="text" @label={{t "alias"}} @placeholder={{t "alias_placeholder"}} @property="alias" />
-      <form.element @controlType="text" @label={{t "pincode"}} @placeholder="1234" @property="code" />
+<div class="card">
+  <div class="card-body">
+    <BsForm @formLayout="vertical" @model={{this.args.pin}} @onSubmit={{this.args.action}} as |form|>
+      <div class="card-text">
+        <fieldset>
+          <legend>{{ t 'configuration'}}</legend>
+          <form.element @controlType="text" @label={{t "alias"}} @placeholder={{t "alias_placeholder"}} @property="alias" />
+          <form.element @controlType="text" @label={{t "pincode"}} @placeholder="1234" @property="code" />
 
-      <form.element @controlType="textarea" @label={{t "notes"}} @placeholder={{t "notes_placeholder"}} @property="description" />
+          <form.element @controlType="textarea" @label={{t "notes"}} @placeholder={{t "notes_placeholder"}} @property="description" />
 
-      <UserPicker @form={{form}} @searchCredential={{this.searchUser}} @label={{t "owner"}} @selected={{this.selectedUser}} @onChange={{this.setOwner}} />
+          <UserPicker @form={{form}} @searchCredential={{this.searchUser}} @label={{t "owner"}} @selected={{this.selectedUser}} @onChange={{this.setOwner}} />
 
-      <ValidityControl @form={{form}} @enabledProperty="validityEnabled" @startDate={{mut this.args.pin.validityStart}} @endDate={{mut this.args.pin.validityEnd}} />
-
-      <div class="row">
-        <div class="col-md-4">
-          <form.submitButton @type="success">{{t 'submit'}}</form.submitButton>
-        </div>
+          <ValidityControl @form={{form}} @enabledProperty="validityEnabled" @startDate={{mut this.args.pin.validityStart}} @endDate={{mut this.args.pin.validityEnd}} />
+        </fieldset>
+      </div>
+      <div class="space-top">
+        <form.submitButton @type="success">{{t 'submit'}}</form.submitButton>
         {{#if this.args.delete}}
-          <div class="pull-right form-button-delete">
-            <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "credentials.delete_confirm"}} @onConfirm={{this.args.delete}} />
-          </div>
+          <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "credentials.delete_confirm"}} @onConfirm={{this.args.delete}} />
         {{/if}}
       </div>
-    </fieldset>
+    </BsForm>
   </div>
-</BsForm>
+</div>

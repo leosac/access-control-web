@@ -11,11 +11,11 @@
   <div class="col-md-12">
     <div class="user-schedule-info">
       {{#each this.args.user.schedules as |schedule|}}
-        <div class="panel panel-default">
-          <div class="panel-heading">
+        <div class="card">
+          <div class="card-header">
             Schedule: {{schedule.name}}
           </div>
-          <div class="panel-body">
+          <div class="card-body">
             <div>
               {{!-- Recap of the schedule --}}
               {{#if schedule.timeframes.length}}
@@ -36,14 +36,18 @@
 
               {{#each schedule.mapping as |mapping|}}
                 {{#if (is-user-part-of-mapping mapping this.args.user.id)}}
-                  <div class="panel panel-default">
-                    <div class="panel-heading">
-                      Mapping: {{mapping.alias}}
-                      <div class="pull-right">
-                        <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="xs" @text={{t "schedule.remove_from_mapping"}} @message={{t "schedule.remove_from_mapping_confirm"}} @onConfirm={{fn this.leaveMapping mapping}} />
+                  <div class="card">
+                    <div class="card-header">
+                      <div class="row">
+                        <div class="col-md-8">
+                          Mapping: {{mapping.alias}}
+                        </div>
+                        <div class="col-md-4 text-right">
+                          <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="xs" @text={{t "schedule.remove_from_mapping"}} @message={{t "schedule.remove_from_mapping_confirm"}} @onConfirm={{fn this.leaveMapping mapping}} />
+                        </div>
                       </div>
                     </div>
-                    <div class="panel-body">
+                    <div class="card-body">
                       <div>
                         {{#if mapping.doors.length}}
                           {{t 'schedule.grant_to_doors'}}
@@ -69,13 +73,8 @@
           </div>
         </div>
       {{/each}}
-      <div class="row">
-        <div class="panel panel-default">
-          <div class="panel-body space-bottom">
-            <ScheduleMappingPicker @action={{this.addScheduleMapping}} />
-          </div>
-        </div>
-      </div>
+
+      <ScheduleMappingPicker @action={{this.addScheduleMapping}} />
     </div>
   </div>
 </div>

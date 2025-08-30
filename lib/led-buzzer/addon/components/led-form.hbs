@@ -1,17 +1,17 @@
-<BsForm @formLayout="vertical" @model={{this.args.led}} @onSubmit={{this.args.action}} as |form|>
-  <fieldset>
-    <div class="col-md-6">
-      <LedBuzzerForm @model={{this.model}} @ledBuzzer={{this.args.led}} @form={{form}} />
-      <div class="row">
-        <div class="col-md-6">
-          <form.submitButton @type="success">{{t 'submit'}}</form.submitButton>
+<div class="card">
+  <div class="card-body">
+    <BsForm @formLayout="vertical" @model={{this.args.led}} @onSubmit={{this.args.action}} as |form|>
+      <fieldset>
+        <div class="card-text">
+          <LedBuzzerForm @model={{this.model}} @ledBuzzer={{this.args.led}} @form={{form}} />
         </div>
-        {{#if this.args.delete}}
-          <div class="pull-right form-button-delete">
+        <div class="space-top">
+          <form.submitButton @type="success">{{t 'submit'}}</form.submitButton>
+          {{#if this.args.delete}}
             <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "led-buzzer.delete_confirm"}} @onConfirm={{this.args.delete}} />
-          </div>
-        {{/if}}
-      </div>
-    </div>
-  </fieldset>
-</BsForm>
+          {{/if}}
+        </div>
+      </fieldset>
+    </BsForm>
+  </div>
+</div>

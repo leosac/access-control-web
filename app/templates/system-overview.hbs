@@ -7,13 +7,11 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     {{t 'general_information'}}
-
                 </div>
-
-                <div class="panel-body">
+                <div class="card-body">
                   <SystemOverview />
                 </div>
             </div>
@@ -36,12 +34,12 @@
       </div>
     </div>
 
-  <div class="panel panel-default">
-    <div class="panel-heading">
+  <div class="card">
+    <div class="card-header">
       {{t 'overview.last_logs'}}
     </div>
 
-    <div class="panel-body">
+    <div class="card-body">
       <LogsView @logs={{this.lastLogs}} />
         </div>
     </div>

@@ -1,35 +1,34 @@
-<BsForm @formLayout="vertical" @model={{this.args.card}} @onSubmit={{this.args.action}} as |form|>
-  <div class="col-md-6 space-top">
-    <fieldset>
-      <legend>{{t 'configuration'}}</legend>
-      <form.element @controlType="text" @label={{t "alias"}} @placeholder={{t "alias_placeholder"}} @property="alias" />
+<div class="card">
+  <div class="card-body">
+    <BsForm @formLayout="vertical" @model={{this.args.card}} @onSubmit={{this.args.action}} as |form|>
+      <div class="card-text">
+        <fieldset>
+          <legend>{{t 'configuration'}}</legend>
+          <form.element @controlType="text" @label={{t "alias"}} @placeholder={{t "alias_placeholder"}} @property="alias" />
 
-      <form.element @controlType="text" @label={{t "credentials.rfid_card.hex_id"}} @placeholder="11:aa:bb:cc" @property="cardId" as |el|>
-        <el.control @id="Tooltip-id" />
-        <BsTooltip @triggerElement="#Tooltip-id" @placement="right">{{t "informations.card_id"}}</BsTooltip>
-      </form.element>
+          <form.element @controlType="text" @label={{t "credentials.rfid_card.hex_id"}} @placeholder="11:aa:bb:cc" @property="cardId" as |el|>
+            <el.control @id="Tooltip-id" />
+            <BsTooltip @triggerElement="#Tooltip-id" @placement="right">{{t "informations.card_id"}}</BsTooltip>
+          </form.element>
 
-      <form.element @controlType="number" @label={{t "credentials.rfid_card.number_bits"}} @placeholder="32" @property="nbBits" as |el|>
-        <el.control @id="Tooltip-bits" />
-        <BsTooltip @triggerElement="#Tooltip-bits" @placement="right">{{t "informations.number_of_bit"}}</BsTooltip>
-      </form.element>
+          <form.element @controlType="number" @label={{t "credentials.rfid_card.number_bits"}} @placeholder="32" @property="nbBits" as |el|>
+            <el.control @id="Tooltip-bits" />
+            <BsTooltip @triggerElement="#Tooltip-bits" @placement="right">{{t "informations.number_of_bit"}}</BsTooltip>
+          </form.element>
 
-      <form.element @controlType="textarea" @label={{t "notes"}} @placeholder={{t "notes_placeholder"}} @property="description" />
+          <form.element @controlType="textarea" @label={{t "notes"}} @placeholder={{t "notes_placeholder"}} @property="description" />
 
-      <UserPicker @form={{form}} @searchCredential={{this.searchUser}} @label={{t "owner"}} @selected={{this.selectedUser}} @onChange={{this.setOwner}} />
+          <UserPicker @form={{form}} @searchCredential={{this.searchUser}} @label={{t "owner"}} @selected={{this.selectedUser}} @onChange={{this.setOwner}} />
 
-      <ValidityControl @form={{form}} @enabledProperty="validityEnabled" @startDate={{mut this.args.card.validityStart}} @endDate={{mut this.args.card.validityEnd}} />
-
-      <div class="row">
-        <div>
-          <form.submitButton @type="success">{{t 'submit'}}</form.submitButton>
-        </div>
+          <ValidityControl @form={{form}} @enabledProperty="validityEnabled" @startDate={{mut this.args.card.validityStart}} @endDate={{mut this.args.card.validityEnd}} />
+        </fieldset>
+      </div>
+      <div class="space-top">
+        <form.submitButton @type="success">{{t 'submit'}}</form.submitButton>
         {{#if this.args.delete}}
-          <div class="pull-right form-button-delete">
-            <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "credentials.delete_confirm"}} @onConfirm={{this.args.delete}} />
-          </div>
+          <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "credentials.delete_confirm"}} @onConfirm={{this.args.delete}} />
         {{/if}}
       </div>
-    </fieldset>
+    </BsForm>
   </div>
-</BsForm>
+</div>

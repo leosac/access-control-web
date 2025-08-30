@@ -1,17 +1,16 @@
-<BsForm @formLayout='vertical' @model={{this.model}} @onSubmit={{this.createGroup}} as | form |>
-  <div class="col-md-6 space-top">
-    <fieldset>
-      <legend>{{t 'configuration'}}</legend>
-      <form.element @controlType="text" @label={{t "users.group_name"}} @placeholder="MySuperGroup" @property="name" />
-      <form.element @controlType="textarea" @label={{t "description"}} @placeholder="Description" @property="description" />
-
-      <div class="row">
-        <div class="col-md-4">
-          <BsButton @type="success" @buttonType="submit">
-            {{t 'users.create_group'}}
-          </BsButton>
-        </div>
+<div class="col-md-12 card">
+  <div class="card-body">
+    <h5 class="card-title">{{t 'configuration'}}</h5>
+    <BsForm @formLayout='vertical' @model={{this.model}} @onSubmit={{this.createGroup}} as | form |>
+      <div class="card-text">
+        <fieldset>
+          <form.element @controlType="text" @label={{t "users.group_name"}} @placeholder="MySuperGroup" @property="name" />
+          <form.element @controlType="textarea" @label={{t "description"}} @placeholder="Description" @property="description" />
+        </fieldset>
       </div>
-    </fieldset>
+      <BsButton @type="success" @buttonType="submit">
+        {{t 'users.create_group'}}
+      </BsButton>
+    </BsForm>
   </div>
-</BsForm>
+</div>

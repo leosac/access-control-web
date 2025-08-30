@@ -1,31 +1,37 @@
-<BsForm @formLayout='inline' @onSubmit={{this.scheduleMappingPicked}} as |form|>
-  <fieldset class="row">
-    <div class="col-md-4">
-      <form.element @label={{t "schedule.title"}}>
-        <PowerSelect @searchEnabled={{true}} @search={{this.searchSchedule}} @selected={{this.selectedSchedule.name}} @placeholder={{t "schedule.type"}} @onChange={{this.scheduleChanged}} as |schedInfo|>
-          {{schedInfo.name}}
-        </PowerSelect>
-      </form.element>
-    </div>
-    <div class="col-md-4">
-      <form.element @label={{t "mapping"}}>
-        {{#power-select selected=this.selectedMapping
-                        form=form
-                        searchEnabled=true
-                        searchField="alias"
-                        options=this.selectedSchedule.mapping
-                        onChange=(fn (mut this.selectedMapping))
-                        placeholder='...' as |mapping| }}
-          {{mapping.alias}}
-          {{else}}
-            <div class="text-center">
-              <p>{{t 'schedule.no_mapping'}}</p>
-            </div>
-        {{/power-select}}
-      </form.element>
-    </div>
-    <div class="coll-md-4 pull-right button-next-to-power-select">
-      <form.submitButton @type="primary">{{t 'schedule.join_mapping'}}</form.submitButton>
-    </div>
-  </fieldset>
-</BsForm>
+<div class="card">
+  <div class="card-body">
+    <BsForm @onSubmit={{this.scheduleMappingPicked}} as |form|>
+      <div class="card-text">
+        <fieldset class="row">
+          <div class="col-md-4">
+            <form.element @label={{t "schedule.title"}}>
+              <PowerSelect @searchEnabled={{true}} @search={{this.searchSchedule}} @selected={{this.selectedSchedule.name}} @placeholder={{t "schedule.type"}} @onChange={{this.scheduleChanged}} as |schedInfo|>
+                {{schedInfo.name}}
+              </PowerSelect>
+            </form.element>
+          </div>
+          <div class="col-md-4">
+            <form.element @label={{t "mapping"}}>
+              {{#power-select selected=this.selectedMapping
+                              form=form
+                              searchEnabled=true
+                              searchField="alias"
+                              options=this.selectedSchedule.mapping
+                              onChange=(fn (mut this.selectedMapping))
+                              placeholder='...' as |mapping| }}
+                {{mapping.alias}}
+                {{else}}
+                  <div class="text-center">
+                    <p>{{t 'schedule.no_mapping'}}</p>
+                  </div>
+              {{/power-select}}
+            </form.element>
+          </div>
+          <div class="col-md-4 pull-right button-next-to-power-select">
+            <form.submitButton @type="primary">{{t 'schedule.join_mapping'}}</form.submitButton>
+          </div>
+        </fieldset>
+      </div>
+    </BsForm>
+  </div>
+</div>

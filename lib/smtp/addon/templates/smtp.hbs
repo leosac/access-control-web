@@ -1,65 +1,65 @@
 
 <BsTab as |tab|>
   <tab.pane @title={{t "configuration"}}>
-    {{!--<div class="col-md-12 row">--}}
-      {{!--<br>--}}
-    {{!--</div>--}}
-    <div class="button-space">
-      <BsButton @defaultText={{t "smtp.add_server"}} @type="primary" @buttonType="submit" @onClick={{this.addServer}} />
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        {{#each this.model.servers as |server|}}
-          <div class="panel panel-default">
-            <div class="panel-body">
-
-              <BsForm @model={{server}} as |form|>
-                <div>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <form.element @controlType="text" @label={{t "url"}} @placeholder="smtp://mail.mydomain.com" @property="url" />
+    <div class="card">
+      <div class="card-body">
+        <div class="card-text">
+          <div class="button-space">
+            <BsButton @defaultText={{t "smtp.add_server"}} @type="primary" @buttonType="submit" @onClick={{this.addServer}} />
+          </div>
+          {{#each this.model.servers as |server index|}}
+            <div class="card">
+              <div class="card-header">
+                {{t "smtp.server"}} #{{index}}
+              </div>
+              <div class="card-body">
+                <div class="card-text">
+                  <BsForm @model={{server}} as |form|>
+                    <div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <form.element @controlType="text" @label={{t "url"}} @placeholder="smtp://mail.mydomain.com" @property="url" />
+                        </div>
+                        <div class="col-md-6">
+                          <form.element @controlType="text" @label={{t "smtp.from"}} @placeholder="leosac@my-domain.com" @property="from" />
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <form.element @controlType="text" @label={{t "username"}} @placeholder="my-mail-user" @property="username" />
+                        </div>
+                        <div class="col-md-6">
+                          <form.element @controlType="password" @label={{t "password"}} @property="password" />
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <form.element @controlType="number" @label={{t "smtp.timeout"}} @property="timeout" />
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-2">
+                          <form.element @controlType="checkbox" @label={{t "smtp.verify_host"}} @property="verify_host" />
+                        </div>
+                        <div class="col-md-2">
+                          <form.element @controlType="checkbox" @label={{t "smtp.verify_peer"}} @property="verify_peer" />
+                        </div>
+                        <div class="col-md-2">
+                          <form.element @controlType="checkbox" @label={{t "enabled"}} @property="enabled" />
+                        </div>
+                      </div>
                     </div>
-                    <div class="col-md-6">
-                      <form.element @controlType="text" @label={{t "smtp.from"}} @placeholder="leosac@my-domain.com" @property="from" />
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <form.element @controlType="text" @label={{t "username"}} @placeholder="my-mail-user" @property="username" />
-                    </div>
-                    <div class="col-md-6">
-                      <form.element @controlType="password" @label={{t "password"}} @property="password" />
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <form.element @controlType="number" @label={{t "smtp.timeout"}} @property="timeout" />
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-2">
-                      <form.element @controlType="checkbox" @label={{t "smtp.verify_host"}} @property="verify_host" />
-                    </div>
-                    <div class="col-md-2">
-                      <form.element @controlType="checkbox" @label={{t "smtp.verify_peer"}} @property="verify_peer" />
-                    </div>
-                    <div class="col-md-2">
-                      <form.element @controlType="checkbox" @label={{t "enabled"}} @property="enabled" />
-                    </div>
-                  </div>
+                  </BsForm>
                 </div>
-              <div class="button-space">
                 <BsButton @defaultText={{t "smtp.remove_server"}} @type="danger" @buttonType="submit" @onClick={{fn this.removeServer server}} />
               </div>
-
-              </BsForm>
             </div>
-          </div>
-        {{/each}}
+          {{/each}}
+        </div>
+        <div class="space-top">
+          <BsButton @defaultText={{t "smtp.save"}} @type="success" @buttonType="submit" @onClick={{this.updateConfig}} />
+        </div>
       </div>
-    </div>
-    <div>
-      <BsButton @defaultText={{t "smtp.save"}} @type="success" @buttonType="submit" @onClick={{this.updateConfig}} />
     </div>
   </tab.pane>
   <tab.pane @title={{t "email"}}>

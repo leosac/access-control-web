@@ -1,68 +1,67 @@
-<BsForm @formLayout="vertical" @model={{this.args.wiegand-reader}} @onSubmit={{this.args.action}} as |form|>
-  <div class="col-md-6">
-    <fieldset>
-      <legend>{{t 'configuration'}}</legend>
+<div class="card">
+  <div class="card-body">
+    <BsForm @formLayout="vertical" @model={{this.args.wiegand-reader}} @onSubmit={{this.args.action}} as |form|>
+      <div class="card-text">
+        <fieldset>
+          <legend>{{t 'configuration'}}</legend>
 
-      <form.element @controlType="text" @label={{t "name"}} @placeholder={{t "name"}} @property="name" as |el|>
-        <el.control @id="Tooltip-name" />
-        <BsTooltip @placement="right" @triggerElement="#Tooltip-name" @triggerEvents="hover">{{t
-          'wiegand_information.wiegand_name'}}</BsTooltip>
-      </form.element>
+          <form.element @controlType="text" @label={{t "name"}} @placeholder={{t "name"}} @property="name" as |el|>
+            <el.control @id="Tooltip-name" />
+            <BsTooltip @placement="right" @triggerElement="#Tooltip-name" @triggerEvents="hover">{{t
+              'wiegand_information.wiegand_name'}}</BsTooltip>
+          </form.element>
 
-      <form.element @property="mode" @label={{t "mode"}}>
-        <div id="Tooltip-mode">
-          <PowerSelect @selected={{this.args.wiegand-reader.mode}} @searchEnabled={{false}} @options={{this.allMode}} @onChange={{fn (mut this.args.wiegand-reader.mode)}} @placeholder={{t "type_mode"}} as |mode|>
-            {{t mode}}
-          </PowerSelect>
-          <BsTooltip @placement="right" @triggerElement="#Tooltip-mode">{{t 'wiegand_information.mode'}}</BsTooltip>
-        </div>
-      </form.element>
+          <form.element @property="mode" @label={{t "mode"}}>
+            <div id="Tooltip-mode">
+              <PowerSelect @selected={{this.args.wiegand-reader.mode}} @searchEnabled={{false}} @options={{this.allMode}} @onChange={{fn (mut this.args.wiegand-reader.mode)}} @placeholder={{t "type_mode"}} as |mode|>
+                {{t mode}}
+              </PowerSelect>
+              <BsTooltip @placement="right" @triggerElement="#Tooltip-mode">{{t 'wiegand_information.mode'}}</BsTooltip>
+            </div>
+          </form.element>
 
-      <form.element @label={{t "gpio_high"}}>
-        <div id="Tooltip-high">
-          <DevicePicker @arrayOfDeviceClass={{this.arrayOfDeviceClassGpio}} @placeholder="GPIO" @relationshipsName="gpioHigh" @device={{this.args.wiegand-reader}} />
-          <BsTooltip @placement="right" @triggerElement="#Tooltip-high">{{t 'wiegand_information.gpio_high'}}</BsTooltip>
-        </div>
-      </form.element>
+          <form.element @label={{t "gpio_high"}}>
+            <div id="Tooltip-high">
+              <DevicePicker @arrayOfDeviceClass={{this.arrayOfDeviceClassGpio}} @placeholder="GPIO" @relationshipsName="gpioHigh" @device={{this.args.wiegand-reader}} />
+              <BsTooltip @placement="right" @triggerElement="#Tooltip-high">{{t 'wiegand_information.gpio_high'}}</BsTooltip>
+            </div>
+          </form.element>
 
-      <form.element @label={{t "gpio_low"}}>
-        <div id="Tooltip-low">
-          <DevicePicker @arrayOfDeviceClass={{this.arrayOfDeviceClassGpio}} @placeholder="GPIO" @relationshipsName="gpioLow" @device={{this.args.wiegand-reader}} />
-          <BsTooltip @placement="right" @triggerElement="#Tooltip-low">{{t 'wiegand_information.gpio_low'}}</BsTooltip>
-        </div>
-      </form.element>
+          <form.element @label={{t "gpio_low"}}>
+            <div id="Tooltip-low">
+              <DevicePicker @arrayOfDeviceClass={{this.arrayOfDeviceClassGpio}} @placeholder="GPIO" @relationshipsName="gpioLow" @device={{this.args.wiegand-reader}} />
+              <BsTooltip @placement="right" @triggerElement="#Tooltip-low">{{t 'wiegand_information.gpio_low'}}</BsTooltip>
+            </div>
+          </form.element>
 
-      <form.element @label={{t "buzzer"}}>
-        <div id="Tooltip-buzzer">
-          <DevicePicker @arrayOfDeviceClass={{this.arrayOfDeviceClassBuzzer}} @placeholder="Buzzer" @relationshipsName="buzzer" @device={{this.args.wiegand-reader}} />
-          <BsTooltip @placement="right" @triggerElement="#Tooltip-buzzer">{{t 'wiegand_information.buzzer'}}</BsTooltip>
-        </div>
-      </form.element>
+          <form.element @label={{t "buzzer"}}>
+            <div id="Tooltip-buzzer">
+              <DevicePicker @arrayOfDeviceClass={{this.arrayOfDeviceClassBuzzer}} @placeholder="Buzzer" @relationshipsName="buzzer" @device={{this.args.wiegand-reader}} />
+              <BsTooltip @placement="right" @triggerElement="#Tooltip-buzzer">{{t 'wiegand_information.buzzer'}}</BsTooltip>
+            </div>
+          </form.element>
 
-      <form.element @label={{t "led"}}>
-        <div id="Tooltip-led">
-          <DevicePicker @arrayOfDeviceClass={{this.arrayOfDeviceClassLed}} @placeholder="LED" @relationshipsName="greenLed" @device={{this.args.wiegand-reader}} />
-          <BsTooltip @placement="right" @triggerElement="#Tooltip-led">{{t 'wiegand_information.led'}}</BsTooltip>
-        </div>
-      </form.element>
+          <form.element @label={{t "led"}}>
+            <div id="Tooltip-led">
+              <DevicePicker @arrayOfDeviceClass={{this.arrayOfDeviceClassLed}} @placeholder="LED" @relationshipsName="greenLed" @device={{this.args.wiegand-reader}} />
+              <BsTooltip @placement="right" @triggerElement="#Tooltip-led">{{t 'wiegand_information.led'}}</BsTooltip>
+            </div>
+          </form.element>
 
-      <form.element @label={{t "enable"}}>
-        <div class="pull-right" id="Tooltip-enable">
-          <DeviceToggleEnabled @device={{this.args.wiegand-reader}} @saveIt={{false}} @form={{form}} />
-          <BsTooltip @placement="right" @triggerElement="#Tooltip-enable">{{t 'wiegand_information.enable'}}</BsTooltip>
-        </div>
-      </form.element>
-
-      <div class="row">
-        <div class="col-md-6">
-          <form.submitButton @type="success">{{t 'submit'}}</form.submitButton>
-        </div>
+          <form.element @label={{t "enable"}}>
+            <div class="pull-right" id="Tooltip-enable">
+              <DeviceToggleEnabled @device={{this.args.wiegand-reader}} @saveIt={{false}} @form={{form}} />
+              <BsTooltip @placement="right" @triggerElement="#Tooltip-enable">{{t 'wiegand_information.enable'}}</BsTooltip>
+            </div>
+          </form.element>
+        </fieldset>
+      </div>
+      <div class="space-top">
+        <form.submitButton @type="success">{{t 'submit'}}</form.submitButton>
         {{#if this.delete}}
-          <div class="pull-right form-button-delete">
-            <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "wiegand-reader.delete_confirm"}} @onConfirm={{this.delete}} />
-          </div>
+          <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "wiegand-reader.delete_confirm"}} @onConfirm={{this.delete}} />
         {{/if}}
       </div>
-    </fieldset>
+    </BsForm>
   </div>
-</BsForm>
+</div>
