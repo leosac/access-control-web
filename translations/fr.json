@@ -196,6 +196,7 @@
     "wrongDateFormat": "{description} doit être au format {format}",
     "wrongLength": "{description} est de mauvaise longueur (doit être de {is} caractères)"
   },
+  "filter": "Filtre",
   "finalized": "Finalisé",
   "firstname": "Prénom",
   "form": {

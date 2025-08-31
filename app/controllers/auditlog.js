@@ -1,46 +1,57 @@
-import { action, observer } from '@ember/object';
+import { action } from '@ember/object';
 import { A } from '@ember/array';
 import ArrayProxy from '@ember/array/proxy';
 import { service } from '@ember/service';
 import Controller from '@ember/controller';
+import { tracked } from '@glimmer/tracking';
 
 export default class AuditLogController extends Controller {
     @service('audit-log')
     auditLog;
-    wsapicallEnabled = true;
-    userEventEnabled = true;
-    doorEventEnabled = true;
-    groupEventEnabled = true;
-    credentialEventEnabled = true;
-    scheduleEventEnabled = true;
-    userGroupMembershipEventEnabled = true;
-    updateEventEnabled = true;
-    zoneEventEnabled = true;
-    openDetailsModal = false;
-    toggleValue = true;
 
+    @tracked
+    wsapicallEnabled = true;
+    @tracked
+    userEventEnabled = true;
+    @tracked
+    doorEventEnabled = true;
+    @tracked
+    groupEventEnabled = true;
+    @tracked
+    credentialEventEnabled = true;
+    @tracked
+    scheduleEventEnabled = true;
+    @tracked
+    userGroupMembershipEventEnabled = true;
+    @tracked
+    updateEventEnabled = true;
+    @tracked
+    zoneEventEnabled = true;
+    @tracked
+    openDetailsModal = false;
+    @tracked
+    toggleValue = true;
+    @tracked
     pageSize = 25;
+    @tracked
     currentPage = 1;
+    @tracked
     totalPage = 0;
+    @tracked
     resultCount = 0;
 
     // Progress bar while fetching data.
+    @tracked
     fetchingData = false;
+    @tracked
     progressValue = 0;
 
     // The audit object that is currently being shown
     // in the details modal.
+    @tracked
     detailedAudit = null;
+    @tracked
     audits = ArrayProxy.create({content: A([])});
-    // Whenever one of those variable change,
-    // thanks to Ember.observer, reload is called
-    @observer('wsapicallEnabled', 'userEventEnabled', 'doorEventEnabled',
-        'groupEventEnabled', `credentialEventEnabled`, 'scheduleEventEnabled',
-        'userGroupMembershipEventEnabled', 'updateEventEnabled', 'zoneEventEnabled',
-        'currentPage', 'pageSize', function () {
-            console.log('TODO: this.reload()');
-        })
-    watch_;
 
     @action
     showDetails(audit) {
@@ -70,6 +81,7 @@ export default class AuditLogController extends Controller {
         this.zoneEventEnabled = this.toggleValue;
     }
     
+    @action
     reload() {
         const enabled_types = [];
         if (this.wsapicallEnabled) {
@@ -115,11 +127,10 @@ export default class AuditLogController extends Controller {
         };
 
         this.fetchingData = true;
-        this.auditLog.findAllByTypes(enabled_types,
-            currentPage, pageSize, progressSetter).then((result) => {
+        this.auditLog.findAllByTypes(enabled_types, currentPage, pageSize, progressSetter).then((result) => {
             this.totalPage = result.meta.total_page;
             this.resultCount = result.meta.count;
-            this.audits.content = result.data;
+            this.audits = ArrayProxy.create({content: A(result.data)});
             progressSetter(0);
             this.fetchingData = false;
         });
