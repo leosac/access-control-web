@@ -7,6 +7,10 @@ body {
   padding-bottom: 35px;
 }
 
+.sidebar .nav-item .nav-link::after {
+  font-family: "Font Awesome 7 Free" !important;
+}
+
 /**
  * Style for the login form
  */

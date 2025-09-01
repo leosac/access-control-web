@@ -7,6 +7,8 @@ export default class extends Controller {
     @service
     store;
     @service
+    intl;
+    @service
     flashMessages;
 
     targetUserId = {};

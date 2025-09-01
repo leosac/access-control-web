@@ -25,6 +25,8 @@
     "@ember/optional-features": "^2.2.0",
     "@ember/string": "^4.0.1",
     "@embroider/macros": "^1.18.1",
+    "@eonasdan/tempus-dominus": "^6.10.4",
+    "@fortawesome/fontawesome-free": "^7.0.0",
     "@glimmer/component": "^2.0.0",
     "@glimmer/tracking": "^1.1.2",
     "@warp-drive/build-config": "^5.7.0",

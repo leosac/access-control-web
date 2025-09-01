@@ -1,6 +1,4 @@
 <legend>{{t 'validity'}}</legend>
-<this.args.form.element @controlType="text" @label={{t "start_date"}} @placeholder="YYYY-MM-DD HH:mm" @disabled={{this.args.disabled}} @value={{this.args.startDate}} />
-
-<this.args.form.element @controlType="text" @label={{t "end_date"}} @placeholder="YYYY-MM-DD HH:mm" @disabled={{this.args.disabled}} @value={{this.args.endDate}} />
-
+<DatetimePicker @model={{this.args.model}} @form={{this.args.form}} @label={{t "start_date"}} @disabled={{this.args.disabled}} @property={{this.args.startDateProperty}} />
+<DatetimePicker @model={{this.args.model}} @form={{this.args.form}} @label={{t "end_date"}} @disabled={{this.args.disabled}} @property={{this.args.endDateProperty}} />
 <this.args.form.element @label={{t "enabled"}} @disabled={{this.args.disabled}} @controlType="checkbox" @property={{this.args.enabledProperty}} />

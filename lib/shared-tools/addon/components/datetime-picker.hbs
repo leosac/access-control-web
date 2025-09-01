@@ -1,0 +1,8 @@
+<this.args.form.element {{did-insert this.didInsertElement}} @controlType="text" @label={{this.args.label}} @disabled={{this.args.disabled}} @property={{this.args.property}} as |el|>
+  <div class='input-group' data-td-target-input='nearest' data-td-target-toggle='nearest'>
+    <el.control data-td-target='nearest' />
+    <span class='input-group-text' data-td-target='nearest' data-td-toggle='datetimepicker'>
+    <FaIcon @icon='calendar' />
+    </span>
+  </div>
+</this.args.form.element>

@@ -25,7 +25,7 @@
                   </PowerSelect>
                 </form.element>
 
-                <ValidityControl @form={{form}} @disabled={{this.isRankEditLocked}} @enabledProperty="validityEnabled" @startDate={{mut this.model.user.validityStart}} @endDate={{mut this.model.user.validityEnd}} />
+                <ValidityControl @model={{this}} @form={{form}} @disabled={{this.isRankEditLocked}} @enabledProperty="validityEnabled" @startDateProperty="validityStart" @endDateProperty="validityEnd" />
               </fieldset>
             </div>
             <BsButton @disabled={{this.isProfileLocked}} @defaultText={{t 'submit'}} @type="success" @onClick={{this.editProfile}} @buttonType="submit" />
