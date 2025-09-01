@@ -14,9 +14,9 @@ export default class extends Controller {
             {
                 this.flashMessages.success('Group successfully edited.');
             },
-            () =>
+            (error) =>
             {
-                this.flashMessages.danger('An error occurred while editing group');
+                this.flashMessages.danger('An error occurred while editing group: ' + error);
             });
     }
 

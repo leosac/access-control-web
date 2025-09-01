@@ -15,13 +15,12 @@
               <BsButton @defaultText={{t 'add_time_zone'}} @type='primary' @onClick={{this.addTimeframe}} />
             </div>
           </div>
-          {{#each this.schedule.timeframes as |tf|}}
+          {{#each this.args.schedule.timeframes as |tf|}}
             <div class="card border-warning mb-3">
               <div class="card-header panel-timeframe">{{t 'timeframe'}}
               </div>
               <div class="card-body">
-                <ScheduleTimeframe @form={{form}} @
-                ={{fn this.removeTimeframe tf}} @timeframe={{tf}} />
+                <ScheduleTimeframe @form={{form}} @delete={{fn this.removeTimeframe tf}} @timeframe={{tf}} />
               </div>
             </div>
           {{/each}}

@@ -15,27 +15,23 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-12">
-            <div class="pull-left">
-              <BsButton @type='primary' @defaultText={{t 'schedule.add_mapping'}} @onClick={{this.addMapping}} />
-            </div>
-            <div class="pull-right">
-              <BsButton @defaultText={{t 'save'}} @type="success" @onClick={{this.editSchedule}} />
-            </div>
-          </div>
+          <BsButton @type='primary' @defaultText={{t 'schedule.add_mapping'}} @onClick={{this.addMapping}} />
         </div>
 
-        <hr>
-
+        <hr />
 
         <BsAccordion as |acc|>
           {{#each this.model.mapping as |mapping|}}
             <acc.item @title={{t 'schedule.mapping' alias=mapping.alias}}>
-              <ScheduleMapping @mapping={{mapping}} />
+              <ScheduleMapping @mapping={{mapping}} @removeMapping={{this.removeMapping}} />
             </acc.item>
             <hr>
           {{/each}}
         </BsAccordion>
+
+        <div class="pull-right">
+          <BsButton @defaultText={{t 'save'}} @type="success" @onClick={{this.editSchedule}} />
+        </div>
 
       </div>
     </tab.pane>

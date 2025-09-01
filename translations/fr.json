@@ -420,7 +420,8 @@
     "group_id": "#Id du groupe",
     "group_name": "Nom du groupe",
     "join_date": "Date d'enregistrement",
-    "total_member": "Nombre de membres"
+    "total_member": "Nombre de membres",
+    "user_name": "Nom d'utilisateur"
   },
   "test": "test",
   "timeframe": "Zone de temps",

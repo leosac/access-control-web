@@ -77,7 +77,6 @@ export default class CredentialSchedules extends Component {
     @action
     leaveMapping(mapping) {
         this.incrSyncing();
-        console.log(mapping.get('credentials'));
         const index = mapping.get('credentials').indexOf(this.args.credential);
         if (index !== -1) {
             mapping.get('credentials').splice(index, 1);

@@ -14,9 +14,9 @@ export default class extends Controller {
             {
                 this.flashMessages.success('Credential successfully edited.');
             },
-            () =>
+            (error) =>
             {
-                this.flashMessages.danger('An error occurred while editing credential');
+                this.flashMessages.danger('An error occurred while editing credential: ' + error);
             });
     }
 

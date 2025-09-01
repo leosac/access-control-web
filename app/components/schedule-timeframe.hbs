@@ -1,50 +1,46 @@
-{{#if this.timeframe}}
+{{#if this.args.timeframe}}
   <div class="row">
     <div class="col-md-3">
-      <this.args.form.element @controlType="checkbox" @label={{t "schedule.monday"}} @value={{this.timeframe.enabledOnMonday}} />
+      <this.args.form.element @controlType="checkbox" @label={{t "schedule.monday"}} @value={{this.args.timeframe.enabledOnMonday}} @onChange={{fn (mut this.args.timeframe.enabledOnMonday)}} />
     </div>
 
     <div class="col-md-3">
-      <this.args.form.element @controlType="checkbox" @label={{t "schedule.tuesday"}} @value={{this.timeframe.enabledOnTuesday}} />
+      <this.args.form.element @controlType="checkbox" @label={{t "schedule.tuesday"}} @value={{this.args.timeframe.enabledOnTuesday}} @onChange={{fn (mut this.args.timeframe.enabledOnTuesday)}} />
     </div>
 
     <div class="col-md-3">
-      <this.args.form.element @controlType="checkbox" @label={{t "schedule.wednesday"}} @value={{this.timeframe.enabledOnWednesday}} />
+      <this.args.form.element @controlType="checkbox" @label={{t "schedule.wednesday"}} @value={{this.args.timeframe.enabledOnWednesday}} @onChange={{fn (mut this.args.timeframe.enabledOnWednesday)}} />
     </div>
     <div class="col-md-3">
-      <this.args.form.element @controlType="checkbox" @label={{t "schedule.thursday"}} @value={{this.timeframe.enabledOnThursday}} />
+      <this.args.form.element @controlType="checkbox" @label={{t "schedule.thursday"}} @value={{this.args.timeframe.enabledOnThursday}} @onChange={{fn (mut this.args.timeframe.enabledOnThursday)}} />
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-3">
-      <this.args.form.element @controlType="checkbox" @label={{t "schedule.friday"}} @value={{this.timeframe.enabledOnFriday}} />
+      <this.args.form.element @controlType="checkbox" @label={{t "schedule.friday"}} @value={{this.args.timeframe.enabledOnFriday}} @onChange={{fn (mut this.args.timeframe.enabledOnFriday)}} />
     </div>
     <div class="col-md-3">
-      <this.args.form.element @controlType="checkbox" @label={{t "schedule.saturday"}} @value={{this.timeframe.enabledOnSaturday}} />
+      <this.args.form.element @controlType="checkbox" @label={{t "schedule.saturday"}} @value={{this.args.timeframe.enabledOnSaturday}} @onChange={{fn (mut this.args.timeframe.enabledOnSaturday)}} />
     </div>
 
     <div class="col-md-3">
-      <this.args.form.element @controlType="checkbox" @label={{t "schedule.sunday"}} @value={{this.timeframe.enabledOnSunday}} />
+      <this.args.form.element @controlType="checkbox" @label={{t "schedule.sunday"}} @value={{this.args.timeframe.enabledOnSunday}} @onChange={{fn (mut this.args.timeframe.enabledOnSunday)}} />
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-12 cursor-link">
-      <button type="button" {{on 'click' this.toggleAll}}>{{t 'toggle_all'}}</button>
-    </div>
-  </div>
+  
   <div class="row">
     <div class="col-md-5 datetime-picker-margin">
-      <this.args.form.element @controlType="text" @label={{t "schedule.start_time"}} @placeholder="H:mm" @disabled={{this.disabled}} @value={{this.timeframe.startTime}} />
+      <this.args.form.element @controlType="text" @label={{t "schedule.start_time"}} @placeholder="H:mm" @disabled={{this.args.disabled}} @value={{this.args.timeframe.startTime}} @onChange={{fn (mut this.args.timeframe.startTime)}} />
     </div>
 
     <div class="col-md-5 datetime-picker-margin">
-      <this.args.form.element @controlType="text" @label={{t "schedule.end_time"}} @placeholder="H:mm" @disabled={{this.disabled}} @value={{this.timeframe.endTime}} />
+      <this.args.form.element @controlType="text" @label={{t "schedule.end_time"}} @placeholder="H:mm" @disabled={{this.args.disabled}} @value={{this.args.timeframe.endTime}} @onChange={{fn (mut this.args.timeframe.endTime)}} />
     </div>
   </div>
   <div class="row">
     <div class="col-md-6 space-bottom">
-      <BsButton @defaultText={{t 'remove_timeframe'}} @size='sm' @type='danger' @onClick={{this.delete}} />
+      <BsButton @defaultText={{t 'remove_timeframe'}} @size='sm' @type='danger' @onClick={{this.args.delete}} />
     </div>
   </div>
 {{/if}}

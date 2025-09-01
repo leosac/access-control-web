@@ -60,6 +60,7 @@ export default class ScheduleAdapter extends ApplicationAdapter {
                 groups: one_mapping.hasMany('groups').ids().map(id => Number.parseInt(id)),
                 credentials: one_mapping.hasMany('credentials').ids().map(id => Number.parseInt(id)),
                 doors: one_mapping.hasMany('doors').ids().map(id => Number.parseInt(id)),
+                zones: one_mapping.hasMany('zones').ids().map(id => Number.parseInt(id)),
             });
         });
 

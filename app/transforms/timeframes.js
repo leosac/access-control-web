@@ -93,16 +93,24 @@ export default class TimeframesTransform {
         {
             const leosacTimeFrame = {};
 
-            if (typeof tf.startTime !== 'string') {
-                leosacTimeFrame['start-time'] = tf.startTime.format('H:mm');
+            if (tf.startTime) {
+                if (typeof tf.startTime !== 'string') {
+                    leosacTimeFrame['start-time'] = tf.startTime.format('H:mm');
+                } else {
+                    leosacTimeFrame['start-time'] = tf.startTime;
+                }
             } else {
-                leosacTimeFrame['start-time'] = tf.startTime;
+                leosacTimeFrame['start-time'] = '00:00';
             }
 
-            if (typeof tf.endTime !== 'string') {
-                leosacTimeFrame['end-time'] = tf.endTime.format('H:mm');
+            if (tf.endTime) {
+                if (typeof tf.endTime !== 'string') {
+                    leosacTimeFrame['end-time'] = tf.endTime.format('H:mm');
+                } else {
+                    leosacTimeFrame['end-time'] = tf.endTime;
+                }
             } else {
-                leosacTimeFrame['end-time'] = tf.endTime;
+                leosacTimeFrame['end-time'] = '23:59';
             }
 
             if (tf.enabledOnMonday)

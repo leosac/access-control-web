@@ -16,9 +16,9 @@ export default class extends Controller {
             {
                 this.flashMessages.success('Schedule successfully edited.');
             },
-            () =>
+            (error) =>
             {
-                this.flashMessages.danger('An error occurred while editing schedule.');
+                this.flashMessages.danger('An error occurred while editing schedule: ' + error);
             });
     }
 

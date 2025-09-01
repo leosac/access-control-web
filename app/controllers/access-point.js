@@ -16,9 +16,9 @@ export default class extends Controller {
                 this.flashMessages.success('Access Point successfully edited.');
                 this.router.transitionTo('access-point', this.get('model').get('id'));
             },
-            () =>
+            (error) =>
             {
-                this.flashMessages.danger('An error occurred while editing Access Point.');
+                this.flashMessages.danger('An error occurred while editing Access Point: ' + error);
             });
     }
 

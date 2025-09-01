@@ -420,7 +420,8 @@
     "group_id": "Group #Id",
     "group_name": "Group Name",
     "join_date": "Join date",
-    "total_member": "Total members"
+    "total_member": "Total members",
+    "user_name": "Username"
   },
   "test": "test",
   "timeframe": "Time Frame",

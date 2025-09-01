@@ -26,7 +26,7 @@ export default class ScheduleForm extends Component {
         let newArray = [];
         if (Array.isArray(tfs))
         {
-            newArray = tfs.slice(0);
+            newArray = tfs.slice();
         }
         const newTimeframe = {id: newArray.length};
         newArray.push(newTimeframe);

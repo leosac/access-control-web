@@ -15,9 +15,9 @@ export default class extends Controller {
                 this.flashMessages.success('Door successfully edited.');
                 this.router.transitionTo('door', this.get('model').get('id'));
             },
-            () =>
+            (error) =>
             {
-                this.flashMessages.danger('An error occurred while editing door');
+                this.flashMessages.danger('An error occurred while editing door: ' + error);
             });
     }
 

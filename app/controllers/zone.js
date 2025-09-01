@@ -15,9 +15,9 @@ export default class extends Controller {
                 this.flashMessages.success('Zone successfully edited.');
                 this.router.transitionTo('zone', this.get('model').get('id'));
             },
-            () =>
+            (error) =>
             {
-                this.flashMessages.danger('An error occurred while editing zone');
+                this.flashMessages.danger('An error occurred while editing zone: ' + error);
             });
     }
 
