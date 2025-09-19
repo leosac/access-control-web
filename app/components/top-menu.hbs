@@ -18,9 +18,9 @@
                 <span class="badge badge-danger badge-counter">{{ this.flashMessages.queue.length }}</span>
             </a>
             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                <h6 class="dropdown-header">
+                <!--<h6 class="dropdown-header">
                     {{t 'alarm.title'}}
-                </h6>
+                </h6>-->
                 {{#each this.flashMessages.queue as |flash|}}
                     {{#if (eq flash.componentName 'flashmessage-as-alert')}}
                         {{component flash.componentName flash=flash}}

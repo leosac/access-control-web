@@ -82,6 +82,7 @@
   },
   "ember-addon": {
     "paths": [
+      "lib/libgpiod",
       "lib/led-buzzer",
       "lib/piface-digital-gpio",
       "lib/shared-tools",

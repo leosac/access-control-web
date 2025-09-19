@@ -1,0 +1,29 @@
+{
+  "name": "libgpiod",
+  "keywords": [
+    "ember-addon",
+    "ember-engine"
+  ],
+  "dependencies": {
+	  "@ember-intl/cp-validations": "*",
+    "@ember-data/legacy-compat": "*",
+    "@ember-data/model": "*",
+    "@ember/string": "*",
+    "@glimmer/component": "*",
+    "ember-auto-import": "*",
+    "ember-basic-dropdown": "*",
+    "ember-bootstrap": "*",
+    "ember-cli-babel": "*",
+    "ember-cli-htmlbars": "*",
+    "ember-cli-flash": "*",
+    "ember-cp-validations": "*",
+    "ember-intl": "*",
+    "ember-power-select": "*",
+    "ember-truth-helpers": "*"
+  },
+  "ember-addon": {
+    "paths": [
+      "../shared-tools"
+    ]
+  }
+}

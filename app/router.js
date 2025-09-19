@@ -74,6 +74,7 @@ Router.map(function () {
 
   this.mount('smtp');
   this.mount('piface-digital-gpio');
+  this.mount('libgpiod');
   this.mount('wiegand-reader');
   this.mount('led-buzzer');
   this.mount('wiegand-reader-wizard');

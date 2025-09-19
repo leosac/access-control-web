@@ -1,0 +1,8 @@
+{
+  "displayName": "Libgpiod GPIO",
+  "needServer": true,
+  "entryPoint": "/list",
+  "modelToRoute": {
+    "libgpiodGpio": "libgpiod-gpio"
+  }
+}

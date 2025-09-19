@@ -1,0 +1,67 @@
+<LinkTo @route="create" class="btn btn-primary">
+  {{t 'libgpiod-gpios.create_config'}}
+</LinkTo>
+<hr>
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+    <th>#Id</th>
+    <th class="col-md-2">{{t 'name'}}</th>
+    <th>{{t 'gpio_number'}}</th>
+    <th>{{t 'direction'}}</th>
+    <th>{{t 'default_value'}}</th>
+    <th>{{t 'enable'}}</th>
+    <th class="col-md-offset-10 col-md-2">{{t 'delete'}}</th>
+    </thead>
+    <tbody>
+    {{#each this.model as |libgpiod-gpio|}}
+    {{#if libgpiod-gpio.id}}
+      <tr>
+        <td>
+          <LinkTo @route="libgpiod-gpio" @model={{libgpiod-gpio.id}}>
+            <libgpiod-gpio.id />
+          </LinkTo>
+        </td>
+        <td>
+          <LinkTo @route="libgpiod-gpio" @model={{libgpiod-gpio.id}}>
+            <libgpiod-gpio.name />
+          </LinkTo>
+        </td>
+        <td>
+          <LinkTo @route="libgpiod-gpio" @model={{libgpiod-gpio.id}}>
+            <libgpiod-gpio.number />
+          </LinkTo>
+        </td>
+        <td>
+          <LinkTo @route="libgpiod-gpio" @model={{libgpiod-gpio.id}}>
+            {{t libgpiod-gpio.direction}}
+          </LinkTo>
+        </td>
+        <td>
+          <LinkTo @route="libgpiod-gpio" @model={{libgpiod-gpio.id}}>
+            {{#if (eq libgpiod-gpio.direction 'out')}}
+              {{#if (eq libgpiod-gpio.defaultValue 'true')}}
+                {{t 'true'}}
+              {{else}}
+                {{t 'false'}}
+              {{/if}}
+            {{/if}}
+          </LinkTo>
+        </td>
+        <td>
+          <div class="pull-left">
+            <BsForm as |form|>
+              <DeviceToggleEnabled @device={{libgpiod-gpio}} @saveIt={{true}} @form={{form}} />
+            </BsForm>
+          </div>
+        </td>
+        <td>
+          <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="xs" @text={{t "delete"}} @message={{t "libgpiod-gpios.delete_confirm"}} @onConfirm={{fn this.deleteLibgpiodGpio libgpiod-gpio}} />
+        </td>
+      </tr>
+    {{/if}}
+    {{/each}}
+    </tbody>
+  </table>
+</div>

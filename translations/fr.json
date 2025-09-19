@@ -31,9 +31,6 @@
   "add": "Ajouter",
   "add_time_zone": "Ajouter plage horaire",
   "administrator": "Administrateur",
-  "alarm": {
-    "title": "Alarmes"
-  },
   "alias": "Alias",
   "alias_": "Alias:",
   "alias_placeholder": "Un nom mémorisable",

@@ -31,9 +31,6 @@
   "add": "Add",
   "add_time_zone": "Add Time Frame",
   "administrator": "Administrator",
-  "alarm": {
-    "title": "Alarms"
-  },
   "alias": "Alias",
   "alias_": "Alias:",
   "alias_placeholder": "A friendly name to remember me by",

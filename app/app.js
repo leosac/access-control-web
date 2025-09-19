@@ -58,6 +58,32 @@ export default class App extends Application {
                 ]
             }
         },
+        'libgpiod': {
+            leosacProperty: {
+                needServer: true,
+                displayName: 'Libgpiod GPIO',
+                entryPoint: '/list',
+                modelToRoute: {
+                    libgpiodGpio: 'libgpiod-gpio'
+                }
+            },
+            dependencies: {
+                externalRoutes: {
+                    login: 'login'
+                },
+                services: [
+                    'router',
+                    'authentication',
+                    'websocket',
+                    'leosac-info',
+                    'flashMessages',
+                    'store',
+                    'module-manager',
+                    'search',
+                    'intl'
+                ]
+            }
+        },
         'led-buzzer': {
             leosacProperty: {
                 needServer: true,

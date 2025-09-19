@@ -1,0 +1,68 @@
+<div class="card">
+  <div class="card-body">
+    <BsForm @formLayout="vertical" @model={{this.args.libgpiod-gpio}} @onSubmit={{this.args.action}} as |form|>
+      <div class="card-text">
+        <fieldset>
+          <legend>{{t 'configuration'}}</legend>
+
+          <form.element @controlType="text" @label={{t "name"}} @placeholder={{t "name"}} @property="name" as |el|>
+            <el.control @id="Tooltip-name" />
+            <BsTooltip @placement="right" @triggerElement="#Tooltip-name" @triggerEvents="hover">{{t 'libgpiod_gpio_information.gpio_name'}}</BsTooltip>
+          </form.element>
+
+          <form.element @controlType="text" @label={{t "device"}} @property="device" as |el|>
+            <el.control @id="Tooltip-device" />
+            <BsTooltip @placement="right" @triggerElement="#Tooltip-device">{{t 'libgpiod_gpio_information.device'}}</BsTooltip>
+          </form.element>
+
+          <form.element @property="offset" @label={{t "offset"}} @controlType="number" @placeholder="0" as |el|>
+            <el.control @id="Tooltip-offset" />
+            <BsTooltip @placement="right" @triggerElement="#Tooltip-offset">{{t 'libgpiod_gpio_information.offset'}}</BsTooltip>
+          </form.element>
+
+          <form.element @property="interruptMode" @label={{t "interrupt_mode"}}>
+          <div id="Tooltip-interruptMode">
+            <PowerSelect @selected={{this.args.libgpiod-gpio.interruptMode}} @searchEnabled={{false}} @options={{this.allInterruptMode}} @onChange={{fn (mut this.args.libgpiod-gpio.interruptMode)}} @placeholder={{t "type_interrupt_mode"}} as |interruptMode|>
+              {{t interruptMode}}
+            </PowerSelect>
+            <BsTooltip @placement="right" @triggerElement="#Tooltip-interruptMode">{{t 'libgpiod_gpio_information.interrupt_mode'}}</BsTooltip>
+          </div>
+          </form.element>
+
+          <form.element @property="direction" @label={{t "direction"}}>
+          <div id="Tooltip-direction">
+            <PowerSelect @selected={{this.args.libgpiod-gpio.direction}} @searchEnabled={{false}} @options={{this.allDirection}} @onChange={{fn (mut this.args.libgpiod-gpio.direction)}} @placeholder={{t "type_direction"}} as |direction|>
+              {{t direction}}
+            </PowerSelect>
+            <BsTooltip @placement="right" @triggerElement="#Tooltip-direction">{{t 'libgpiod_gpio_information.direction'}}</BsTooltip>
+          </div>
+          </form.element>
+
+          {{#if (eq this.args.libgpiod-gpio.direction 'out')}}
+            <form.element @property="defaultValue" @label={{t "default_value"}}>
+              <div id="Tooltip-value">
+              <PowerSelect @selected={{this.args.libgpiod-gpio.defaultValue}} @searchEnabled={{false}} @options={{this.allValue}} @onChange={{fn (mut this.args.libgpiod-gpio.defaultValue)}} @placeholder={{t "type_value"}} as |newValue|>
+                {{t newValue}}
+              </PowerSelect>
+              <BsTooltip @placement="right" @triggerElement="#Tooltip-value" @triggerEvent="hover">{{t 'libgpiod_gpio_information.value'}}</BsTooltip>
+              </div>
+            </form.element>
+          {{/if}}
+
+          <form.element @property="enabled" @label={{t "enable"}}>
+            <div class="pull-right" id="Tooltip-enable">
+              <DeviceToggleEnabled @device={{this.args.libgpiod-gpio}} @saveIt={{false}} @form={{form}} />
+              <BsTooltip @placement="right" @triggerElement="#Tooltip-enable" @triggerEvent="hover">{{t 'libgpiod_gpio_information.enable'}}</BsTooltip>
+            </div>
+          </form.element>
+        </fieldset>
+      </div>
+      <div class="space-top">
+        <form.submitButton @type="success">{{t 'submit'}}</form.submitButton>
+        {{#if this.args.delete}}
+          <ButtonWithConfirmation @type="danger" @icon="glyphicon glyphicon-remove" @size="md" @text={{t "delete"}} @message={{t "libgpiod-gpios.delete_confirm"}} @onConfirm={{this.args.delete}} />
+        {{/if}}
+      </div>
+    </BsForm>
+  </div>
+</div>
